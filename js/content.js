@@ -14,11 +14,12 @@ export async function loadAll() {
   const library = await getJson("content/prompt-library.json");
   const instructor = await getJson("content/instructor-notes.json");
   const quizzesData = await getJson("content/quizzes.json");
+  const agentsData = await getJson("content/agents.json");
   const modules = {};
   for (const m of course.modules) {
     modules[m.id] = await getJson(`content/modules/${m.id}.json`);
   }
-  cache = { course, badges, comparator, library, instructor, modules, quizzes: quizzesData.quizzes };
+  cache = { course, badges, comparator, library, instructor, modules, quizzes: quizzesData.quizzes, agents: agentsData.agents };
   return cache;
 }
 

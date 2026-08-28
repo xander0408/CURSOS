@@ -1,6 +1,7 @@
 import { getState, update } from "../store.js";
 import { escapeHtml, copyText, toast } from "../ui.js";
 import { rubricHtml, readRubric } from "../prompt-lab.js";
+import { sectionAgent } from "../agents.js";
 
 export function renderComparator(data) {
   const s = getState().progress.comparator;
@@ -16,6 +17,7 @@ export function renderComparator(data) {
       <h2>Comparador ChatGPT vs Claude</h2>
       <p>Mismo prompt, dos herramientas. Tú eliges qué te sirve más <strong>en este caso</strong>. La app no declara un modelo superior.</p>
     </div>
+    ${sectionAgent(data, "comparator")}
     <div class="card">
       ${unlocked ? `<div class="field"><label>Caso (instructor)</label><select id="cmp-case">${opts}</select></div>` : `<p class="muted">Caso en curso: <strong>${escapeHtml(selected.title)}</strong></p>`}
       <h3>${escapeHtml(selected.title)}</h3>

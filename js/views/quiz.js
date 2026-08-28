@@ -2,6 +2,7 @@ import { getState, update } from "../store.js";
 import { escapeHtml, toast } from "../ui.js";
 import { scoreAnswer, maxScore, rank } from "../quiz-engine.js";
 import { checkBadges } from "../badges.js";
+import { sectionAgent } from "../agents.js";
 
 // Estilo Kahoot: colores y formas fijas para hasta 4 opciones.
 const SHAPES = [
@@ -42,6 +43,7 @@ export function renderQuizIndex(data) {
       <h2>Quiz rápido</h2>
       <p>Estilo concurso: responde contra el reloj. Cuanto más rápido aciertas, más puntos ganas. Ideal para repasar en clase.</p>
     </div>
+    ${sectionAgent(data, "quiz")}
     <div class="grid grid-3">${cards}</div>
   `;
 }

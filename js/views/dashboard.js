@@ -2,6 +2,7 @@ import { getState, update, resetAll } from "../store.js";
 import { moduleProgress } from "./modules.js";
 import { escapeHtml, progressBar, toast, openModal, closeModal } from "../ui.js";
 import { checkBadges } from "../badges.js";
+import { sectionAgent } from "../agents.js";
 
 export function globalPct(data) {
   const pcts = data.course.modules.map((m) => moduleProgress(data.modules[m.id]).pct);
@@ -25,6 +26,7 @@ export function renderDashboard(data) {
       <h2>Laboratorio</h2>
       <p>No memorices prompts. Aprende a pensar qué necesita saber la IA para resolver un problema de negocio — y a verificar el resultado antes de usarlo.</p>
     </div>
+    ${sectionAgent(data, "dashboard")}
     <div class="grid grid-4" style="margin-bottom:20px">
       <div class="card stat"><span class="value">${pct}%</span><span class="label">Progreso general</span></div>
       <div class="card stat"><span class="value">${s.progress.totals.modulesCompleted}</span><span class="label">Módulos</span></div>

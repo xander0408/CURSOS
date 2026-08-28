@@ -3,6 +3,7 @@ import { activaBar, progressBar, pillForDifficulty, renderBlocks, escapeHtml, co
 import { evaluate, xpFor, assemblePrompt } from "../challenge-engine.js";
 import { frameworkForm, readFramework, rubricHtml, readRubric } from "../prompt-lab.js";
 import { checkBadges } from "../badges.js";
+import { sectionAgent } from "../agents.js";
 
 export function moduleProgress(full) {
   const st = getModule(full.id);
@@ -386,6 +387,7 @@ export function renderModulesIndex(data) {
       <h2>Módulos</h2>
       <p>Nueve laboratorios. El ritmo de los cuatro sábados lo marca el instructor en sala. Puedes navegar todos.</p>
     </div>
+    ${sectionAgent(data, "modules")}
     <div class="module-list">${cards}</div>
   `;
 }

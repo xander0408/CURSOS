@@ -5,6 +5,7 @@ import { ficheText } from "../rubric.js";
 import { escapeHtml, copyText, toast } from "../ui.js";
 import { checkBadges } from "../badges.js";
 import { completeModule } from "../store.js";
+import { sectionAgent } from "../agents.js";
 
 const STEPS = [
   { id: "problem", title: "Identificar problema", field: "problem", prompt: "Describe un problema real de tu trabajo que podría aliviarse con IA generativa. ¿Qué duele hoy?" },
@@ -41,6 +42,7 @@ export function renderProject(data, step = 0) {
       <h2>Proyecto final</h2>
       <p>Un problema real de tu trabajo. La ficha es tu evidencia de criterio, no un diploma automático.</p>
     </div>
+    ${Number(step) === 0 ? sectionAgent(data, "project") : ""}
     <div class="steps">${nav}</div>
     <div class="card" id="proj-root">
       <p class="muted">Paso ${i + 1} de ${STEPS.length}</p>

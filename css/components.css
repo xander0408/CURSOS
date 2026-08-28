@@ -419,3 +419,75 @@
   .quiz-answers { grid-template-columns: 1fr; }
   .quiz-question h2 { font-size: 20px; }
 }
+
+/* ---------- Agentes tutores ---------- */
+.agent-card {
+  display: flex;
+  gap: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--agent, var(--accent));
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+.agent-avatar {
+  position: relative;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+}
+.agent-avatar img {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--agent, var(--accent)) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--agent, var(--accent)) 40%, transparent);
+  object-fit: cover;
+}
+.agent-status {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 99px;
+  background: var(--ok);
+  border: 2px solid var(--bg-card);
+}
+.agent-body { flex: 1; min-width: 0; }
+.agent-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.agent-head strong { font-size: 16px; color: var(--agent, var(--accent)); }
+.agent-role {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+.agent-intro { margin: 6px 0 10px; color: var(--text); font-size: 14px; }
+.agent-tasks-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+}
+.agent-tasks {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.agent-tasks li { margin: 3px 0; }
+
+@media (max-width: 640px) {
+  .agent-card { flex-direction: column; gap: 12px; }
+  .agent-avatar { width: 56px; height: 56px; }
+  .agent-avatar img { width: 56px; height: 56px; }
+}

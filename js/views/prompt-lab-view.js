@@ -3,6 +3,7 @@ import { frameworkForm, readFramework } from "../prompt-lab.js";
 import { assemblePrompt } from "../challenge-engine.js";
 import { copyText, toast } from "../ui.js";
 import { checkBadges } from "../badges.js";
+import { sectionAgent } from "../agents.js";
 
 export function renderPromptLab(data) {
   const draft = getState().progress.promptLab.drafts[0] || {};
@@ -11,6 +12,7 @@ export function renderPromptLab(data) {
       <h2>Prompt Lab</h2>
       <p>Construye ROL + CONTEXTO + OBJETIVO + FORMATO + RESTRICCIONES. El texto listo para copiar aparece cuando las piezas están pensadas, no antes.</p>
     </div>
+    ${sectionAgent(data, "promptLab")}
     <div class="card" id="lab-root">
       ${frameworkForm(draft)}
       <div class="btn-row">

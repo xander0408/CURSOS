@@ -1,0 +1,94 @@
+{
+  "agents": [
+    {
+      "id": "nova",
+      "avatar": "avatares/nova.svg",
+      "name": "Nova",
+      "role": "Anfitriona del laboratorio",
+      "color": "#22D3EE",
+      "section": "dashboard",
+      "personality": "Cercana y motivadora. Te orienta sin abrumarte.",
+      "intro": "¡Hola! Soy Nova, tu anfitriona. No vienes a memorizar prompts: vienes a aprender a pensar con la IA y a verificar antes de usar.",
+      "tasks": [
+        "Escribe tu nombre arriba para personalizar tu avance.",
+        "Empieza por el Módulo 1 o prueba un Quiz rápido para calentar.",
+        "Recuerda: tú decides y verificas; la IA solo propone."
+      ]
+    },
+    {
+      "id": "atlas",
+      "avatar": "avatares/atlas.svg",
+      "name": "Atlas",
+      "role": "Tutor de módulos",
+      "color": "#10B981",
+      "section": "modules",
+      "personality": "Analítico y paciente. Le gusta el contexto y los ejemplos.",
+      "intro": "Soy Atlas. Cada módulo es un laboratorio: lee, piensa el caso y prueba con tu propio trabajo (sin datos sensibles).",
+      "tasks": [
+        "Antes de avanzar, resume en una frase qué aprendiste.",
+        "Piensa una tarea real de tu semana donde aplicarlo.",
+        "Si un concepto no te queda claro, vuelve a la lección anterior."
+      ]
+    },
+    {
+      "id": "spark",
+      "avatar": "avatares/spark.svg",
+      "name": "Spark",
+      "role": "Tutora del Prompt Lab",
+      "color": "#EC4899",
+      "section": "promptLab",
+      "personality": "Creativa y directa. Odia los prompts vagos.",
+      "intro": "Soy Spark. Un buen prompt no es un truco: son cinco piezas bien pensadas. Rol, contexto, objetivo, formato y restricciones.",
+      "tasks": [
+        "Completa las cinco piezas antes de copiar el prompt.",
+        "Agrega siempre una restricción: «si no tienes un dato, pídemelo».",
+        "Guarda en tu biblioteca los prompts que te funcionen."
+      ]
+    },
+    {
+      "id": "guardian",
+      "avatar": "avatares/guardian.svg",
+      "name": "Guardian",
+      "role": "Guardián de la verificación",
+      "color": "#6366F1",
+      "section": "quiz",
+      "personality": "Serio y protector. No deja pasar un dato sin fuente.",
+      "intro": "Soy Guardian. Responde rápido, pero nunca confíes en una cifra o una cita sin verificarla en la vida real.",
+      "tasks": [
+        "Responde por criterio, no por adivinar la clave.",
+        "Cuando falles, lee la explicación: ahí está el aprendizaje.",
+        "Fuera del quiz: toda cifra que sostenga una decisión necesita fuente humana."
+      ]
+    },
+    {
+      "id": "nexus",
+      "avatar": "avatares/nexus.svg",
+      "name": "Nexus",
+      "role": "Árbitro del comparador",
+      "color": "#A78BFA",
+      "section": "comparator",
+      "personality": "Imparcial y curioso. No cree en ganadores universales.",
+      "intro": "Soy Nexus. Mismo prompt, dos herramientas. No busques cuál es «mejor»: busca cuál te sirve más en ESTE caso.",
+      "tasks": [
+        "Usa exactamente el mismo prompt en ChatGPT y en Claude.",
+        "Puntúa cada salida por utilidad, no por marca.",
+        "Justifica tu elección con un criterio de negocio."
+      ]
+    },
+    {
+      "id": "commander",
+      "avatar": "avatares/commander.svg",
+      "name": "Commander",
+      "role": "Líder del proyecto final",
+      "color": "#D4A574",
+      "section": "project",
+      "personality": "Estratega y exigente. Busca resultados con control humano.",
+      "intro": "Soy Commander. Aquí resuelves un problema real de tu trabajo, de punta a punta, y mides el tiempo que ahorras.",
+      "tasks": [
+        "Elige un problema que de verdad te quite tiempo.",
+        "Prueba en ChatGPT y Claude, y compara con criterio.",
+        "Cierra la ficha con validación humana y ahorro estimado."
+      ]
+    }
+  ]
+}
