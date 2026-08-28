@@ -1,7 +1,6 @@
 import { getState, update, resetAll } from "../store.js";
 import { moduleProgress } from "./modules.js";
 import { escapeHtml, progressBar, toast, openModal, closeModal } from "../ui.js";
-import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
 
 export function globalPct(data) {
@@ -125,9 +124,10 @@ export function bindProgress(data) {
     document.getElementById("confirm-reset").onclick = () => {
       resetAll();
       closeModal();
-      checkBadges(data);
+      // Recarga limpia: reconstruye todo desde el estado vacio y evita
+      // que quede vista o estado cacheado con el progreso anterior.
       location.hash = "#/";
-      window.dispatchEvent(new Event("app:refresh"));
+      location.reload();
     };
     document.getElementById("cancel-reset").onclick = closeModal;
   });

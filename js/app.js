@@ -13,6 +13,7 @@ import { renderComparator, bindComparator } from "./views/comparator.js";
 import { renderLibrary, bindLibrary } from "./views/library.js";
 import { renderProject, bindProject } from "./views/project.js";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js";
+import { hydrateAgents } from "./agents.js";
 
 const TITLES = {
   dashboard: "Dashboard",
@@ -161,6 +162,9 @@ function render() {
     else if (btn.dataset.firstCh) location.hash = `#/modulo/${moduleId}/reto/${btn.dataset.firstCh}`;
     else location.hash = `#/modulos`;
   });
+
+  // Inserta y anima los avatares de los agentes tutores (si la vista tiene).
+  hydrateAgents(root);
 }
 
 async function main() {

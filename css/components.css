@@ -437,14 +437,42 @@
   flex-shrink: 0;
   width: 64px;
   height: 64px;
-}
-.agent-avatar img {
-  width: 64px;
-  height: 64px;
   border-radius: 14px;
   background: color-mix(in srgb, var(--agent, var(--accent)) 14%, transparent);
   border: 1px solid color-mix(in srgb, var(--agent, var(--accent)) 40%, transparent);
-  object-fit: cover;
+  overflow: hidden;
+}
+.agent-avatar img,
+.agent-avatar .agent-svg {
+  width: 64px;
+  height: 64px;
+  display: block;
+}
+/* Ojos animados: leve vaiven horizontal y parpadeo. */
+.agent-eye {
+  animation: agent-look 4.2s ease-in-out infinite;
+}
+/* Pupilas: mismo vaiven + parpadeo, combinados en un solo keyframe
+   porque ambos usan transform. */
+.agent-pupil {
+  animation: agent-look-blink 5.6s ease-in-out infinite;
+}
+@keyframes agent-look {
+  0%, 30% { transform: translateX(0); }
+  40%, 60% { transform: translateX(1.2px); }
+  70%, 90% { transform: translateX(-1.2px); }
+  100% { transform: translateX(0); }
+}
+@keyframes agent-look-blink {
+  0%, 22% { transform: translateX(0) scaleY(1); }
+  30%, 45% { transform: translateX(1.2px) scaleY(1); }
+  52%, 68% { transform: translateX(-1.2px) scaleY(1); }
+  75%, 90% { transform: translateX(0) scaleY(1); }
+  93% { transform: translateX(0) scaleY(0.15); }
+  96%, 100% { transform: translateX(0) scaleY(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .agent-eye, .agent-pupil { animation: none; }
 }
 .agent-status {
   position: absolute;
