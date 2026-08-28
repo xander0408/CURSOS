@@ -9,15 +9,20 @@ export function moduleProgress(full) {
   const st = getModule(full.id);
   const lessons = full.lessons || [];
   const challenges = full.challenges || [];
-  const lessonPct = lessons.length ? st.lessonsDone.length / lessons.length : 1;
   const chState = getState().progress.challenges;
+  const lessonsDone = st.lessonsDone.length;
   const chDone = challenges.filter((c) => chState[c.id]?.status === "done").length;
-  const chPct = challenges.length ? chDone / challenges.length : 1;
-  const pct = Math.round(((lessonPct + chPct) / 2) * 100);
+
+  // Progreso = (lecciones hechas + retos hechos) / (total de lecciones + total de retos).
+  // Asi, un modulo sin retos depende solo de sus lecciones y no aporta un 50% fantasma.
+  const totalItems = lessons.length + challenges.length;
+  const doneItems = lessonsDone + chDone;
+  const pct = totalItems ? Math.round((doneItems / totalItems) * 100) : 0;
+
   const scores = challenges.map((c) => chState[c.id]?.score ?? 0);
   const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
   const complete = lessons.every((l) => st.lessonsDone.includes(l.id)) && challenges.every((c) => chState[c.id]?.status === "done");
-  return { pct, avg, complete, chDone, lessonDone: st.lessonsDone.length };
+  return { pct, avg, complete, chDone, lessonDone: lessonsDone };
 }
 
 function maybeComplete(data, full) {
