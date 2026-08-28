@@ -1,0 +1,156 @@
+{
+  "id": "m2",
+  "number": 2,
+  "title": "Cómo hablar con una IA",
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "La IA no adivina: tú das el contexto",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>La diferencia entre un resultado inútil y uno excelente casi nunca es «el modelo». Es <strong>cuánto contexto le diste</strong>. Un pedido vago produce un texto genérico; un pedido con situación, público y objetivo produce algo aprovechable.</p>" },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "Si le pidieras a un colega nuevo que redacte un correo sin contarle nada del caso, ¿qué te devolvería? Lo mismo pasa con la IA." },
+        { "type": "list", "items": ["Quién eres tú y para quién es el resultado.", "Qué situación de negocio hay detrás.", "Qué quieres lograr y en qué formato."] }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "Objetivo y tono: dos ajustes que lo cambian todo",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>El <strong>objetivo</strong> responde «¿para qué?». El <strong>tono</strong> responde «¿cómo debe sonar?». Un mismo contenido cambia por completo si es para un cliente enojado, para tu jefe o para redes sociales.</p>" },
+        { "type": "callout", "kind": "limit", "title": "Límite", "text": "Un tono muy cálido puede sonar poco serio en un contexto legal; uno muy formal puede alejar a un cliente. Tú eliges según el negocio." }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "Conversación iterativa: no aceptes el primer borrador",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>Hablar con IA es una <strong>conversación</strong>, no un botón. El primer resultado es materia prima. Pide ajustes: «hazlo más corto», «cambia el tono», «agrega un ejemplo», «quita la promesa de fecha».</p>" },
+        { "type": "list", "items": ["Corrige lo que no te gusta en lugar de empezar de cero.", "Pide alternativas: «dame 3 versiones».", "Señala errores para que los arregle en la siguiente respuesta."] },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Iterar no elimina la revisión final. Sigues siendo tú quien decide si el texto sale." }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Errores comunes al pedir cosas a la IA",
+      "activaPhase": 0,
+      "blocks": [
+        { "type": "text", "html": "<p>Los tropiezos más frecuentes en clase:</p>" },
+        { "type": "list", "items": ["Pedir «un correo» sin decir para quién ni para qué.", "Aceptar el primer texto sin leerlo.", "Pegar datos confidenciales por comodidad.", "Pedir cifras o leyes como si la IA fuera una fuente oficial."] },
+        { "type": "callout", "kind": "privacy", "title": "Privacidad", "text": "Antes de pegar algo, pregúntate: ¿me molestaría que esto saliera de la empresa? Si sí, anonimízalo." }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Audiencia, tono y formato",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Tres ajustes que casi nadie da y que cambian el resultado: <strong>audiencia</strong> (para quién), <strong>tono</strong> (cómo debe sonar) y <strong>formato</strong> (cómo debe verse).</p>" },
+        { "type": "list", "items": ["Audiencia: «para un cliente», «para dirección», «para un compañero técnico».", "Tono: formal, cercano, comercial, de disculpa.", "Formato: correo, viñetas, tabla, máximo de palabras."] },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "El mismo mensaje para tu jefe y para un cliente enojado no se escribe igual. Dile a la IA cuál es cuál." }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "Dar ejemplos: enséñale el estilo que esperas",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>Un <strong>ejemplo</strong> vale más que mil adjetivos. Si tienes un correo o un texto que te gusta cómo quedó, pégalo (sin datos sensibles) y pide «hazlo con este estilo».</p>" },
+        { "type": "list", "items": ["Muestra un ejemplo de la forma deseada, no del contenido secreto.", "Sirve para tono, estructura y nivel de detalle.", "«Imita este formato» ahorra muchas iteraciones."] }
+      ]
+    },
+    {
+      "id": "l7",
+      "title": "Corregir y refinar la respuesta",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>Refinar es señalar con precisión qué cambiar: «el segundo párrafo es muy técnico», «quita la promesa de fecha», «agrega una despedida cordial». Cuanto más concreta la corrección, mejor el ajuste.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Corrige sobre lo que ya tienes en lugar de empezar de cero: la conversación conserva el contexto." }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "m2-r1",
+      "type": "mcq",
+      "difficulty": "basico",
+      "title": "¿Qué falta en este pedido?",
+      "objective": "Detectar contexto ausente.",
+      "instructions": "Un compañero escribe: «Hazme un correo para el cliente». ¿Cuál es el mayor problema?",
+      "options": [
+        "El correo será demasiado largo",
+        "Falta contexto: quién es el cliente, qué pasó y qué se busca lograr",
+        "Debió usar Claude en vez de ChatGPT",
+        "No hay ningún problema, es suficiente"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sin situación, objetivo ni tono, el resultado será genérico. Contextualizar es el paso que más mejora la salida.",
+      "xp": 10,
+      "activaPhase": 1
+    },
+    {
+      "id": "m2-r2",
+      "type": "tf",
+      "difficulty": "basico",
+      "title": "El primer borrador",
+      "objective": "Interiorizar la iteración.",
+      "instructions": "Verdadero o falso: el primer texto que devuelve la IA debe usarse tal cual para ahorrar tiempo.",
+      "correct": false,
+      "explanation": "El primer borrador es materia prima. Iterar (pedir ajustes) y verificar son parte del trabajo, no un extra.",
+      "xp": 10,
+      "activaPhase": 3
+    },
+    {
+      "id": "m2-r3",
+      "type": "prompt-build",
+      "difficulty": "intermedio",
+      "title": "Mejora un pedido pobre",
+      "objective": "Transformar una petición vaga en una con contexto y objetivo.",
+      "instructions": "Toma el pedido deficiente de abajo y reconstrúyelo con las cinco piezas del framework. No pegues datos reales.",
+      "weakPrompt": "«Escribe algo para avisar a los clientes que subiremos precios.»",
+      "thinkFirst": "¿Quién recibe el mensaje, qué tono evita perder clientes y qué NO debe prometer?",
+      "explanation": "Un buen pedido incluye rol, contexto (por qué suben los precios, cuánto), objetivo (informar sin perder confianza), formato (correo breve) y restricciones (no disculparse en exceso, no inventar cifras).",
+      "xp": 20,
+      "activaPhase": 2
+    },
+    {
+      "id": "m2-r4",
+      "type": "order",
+      "difficulty": "basico",
+      "title": "Orden de una conversación productiva",
+      "objective": "Ordenar el flujo de una interacción iterativa.",
+      "instructions": "Ordena los pasos de una conversación bien llevada con la IA.",
+      "items": [
+        "Pedir un primer borrador con contexto y objetivo",
+        "Leer críticamente el resultado",
+        "Pedir ajustes concretos (tono, largo, errores)",
+        "Verificar cifras y hechos con una fuente humana",
+        "Aplicar el texto final bajo tu responsabilidad"
+      ],
+      "correctOrder": [0, 1, 2, 3, 4],
+      "explanation": "Contexto primero, lectura crítica, iteración, verificación y recién entonces aplicar. El orden evita usar un borrador sin revisar.",
+      "xp": 15,
+      "activaPhase": 3
+    },
+    {
+      "id": "m2-r5",
+      "type": "case",
+      "difficulty": "intermedio",
+      "title": "Caso: reprogramar una reunión",
+      "objective": "Aplicar contexto + tono + revisión humana a un caso real.",
+      "instructions": "Debes avisar a un equipo que la reunión del viernes se mueve al lunes. Construye el prompt, obtén un borrador en ChatGPT o Claude, pégalo y anota tu revisión.",
+      "scenario": "Eres coordinador de un equipo de 6 personas. La reunión semanal cambia de viernes 10:00 a lunes 09:00 por un imprevisto. Quieres un mensaje claro, breve y amable, sin dar detalles del imprevisto.",
+      "flow": [
+        "Construye el prompt con las cinco piezas.",
+        "Cópialo y úsalo en ChatGPT o Claude.",
+        "Pega o resume el resultado.",
+        "Anota qué revisaste o corregiste antes de enviarlo."
+      ],
+      "explanation": "Lo importante: contexto suficiente sin datos sensibles, tono adecuado al equipo y una revisión humana antes de enviar.",
+      "xp": 20,
+      "activaPhase": 5
+    }
+  ]
+}

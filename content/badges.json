@@ -1,0 +1,50 @@
+[
+  {
+    "id": "explorer",
+    "icon": "🤖",
+    "name": "Explorador IA",
+    "why": "Completaste los fundamentos: ya distingues usos válidos, límites y la necesidad de verificación humana."
+  },
+  {
+    "id": "prompt-builder",
+    "icon": "💬",
+    "name": "Prompt Builder",
+    "why": "Construiste solicitudes con las cinco piezas del framework o guardaste prompts propios en la biblioteca."
+  },
+  {
+    "id": "thinker",
+    "icon": "🧠",
+    "name": "AI Thinker",
+    "why": "Evaluaste salidas de IA y buscaste errores en lugar de aceptar el primer texto."
+  },
+  {
+    "id": "analyst",
+    "icon": "📊",
+    "name": "Data Analyst",
+    "why": "Cerraste el laboratorio de Excel recordando que todo cálculo de IA se valida."
+  },
+  {
+    "id": "writer",
+    "icon": "📄",
+    "name": "AI Writer",
+    "why": "Aplicaste IA a documentos de Word con revisión de tono, precisión y confidencialidad."
+  },
+  {
+    "id": "presenter",
+    "icon": "📽️",
+    "name": "AI Presenter",
+    "why": "Pasaste de información desordenada a estructura, relato y diapositivas con criterio."
+  },
+  {
+    "id": "fact-checker",
+    "icon": "🔎",
+    "name": "Fact Checker",
+    "why": "Detectaste información potencialmente incorrecta en una respuesta de IA."
+  },
+  {
+    "id": "master",
+    "icon": "🏆",
+    "name": "AI Business Master",
+    "why": "Completaste el laboratorio y una ficha de proyecto con control humano y ahorro estimado."
+  }
+]

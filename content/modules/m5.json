@@ -1,0 +1,125 @@
+{
+  "id": "m5",
+  "number": 5,
+  "title": "IA + Microsoft Excel",
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "La IA te ayuda con fórmulas, tú validas los números",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>La IA es muy útil para <strong>construir y explicar fórmulas</strong> de Excel: describes tus columnas y qué quieres calcular, y te da la fórmula lista para pegar. Pero el resultado siempre se valida con un caso que ya conoces.</p>" },
+        { "type": "callout", "kind": "limit", "title": "Límite", "text": "La IA no ve tu hoja real. Trabaja con lo que le describes; si describes mal las columnas, la fórmula estará mal." }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "Describir bien tus datos",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>El secreto está en el <strong>contexto de los datos</strong>: qué hay en cada columna, en qué fila empiezan, qué formato tienen. Un ejemplo pequeño de 3 filas vale más que mil palabras.</p>" },
+        { "type": "list", "items": ["Nombra las columnas: «A: fecha, B: producto, C: monto».", "Di dónde empiezan los datos (fila 2, por ejemplo).", "Aporta un mini ejemplo con valores inventados."] }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "Por qué SIEMPRE hay que validar",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>Un número mal calculado se ve igual de convincente que uno correcto. Por eso, con Excel la <strong>verificación no es opcional</strong>: pruebas la fórmula con un caso cuyo resultado ya conoces.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Calcula a mano una fila que ya conozcas. Si la fórmula coincide, avanza. Si no, corrige antes de confiar en toda la hoja." }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Explicar y crear fórmulas en lenguaje natural",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Dos usos muy prácticos: <strong>explicar</strong> una fórmula que no entiendes («¿qué hace este BUSCARV?») y <strong>crear</strong> una a partir de lo que necesitas en palabras («quiero sumar solo las ventas de marzo»).</p>" },
+        { "type": "list", "items": ["Pega la fórmula y pide una explicación paso a paso.", "Describe el cálculo en lenguaje natural y pide la fórmula.", "Pide que te indique los supuestos que hizo."] }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Detectar y corregir errores de fórmulas",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>Si una fórmula da <code>#¡REF!</code>, <code>#¡VALOR!</code> o un resultado raro, pega la fórmula y el error. La IA suele identificar la causa y proponer la corrección.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Prueba la fórmula corregida con un caso conocido antes de aplicarla a toda la hoja." }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "De los datos a recomendaciones y reporte ejecutivo",
+      "activaPhase": 5,
+      "blocks": [
+        { "type": "text", "html": "<p>Puedes pegar un resumen de tus resultados (totales, promedios, tendencias) y pedir <strong>recomendaciones</strong> o un <strong>reporte ejecutivo</strong>. La IA interpreta; tú confirmas que los números y las conclusiones tienen sentido.</p>" },
+        { "type": "list", "items": ["«Con estos totales, dame 3 observaciones y 2 recomendaciones.»", "«Redacta un resumen ejecutivo de estos resultados para dirección.»", "Valida que las conclusiones no contradigan tus datos reales."] }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "m5-r1",
+      "type": "tf",
+      "difficulty": "basico",
+      "title": "Confiar en el número",
+      "objective": "Fijar el hábito de validar cálculos.",
+      "instructions": "Verdadero o falso: si la IA da una fórmula que devuelve un número, ese número ya está garantizado como correcto.",
+      "correct": false,
+      "explanation": "La fórmula puede estar mal armada o basarse en columnas que describiste mal. Siempre se valida con un caso conocido.",
+      "xp": 10,
+      "activaPhase": 4
+    },
+    {
+      "id": "m5-r2",
+      "type": "mcq",
+      "difficulty": "basico",
+      "title": "¿Qué le falta a este pedido de fórmula?",
+      "objective": "Detectar contexto de datos ausente.",
+      "instructions": "«Dame una fórmula para sumar las ventas del mes.» ¿Qué falta para que la IA acierte?",
+      "options": [
+        "Nada, es suficiente",
+        "Decir qué columnas hay, dónde están los datos y cómo se identifica el mes",
+        "Pedir que la haga más larga",
+        "Cambiar a Claude"
+      ],
+      "correctIndex": 1,
+      "explanation": "Sin saber qué columna tiene el monto y cuál la fecha, la IA adivina. Describir las columnas es el contexto que necesita.",
+      "xp": 10,
+      "activaPhase": 1
+    },
+    {
+      "id": "m5-r3",
+      "type": "evaluate-ai",
+      "difficulty": "intermedio",
+      "title": "Revisa una fórmula sugerida",
+      "objective": "Evaluar críticamente una salida numérica.",
+      "instructions": "La IA propuso esta respuesta a «promedio de ventas por vendedor». Evalúala y anota cómo la validarías con tu hoja real.",
+      "aiOutput": "Usa esta fórmula: =PROMEDIO(B2:B100)\n\nEsto te dará el promedio de ventas por vendedor. Además, tu equipo aumentó las ventas un 23% respecto al mes pasado, así que el promedio debería rondar los $12,400 por vendedor.",
+      "thinkFirst": "¿La fórmula corresponde a 'por vendedor'? ¿De dónde salió el 23% y los $12,400?",
+      "explanation": "La fórmula calcula un promedio general de la columna B, no 'por vendedor' (eso requeriría PROMEDIO.SI o una tabla dinámica). Y el 23% y los $12,400 son inventados: la IA no ve tu hoja. Lo correcto es ajustar la fórmula al agrupamiento real y validar con datos propios.",
+      "xp": 25,
+      "activaPhase": 4
+    },
+    {
+      "id": "m5-r4",
+      "type": "order",
+      "difficulty": "basico",
+      "title": "Flujo seguro con Excel",
+      "objective": "Ordenar el proceso de trabajar fórmulas con IA.",
+      "instructions": "Ordena los pasos para usar la IA con Excel sin llevarte sorpresas.",
+      "items": [
+        "Describir columnas y dar un mini ejemplo",
+        "Pedir la fórmula y su explicación",
+        "Pegar la fórmula en una hoja de prueba",
+        "Validar con una fila cuyo resultado ya conoces",
+        "Aplicarla al resto de los datos"
+      ],
+      "correctOrder": [0, 1, 2, 3, 4],
+      "explanation": "Describir bien, pedir, probar, validar y recién entonces aplicar. La validación va antes de confiar en toda la hoja.",
+      "xp": 15,
+      "activaPhase": 4
+    }
+  ]
+}

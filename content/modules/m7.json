@@ -1,0 +1,112 @@
+{
+  "id": "m7",
+  "number": 7,
+  "title": "Análisis e investigación",
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Resumir y extraer lo importante",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>La IA brilla resumiendo <strong>texto que tú aportas</strong>: informes, artículos, hilos de correo. Pide puntos clave, decisiones y pendientes, y que marque lo que no aparece en lugar de rellenarlo.</p>" },
+        { "type": "list", "items": ["Pega tú el texto a resumir.", "Pide que separe hechos de opiniones.", "Pide que señale lo que falta para decidir."] }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "Comparar opciones y detectar riesgos",
+      "activaPhase": 0,
+      "blocks": [
+        { "type": "text", "html": "<p>Para decisiones (proveedores, planes, propuestas), pide una <strong>comparación por criterios</strong> y que señale puntos ciegos. La IA no decide por ti; ilumina el terreno.</p>" },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Qué criterios importan de verdad en tu decisión? Si no se los das, la IA elegirá los suyos." }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "Verificar: el paso que separa un profesional",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>En investigación, la <strong>alucinación</strong> es el riesgo número uno: citas, cifras, leyes o fechas que suenan reales y no lo son. Ninguna afirmación importante sale sin verificar contra una fuente humana o documento oficial.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Regla simple: si vas a apoyar una decisión en un dato, ese dato necesita una fuente que no sea la IA." }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Extraer información específica y comparar documentos",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Más allá de resumir, puedes pedir <strong>extracción puntual</strong> («dame solo las fechas y montos») y <strong>comparación</strong> entre dos textos («¿en qué se diferencian estas dos propuestas?»).</p>" },
+        { "type": "list", "items": ["«Extrae únicamente las obligaciones y los plazos de este texto.»", "«Compara el documento A y el B: coincidencias, diferencias y riesgos.»", "Pide que cite de qué parte del texto sacó cada punto."] }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Búsqueda web y solicitar fuentes",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>Cuando la herramienta tiene <strong>búsqueda web</strong>, puede traer información más actual, pero no la convierte en verdad automática. Pide siempre las <strong>fuentes</strong> y distingue el hecho encontrado de la conclusión de la IA.</p>" },
+        { "type": "list", "items": ["«Busca y dame las fuentes con enlace para poder verificar.»", "«Marca qué es dato de la fuente y qué es tu interpretación.»", "Abre las fuentes: a veces no dicen lo que la IA resumió."] },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Una fuente citada no es prueba de que existe. Ábrela y confírmala antes de usarla en una decisión." }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "m7-r1",
+      "type": "detect-error",
+      "difficulty": "avanzado",
+      "title": "Caza las alucinaciones",
+      "objective": "Detectar afirmaciones no verificables en una respuesta de IA.",
+      "instructions": "La IA respondió a «resume los datos clave del mercado de cafeterías en mi ciudad». Marca todos los problemas que un profesional debería detectar antes de usar este texto.",
+      "aiOutput": "El mercado de cafeterías en tu ciudad creció exactamente un 34,7% en 2025, alcanzando 1.240 locales según el Instituto Nacional de Café. El consumo per cápita es de 4,2 tazas diarias, el más alto del continente. La Ley 8821 de 2023 obliga a todas las cafeterías a ofrecer opciones veganas. Se recomienda abrir cerca de universidades.",
+      "candidates": [
+        { "id": "c1", "label": "La cifra exacta de crecimiento (34,7%) sin fuente verificable" },
+        { "id": "c2", "label": "El «Instituto Nacional de Café» citado como fuente (puede no existir)" },
+        { "id": "c3", "label": "El consumo de 4,2 tazas diarias presentado como dato duro" },
+        { "id": "c4", "label": "La «Ley 8821 de 2023» citada específicamente" },
+        { "id": "c5", "label": "La recomendación general de abrir cerca de universidades" }
+      ],
+      "errorIds": ["c1", "c2", "c3", "c4"],
+      "rationale": "Las cifras exactas, la fuente citada, el consumo per cápita y la ley con número son afirmaciones verificables que la IA no puede garantizar: son candidatas típicas a alucinación. La recomendación general (c5) es una opinión razonable, no un dato falso, así que no cuenta como error a marcar.",
+      "explanation": "Cuatro afirmaciones parecen datos duros pero no tienen fuente confiable: el porcentaje exacto, el instituto citado, el consumo per cápita y la ley numerada. Todas deben verificarse antes de usarse.",
+      "xp": 30,
+      "activaPhase": 4
+    },
+    {
+      "id": "m7-r2",
+      "type": "mcq",
+      "difficulty": "intermedio",
+      "title": "¿Cómo pedir un resumen honesto?",
+      "objective": "Elegir la restricción que evita relleno inventado.",
+      "instructions": "Quieres resumir un informe sin que la IA invente lo que no está. ¿Qué restricción agregas?",
+      "options": [
+        "«Rellena lo que falte con datos típicos del sector»",
+        "«Si un dato no está en el texto, escribe: no especificado»",
+        "«Hazlo más largo para que parezca completo»",
+        "«Agrega estadísticas para que suene profesional»"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pedir que marque lo ausente en vez de rellenarlo es lo que mantiene el resumen fiel al texto original.",
+      "xp": 15,
+      "activaPhase": 2
+    },
+    {
+      "id": "m7-r3",
+      "type": "case",
+      "difficulty": "intermedio",
+      "title": "Caso: comparar dos proveedores",
+      "objective": "Usar la IA para comparar por criterios y verificar.",
+      "instructions": "Debes comparar dos proveedores para una decisión de compra. Construye el prompt con tus criterios, obtén la comparación y anota qué verificarías.",
+      "scenario": "Evalúas dos proveedores de servicio de mensajería para tu negocio. Te importan: precio, cobertura, tiempo de entrega y atención al cliente. Tienes información general pero no cifras oficiales de ambos.",
+      "flow": [
+        "Construye el prompt con tus criterios y pide que señale qué información falta.",
+        "Genera la comparación en ChatGPT o Claude.",
+        "Pega o resume el resultado.",
+        "Anota qué datos verificarías con cada proveedor antes de decidir."
+      ],
+      "explanation": "Clave: dar tus criterios, pedir que marque la información faltante y verificar los datos concretos de cada proveedor antes de decidir. La IA ilumina, tú decides.",
+      "xp": 20,
+      "activaPhase": 0
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "templates": [
+    {
+      "id": "tpl-email",
+      "title": "Correo profesional con tono controlado",
+      "useWhen": "Necesitas escribir o responder un correo delicado sin sonar frío ni prometer de más.",
+      "hint": "Cambia el tono, el destinatario y el objetivo. Nunca pegues datos personales reales.",
+      "text": "Rol: Eres un profesional de [tu área] con tono [empático / firme / cordial].\n\nContexto: [Describe la situación sin nombres reales ni datos sensibles].\n\nObjetivo: Redactar un correo que [logre X] y proponga [siguiente paso].\n\nFormato: Máximo [N] palabras, con asunto sugerido.\n\nRestricciones: No inventes cifras, fechas ni políticas. No prometas lo que no confirmé."
+    },
+    {
+      "id": "tpl-summary",
+      "title": "Resumen accionable de un texto largo",
+      "useWhen": "Tienes un documento, hilo de correos o acta que debes condensar.",
+      "hint": "Pega el texto tú. Pide que marque lo que no aparece en lugar de rellenarlo.",
+      "text": "Rol: Eres un asistente experto en síntesis.\n\nContexto: Voy a pegar un texto largo a continuación.\n\nObjetivo: Resumirlo en (1) puntos clave, (2) decisiones o conclusiones, (3) pendientes.\n\nFormato: Viñetas cortas. Si algo no está en el texto, escribe \"no especificado\".\n\nRestricciones: No agregues información que no esté en el texto. No inventes datos."
+    },
+    {
+      "id": "tpl-explain",
+      "title": "Explicar un concepto en simple",
+      "useWhen": "Debes hacer entendible un tema técnico o complejo a una audiencia no experta.",
+      "hint": "Define quién es la audiencia y qué debe poder hacer después de leerlo.",
+      "text": "Rol: Eres un formador que explica temas complejos sin jerga.\n\nContexto: La audiencia es [describe: nivel, área] y necesita entender [concepto] para [uso].\n\nObjetivo: Explicar el concepto con una analogía cotidiana y por qué importa.\n\nFormato: Máximo [N] palabras, una analogía, una frase de cierre memorable.\n\nRestricciones: Evita tecnicismos sin explicar. Nada de código."
+    },
+    {
+      "id": "tpl-excel",
+      "title": "Ayuda con fórmula de Excel (a validar)",
+      "useWhen": "Necesitas construir o entender una fórmula, siempre verificando el resultado con datos reales.",
+      "hint": "Describe tus columnas y qué quieres calcular. Prueba la fórmula con un caso conocido antes de confiar.",
+      "text": "Rol: Eres un analista experto en Excel.\n\nContexto: Tengo una hoja con estas columnas: [describe columnas y qué contienen]. Datos aproximados: [ejemplo pequeño].\n\nObjetivo: Necesito una fórmula que [calcule X]. Explícame qué hace cada parte.\n\nFormato: La fórmula lista para pegar y una explicación breve paso a paso.\n\nRestricciones: Indica supuestos que hiciste. Recuérdame validar el resultado con un caso que ya conozco."
+    },
+    {
+      "id": "tpl-slides",
+      "title": "Estructura de una presentación",
+      "useWhen": "Tienes información desordenada y necesitas un guion de diapositivas con relato.",
+      "hint": "Di cuánto dura la presentación y quién es el público. Pide el guion del expositor aparte.",
+      "text": "Rol: Eres un experto en storytelling para presentaciones de negocio.\n\nContexto: Debo presentar [tema] a [audiencia] en [N] minutos. Puntos que quiero cubrir: [lista].\n\nObjetivo: Propón la estructura de diapositivas (título + 2-3 bullets por slide) con un hilo narrativo claro.\n\nFormato: Lista de diapositivas numeradas. Añade una nota de guion del expositor por cada una.\n\nRestricciones: No inventes cifras. Marca dónde debo insertar mis datos reales."
+    },
+    {
+      "id": "tpl-analysis",
+      "title": "Comparar opciones y detectar riesgos",
+      "useWhen": "Debes analizar alternativas (proveedores, planes, propuestas) y ver puntos ciegos.",
+      "hint": "Aporta los criterios que te importan. Pide que señale qué información falta para decidir.",
+      "text": "Rol: Eres un analista crítico y objetivo.\n\nContexto: Estoy evaluando estas opciones: [lista]. Me importan estos criterios: [criterios].\n\nObjetivo: Comparar las opciones según mis criterios y señalar riesgos o información que me falta para decidir.\n\nFormato: Tabla comparativa + una sección \"Qué verificar antes de decidir\".\n\nRestricciones: No inventes datos de las opciones. Si no tienes un dato, pídemelo."
+    }
+  ]
+}

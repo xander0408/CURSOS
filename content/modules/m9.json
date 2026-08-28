@@ -1,0 +1,28 @@
+{
+  "id": "m9",
+  "number": 9,
+  "title": "Proyecto final",
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Un problema real, de punta a punta",
+      "activaPhase": 0,
+      "blocks": [
+        { "type": "text", "html": "<p>El proyecto final no es un examen: es aplicar todo el laboratorio a <strong>un problema real de tu trabajo</strong>. Vas a recorrer las fases A.C.T.I.V.A. sobre un caso propio y producir una ficha con tu criterio, tu prompt y tu ahorro estimado.</p>" },
+        { "type": "list", "items": ["Elige un problema que de verdad te quite tiempo.", "Recorre los 12 pasos guiados en la sección Proyecto final.", "Al terminar generas una ficha que resume todo."] },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Cuál es la tarea que, si la aceleraras, te devolvería más horas a la semana? Ese es tu proyecto." }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "La ficha: evidencia de criterio, no un diploma",
+      "activaPhase": 5,
+      "blocks": [
+        { "type": "text", "html": "<p>La ficha final documenta problema, solución, prompt, resultado, <strong>validación</strong>, tiempos antes y después, ahorro estimado, riesgos y control humano. Demuestra que usaste la IA con cabeza, no que copiaste un truco.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "El ahorro estimado y los riesgos los pones tú. La IA no mide el valor de tu tiempo ni conoce los riesgos de tu empresa." },
+        { "type": "text", "html": "<p>Abre la sección <strong>Proyecto final</strong> en el menú para completar los 12 pasos y generar tu ficha.</p>" }
+      ]
+    }
+  ],
+  "challenges": []
+}

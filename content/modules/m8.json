@@ -1,0 +1,124 @@
+{
+  "id": "m8",
+  "number": 8,
+  "title": "Productividad diaria",
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Agenda, minutas y seguimiento",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Las tareas repetitivas del día a día son terreno ideal para la IA: <strong>ordenar una agenda, redactar minutas, dar seguimiento a pendientes</strong>. Tú aportas los datos crudos, la IA da forma.</p>" },
+        { "type": "list", "items": ["Convierte notas caóticas en una minuta ordenada.", "Genera listas de seguimiento con responsables.", "Redacta recordatorios en el tono adecuado."] }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "De la conversación a decisiones claras",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>Después de una reunión, pide a la IA que separe <strong>decisiones, tareas y pendientes</strong> a partir de tus notas. Iterar aquí es rápido: «agrupa por responsable», «marca lo urgente».</p>" },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Cuántas decisiones de tus reuniones se pierden por no quedar escritas? Ese es el hueco que esto cubre." }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "El límite: tú decides, la IA ordena",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>La IA <strong>organiza</strong>, pero no debe tomar decisiones por ti. Priorizar qué es urgente, comprometer fechas o asignar responsables sigue siendo criterio humano.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Revisa que las tareas y fechas coincidan con lo que realmente se acordó, no con lo que la IA supuso." }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Correos y preparación de reuniones",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Dos usos que ahorran tiempo cada día: <strong>correos profesionales</strong> (con tono ajustado) y <strong>preparación de reuniones</strong> (agenda, objetivos, preguntas clave).</p>" },
+        { "type": "list", "items": ["«Redacta un correo cordial para reprogramar, sin dar detalles del motivo.»", "«Prepárame una agenda de 30 minutos para tratar [tema] con [objetivo].»", "«Sugiere 5 preguntas para conducir esta reunión.»"] }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Lluvia de ideas y planes de trabajo",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>Para desatascarte, la IA es una buena compañera de <strong>lluvia de ideas</strong>: pide cantidad y variedad, luego filtra tú. Y para organizar, pide un <strong>plan de trabajo</strong> con pasos y tiempos.</p>" },
+        { "type": "list", "items": ["«Dame 10 ideas para [objetivo], de la más simple a la más ambiciosa.»", "«Convierte estas ideas en un plan con pasos y responsables sugeridos.»", "Tú decides cuáles son viables en tu contexto real."] }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "Toma de decisiones asistida",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>La IA puede ayudarte a <strong>estructurar una decisión</strong>: listar opciones, pros y contras, criterios y riesgos. No decide por ti; ordena el pensamiento para que tú decidas mejor.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Revisa que los pros y contras se basen en hechos reales de tu caso, no en supuestos genéricos de la IA." }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "m8-r1",
+      "type": "case",
+      "difficulty": "intermedio",
+      "title": "Caso: minuta desde notas caóticas",
+      "objective": "Convertir notas crudas en una minuta accionable.",
+      "instructions": "Tienes notas desordenadas de una reunión. Construye el prompt para obtener una minuta con decisiones, tareas y pendientes, genera el resultado y revísalo.",
+      "scenario": "Después de una reunión de 45 minutos tienes notas sueltas y desordenadas. Necesitas una minuta clara para enviar al equipo con decisiones, tareas (con responsable si aparece) y temas pendientes.",
+      "flow": [
+        "Construye el prompt pidiendo tres secciones: decisiones, tareas, pendientes.",
+        "Agrega la restricción de no inventar acuerdos ni responsables.",
+        "Genera la minuta en ChatGPT o Claude.",
+        "Revisa que refleje lo acordado antes de enviarla."
+      ],
+      "explanation": "Clave: pedir estructura en tres secciones, restringir la invención de acuerdos y revisar que coincida con lo que realmente se decidió.",
+      "xp": 20,
+      "activaPhase": 5
+    },
+    {
+      "id": "m8-r2",
+      "type": "tf",
+      "difficulty": "basico",
+      "title": "¿Quién prioriza?",
+      "objective": "Fijar el límite del criterio humano.",
+      "instructions": "Verdadero o falso: conviene dejar que la IA decida sola qué tareas son urgentes y comprometa las fechas con el equipo.",
+      "correct": false,
+      "explanation": "La IA ordena y sugiere, pero priorizar y comprometer fechas es una decisión humana. Tú validas antes de comunicar.",
+      "xp": 10,
+      "activaPhase": 4
+    },
+    {
+      "id": "m8-r3",
+      "type": "mcq",
+      "difficulty": "basico",
+      "title": "Mejor uso diario",
+      "objective": "Reconocer tareas repetitivas ideales para IA.",
+      "instructions": "¿Cuál es un buen uso de la IA para la productividad diaria?",
+      "options": [
+        "Que apruebe presupuestos por ti",
+        "Ordenar notas de reunión en una minuta que tú revisas",
+        "Que despida personal según su criterio",
+        "Que firme documentos oficiales"
+      ],
+      "correctIndex": 1,
+      "explanation": "Ordenar notas en una minuta es una tarea repetitiva ideal. Decisiones sensibles siguen siendo humanas.",
+      "xp": 10,
+      "activaPhase": 2
+    },
+    {
+      "id": "m8-r4",
+      "type": "prompt-build",
+      "difficulty": "intermedio",
+      "title": "Prompt para seguimiento semanal",
+      "objective": "Construir un prompt reutilizable de seguimiento.",
+      "instructions": "Crea un prompt que conviertas en plantilla para tu seguimiento semanal de pendientes. Sin datos reales de personas.",
+      "weakPrompt": "«Organízame las tareas.»",
+      "thinkFirst": "¿Qué formato te sirve para revisar de un vistazo? ¿Cómo agrupas: por responsable, por urgencia?",
+      "explanation": "Un buen prompt de seguimiento define rol (asistente organizador), contexto (lista de pendientes que pegarás), objetivo (agrupar y marcar urgencias), formato (tabla) y restricciones (no inventar tareas ni responsables).",
+      "xp": 20,
+      "activaPhase": 2
+    }
+  ]
+}

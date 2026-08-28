@@ -1,0 +1,28 @@
+{
+  "cases": [
+    {
+      "id": "cmp-email",
+      "title": "Correo difícil a un cliente molesto",
+      "brief": "Un cliente reclama un retraso en la entrega. Necesitas una respuesta empática, profesional y que no prometa nada que no puedas cumplir. Sin datos personales reales.",
+      "prompt": "Rol: Eres un ejecutivo de atención al cliente con tono empático y profesional.\n\nContexto: Un cliente reclama por un retraso de 3 días en una entrega. Está molesto pero es un cliente valioso de larga data. No podemos ofrecer reembolso, pero sí un descuento del 10% en la próxima compra.\n\nObjetivo: Redacta un correo de respuesta que reconozca la molestia, explique brevemente sin excusas largas, ofrezca el descuento y proponga un siguiente paso concreto.\n\nFormato: Correo de máximo 150 palabras, con asunto sugerido.\n\nRestricciones: No inventes causas del retraso ni políticas nuevas. No prometas fechas exactas que no confirmé. Tono cálido pero directo."
+    },
+    {
+      "id": "cmp-summary",
+      "title": "Resumen de una reunión larga",
+      "brief": "Tienes notas desordenadas de una reunión de una hora. Necesitas un resumen accionable con acuerdos y responsables.",
+      "prompt": "Rol: Eres un asistente de dirección experto en síntesis de reuniones.\n\nContexto: Te pego notas crudas y desordenadas de una reunión de equipo de una hora (yo pegaré el texto a continuación).\n\nObjetivo: Producir un resumen ejecutivo con tres secciones: (1) Decisiones tomadas, (2) Tareas con responsable y fecha si aparece, (3) Temas pendientes sin resolver.\n\nFormato: Viñetas cortas. Si un dato no está en las notas, escribe \"no especificado\" en lugar de inventarlo.\n\nRestricciones: No agregues acuerdos que no estén en el texto. No inventes nombres ni fechas."
+    },
+    {
+      "id": "cmp-explain",
+      "title": "Explicar un concepto a un equipo no técnico",
+      "brief": "Debes explicar qué es una 'API' a un equipo de ventas en lenguaje sencillo, con una analogía.",
+      "prompt": "Rol: Eres un formador que explica tecnología a personas de negocio sin jerga.\n\nContexto: Un equipo de ventas necesita entender qué es una API para hablar con clientes, sin volverse programadores.\n\nObjetivo: Explicar qué es una API, para qué sirve en un negocio, y por qué importa, usando una analogía cotidiana.\n\nFormato: Máximo 200 palabras, una analogía, y una frase de cierre que puedan repetir a un cliente.\n\nRestricciones: Nada de código. Evita términos como 'endpoint' o 'JSON' sin explicarlos."
+    },
+    {
+      "id": "cmp-ideas",
+      "title": "Lluvia de ideas para una campaña",
+      "brief": "Necesitas 8 ideas de campaña para el lanzamiento de un producto local, con criterio de bajo presupuesto.",
+      "prompt": "Rol: Eres un estratega de marketing creativo y realista con presupuestos ajustados.\n\nContexto: Lanzamos un producto nuevo (una app de gestión para pequeños comercios) con presupuesto limitado y un equipo de 3 personas.\n\nObjetivo: Proponer 8 ideas de campaña de bajo costo, cada una con el canal sugerido y el esfuerzo estimado (bajo/medio/alto).\n\nFormato: Tabla con columnas Idea | Canal | Esfuerzo | Por qué funcionaría.\n\nRestricciones: Nada que requiera presupuesto grande de medios pagados. Prioriza ideas ejecutables en 2 semanas."
+    }
+  ]
+}

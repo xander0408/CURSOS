@@ -1,0 +1,23 @@
+{
+  "pin": "1234",
+  "modules": {
+    "m1": {
+      "lessons": {
+        "l1": "Abre preguntando qué tarea repetitiva odian. Aterriza la IA como herramienta, no magia. El punto clave: la persona sigue siendo responsable.",
+        "l5": "Insiste en privacidad: pide ejemplos reales de datos que NO deberían pegar. Refuerza anonimizar."
+      },
+      "challenges": {
+        "m1-r1": "Buscas que entiendan que el modelo solo ve lo que se escribe. Corrige la idea de que 'ya sabe' de su empresa.",
+        "m1-r5": "Refuerza que A.C.T.I.V.A. arranca en Analizar, no en copiar un prompt."
+      }
+    },
+    "m3": {
+      "lessons": {
+        "l1": "Este es el corazón del curso. Haz que construyan el framework en voz alta antes de escribir."
+      },
+      "challenges": {
+        "m3-r3": "El objetivo no es un prompt 'perfecto', sino que expliquen por qué cada pieza mejora el resultado."
+      }
+    }
+  }
+}

@@ -1,0 +1,382 @@
+{
+  "quizzes": [
+    {
+      "id": "q1",
+      "moduleId": "m1",
+      "title": "Fundamentos de IA generativa",
+      "subtitle": "Qué es, límites y verificación",
+      "icon": "🤖",
+      "seconds": 20,
+      "questions": [
+        {
+          "q": "¿Qué hace principalmente una IA generativa como ChatGPT o Claude?",
+          "options": ["Registra hechos oficiales en un sistema contable", "Predice y genera texto probable a partir de patrones", "Se conecta siempre a internet en tiempo real", "Guarda automáticamente los datos de tu empresa"],
+          "correct": 1,
+          "explain": "Genera la continuación más probable de lo que escribiste. No es una fuente oficial ni un sistema de registro."
+        },
+        {
+          "q": "Un sistema que solo marca 'fraude / no fraude' es un ejemplo de…",
+          "options": ["IA generativa", "IA tradicional / predictiva de clasificación", "Un buscador", "Una hoja de cálculo"],
+          "correct": 1,
+          "explain": "Clasificar con una etiqueta es típico de la IA predictiva tradicional, no de la generativa."
+        },
+        {
+          "q": "¿Qué es una 'alucinación' en IA?",
+          "options": ["Un error de conexión", "Contenido que suena plausible pero es falso", "Una función de pago", "Un tipo de virus"],
+          "correct": 1,
+          "explain": "El modelo completa el patrón: puede inventar citas, cifras o leyes que suenan reales."
+        },
+        {
+          "q": "¿Cuál de estos NO deberías pegar en un chat de IA?",
+          "options": ["Un caso descrito de forma anónima", "Una idea general de negocio", "Nóminas y datos personales reales de clientes", "Un texto público de tu web"],
+          "correct": 2,
+          "explain": "Datos confidenciales o personales identificables no se pegan. Anonimiza o inventa un caso equivalente."
+        },
+        {
+          "q": "Antes de enviar un texto de IA a un cliente, lo correcto es…",
+          "options": ["Enviarlo tal cual si suena profesional", "Verificar cifras y hechos con una fuente humana", "Confiar porque la IA no se equivoca", "Pedirle a la IA que lo firme"],
+          "correct": 1,
+          "explain": "El estilo seguro no garantiza datos correctos. La verificación humana es obligatoria."
+        },
+        {
+          "q": "¿La IA gratuita 'conoce' los procedimientos internos de tu área?",
+          "options": ["Sí, siempre los sabe", "No, solo ve lo que escribes en la conversación", "Sí, si tienes internet", "Solo los lunes"],
+          "correct": 1,
+          "explain": "El modelo solo trabaja con el contexto que le das; no accede a tu intranet ni a tu memoria institucional."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "moduleId": "m2",
+      "title": "Cómo hablar con una IA",
+      "subtitle": "Contexto, objetivo, tono y ejemplos",
+      "icon": "💬",
+      "seconds": 20,
+      "questions": [
+        {
+          "q": "«Hazme un correo para el cliente». ¿Cuál es el mayor problema?",
+          "options": ["Es muy largo", "Falta contexto: quién, qué pasó y qué se busca", "Debió usar Claude", "No hay problema"],
+          "correct": 1,
+          "explain": "Sin situación, objetivo ni tono, el resultado es genérico. Contextualizar es lo que más mejora la salida."
+        },
+        {
+          "q": "El primer borrador que devuelve la IA se debe considerar…",
+          "options": ["El resultado final", "Materia prima para iterar y revisar", "Un error", "Algo intocable"],
+          "correct": 1,
+          "explain": "Iterar (pedir ajustes) y verificar son parte del trabajo, no un extra."
+        },
+        {
+          "q": "¿Para qué sirve darle un EJEMPLO a la IA?",
+          "options": ["Para confundirla", "Para mostrarle el estilo o formato que esperas", "Para que copie datos reales", "No sirve de nada"],
+          "correct": 1,
+          "explain": "Un ejemplo del resultado deseado guía el tono y la estructura mejor que muchas palabras."
+        },
+        {
+          "q": "El 'tono' de una respuesta responde a la pregunta…",
+          "options": ["¿Para qué?", "¿Cómo debe sonar?", "¿Cuánto cuesta?", "¿Quién paga?"],
+          "correct": 1,
+          "explain": "El objetivo es el 'para qué'; el tono es el 'cómo debe sonar' (formal, cálido, técnico)."
+        },
+        {
+          "q": "¿Cuál es un error común al interactuar con una IA?",
+          "options": ["Dar contexto claro", "Aceptar el primer texto sin leerlo", "Definir el formato", "Pedir alternativas"],
+          "correct": 1,
+          "explain": "Aceptar el primer borrador sin revisar es el error más frecuente y el más riesgoso."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "moduleId": "m3",
+      "title": "Ingeniería de prompts",
+      "subtitle": "Framework, prompt maestro y biblioteca",
+      "icon": "🛠️",
+      "seconds": 20,
+      "questions": [
+        {
+          "q": "¿Cuáles son las 5 piezas del framework del curso?",
+          "options": ["Rol, Contexto, Objetivo, Formato, Restricciones", "Inicio, Medio, Fin, Título, Firma", "Quién, Qué, Cuándo, Dónde, Por qué", "Datos, Gráficos, Tablas, Texto, Color"],
+          "correct": 0,
+          "explain": "Rol + Contexto + Objetivo + Formato + Restricciones. Si falta una pieza, el resultado se resiente."
+        },
+        {
+          "q": "¿Qué es un 'prompt maestro'?",
+          "options": ["Un prompt secreto de pago", "Una plantilla base reutilizable que adaptas cambiando el contexto", "Un prompt que la IA escribe sola", "Un prompt de una sola palabra"],
+          "correct": 1,
+          "explain": "El prompt maestro es una estructura sólida que reutilizas rellenando solo lo que cambia."
+        },
+        {
+          "q": "«Si no tienes un dato, no lo inventes: pídemelo». Esto es…",
+          "options": ["Un formato", "Una restricción útil que reduce alucinaciones", "Un rol", "Un objetivo"],
+          "correct": 1,
+          "explain": "Es la restricción que más reduce datos falsos en la respuesta."
+        },
+        {
+          "q": "«Toma este correo y hazlo más corto y formal» es un prompt de tipo…",
+          "options": ["Generar desde cero", "Transformar", "Analizar", "Explicar"],
+          "correct": 1,
+          "explain": "Partes de un texto existente y lo reescribes: es transformar."
+        },
+        {
+          "q": "¿Para qué sirve tu biblioteca personal de prompts?",
+          "options": ["Para memorizar trucos", "Para reutilizar estructuras que ya te funcionaron", "Para guardar datos de clientes", "Para reemplazar a ChatGPT"],
+          "correct": 1,
+          "explain": "Guardas la estructura (con huecos para rellenar), no un caso concreto con datos."
+        },
+        {
+          "q": "En un prompt de creatividad, ¿qué conviene pedir?",
+          "options": ["Una sola idea", "Varias alternativas para elegir y combinar", "Que invente cifras", "Que no explique nada"],
+          "correct": 1,
+          "explain": "Pedir varias opciones ('dame 5 enfoques') abre el abanico creativo; luego tú eliges."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "moduleId": "m4",
+      "title": "IA + Word",
+      "subtitle": "Documentos, tono y revisión humana",
+      "icon": "📄",
+      "seconds": 20,
+      "questions": [
+        {
+          "q": "El mejor uso de la IA para un informe en Word es…",
+          "options": ["Producir el documento oficial sin que nadie lo lea", "Generar un primer borrador estructurado que tú revisas", "Inventar las cifras que faltan", "Firmarlo por ti"],
+          "correct": 1,
+          "explain": "La IA ayuda con el borrador y la estructura; la revisión, los datos y la firma son tuyos."
+        },
+        {
+          "q": "Para adaptar un texto a dirección, ¿qué pides?",
+          "options": ["Que lo haga más largo siempre", "Un cambio de tono (ej. más ejecutivo) y longitud", "Que agregue emojis", "Que lo deje igual"],
+          "correct": 1,
+          "explain": "El mismo contenido sirve para muchos tonos: formal, ejecutivo, comercial, técnico."
+        },
+        {
+          "q": "¿Qué tres cosas revisas antes de que un documento salga con tu nombre?",
+          "options": ["Color, fuente y márgenes", "Datos correctos, tono adecuado y confidencialidad", "Largo, idioma y firma", "Nada, la IA lo revisa"],
+          "correct": 1,
+          "explain": "Precisión de datos, tono apropiado y que no haya información confidencial indebida."
+        },
+        {
+          "q": "Para 'darle contexto', ¿conviene pegar el contrato real del cliente?",
+          "options": ["Sí, mejora el resultado", "No, describe el caso de forma anónima", "Solo si es corto", "Solo los viernes"],
+          "correct": 1,
+          "explain": "Nunca es necesario pegar datos confidenciales reales. Anonimiza o inventa equivalentes."
+        },
+        {
+          "q": "Si la IA agrega una cifra a tu informe, tú debes…",
+          "options": ["Usarla porque suena bien", "Verificarla o reemplazarla con tu dato real", "Borrar todo el informe", "Preguntarle si está segura"],
+          "correct": 1,
+          "explain": "Toda cifra debe rastrearse a una fuente tuya, no a la IA."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "moduleId": "m5",
+      "title": "IA + Excel",
+      "subtitle": "Fórmulas y validación",
+      "icon": "📊",
+      "seconds": 20,
+      "questions": [
+        {
+          "q": "Si la IA da una fórmula que devuelve un número, ese número…",
+          "options": ["Ya está garantizado como correcto", "Debe validarse con un caso que ya conoces", "Nunca sirve", "Es siempre un promedio"],
+          "correct": 1,
+          "explain": "La fórmula puede estar mal armada o basarse en columnas mal descritas. Siempre se valida."
+        },
+        {
+          "q": "«Dame una fórmula para sumar las ventas del mes». ¿Qué falta?",
+          "options": ["Nada", "Describir columnas, dónde están los datos y cómo se identifica el mes", "Hacerla más larga", "Cambiar de IA"],
+          "correct": 1,
+          "explain": "Sin saber qué columna tiene el monto y cuál la fecha, la IA adivina."
+        },
+        {
+          "q": "Para calcular un promedio 'por vendedor' necesitas…",
+          "options": ["=PROMEDIO de toda la columna", "Agrupar por vendedor (ej. PROMEDIO.SI o tabla dinámica)", "Sumar todo", "No se puede en Excel"],
+          "correct": 1,
+          "explain": "Un promedio general no separa por vendedor; requiere agrupamiento."
+        },
+        {
+          "q": "¿Cuál es la mejor forma de validar una fórmula nueva?",
+          "options": ["Confiar y aplicarla a todo", "Probarla en una fila cuyo resultado ya conoces", "Preguntar a un compañero al azar", "No validar nunca"],
+          "correct": 1,
+          "explain": "Si coincide con un caso conocido, avanzas; si no, corriges antes de confiar en toda la hoja."
+        },
+        {
+          "q": "La IA, al ayudarte con Excel, ¿ve tu hoja real?",
+          "options": ["Sí, siempre", "No, trabaja con lo que le describes", "Solo si es .xlsx", "Solo con internet"],
+          "correct": 1,
+          "explain": "Si describes mal las columnas, la fórmula estará mal. El contexto de los datos es clave."
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "moduleId": "m6",
+      "title": "IA + PowerPoint",
+      "subtitle": "Estructura, relato y guion",
+      "icon": "📽️",
+      "seconds": 20,
+      "questions": [
+        {
+          "q": "¿Cuál es el mejor primer pedido para una presentación?",
+          "options": ["«Hazla bonita con muchos colores»", "«Propón estructura y relato según tema, audiencia y tiempo»", "«Inventa datos de mercado»", "«Escribe todo lo que leeré»"],
+          "correct": 1,
+          "explain": "La estructura y el relato van primero; el diseño y los datos reales los pones tú."
+        },
+        {
+          "q": "El 'guion del expositor' es…",
+          "options": ["El texto de las diapositivas", "Lo que dirás en cada slide, aparte de la pantalla", "Un tipo de gráfico", "El título de la presentación"],
+          "correct": 1,
+          "explain": "Pedir el guion aparte evita leer la pantalla y suena más natural."
+        },
+        {
+          "q": "Un buen arco narrativo para una presentación es…",
+          "options": ["Lista plana de datos", "Problema → tensión → solución → resultado", "Solo conclusiones", "Solo imágenes"],
+          "correct": 1,
+          "explain": "Ese arco mantiene la atención mejor que una lista sin hilo."
+        },
+        {
+          "q": "Si la IA agrega estadísticas de mercado a tus diapositivas…",
+          "options": ["Úsalas, suenan creíbles", "Verifícalas o reemplázalas con tus datos", "Bórralas siempre", "Ponlas en rojo"],
+          "correct": 1,
+          "explain": "Las cifras inventadas suenan igual de creíbles que las reales."
+        },
+        {
+          "q": "¿Qué dato clave conviene darle a la IA para el esquema?",
+          "options": ["Tu color favorito", "Tema, audiencia y tiempo disponible", "El clima", "La marca de tu laptop"],
+          "correct": 1,
+          "explain": "Con tema, público y duración, la IA ajusta la cantidad y el enfoque de las diapositivas."
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "moduleId": "m7",
+      "title": "Análisis e investigación",
+      "subtitle": "Resumir, comparar y verificar",
+      "icon": "🔎",
+      "seconds": 20,
+      "questions": [
+        {
+          "q": "Para que un resumen no invente lo que no está, pides…",
+          "options": ["«Rellena con datos típicos»", "«Si un dato no está, escribe: no especificado»", "«Hazlo más largo»", "«Agrega estadísticas»"],
+          "correct": 1,
+          "explain": "Marcar lo ausente en vez de rellenarlo mantiene el resumen fiel al texto."
+        },
+        {
+          "q": "Una cifra exacta con fuente citada que la IA no puede garantizar es…",
+          "options": ["Siempre verdadera", "Una candidata típica a alucinación que hay que verificar", "Un error de formato", "Irrelevante"],
+          "correct": 1,
+          "explain": "Cifras, fuentes y leyes numeradas deben verificarse contra documentos reales."
+        },
+        {
+          "q": "Al comparar opciones, ¿qué le das a la IA?",
+          "options": ["Nada, que decida", "Tus criterios y que señale qué información falta", "Solo el precio", "Datos personales"],
+          "correct": 1,
+          "explain": "Si no das criterios, la IA elige los suyos. Ella ilumina; tú decides."
+        },
+        {
+          "q": "Con búsqueda web disponible, ¿qué debes distinguir?",
+          "options": ["Nada, todo es igual", "Información encontrada vs. conclusiones generadas por la IA", "El color de los enlaces", "El idioma del navegador"],
+          "correct": 1,
+          "explain": "Separar el hecho encontrado de la interpretación de la IA es clave para investigar bien."
+        },
+        {
+          "q": "¿Cuándo un dato necesita una fuente que no sea la IA?",
+          "options": ["Nunca", "Cuando vas a apoyar una decisión en él", "Solo si es largo", "Solo en Excel"],
+          "correct": 1,
+          "explain": "Regla simple: si sostiene una decisión, necesita fuente humana o documento oficial."
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "moduleId": "m8",
+      "title": "Productividad diaria",
+      "subtitle": "Correos, minutas y decisiones",
+      "icon": "⚡",
+      "seconds": 20,
+      "questions": [
+        {
+          "q": "¿Quién prioriza qué tareas son urgentes y compromete fechas?",
+          "options": ["La IA sola", "Tú: es criterio humano", "El calendario", "Nadie"],
+          "correct": 1,
+          "explain": "La IA ordena y sugiere, pero priorizar y comprometer fechas es decisión humana."
+        },
+        {
+          "q": "Un buen uso diario de la IA es…",
+          "options": ["Aprobar presupuestos por ti", "Ordenar notas de reunión en una minuta que revisas", "Despedir personal", "Firmar contratos"],
+          "correct": 1,
+          "explain": "Ordenar notas en una minuta es una tarea repetitiva ideal; las decisiones siguen siendo humanas."
+        },
+        {
+          "q": "Para una minuta desde notas caóticas, pides tres secciones:",
+          "options": ["Intro, nudo, desenlace", "Decisiones, tareas y pendientes", "Fecha, hora y lugar", "Título, cuerpo y firma"],
+          "correct": 1,
+          "explain": "Decisiones tomadas, tareas con responsable y temas pendientes, sin inventar acuerdos."
+        },
+        {
+          "q": "En un prompt de seguimiento semanal, ¿qué restricción ayuda?",
+          "options": ["«Inventa tareas nuevas»", "«No inventes tareas ni responsables»", "«Hazlo en inglés»", "«Ponlo en mayúsculas»"],
+          "correct": 1,
+          "explain": "Restringir la invención mantiene el seguimiento fiel a lo acordado."
+        },
+        {
+          "q": "Para preparar un correo profesional difícil, lo clave es…",
+          "options": ["Pegar todo el hilo con datos reales", "Describir el caso sin datos sensibles y pedir un borrador que editas", "Enviar el primer borrador", "Pedir el teléfono del cliente"],
+          "correct": 1,
+          "explain": "Contexto sí, datos personales no; y la edición y el envío son tu responsabilidad."
+        }
+      ]
+    },
+    {
+      "id": "qf",
+      "moduleId": "",
+      "title": "Reto final: AI Business Master",
+      "subtitle": "Mezcla de todo el laboratorio",
+      "icon": "🏆",
+      "seconds": 25,
+      "questions": [
+        {
+          "q": "La regla de oro del laboratorio con IA es…",
+          "options": ["Confiar en el primer resultado", "Verificación y responsable humano antes de usar", "Nunca dar contexto", "Pegar datos confidenciales"],
+          "correct": 1,
+          "explain": "Persona responsable + verificación: eso separa el uso profesional del amateur."
+        },
+        {
+          "q": "¿Qué NO hace la versión gratuita por sí sola?",
+          "options": ["Generar borradores", "Conocer los datos internos de tu empresa", "Reescribir tono", "Resumir texto que le das"],
+          "correct": 1,
+          "explain": "Solo trabaja con el contexto que le das en la conversación."
+        },
+        {
+          "q": "El orden de la metodología A.C.T.I.V.A. es…",
+          "options": ["Aplicar, Verificar, Transformar, Iterar, Contextualizar, Analizar", "Analizar, Contextualizar, Transformar, Iterar, Verificar, Aplicar", "Contextualizar, Analizar, Aplicar, Verificar, Transformar, Iterar", "Transformar, Aplicar, Analizar, Contextualizar, Iterar, Verificar"],
+          "correct": 1,
+          "explain": "A → C → T → I → V → A. No empieza por copiar un prompt, empieza por analizar."
+        },
+        {
+          "q": "Comparar ChatGPT vs Claude en el lab sirve para…",
+          "options": ["Declarar un ganador universal", "Elegir por utilidad en cada caso concreto", "Descartar uno para siempre", "Copiar datos entre ambos"],
+          "correct": 1,
+          "explain": "No hay ganador global; decides por utilidad según el caso."
+        },
+        {
+          "q": "En el proyecto final, el ahorro estimado y los riesgos los define…",
+          "options": ["La IA", "Tú, con tu criterio de negocio", "El instructor", "El navegador"],
+          "correct": 1,
+          "explain": "La IA no mide el valor de tu tiempo ni conoce los riesgos de tu empresa."
+        },
+        {
+          "q": "¿Qué es lo más responsable al usar un borrador hecho con IA?",
+          "options": ["Ocultar que se usó IA siempre", "Revisar sesgos, verificar datos y mantener un responsable humano", "Publicarlo sin leer", "Pedirle que decida por ti"],
+          "correct": 1,
+          "explain": "Uso responsable: revisar sesgos, verificar y que una persona sea la responsable final."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# Archivos temporales de verificación
+*.log
+.check.txt
+.chk.txt
+.h.txt
+.verify-server.js
+portstate.log
+
+# Dependencias (no se usan, pero por si acaso)
+node_modules/
+
+# Sistema
+.DS_Store
+Thumbs.db

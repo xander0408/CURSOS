@@ -1,0 +1,127 @@
+{
+  "id": "m4",
+  "number": 4,
+  "title": "IA + Microsoft Word",
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "Borradores de correos e informes",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Word es donde nacen correos, informes y memos. La IA acelera el <strong>primer borrador</strong>: tú aportas la estructura y el contexto, ella arma el texto, tú lo revisas y firmas.</p>" },
+        { "type": "list", "items": ["Pide un borrador, no un texto final.", "Da el propósito del documento y el público.", "Después pega y da formato en Word tú mismo."] }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "Ajustar tono y longitud",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>El mismo contenido sirve para muchos tonos. Pide reescrituras: «más formal», «más cálido», «la mitad de largo», «en tono de disculpa profesional».</p>" },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Un informe para dirección necesita el mismo tono que un aviso interno? Ajusta antes de enviar." }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "Revisión humana: precisión y confidencialidad",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>Antes de que un documento salga con tu nombre, revisa <strong>tres cosas</strong>: que los datos sean correctos, que el tono sea adecuado y que no haya información confidencial que no debería estar.</p>" },
+        { "type": "callout", "kind": "privacy", "title": "Privacidad", "text": "No pegues contratos, nóminas ni datos de clientes reales para «darle contexto». Describe el caso de forma anónima." },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Toda cifra, fecha o compromiso del documento debe poder rastrearse a una fuente tuya, no a la IA." }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Tipos de documento: cartas, memos, políticas, minutas",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Cada documento tiene su estructura. Decirle a la IA <strong>qué tipo</strong> es le da el molde correcto:</p>" },
+        { "type": "list", "items": ["Carta o memorando: destinatario, motivo, cierre.", "Política o procedimiento: propósito, alcance, pasos, responsables.", "Minuta o acta: asistentes, acuerdos, tareas, próximos pasos.", "Resumen ejecutivo: contexto breve, hallazgos, recomendación."] },
+        { "type": "callout", "kind": "limit", "title": "Límite", "text": "En políticas y procedimientos, la IA propone un borrador; la versión oficial la valida quien tiene la autoridad." }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Corrección ortográfica, gramatical y de estilo",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>La IA es rápida corrigiendo ortografía, gramática y claridad. Pega tu texto y pide «corrige y explica los cambios» para aprender, no solo para reemplazar.</p>" },
+        { "type": "list", "items": ["«Corrige ortografía y gramática sin cambiar el sentido.»", "«Sugiere una versión más clara y dime qué cambiaste.»", "Revisa tú los cambios: a veces altera un matiz que sí importaba."] }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "Trabajar con documentos cargados",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>Cuando la interfaz lo permite, puedes <strong>cargar un documento</strong> y pedir que lo resuma, extraiga datos o lo reestructure en un formato nuevo. Sigue aplicando la regla de privacidad.</p>" },
+        { "type": "list", "items": ["«Extrae los puntos clave de este documento en viñetas.»", "«Convierte este informe en un resumen ejecutivo de media página.»", "No cargues documentos con datos confidenciales de terceros."] },
+        { "type": "callout", "kind": "privacy", "title": "Privacidad", "text": "Cargar un archivo no lo hace seguro: si contiene datos sensibles, no lo subas a una herramienta gratuita." }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "m4-r1",
+      "type": "mcq",
+      "difficulty": "basico",
+      "title": "¿Qué hace bien la IA en Word?",
+      "objective": "Ubicar el rol correcto de la IA en documentos.",
+      "instructions": "¿Cuál es el uso más apropiado de la IA para un informe en Word?",
+      "options": [
+        "Producir el documento final oficial sin que nadie lo lea",
+        "Generar un primer borrador estructurado que tú revisas y completas",
+        "Inventar las cifras que no tienes",
+        "Firmar el documento por ti"
+      ],
+      "correctIndex": 1,
+      "explanation": "La IA ayuda con el borrador y la estructura. La revisión, los datos y la firma son tuyos.",
+      "xp": 10,
+      "activaPhase": 2
+    },
+    {
+      "id": "m4-r2",
+      "type": "evaluate-ai",
+      "difficulty": "intermedio",
+      "title": "Evalúa un correo generado",
+      "objective": "Juzgar una salida con criterio antes de enviarla.",
+      "instructions": "Lee el correo que generó la IA para responder a un proveedor. Puntúalo en cada eje y anota qué verificarías antes de enviarlo.",
+      "aiOutput": "Asunto: Confirmación de pedido\n\nEstimado proveedor:\n\nLe confirmamos que su pago de $4,850 fue procesado el 12 de marzo y que aplicamos el descuento del 15% acordado en nuestro contrato de 2019. Como siempre, garantizamos la entrega en 24 horas hábiles en todo el país.\n\nQuedamos atentos.\nSaludos cordiales.",
+      "thinkFirst": "¿De dónde salió el monto, el porcentaje y la garantía de 24 horas?",
+      "explanation": "El correo suena profesional pero afirma cifras, un contrato específico y una garantía de entrega que la IA no puede conocer. Antes de enviar habría que verificar el monto, el descuento, la existencia de ese contrato y si la garantía de 24 horas es real. Estilo seguro no es lo mismo que dato verificado.",
+      "xp": 20,
+      "activaPhase": 4
+    },
+    {
+      "id": "m4-r3",
+      "type": "case",
+      "difficulty": "intermedio",
+      "title": "Caso: informe breve para dirección",
+      "objective": "Producir y revisar un borrador de informe.",
+      "instructions": "Necesitas un informe de una página sobre el avance de un proyecto interno para dirección. Construye el prompt, obtén el borrador y anota tu revisión humana.",
+      "scenario": "Eres responsable de un proyecto de mejora de atención al cliente. Debes resumir el avance del trimestre para dirección: qué se logró, qué falta y un riesgo. No tienes cifras oficiales todavía, así que dejarás huecos marcados.",
+      "flow": [
+        "Construye el prompt con las cinco piezas e incluye la restricción de marcar los datos que faltan.",
+        "Genera el borrador en ChatGPT o Claude.",
+        "Pega o resume el resultado.",
+        "Anota qué revisaste: tono, huecos de datos y confidencialidad."
+      ],
+      "explanation": "Clave: pedir que marque los datos que no tiene en vez de inventarlos, y revisar tono y confidencialidad antes de enviar a dirección.",
+      "xp": 20,
+      "activaPhase": 5
+    },
+    {
+      "id": "m4-r4",
+      "type": "tf",
+      "difficulty": "basico",
+      "title": "Confidencialidad en Word",
+      "objective": "Reforzar el hábito de anonimizar.",
+      "instructions": "Verdadero o falso: para que el informe salga mejor, conviene pegar el contrato real del cliente con nombres y montos.",
+      "correct": false,
+      "explanation": "Nunca es necesario pegar datos confidenciales reales. Describe el caso de forma anónima o inventa cifras equivalentes.",
+      "xp": 10,
+      "activaPhase": 4
+    }
+  ]
+}

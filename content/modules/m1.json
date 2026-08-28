@@ -1,0 +1,139 @@
+{
+  "id": "m1",
+  "number": 1,
+  "title": "Fundamentos de IA generativa",
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "¿Qué es inteligencia artificial (en el trabajo)?",
+      "activaPhase": 0,
+      "blocks": [
+        { "type": "text", "html": "<p>En este curso, <strong>IA</strong> no es ciencia ficción. Es un conjunto de sistemas que predicen texto, clasifican datos o generan borradores a partir de patrones. Tú sigues siendo quien decide, verifica y firma.</p>" },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Qué tarea repetitiva de tu semana te gustaría acelerar — y cuál jamás dejarías en manos de un texto automático?" },
+        { "type": "list", "items": ["La IA no «entiende» tu empresa como un colega.", "Genera la continuación más probable de lo que escribiste.", "Un buen resultado depende de tu contexto, no de un truco secreto."] }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "IA tradicional vs IA generativa",
+      "activaPhase": 0,
+      "blocks": [
+        { "type": "text", "html": "<p><strong>IA tradicional</strong> (en negocio): reglas, puntuaciones, detección de fraude, pronósticos numéricos. Suele dar una etiqueta o un número.</p><p><strong>IA generativa</strong>: produce texto, tablas, ideas, código o imágenes nuevas. ChatGPT y Claude son de este tipo.</p>" },
+        { "type": "callout", "kind": "limit", "title": "Límite", "text": "Generativa no sustituye un sistema contable ni un ERP. Genera borradores; no registra hechos oficiales." }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "Cómo funcionan ChatGPT y Claude (idea simple)",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Ambos son <strong>modelos de lenguaje</strong>: leen tu mensaje y predicen palabras siguientes. No consultan tu carpeta de red ni «recuerdan» tu empresa a menos que tú se lo cuentes en la conversación (o en un plan de pago con funciones extra, que no usamos aquí).</p>" },
+        { "type": "list", "items": ["No tienen acceso mágico a internet en todos los modos gratuitos.", "No saben si hoy es feriado en tu país a menos que el modo lo permita o tú lo digas.", "Si el contexto es pobre, el texto se oye seguro… y puede estar mal."] }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Diferencias prácticas ChatGPT vs Claude (versión gratuita)",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>En clase usarás las <strong>versiones gratuitas</strong>. Cambian con el tiempo. Lo que no cambia: debes probar el mismo prompt en ambos cuando el entregable importe.</p>" },
+        { "type": "list", "items": ["Uno puede ser más conciso; otro más discursivo — depende del caso.", "Límites de uso diario, longitud y carga de archivos varían.", "Ninguno es «el ganador». El comparador del lab te enseña a elegir por utilidad, no por marca."] }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Qué puede hacer — y qué no",
+      "activaPhase": 0,
+      "blocks": [
+        { "type": "text", "html": "<p><strong>Suele ayudar:</strong> borradores, estructuras, reformular tono, ideas, resumir texto que tú proporcionas, explicar un concepto, proponer checklist.</p><p><strong>No debe usarse como fuente única:</strong> cifras legales, precios, diagnósticos, decisiones de despido, datos personales de terceros, secretos de la empresa.</p>" },
+        { "type": "callout", "kind": "privacy", "title": "Privacidad", "text": "No pegues nóminas, contratos confidenciales, contraseñas ni datos de clientes identificables. Anonimiza o inventa un caso equivalente." }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "Alucinaciones y verificación humana",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>Una <strong>alucinación</strong> es contenido plausible pero falso: leyes inventadas, citas, fechas, nombres. El modelo no «miente» con intención; completa el patrón.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Antes de enviar un texto al jefe o a un cliente: ¿puedes señalar la fuente de cada cifra y de cada obligación legal?" },
+        { "type": "text", "html": "<p>Uso responsable: declara cuando un borrador nació con IA, revisa sesgos (género, clientes, regiones) y mantén a una persona como responsable final.</p>" }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "m1-r1",
+      "type": "tf",
+      "difficulty": "basico",
+      "title": "¿La IA «entiende» tu empresa?",
+      "objective": "Distinguir metáfora de realidad.",
+      "instructions": "Verdadero o falso: ChatGPT ya conoce los procedimientos internos de tu área aunque no se los hayas pegado.",
+      "thinkFirst": "¿De dónde saldría esa información si no está en el mensaje?",
+      "correct": false,
+      "explanation": "En la versión gratuita, el modelo solo ve lo que escribes (y lo que la interfaz permita adjuntar). Los procedimientos viven en tu cabeza, en Word o en la intranet: hay que contextualizarlos — sin datos sensibles.",
+      "xp": 10,
+      "activaPhase": 1
+    },
+    {
+      "id": "m1-r2",
+      "type": "mcq",
+      "difficulty": "basico",
+      "title": "IA tradicional vs generativa",
+      "objective": "Elegir el tipo de sistema según el resultado.",
+      "instructions": "Un sistema que solo marca «fraude / no fraude» en una transacción es principalmente…",
+      "options": [
+        "IA generativa, porque «piensa» como un analista",
+        "IA tradicional / predictiva de clasificación",
+        "Un buscador web",
+        "Un humano disfrazado"
+      ],
+      "correctIndex": 1,
+      "explanation": "Clasificar con una etiqueta es típico de modelos predictivos tradicionales. Generativa produciría un texto o un informe nuevo.",
+      "xp": 10,
+      "activaPhase": 0
+    },
+    {
+      "id": "m1-r3",
+      "type": "mcq",
+      "difficulty": "intermedio",
+      "title": "Escenario: correo a un cliente",
+      "objective": "Identificar un uso responsable.",
+      "instructions": "Debes responder a un cliente molesto. ¿Cuál es el uso más responsable de ChatGPT o Claude?",
+      "options": [
+        "Pegar el hilo completo con nombres, cuentas y montos, y enviar el primer borrador sin leerlo",
+        "Describir el conflicto sin datos identificables, pedir un borrador empático, y editarlo tú",
+        "Pedir que «invente una política de reembolso» y publicarla como oficial",
+        "Preguntar el número de teléfono personal del cliente"
+      ],
+      "correctIndex": 1,
+      "explanation": "Contexto sí; datos personales y políticas inventadas no. El envío es responsabilidad tuya (Aplicar + Verificar).",
+      "xp": 15,
+      "activaPhase": 5
+    },
+    {
+      "id": "m1-r4",
+      "type": "tf",
+      "difficulty": "basico",
+      "title": "Alucinaciones",
+      "objective": "Reconocer el riesgo de información falsa.",
+      "instructions": "Verdadero o falso: si el texto se lee profesional, las citas legales y las cifras suelen ser correctas.",
+      "correct": false,
+      "explanation": "El estilo seguro es parte del patrón. Las citas y cifras se verifican con fuentes humanas o documentos oficiales.",
+      "xp": 10,
+      "activaPhase": 4
+    },
+    {
+      "id": "m1-r5",
+      "type": "order",
+      "difficulty": "intermedio",
+      "title": "Mini reto: orden A.C.T.I.V.A.",
+      "objective": "Interiorizar la secuencia del laboratorio.",
+      "instructions": "Ordena los pasos de la metodología A.C.T.I.V.A. como los usaremos en el curso.",
+      "items": ["Transformar (convertir el problema en una solicitud clara)", "Verificar (comprobar hechos y riesgos)", "Analizar (entender el problema de negocio)", "Aplicar (usar el resultado con responsable humano)", "Contextualizar (dar datos suficientes y permitidos)", "Iterar (pedir ajustes, no aceptar el primer borrador)"],
+      "correctOrder": [2, 4, 0, 5, 1, 3],
+      "explanation": "A Analizar → C Contextualizar → T Transformar → I Iterar → V Verificar → A Aplicar. El curso no empieza por «copiar un prompt».",
+      "xp": 20,
+      "activaPhase": 0
+    }
+  ]
+}

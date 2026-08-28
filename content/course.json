@@ -1,0 +1,19 @@
+{
+  "title": "AI Business Lab",
+  "subtitle": "Inteligencia Artificial Aplicada al Negocio",
+  "hours": 16,
+  "sessions": 4,
+  "framework": ["Rol", "Contexto", "Objetivo", "Formato", "Restricciones"],
+  "activa": ["Analizar", "Contextualizar", "Transformar", "Iterar", "Verificar", "Aplicar"],
+  "modules": [
+    { "id": "m1", "number": 1, "title": "Fundamentos de IA generativa", "subtitle": "Qué es, qué no es, y cuándo no debes confiar", "saturday": 1 },
+    { "id": "m2", "number": 2, "title": "Cómo hablar con una IA", "subtitle": "Contexto, objetivo, tono y conversación iterativa", "saturday": 1 },
+    { "id": "m3", "number": 3, "title": "Ingeniería de prompts", "subtitle": "Framework, tipos y biblioteca reutilizable", "saturday": 2 },
+    { "id": "m4", "number": 4, "title": "IA + Microsoft Word", "subtitle": "Correos, informes y documentos con revisión humana", "saturday": 2 },
+    { "id": "m5", "number": 5, "title": "IA + Microsoft Excel", "subtitle": "Fórmulas y análisis — siempre validar los números", "saturday": 3 },
+    { "id": "m6", "number": 6, "title": "IA + Microsoft PowerPoint", "subtitle": "Estructura, storytelling y guion del expositor", "saturday": 3 },
+    { "id": "m7", "number": 7, "title": "Análisis e investigación", "subtitle": "Resumir, comparar, detectar riesgos y verificar", "saturday": 3 },
+    { "id": "m8", "number": 8, "title": "Productividad diaria", "subtitle": "Agenda, minutas, seguimiento y decisiones", "saturday": 4 },
+    { "id": "m9", "number": 9, "title": "Proyecto final", "subtitle": "Un problema real de tu trabajo, de punta a punta", "saturday": 4 }
+  ]
+}

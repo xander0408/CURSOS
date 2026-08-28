@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Business Lab</title>
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+  <div class="instructor-bar" id="instructor-bar">
+    Modo instructor activo — las notas de facilitación son visibles en esta máquina.
+    <button class="btn btn-ghost" type="button" id="btn-lock-instructor">Bloquear</button>
+  </div>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div>
+          <h1>AI Business Lab</h1>
+          <p>IA aplicada al negocio</p>
+        </div>
+      </div>
+      <a class="nav-link" href="#/" data-route="/">Dashboard</a>
+      <a class="nav-link" href="#/modulos" data-route="/modulos">Módulos</a>
+      <a class="nav-link" href="#/retos" data-route="/retos">Retos</a>
+      <a class="nav-link" href="#/quiz" data-route="/quiz">Quiz</a>
+      <a class="nav-link" href="#/prompt-lab" data-route="/prompt-lab">Prompt Lab</a>
+      <a class="nav-link" href="#/comparador" data-route="/comparador">Comparador</a>
+      <a class="nav-link" href="#/biblioteca" data-route="/biblioteca">Biblioteca</a>
+      <a class="nav-link" href="#/proyecto" data-route="/proyecto">Proyecto final</a>
+      <a class="nav-link" href="#/progreso" data-route="/progreso">Progreso</a>
+      <div class="sidebar-foot">
+        Laboratorio educativo. Usa ChatGPT o Claude en otra pestaña.
+        <div class="btn-row">
+          <button class="btn btn-ghost" type="button" id="btn-instructor" style="font-size:12px;padding:6px 8px;">Instructor</button>
+        </div>
+      </div>
+    </aside>
+    <header class="header">
+      <button class="menu-btn" type="button" id="menu-btn" aria-label="Abrir menú">☰</button>
+      <div class="header-title" id="header-title">Dashboard</div>
+      <div class="header-spacer"></div>
+      <div class="muted" id="header-user"></div>
+      <div style="width:140px">
+        <div class="progress" title="Progreso general"><span id="header-progress"></span></div>
+      </div>
+    </header>
+    <main class="main" id="app-root"></main>
+  </div>
+  <div class="overlay" id="overlay"></div>
+  <div class="toast" id="toast"></div>
+  <div class="modal-back" id="modal-back">
+    <div class="modal" id="modal"></div>
+  </div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

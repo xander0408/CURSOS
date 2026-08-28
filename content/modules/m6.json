@@ -1,0 +1,130 @@
+{
+  "id": "m6",
+  "number": 6,
+  "title": "IA + Microsoft PowerPoint",
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "De información desordenada a estructura",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Una buena presentación empieza por la <strong>estructura</strong>, no por el diseño. La IA es excelente para pasar de un montón de ideas sueltas a un esquema de diapositivas con un hilo lógico.</p>" },
+        { "type": "list", "items": ["Aporta el tema, la audiencia y el tiempo disponible.", "Pide un esquema: título + 2-3 puntos por diapositiva.", "Después armas el diseño en PowerPoint tú."] }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "Storytelling: el hilo que conecta",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>Las diapositivas que se recuerdan cuentan una <strong>historia</strong>: problema, tensión, solución, resultado. Pide a la IA que ordene tus puntos según un relato, no como una lista plana.</p>" },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Cuál es la única idea que quieres que tu audiencia recuerde al salir de la sala? Esa debe guiar toda la estructura." }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "El guion del expositor",
+      "activaPhase": 5,
+      "blocks": [
+        { "type": "text", "html": "<p>Las diapositivas no son el discurso. Pide un <strong>guion del expositor</strong> aparte: qué dirás en cada slide. Así evitas leer la pantalla y suenas natural.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Revisa que ninguna cifra o afirmación de las diapositivas sea inventada. Marca dónde debes insertar tus datos reales." }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Agenda, objetivos y conclusiones",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Una presentación clara abre con <strong>agenda y objetivos</strong> y cierra con <strong>conclusiones</strong> accionables. Pide a la IA que enmarque tu contenido con esos tres elementos.</p>" },
+        { "type": "list", "items": ["Diapositiva de agenda: qué se cubrirá.", "Objetivo: qué debe entender o decidir la audiencia.", "Conclusiones: 2-3 mensajes y el siguiente paso."] }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "Ejecutiva, comercial o técnica",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>El mismo tema cambia según el público. Dile a la IA el <strong>tipo</strong> de presentación para ajustar profundidad y lenguaje.</p>" },
+        { "type": "list", "items": ["Ejecutiva: menos detalle, foco en decisión e impacto.", "Comercial: beneficios, diferenciadores, llamado a la acción.", "Técnica: cómo funciona, requisitos, datos que respaldan."] },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Tu audiencia quiere decidir, comprar o entender a fondo? Eso define el tipo." }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "Ideas para imágenes, diagramas y recursos",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>La IA no diseña tus slides, pero sí sugiere <strong>qué recurso visual</strong> usar en cada punto: un diagrama de flujo, una comparación lado a lado, un icono, una foto conceptual.</p>" },
+        { "type": "list", "items": ["«Sugiere un recurso visual para cada diapositiva.»", "«¿Qué tipo de gráfico comunica mejor esta idea?»", "El diseño final lo armas tú en PowerPoint."] }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "m6-r1",
+      "type": "mcq",
+      "difficulty": "basico",
+      "title": "¿Por dónde empezar?",
+      "objective": "Priorizar estructura sobre diseño.",
+      "instructions": "Vas a preparar una presentación con IA. ¿Cuál es el mejor primer pedido?",
+      "options": [
+        "«Hazme diapositivas bonitas con muchos colores»",
+        "«Propón la estructura y el hilo narrativo según mi tema, audiencia y tiempo»",
+        "«Inventa datos de mercado para rellenar»",
+        "«Escribe todo el texto que leeré palabra por palabra»"
+      ],
+      "correctIndex": 1,
+      "explanation": "La estructura y el relato van primero. El diseño y los datos reales los pones tú después.",
+      "xp": 10,
+      "activaPhase": 2
+    },
+    {
+      "id": "m6-r2",
+      "type": "case",
+      "difficulty": "intermedio",
+      "title": "Caso: presentación de 5 minutos",
+      "objective": "Producir un esquema con relato y guion.",
+      "instructions": "Debes presentar una propuesta de mejora en 5 minutos a tu equipo. Construye el prompt, obtén la estructura y anota tu revisión.",
+      "scenario": "Quieres proponer que el equipo adopte una plantilla común para informes. Tienes 5 minutos y una audiencia de compañeros que ya están saturados de reuniones.",
+      "flow": [
+        "Construye el prompt indicando tema, audiencia y tiempo.",
+        "Pide estructura de diapositivas + guion del expositor.",
+        "Genera el resultado en ChatGPT o Claude.",
+        "Anota qué ajustaste: relato, dónde van tus datos reales, duración."
+      ],
+      "explanation": "Clave: dar tiempo y audiencia, pedir el guion aparte y marcar dónde insertar datos reales en vez de aceptar cifras inventadas.",
+      "xp": 20,
+      "activaPhase": 5
+    },
+    {
+      "id": "m6-r3",
+      "type": "tf",
+      "difficulty": "basico",
+      "title": "Diapositivas y datos",
+      "objective": "Recordar la verificación de cifras.",
+      "instructions": "Verdadero o falso: si la IA agrega estadísticas de mercado a tus diapositivas, puedes usarlas sin verificar porque suenan creíbles.",
+      "correct": false,
+      "explanation": "Las cifras inventadas suenan igual de creíbles que las reales. Verifica o reemplaza con tus datos antes de presentar.",
+      "xp": 10,
+      "activaPhase": 4
+    },
+    {
+      "id": "m6-r4",
+      "type": "order",
+      "difficulty": "basico",
+      "title": "Orden de una presentación con relato",
+      "objective": "Ordenar un arco narrativo básico.",
+      "instructions": "Ordena las partes de un relato que hace memorable una presentación.",
+      "items": [
+        "Resultado o llamado a la acción",
+        "El problema o la situación actual",
+        "La tensión: por qué importa resolverlo",
+        "La solución propuesta"
+      ],
+      "correctOrder": [1, 2, 3, 0],
+      "explanation": "Problema → tensión → solución → resultado. Ese arco mantiene la atención mejor que una lista plana.",
+      "xp": 15,
+      "activaPhase": 3
+    }
+  ]
+}

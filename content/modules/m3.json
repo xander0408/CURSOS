@@ -1,0 +1,149 @@
+{
+  "id": "m3",
+  "number": 3,
+  "title": "Ingeniería de prompts",
+  "lessons": [
+    {
+      "id": "l1",
+      "title": "El framework de 5 piezas",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Un buen prompt no es un truco secreto. Es una <strong>estructura</strong> que se repite: <strong>Rol · Contexto · Objetivo · Formato · Restricciones</strong>. Si falta una pieza, el resultado se resiente.</p>" },
+        { "type": "list", "items": ["Rol: quién debe ser la IA (analista, redactor, formador).", "Contexto: la situación de negocio, sin datos sensibles.", "Objetivo: qué debe lograr exactamente.", "Formato: cómo debe verse (tabla, correo, viñetas, N palabras).", "Restricciones: qué NO hacer (no inventar cifras, no prometer fechas)."] },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "De las cinco piezas, ¿cuál sueles olvidar? Casi siempre son las restricciones." }
+      ]
+    },
+    {
+      "id": "l2",
+      "title": "Tipos de prompt según la tarea",
+      "activaPhase": 0,
+      "blocks": [
+        { "type": "text", "html": "<p>No todo pedido es igual. Reconocer el <strong>tipo</strong> te ayuda a elegir el formato correcto.</p>" },
+        { "type": "list", "items": ["Generar: crear un borrador nuevo (correo, texto, ideas).", "Transformar: reescribir, resumir o cambiar el tono de algo que aportas.", "Analizar: comparar opciones, encontrar riesgos, extraer puntos clave.", "Explicar: hacer entendible un concepto para cierta audiencia."] }
+      ]
+    },
+    {
+      "id": "l3",
+      "title": "Restricciones: la pieza que evita problemas",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>Las <strong>restricciones</strong> son tu cinturón de seguridad. Le dicen a la IA qué límites respetar y reducen alucinaciones y promesas indebidas.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Restricciones útiles: «no inventes cifras», «si no tienes un dato pídemelo», «no menciones políticas que no te di», «máximo 150 palabras»." }
+      ]
+    },
+    {
+      "id": "l4",
+      "title": "Tu biblioteca de prompts reutilizables",
+      "activaPhase": 5,
+      "blocks": [
+        { "type": "text", "html": "<p>Cuando un prompt te funciona, <strong>guárdalo como plantilla</strong> y reemplaza solo el contexto la próxima vez. Así construyes tu propia biblioteca en lugar de reinventar cada día.</p>" },
+        { "type": "list", "items": ["Guarda la estructura, no un caso concreto con datos.", "Deja huecos como [audiencia] o [objetivo] para rellenar.", "Usa el Prompt Lab del curso para construirlas y guardarlas."] }
+      ]
+    },
+    {
+      "id": "l5",
+      "title": "El prompt maestro",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Un <strong>prompt maestro</strong> es tu plantilla base bien pensada para una tarea que repites. En lugar de escribir todo cada vez, solo cambias el contexto. Es la diferencia entre improvisar y tener un método.</p>" },
+        { "type": "list", "items": ["Escríbelo una vez con las cinco piezas completas.", "Deja marcados los huecos variables: [tema], [audiencia], [datos].", "Guárdalo en tu biblioteca y reúsalo con pequeños ajustes."] },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Qué tarea repites cada semana? Esa merece su propio prompt maestro." }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "Prompts para análisis",
+      "activaPhase": 0,
+      "blocks": [
+        { "type": "text", "html": "<p>Para <strong>analizar</strong>, pide comparaciones por criterios, extracción de puntos clave y detección de riesgos. Y siempre la restricción de que marque lo que le falta para concluir.</p>" },
+        { "type": "list", "items": ["«Compara estas opciones según [criterios] en una tabla.»", "«Extrae las 3 conclusiones y los 2 riesgos principales.»", "«Dime qué información falta para decidir con seguridad.»"] }
+      ]
+    },
+    {
+      "id": "l7",
+      "title": "Prompts para creatividad",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>Para <strong>crear</strong>, pide variedad y ángulos distintos. La creatividad de la IA se activa cuando le pides varias opciones y le das libertad dentro de límites claros.</p>" },
+        { "type": "list", "items": ["«Dame 5 enfoques distintos, del más seguro al más arriesgado.»", "«Propón 3 títulos con tonos diferentes.»", "Luego eliges y combinas: la decisión creativa sigue siendo tuya."] }
+      ]
+    }
+  ],
+  "challenges": [
+    {
+      "id": "m3-r1",
+      "type": "mcq",
+      "difficulty": "basico",
+      "title": "¿Cuál es una buena restricción?",
+      "objective": "Reconocer restricciones que reducen riesgo.",
+      "instructions": "¿Cuál de estas es una restricción útil para reducir alucinaciones?",
+      "options": [
+        "«Escribe lo que quieras»",
+        "«Si no tienes un dato, no lo inventes: pídemelo»",
+        "«Hazlo lo más largo posible»",
+        "«Actúa como si supieras todo de mi empresa»"
+      ],
+      "correctIndex": 1,
+      "explanation": "Pedir que no invente y que pregunte lo que falta es la restricción que más reduce datos falsos.",
+      "xp": 10,
+      "activaPhase": 4
+    },
+    {
+      "id": "m3-r2",
+      "type": "fill",
+      "difficulty": "basico",
+      "title": "La pieza olvidada",
+      "objective": "Nombrar la pieza del framework que fija cómo debe verse el resultado.",
+      "instructions": "¿Cómo se llama la pieza del framework que indica si el resultado debe ser una tabla, un correo o viñetas?",
+      "prompt": "Escribe el nombre de la pieza (una palabra).",
+      "accepted": ["formato", "el formato"],
+      "explanation": "El Formato define la forma del resultado. Sin él, la IA elige por ti y suele acertar poco.",
+      "xp": 10,
+      "activaPhase": 2
+    },
+    {
+      "id": "m3-r3",
+      "type": "prompt-build",
+      "difficulty": "intermedio",
+      "title": "Construye un prompt completo",
+      "objective": "Aplicar las cinco piezas a un caso propio.",
+      "instructions": "Elige una tarea real de tu trabajo (sin datos sensibles) y construye el prompt con las cinco piezas. Explica qué mejora cada una.",
+      "weakPrompt": "«Resume este informe.»",
+      "thinkFirst": "¿Qué rol le das? ¿Qué contexto necesita? ¿Qué formato te sirve para tu jefe?",
+      "explanation": "Un prompt completo transforma «resume este informe» en algo con rol (analista), contexto (para quién es), objetivo (decisiones clave), formato (viñetas) y restricciones (marcar lo no especificado).",
+      "xp": 25,
+      "activaPhase": 2
+    },
+    {
+      "id": "m3-r4",
+      "type": "mcq",
+      "difficulty": "intermedio",
+      "title": "Clasifica el tipo de tarea",
+      "objective": "Distinguir generar / transformar / analizar / explicar.",
+      "instructions": "«Toma este correo largo y hazlo más corto y formal.» ¿Qué tipo de tarea es?",
+      "options": [
+        "Generar desde cero",
+        "Transformar un texto existente",
+        "Analizar riesgos",
+        "Explicar un concepto"
+      ],
+      "correctIndex": 1,
+      "explanation": "Partes de un texto que ya existe y lo reescribes: es transformar. Saber el tipo ayuda a elegir el formato correcto.",
+      "xp": 15,
+      "activaPhase": 0
+    },
+    {
+      "id": "m3-r5",
+      "type": "order",
+      "difficulty": "basico",
+      "title": "Ordena las 5 piezas",
+      "objective": "Memorizar la secuencia del framework.",
+      "instructions": "Ordena las piezas del framework tal como las usamos en el curso.",
+      "items": ["Objetivo", "Rol", "Restricciones", "Contexto", "Formato"],
+      "correctOrder": [1, 3, 0, 4, 2],
+      "explanation": "Rol → Contexto → Objetivo → Formato → Restricciones. Primero quién y la situación, luego el qué y el cómo, y al final los límites.",
+      "xp": 15,
+      "activaPhase": 2
+    }
+  ]
+}
