@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2600" height="1480" viewBox="0 0 2600 1480" fill="none">
+  <defs>
+    <filter id="dotGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="hexGrad" x1="0" y1="0" x2="384" y2="384" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#16C6AD"/><stop offset="1" stop-color="#610A8B"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ICONO (arriba, centrado) -->
+  <svg x="970" y="110" width="660" height="705" viewBox="44 24 296 316" overflow="visible">
+    <g stroke-width="2" stroke-linecap="round">
+      <line x1="78" y1="117" x2="120" y2="134" stroke="#16C6AD" opacity="0.55"/>
+      <line x1="192" y1="62" x2="192" y2="134" stroke="#610A8B" opacity="0.55"/>
+      <line x1="306" y1="117" x2="264" y2="134" stroke="#16C6AD" opacity="0.55"/>
+      <line x1="78" y1="237" x2="120" y2="216" stroke="#610A8B" opacity="0.5"/>
+      <line x1="192" y1="292" x2="192" y2="216" stroke="#16C6AD" opacity="0.5"/>
+      <line x1="306" y1="237" x2="264" y2="216" stroke="#610A8B" opacity="0.5"/>
+    </g>
+    <path d="M192 32L332 102V262L192 332L52 262V102L192 32Z" stroke="#610A8B" stroke-width="9" opacity="0.95"/>
+    <path d="M192 62L306 117V237L192 292L78 237V117L192 62Z" stroke="url(#hexGrad)" stroke-width="10"/>
+    <path d="M120 216V140L156 180L192 140L228 180L264 140V216" stroke="#610A8B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="120" cy="134" r="8.5" fill="#FFD700" filter="url(#dotGlow)"/>
+    <circle cx="192" cy="134" r="8.5" fill="#FFD700" filter="url(#dotGlow)"/>
+    <circle cx="264" cy="134" r="8.5" fill="#FFD700" filter="url(#dotGlow)"/>
+    <circle cx="120" cy="216" r="5.5" fill="#610A8B" opacity="0.9"/>
+    <circle cx="264" cy="216" r="5.5" fill="#610A8B" opacity="0.9"/>
+  </svg>
+
+  <!-- MAGNATIC -->
+  <g fill="#16C6AD">
+    <path transform="translate(267.52 1170.00) scale(0.36000 -0.36000)" d="M83 0V700H217L479 265L737 700H870L872 0H720L719 419L513 74H440L235 412V0Z"/>
+    <path transform="translate(611.32 1170.00) scale(0.36000 -0.36000)" d="M-9 0 303 700H463L776 0H606L544 150H219L157 0ZM270 273H493L382 540Z"/>
+    <path transform="translate(887.08 1170.00) scale(0.36000 -0.36000)" d="M421 -12Q338 -12 268.5 15.0Q199 42 147.5 90.5Q96 139 67.5 205.0Q39 271 39 350Q39 429 67.5 495.0Q96 561 148.0 609.5Q200 658 270.0 685.0Q340 712 424 712Q516 712 591.0 681.0Q666 650 717 591L613 495Q538 574 432 574Q364 574 312.5 546.0Q261 518 232.0 467.5Q203 417 203 350Q203 285 232.0 234.0Q261 183 312.0 154.5Q363 126 430 126Q463 126 494.5 132.5Q526 139 556 155V361H704V77Q646 33 571.0 10.5Q496 -12 421 -12Z"/>
+    <path transform="translate(1164.64 1170.00) scale(0.36000 -0.36000)" d="M83 0V700H217L565 274V700H725V0H592L243 426V0Z"/>
+    <path transform="translate(1455.52 1170.00) scale(0.36000 -0.36000)" d="M-9 0 303 700H463L776 0H606L544 150H219L157 0ZM270 273H493L382 540Z"/>
+    <path transform="translate(1731.28 1170.00) scale(0.36000 -0.36000)" d="M228 0V568H4V700H614V568H390V0Z"/>
+    <path transform="translate(1953.76 1170.00) scale(0.36000 -0.36000)" d="M83 0V700H245V0Z"/>
+    <path transform="translate(2071.84 1170.00) scale(0.36000 -0.36000)" d="M418 -12Q337 -12 267.5 15.0Q198 42 147.0 90.5Q96 139 67.5 205.0Q39 271 39 350Q39 429 67.5 495.0Q96 561 147.5 609.5Q199 658 268.0 685.0Q337 712 419 712Q510 712 584.0 680.0Q658 648 707 588L603 492Q531 574 427 574Q361 574 310.5 545.5Q260 517 231.5 466.5Q203 416 203 350Q203 284 231.5 233.5Q260 183 310.5 154.5Q361 126 427 126Q531 126 603 209L707 113Q658 52 584.0 20.0Q510 -12 418 -12Z"/>
+  </g>
+  <!-- THINK EVOLUTION -->
+  <g fill="#610A8B">
+    <path transform="translate(622.10 1320.00) scale(0.12000 -0.12000)" d="M244 0V613H4V700H583V613H343V0Z"/>
+    <path transform="translate(706.54 1320.00) scale(0.12000 -0.12000)" d="M607 0V312H205V0H105V700H205V399H607V700H707V0Z"/>
+    <path transform="translate(817.98 1320.00) scale(0.12000 -0.12000)" d="M105 0V700H205V0Z"/>
+    <path transform="translate(869.18 1320.00) scale(0.12000 -0.12000)" d="M105 0V700H187L607 178V700H707V0H625L205 522V0Z"/>
+    <path transform="translate(980.62 1320.00) scale(0.12000 -0.12000)" d="M105 0V700H205V308L585 700H699L400 385L718 0H601L333 312L205 181V0Z"/>
+    <path transform="translate(1127.18 1320.00) scale(0.12000 -0.12000)" d="M105 0V700H599V613H205V398H556V313H205V87H613V0Z"/>
+    <path transform="translate(1221.58 1320.00) scale(0.12000 -0.12000)" d="M307 0 -1 700H107L359 124L613 700H713L406 0Z"/>
+    <path transform="translate(1321.02 1320.00) scale(0.12000 -0.12000)" d="M421 -8Q340 -8 272.0 19.0Q204 46 154.0 94.0Q104 142 76.0 207.5Q48 273 48 350Q48 427 76.0 492.5Q104 558 154.0 606.0Q204 654 272.0 681.0Q340 708 421 708Q501 708 568.5 681.5Q636 655 686.5 606.5Q737 558 764.5 492.5Q792 427 792 350Q792 273 764.5 207.5Q737 142 686.5 93.5Q636 45 568.5 18.5Q501 -8 421 -8ZM421 81Q498 81 559.5 116.0Q621 151 656.5 212.0Q692 273 692 350Q692 427 656.5 488.0Q621 549 559.5 584.0Q498 619 421 619Q342 619 280.5 584.0Q219 549 183.5 488.0Q148 427 148 350Q148 273 183.5 212.0Q219 151 280.5 116.0Q342 81 421 81Z"/>
+    <path transform="translate(1435.82 1320.00) scale(0.12000 -0.12000)" d="M105 0V700H205V87H584V0Z"/>
+    <path transform="translate(1521.10 1320.00) scale(0.12000 -0.12000)" d="M395 -8Q257 -8 178.0 71.0Q99 150 99 302V700H199V306Q199 190 250.5 135.5Q302 81 396 81Q491 81 542.5 135.5Q594 190 594 306V700H691V302Q691 150 612.5 71.0Q534 -8 395 -8Z"/>
+    <path transform="translate(1630.02 1320.00) scale(0.12000 -0.12000)" d="M244 0V613H4V700H583V613H343V0Z"/>
+    <path transform="translate(1714.46 1320.00) scale(0.12000 -0.12000)" d="M105 0V700H205V0Z"/>
+    <path transform="translate(1765.66 1320.00) scale(0.12000 -0.12000)" d="M421 -8Q340 -8 272.0 19.0Q204 46 154.0 94.0Q104 142 76.0 207.5Q48 273 48 350Q48 427 76.0 492.5Q104 558 154.0 606.0Q204 654 272.0 681.0Q340 708 421 708Q501 708 568.5 681.5Q636 655 686.5 606.5Q737 558 764.5 492.5Q792 427 792 350Q792 273 764.5 207.5Q737 142 686.5 93.5Q636 45 568.5 18.5Q501 -8 421 -8ZM421 81Q498 81 559.5 116.0Q621 151 656.5 212.0Q692 273 692 350Q692 427 656.5 488.0Q621 549 559.5 584.0Q498 619 421 619Q342 619 280.5 584.0Q219 549 183.5 488.0Q148 427 148 350Q148 273 183.5 212.0Q219 151 280.5 116.0Q342 81 421 81Z"/>
+    <path transform="translate(1880.46 1320.00) scale(0.12000 -0.12000)" d="M105 0V700H187L607 178V700H707V0H625L205 522V0Z"/>
+  </g>
+</svg>
