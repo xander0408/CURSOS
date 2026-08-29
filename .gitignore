@@ -9,6 +9,10 @@ portstate.log
 # Dependencias (no se usan, pero por si acaso)
 node_modules/
 
+# Archivos temporales de Office (se crean al abrir Word/PPT)
+~$*
+*.tmp
+
 # Sistema
 .DS_Store
 Thumbs.db
