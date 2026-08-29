@@ -390,7 +390,7 @@ export function renderModulesIndex(data) {
   return `
     <div class="page-head">
       <h2>Módulos</h2>
-      <p>Nueve laboratorios. El ritmo de los cuatro sábados lo marca el instructor en sala. Puedes navegar todos.</p>
+      <p>Nueve laboratorios. El ritmo de los dos viernes lo marca el instructor en sala. Puedes navegar todos.</p>
     </div>
     ${sectionAgent(data, "modules")}
     <div class="module-list">${cards}</div>

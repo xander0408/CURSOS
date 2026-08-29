@@ -1,7 +1,7 @@
 # Guía del Instructor — AI Business Lab
 
 **Curso:** Inteligencia Artificial Aplicada al Negocio (basado en ChatGPT y Claude)
-**Duración:** 16 horas — 4 sesiones de 4 horas (o 2 sábados de 8 horas)
+**Duración:** 16 horas — 2 viernes de 8 horas cada uno
 **Modalidad:** Presencial o remota, con el laboratorio web abierto en el navegador de cada alumno
 **Cupo sugerido:** hasta 50 alumnos
 
@@ -73,15 +73,15 @@ Opcional recomendado:
 
 | # | Módulo | Enfoque | Sesión |
 |---|--------|---------|--------|
-| 1 | Fundamentos de IA generativa | Qué es, límites, alucinaciones, verificación | Sábado 1 |
-| 2 | Cómo hablar con una IA | Contexto, objetivo, tono, ejemplos, iteración | Sábado 1 |
-| 3 | Ingeniería de prompts | Framework de 5 piezas, prompt maestro, biblioteca | Sábado 2 |
-| 4 | IA + Word | Documentos, tono, revisión humana | Sábado 2 |
-| 5 | IA + Excel | Fórmulas y validación de números | Sábado 3 |
-| 6 | IA + PowerPoint | Estructura, storytelling, guion | Sábado 3 |
-| 7 | Análisis e investigación | Resumir, comparar, verificar fuentes | Sábado 3 |
-| 8 | Productividad diaria | Correos, minutas, decisiones | Sábado 4 |
-| 9 | Proyecto final | Un problema real, de punta a punta | Sábado 4 |
+| 1 | Fundamentos de IA generativa | Qué es, límites, alucinaciones, verificación | Viernes 1 |
+| 2 | Cómo hablar con una IA | Contexto, objetivo, tono, ejemplos, iteración | Viernes 1 |
+| 3 | Ingeniería de prompts | Framework de 5 piezas, prompt maestro, biblioteca | Viernes 1 |
+| 4 | IA + Word | Documentos, tono, revisión humana | Viernes 1 |
+| 5 | IA + Excel | Fórmulas y validación de números | Viernes 2 |
+| 6 | IA + PowerPoint | Estructura, storytelling, guion | Viernes 2 |
+| 7 | Análisis e investigación | Resumir, comparar, verificar fuentes | Viernes 2 |
+| 8 | Productividad diaria | Correos, minutas, decisiones | Viernes 2 |
+| 9 | Proyecto final | Un problema real, de punta a punta | Viernes 2 |
 
 Herramientas transversales (disponibles en el menú en todo momento):
 - **Quiz**: repaso estilo concurso, cronometrado, con puntos por rapidez. Ideal para cerrar cada módulo.
@@ -94,74 +94,71 @@ Herramientas transversales (disponibles en el menú en todo momento):
 
 ## 5. Paso a paso por sesión
 
-### Sábado 1 — Fundamentos y conversación (Módulos 1 y 2)
+El curso son **2 viernes de 8 horas cada uno**. Cada jornada de 8 h incluye una pausa de comida (~1 h) y dos pausas cortas (~15 min). Tiempo de trabajo efectivo por día: ~6 h 30 min. Los tiempos son sugeridos; ajústalos al ritmo del grupo.
 
-**Antes de empezar (15 min):** verifica que todos entren al laboratorio y tengan ChatGPT y Claude abiertos en otras pestañas. Pide que escriban su nombre en el Dashboard.
+### Viernes 1 — Fundamentos, conversación, prompts y Word (Módulos 1 a 4)
 
-**Bloque 1 — Módulo 1 (90 min):**
-- Recorre las lecciones del Módulo 1 proyectando tu pantalla. Detente en cada callout ("Piensa", "Límite", "Privacidad", "Verificar").
+**Apertura (20 min):** verifica que todos entren al laboratorio y tengan ChatGPT y Claude abiertos en otras pestañas. Pide que escriban su nombre en el Dashboard. Explica la regla de oro (la IA propone, la persona decide y verifica) y la de privacidad.
+
+**Bloque 1 — Módulo 1: Fundamentos (75 min):**
+- Recorre las lecciones proyectando tu pantalla. Detente en cada callout ("Piensa", "Límite", "Privacidad", "Verificar").
 - Actividad de apertura: pregunta qué tarea repetitiva odian de su semana. Anótalas: serán candidatas al proyecto final.
-- Los alumnos resuelven los **retos del Módulo 1** en su laboratorio.
-- Cierra con el **Quiz 1** proyectado en modo concurso (compiten por rapidez). Comenta las respuestas.
+- Los alumnos resuelven los **retos del Módulo 1** + **Quiz 1** en modo concurso.
 
-**Pausa (15 min).**
-
-**Bloque 2 — Módulo 2 (90 min):**
-- Lecciones del Módulo 2. Énfasis en dar contexto y en iterar (no aceptar el primer borrador).
+**Bloque 2 — Módulo 2: Cómo hablar con una IA (75 min):**
+- Énfasis en dar contexto e iterar (no aceptar el primer borrador).
 - Ejercicio en vivo: toma un pedido pobre ("hazme un correo") y mejóralo entre todos usando las 5 piezas.
 - Retos del Módulo 2 + **Quiz 2**.
 
-**Cierre (30 min):** cada alumno comparte una tarea real donde aplicaría lo visto.
+**Pausa corta (15 min).**
 
----
-
-### Sábado 2 — Prompts y Word (Módulos 3 y 4)
-
-**Bloque 1 — Módulo 3 (Ingeniería de prompts, 120 min):** es el corazón del curso.
+**Bloque 3 — Módulo 3: Ingeniería de prompts (90 min):** es el corazón del curso.
 - Enseña el framework **Rol + Contexto + Objetivo + Formato + Restricciones** hasta que lo digan de memoria.
-- Introduce el **prompt maestro** (plantilla reutilizable). Cada alumno crea uno en el **Prompt Lab** y lo guarda en su biblioteca.
+- Introduce el **prompt maestro**. Cada alumno crea uno en el **Prompt Lab** y lo guarda en su biblioteca.
 - Retos del Módulo 3 + **Quiz 3**.
 
-**Pausa (15 min).**
+**Pausa de comida (~60 min).**
 
-**Bloque 2 — Módulo 4 (IA + Word, 90 min):**
-- Lecciones sobre tipos de documento, cambio de tono y revisión humana.
+**Bloque 4 — Módulo 4: IA + Word (90 min):**
+- Tipos de documento, cambio de tono y revisión humana.
 - Práctica: cada alumno genera un borrador de correo o informe en ChatGPT/Claude (caso anonimizado), lo pega en Word y lo revisa (tono, datos, confidencialidad).
 - Retos del Módulo 4 + **Quiz 4**.
 
-**Cierre (15 min):** repaso de la regla de verificación.
+**Cierre del día 1 (25 min):**
+- Cada alumno comparte una tarea real donde aplicaría lo visto.
+- Recuérdales **exportar su avance** (Progreso → Exportar avance) por si el día 2 usan otro equipo.
 
 ---
 
-### Sábado 3 — Excel, PowerPoint y Análisis (Módulos 5, 6 y 7)
+### Viernes 2 — Excel, PowerPoint, Análisis, Productividad y Proyecto final (Módulos 5 a 9)
 
-**Bloque 1 — Módulo 5 (Excel, 75 min):**
+**Repaso de apertura (20 min):** juega el **Quiz 3** (prompts) para reactivar. Si alguien cambió de equipo, que **importe su avance** (Progreso → Importar avance).
+
+**Bloque 1 — Módulo 5: IA + Excel (70 min):**
 - Enfatiza: la IA ayuda con fórmulas, pero **el número siempre se valida** con un caso conocido.
 - Práctica con un archivo de ejemplo (prepáralo tú, con datos ficticios). Los alumnos piden fórmulas y las validan.
 - Retos del Módulo 5 + **Quiz 5**.
 
-**Bloque 2 — Módulo 6 (PowerPoint, 75 min):**
+**Bloque 2 — Módulo 6: IA + PowerPoint (70 min):**
 - De información desordenada a estructura + storytelling + guion del expositor.
 - Práctica: convertir un texto largo en un esquema de diapositivas.
 - Retos del Módulo 6 + **Quiz 6**.
 
-**Pausa (15 min).**
+**Pausa corta (15 min).**
 
-**Bloque 3 — Módulo 7 (Análisis, 75 min):**
-- Resumir, comparar, detectar riesgos, y **verificar fuentes** (cazar alucinaciones).
+**Bloque 3 — Módulo 7: Análisis e investigación (70 min):**
+- Resumir, comparar, detectar riesgos y **verificar fuentes** (cazar alucinaciones).
 - Usa el reto "Caza las alucinaciones" en grupo.
 - Retos del Módulo 7 + **Quiz 7**.
 
----
+**Pausa de comida (~60 min).**
 
-### Sábado 4 — Productividad y Proyecto final (Módulos 8 y 9)
-
-**Bloque 1 — Módulo 8 (Productividad, 60 min):**
+**Bloque 4 — Módulo 8: Productividad diaria (50 min):**
 - Correos, minutas, agendas, toma de decisiones asistida.
 - Retos del Módulo 8 + **Quiz 8**.
 
-**Bloque 2 — Proyecto final (150 min):**
-- Cada alumno elige **un problema real de su trabajo** (idealmente uno de los anotados el Sábado 1).
+**Bloque 5 — Módulo 9: Proyecto final (110 min):**
+- Cada alumno elige **un problema real de su trabajo** (idealmente uno de los anotados el Viernes 1).
 - Recorre los **12 pasos** de la sección "Proyecto final": problema, tarea actual, tiempo antes, solución, prompt, prueba en ChatGPT, prueba en Claude, comparación, refinamiento, verificación, proceso final, ahorro estimado.
 - Al terminar, el laboratorio **genera la ficha**. El alumno la copia y la guarda.
 
