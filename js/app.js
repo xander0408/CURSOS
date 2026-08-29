@@ -14,6 +14,7 @@ import { renderLibrary, bindLibrary } from "./views/library.js";
 import { renderProject, bindProject } from "./views/project.js";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js";
 import { hydrateAgents } from "./agents.js";
+import { loadStudents, isLoggedIn, renderLogin, logout } from "./auth.js";
 
 const TITLES = {
   dashboard: "Dashboard",
@@ -181,9 +182,31 @@ async function main() {
       </div>`;
     return;
   }
-  bindShell();
-  onRoute(render);
-  window.addEventListener("app:refresh", render);
+  const students = await loadStudents();
+
+  // Puerta de acceso: si no hay sesion, mostramos el login antes de la suite.
+  if (!isLoggedIn()) {
+    document.body.classList.add("logged-out");
+    renderLogin(document.getElementById("app-root"), students, () => {
+      document.body.classList.remove("logged-out");
+      startSuite();
+    });
+    return;
+  }
+  startSuite();
+}
+
+let suiteStarted = false;
+function startSuite() {
+  if (!suiteStarted) {
+    bindShell();
+    bindLogout();
+    onRoute(render);
+    window.addEventListener("app:refresh", render);
+    suiteStarted = true;
+  } else {
+    render();
+  }
 
   // Aviso si el navegador no permite guardar el progreso (modo incognito
   // estricto o almacenamiento bloqueado).
@@ -193,6 +216,13 @@ async function main() {
       600
     );
   }
+}
+
+function bindLogout() {
+  document.getElementById("btn-logout")?.addEventListener("click", () => {
+    logout();
+    location.reload();
+  });
 }
 
 main();

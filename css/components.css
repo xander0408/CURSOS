@@ -615,3 +615,41 @@
 
 /* Toast un poco mas presente */
 .toast { box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
+
+/* ---------- Pantalla de acceso (login) ---------- */
+.login-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(900px 500px at 20% -10%, rgba(22, 198, 173, 0.10), transparent 55%),
+    radial-gradient(900px 500px at 90% 110%, rgba(97, 10, 139, 0.16), transparent 55%),
+    var(--bg);
+}
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px 26px 22px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.login-logo img {
+  width: 190px;
+  max-width: 80%;
+  height: auto;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+.login-card h1 { margin: 6px 0 2px; font-size: 22px; }
+.login-sub { margin: 0; color: var(--text-muted); font-size: 14px; }
+.login-org { margin: 4px 0 18px; color: var(--accent); font-size: 12px; letter-spacing: 0.04em; }
+.login-card .field { text-align: left; }
+.login-btn { width: 100%; margin-top: 8px; padding: 12px; font-size: 15px; }
+.login-msg { min-height: 18px; margin: 10px 0 0; color: var(--danger); font-size: 13px; }
+.login-foot { margin: 14px 0 0; color: var(--text-dim); font-size: 11px; }

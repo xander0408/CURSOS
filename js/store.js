@@ -25,7 +25,7 @@ const emptyChallenge = () => ({
 
 const empty = () => ({
   version: SCHEMA_VERSION,
-  profile: { displayName: "", createdAt: Date.now() },
+  profile: { displayName: "", email: "", role: "", loggedIn: false, createdAt: Date.now() },
   settings: { instructorUnlocked: false },
   progress: {
     modules: {},
