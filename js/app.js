@@ -1,6 +1,6 @@
 import { loadAll } from "./content.js";
 import { parseHash, onRoute } from "./router.js";
-import { getState, update } from "./store.js";
+import { getState, update, storageWorks } from "./store.js";
 import { toast, openModal, closeModal } from "./ui.js";
 import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js";
 import { renderModulesIndex, renderModule } from "./views/modules.js";
@@ -184,6 +184,15 @@ async function main() {
   bindShell();
   onRoute(render);
   window.addEventListener("app:refresh", render);
+
+  // Aviso si el navegador no permite guardar el progreso (modo incognito
+  // estricto o almacenamiento bloqueado).
+  if (!storageWorks()) {
+    setTimeout(
+      () => toast("Aviso: este navegador no guarda tu progreso (¿modo incógnito?)."),
+      600
+    );
+  }
 }
 
 main();

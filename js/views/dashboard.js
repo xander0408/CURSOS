@@ -1,4 +1,4 @@
-import { getState, update, resetAll } from "../store.js";
+import { getState, update, resetAll, exportState, importState } from "../store.js";
 import { moduleProgress } from "./modules.js";
 import { escapeHtml, progressBar, toast, openModal, closeModal } from "../ui.js";
 import { sectionAgent } from "../agents.js";
@@ -100,10 +100,12 @@ export function renderProgress(data) {
     <h3 style="margin-top:28px">Insignias</h3>
     <div class="grid grid-2">${badges}</div>
     <div class="card" style="margin-top:20px">
-      <h3>Este navegador</h3>
-      <p>Puedes exportar tu avance o reiniciar solo esta máquina.</p>
+      <h3>Tu avance en este navegador</h3>
+      <p>El progreso se guarda solo en este navegador. Si vas a cambiar de equipo, <strong>exporta</strong> tu avance y luego <strong>impórtalo</strong> en el otro.</p>
       <div class="btn-row">
-        <button class="btn" type="button" id="btn-export">Exportar JSON</button>
+        <button class="btn" type="button" id="btn-export">Exportar avance</button>
+        <button class="btn" type="button" id="btn-import">Importar avance</button>
+        <input type="file" id="import-file" accept="application/json,.json" style="display:none" />
         <button class="btn btn-danger" type="button" id="btn-reset">Reiniciar progreso</button>
       </div>
     </div>
@@ -112,11 +114,32 @@ export function renderProgress(data) {
 
 export function bindProgress(data) {
   document.getElementById("btn-export")?.addEventListener("click", () => {
-    const blob = new Blob([JSON.stringify(getState(), null, 2)], { type: "application/json" });
+    const blob = new Blob([JSON.stringify(exportState(), null, 2)], { type: "application/json" });
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    a.download = "ai-business-lab-progreso.json";
+    const name = (getState().profile.displayName || "alumno").replace(/[^\w-]+/g, "_");
+    a.download = `ai-business-lab-${name}.json`;
     a.click();
+    toast("Avance exportado. Guarda el archivo en un lugar seguro.");
+  });
+
+  const fileInput = document.getElementById("import-file");
+  document.getElementById("btn-import")?.addEventListener("click", () => fileInput?.click());
+  fileInput?.addEventListener("change", (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const obj = JSON.parse(String(reader.result));
+        importState(obj);
+        toast("Avance importado. Se recargará la página.");
+        setTimeout(() => location.reload(), 800);
+      } catch {
+        toast("No se pudo leer el archivo. ¿Es un respaldo válido?");
+      }
+    };
+    reader.readAsText(file);
   });
   document.getElementById("btn-reset")?.addEventListener("click", () => {
     openModal(`<h3>¿Reiniciar esta máquina?</h3><p>Se borra el progreso de este navegador. No afecta a otros alumnos.</p>

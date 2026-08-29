@@ -1,7 +1,30 @@
+// Estado y persistencia del laboratorio.
+// - Guarda en localStorage en cada cambio.
+// - Migra versiones antiguas sin perder el progreso del alumno.
+// - Las lecturas (readModule/readChallenge) NO mutan el estado.
+// - Si localStorage no esta disponible, la app sigue funcionando en memoria
+//   y expone storageWorks() para avisar al usuario.
+
 const KEY = "aiBusinessLab.v1";
+const SCHEMA_VERSION = 2;
+
+const emptyModule = () => ({
+  status: "in_progress",
+  lessonsDone: [],
+  score: 0,
+  completedAt: null,
+});
+
+const emptyChallenge = () => ({
+  status: "open",
+  attempts: 0,
+  score: 0,
+  answers: null,
+  feedbackSeenAt: null,
+});
 
 const empty = () => ({
-  version: 1,
+  version: SCHEMA_VERSION,
   profile: { displayName: "", createdAt: Date.now() },
   settings: { instructorUnlocked: false },
   progress: {
@@ -26,14 +49,45 @@ const empty = () => ({
   },
 });
 
+// Combina el estado guardado con la forma vacia, para que si el esquema
+// crece (nuevas claves) el progreso viejo se conserve y solo se rellenen
+// las claves faltantes. Es una fusion superficial por seccion conocida.
+function migrate(saved) {
+  const base = empty();
+  if (!saved || typeof saved !== "object") return base;
+
+  base.profile = { ...base.profile, ...(saved.profile || {}) };
+  base.settings = { ...base.settings, ...(saved.settings || {}) };
+
+  const sp = saved.progress || {};
+  const p = base.progress;
+  p.modules = sp.modules || {};
+  p.challenges = sp.challenges || {};
+  p.comparator = { ...p.comparator, ...(sp.comparator || {}) };
+  p.promptLab = { ...p.promptLab, ...(sp.promptLab || {}) };
+  p.library = { ...p.library, ...(sp.library || {}) };
+  p.project = { ...p.project, ...(sp.project || {}) };
+  p.quizzes = { ...p.quizzes, ...(sp.quizzes || {}) };
+  if (p.quizzes.bestScores == null) p.quizzes.bestScores = {};
+  p.badges = sp.badges || {};
+  p.totals = { ...p.totals, ...(sp.totals || {}) };
+  p.labs = sp.labs || {};
+
+  base.version = SCHEMA_VERSION;
+  return base;
+}
+
+let storageOk = true;
+
 function load() {
   try {
     const raw = localStorage.getItem(KEY);
     if (!raw) return empty();
     const data = JSON.parse(raw);
-    if (data.version !== 1) return empty();
-    return data;
+    // Cualquier version se migra en vez de descartarse.
+    return migrate(data);
   } catch {
+    storageOk = false;
     return empty();
   }
 }
@@ -41,7 +95,20 @@ function load() {
 let state = load();
 
 function save() {
-  localStorage.setItem(KEY, JSON.stringify(state));
+  try {
+    localStorage.setItem(KEY, JSON.stringify(state));
+    storageOk = true;
+  } catch {
+    // Cuota llena o almacenamiento bloqueado (modo incognito estricto).
+    storageOk = false;
+  }
+}
+
+// Persistimos una vez al cargar para normalizar el esquema migrado.
+save();
+
+export function storageWorks() {
+  return storageOk;
 }
 
 export function getState() {
@@ -56,31 +123,37 @@ export function update(mutator) {
 
 export function resetAll() {
   state = empty();
+  try {
+    localStorage.removeItem(KEY);
+  } catch {
+    /* ignorar */
+  }
   save();
   return state;
 }
 
+// --- Lecturas sin mutar (para render y calculos de progreso) ---
+export function readModule(id) {
+  return state.progress.modules[id] || emptyModule();
+}
+
+export function readChallenge(id) {
+  return state.progress.challenges[id] || emptyChallenge();
+}
+
+// --- Accesos que SI crean/persisten la entrada (para escritura) ---
 export function getModule(id) {
   if (!state.progress.modules[id]) {
-    state.progress.modules[id] = {
-      status: "in_progress",
-      lessonsDone: [],
-      score: 0,
-      completedAt: null,
-    };
+    state.progress.modules[id] = emptyModule();
+    save();
   }
   return state.progress.modules[id];
 }
 
 export function getChallenge(id) {
   if (!state.progress.challenges[id]) {
-    state.progress.challenges[id] = {
-      status: "open",
-      attempts: 0,
-      score: 0,
-      answers: null,
-      feedbackSeenAt: null,
-    };
+    state.progress.challenges[id] = emptyChallenge();
+    save();
   }
   return state.progress.challenges[id];
 }
@@ -102,6 +175,7 @@ export function saveChallengeResult(id, { score, answers, xpDelta, completed }) 
     c.status = completed ? "done" : "open";
     if (xpDelta) s.progress.totals.xp += xpDelta;
   });
+  recountChallenges();
 }
 
 export function completeModule(moduleId, score) {
@@ -121,4 +195,16 @@ export function recountChallenges() {
       (c) => c.status === "done"
     ).length;
   });
+}
+
+// Exporta el estado como objeto (para descargar respaldo).
+export function exportState() {
+  return JSON.parse(JSON.stringify(state));
+}
+
+// Importa un respaldo previamente exportado, migrandolo por seguridad.
+export function importState(obj) {
+  state = migrate(obj);
+  save();
+  return state;
 }

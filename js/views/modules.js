@@ -1,4 +1,4 @@
-import { getState, getModule, markLessonDone, saveChallengeResult, completeModule, recountChallenges } from "../store.js";
+import { getState, getModule, readModule, markLessonDone, saveChallengeResult, completeModule, recountChallenges } from "../store.js";
 import { activaBar, progressBar, pillForDifficulty, renderBlocks, escapeHtml, copyText, toast } from "../ui.js";
 import { evaluate, xpFor, assemblePrompt } from "../challenge-engine.js";
 import { frameworkForm, readFramework, rubricHtml, readRubric } from "../prompt-lab.js";
@@ -6,7 +6,7 @@ import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
 
 export function moduleProgress(full) {
-  const st = getModule(full.id);
+  const st = readModule(full.id);
   const lessons = full.lessons || [];
   const challenges = full.challenges || [];
   const chState = getState().progress.challenges;
