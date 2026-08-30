@@ -11,24 +11,68 @@
         location.replace(p + "/" + location.search + location.hash);
         return;
       }
+      window.__ABL_ASSET_V = String(Date.now());
+      window.__ablBindLogos = function () {
+        var v = window.__ABL_ASSET_V;
+        var files = [
+          "avatares/magnatic-perfil-vertical.svg",
+          "avatares/magnatic-perfil-vertical.png",
+          "avatares/magnatic-perfil-vertical.gif",
+          "avatares/magnatic-logo-vertical.svg",
+          "avatares/magnatic-logo.png"
+        ];
+        function apply(img) {
+          if (!img) return;
+          var i = 0;
+          function next() {
+            if (i >= files.length) return;
+            var f = files[i++];
+            img.onerror = next;
+            img.onload = function () { img.onerror = null; };
+            img.src = f + "?v=" + v;
+          }
+          next();
+        }
+        document.querySelectorAll("[data-brand-logo]").forEach(apply);
+        var icon = document.getElementById("brand-favicon");
+        if (icon) {
+          var j = 0;
+          function nextIcon() {
+            if (j >= files.length) return;
+            var f = files[j++];
+            var probe = new Image();
+            probe.onload = function () {
+              icon.href = f + "?v=" + v;
+              icon.type = f.indexOf(".svg") !== -1 ? "image/svg+xml" : (f.indexOf(".gif") !== -1 ? "image/gif" : "image/png");
+            };
+            probe.onerror = nextIcon;
+            probe.src = f + "?v=" + v;
+          }
+          nextIcon();
+        }
+      };
       try {
         var t = localStorage.getItem("aiBusinessLab.theme") === "light" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", t);
       } catch (e) {
         document.documentElement.setAttribute("data-theme", "dark");
       }
+      ["css/tokens.css", "css/layout.css", "css/components.css"].forEach(function (href) {
+        var l = document.createElement("link");
+        l.rel = "stylesheet";
+        l.href = href + "?v=" + window.__ABL_ASSET_V;
+        document.head.appendChild(l);
+      });
     })();
   </script>
-  <link rel="icon" type="image/png" href="avatares/magnatic-perfil-vertical.png" />
-  <link rel="stylesheet" href="css/tokens.css" />
-  <link rel="stylesheet" href="css/layout.css" />
-  <link rel="stylesheet" href="css/components.css" />
+  <link rel="icon" id="brand-favicon" type="image/svg+xml" href="avatares/magnatic-perfil-vertical.svg" />
 </head>
 <body>
   <div id="boot-splash" aria-live="polite">
-    <img src="avatares/magnatic-perfil-vertical.png" alt="MagnaTic" />
+    <img data-brand-logo alt="MagnaTic" />
     <p>Cargando el laboratorio…</p>
   </div>
+  <script>window.__ablBindLogos && window.__ablBindLogos();</script>
   <div class="instructor-bar" id="instructor-bar">
     Modo instructor activo — las notas de facilitación son visibles en esta máquina.
     <button class="btn btn-ghost" type="button" id="btn-lock-instructor">Bloquear</button>
@@ -36,8 +80,9 @@
   <div class="app">
     <aside class="sidebar" id="sidebar">
       <div class="brand brand-logo">
-        <img src="avatares/magnatic-perfil-vertical.png" alt="MagnaTic — Think Evolution" />
+        <img data-brand-logo alt="MagnaTic — Think Evolution" />
       </div>
+      <script>window.__ablBindLogos && window.__ablBindLogos();</script>
       <div class="brand-sub">
         <h1>AI Business Lab</h1>
         <p>IA aplicada al negocio</p>
@@ -82,6 +127,8 @@
   <div class="modal-back" id="modal-back">
     <div class="modal" id="modal"></div>
   </div>
-  <script type="module" src="js/app.js"></script>
+  <script type="module">
+    import("./js/app.js?v=" + encodeURIComponent(window.__ABL_ASSET_V || Date.now()));
+  </script>
 </body>
 </html>

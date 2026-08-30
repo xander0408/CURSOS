@@ -1,7 +1,7 @@
-import { publicUrl } from "./paths.js";
+import { assetUrl } from "./paths.js";
 
 async function getJson(path) {
-  const res = await fetch(publicUrl(path));
+  const res = await fetch(assetUrl(path), { cache: "no-store" });
   if (!res.ok) throw new Error(`No se pudo cargar ${path}`);
   return res.json();
 }

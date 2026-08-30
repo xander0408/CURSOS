@@ -1,10 +1,14 @@
 import { escapeHtml } from "./ui.js";
-import { publicUrl } from "./paths.js";
+import { assetUrl } from "./paths.js";
 import { getState } from "./store.js";
 
 export function agentForSection(data, section) {
   if (!data.agents) return null;
-  return data.agents.find((a) => a.section === section) || data.agents.find((a) => a.section === "dashboard") || null;
+  return (
+    data.agents.find((a) => a.section === section || (a.sections || []).includes(section)) ||
+    data.agents.find((a) => a.id === "nova") ||
+    null
+  );
 }
 
 function liveTip(data, section) {
@@ -71,11 +75,12 @@ export function sectionAgent(data, section, opts = {}) {
 const svgCache = new Map();
 
 async function loadSvg(path) {
-  if (svgCache.has(path)) return svgCache.get(path);
-  const res = await fetch(publicUrl(path));
+  const key = assetUrl(path);
+  if (svgCache.has(key)) return svgCache.get(key);
+  const res = await fetch(key, { cache: "no-store" });
   if (!res.ok) throw new Error("no svg " + path);
   const text = await res.text();
-  svgCache.set(path, text);
+  svgCache.set(key, text);
   return text;
 }
 

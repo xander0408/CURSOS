@@ -691,12 +691,12 @@
   text-align: center;
 }
 .login-logo img {
-  width: 168px;
-  max-width: 72%;
+  width: 220px;
+  max-width: 88%;
   height: auto;
-  background: var(--logo-plate);
+  background: transparent;
   border-radius: 12px;
-  padding: 10px 12px;
+  padding: 0;
   margin-bottom: 14px;
 }
 .login-card h1 { margin: 6px 0 2px; font-size: 22px; }

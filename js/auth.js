@@ -1,13 +1,13 @@
 import { getState, update, loadUser, writeSession, clearSession, readSession, logActivity } from "./store.js";
 import { escapeHtml } from "./ui.js";
-import { publicUrl } from "./paths.js";
+import { assetUrl, bindBrandImages } from "./paths.js";
 
 let studentsData = null;
 
 export async function loadStudents() {
   if (studentsData) return studentsData;
   try {
-    const res = await fetch(publicUrl("content/students.json"));
+    const res = await fetch(assetUrl("content/students.json"), { cache: "no-store" });
     if (!res.ok) throw new Error();
     studentsData = await res.json();
   } catch {
@@ -69,7 +69,7 @@ export function renderLogin(root, data, onSuccess) {
     <div class="login-screen">
       <div class="login-card">
         <div class="login-logo">
-          <img src="avatares/magnatic-perfil-vertical.png" alt="MagnaTic" />
+          <img data-brand-logo alt="MagnaTic" />
         </div>
         <h1>AI Business Lab</h1>
         <p class="login-sub">Inteligencia Artificial Aplicada al Negocio</p>
@@ -89,6 +89,8 @@ export function renderLogin(root, data, onSuccess) {
       </div>
     </div>
   `;
+
+  bindBrandImages(root);
 
   const msg = document.getElementById("login-msg");
   const userInput = document.getElementById("login-user");

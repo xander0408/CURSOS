@@ -1,4 +1,4 @@
-import { ensureTrailingSlash } from "./paths.js";
+import { ensureTrailingSlash, bindBrandImages } from "./paths.js";
 import { initTheme, toggleTheme, currentTheme } from "./theme.js";
 import { loadAll } from "./content.js";
 import { parseHash, onRoute } from "./router.js";
@@ -239,6 +239,7 @@ function renderInner() {
 
   // Inserta y anima los avatares de los agentes tutores (si la vista tiene).
   hydrateAgents(root);
+  bindBrandImages(document);
 }
 
 let splashAt = Date.now();

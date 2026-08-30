@@ -61,10 +61,10 @@
   height: auto;
   display: block;
   margin: 0 auto;
-  background: var(--logo-plate);
+  background: transparent;
   border-radius: 12px;
-  padding: 10px;
-  border: 1px solid var(--border);
+  padding: 0;
+  border: none;
   object-fit: contain;
 }
 .brand-sub {
