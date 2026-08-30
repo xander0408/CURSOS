@@ -23,11 +23,11 @@ export function assetUrl(file) {
 }
 
 export const BRAND_LOGO_FILES = [
-  "avatares/magnatic-perfil-vertical.svg",
   "avatares/magnatic-perfil-vertical.png",
   "avatares/magnatic-perfil-vertical.gif",
-  "avatares/magnatic-logo-vertical.svg",
+  "avatares/magnatic-perfil-vertical.svg",
   "avatares/magnatic-logo.png",
+  "avatares/magnatic-logo-vertical.svg",
 ];
 
 export function bindBrandImages(root = document) {

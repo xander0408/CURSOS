@@ -245,7 +245,11 @@ function renderInner() {
 let splashAt = Date.now();
 function hideSplash() {
   const wait = Math.max(0, 800 - (Date.now() - splashAt));
-  setTimeout(() => document.getElementById("boot-splash")?.classList.add("is-done"), wait);
+  setTimeout(() => {
+    document.getElementById("boot-splash")?.classList.add("is-done");
+    document.documentElement.classList.remove("is-booting");
+    document.documentElement.classList.add("is-ready");
+  }, wait);
 }
 
 async function main() {
