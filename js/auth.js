@@ -85,7 +85,6 @@ export function renderLogin(root, data, onSuccess) {
         </div>
         <button class="btn btn-primary login-btn" type="button" id="login-go">Entrar</button>
         <p class="login-msg" id="login-msg"></p>
-        <p class="login-foot">Tu progreso se guarda en este navegador, separado por usuario.</p>
       </div>
     </div>
   `;

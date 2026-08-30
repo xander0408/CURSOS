@@ -1,0 +1,14 @@
+---
+description: Cada cambio del laboratorio se publica en GitHub Pages
+alwaysApply: true
+---
+
+# Siempre subir a GitHub
+
+Al terminar un cambio en este repo, **haz commit y `git push origin HEAD`** sin esperar a que el usuario lo pida. El aula se usa en GitHub Pages (`https://xander0408.github.io/CURSOS/`).
+
+- Incluye en el commit los archivos del cambio (y esta regla si la tocas).
+- Mensaje en español, 1–2 frases, el porqué.
+- No uses `--force` ni `--no-verify`.
+- No subas secretos (`.env`, claves).
+- Si el push falla, dilo y reintenta con red.
