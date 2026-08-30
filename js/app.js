@@ -216,8 +216,8 @@ function renderInner() {
     }
   }
 
-  if (!root.querySelector(".agent-card") && !root.querySelector(".quiz-stage") && !root.querySelector(".quiz-play")) {
-    root.insertAdjacentHTML("afterbegin", sectionAgent(data, coachSectionForRoute(route.name)));
+  if (!root.querySelector(".agent-card") && !root.querySelector("#quiz-stage") && !root.querySelector(".quiz-play") && route.name !== "module") {
+    root.insertAdjacentHTML("afterbegin", sectionAgent(data, coachSectionForRoute(route.name), { variant: "compact" }));
   }
 
   document.getElementById("btn-continue")?.addEventListener("click", (e) => {

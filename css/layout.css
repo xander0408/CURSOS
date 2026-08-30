@@ -116,7 +116,7 @@
   gap: 16px;
   padding: 0 24px;
   border-bottom: 1px solid var(--border);
-  background: rgba(11, 18, 32, 0.85);
+  background: var(--header-bg);
   backdrop-filter: blur(10px);
 }
 .header-title { font-weight: 600; font-size: 15px; }
@@ -212,8 +212,8 @@ body.logged-out .main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  background: var(--bg);
+  gap: 16px;
+  background: #050508;
   transition: opacity 0.35s ease, visibility 0.35s ease;
 }
 #boot-splash.is-done {
@@ -222,16 +222,18 @@ body.logged-out .main {
   pointer-events: none;
 }
 #boot-splash img {
-  width: min(220px, 70vw);
+  width: min(168px, 42vw);
+  height: auto;
   animation: splash-pulse 1.4s ease-in-out infinite;
-  background: var(--logo-plate);
-  border-radius: 16px;
-  padding: 18px;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  border: none;
 }
 #boot-splash p {
   margin: 0;
-  color: var(--text-muted);
-  font-size: 14px;
+  color: #9aa8c2;
+  font-size: 13px;
   letter-spacing: 0.04em;
 }
 @keyframes splash-pulse {

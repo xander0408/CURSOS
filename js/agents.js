@@ -36,20 +36,17 @@ function liveTip(data, section) {
   return "";
 }
 
-export function agentCard(agent, { variant = "banner", tip = "" } = {}) {
+export function agentCard(agent, { variant = "compact", tip = "" } = {}) {
   if (!agent) return "";
-  const tasks = (agent.tasks || [])
-    .map((t) => `<li>${escapeHtml(t)}</li>`)
-    .join("");
-  const skill = agent.skill
-    ? `<p class="agent-skill"><span>Skill</span> ${escapeHtml(agent.skill)}</p>`
-    : "";
-  const how = agent.skillHow ? `<p class="muted" style="margin:0 0 8px">${escapeHtml(agent.skillHow)}</p>` : "";
+  const compact = variant !== "banner";
   const rec = tip
     ? `<div class="agent-rec"><strong>Ahora</strong> ${escapeHtml(tip)}</div>`
-    : "";
+    : `<p class="agent-intro">${escapeHtml(agent.intro)}</p>`;
+  const extra = compact
+    ? ""
+    : `${agent.skill ? `<p class="agent-skill"><span>Skill</span> ${escapeHtml(agent.skill)}</p>` : ""}`;
   return `
-    <div class="agent-card ${variant}" style="--agent:${agent.color}">
+    <div class="agent-card ${compact ? "compact" : "banner"}" style="--agent:${agent.color}">
       <div class="agent-avatar" data-agent-avatar="${escapeHtml(agent.avatar)}">
         <span class="agent-status" title="En línea"></span>
       </div>
@@ -58,19 +55,17 @@ export function agentCard(agent, { variant = "banner", tip = "" } = {}) {
           <strong>${escapeHtml(agent.name)}</strong>
           <span class="agent-role">${escapeHtml(agent.role)}</span>
         </div>
-        ${skill}
-        ${how}
-        <p class="agent-intro">${escapeHtml(agent.intro)}</p>
+        ${extra}
         ${rec}
-        ${tasks ? `<div class="agent-tasks-label">Qué hacer con ${escapeHtml(agent.name)}</div><ul class="agent-tasks">${tasks}</ul>` : ""}
       </div>
     </div>
   `;
 }
 
-export function sectionAgent(data, section, opts) {
+export function sectionAgent(data, section, opts = {}) {
   const agent = agentForSection(data, section);
-  return agentCard(agent, { ...opts, tip: liveTip(data, section) });
+  const variant = opts.variant || (section === "dashboard" ? "banner" : "compact");
+  return agentCard(agent, { ...opts, variant, tip: liveTip(data, section) });
 }
 
 const svgCache = new Map();

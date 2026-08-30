@@ -1,5 +1,11 @@
-:root,
-html[data-theme="dark"] {
+:root {
+  --radius: 14px;
+  --radius-sm: 10px;
+  --font: "Segoe UI", "Inter", system-ui, sans-serif;
+  --mono: "Cascadia Code", "Consolas", ui-monospace, monospace;
+  --nav-w: 260px;
+  --header-h: 64px;
+  --space: 8px;
   --bg: #0b1220;
   --bg-elevated: #121a2b;
   --bg-card: #162033;
@@ -23,6 +29,7 @@ html[data-theme="dark"] {
   --sidebar-start: #0e1730;
   --sidebar-end: #0b1220;
   --logo-plate: rgba(255, 255, 255, 0.92);
+  --header-bg: rgba(11, 18, 32, 0.92);
 }
 
 html[data-theme="light"] {
@@ -49,14 +56,7 @@ html[data-theme="light"] {
   --sidebar-start: #e8eef7;
   --sidebar-end: #f4f6fb;
   --logo-plate: #ffffff;
-}
-  --radius: 14px;
-  --radius-sm: 10px;
-  --font: "Segoe UI", "Inter", system-ui, sans-serif;
-  --mono: "Cascadia Code", "Consolas", ui-monospace, monospace;
-  --nav-w: 260px;
-  --header-h: 64px;
-  --space: 8px;
+  --header-bg: rgba(244, 246, 251, 0.94);
 }
 
 * { box-sizing: border-box; }
