@@ -1,0 +1,18 @@
+{
+  "title": "Actividades para no quedarte parado",
+  "subtitle": "Misiones cortas además de lecciones y retos. Márcalas cuando las hagas: se guardan en este navegador.",
+  "items": [
+    { "id": "a1", "day": 1, "mins": 10, "title": "Cuenta gratis lista", "do": "Abre ChatGPT y Claude en pestañas. Confirma que puedes chatear. No subas archivos de la empresa." },
+    { "id": "a2", "day": 1, "mins": 8, "title": "Anonimiza un caso", "do": "Escribe en un bloc 5 líneas de un problema de tu área cambiando nombres por Alfa, Planta Norte y cargos." },
+    { "id": "a3", "day": 1, "mins": 12, "title": "Prompt pobre vs bueno", "do": "Pega el mismo tema dos veces: primero «escribe un correo» y luego el template de queja del manual. Anota 3 diferencias." },
+    { "id": "a4", "day": 1, "mins": 10, "title": "Quiz historia", "do": "Juega el quiz de Historia de la IA. Objetivo: al menos 60% de aciertos." },
+    { "id": "a5", "day": 1, "mins": 15, "title": "Ordena A.C.T.I.V.A.", "do": "En el módulo de fundamentos, completa el reto de ordenar los seis pasos con las flechas y envía." },
+    { "id": "a6", "day": 1, "mins": 15, "title": "Biblioteca personal", "do": "Guarda 2 prompts en la biblioteca (uno tuyo y uno del manual)." },
+    { "id": "a7", "day": 1, "mins": 20, "title": "Word con revisión", "do": "Genera un borrador, pégalo en Word y marca en rojo lo que un humano debe verificar." },
+    { "id": "a8", "day": 2, "mins": 12, "title": "Excel de juguete", "do": "Crea 6 filas inventadas y pide la fórmula. Comprueba 3 celdas a mano." },
+    { "id": "a9", "day": 2, "mins": 12, "title": "Comparador", "do": "Usa el mismo prompt en ChatGPT y Claude. Escribe en el comparador cuál te sirve más y por qué." },
+    { "id": "a10", "day": 2, "mins": 15, "title": "Seis slides", "do": "Pide estructura de presentación y descarta 2 ideas débiles. Quédate con un hilo claro." },
+    { "id": "a11", "day": 2, "mins": 10, "title": "Caza el error", "do": "Completa un reto de detectar error o evaluar salida de IA en el laboratorio." },
+    { "id": "a12", "day": 2, "mins": 25, "title": "Ficha de proyecto", "do": "Llena el proyecto final con un problema real de tu cargo, sin datos internos, y marca ficha lista." }
+  ]
+}

@@ -1,5 +1,6 @@
 import { getState, update } from "./store.js";
 import { openModal, closeModal } from "./ui.js";
+import { lessonsComplete } from "./journey.js";
 
 export function checkBadges(data) {
   const s = getState();
@@ -13,7 +14,8 @@ export function checkBadges(data) {
     }
   }
 
-  const mDone = (id) => mods[id]?.status === "done";
+  const mDone = (id) =>
+    mods[id]?.status === "done" || lessonsComplete(data.modules[id]);
   const libCount = (s.progress.library.custom?.length || 0) + (s.progress.library.savedIds?.length || 0);
   const thinkN = allCh.filter(
     (c) =>
@@ -28,7 +30,7 @@ export function checkBadges(data) {
   const rules = {
     explorer: mDone("m0") && mDone("m1"),
     "prompt-builder": libCount >= 3 || (mDone("m2") && mDone("m3")),
-    thinker: thinkN >= 3,
+    thinker: thinkN >= 2,
     analyst: mDone("m5"),
     writer: mDone("m4"),
     presenter: mDone("m6"),

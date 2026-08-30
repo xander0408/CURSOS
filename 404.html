@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Business Lab</title>
+  <script>
+    (function () {
+      var segs = (location.pathname || "/").split("/").filter(Boolean);
+      var repo = segs[0] || "CURSOS";
+      location.replace("/" + repo + "/" + (location.search || "") + (location.hash || ""));
+    })();
+  </script>
+</head>
+<body>
+  <p>Redirigiendo al laboratorio…</p>
+</body>
+</html>

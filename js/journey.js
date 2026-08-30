@@ -1,15 +1,11 @@
 import { getState } from "./store.js";
 
-function moduleComplete(full) {
+export function lessonsComplete(full) {
   if (!full) return false;
   const st = getState().progress.modules[full.id] || { lessonsDone: [] };
   const lessons = full.lessons || [];
-  const challenges = full.challenges || [];
-  const chState = getState().progress.challenges;
-  return (
-    lessons.every((l) => st.lessonsDone.includes(l.id)) &&
-    challenges.every((c) => chState[c.id]?.status === "done")
-  );
+  if (!lessons.length) return false;
+  return lessons.every((l) => st.lessonsDone.includes(l.id));
 }
 
 export function isPrivileged() {
@@ -25,7 +21,7 @@ export function isModuleUnlocked(data, moduleId) {
   const idx = mods.findIndex((m) => m.id === moduleId);
   if (idx <= 0) return true;
   const prev = mods[idx - 1];
-  return moduleComplete(data.modules[prev.id]);
+  return lessonsComplete(data.modules[prev.id]);
 }
 
 export function nextPathStep(data) {
@@ -36,7 +32,7 @@ export function nextPathStep(data) {
   if (!s.progress.freeTiersAck) {
     return { href: "#/cuentas", title: "Cuentas gratis", detail: "Hasta dónde llegan ChatGPT y Claude sin pagar." };
   }
-  const locked = data.course.modules.find((m) => !moduleComplete(data.modules[m.id]));
+  const locked = data.course.modules.find((m) => !lessonsComplete(data.modules[m.id]));
   if (locked) {
     const full = data.modules[locked.id];
     const label = locked.number === 0 ? "Inicio" : `Módulo ${locked.number}`;

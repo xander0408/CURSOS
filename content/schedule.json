@@ -1,0 +1,36 @@
+{
+  "title": "Cronograma del instructor y del aula",
+  "hours": "2 viernes × 8 h",
+  "goal": "Que cada persona salga sabiendo pedir, iterar y verificar; no «creerse el chat».",
+  "before": [
+    "Prueba https://xander0408.github.io/CURSOS/ (con barra final) en el mismo WiFi del aula.",
+    "Entrega usuario y contraseña individuales. El avance vive en el navegador de cada laptop.",
+    "Pide que no usen modo incógnito. Si cambian de PC, que exporten el JSON de Progreso.",
+    "Ten ChatGPT y Claude Free abiertos. Prohibido pegar contratos, nómina o clientes reales."
+  ],
+  "friday1": [
+    { "t": "08:00–08:25", "what": "Login, ruta, Conocernos (ronda oral + formulario)." },
+    { "t": "08:25–08:45", "what": "Cuentas gratis: qué sí y qué no. Botón «entendido»." },
+    { "t": "08:45–10:00", "what": "M0 Historia + quiz. Descanso 10 min." },
+    { "t": "10:10–12:00", "what": "M1 Fundamentos. Reto ordenar A.C.T.I.V.A. (flechas). M2 hablar con la IA." },
+    { "t": "12:00–13:00", "what": "Almuerzo." },
+    { "t": "13:00–15:00", "what": "M3 prompts + manual (copiar casos reales al chat). Biblioteca." },
+    { "t": "15:00–16:30", "what": "M4 Word. Tarea de cargo asignada. Actividades a1–a7." },
+    { "t": "16:30–17:00", "what": "Cierre: 1 cosa que no volverán a pegar en el chat. Exportar avance si hace falta." }
+  ],
+  "friday2": [
+    { "t": "08:00–08:20", "what": "Recuperar sesión (no debería pedir login). Repaso de 3 errores típicos." },
+    { "t": "08:20–10:00", "what": "M5 Excel + verificación humana. Quiz o actividad a8." },
+    { "t": "10:10–12:00", "what": "M6 PowerPoint. Comparador ChatGPT vs Claude." },
+    { "t": "12:00–13:00", "what": "Almuerzo." },
+    { "t": "13:00–14:30", "what": "M7 investigación y caza de errores. M8 productividad." },
+    { "t": "14:30–16:20", "what": "M9 y proyecto final. Actividades a10–a12." },
+    { "t": "16:20–17:00", "what": "Insignias, exportar, ronda de compromiso. Instructor: historial local y reset solo si un alumno se trabó en ESTA máquina." }
+  ],
+  "facilitate": [
+    "Si un módulo «no abre», casi siempre faltan las lecciones del anterior (Continuar en cada lección). Los retos no bloquean el siguiente módulo.",
+    "Si las flechas no mueven, recarga con Ctrl+F5. Deben usar ↑ ↓ del reto, no del teclado del documento.",
+    "Historial y reset de otros alumnos: solo cuenta instructor, y solo ves quien usó este mismo navegador/PC.",
+    "Mantén el grupo ocupado: actividades marcables, quizzes, comparador y biblioteca, no solo leer lecciones."
+  ]
+}

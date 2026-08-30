@@ -57,6 +57,8 @@ export function renderDashboard(data) {
       <div class="btn-row">
         <a class="btn btn-primary" href="${step.href}">Continuar</a>
         <a class="btn" href="#/manual">Manual de prompts</a>
+        <a class="btn" href="#/actividades">Actividades</a>
+        <a class="btn" href="#/cronograma">Cronograma</a>
       </div>
     </div>
     <div class="path-rail">${pathHtml}</div>
@@ -64,7 +66,7 @@ export function renderDashboard(data) {
       ${
         task
           ? `<div class="card">
-        <h3>Tu tarea de CISA</h3>
+        <h3>Tu caso de práctica</h3>
         <p><strong>${escapeHtml(task.title)}</strong></p>
         <p>${escapeHtml(task.deliverable)}</p>
         <p class="muted">${escapeHtml(task.when)}</p>
@@ -74,7 +76,10 @@ export function renderDashboard(data) {
       <div class="card">
         <h3>Insignias</h3>
         <div class="btn-row">${badges}</div>
-        <div class="btn-row" style="margin-top:12px"><a class="btn" href="#/quiz">Quiz de repaso</a></div>
+        <div class="btn-row" style="margin-top:12px">
+          <a class="btn" href="#/quiz">Quiz de repaso</a>
+          <a class="btn" href="#/actividades">Misiones</a>
+        </div>
       </div>
     </div>
   `;

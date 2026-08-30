@@ -1,12 +1,13 @@
-import { getState, update, loadUser, writeSession, clearSession, readSession } from "./store.js";
+import { getState, update, loadUser, writeSession, clearSession, readSession, logActivity } from "./store.js";
 import { escapeHtml } from "./ui.js";
+import { publicUrl } from "./paths.js";
 
 let studentsData = null;
 
 export async function loadStudents() {
   if (studentsData) return studentsData;
   try {
-    const res = await fetch("content/students.json");
+    const res = await fetch(publicUrl("content/students.json"));
     if (!res.ok) throw new Error();
     studentsData = await res.json();
   } catch {
@@ -56,6 +57,7 @@ export function applyLogin(acc) {
       s.settings.instructorUnlocked = true;
     }
   });
+  logActivity("login", acc.username || acc.email || "");
 }
 
 export function logout() {
@@ -121,6 +123,9 @@ export function gateRedirect() {
   const s = getState();
   if (s.profile.isInstructor) return null;
   const route = (location.hash || "#/").replace(/^#/, "") || "/";
+  if (route.startsWith("/cronograma") || route.startsWith("/actividades") || route.startsWith("/manual")) {
+    return null;
+  }
   const allowedIntro = route.startsWith("/perfil") || route.startsWith("/login");
   const allowedFree = route.startsWith("/cuentas") || allowedIntro;
   if (!s.profile.introDone && !allowedIntro) return "#/perfil";

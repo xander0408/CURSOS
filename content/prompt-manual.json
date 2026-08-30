@@ -1,48 +1,53 @@
 {
-  "title": "Manual de prompts del curso",
-  "subtitle": "Material de estudio: se construye y se usa en los dos viernes.",
-  "rule": "Un prompt no es un hechizo. Es un encargo de trabajo escrito con las 5 piezas: Rol, Contexto, Objetivo, Formato, Restricciones.",
+  "title": "Manual de prompts: casos de uso reales",
+  "subtitle": "Copia, pega en ChatGPT o Claude, y sustituye solo lo que está entre corchetes. Casos de oficina genéricos (planta, cliente, reunión), no datos internos.",
+  "rule": "Un prompt no es un hechizo. Es un encargo de trabajo con cinco piezas: Rol, Contexto, Objetivo, Formato, Restricciones.",
   "pieces": [
-    { "name": "Rol", "ask": "¿Quién debe ser la IA para este trabajo?", "example": "Eres un redactor interno de un ingenio azucarero hondureño." },
-    { "name": "Contexto", "ask": "¿Qué necesita saber, sin datos sensibles?", "example": "Hay una queja de un cliente industrial por un retraso de entrega (sin nombres ni montos reales)." },
-    { "name": "Objetivo", "ask": "¿Qué debe lograr el texto?", "example": "Borrador de respuesta empática con un próximo paso claro." },
+    { "name": "Rol", "ask": "¿Quién debe ser la IA para este trabajo?", "example": "Eres un redactor interno de una planta industrial. Escribes en español claro para Honduras." },
+    { "name": "Contexto", "ask": "¿Qué necesita saber, sin datos sensibles?", "example": "Un cliente industrial se quejó por un retraso de entrega. No tienes el contrato ni montos; solo el hecho y el tono que quieres." },
+    { "name": "Objetivo", "ask": "¿Qué debe lograr el texto?", "example": "Borrador de respuesta empática con un próximo paso claro, listo para que un humano lo edite." },
     { "name": "Formato", "ask": "¿Cómo debe verse?", "example": "Asunto + cuerpo de 120 palabras + 3 viñetas de seguimiento." },
-    { "name": "Restricciones", "ask": "¿Qué no debe hacer?", "example": "No inventes plazos, precios ni políticas que CISA no te dio. Si falta un dato, pregúntamelo." }
+    { "name": "Restricciones", "ask": "¿Qué no debe hacer?", "example": "No inventes plazos, precios ni políticas. Si falta un dato, escribe [FALTA DATO] y pregunta." }
   ],
   "studyTrack": [
-    { "session": "Viernes 1", "items": ["Copiar la plantilla de 5 piezas en tu libretita o en el Prompt Lab.", "Hacer 3 versiones del mismo encargo: pobre / mejor / con restricción de verificación.", "Guardar en la biblioteca los 2 prompts que sí te sirvieron."] },
-    { "session": "Viernes 2", "items": ["Adaptar un prompt a Excel (pide la fórmula y el chequeo humano).", "Adaptar un prompt a una diapositiva (estructura, no cifras oficiales).", "Cerrar el proyecto final con UN prompt maestro de tu cargo en CISA."] }
+    { "session": "Viernes 1 — oficina y Word", "items": ["Copia el correo de queja y el de minuta. Pégalos en el chat. Compara el primer borrador con una segunda ronda: «más corto y sin promesas».", "Guarda en la biblioteca los 2 prompts que sí te sirvieron en tu cargo.", "Haz el reto de ordenar A.C.T.I.V.A. en el módulo de fundamentos."] },
+    { "session": "Viernes 2 — Excel, PPT y cierre", "items": ["Usa el prompt de fórmula con 3 celdas de ejemplo (no pegues el libro real).", "Pide el esquema de 6 diapositivas y luego el guion de 8 minutos.", "Cierra el proyecto final con UN prompt maestro de tu área, anónimo."] }
   ],
   "templates": [
     {
-      "id": "correo",
-      "name": "Correo profesional",
-      "body": "Rol: redactor de correspondencia formal en español de Honduras.\nContexto: [situación anónima].\nObjetivo: correo listo para que yo lo edite.\nFormato: asunto + saludo + 2 párrafos + cierre.\nRestricciones: no inventes datos; marca con [FALTA DATO] lo que no te di."
+      "id": "correo-queja",
+      "name": "Correo: queja de cliente (borrador)",
+      "body": "Rol: redactor de correspondencia formal en español de Honduras, tono serio y empático.\nContexto: Cliente industrial «Alfa» reportó retraso en un despacho de la semana pasada. No te doy nombres de personas, montos, cláusulas ni el contrato. El retraso existió; la causa aún la está revisando operaciones.\nObjetivo: borrador de correo para que yo lo edite antes de enviarlo.\nFormato: 1) asunto de máximo 8 palabras 2) saludo 3) dos párrafos 4) tres viñetas de próximo paso 5) cierre.\nRestricciones: no ofrezcas descuentos, fechas ni compensaciones que yo no te di. Marca con [FALTA DATO] lo que necesites. No inventes normas ni números de pedido."
     },
     {
       "id": "minuta",
-      "name": "Minuta de reunión",
-      "body": "Rol: secretario de acta.\nContexto: reunión de [área] sobre [tema], duración [X] min. Asistentes: cargos, no nombres reales.\nObjetivo: minuta accionable.\nFormato: acuerdos / responsables (cargo) / fecha / riesgos.\nRestricciones: no atribuyas frases textuales que no te dicté."
+      "name": "Minuta de reunión de 45 minutos",
+      "body": "Rol: secretario de acta de una reunión operativa.\nContexto: reunión de 45 minutos del área de [calidad / logística / ventas] sobre [tema, ej. retrasos de camiones en patio]. Asistieron cargos, no nombres reales: jefe de turno, analista y supervisor de patio.\nObjetivo: minuta accionable para el lunes.\nFormato: acuerdos / responsable (solo cargo) / fecha tentativa / riesgos si no se cumple.\nRestricciones: no atribuyas frases textuales que yo no dicté. No inventes KPIs. Si un acuerdo no quedó claro, ponlo en «pendiente de confirmar»."
     },
     {
-      "id": "excel",
-      "name": "Fórmula con verificación",
-      "body": "Rol: analista de Excel.\nContexto: columna A cantidades, columna B precio unitario (ejemplo, no datos reales de CISA).\nObjetivo: fórmula de total y cómo la verifico a mano en 3 celdas.\nFormato: fórmula + pasos de comprobación.\nRestricciones: no asumas hojas que no describí."
+      "id": "excel-check",
+      "name": "Excel: fórmula + cómo verificarla",
+      "body": "Rol: analista de Excel que explica a alguien que no es experto.\nContexto: columna A = cantidades (enteros), columna B = precio unitario (número con 2 decimales). Fila 2 a 20. Quiero el total en C2 y copiar hacia abajo. Esto es un ejemplo; no son datos reales de la empresa.\nObjetivo: fórmula de total por fila y cómo la compruebo a mano en 3 celdas.\nFormato: 1) fórmula 2) qué hace cada parte 3) tres pasos de comprobación humana 4) un error típico si mezclo texto y número.\nRestricciones: no asumas otras hojas, nombres de tablas ni macros que no describí."
     },
     {
-      "id": "ppt",
-      "name": "Estructura de presentación",
-      "body": "Rol: diseñador de narrativa para gerencia.\nContexto: 8 minutos para explicar [tema] a comité.\nObjetivo: esquema de 6 diapositivas.\nFormato: título de slide + 3 viñetas máximo c/u.\nRestricciones: deja [CIFRA OFICIAL] donde yo deba poner un número de CISA."
+      "id": "ppt-comite",
+      "name": "PowerPoint: 8 minutos a comité",
+      "body": "Rol: diseñador de narrativa para gerencia, sin adornos vacíos.\nContexto: tengo 8 minutos para explicar [tema, ej. por qué falló un despacho] a un comité. No debo mostrar cifras oficiales; dejaré huecos.\nObjetivo: esquema de 6 diapositivas y un guion de lo que digo en cada una.\nFormato: por slide: título + máximo 3 viñetas + una línea de lo que dice el expositor.\nRestricciones: donde vaya un número escribe [CIFRA OFICIAL]. No inventes benchmarking ni leyes. No pidas fotos ni logos."
     },
     {
       "id": "riesgos",
-      "name": "Mapa de riesgos",
-      "body": "Rol: analista de riesgos operativos.\nContexto: [proceso] en un ingenio, descrito de forma genérica.\nObjetivo: 8 riesgos y un control humano para cada uno.\nFormato: tabla.\nRestricciones: no cites leyes con número si no te las proporcioné."
+      "name": "Mapa de 8 riesgos de un proceso",
+      "body": "Rol: analista de riesgos operativos de planta.\nContexto: proceso genérico de [recepción de materia prima / despacho / control de calidad]. Descripción breve: [2-4 frases, sin proveedores reales].\nObjetivo: 8 riesgos y un control humano para cada uno.\nFormato: tabla con columnas Riesgo / Qué podría pasar / Control humano / Quién revisa (cargo).\nRestricciones: no cites leyes con número si no te las di. No inventes software interno. Si falta contexto, pregunta en una lista al final."
+    },
+    {
+      "id": "agenda",
+      "name": "Agenda de la semana (sin calendario interno)",
+      "body": "Rol: asistente de productividad de un mando medio.\nContexto: esta semana tengo [reunión de 1h el martes], [cierre de reporte el jueves] y [visita a patio el viernes]. No te paso el Outlook real.\nObjetivo: propuesta de bloques de trabajo y qué preparar el día anterior.\nFormato: tabla Día / Bloque / Entregable / Riesgo si se aplaza.\nRestricciones: no inventes reuniones que no te dije. Deja 30 minutos diarios de colchón. No uses datos personales."
     }
   ],
   "cisaReminders": [
-    "Usa un caso equivalente (planta, oficina, cliente Alfa). Nunca contratos, nomina o clientes reales.",
-    "Calidad, logistica, ventas y auditoria son buenos contextos genericos.",
-    "Si un resultado incluye una norma, una ley o un precio: verificalo fuera del chat."
+    "Usa un caso equivalente (planta, oficina, cliente Alfa). Nunca contratos, nómina ni clientes reales.",
+    "Calidad, logística, ventas y auditoría son buenos contextos genéricos.",
+    "Si un resultado incluye una norma, una ley o un precio: verifícalo fuera del chat."
   ]
 }

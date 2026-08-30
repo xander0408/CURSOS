@@ -1,10 +1,10 @@
+import { ensureTrailingSlash } from "./paths.js";
 import { loadAll } from "./content.js";
 import { parseHash, onRoute } from "./router.js";
-import { getState, update, storageWorks, loadUser, readSession } from "./store.js";
+import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks } from "./store.js";
 import { toast, openModal, closeModal } from "./ui.js";
 import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js";
 import { renderModulesIndex, renderModule, bindModuleView } from "./views/modules.js";
-import { markLessonDone, completeModule, recountChallenges } from "./store.js";
 import { checkBadges } from "./badges.js";
 import { moduleProgress } from "./views/modules.js";
 import { renderChallengesIndex, bindChallengesIndex } from "./views/challenges.js";
@@ -15,7 +15,9 @@ import { renderProject, bindProject } from "./views/project.js";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js";
 import { hydrateAgents } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect } from "./auth.js";
-import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, renderAdmin } from "./views/guides.js";
+import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual, renderAdmin, bindAdmin } from "./views/guides.js";
+import { renderActivities, bindActivities } from "./views/activities.js";
+import { renderCronograma } from "./views/schedule.js";
 
 const TITLES = {
   dashboard: "Ruta",
@@ -32,6 +34,8 @@ const TITLES = {
   cuentas: "Cuentas gratis",
   manual: "Manual de prompts",
   admin: "Instructor",
+  actividades: "Actividades",
+  cronograma: "Cronograma",
 };
 
 let data = null;
@@ -105,6 +109,8 @@ function highlightNav(pathName) {
     cuentas: "/cuentas",
     manual: "/manual",
     admin: "/admin",
+    actividades: "/actividades",
+    cronograma: "/cronograma",
   };
   const active = map[pathName] || "/";
   document.querySelectorAll(".nav-link").forEach((a) => {
@@ -114,6 +120,18 @@ function highlightNav(pathName) {
 }
 
 function render() {
+  try {
+    renderInner();
+  } catch (err) {
+    const root = document.getElementById("app-root");
+    if (root) {
+      root.innerHTML = `<div class="page-head"><h2>No se pudo pintar esta vista</h2><p>Recarga la página. Si sigue, avisa al instructor.</p><p class="muted">${String(err.message || err)}</p></div>`;
+    }
+    console.error(err);
+  }
+}
+
+function renderInner() {
   const bounce = gateRedirect();
   if (bounce) {
     const here = location.hash || "#/";
@@ -173,8 +191,15 @@ function render() {
     bindCuentas();
   } else if (route.name === "manual") {
     root.innerHTML = renderManual(data);
+    bindManual();
   } else if (route.name === "admin") {
     root.innerHTML = renderAdmin(data);
+    bindAdmin();
+  } else if (route.name === "actividades") {
+    root.innerHTML = renderActivities(data);
+    bindActivities();
+  } else if (route.name === "cronograma") {
+    root.innerHTML = renderCronograma(data);
   }
 
   document.getElementById("btn-continue")?.addEventListener("click", (e) => {
@@ -183,6 +208,7 @@ function render() {
     const lessonId = btn.dataset.lesson;
     if (!moduleId) return;
     markLessonDone(moduleId, lessonId);
+    logActivity("leccion", `${moduleId}/${lessonId}`);
     const full = data.modules[moduleId];
     const p = moduleProgress(full);
     if (p.complete) completeModule(moduleId, p.avg);
@@ -198,6 +224,7 @@ function render() {
 }
 
 async function main() {
+  if (ensureTrailingSlash()) return;
   try {
     data = await loadAll();
   } catch (err) {
@@ -206,7 +233,7 @@ async function main() {
         <h2>Abre el laboratorio con un servidor local</h2>
         <p>El navegador bloquea los archivos JSON si abres index.html con doble clic. En una terminal, dentro de esta carpeta:</p>
         <pre class="prompt-preview show">python -m http.server 8080</pre>
-        <p>Luego visita <code>http://localhost:8080</code></p>
+        <p>Usa la URL con barra final: <code>https://xander0408.github.io/CURSOS/</code></p>
         <p class="muted">${String(err.message || err)}</p>
       </div>`;
     return;
@@ -221,7 +248,10 @@ async function main() {
     });
     return;
   }
-  loadUser(readSession().userId);
+  document.body.classList.remove("logged-out");
+  const sess = readSession();
+  loadUser(sess.userId);
+  writeSession({ userId: sess.userId, at: Date.now() });
   startSuite();
 }
 

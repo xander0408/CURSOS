@@ -1,3 +1,5 @@
+import { siteBase } from "./paths.js";
+
 // Estado y persistencia del laboratorio.
 // - Una clave de sesión (quién está dentro).
 // - Un almacén por usuario (progreso de cada alumno en este navegador).
@@ -58,6 +60,7 @@ const empty = () => ({
     totals: { xp: 0, challengesCompleted: 0, modulesCompleted: 0 },
     labs: {},
     freeTiersAck: false,
+    activity: [],
   },
 });
 
@@ -83,6 +86,7 @@ function migrate(saved) {
   p.totals = { ...p.totals, ...(sp.totals || {}) };
   p.labs = sp.labs || {};
   p.freeTiersAck = !!sp.freeTiersAck;
+  p.activity = Array.isArray(sp.activity) ? sp.activity : [];
 
   base.version = SCHEMA_VERSION;
   return base;
@@ -103,27 +107,81 @@ function persist() {
   } catch {
     storageOk = false;
   }
+  try {
+    const sess = JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
+    if (sess?.userId) {
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify(sess));
+    }
+  } catch {
+    /* opcional */
+  }
+}
+
+function cookiePath() {
+  try {
+    return siteBase();
+  } catch {
+    return "/";
+  }
 }
 
 export function readSession() {
   try {
-    return JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
+    const a = JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
+    if (a?.userId) return a;
   } catch {
-    return null;
+    /* seguir */
   }
+  try {
+    const b = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "null");
+    if (b?.userId) return b;
+  } catch {
+    /* seguir */
+  }
+  try {
+    const m = document.cookie.match(/(?:^|; )abl_session=([^;]*)/);
+    const id = m ? decodeURIComponent(m[1]) : "";
+    if (id) return { userId: id, at: Date.now() };
+  } catch {
+    /* seguir */
+  }
+  return null;
 }
 
 export function writeSession(sess) {
+  const raw = JSON.stringify(sess);
   try {
-    localStorage.setItem(SESSION_KEY, JSON.stringify(sess));
+    localStorage.setItem(SESSION_KEY, raw);
   } catch {
     storageOk = false;
+  }
+  try {
+    sessionStorage.setItem(SESSION_KEY, raw);
+  } catch {
+    /* opcional */
+  }
+  try {
+    if (sess?.userId) {
+      document.cookie = `abl_session=${encodeURIComponent(sess.userId)}; path=${cookiePath()}; max-age=2592000; SameSite=Lax`;
+    }
+  } catch {
+    /* opcional */
   }
 }
 
 export function clearSession() {
   try {
     localStorage.removeItem(SESSION_KEY);
+  } catch {
+    /* ignorar */
+  }
+  try {
+    sessionStorage.removeItem(SESSION_KEY);
+  } catch {
+    /* ignorar */
+  }
+  try {
+    document.cookie = `abl_session=; path=${cookiePath()}; max-age=0`;
   } catch {
     /* ignorar */
   }
@@ -257,4 +315,60 @@ export function importState(obj) {
   state = migrate(obj);
   persist();
   return state;
+}
+
+export function logActivity(kind, detail) {
+  update((s) => {
+    s.progress.activity = s.progress.activity || [];
+    s.progress.activity.push({
+      at: Date.now(),
+      kind: String(kind || "evento"),
+      detail: String(detail || "").slice(0, 240),
+    });
+    if (s.progress.activity.length > 100) {
+      s.progress.activity = s.progress.activity.slice(-100);
+    }
+  });
+}
+
+export function listLocalStudentSaves() {
+  const out = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k || !k.startsWith(KEY_PREFIX)) continue;
+      const id = k.slice(KEY_PREFIX.length);
+      if (!id || id === "guest") continue;
+      let parsed = {};
+      try {
+        parsed = JSON.parse(localStorage.getItem(k) || "{}");
+      } catch {
+        parsed = {};
+      }
+      const act = parsed.progress?.activity || [];
+      out.push({
+        id,
+        name: parsed.profile?.displayName || id,
+        role: parsed.profile?.role || "",
+        modules: parsed.progress?.totals?.modulesCompleted || 0,
+        xp: parsed.progress?.totals?.xp || 0,
+        activity: act,
+        last: act.length ? act[act.length - 1].at : parsed.profile?.createdAt || 0,
+      });
+    }
+  } catch {
+    /* ignorar */
+  }
+  return out.sort((a, b) => (b.last || 0) - (a.last || 0));
+}
+
+export function resetLocalUser(id) {
+  const uid = String(id || "");
+  if (!uid) return;
+  try {
+    localStorage.removeItem(KEY_PREFIX + uid);
+  } catch {
+    /* ignorar */
+  }
+  if (userId === uid) resetAll();
 }

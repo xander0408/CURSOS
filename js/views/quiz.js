@@ -1,4 +1,4 @@
-import { getState, update } from "../store.js";
+import { getState, update, logActivity } from "../store.js";
 import { escapeHtml, toast } from "../ui.js";
 import { scoreAnswer, maxScore, rank } from "../quiz-engine.js";
 import { checkBadges } from "../badges.js";
@@ -7,11 +7,21 @@ import { isModuleUnlocked } from "../journey.js";
 
 // Estilo Kahoot: colores y formas fijas para hasta 4 opciones.
 const SHAPES = [
-  { color: "red", glyph: "▲" },
-  { color: "blue", glyph: "◆" },
-  { color: "yellow", glyph: "●" },
-  { color: "green", glyph: "■" },
+  { color: "red", glyph: "▲", hex: "#c62828" },
+  { color: "blue", glyph: "◆", hex: "#1565c0" },
+  { color: "yellow", glyph: "●", hex: "#f9a825" },
+  { color: "green", glyph: "■", hex: "#2e7d32" },
 ];
+
+function shuffleOptions(question) {
+  const pairs = question.options.map((text, orig) => ({ text, orig }));
+  for (let i = pairs.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+  }
+  const correctSlot = pairs.findIndex((p) => p.orig === question.correct);
+  return { pairs, correctSlot };
+}
 
 let timerId = null;
 
@@ -104,6 +114,7 @@ export function bindQuizPlay(data, quizId) {
     clearTimer();
     const total = quiz.questions.length;
     const question = quiz.questions[session.index];
+    const { pairs, correctSlot } = shuffleOptions(question);
     const msTotal = quiz.seconds * 1000;
     const startAt = Date.now();
     let answered = false;
@@ -117,12 +128,12 @@ export function bindQuizPlay(data, quizId) {
         <div class="quiz-timebar"><span id="quiz-timefill" style="width:100%"></span></div>
         <div class="quiz-question"><h2>${escapeHtml(question.q)}</h2></div>
         <div class="quiz-answers" id="quiz-answers">
-          ${question.options
-            .map((opt, i) => {
+          ${pairs
+            .map((p, i) => {
               const s = SHAPES[i % SHAPES.length];
-              return `<button class="quiz-answer ${s.color}" data-i="${i}" type="button">
+              return `<button class="quiz-answer ${s.color}" data-i="${i}" type="button" style="background:${s.hex}">
                 <span class="quiz-glyph">${s.glyph}</span>
-                <span class="quiz-answer-text">${escapeHtml(opt)}</span>
+                <span class="quiz-answer-text">${escapeHtml(p.text)}</span>
               </button>`;
             })
             .join("")}
@@ -138,7 +149,7 @@ export function bindQuizPlay(data, quizId) {
       if (remaining <= 0 && !answered) {
         answered = true;
         clearTimer();
-        lockAndScore(null, question, 0, msTotal);
+        lockAndScore(null, question, 0, msTotal, correctSlot);
       }
     }, 60);
 
@@ -149,24 +160,23 @@ export function bindQuizPlay(data, quizId) {
         clearTimer();
         const chosen = Number(btn.dataset.i);
         const msRemaining = Math.max(0, msTotal - (Date.now() - startAt));
-        lockAndScore(chosen, question, msRemaining, msTotal);
+        lockAndScore(chosen, question, msRemaining, msTotal, correctSlot);
       });
     });
   }
 
-  function lockAndScore(chosen, question, msRemaining, msTotal) {
-    const correct = chosen === question.correct;
+  function lockAndScore(chosen, question, msRemaining, msTotal, correctSlot) {
+    const correct = chosen === correctSlot;
     const res = scoreAnswer({ correct, msRemaining, msTotal, streak: session.streak });
     session.score += res.points;
     session.streak = res.streak;
     if (correct) session.correctCount += 1;
-    session.answers.push({ chosen, correct: question.correct, wasRight: correct });
+    session.answers.push({ chosen, correct: correctSlot, wasRight: correct });
 
-    // Marca visual de correcto/incorrecto.
     stage.querySelectorAll(".quiz-answer").forEach((btn) => {
       const i = Number(btn.dataset.i);
       btn.disabled = true;
-      if (i === question.correct) btn.classList.add("is-correct");
+      if (i === correctSlot) btn.classList.add("is-correct");
       else if (i === chosen) btn.classList.add("is-wrong");
       else btn.classList.add("is-dim");
     });
@@ -216,6 +226,7 @@ export function bindQuizPlay(data, quizId) {
       }
     });
     checkBadges(data);
+    logActivity("quiz", `${quiz.id} ${session.score}pts`);
 
     stage.innerHTML = `
       <div class="quiz-hero">

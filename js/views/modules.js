@@ -1,4 +1,4 @@
-import { getState, getModule, readModule, markLessonDone, saveChallengeResult, completeModule, recountChallenges } from "../store.js";
+import { getState, getModule, readModule, markLessonDone, saveChallengeResult, completeModule, recountChallenges, logActivity } from "../store.js";
 import { activaBar, progressBar, pillForDifficulty, renderBlocks, escapeHtml, copyText, toast } from "../ui.js";
 import { evaluate, xpFor, assemblePrompt } from "../challenge-engine.js";
 import { frameworkForm, readFramework, rubricHtml, readRubric } from "../prompt-lab.js";
@@ -22,7 +22,7 @@ export function moduleProgress(full) {
 
   const scores = challenges.map((c) => chState[c.id]?.score ?? 0);
   const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0;
-  const complete = lessons.every((l) => st.lessonsDone.includes(l.id)) && challenges.every((c) => chState[c.id]?.status === "done");
+  const complete = lessons.length > 0 && lessons.every((l) => st.lessonsDone.includes(l.id));
   return { pct, avg, complete, chDone, lessonDone: lessonsDone };
 }
 
@@ -38,7 +38,7 @@ export function renderModule(data, params) {
   if (!full) return `<div class="page-head"><h2>Módulo no encontrado</h2></div>`;
   if (!isModuleUnlocked(data, params.moduleId)) {
     return `<div class="page-head"><h2>Sigue el orden del curso</h2>
-      <p>Este módulo se abre cuando completes el anterior (lecciones y retos). El instructor puede desbloquear todo con su cuenta.</p>
+      <p>Este módulo se abre cuando termines las lecciones del anterior (los retos del anterior siguen disponibles). El instructor puede desbloquear todo con su cuenta.</p>
       <p><a class="btn btn-primary" href="#/">Ver mi ruta</a></p></div>`;
   }
   const kind = params.kind === "reto" ? "reto" : "leccion";
@@ -153,7 +153,7 @@ function challengeBody(ch, saved, submitted) {
       ${items
         .map(
           (text, pos) =>
-            `<li data-idx="${order[pos]}"><button type="button" data-up>↑</button><button type="button" data-down>↓</button><span>${escapeHtml(text)}</span></li>`
+            `<li data-idx="${order[pos]}"><button type="button" data-up="1" aria-label="Subir">↑</button><button type="button" data-down="1" aria-label="Bajar">↓</button><span>${escapeHtml(text)}</span></li>`
         )
         .join("")}
     </ul>`;
@@ -260,10 +260,17 @@ function bindChallenge(data, full, ch) {
   const list = root.querySelector("#order-list");
   if (list) {
     list.addEventListener("click", (e) => {
-      const li = e.target.closest("li");
+      const btn = e.target.closest("button");
+      if (!btn || !list.contains(btn)) return;
+      e.preventDefault();
+      const li = btn.closest("li");
       if (!li) return;
-      if (e.target.dataset.up && li.previousElementSibling) list.insertBefore(li, li.previousElementSibling);
-      if (e.target.dataset.down && li.nextElementSibling) list.insertBefore(li.nextElementSibling, li);
+      if (btn.hasAttribute("data-up") && li.previousElementSibling) {
+        list.insertBefore(li, li.previousElementSibling);
+      }
+      if (btn.hasAttribute("data-down") && li.nextElementSibling) {
+        list.insertBefore(li.nextElementSibling, li);
+      }
     });
   }
 
@@ -317,6 +324,7 @@ function bindChallenge(data, full, ch) {
       xpDelta,
       completed: true,
     });
+    logActivity("reto", `${ch.id} ${result.score}%`);
     maybeComplete(data, full);
     window.dispatchEvent(new Event("app:refresh"));
   });

@@ -1,4 +1,4 @@
-import { getState, update } from "../store.js";
+import { getState, update, listLocalStudentSaves, resetLocalUser, logActivity } from "../store.js";
 import { escapeHtml, toast, copyText } from "../ui.js";
 import { assignedTask } from "../journey.js";
 
@@ -108,7 +108,11 @@ export function renderManual(data) {
     .join("");
   const tpls = m.templates
     .map(
-      (t) => `<div class="card"><h3>${escapeHtml(t.name)}</h3><pre class="prompt-preview show">${escapeHtml(t.body)}</pre></div>`
+      (t) => `<div class="card">
+        <h3>${escapeHtml(t.name)}</h3>
+        <pre class="prompt-preview show" id="tpl-${escapeHtml(t.id)}">${escapeHtml(t.body)}</pre>
+        <button class="btn btn-primary" type="button" data-copy-tpl="${escapeHtml(t.id)}">Copiar este caso de uso</button>
+      </div>`
     )
     .join("");
   return `
@@ -134,9 +138,22 @@ export function renderManual(data) {
   `;
 }
 
+export function bindManual() {
+  document.querySelectorAll("[data-copy-tpl]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-copy-tpl");
+      const text = document.getElementById("tpl-" + id)?.innerText || "";
+      copyText(text);
+      logActivity("manual", "copió " + id);
+    });
+  });
+}
+
 export function renderAdmin(data) {
-  if (!getState().profile.isInstructor && !getState().settings.instructorUnlocked) {
-    return `<div class="page-head"><h2>Solo instructor</h2><p>Entra con el usuario instructor o desbloquea el PIN.</p></div>`;
+  const isInst = !!getState().profile.isInstructor;
+  const unlocked = !!getState().settings.instructorUnlocked;
+  if (!isInst && !unlocked) {
+    return `<div class="page-head"><h2>Solo instructor</h2><p>Entra con el usuario instructor o desbloquea el PIN de notas.</p></div>`;
   }
   const rows = (data.roster?.students || [])
     .map((s) => {
@@ -145,10 +162,29 @@ export function renderAdmin(data) {
     })
     .join("");
   const ins = data.roster?.instructor || {};
+  const local = isInst ? listLocalStudentSaves() : [];
+  const localHtml = isInst
+    ? local
+        .map((u) => {
+          const hist = (u.activity || [])
+            .slice(-12)
+            .reverse()
+            .map((a) => `<li>${escapeHtml(new Date(a.at).toLocaleString("es-HN"))} · ${escapeHtml(a.kind)} · ${escapeHtml(a.detail)}</li>`)
+            .join("");
+          return `<div class="card">
+            <h3>${escapeHtml(u.name)} <code>${escapeHtml(u.id)}</code></h3>
+            <p class="muted">${escapeHtml(u.role)} · ${u.modules} módulos · ${u.xp} pts</p>
+            ${hist ? `<ul class="crono-list">${hist}</ul>` : "<p class=\"muted\">Sin actividad registrada en esta PC.</p>"}
+            <button class="btn btn-danger" type="button" data-reset-user="${escapeHtml(u.id)}">Reiniciar a este alumno en esta PC</button>
+          </div>`;
+        })
+        .join("") || `<p class="muted">Nadie ha iniciado sesión en este navegador todavía (además de ti).</p>`
+    : `<p class="muted">El historial y el reinicio de alumnos solo están en la cuenta <strong>instructor</strong>, no en el PIN de notas.</p>`;
+
   return `
     <div class="page-head">
       <h2>Panel del instructor</h2>
-      <p>Lista de aula y tareas. El avance de cada alumno vive en <strong>su</strong> navegador; aquí ves a quién se asignó qué. PIN de notas: el de instructor-notes.json.</p>
+      <p>Lista de aula (asignaciones). El avance vive en el <strong>navegador de cada laptop</strong>. Aquí solo ves historial de quien usó <em>esta</em> máquina.</p>
     </div>
     <div class="card">
       <h3>Tu acceso de administración</h3>
@@ -162,13 +198,23 @@ export function renderAdmin(data) {
       </table>
     </div>
     <div class="card">
-      <h3>Orden de la sesión 1</h3>
-      <ol>
-        <li>Login y ronda «Conocernos».</li>
-        <li>Límites de cuentas gratis.</li>
-        <li>Historia de la IA + quiz q0.</li>
-        <li>Fundamentos → prompts → Word y tarea de cargo.</li>
-      </ol>
+      <h3>Historial y reset (esta PC)</h3>
+      ${localHtml}
     </div>
+    <p><a class="btn btn-primary" href="#/cronograma">Abrir cronograma de las 16 horas</a></p>
   `;
+}
+
+export function bindAdmin() {
+  document.querySelectorAll("[data-reset-user]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-reset-user");
+      if (!getState().profile.isInstructor) return;
+      if (!confirm("¿Borrar el progreso de " + id + " en este navegador?")) return;
+      resetLocalUser(id);
+      logActivity("admin", "reset " + id);
+      toast("Progreso local de " + id + " borrado.");
+      window.dispatchEvent(new Event("app:refresh"));
+    });
+  });
 }

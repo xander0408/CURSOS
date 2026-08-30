@@ -417,6 +417,39 @@
           "explain": "Uso responsable: revisar sesgos, verificar y que una persona sea la responsable final."
         }
       ]
+    },
+    {
+      "id": "q-rapido",
+      "title": "Calentamiento de 2 minutos",
+      "subtitle": "Siempre abierto: privacidad y sentido común",
+      "icon": "⚡",
+      "seconds": 15,
+      "questions": [
+        {
+          "q": "¿Qué NO debes pegar en ChatGPT o Claude en el trabajo?",
+          "options": ["Un caso anónimo de «cliente Alfa»", "Contratos, nómina o datos de clientes reales", "Una pregunta sobre tono de un correo", "Un esquema de diapositivas sin cifras"],
+          "correct": 1,
+          "explain": "Anonimiza. Lo confidencial se queda fuera del chat."
+        },
+        {
+          "q": "El primer paso de A.C.T.I.V.A. es…",
+          "options": ["Aplicar el resultado", "Analizar el problema de negocio", "Verificar en internet", "Iterar el prompt"],
+          "correct": 1,
+          "explain": "Primero entiendes el problema; después pides."
+        },
+        {
+          "q": "Si la IA te da una cifra o una ley, tú…",
+          "options": ["La usas de una vez", "La verificas fuera del chat antes de usarla", "Le pides que firme", "La publicas en el grupo"],
+          "correct": 1,
+          "explain": "El modelo no es fuente oficial."
+        },
+        {
+          "q": "Un buen prompt de oficina incluye…",
+          "options": ["Solo la palabra «ayuda»", "Rol, contexto, objetivo, formato y restricciones", "Todos los Excel de la empresa", "La contraseña del ERP"],
+          "correct": 1,
+          "explain": "Las cinco piezas evitan respuestas genéricas o inventadas."
+        }
+      ]
     }
   ]
 }

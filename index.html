@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI Business Lab — MagnaTic</title>
+  <script>
+    (function () {
+      var p = location.pathname || "/";
+      if (!/\/$|\.html$/i.test(p)) {
+        location.replace(p + "/" + location.search + location.hash);
+      }
+    })();
+  </script>
   <link rel="icon" type="image/svg+xml" href="avatares/magnatic-logo-vertical.svg" />
   <link rel="stylesheet" href="css/tokens.css" />
   <link rel="stylesheet" href="css/layout.css" />
@@ -29,6 +37,8 @@
       <a class="nav-link" href="#/modulos" data-route="/modulos">Módulos</a>
       <a class="nav-link" href="#/retos" data-route="/retos">Retos</a>
       <a class="nav-link" href="#/quiz" data-route="/quiz">Quiz</a>
+      <a class="nav-link" href="#/actividades" data-route="/actividades">Actividades</a>
+      <a class="nav-link" href="#/cronograma" data-route="/cronograma">Cronograma</a>
       <a class="nav-link" href="#/manual" data-route="/manual">Manual prompts</a>
       <a class="nav-link" href="#/prompt-lab" data-route="/prompt-lab">Prompt Lab</a>
       <a class="nav-link" href="#/comparador" data-route="/comparador">Comparador</a>

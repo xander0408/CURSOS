@@ -1,4 +1,5 @@
 import { escapeHtml } from "./ui.js";
+import { publicUrl } from "./paths.js";
 
 // Devuelve el agente asignado a una seccion, o null.
 export function agentForSection(data, section) {
@@ -40,7 +41,7 @@ const svgCache = new Map();
 
 async function loadSvg(path) {
   if (svgCache.has(path)) return svgCache.get(path);
-  const res = await fetch(path);
+  const res = await fetch(publicUrl(path));
   if (!res.ok) throw new Error("no svg " + path);
   const text = await res.text();
   svgCache.set(path, text);
