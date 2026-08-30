@@ -26,7 +26,7 @@ export function checkBadges(data) {
   const fiche = s.progress.project.ficheReady;
 
   const rules = {
-    explorer: mDone("m1"),
+    explorer: mDone("m0") && mDone("m1"),
     "prompt-builder": libCount >= 3 || (mDone("m2") && mDone("m3")),
     thinker: thinkN >= 3,
     analyst: mDone("m5"),

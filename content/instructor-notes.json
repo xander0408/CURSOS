@@ -1,6 +1,15 @@
 {
-  "pin": "1234",
+  "pin": "CISA-Admin26",
   "modules": {
+    "m0": {
+      "lessons": {
+        "l1": "Ronda rapida: nombre, cargo y una tarea que le quite tiempo. Conecta con el caso asignado (datos ficticios).",
+        "l5": "Cierra con la regla de oro. Pregunta: ¿quién firmaría un número de calidad o un precio solo porque lo escribió un chat?"
+      },
+      "challenges": {
+        "m0-r3": "Si se traban, usa la analogía: 1950 pregunta, 1956 nombre del campo, 2017 motor, 2022 producto masivo."
+      }
+    },
     "m1": {
       "lessons": {
         "l1": "Abre preguntando qué tarea repetitiva odian. Aterriza la IA como herramienta, no magia. El punto clave: la persona sigue siendo responsable.",

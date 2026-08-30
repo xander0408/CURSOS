@@ -15,11 +15,29 @@ export async function loadAll() {
   const instructor = await getJson("content/instructor-notes.json");
   const quizzesData = await getJson("content/quizzes.json");
   const agentsData = await getJson("content/agents.json");
+  const tasksData = await getJson("content/tasks.json");
+  const freeAccounts = await getJson("content/free-accounts.json");
+  const promptManual = await getJson("content/prompt-manual.json");
+  const roster = await getJson("content/students.json");
   const modules = {};
   for (const m of course.modules) {
     modules[m.id] = await getJson(`content/modules/${m.id}.json`);
   }
-  cache = { course, badges, comparator, library, instructor, modules, quizzes: quizzesData.quizzes, agents: agentsData.agents };
+  cache = {
+    course,
+    badges,
+    comparator,
+    library,
+    instructor,
+    modules,
+    quizzes: quizzesData.quizzes,
+    agents: agentsData.agents,
+    tasks: tasksData.items,
+    tasksIntro: tasksData.intro,
+    freeAccounts,
+    promptManual,
+    roster,
+  };
   return cache;
 }
 

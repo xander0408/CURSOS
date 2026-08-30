@@ -1,0 +1,96 @@
+{
+  "intro": "Cada participante tiene un caso de práctica alineado a su cargo. Los datos son ficticios (Planta Norte, un fabricante de alimentos). No uses información real de tu empresa.",
+  "company": "Los casos ocurren en una planta industrial genérica. Adapta el método a tu trabajo; no copies datos internos.",
+  "items": [
+    {
+      "id": "calidad",
+      "title": "Borrador de no conformidad",
+      "forRole": "Gerente de Control de Calidad",
+      "deliverable": "Una página: hallazgo, evidencia ficticia, acción correctiva y qué debe firmar un humano.",
+      "when": "Viernes 1, después de Word",
+      "problem": "El informe de no conformidad me toma demasiado tiempo y el primer borrador suele quedar incompleto.",
+      "pastePrompt": "Rol: Eres un redactor de informes de calidad en una planta de alimentos.\n\nContexto: En la línea 2 se detectó humedad fuera de rango en un lote de producto empacado. No te daré números reales ni nombres de clientes. Usa estos datos de ejemplo: lote L-441, humedad observada 18% frente a un máximo interno de 14%, detectado el 12 de marzo en el turno B. El producto no salió a mercado.\n\nObjetivo: Redactar un borrador de no conformidad listo para que yo lo edite.\n\nFormato: 5 apartados titulados: Hallazgo, Evidencia, Causa probable (hipótesis), Acción inmediata, Verificación humana.\n\nRestricciones: No inventes normas ISO con número. No inventes causas raíz. Si falta un dato, escribe [COMPLETAR]. No menciones empresas reales."
+    },
+    {
+      "id": "rrhh",
+      "title": "Convocatoria interna de vacante",
+      "forRole": "Gerente de Recursos Humanos",
+      "deliverable": "Aviso interno: propósito del puesto, requisitos y tono respetuoso.",
+      "when": "Viernes 1, módulo Word",
+      "problem": "Cada vacante interna me obliga a reescribir el mismo aviso desde cero.",
+      "pastePrompt": "Rol: Eres comunicación interna de recursos humanos en una planta industrial.\n\nContexto: Se abre una vacante de Supervisor de turno (producción). Es un aviso para cartelera y correo interno. No uses nombres de personas. Requisitos de ejemplo: 3 años en planta, liderazgo de cuadrilla, disponibilidad de turnos rotativos. No es un anuncio público.\n\nObjetivo: Texto listo para publicar internamente.\n\nFormato: Título + propósito del puesto + 5 requisitos + cómo postularse (sin fechas inventadas: usa [FECHA]).\n\nRestricciones: No pidas edad, género ni datos sensibles. No prometas sueldo ni beneficios que yo no te di. No cites leyes con número."
+    },
+    {
+      "id": "regional",
+      "title": "Resumen semanal ejecutivo",
+      "forRole": "Sub-Gerente Regional",
+      "deliverable": "5 hechos, 3 riesgos, 2 decisiones pedidas. Todo con cifras de ejemplo.",
+      "when": "Viernes 2, productividad",
+      "problem": "El reporte semanal se arma a mano juntando correos y se va el tiempo en el formato.",
+      "pastePrompt": "Rol: Eres asistente de gerencia regional.\n\nContexto: Semana de operación de tres sitios (Norte, Centro, Sur). Datos de ejemplo, no oficiales: Norte 92% de plan de despacho, Centro 2 paros de 40 minutos, Sur queja de un cliente industrial (sin nombre) por retraso de 1 día. Inventario de empaque 8 días de cobertura.\n\nObjetivo: Resumen ejecutivo para una reunión de 10 minutos.\n\nFormato: (1) cinco viñetas de hechos, (2) tres riesgos, (3) dos decisiones que se piden al comité.\n\nRestricciones: Marca cada cifra como ejemplo. No recomiendes invertir dinero. No inventes nombres de personas ni de clientes."
+    },
+    {
+      "id": "direccion",
+      "title": "Brief de una página para decidir",
+      "forRole": "Gerente General",
+      "deliverable": "Problema, opciones, recomendación, riesgos y verificación humana.",
+      "when": "Viernes 2, análisis",
+      "problem": "Me llegan informes largos y necesito una página para decidir con el comité.",
+      "pastePrompt": "Rol: Eres analista de gabinete para un comité de dirección.\n\nContexto: Se evalúa comprar un sistema de monitoreo energético en planta. Costos de ejemplo: opción A 120 mil USD, opción B 80 mil USD con menor cobertura. Ahorro energético estimado por el proveedor: 8% (no verificado). Plazo de implementación 6 meses.\n\nObjetivo: Brief de una página para decidir si pasar a diligencia o no.\n\nFormato: Problema / dos opciones / recomendación tentativa / riesgos / qué debe verificar un humano antes de firmar.\n\nRestricciones: No afirmes el ROI. No cites leyes. No uses nombres de proveedores reales. Señala supuestos."
+    },
+    {
+      "id": "ventas",
+      "title": "Correo de seguimiento post-visita",
+      "forRole": "Gerente de Ventas",
+      "deliverable": "Asunto + cuerpo de 120 palabras, sin precios reales.",
+      "when": "Viernes 1, Word",
+      "problem": "Después de cada visita comercial reescribo el mismo tipo de correo y se me va la tarde.",
+      "pastePrompt": "Rol: Eres un ejecutivo comercial B2B de productos industriales de alimento.\n\nContexto: Visité a un cliente industrial (llámalo Cliente Alfa). Pidió cotización de volumen trimestral. No te daré precios. Acordamos enviar propuesta la próxima semana y una muestra de 2 kg. Tono profesional y cercano, no agresivo.\n\nObjetivo: Correo de seguimiento que confirme el próximo paso.\n\nFormato: Asunto + saludo + dos párrafos + cierre. Máximo 120 palabras.\n\nRestricciones: No inventes descuentos, plazos de crédito ni fechas de entrega. Usa [FECHA] y [PRECIO] donde yo deba completar. No uses nombres de empresas reales."
+    },
+    {
+      "id": "compras",
+      "title": "Tabla de tres proveedores",
+      "forRole": "Gerente de Compras, Operaciones y Logística",
+      "deliverable": "Tabla: plazo, riesgo logístico, preguntas pendientes.",
+      "when": "Viernes 2, Excel",
+      "problem": "Comparar cotizaciones me toma tiempo porque cada proveedor manda el dato en un formato distinto.",
+      "pastePrompt": "Rol: Eres comprador industrial.\n\nContexto: Necesito comparar tres proveedores ficticios de cajas de cartón: P1, P2 y P3. Datos de ejemplo: P1 entrega 10 días, MOQ 5000, P2 entrega 18 días, mejor precio unitario, P3 entrega 7 días pero solo cubre un tamaño. No recomiendes al ganador.\n\nObjetivo: Tabla para reunión de compras.\n\nFormato: 4 columnas: Proveedor, Plazo, Riesgo logístico, Preguntas pendientes.\n\nRestricciones: No inventes precios. No elijas un ganador. Si falta un dato, escribe [FALTA]."
+    },
+    {
+      "id": "auditoria",
+      "title": "Mapa de riesgos al usar un chat de IA",
+      "forRole": "Gerente de Auditoría",
+      "deliverable": "10 riesgos y un control humano para cada uno.",
+      "when": "Viernes 2, análisis",
+      "problem": "El equipo quiere usar un chat público para minutas y checklists y necesito un mapa de riesgos claro.",
+      "pastePrompt": "Rol: Eres auditor interno.\n\nContexto: Un equipo de planta quiere usar un chat de IA público (cuenta gratuita) para minutas, checklists y primeros borradores de informes. No hay política formal todavía.\n\nObjetivo: Mapa de 10 riesgos prácticos y un control humano para cada uno.\n\nFormato: Tabla con columnas Riesgo y Control humano.\n\nRestricciones: No cites artículos de ley con número. No afirmes que el chat cumple una norma. Enfócate en datos, alucinaciones, sesgos y responsabilidad de firma."
+    },
+    {
+      "id": "produccion",
+      "title": "Plantilla de relevo de turno",
+      "forRole": "Gerente de Producción",
+      "deliverable": "Minuta de una página: seguridad, paros, calidad, pendientes.",
+      "when": "Viernes 2, productividad",
+      "problem": "El relevo de turno se cuenta de palabra y se pierde información entre turnos.",
+      "pastePrompt": "Rol: Eres supervisor de producción en una planta de alimentos.\n\nContexto: Turno de 8 horas en línea de empaque. Eventos de ejemplo: paro de 25 minutos por atasco de cinta, un casi-accidente sin lesión (tropiezo en piso húmedo), calidad OK en inspecciones visuales. No inventes lecturas de sensores.\n\nObjetivo: Minuta de relevo lista para que el siguiente turno la complete.\n\nFormato: 6 apartados: Seguridad, Paros, Calidad, Materiales, Pendientes, Firma humana.\n\nRestricciones: Deja [COMPLETAR] en cifras que yo deba poner. No uses nombres de personas. No inventes KPIs."
+    },
+    {
+      "id": "sistemas",
+      "title": "Nota breve de incidente",
+      "forRole": "Gerente de Sistemas de Información",
+      "deliverable": "Qué pasó, impacto, siguiente paso, y qué no se pega a una IA pública.",
+      "when": "Viernes 1, privacidad",
+      "problem": "Cada incidente me pide un comunicado interno y el primer borrador sale técnico de más.",
+      "pastePrompt": "Rol: Eres mesa de ayuda escribiendo para gerentes no técnicos.\n\nContexto: Hubo una caída de 18 minutos del correo interno a las 09:10. Causa probable: saturación del servidor de correo (ejemplo). Ya restauró. No te daré IPs, logs ni nombres de servidores reales.\n\nObjetivo: Comunicado interno de 4 párrafos.\n\nFormato: Qué ocurrió / impacto / qué hacemos ahora / qué no se debe pegar en un chat público.\n\nRestricciones: Prohibido inventar IPs, contraseñas o marcas de software que yo no mencioné. Tono calmado, sin culpar personas."
+    },
+    {
+      "id": "digital",
+      "title": "Propuesta de piloto con control humano",
+      "forRole": "Jefe de Desarrollo Digital y Automatización",
+      "deliverable": "Una página: proceso actual, qué hace la IA, qué firma una persona, riesgo.",
+      "when": "Viernes 2, proyecto final",
+      "problem": "Hay muchas solicitudes internas repetitivas y quiero un piloto de asistencia con IA sin conectar el ERP.",
+      "pastePrompt": "Rol: Eres analista de procesos.\n\nContexto: El área recibe cada semana unas 30 solicitudes internas de acceso a reportes (ejemplo). Hoy se responden copiando correos viejos. Quiero un piloto: la IA arma el primer borrador y un humano aprueba.\n\nObjetivo: Propuesta de piloto de una página.\n\nFormato: Seis frases, una por letra de A.C.T.I.V.A. (Analizar, Contextualizar, Transformar, Iterar, Verificar, Aplicar).\n\nRestricciones: No prometas integrar el ERP. No inventes ahorros en dinero. Incluye un riesgo y quién firma."
+    }
+  ]
+}

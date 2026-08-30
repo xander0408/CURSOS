@@ -4,6 +4,7 @@ import { evaluate, xpFor, assemblePrompt } from "../challenge-engine.js";
 import { frameworkForm, readFramework, rubricHtml, readRubric } from "../prompt-lab.js";
 import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
+import { isModuleUnlocked } from "../journey.js";
 
 export function moduleProgress(full) {
   const st = readModule(full.id);
@@ -35,6 +36,11 @@ function maybeComplete(data, full) {
 export function renderModule(data, params) {
   const full = data.modules[params.moduleId];
   if (!full) return `<div class="page-head"><h2>Módulo no encontrado</h2></div>`;
+  if (!isModuleUnlocked(data, params.moduleId)) {
+    return `<div class="page-head"><h2>Sigue el orden del curso</h2>
+      <p>Este módulo se abre cuando completes el anterior (lecciones y retos). El instructor puede desbloquear todo con su cuenta.</p>
+      <p><a class="btn btn-primary" href="#/">Ver mi ruta</a></p></div>`;
+  }
   const kind = params.kind === "reto" ? "reto" : "leccion";
   if (kind === "reto") return renderChallenge(data, full, params.itemId);
   const lessonId = params.itemId || full.lessons[0]?.id;
@@ -106,8 +112,14 @@ export function renderChallenge(data, full, challengeId) {
       </div>
     </div>
   `;
+}
 
-  queueMicrotask(() => bindChallenge(data, full, ch));
+export function bindModuleView(data, params) {
+  if (params.kind === "reto") {
+    const full = data.modules[params.moduleId];
+    const ch = (full?.challenges || []).find((c) => c.id === params.itemId) || full?.challenges?.[0];
+    if (full && ch) bindChallenge(data, full, ch);
+  }
 }
 
 function challengeBody(ch, saved, submitted) {
@@ -255,6 +267,15 @@ function bindChallenge(data, full, ch) {
     });
   }
 
+  root.querySelectorAll("[data-fw]").forEach((el) => {
+    el.addEventListener("input", () => {
+      const pre = root.querySelector("[data-assembled]");
+      if (pre) {
+        pre.textContent = assemblePrompt(readFramework(root));
+        pre.classList.add("show");
+      }
+    });
+  });
   root.querySelectorAll("[data-copy]").forEach((b) => {
     b.addEventListener("click", () => copyText(ch.sharedPrompt));
   });
@@ -374,15 +395,19 @@ export function renderModulesIndex(data) {
     .map((m) => {
       const full = data.modules[m.id];
       const p = moduleProgress(full);
-      return `<a class="card clickable" href="#/modulo/${m.id}/leccion/${full.lessons[0].id}" style="text-decoration:none;color:inherit">
+      const open = isModuleUnlocked(data, m.id);
+      const num = m.number === 0 ? "I" : m.number;
+      const href = open ? `#/modulo/${m.id}/leccion/${full.lessons[0].id}` : "#/modulos";
+      return `<a class="card clickable ${open ? "" : "soon"}" href="${href}" style="text-decoration:none;color:inherit">
         <div class="module-row">
-          <div class="module-num">${m.number}</div>
+          <div class="module-num">${num}</div>
           <div>
             <h3>${escapeHtml(m.title)}</h3>
             <p>${escapeHtml(m.subtitle)}</p>
             ${progressBar(p.pct)}
+            ${open ? "" : "<p class=\"muted\">Bloqueado: completa el módulo anterior.</p>"}
           </div>
-          <span class="pill ${p.complete ? "ok" : ""}">${p.complete ? "Completado" : p.pct + "%"}</span>
+          <span class="pill ${p.complete ? "ok" : ""}">${!open ? "Bloqueado" : p.complete ? "Completado" : p.pct + "%"}</span>
         </div>
       </a>`;
     })
@@ -390,7 +415,7 @@ export function renderModulesIndex(data) {
   return `
     <div class="page-head">
       <h2>Módulos</h2>
-      <p>Nueve laboratorios. El ritmo de los dos viernes lo marca el instructor en sala. Puedes navegar todos.</p>
+      <p>Diez laboratorios en orden. Empieza por Historia de la IA. El instructor puede abrir todos los módulos.</p>
     </div>
     ${sectionAgent(data, "modules")}
     <div class="module-list">${cards}</div>

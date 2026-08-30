@@ -1,9 +1,9 @@
 import { loadAll } from "./content.js";
 import { parseHash, onRoute } from "./router.js";
-import { getState, update, storageWorks } from "./store.js";
+import { getState, update, storageWorks, loadUser, readSession } from "./store.js";
 import { toast, openModal, closeModal } from "./ui.js";
 import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js";
-import { renderModulesIndex, renderModule } from "./views/modules.js";
+import { renderModulesIndex, renderModule, bindModuleView } from "./views/modules.js";
 import { markLessonDone, completeModule, recountChallenges } from "./store.js";
 import { checkBadges } from "./badges.js";
 import { moduleProgress } from "./views/modules.js";
@@ -14,10 +14,11 @@ import { renderLibrary, bindLibrary } from "./views/library.js";
 import { renderProject, bindProject } from "./views/project.js";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js";
 import { hydrateAgents } from "./agents.js";
-import { loadStudents, isLoggedIn, renderLogin, logout } from "./auth.js";
+import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect } from "./auth.js";
+import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, renderAdmin } from "./views/guides.js";
 
 const TITLES = {
-  dashboard: "Dashboard",
+  dashboard: "Ruta",
   modules: "Módulos",
   module: "Módulo",
   challenges: "Retos",
@@ -27,13 +28,18 @@ const TITLES = {
   library: "Biblioteca",
   project: "Proyecto final",
   progress: "Progreso",
+  perfil: "Conocernos",
+  cuentas: "Cuentas gratis",
+  manual: "Manual de prompts",
+  admin: "Instructor",
 };
 
 let data = null;
 
 function setInstructorUi() {
-  const on = getState().settings.instructorUnlocked;
+  const on = getState().settings.instructorUnlocked || getState().profile.isInstructor;
   document.body.classList.toggle("instructor-on", on);
+  document.getElementById("nav-admin")?.classList.toggle("is-hidden", !on);
 }
 
 function bindShell() {
@@ -95,6 +101,10 @@ function highlightNav(pathName) {
     library: "/biblioteca",
     project: "/proyecto",
     progress: "/progreso",
+    perfil: "/perfil",
+    cuentas: "/cuentas",
+    manual: "/manual",
+    admin: "/admin",
   };
   const active = map[pathName] || "/";
   document.querySelectorAll(".nav-link").forEach((a) => {
@@ -104,6 +114,14 @@ function highlightNav(pathName) {
 }
 
 function render() {
+  const bounce = gateRedirect();
+  if (bounce) {
+    const here = location.hash || "#/";
+    if (here !== bounce) {
+      location.hash = bounce;
+      return;
+    }
+  }
   const route = parseHash();
   const root = document.getElementById("app-root");
   document.getElementById("header-title").textContent = TITLES[route.name] || "AI Business Lab";
@@ -121,6 +139,7 @@ function render() {
     root.innerHTML = renderModulesIndex(data);
   } else if (route.name === "module") {
     root.innerHTML = renderModule(data, route.params);
+    bindModuleView(data, route.params);
   } else if (route.name === "challenges") {
     root.innerHTML = renderChallengesIndex(data, route.params.moduleId);
     bindChallengesIndex();
@@ -146,6 +165,16 @@ function render() {
   } else if (route.name === "progress") {
     root.innerHTML = renderProgress(data);
     bindProgress(data);
+  } else if (route.name === "perfil") {
+    root.innerHTML = renderPerfil(data);
+    bindPerfil(data);
+  } else if (route.name === "cuentas") {
+    root.innerHTML = renderCuentas(data);
+    bindCuentas();
+  } else if (route.name === "manual") {
+    root.innerHTML = renderManual(data);
+  } else if (route.name === "admin") {
+    root.innerHTML = renderAdmin(data);
   }
 
   document.getElementById("btn-continue")?.addEventListener("click", (e) => {
@@ -184,7 +213,6 @@ async function main() {
   }
   const students = await loadStudents();
 
-  // Puerta de acceso: si no hay sesion, mostramos el login antes de la suite.
   if (!isLoggedIn()) {
     document.body.classList.add("logged-out");
     renderLogin(document.getElementById("app-root"), students, () => {
@@ -193,6 +221,7 @@ async function main() {
     });
     return;
   }
+  loadUser(readSession().userId);
   startSuite();
 }
 

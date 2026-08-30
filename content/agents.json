@@ -8,10 +8,10 @@
       "color": "#22D3EE",
       "section": "dashboard",
       "personality": "Cercana y motivadora. Te orienta sin abrumarte.",
-      "intro": "¡Hola! Soy Nova, tu anfitriona. No vienes a memorizar prompts: vienes a aprender a pensar con la IA y a verificar antes de usar.",
+      "intro": "¡Hola! Soy Nova. Este laboratorio es para Central de Ingenios. Empezamos por conocernos, luego la historia de la IA, y después tu ruta de módulos.",
       "tasks": [
-        "Escribe tu nombre arriba para personalizar tu avance.",
-        "Empieza por el Módulo 1 o prueba un Quiz rápido para calentar.",
+        "Completa «Conocernos» y acepta los límites de las cuentas gratis.",
+        "Sigue la ruta: Historia de la IA → fundamentos → tu tarea de CISA.",
         "Recuerda: tú decides y verificas; la IA solo propone."
       ]
     },

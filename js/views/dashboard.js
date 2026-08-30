@@ -2,6 +2,7 @@ import { getState, update, resetAll, exportState, importState } from "../store.j
 import { moduleProgress } from "./modules.js";
 import { escapeHtml, progressBar, toast, openModal, closeModal } from "../ui.js";
 import { sectionAgent } from "../agents.js";
+import { nextPathStep, assignedTask } from "../journey.js";
 
 export function globalPct(data) {
   const pcts = data.course.modules.map((m) => moduleProgress(data.modules[m.id]).pct);
@@ -11,8 +12,8 @@ export function globalPct(data) {
 export function renderDashboard(data) {
   const s = getState();
   const pct = globalPct(data);
-  const next = data.course.modules.find((m) => moduleProgress(data.modules[m.id]).pct < 100) || data.course.modules[0];
-  const nextFull = data.modules[next.id];
+  const step = nextPathStep(data);
+  const task = assignedTask(data);
   const badges = data.badges
     .map((b) => {
       const on = !!s.progress.badges[b.id];
@@ -20,10 +21,27 @@ export function renderDashboard(data) {
     })
     .join("");
 
+  const path = [
+    { ok: s.profile.introDone, href: "#/perfil", label: "1. Conocernos" },
+    { ok: s.progress.freeTiersAck, href: "#/cuentas", label: "2. Cuentas gratis" },
+    ...data.course.modules.map((m, i) => ({
+      ok: moduleProgress(data.modules[m.id]).complete,
+      href: `#/modulo/${m.id}/leccion/${data.modules[m.id].lessons[0].id}`,
+      label: `${i + 3}. ${m.number === 0 ? "Historia" : "M" + m.number + " " + m.title}`,
+    })),
+  ];
+
+  const pathHtml = path
+    .map(
+      (p, i) =>
+        `<a class="path-step ${p.ok ? "done" : i === path.findIndex((x) => !x.ok) ? "now" : ""}" href="${p.href}">${escapeHtml(p.label)}</a>`
+    )
+    .join("");
+
   return `
     <div class="page-head">
-      <h2>Laboratorio</h2>
-      <p>No memorices prompts. Aprende a pensar qué necesita saber la IA para resolver un problema de negocio — y a verificar el resultado antes de usarlo.</p>
+      <h2>Ruta del laboratorio</h2>
+      <p>Orden fijo: conocernos, cuentas gratis, historia de la IA, modulos. Los casos de practica son ficticios; no uses datos internos de tu empresa.</p>
     </div>
     ${sectionAgent(data, "dashboard")}
     <div class="grid grid-4" style="margin-bottom:20px">
@@ -32,57 +50,45 @@ export function renderDashboard(data) {
       <div class="card stat"><span class="value">${s.progress.totals.challengesCompleted}</span><span class="label">Retos</span></div>
       <div class="card stat"><span class="value">${s.progress.totals.xp}</span><span class="label">Puntos</span></div>
     </div>
-    <div class="grid grid-2">
-      <div class="card">
-        <h3>Continúa aquí</h3>
-        <p>Módulo ${next.number}: ${escapeHtml(next.title)}</p>
-        ${progressBar(moduleProgress(nextFull).pct)}
-        <div class="btn-row">
-          <a class="btn btn-primary" href="#/modulo/${next.id}/leccion/${nextFull.lessons[0].id}">Abrir módulo</a>
-        </div>
-      </div>
-      <div class="card">
-        <h3>Tu nombre en este equipo</h3>
-        <p>Se guarda solo en este navegador.</p>
-        <div class="field"><input id="display-name" placeholder="Nombre o alias" value="${escapeHtml(s.profile.displayName)}" /></div>
-        <button class="btn" type="button" id="save-name">Guardar</button>
+    <div class="card path-card">
+      <h3>Siguiente paso</h3>
+      <p><strong>${escapeHtml(step.title)}</strong></p>
+      <p>${escapeHtml(step.detail)}</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${step.href}">Continuar</a>
+        <a class="btn" href="#/manual">Manual de prompts</a>
       </div>
     </div>
-    <div class="card" style="margin-top:16px">
-      <h3>Metodología A.C.T.I.V.A.</h3>
-      <p>Analizar · Contextualizar · Transformar · Iterar · Verificar · Aplicar. Cada ejercicio ilumina una fase.</p>
-    </div>
+    <div class="path-rail">${pathHtml}</div>
     <div class="grid grid-2" style="margin-top:16px">
-      <div class="card">
-        <h3>🎮 Quiz rápido</h3>
-        <p>Repaso estilo concurso: responde contra el reloj y gana puntos por rapidez.</p>
-        <div class="btn-row"><a class="btn btn-primary" href="#/quiz">Jugar un quiz</a></div>
-      </div>
+      ${
+        task
+          ? `<div class="card">
+        <h3>Tu tarea de CISA</h3>
+        <p><strong>${escapeHtml(task.title)}</strong></p>
+        <p>${escapeHtml(task.deliverable)}</p>
+        <p class="muted">${escapeHtml(task.when)}</p>
+      </div>`
+          : `<div class="card"><h3>Tarea</h3><p>Completa Conocernos para ver tu práctica asignada.</p></div>`
+      }
       <div class="card">
         <h3>Insignias</h3>
         <div class="btn-row">${badges}</div>
+        <div class="btn-row" style="margin-top:12px"><a class="btn" href="#/quiz">Quiz de repaso</a></div>
       </div>
     </div>
   `;
 }
 
-export function bindDashboard() {
-  document.getElementById("save-name")?.addEventListener("click", () => {
-    const name = document.getElementById("display-name").value.trim();
-    update((s) => {
-      s.profile.displayName = name;
-    });
-    toast("Nombre guardado en este navegador.");
-    window.dispatchEvent(new Event("app:refresh"));
-  });
-}
+export function bindDashboard() {}
 
 export function renderProgress(data) {
   const s = getState();
   const rows = data.course.modules
     .map((m) => {
       const p = moduleProgress(data.modules[m.id]);
-      return `<div class="card"><h3>M${m.number} ${escapeHtml(m.title)}</h3>${progressBar(p.pct)}<p class="muted">Puntuación (último intento): ${p.avg}%</p></div>`;
+      const label = m.number === 0 ? "Inicio" : `M${m.number}`;
+      return `<div class="card"><h3>${label} ${escapeHtml(m.title)}</h3>${progressBar(p.pct)}<p class="muted">Puntuación (último intento): ${p.avg}%</p></div>`;
     })
     .join("");
   const badges = data.badges
@@ -101,7 +107,7 @@ export function renderProgress(data) {
     <div class="grid grid-2">${badges}</div>
     <div class="card" style="margin-top:20px">
       <h3>Tu avance en este navegador</h3>
-      <p>El progreso se guarda solo en este navegador. Si vas a cambiar de equipo, <strong>exporta</strong> tu avance y luego <strong>impórtalo</strong> en el otro.</p>
+      <p>El progreso se guarda por <strong>usuario</strong> en este navegador. Si cambias de equipo, exporta e importa.</p>
       <div class="btn-row">
         <button class="btn" type="button" id="btn-export">Exportar avance</button>
         <button class="btn" type="button" id="btn-import">Importar avance</button>
@@ -142,13 +148,11 @@ export function bindProgress(data) {
     reader.readAsText(file);
   });
   document.getElementById("btn-reset")?.addEventListener("click", () => {
-    openModal(`<h3>¿Reiniciar esta máquina?</h3><p>Se borra el progreso de este navegador. No afecta a otros alumnos.</p>
+    openModal(`<h3>¿Reiniciar esta máquina?</h3><p>Se borra el progreso de este usuario en este navegador. No afecta a otros.</p>
       <div class="btn-row"><button class="btn btn-danger" id="confirm-reset">Sí, reiniciar</button><button class="btn" id="cancel-reset">Cancelar</button></div>`);
     document.getElementById("confirm-reset").onclick = () => {
       resetAll();
       closeModal();
-      // Recarga limpia: reconstruye todo desde el estado vacio y evita
-      // que quede vista o estado cacheado con el progreso anterior.
       location.hash = "#/";
       location.reload();
     };

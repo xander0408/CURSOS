@@ -1,9 +1,13 @@
 import { allChallenges } from "../content.js";
 import { getState } from "../store.js";
 import { escapeHtml, pillForDifficulty } from "../ui.js";
+import { isModuleUnlocked } from "../journey.js";
 
 export function renderChallengesIndex(data, moduleFilter = "") {
-  const list = allChallenges(data).filter((c) => !moduleFilter || c.moduleId === moduleFilter);
+  const list = allChallenges(data).filter((c) => {
+    if (moduleFilter && c.moduleId !== moduleFilter) return false;
+    return isModuleUnlocked(data, c.moduleId);
+  });
   const opts = data.course.modules
     .map((m) => `<option value="${m.id}" ${moduleFilter === m.id ? "selected" : ""}>M${m.number} ${escapeHtml(m.title)}</option>`)
     .join("");

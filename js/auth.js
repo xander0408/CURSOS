@@ -1,9 +1,5 @@
-import { getState, update } from "./store.js";
+import { getState, update, loadUser, writeSession, clearSession, readSession } from "./store.js";
 import { escapeHtml } from "./ui.js";
-
-// Nota: en un sitio estatico esto es identificacion, no seguridad real.
-// La contraseña vive en students.json (visible en el codigo). Sirve para
-// que cada alumno entre con su sesion y personalice su progreso.
 
 let studentsData = null;
 
@@ -14,41 +10,59 @@ export async function loadStudents() {
     if (!res.ok) throw new Error();
     studentsData = await res.json();
   } catch {
-    studentsData = { students: [], accessPassword: "" };
+    studentsData = { students: [], instructor: null };
   }
   return studentsData;
 }
 
+export function accountsOf(data) {
+  const list = [...(data.students || [])];
+  if (data.instructor) list.push(data.instructor);
+  return list;
+}
+
 export function isLoggedIn() {
-  return !!getState().profile.loggedIn;
+  return !!readSession()?.userId;
 }
 
 function norm(s) {
   return String(s || "").trim().toLowerCase();
 }
 
-// Valida credenciales contra la lista. Devuelve el alumno o null.
-export function validate(data, emailOrName, password) {
-  const pass = data.accessPassword || "";
-  if (norm(password) !== norm(pass)) return null;
-  const q = norm(emailOrName);
-  return (
-    data.students.find((s) => norm(s.email) === q || norm(s.name) === q) || null
+export function validate(data, user, password) {
+  const q = norm(user);
+  const acc = accountsOf(data).find(
+    (s) => norm(s.username) === q || norm(s.email) === q || norm(s.name) === q
   );
+  if (!acc) return null;
+  if (String(password) !== String(acc.password)) return null;
+  return acc;
 }
 
-export function logout() {
+export function applyLogin(acc) {
+  loadUser(acc.username || acc.email);
+  writeSession({ userId: acc.username || acc.email, at: Date.now() });
   update((s) => {
-    s.profile.loggedIn = false;
+    s.profile.loggedIn = true;
+    s.profile.email = acc.email || "";
+    s.profile.username = acc.username || "";
+    s.profile.role = acc.role || "";
+    s.profile.displayName = acc.name || s.profile.displayName;
+    s.profile.isInstructor = !!acc.isInstructor;
+    if (acc.taskId) s.profile.assignedTaskId = acc.taskId;
+    if (acc.isInstructor) {
+      s.profile.introDone = true;
+      s.progress.freeTiersAck = true;
+      s.settings.instructorUnlocked = true;
+    }
   });
 }
 
-// Pantalla de acceso. Llama onSuccess() cuando el login es correcto.
-export function renderLogin(root, data, onSuccess) {
-  const options = data.students
-    .map((s) => `<option value="${escapeHtml(s.email)}">${escapeHtml(s.name)} — ${escapeHtml(s.role)}</option>`)
-    .join("");
+export function logout() {
+  clearSession();
+}
 
+export function renderLogin(root, data, onSuccess) {
   root.innerHTML = `
     <div class="login-screen">
       <div class="login-card">
@@ -57,40 +71,43 @@ export function renderLogin(root, data, onSuccess) {
         </div>
         <h1>AI Business Lab</h1>
         <p class="login-sub">Inteligencia Artificial Aplicada al Negocio</p>
-        <p class="login-org">${escapeHtml(data.org || "")} · ${escapeHtml(data.city || "")}</p>
+        <p class="login-org">${escapeHtml(data.city || "Curso in-company")}</p>
 
         <div class="field">
-          <label>Selecciona tu nombre</label>
-          <select id="login-user">
-            <option value="">— Elige de la lista —</option>
-            ${options}
-          </select>
+          <label>Usuario</label>
+          <input id="login-user" autocomplete="username" placeholder="Tu usuario (ej. gmejia)" />
         </div>
         <div class="field">
-          <label>Contraseña del curso</label>
-          <input id="login-pass" type="password" placeholder="Te la da el instructor" />
+          <label>Contraseña</label>
+          <input id="login-pass" type="password" autocomplete="current-password" placeholder="La que te dio el instructor" />
         </div>
         <button class="btn btn-primary login-btn" type="button" id="login-go">Entrar</button>
         <p class="login-msg" id="login-msg"></p>
-        <p class="login-foot">Tu progreso se guarda en este navegador. MagnaTic · Think Evolution.</p>
+        <p class="login-foot">Tu progreso se guarda en este navegador, separado por usuario.</p>
       </div>
     </div>
   `;
 
   const msg = document.getElementById("login-msg");
+  const userInput = document.getElementById("login-user");
+
   const go = () => {
-    const user = document.getElementById("login-user").value;
+    const user = userInput.value.trim();
     const pass = document.getElementById("login-pass").value;
-    if (!user) { msg.textContent = "Selecciona tu nombre de la lista."; return; }
-    if (!pass) { msg.textContent = "Escribe la contraseña del curso."; return; }
-    const student = validate(data, user, pass);
-    if (!student) { msg.textContent = "Contraseña incorrecta. Pídela al instructor."; return; }
-    update((s) => {
-      s.profile.loggedIn = true;
-      s.profile.email = student.email;
-      s.profile.role = student.role || "";
-      if (!s.profile.displayName) s.profile.displayName = student.name;
-    });
+    if (!user) {
+      msg.textContent = "Escribe o elige tu usuario.";
+      return;
+    }
+    if (!pass) {
+      msg.textContent = "Escribe tu contraseña.";
+      return;
+    }
+    const acc = validate(data, user, pass);
+    if (!acc) {
+      msg.textContent = "Usuario o contraseña incorrectos.";
+      return;
+    }
+    applyLogin(acc);
     onSuccess();
   };
 
@@ -98,4 +115,15 @@ export function renderLogin(root, data, onSuccess) {
   document.getElementById("login-pass").addEventListener("keydown", (e) => {
     if (e.key === "Enter") go();
   });
+}
+
+export function gateRedirect() {
+  const s = getState();
+  if (s.profile.isInstructor) return null;
+  const route = (location.hash || "#/").replace(/^#/, "") || "/";
+  const allowedIntro = route.startsWith("/perfil") || route.startsWith("/login");
+  const allowedFree = route.startsWith("/cuentas") || allowedIntro;
+  if (!s.profile.introDone && !allowedIntro) return "#/perfil";
+  if (s.profile.introDone && !s.progress.freeTiersAck && !allowedFree) return "#/cuentas";
+  return null;
 }

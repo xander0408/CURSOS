@@ -1,12 +1,12 @@
 // Estado y persistencia del laboratorio.
-// - Guarda en localStorage en cada cambio.
-// - Migra versiones antiguas sin perder el progreso del alumno.
-// - Las lecturas (readModule/readChallenge) NO mutan el estado.
-// - Si localStorage no esta disponible, la app sigue funcionando en memoria
-//   y expone storageWorks() para avisar al usuario.
+// - Una clave de sesión (quién está dentro).
+// - Un almacén por usuario (progreso de cada alumno en este navegador).
+// - Migra versiones antiguas sin perder avance.
 
-const KEY = "aiBusinessLab.v1";
-const SCHEMA_VERSION = 2;
+const SESSION_KEY = "aiBusinessLab.session";
+const LEGACY_KEY = "aiBusinessLab.v1";
+const KEY_PREFIX = "aiBusinessLab.user.";
+const SCHEMA_VERSION = 3;
 
 const emptyModule = () => ({
   status: "in_progress",
@@ -25,7 +25,18 @@ const emptyChallenge = () => ({
 
 const empty = () => ({
   version: SCHEMA_VERSION,
-  profile: { displayName: "", email: "", role: "", loggedIn: false, createdAt: Date.now() },
+  profile: {
+    displayName: "",
+    email: "",
+    username: "",
+    role: "",
+    loggedIn: false,
+    isInstructor: false,
+    introDone: false,
+    assignedTaskId: "",
+    knowUs: { years: "", pain: "", aiLevel: "", hope: "" },
+    createdAt: Date.now(),
+  },
   settings: { instructorUnlocked: false },
   progress: {
     modules: {},
@@ -46,17 +57,16 @@ const empty = () => ({
     badges: {},
     totals: { xp: 0, challengesCompleted: 0, modulesCompleted: 0 },
     labs: {},
+    freeTiersAck: false,
   },
 });
 
-// Combina el estado guardado con la forma vacia, para que si el esquema
-// crece (nuevas claves) el progreso viejo se conserve y solo se rellenen
-// las claves faltantes. Es una fusion superficial por seccion conocida.
 function migrate(saved) {
   const base = empty();
   if (!saved || typeof saved !== "object") return base;
 
   base.profile = { ...base.profile, ...(saved.profile || {}) };
+  if (!base.profile.knowUs) base.profile.knowUs = empty().profile.knowUs;
   base.settings = { ...base.settings, ...(saved.settings || {}) };
 
   const sp = saved.progress || {};
@@ -72,40 +82,74 @@ function migrate(saved) {
   p.badges = sp.badges || {};
   p.totals = { ...p.totals, ...(sp.totals || {}) };
   p.labs = sp.labs || {};
+  p.freeTiersAck = !!sp.freeTiersAck;
 
   base.version = SCHEMA_VERSION;
   return base;
 }
 
 let storageOk = true;
+let userId = "guest";
+let state = empty();
 
-function load() {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (!raw) return empty();
-    const data = JSON.parse(raw);
-    // Cualquier version se migra en vez de descartarse.
-    return migrate(data);
-  } catch {
-    storageOk = false;
-    return empty();
-  }
+function storageKey() {
+  return KEY_PREFIX + userId;
 }
 
-let state = load();
-
-function save() {
+function persist() {
   try {
-    localStorage.setItem(KEY, JSON.stringify(state));
+    localStorage.setItem(storageKey(), JSON.stringify(state));
     storageOk = true;
   } catch {
-    // Cuota llena o almacenamiento bloqueado (modo incognito estricto).
     storageOk = false;
   }
 }
 
-// Persistimos una vez al cargar para normalizar el esquema migrado.
-save();
+export function readSession() {
+  try {
+    return JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
+  } catch {
+    return null;
+  }
+}
+
+export function writeSession(sess) {
+  try {
+    localStorage.setItem(SESSION_KEY, JSON.stringify(sess));
+  } catch {
+    storageOk = false;
+  }
+}
+
+export function clearSession() {
+  try {
+    localStorage.removeItem(SESSION_KEY);
+  } catch {
+    /* ignorar */
+  }
+}
+
+export function loadUser(id) {
+  userId = id || "guest";
+  try {
+    const raw = localStorage.getItem(storageKey());
+    if (raw) {
+      state = migrate(JSON.parse(raw));
+    } else {
+      const legacy = localStorage.getItem(LEGACY_KEY);
+      if (legacy) {
+        state = migrate(JSON.parse(legacy));
+      } else {
+        state = empty();
+      }
+    }
+  } catch {
+    storageOk = false;
+    state = empty();
+  }
+  persist();
+  return state;
+}
 
 export function storageWorks() {
   return storageOk;
@@ -117,22 +161,31 @@ export function getState() {
 
 export function update(mutator) {
   mutator(state);
-  save();
+  persist();
   return state;
 }
 
 export function resetAll() {
+  const keep = {
+    displayName: state.profile.displayName,
+    email: state.profile.email,
+    username: state.profile.username,
+    role: state.profile.role,
+    isInstructor: state.profile.isInstructor,
+    assignedTaskId: state.profile.assignedTaskId,
+    loggedIn: true,
+  };
   state = empty();
-  try {
-    localStorage.removeItem(KEY);
-  } catch {
-    /* ignorar */
+  state.profile = { ...state.profile, ...keep, introDone: keep.isInstructor, createdAt: Date.now() };
+  if (keep.isInstructor) {
+    state.profile.introDone = true;
+    state.progress.freeTiersAck = true;
+    state.settings.instructorUnlocked = true;
   }
-  save();
+  persist();
   return state;
 }
 
-// --- Lecturas sin mutar (para render y calculos de progreso) ---
 export function readModule(id) {
   return state.progress.modules[id] || emptyModule();
 }
@@ -141,11 +194,10 @@ export function readChallenge(id) {
   return state.progress.challenges[id] || emptyChallenge();
 }
 
-// --- Accesos que SI crean/persisten la entrada (para escritura) ---
 export function getModule(id) {
   if (!state.progress.modules[id]) {
     state.progress.modules[id] = emptyModule();
-    save();
+    persist();
   }
   return state.progress.modules[id];
 }
@@ -153,7 +205,7 @@ export function getModule(id) {
 export function getChallenge(id) {
   if (!state.progress.challenges[id]) {
     state.progress.challenges[id] = emptyChallenge();
-    save();
+    persist();
   }
   return state.progress.challenges[id];
 }
@@ -197,14 +249,12 @@ export function recountChallenges() {
   });
 }
 
-// Exporta el estado como objeto (para descargar respaldo).
 export function exportState() {
   return JSON.parse(JSON.stringify(state));
 }
 
-// Importa un respaldo previamente exportado, migrandolo por seguridad.
 export function importState(obj) {
   state = migrate(obj);
-  save();
+  persist();
   return state;
 }

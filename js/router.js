@@ -24,6 +24,10 @@ export function parseHash() {
     return { name: "project", params: { step } };
   }
   if (head === "progreso") return { name: "progress", params: {} };
+  if (head === "perfil") return { name: "perfil", params: {} };
+  if (head === "cuentas") return { name: "cuentas", params: {} };
+  if (head === "manual") return { name: "manual", params: {} };
+  if (head === "admin") return { name: "admin", params: {} };
   return { name: "dashboard", params: {} };
 }
 

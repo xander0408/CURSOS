@@ -1,19 +1,26 @@
 {
   "course": "IA: Claude y ChatGPT — 16 horas",
-  "org": "Central de Ingenios",
+  "org": "Curso in-company",
   "city": "San Pedro Sula",
   "modality": "Presencial",
-  "accessPassword": "magnatic2026",
+  "instructor": {
+    "username": "instructor",
+    "email": "instructor@magnatic.com",
+    "name": "Instructor MagnaTic",
+    "role": "Facilitador del laboratorio",
+    "password": "MagnaTic#CISA26",
+    "isInstructor": true
+  },
   "students": [
-    { "email": "gmejia@cisahn.com", "name": "Gladys del Socorro Mejía Chacón", "role": "Gerente de Control de Calidad" },
-    { "email": "gcerrato@cisahn.com", "name": "Rita Gisele Cerrato Varela", "role": "Gerente de Recursos Humanos" },
-    { "email": "kescalante@cisahn.com", "name": "Kellyn Nazaria Escalante Andino", "role": "Sub-Gerente Regional" },
-    { "email": "dzaldivar@cisahn.com", "name": "Hernán Danilo Zaldívar Nolasco", "role": "Gerente General" },
-    { "email": "abaide@cisahn.com", "name": "Allan Fernando Baide Simon", "role": "Gerente de Ventas" },
-    { "email": "orodriguez@cisahn.com", "name": "Oscar Eduin Rodríguez Orellana", "role": "Gerente de Compras, Operaciones y Logística" },
-    { "email": "mlopez@cisahn.com", "name": "Miguel Antonio López Briones", "role": "Gerente de Auditoría" },
-    { "email": "gparedes@cisahn.com", "name": "Gerardo Enrique Paredes Lontero", "role": "Gerente de Producción" },
-    { "email": "mvega@cisahn.com", "name": "Marlon Mauricio Vega Rodríguez", "role": "Gerente de Sistemas de Información" },
-    { "email": "hdore@cisahn.com", "name": "Héctor Adolfo Dore Serrano", "role": "Jefe de Desarrollo Digital y Automatización" }
+    { "username": "gmejia", "email": "gmejia@cisahn.com", "name": "Gladys del Socorro Mejía Chacón", "role": "Gerente de Control de Calidad", "password": "Cisa26-Gladys!", "taskId": "calidad" },
+    { "username": "gcerrato", "email": "gcerrato@cisahn.com", "name": "Rita Gisele Cerrato Varela", "role": "Gerente de Recursos Humanos", "password": "Cisa26-Gisele!", "taskId": "rrhh" },
+    { "username": "kescalante", "email": "kescalante@cisahn.com", "name": "Kellyn Nazaria Escalante Andino", "role": "Sub-Gerente Regional", "password": "Cisa26-Kellyn!", "taskId": "regional" },
+    { "username": "dzaldivar", "email": "dzaldivar@cisahn.com", "name": "Hernán Danilo Zaldívar Nolasco", "role": "Gerente General", "password": "Cisa26-Danilo!", "taskId": "direccion" },
+    { "username": "abaide", "email": "abaide@cisahn.com", "name": "Allan Fernando Baide Simon", "role": "Gerente de Ventas", "password": "Cisa26-Allan!", "taskId": "ventas" },
+    { "username": "orodriguez", "email": "orodriguez@cisahn.com", "name": "Oscar Eduin Rodríguez Orellana", "role": "Gerente de Compras, Operaciones y Logística", "password": "Cisa26-Oscar!", "taskId": "compras" },
+    { "username": "mlopez", "email": "mlopez@cisahn.com", "name": "Miguel Antonio López Briones", "role": "Gerente de Auditoría", "password": "Cisa26-Miguel!", "taskId": "auditoria" },
+    { "username": "gparedes", "email": "gparedes@cisahn.com", "name": "Gerardo Enrique Paredes Lontero", "role": "Gerente de Producción", "password": "Cisa26-Gerardo!", "taskId": "produccion" },
+    { "username": "mvega", "email": "mvega@cisahn.com", "name": "Marlon Mauricio Vega Rodríguez", "role": "Gerente de Sistemas de Información", "password": "Cisa26-Marlon!", "taskId": "sistemas" },
+    { "username": "hdore", "email": "hdore@cisahn.com", "name": "Héctor Adolfo Dore Serrano", "role": "Jefe de Desarrollo Digital y Automatización", "password": "Cisa26-Hector!", "taskId": "digital" }
   ]
 }

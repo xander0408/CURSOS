@@ -1,7 +1,7 @@
 // Genera una presentacion .pptx extensa para alumnos de nivel basico.
 // Con narrativa, analogias y diseno (portada, separadores de seccion, cierres).
 // Sin dependencias externas: empaqueta un ZIP "stored" valido para PowerPoint.
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync } from "fs";
 import { crc32 as zcrc } from "zlib";
 
 // Marca MagnaTic
@@ -24,21 +24,85 @@ const MUTED = "9AA8C2";
 //  closing   : cierre
 const slides = [
   { kind: "cover", title: "AI Business Lab", subtitle: "Inteligencia Artificial Aplicada al Negocio",
-    foot: "ChatGPT y Claude · Curso de 16 horas (2 viernes)", brand: "MagnaTic · Think Evolution" },
+    foot: "16 horas · 2 viernes · cuentas gratuitas", brand: "MagnaTic · Think Evolution" },
 
-  { kind: "bullets", title: "Bienvenidos", lead: "Hoy empezamos un viaje practico.",
-    bullets: [
-      "No necesitas saber de tecnologia ni programar.",
-      "Vas a aprender a usar la IA como una herramienta de trabajo.",
-      "Todo con ejemplos reales de oficina.",
-      "Al final, resolveras un problema real de TU trabajo.",
+  { kind: "section", num: "A", title: "Cronograma del curso" },
+
+  { kind: "steps", title: "Viernes 1 (8 horas)", steps: [
+      "Apertura y conocernos (20 min): login, ChatGPT y Claude en otra pestana.",
+      "Historia de la IA + retos + quiz (incluye ML, deep learning y pioneros).",
+      "Fundamentos, como hablar con la IA, prompts y Word.",
+      "Cierre: exportar avance y caso de practica (datos ficticios).",
     ] },
 
-  { kind: "analogy", title: "Primero, tranquilos",
-    big: "La IA es como un asistente nuevo muy rapido...",
-    support: "...que sabe escribir y ordenar ideas, pero NO conoce tu empresa y a veces se equivoca con seguridad. Tu lo diriges y revisas su trabajo." },
+  { kind: "steps", title: "Viernes 2 (8 horas)", steps: [
+      "Excel (validar numeros) y PowerPoint (estructura, no cifras inventadas).",
+      "Analisis, productividad y comparador ChatGPT vs Claude.",
+      "Proyecto final: copiar el prompt de tu caso, pegar, verificar, ficha.",
+      "Cierre y constancia.",
+    ] },
 
-  { kind: "section", num: "1", title: "Que es la Inteligencia Artificial" },
+  { kind: "talk", title: "Ronda: conocernos (5 min)", prompt: "Nombre, cargo y UNA tarea que te quita tiempo esta semana.",
+    hint: "Sin datos de clientes, montos reales ni nombres de terceros. El instructor conecta con tu caso de practica (ficticio)." },
+
+  { kind: "bullets", title: "Para quien es este curso", lead: "Gerencias que usan correo, Word y Excel.",
+    bullets: [
+      "No necesitas programar.",
+      "Trabajamos con cuentas GRATIS de ChatGPT y Claude.",
+      "El laboratorio web ordena la practica; la IA vive en otra pestana.",
+      "Los casos son inventados (Planta Norte). No uses datos internos.",
+    ] },
+
+  { kind: "section", num: "0", title: "Historia de la IA" },
+
+  { kind: "talk", title: "Antes de fechas: tu imagen", prompt: "Cuando oyes inteligencia artificial, que ves?",
+    hint: "Robot, pelicula, Excel magico, ChatGPT. Todas valen. Luego las aterrizamos." },
+
+  { kind: "photo", title: "Linea de tiempo (referencia visual)", image: "ppt-assets/timeline.png" },
+
+  { kind: "bullets", title: "Nacimiento del campo", lead: "No empezo en 2022.",
+    bullets: [
+      "1950 — Alan Turing: el juego de imitacion (comportamiento).",
+      "1956 — Dartmouth: John McCarthy nombra inteligencia artificial.",
+      "Tambien: Minsky, Shannon, Newell, Simon, Samuel, Weizenbaum (ELIZA).",
+      "Luego inviernos: se prometio demasiado y se corto inversion.",
+    ] },
+
+  { kind: "photo", title: "Pioneros (referencia de aula)", image: "ppt-assets/pioneros.png" },
+
+  { kind: "photo", title: "Machine learning vs deep learning", image: "ppt-assets/ml-dl.png" },
+
+  { kind: "two", title: "Tres capas, tres usos",
+    leftH: "ML y deep learning", left: ["ML: aprende de ejemplos (fraude, pronostico).", "Deep learning: redes profundas (vision, voz).", "Hinton, LeCun, Bengio; 2012 ImageNet."],
+    rightH: "IA generativa", right: ["2017 transformers (Vaswani y equipo).", "2022 chats masivos (ChatGPT, luego Claude y otros).", "Genera texto; no firma ni es tu ERP."] },
+
+  { kind: "photo", title: "Mapa de herramientas actuales", image: "ppt-assets/ias-actuales.png" },
+
+  { kind: "bullets", title: "Que existe hoy (cambia de nombre, no de idea)",
+    bullets: [
+      "Chats: ChatGPT, Claude, Gemini, Copilot, Grok y similares.",
+      "Modelos abiertos: Llama, Mistral y variantes que una empresa puede hospedar.",
+      "IA clasica en el negocio: vision de linea, scoring, pronosticos.",
+      "Este curso practica dos: ChatGPT Free y Claude Free.",
+    ] },
+
+  { kind: "quote", quote: "La IA propone. Tu decides y verificas." },
+
+  { kind: "section", num: "1", title: "Cuentas gratis: hasta donde llegan" },
+
+  { kind: "two", title: "ChatGPT Free vs Claude Free (ago 2026)",
+    leftH: "ChatGPT Free", left: ["Texto de chat ilimitado (modelo Luna), con antiabuso.", "Archivos, imagenes y herramientas SI tienen tope.", "Puede haber anuncios. No es plan empresa."],
+    rightH: "Claude Free", right: ["Cupo de creditos cada 5 horas aproximadamente.", "Textos largos y modelos grandes gastan mas.", "Usa Claude para COMPARAR, no para 80 iteraciones." ] },
+
+  { kind: "bullets", title: "Plan de aula si se acaba el cupo", lead: "Nadie se queda parado.",
+    bullets: [
+      "Sigue en ChatGPT Free con el mismo prompt.",
+      "Anota: «Claude pendiente al reiniciar creditos».",
+      "No subas Excel pesados ni imagenes si no hace falta.",
+      "Nunca pegues contratos, nomina, claves o clientes reales.",
+    ] },
+
+  { kind: "section", num: "2", title: "Que es (y que no es) la IA" },
 
   { kind: "analogy", title: "En palabras simples",
     big: "La IA generativa predice la siguiente palabra.",
@@ -65,7 +129,7 @@ const slides = [
       "Secretos o informacion confidencial de la empresa.",
     ] },
 
-  { kind: "section", num: "2", title: "Sus limites: alucinaciones" },
+  { kind: "section", num: "3", title: "Sus limites: alucinaciones" },
 
   { kind: "analogy", title: "El riesgo numero uno",
     big: "A veces inventa con total seguridad.",
@@ -80,7 +144,7 @@ const slides = [
 
   { kind: "quote", quote: "La IA propone. Tu decides y verificas." },
 
-  { kind: "section", num: "3", title: "Como hablar con la IA" },
+  { kind: "section", num: "4", title: "Como hablar con la IA" },
 
   { kind: "analogy", title: "El secreto no es un truco",
     big: "Es darle CONTEXTO.",
@@ -94,7 +158,7 @@ const slides = [
       "Recien entonces, usalo (tras revisarlo).",
     ] },
 
-  { kind: "section", num: "4", title: "El framework de 5 piezas" },
+  { kind: "section", num: "5", title: "El framework de 5 piezas" },
 
   { kind: "steps", title: "Un buen pedido tiene 5 partes", steps: [
       "ROL: quien debe ser la IA (analista, redactor...).",
@@ -108,7 +172,7 @@ const slides = [
     leftH: "Pedido pobre", left: ["\"Hazme un correo para el cliente\"", "Resultado: generico, sirve de poco."],
     rightH: "Pedido con las 5 piezas", right: ["Rol + contexto + objetivo + formato + limites", "Resultado: util y casi listo para enviar."] },
 
-  { kind: "section", num: "5", title: "IA en tu dia a dia" },
+  { kind: "section", num: "6", title: "IA en tu dia a dia" },
 
   { kind: "two", title: "Word y Excel",
     leftH: "IA + Word", left: ["Borradores de correos e informes.", "Cambiar el tono del texto.", "Tu revisas datos y confidencialidad."],
@@ -126,11 +190,11 @@ const slides = [
       "Ordenar una decision: pros, contras y riesgos.",
     ] },
 
-  { kind: "section", num: "6", title: "El laboratorio" },
+  { kind: "section", num: "7", title: "El laboratorio" },
 
   { kind: "bullets", title: "Tu entorno de practica", lead: "Dentro del laboratorio tienes:",
     bullets: [
-      "Modulos: lecciones y retos con explicacion.",
+      "Ruta: Conocernos, cuentas gratis, Historia y modulos en orden.",
       "Quiz: repaso estilo concurso, contra el reloj.",
       "Prompt Lab: construye y guarda tus prompts.",
       "Comparador: mismo prompt en ChatGPT vs Claude.",
@@ -141,7 +205,7 @@ const slides = [
     big: "No hay un ganador universal.",
     support: "Usaras el mismo pedido en ambos y eliges cual te sirve mas EN CADA CASO. Aprendes a decidir por utilidad, no por marca." },
 
-  { kind: "section", num: "7", title: "Tu proyecto final" },
+  { kind: "section", num: "8", title: "Tu proyecto final" },
 
   { kind: "steps", title: "De un problema real a una solucion", steps: [
       "Elige una tarea de tu trabajo que te quita tiempo.",
@@ -153,7 +217,7 @@ const slides = [
 
   { kind: "bullets", title: "Como trabajaremos estos 2 viernes", lead: "16 horas en total:",
     bullets: [
-      "Viernes 1: fundamentos, como hablar con la IA, prompts y Word.",
+      "Viernes 1: historia, fundamentos, hablar con la IA, prompts y Word + tarea de cargo.",
       "Viernes 2: Excel, PowerPoint, analisis, productividad y proyecto.",
       "Cada tema: explicacion + practica + quiz de repaso.",
       "Siempre con ejemplos de tu entorno laboral.",
@@ -166,6 +230,9 @@ const slides = [
       "Verifica antes de usar cualquier resultado.",
       "Pregunta cuando tengas dudas: para eso estamos.",
     ] },
+
+  { kind: "talk", title: "Tu turno (90 segundos)", prompt: "Dile a tu vecino: que NO vas a pegar nunca en ChatGPT o Claude.",
+    hint: "Nómina, contratos, claves, clientes identificables, recetas o precios oficiales no publicados." },
 
   { kind: "quote", quote: "Empezamos. La IA no te reemplaza: te potencia." },
 
@@ -204,6 +271,11 @@ function sp(id, name, xIn, yIn, wIn, hIn, runs, { anchor = "t", fill = null, geo
   const ln = fill ? '<a:ln><a:noFill/></a:ln>' : "";
   return `<p:sp><p:nvSpPr><p:cNvPr id="${id}" name="${name}"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="${x}" y="${y}"/><a:ext cx="${w}" cy="${h}"/></a:xfrm><a:prstGeom prst="${prst}"><a:avLst/></a:prstGeom>${fillXml}${ln}</p:spPr><p:txBody><a:bodyPr wrap="square" anchor="${anchor}"><a:normAutofit/></a:bodyPr><a:lstStyle/>${body}</p:txBody></p:sp>`;
 }
+function picXml(id, rId, xIn, yIn, wIn, hIn) {
+  const x = Math.round(xIn * EMU), y = Math.round(yIn * EMU);
+  const w = Math.round(wIn * EMU), h = Math.round(hIn * EMU);
+  return `<p:pic><p:nvPicPr><p:cNvPr id="${id}" name="Picture ${id}"/><p:cNvPicPr><a:picLocks noChangeAspect="1"/></p:cNvPicPr><p:nvPr/></p:nvPicPr><p:blipFill><a:blip r:embed="${rId}"/><a:stretch><a:fillRect/></a:stretch></p:blipFill><p:spPr><a:xfrm><a:off x="${x}" y="${y}"/><a:ext cx="${w}" cy="${h}"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></p:spPr></p:pic>`;
+}
 
 function shapesFor(s) {
   const out = [];
@@ -241,6 +313,12 @@ function shapesFor(s) {
   bar();
   out.push(sp(id++, "title", 0.7, 0.5, 12, 1.0, [{ text: s.title, sz: 32, b: 1, color: WHITE }]));
 
+  if (s.kind === "photo") {
+    out.push(picXml(id++, "rId2", 0.75, 1.55, 11.8, 5.15));
+    footer();
+    return out.join("");
+  }
+
   if (s.kind === "bullets") {
     if (s.lead) out.push(sp(id++, "lead", 0.7, 1.55, 12, 0.6, [{ text: s.lead, sz: 20, i: 1, color: TEAL }]));
     const runs = s.bullets.map((b) => ({ text: b, sz: 20, color: WHITE, bullet: true, spcAfter: 600 }));
@@ -252,13 +330,18 @@ function shapesFor(s) {
     const runs = s.steps.map((t) => ({ text: t, sz: 20, color: WHITE, num: true, spcAfter: 700 }));
     out.push(sp(id++, "body", 0.9, 1.9, 11.5, 4.7, runs));
   } else if (s.kind === "two") {
-    // Dos tarjetas
     out.push(sp(id++, "lc", 0.7, 1.8, 5.85, 4.7, [], { fill: CARD, round: true }));
     out.push(sp(id++, "rc", 6.8, 1.8, 5.85, 4.7, [], { fill: CARD, round: true }));
     out.push(sp(id++, "lh", 1.0, 2.05, 5.3, 0.7, [{ text: s.leftH, sz: 22, b: 1, color: TEAL }]));
     out.push(sp(id++, "rh", 7.1, 2.05, 5.3, 0.7, [{ text: s.rightH, sz: 22, b: 1, color: GOLD }]));
     out.push(sp(id++, "lb", 1.0, 2.85, 5.3, 3.4, s.left.map((t) => ({ text: t, sz: 17, color: WHITE, bullet: true, spcAfter: 500 }))));
     out.push(sp(id++, "rb", 7.1, 2.85, 5.3, 3.4, s.right.map((t) => ({ text: t, sz: 17, color: WHITE, bullet: true, spcAfter: 500 }))));
+  } else if (s.kind === "talk") {
+    out.push(sp(id++, "pr", 0.8, 1.8, 11.7, 2.6, [{ text: s.prompt, sz: 28, b: 1, color: GOLD, align: "ctr" }], { anchor: "ctr" }));
+    out.push(sp(id++, "hi", 0.9, 4.6, 11.5, 1.8, [{ text: s.hint || "", sz: 18, color: WHITE, align: "ctr" }]));
+  } else if (s.kind === "timeline") {
+    const runs = (s.items || []).map((t) => ({ text: t, sz: 16, color: WHITE, bullet: true, spcAfter: 280 }));
+    out.push(sp(id++, "body", 0.8, 1.7, 11.7, 5.0, runs));
   }
   footer();
   return out.join("");
@@ -266,14 +349,15 @@ function shapesFor(s) {
 
 function slideXml(s) {
   const bg = `<p:bg><p:bgPr><a:solidFill><a:srgbClr val="${DARK}"/></a:solidFill><a:effectLst/></p:bgPr></p:bg>`;
+  const trans = `<p:transition spd="med" advClick="1"><p:fade/></p:transition>`;
   return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld>${bg}<p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>${shapesFor(s)}</p:spTree></p:cSld></p:sld>`;
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld>${bg}<p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>${shapesFor(s)}</p:spTree></p:cSld>${trans}</p:sld>`;
 }
 
 // ---------- Estructura del paquete ----------
 const files = {};
 files["[Content_Types].xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/><Override PartName="/ppt/slideMasters/slideMaster1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml"/><Override PartName="/ppt/slideLayouts/slideLayout1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml"/><Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/>${slides.map((_, i) => `<Override PartName="/ppt/slides/slide${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>`).join("")}</Types>`;
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="png" ContentType="image/png"/><Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/><Override PartName="/ppt/slideMasters/slideMaster1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml"/><Override PartName="/ppt/slideLayouts/slideLayout1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml"/><Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/>${slides.map((_, i) => `<Override PartName="/ppt/slides/slide${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>`).join("")}</Types>`;
 files["_rels/.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="ppt/presentation.xml"/></Relationships>`;
 const sldIdList = slides.map((_, i) => `<p:sldId id="${256 + i}" r:id="rId${i + 2}"/>`).join("");
@@ -298,8 +382,12 @@ files["ppt/slideLayouts/_rels/slideLayout1.xml.rels"] = `<?xml version="1.0" enc
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideMaster" Target="../slideMasters/slideMaster1.xml"/></Relationships>`;
 slides.forEach((s, i) => {
   files[`ppt/slides/slide${i + 1}.xml`] = slideXml(s);
+  const imgRel = s.image
+    ? `<Relationship Id="rId2" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="../media/img${i + 1}.png"/>`
+    : "";
   files[`ppt/slides/_rels/slide${i + 1}.xml.rels`] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/slideLayout1.xml"/></Relationships>`;
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/slideLayout" Target="../slideLayouts/slideLayout1.xml"/>${imgRel}</Relationships>`;
+  if (s.image) files[`ppt/media/img${i + 1}.png`] = readFileSync(s.image);
 });
 
 // ---------- Mini ZIP (store) ----------
@@ -308,7 +396,7 @@ function makeZip(fileMap) {
   let offset = 0; const time = 0, date = 0x21;
   for (const [name, content] of Object.entries(fileMap)) {
     const nameBuf = Buffer.from(name, "utf8");
-    const data = Buffer.from(content, "utf8");
+    const data = Buffer.isBuffer(content) ? content : Buffer.from(content, "utf8");
     const crc = zcrc(data) >>> 0; const size = data.length;
     const local = Buffer.alloc(30);
     local.writeUInt32LE(0x04034b50, 0); local.writeUInt16LE(20, 4); local.writeUInt16LE(0, 6);

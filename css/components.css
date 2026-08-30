@@ -116,7 +116,8 @@
   gap: 6px;
   margin: 16px 0 20px;
 }
-.activa button {
+.activa button,
+.activa > span {
   background: var(--bg-input);
   border: 1px solid var(--border);
   color: var(--text-muted);
@@ -124,8 +125,12 @@
   padding: 8px 4px;
   font-size: 11px;
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.activa button.on {
+.activa button.on,
+.activa > span.on {
   border-color: var(--accent);
   color: var(--accent);
   background: var(--accent-dim);
@@ -583,7 +588,8 @@
 .stat .value { position: relative; z-index: 1; }
 
 /* Realce del recorrido A.C.T.I.V.A. */
-.activa button.on {
+.activa button.on,
+.activa > span.on {
   box-shadow: 0 0 0 1px var(--accent), 0 6px 18px rgba(62, 224, 198, 0.18);
   transform: translateY(-1px);
 }
@@ -653,3 +659,28 @@
 .login-btn { width: 100%; margin-top: 8px; padding: 12px; font-size: 15px; }
 .login-msg { min-height: 18px; margin: 10px 0 0; color: var(--danger); font-size: 13px; }
 .login-foot { margin: 14px 0 0; color: var(--text-dim); font-size: 11px; }
+
+.nav-link.is-hidden { display: none !important; }
+
+.path-rail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 8px;
+}
+.path-step {
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  background: var(--bg-elevated);
+}
+.path-step.done { border-color: var(--ok); color: var(--ok); }
+.path-step.now { border-color: var(--accent); color: var(--accent); background: var(--accent-dim); }
+
+.cmp-bar-row { display: grid; grid-template-columns: 110px 1fr 24px; gap: 8px; align-items: center; margin: 6px 0; font-size: 12px; }
+.cmp-bar { height: 10px; background: var(--bg-input); border-radius: 99px; overflow: hidden; border: 1px solid var(--border); }
+.cmp-bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width 0.25s ease; }
+.data-table th, .data-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
+.data-table th { color: var(--text-muted); font-weight: 600; }

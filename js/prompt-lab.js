@@ -12,7 +12,7 @@ export function frameworkForm(values = {}, { reveal = false } = {}) {
   const assembled = assemblePrompt(v);
   const ready = Object.values(v).every((x) => String(x).trim().length > 8);
   return `
-    <p class="muted">No pegues un prompt entero todavía. Completa cada pieza: ¿qué necesita saber la IA?</p>
+    <p class="muted">Completa las piezas o pega un prompt listo. El boton Copiar arma el texto y lo deja en el portapapeles.</p>
     <div class="field"><label>Rol — ¿quién debe ser la IA?</label><textarea name="role" data-fw="role">${esc(v.role)}</textarea></div>
     <div class="field"><label>Contexto — ¿qué situación laboral hay?</label><textarea name="context" data-fw="context">${esc(v.context)}</textarea></div>
     <div class="field"><label>Objetivo — ¿qué debe lograr?</label><textarea name="objective" data-fw="objective">${esc(v.objective)}</textarea></div>
@@ -20,7 +20,7 @@ export function frameworkForm(values = {}, { reveal = false } = {}) {
     <div class="field"><label>Restricciones — ¿qué no debe hacer?</label><textarea name="constraints" data-fw="constraints">${esc(v.constraints)}</textarea></div>
     <div class="btn-row">
       <button class="btn" type="button" data-action="preview-prompt">Ver solicitud ensamblada</button>
-      <button class="btn btn-primary" type="button" data-action="copy-prompt" ${ready || reveal ? "" : "disabled"}>Copiar para ChatGPT / Claude</button>
+      <button class="btn btn-primary" type="button" data-action="copy-prompt">Copiar para ChatGPT / Claude</button>
     </div>
     <div class="prompt-preview ${reveal || ready ? "show" : ""}" data-assembled>${esc(assembled)}</div>
     <p class="muted">Ábrelo en otra pestaña. Esta plataforma no reemplaza a ChatGPT ni a Claude.</p>

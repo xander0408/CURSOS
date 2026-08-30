@@ -10,9 +10,9 @@ export const ACTIVA = [
 export function activaBar(activeIndex = 0) {
   return `<div class="activa" aria-label="Metodología A.C.T.I.V.A.">
     ${ACTIVA.map(
-      (s, i) => `<button type="button" class="${i === activeIndex ? "on" : ""}" tabindex="-1">
+      (s, i) => `<span class="${i === activeIndex ? "on" : ""}">
         <span class="letter">${s.letter}</span>${s.name}
-      </button>`
+      </span>`
     ).join("")}
   </div>`;
 }
@@ -51,12 +51,35 @@ export function closeModal() {
   document.getElementById("modal-back").classList.remove("show");
 }
 
-export async function copyText(text) {
+export function copyText(text) {
+  const t = String(text || "");
+  if (!t.trim()) {
+    toast("No hay texto para copiar. Completa el prompt o selecciona una plantilla.");
+    return false;
+  }
+  const done = () => toast("Copiado. Pegalo en ChatGPT o Claude.");
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(t).then(done).catch(() => fallbackCopy(t) && done());
+  }
+  if (fallbackCopy(t)) done();
+  else toast("Selecciona el texto del recuadro y copialo con Ctrl+C.");
+  return true;
+}
+
+function fallbackCopy(t) {
   try {
-    await navigator.clipboard.writeText(text);
-    toast("Copiado. Pégalo en ChatGPT o Claude.");
+    const ta = document.createElement("textarea");
+    ta.value = t;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.left = "-9999px";
+    document.body.appendChild(ta);
+    ta.select();
+    const ok = document.execCommand("copy");
+    ta.remove();
+    return ok;
   } catch {
-    toast("No se pudo copiar. Selecciona el texto manualmente.");
+    return false;
   }
 }
 

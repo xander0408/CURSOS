@@ -1,0 +1,41 @@
+{
+  "updated": "2026-08",
+  "disclaimer": "Los planes gratuitos cambian. Lo de abajo es una brújula para clase, no un contrato con OpenAI ni Anthropic. Si la pantalla de la herramienta dice otra cosa, gana lo que ves en tu cuenta.",
+  "chatgpt": {
+    "url": "https://chatgpt.com/",
+    "plan": "Gratuito (Free)",
+    "can": [
+      "Chats de texto ilimitados en el modelo gratuito por defecto (GPT-5.6 Luna, agosto 2026), con salvaguardas antiabuso.",
+      "Usar el laboratorio del curso: redactar, resumir, estructurar, iterar prompts.",
+      "Botón Think en algunos dispositivos: más tiempo de razonamiento en preguntas difíciles (puede estar limitado)."
+    ],
+    "cannotOrLimited": [
+      "Archivos, imágenes, voz y herramientas extra SÍ tienen tope. No cuentes con subir Excel grandes en cada ejercicio.",
+      "Almacenamiento de archivos en Free es reducido frente a planes de pago.",
+      "Pueden aparecer anuncios según el país.",
+      "No es un plan empresarial: no subas informacion confidencial de tu trabajo."
+    ],
+    "classTip": "Para el curso: prioriza pegar texto anónimo, no archivos pesados. Si se acaba una herramienta (imagen, análisis de datos), espera el reinicio o usa solo el chat de texto."
+  },
+  "claude": {
+    "url": "https://claude.ai/",
+    "plan": "Gratuito (Free)",
+    "can": [
+      "Chatear con modelos de Anthropic dentro de un cupo de creditos que se renueva cada 5 horas aproximadamente.",
+      "Tareas cortas de redacción, análisis y comparación — ideales para el comparador del laboratorio.",
+      "Artifacts básicos según lo que Anthropic habilite ese día."
+    ],
+    "cannotOrLimited": [
+      "El cupo se gasta más rápido con modelos grandes, textos largos o adjuntos. Opus consume más créditos que Sonnet o Haiku.",
+      "No esperes una sesión de 8 horas seguidas en Claude Free: raciona. Usa ChatGPT Free para el volumen y Claude para comparar entregables importantes.",
+      "El código agente / Claude Code no es el foco de este curso y en Free suele estar muy limitado."
+    ],
+    "classTip": "En el comparador: un prompt bien hecho, una vez en cada herramienta. No hagas 20 iteraciones en Claude el mismo bloque de 5 horas."
+  },
+  "classroomRules": [
+    "Crea las dos cuentas ANTES del primer viernes, con un correo que recuerdes.",
+    "Entra en ventana normal (no incógnito) para el laboratorio web.",
+    "Si Claude se queda sin créditos, continúa en ChatGPT y anota que Claude se probará al reiniciar el cupo.",
+    "Ninguna cuenta gratis conoce tu empresa: tu das el contexto anonimo."
+  ]
+}

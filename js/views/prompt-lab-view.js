@@ -31,13 +31,22 @@ export function bindPromptLab(data) {
       s.progress.promptLab.drafts = [fw];
     });
   };
-  root.querySelectorAll("[data-fw]").forEach((el) => el.addEventListener("input", saveDraft));
+  root.querySelectorAll("[data-fw]").forEach((el) =>
+    el.addEventListener("input", () => {
+      saveDraft();
+      const fw = readFramework(root);
+      const pre = root.querySelector("[data-assembled]");
+      if (pre) {
+        pre.textContent = assemblePrompt(fw);
+        pre.classList.add("show");
+      }
+    })
+  );
   root.querySelector("[data-action='preview-prompt']")?.addEventListener("click", () => {
     const fw = readFramework(root);
     const pre = root.querySelector("[data-assembled]");
     pre.textContent = assemblePrompt(fw);
     pre.classList.add("show");
-    root.querySelector("[data-action='copy-prompt']").disabled = !Object.values(fw).every((v) => v.trim().length > 8);
   });
   root.querySelector("[data-action='copy-prompt']")?.addEventListener("click", () => {
     copyText(assemblePrompt(readFramework(root)));

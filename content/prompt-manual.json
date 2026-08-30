@@ -1,0 +1,48 @@
+{
+  "title": "Manual de prompts del curso",
+  "subtitle": "Material de estudio: se construye y se usa en los dos viernes.",
+  "rule": "Un prompt no es un hechizo. Es un encargo de trabajo escrito con las 5 piezas: Rol, Contexto, Objetivo, Formato, Restricciones.",
+  "pieces": [
+    { "name": "Rol", "ask": "¿Quién debe ser la IA para este trabajo?", "example": "Eres un redactor interno de un ingenio azucarero hondureño." },
+    { "name": "Contexto", "ask": "¿Qué necesita saber, sin datos sensibles?", "example": "Hay una queja de un cliente industrial por un retraso de entrega (sin nombres ni montos reales)." },
+    { "name": "Objetivo", "ask": "¿Qué debe lograr el texto?", "example": "Borrador de respuesta empática con un próximo paso claro." },
+    { "name": "Formato", "ask": "¿Cómo debe verse?", "example": "Asunto + cuerpo de 120 palabras + 3 viñetas de seguimiento." },
+    { "name": "Restricciones", "ask": "¿Qué no debe hacer?", "example": "No inventes plazos, precios ni políticas que CISA no te dio. Si falta un dato, pregúntamelo." }
+  ],
+  "studyTrack": [
+    { "session": "Viernes 1", "items": ["Copiar la plantilla de 5 piezas en tu libretita o en el Prompt Lab.", "Hacer 3 versiones del mismo encargo: pobre / mejor / con restricción de verificación.", "Guardar en la biblioteca los 2 prompts que sí te sirvieron."] },
+    { "session": "Viernes 2", "items": ["Adaptar un prompt a Excel (pide la fórmula y el chequeo humano).", "Adaptar un prompt a una diapositiva (estructura, no cifras oficiales).", "Cerrar el proyecto final con UN prompt maestro de tu cargo en CISA."] }
+  ],
+  "templates": [
+    {
+      "id": "correo",
+      "name": "Correo profesional",
+      "body": "Rol: redactor de correspondencia formal en español de Honduras.\nContexto: [situación anónima].\nObjetivo: correo listo para que yo lo edite.\nFormato: asunto + saludo + 2 párrafos + cierre.\nRestricciones: no inventes datos; marca con [FALTA DATO] lo que no te di."
+    },
+    {
+      "id": "minuta",
+      "name": "Minuta de reunión",
+      "body": "Rol: secretario de acta.\nContexto: reunión de [área] sobre [tema], duración [X] min. Asistentes: cargos, no nombres reales.\nObjetivo: minuta accionable.\nFormato: acuerdos / responsables (cargo) / fecha / riesgos.\nRestricciones: no atribuyas frases textuales que no te dicté."
+    },
+    {
+      "id": "excel",
+      "name": "Fórmula con verificación",
+      "body": "Rol: analista de Excel.\nContexto: columna A cantidades, columna B precio unitario (ejemplo, no datos reales de CISA).\nObjetivo: fórmula de total y cómo la verifico a mano en 3 celdas.\nFormato: fórmula + pasos de comprobación.\nRestricciones: no asumas hojas que no describí."
+    },
+    {
+      "id": "ppt",
+      "name": "Estructura de presentación",
+      "body": "Rol: diseñador de narrativa para gerencia.\nContexto: 8 minutos para explicar [tema] a comité.\nObjetivo: esquema de 6 diapositivas.\nFormato: título de slide + 3 viñetas máximo c/u.\nRestricciones: deja [CIFRA OFICIAL] donde yo deba poner un número de CISA."
+    },
+    {
+      "id": "riesgos",
+      "name": "Mapa de riesgos",
+      "body": "Rol: analista de riesgos operativos.\nContexto: [proceso] en un ingenio, descrito de forma genérica.\nObjetivo: 8 riesgos y un control humano para cada uno.\nFormato: tabla.\nRestricciones: no cites leyes con número si no te las proporcioné."
+    }
+  ],
+  "cisaReminders": [
+    "Usa un caso equivalente (planta, oficina, cliente Alfa). Nunca contratos, nomina o clientes reales.",
+    "Calidad, logistica, ventas y auditoria son buenos contextos genericos.",
+    "Si un resultado incluye una norma, una ley o un precio: verificalo fuera del chat."
+  ]
+}

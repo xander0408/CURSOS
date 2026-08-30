@@ -5,6 +5,7 @@ import { ficheText } from "../rubric.js";
 import { escapeHtml, copyText, toast } from "../ui.js";
 import { checkBadges } from "../badges.js";
 import { completeModule } from "../store.js";
+import { assignedTask } from "../journey.js";
 import { sectionAgent } from "../agents.js";
 
 const STEPS = [
@@ -25,15 +26,26 @@ const STEPS = [
 export function renderProject(data, step = 0) {
   const i = Math.max(0, Math.min(STEPS.length - 1, Number(step) || 0));
   const s = STEPS[i];
-  const fields = getState().progress.project.fields || {};
+  const fields = { ...(getState().progress.project.fields || {}) };
+  const task = assignedTask(data);
+  if (task) {
+    if (!fields.problem) fields.problem = task.problem || task.deliverable;
+    if (!fields.prompt && task.pastePrompt) fields.prompt = task.pastePrompt;
+  }
   const nav = STEPS.map(
     (st, idx) => `<a class="${idx === i ? "on" : ""}" href="#/proyecto/${idx}">${idx + 1}</a>`
   ).join("");
 
   const body =
     s.id === "prompt"
-      ? frameworkForm(fields.framework || {})
-      : `<div class="field"><label>${escapeHtml(s.prompt)}</label><textarea id="proj-field">${escapeHtml(fields[s.field] || "")}</textarea></div>`;
+      ? `${task?.pastePrompt ? `<p class="muted">Prompt listo de tu caso. Copialo, pégalo en ChatGPT y en Claude, y ajusta si hace falta.</p>
+         <pre class="prompt-preview show" id="proj-ready-prompt">${escapeHtml(task.pastePrompt)}</pre>
+         <button class="btn btn-primary" type="button" id="copy-task-prompt">Copiar prompt del caso</button>` : ""}
+         ${frameworkForm(fields.framework || {})}`
+      : `<div class="field"><label>${escapeHtml(s.prompt)}</label><textarea id="proj-field">${escapeHtml(fields[s.field] || "")}</textarea></div>
+         ${i === 0 && task?.pastePrompt ? `<p class="muted">Tambien puedes copiar el prompt completo de tu caso:</p>
+         <pre class="prompt-preview show">${escapeHtml(task.pastePrompt)}</pre>
+         <button class="btn" type="button" id="copy-task-prompt">Copiar prompt del caso</button>` : ""}`;
 
   const fiche = i === STEPS.length - 1 ? renderFiche(fields) : "";
 
@@ -129,5 +141,10 @@ export function bindProject(data, step = 0) {
     fields.savings = document.getElementById("savings")?.value || fields.savings;
     fields.risks = document.getElementById("risks")?.value || fields.risks;
     copyText(ficheText({ ...fields, prompt: fields.prompt || assemblePrompt(fields.framework || {}) }));
+  });
+  document.getElementById("copy-task-prompt")?.addEventListener("click", () => {
+    const task = assignedTask(data);
+    const box = document.getElementById("proj-ready-prompt");
+    copyText(box?.innerText || task?.pastePrompt || "");
   });
 }

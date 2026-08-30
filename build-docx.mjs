@@ -79,7 +79,7 @@ const doc = [
   { b: "Proyecto final: 12 pasos guiados hasta la ficha." },
 
   { h2: "5. Paso a paso por sesión" },
-  { p: "El curso son 2 viernes de 8 horas cada uno. Cada jornada incluye una pausa de comida (~1 h) y dos pausas cortas (~15 min). Tiempo efectivo por día: ~6 h 30 min. Los tiempos son sugeridos; ajústalos al ritmo del grupo." },
+  { p: "El curso son 2 viernes de 8 horas cada uno. Cada jornada incluye una pausa de comida (cerca de 1 h) y dos pausas cortas (cerca de 15 min). Tiempo efectivo por día: cerca de 6 h 30 min. Los tiempos son sugeridos; ajústalos al ritmo del grupo." },
 
   { h3: "Viernes 1 — Fundamentos, conversación, prompts y Word (Módulos 1 a 4)" },
   { p: [["Apertura (20 min): ", 1], ["entren al laboratorio, ChatGPT y Claude abiertos, escriban su nombre. Explica la regla de oro y la de privacidad.", 0]] },
@@ -87,7 +87,7 @@ const doc = [
   { p: [["Bloque 2 — Módulo 2 (75 min): ", 1], ["dar contexto e iterar. Ejercicio en vivo mejorando un pedido pobre. Retos + Quiz 2.", 0]] },
   { p: [["Pausa corta (15 min).", 1]] },
   { p: [["Bloque 3 — Módulo 3: Prompts (90 min): ", 1], ["el corazón del curso. Framework de 5 piezas hasta memorizarlo. Prompt maestro en el Prompt Lab. Retos + Quiz 3.", 0]] },
-  { p: [["Pausa de comida (~60 min).", 1]] },
+  { p: [["Pausa de comida (cerca de 60 min).", 1]] },
   { p: [["Bloque 4 — Módulo 4: Word (90 min): ", 1], ["tipos de documento, tono y revisión humana. Práctica con caso anonimizado. Retos + Quiz 4.", 0]] },
   { p: [["Cierre del día 1 (25 min): ", 1], ["compartir una tarea real. Recuérdales exportar su avance por si el día 2 usan otro equipo.", 0]] },
 
@@ -97,7 +97,7 @@ const doc = [
   { p: [["Bloque 2 — Módulo 6: PowerPoint (70 min): ", 1], ["estructura + storytelling + guion. Convertir un texto largo en diapositivas. Retos + Quiz 6.", 0]] },
   { p: [["Pausa corta (15 min).", 1]] },
   { p: [["Bloque 3 — Módulo 7: Análisis (70 min): ", 1], ["resumir, comparar, verificar fuentes. Reto \"Caza las alucinaciones\" en grupo. Retos + Quiz 7.", 0]] },
-  { p: [["Pausa de comida (~60 min).", 1]] },
+  { p: [["Pausa de comida (cerca de 60 min).", 1]] },
   { p: [["Bloque 4 — Módulo 8: Productividad (50 min): ", 1], ["correos, minutas, decisiones asistidas. Retos + Quiz 8.", 0]] },
   { p: [["Bloque 5 — Módulo 9: Proyecto final (110 min): ", 1], ["cada alumno elige un problema real y recorre los 12 pasos hasta generar su ficha.", 0]] },
   { p: [["Cierre del curso (30 min): ", 1], ["presentaciones de fichas, Reto final \"AI Business Master\" y entrega de constancias.", 0]] },

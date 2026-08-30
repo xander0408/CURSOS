@@ -1,6 +1,6 @@
 // Genera varios documentos Word (.docx) del curso, sin dependencias externas.
 // Motor Open XML reutilizable + mini-zip "stored".
-import { writeFileSync } from "fs";
+import { writeFileSync, readFileSync, mkdirSync } from "fs";
 import { crc32 as zcrc } from "zlib";
 
 const TEAL = "16C6AD";
@@ -134,17 +134,20 @@ const manual = [
   { title: "Manual del Alumno — AI Business Lab" },
   { pi: "Guía rápida para usar el laboratorio. MagnaTic · Think Evolution." },
   { h2: "1. Cómo entrar" },
-  { b: "Abre el enlace que te comparta el instructor: https://xander0408.github.io/CURSOS/" },
-  { b: "Úsalo en una ventana normal del navegador (no en modo incógnito), para que se guarde tu avance." },
-  { b: "En el Dashboard, escribe tu nombre y guárdalo." },
+  { b: "Abre el enlace del instructor e inicia sesión con TU usuario y contraseña (no las compartas en voz alta)." },
+  { b: "Úsalo en una ventana normal (no incógnito), para que se guarde tu avance." },
+  { b: "Sigue el orden: Conocernos → Cuentas gratis → Historia de la IA → módulos." },
   { h2: "2. Antes de empezar, ten abiertas dos pestañas más" },
   { b: "ChatGPT: chat.openai.com (cuenta gratuita)." },
   { b: "Claude: claude.ai (cuenta gratuita)." },
   { p: "El laboratorio NO reemplaza a ChatGPT ni a Claude: es donde aprendes el método y practicas. La IA real la usas en esas pestañas." },
   { h2: "3. Qué hay en el menú" },
   { table: { head: ["Sección", "Para qué sirve"], rows: [
-    ["Dashboard", "Tu progreso general y accesos rápidos."],
-    ["Módulos", "Las 9 lecciones con sus retos."],
+    ["Ruta", "Orden del curso y tu siguiente paso."],
+    ["Conocernos", "Quién eres en CISA y tu tarea asignada."],
+    ["Cuentas gratis", "Hasta dónde llegan ChatGPT y Claude Free."],
+    ["Módulos", "Historia de la IA + 9 laboratorios con retos."],
+    ["Manual prompts", "Plantillas de 5 piezas para estudiar y copiar."],
     ["Quiz", "Repaso estilo concurso, contra el reloj."],
     ["Prompt Lab", "Construir prompts con el framework y guardarlos."],
     ["Comparador", "Mismo prompt en ChatGPT vs Claude."],
@@ -236,4 +239,69 @@ writeDocx("Manual-del-Alumno.docx", manual);
 writeDocx("Reglas-del-Laboratorio.docx", reglas);
 writeDocx("Ficha-Proyecto-Final.docx", ficha);
 writeDocx("Constancia-Participacion.docx", certificado);
-console.log("4 documentos generados.");
+
+writeDocx("Prerrequisitos.docx", [
+  { title: "Prerrequisitos del curso" },
+  { pi: "AI Business Lab — 16 horas. MagnaTic." },
+  { h2: "Alumno" },
+  { b: "Cuenta gratuita de ChatGPT y de Claude, creadas antes del primer viernes." },
+  { b: "Computadora con Chrome, Edge o Firefox. No uses modo incognito." },
+  { b: "Word, Excel y PowerPoint (o equivalentes)." },
+  { b: "Usuario y contrasena del laboratorio (te las da el instructor en privado)." },
+  { b: "Una tarea de tu cargo que te quite tiempo, descrita sin datos internos." },
+  { h2: "Instructor" },
+  { b: "Proyector, PPT actualizada, enlace del laboratorio probado." },
+  { b: "Credenciales impresas o enviadas en privado." },
+  { b: "Plan B si Claude se queda sin creditos: continuar en ChatGPT." },
+]);
+
+writeDocx("Cuentas-gratis.docx", [
+  { title: "Cuentas gratuitas: hasta donde llegan" },
+  { pi: "Orientacion de aula. Si la herramienta muestra otro aviso, gana lo que ves en pantalla. Agosto 2026." },
+  { h2: "ChatGPT Free" },
+  { p: "Chats de texto ilimitados en el modelo gratuito por defecto, con salvaguardas antiabuso. Archivos, imagenes y herramientas extra tienen tope. No es un plan empresarial." },
+  { h2: "Claude Free" },
+  { p: "Cupo de creditos que se renueva cada 5 horas aproximadamente. Textos largos gastan mas. Usa Claude para comparar entregables, no para 80 iteraciones seguidas." },
+  { h2: "En clase" },
+  { b: "Pega texto anonimo, no archivos pesados." },
+  { b: "Si se acaba Claude, sigue en ChatGPT con el mismo prompt." },
+]);
+
+writeDocx("Manual-de-Prompts.docx", [
+  { title: "Manual de prompts" },
+  { p: "Un prompt es un encargo de trabajo, no un hechizo. Cinco piezas: Rol, Contexto, Objetivo, Formato, Restricciones." },
+  { h2: "Como se usa en clase" },
+  { b: "Copia el prompt de tu caso (Conocernos o Proyecto final)." },
+  { b: "Pégalo en ChatGPT y luego el mismo texto en Claude." },
+  { b: "Verifica cifras y normas fuera del chat." },
+]);
+
+const roster = JSON.parse(readFileSync("content/students.json", "utf8"));
+const tasksFile = JSON.parse(readFileSync("content/tasks.json", "utf8"));
+mkdirSync("proyectos", { recursive: true });
+for (const st of roster.students) {
+  const task = tasksFile.items.find((t) => t.id === st.taskId);
+  if (!task) continue;
+  const body = [
+    { title: "Proyecto final — caso de practica" },
+    { pi: st.name + " · " + st.role },
+    { h2: "Como usarlo" },
+    { p: "Copia el prompt de abajo, pégalo en ChatGPT, luego el mismo texto en Claude. Los datos son ficticios (Planta Norte). No sustituyas con informacion real de tu empresa." },
+    { h2: "Problema de partida" },
+    { p: task.problem },
+    { h2: "Entregable" },
+    { p: task.deliverable },
+    { h2: "Cuando en el cronograma" },
+    { p: task.when },
+    { h2: "Prompt para copiar y pegar" },
+    ...String(task.pastePrompt || "").split("\n").map((line) => (line.trim() ? { p: line } : { spacer: 40 })),
+  ];
+  const fname = "proyectos/" + st.username + "-proyecto-final.docx";
+  writeDocx(fname, body);
+}
+writeDocx("Credenciales-Instructor.docx", [
+  { title: "Credenciales (solo instructor — no proyectar)" },
+  { p: "Admin: usuario instructor. Contrasena y PIN estan en CREDENCIALES-INSTRUCTOR.md." },
+  { table: { head: ["Nombre", "Usuario", "Contrasena"], rows: roster.students.map((s) => [s.name, s.username, s.password]) } },
+]);
+console.log("Documentos del curso y proyectos por alumno generados.");

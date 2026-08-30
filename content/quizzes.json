@@ -1,6 +1,46 @@
 {
   "quizzes": [
     {
+      "id": "q0",
+      "moduleId": "m0",
+      "title": "Historia de la IA",
+      "subtitle": "Línea de tiempo y mito vs realidad",
+      "icon": "📜",
+      "seconds": 20,
+      "questions": [
+        {
+          "q": "El campo llamado «inteligencia artificial» se bautizó principalmente en…",
+          "options": ["2022 con ChatGPT", "1956 en Dartmouth", "Cuando nació internet", "Con el primer Excel"],
+          "correct": 1,
+          "explain": "Dartmouth 1956. ChatGPT popularizó el chat mucho después."
+        },
+        {
+          "q": "Un modelo de lenguaje como ChatGPT o Claude, en la practica de oficina, es…",
+          "options": ["Un empleado experto dentro de un servidor", "Un predictor de texto plausible que no conoce solo los procedimientos internos", "El ERP", "Una fuente legal oficial"],
+          "correct": 1,
+          "explain": "Predice texto. El contexto de tu trabajo lo aporta la persona, sin datos sensibles."
+        },
+        {
+          "q": "¿Qué son los «inviernos de la IA»?",
+          "options": ["Temporadas de zafra", "Épocas en que el hype superó los resultados y se cortó inversión", "Un modelo de Anthropic", "Cursos de 16 horas"],
+          "correct": 1,
+          "explain": "Ciclos de promesas excesivas y decepción. Sirve para no comprar magia."
+        },
+        {
+          "q": "Los transformers (2017) importan porque…",
+          "options": ["Reemplazaron a los gerentes", "Son la arquitectura base de los chats actuales de lenguaje", "Son un tipo de azúcar", "Solo sirven para robots de planta"],
+          "correct": 1,
+          "explain": "Arquitectura de modelos de lenguaje; no sustituyen al criterio humano."
+        },
+        {
+          "q": "El uso responsable de un chat de IA en el trabajo empieza por…",
+          "options": ["Pegar contratos y nomina para que entienda", "Anonimizar el caso y verificar cifras fuera del chat", "Creer toda norma que cite el modelo", "Dejar que firme el primer borrador"],
+          "correct": 1,
+          "explain": "Privacidad + verificación. La historia del hype enseña exactamente eso."
+        }
+      ]
+    },
+    {
       "id": "q1",
       "moduleId": "m1",
       "title": "Fundamentos de IA generativa",

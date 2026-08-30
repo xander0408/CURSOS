@@ -3,6 +3,7 @@ import { escapeHtml, toast } from "../ui.js";
 import { scoreAnswer, maxScore, rank } from "../quiz-engine.js";
 import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
+import { isModuleUnlocked } from "../journey.js";
 
 // Estilo Kahoot: colores y formas fijas para hasta 4 opciones.
 const SHAPES = [
@@ -30,7 +31,9 @@ export function renderQuizIndex(data) {
       const total = maxScore(qz);
       const pct = b ? Math.round((b.score / total) * 100) : 0;
       const badge = b ? `<span class="pill ok">Mejor: ${b.score} pts · ${pct}%</span>` : `<span class="pill">Sin jugar</span>`;
-      return `<a class="card clickable quiz-card" href="#/quiz/${qz.id}" style="text-decoration:none;color:inherit">
+      const open = !qz.moduleId || isModuleUnlocked(data, qz.moduleId);
+      const href = open ? `#/quiz/${qz.id}` : "#/quiz";
+      return `<a class="card clickable quiz-card ${open ? "" : "soon"}" href="${href}" style="text-decoration:none;color:inherit">
         <div class="quiz-card-top"><span class="quiz-icon">${qz.icon || "❓"}</span>${badge}</div>
         <h3>${escapeHtml(qz.title)}</h3>
         <p>${escapeHtml(qz.subtitle || "")}</p>
@@ -52,6 +55,9 @@ export function renderQuizIndex(data) {
 export function renderQuizPlay(data, quizId) {
   const quiz = data.quizzes.find((q) => q.id === quizId);
   if (!quiz) return `<div class="page-head"><h2>Quiz no encontrado</h2><p><a href="#/quiz">Volver</a></p></div>`;
+  if (quiz.moduleId && !isModuleUnlocked(data, quiz.moduleId)) {
+    return `<div class="page-head"><h2>Quiz bloqueado</h2><p>Completa el módulo correspondiente primero.</p><p><a href="#/quiz">Volver</a></p></div>`;
+  }
   return `<div id="quiz-stage" class="quiz-stage"></div>`;
 }
 

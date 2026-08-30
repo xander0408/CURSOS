@@ -9,8 +9,9 @@ export function renderLibrary(data) {
         <h3>${escapeHtml(t.title)}</h3>
         <p class="muted">${escapeHtml(t.useWhen)}</p>
         <p>${escapeHtml(t.hint)}</p>
+        <pre class="prompt-preview show">${escapeHtml(t.text)}</pre>
         <div class="btn-row">
-          <button class="btn" type="button" data-copy-id="${t.id}">Copiar plantilla</button>
+          <button class="btn btn-primary" type="button" data-copy-id="${t.id}">Copiar plantilla</button>
           <button class="btn" type="button" data-save-id="${t.id}">Guardar</button>
         </div>
       </div>`
@@ -29,7 +30,7 @@ export function renderLibrary(data) {
   return `
     <div class="page-head">
       <h2>Biblioteca de prompts</h2>
-      <p>Plantillas reutilizables, no recetas mágicas. Adapta contexto y restricciones a tu empresa.</p>
+      <p>Plantillas listas para copiar y pegar. Cambia solo los datos entre corchetes. No uses informacion real de tu empresa.</p>
     </div>
     <h3>Del curso</h3>
     <div class="grid grid-2">${seeds}</div>

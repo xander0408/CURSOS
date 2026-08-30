@@ -1,12 +1,15 @@
 {
   "title": "AI Business Lab",
   "subtitle": "Inteligencia Artificial Aplicada al Negocio",
+  "orgShort": "Curso",
   "hours": 16,
   "sessions": 2,
   "sessionLabel": "2 viernes de 8 horas",
+  "orgUrl": "",
   "framework": ["Rol", "Contexto", "Objetivo", "Formato", "Restricciones"],
   "activa": ["Analizar", "Contextualizar", "Transformar", "Iterar", "Verificar", "Aplicar"],
   "modules": [
+    { "id": "m0", "number": 0, "title": "Historia de la IA", "subtitle": "De Turing a ChatGPT, en lenguaje de negocio", "day": 1 },
     { "id": "m1", "number": 1, "title": "Fundamentos de IA generativa", "subtitle": "Qué es, qué no es, y cuándo no debes confiar", "day": 1 },
     { "id": "m2", "number": 2, "title": "Cómo hablar con una IA", "subtitle": "Contexto, objetivo, tono y conversación iterativa", "day": 1 },
     { "id": "m3", "number": 3, "title": "Ingeniería de prompts", "subtitle": "Framework, tipos y biblioteca reutilizable", "day": 1 },
