@@ -1,28 +1,85 @@
 {
+  "intro": "No hay ganador mundial. ChatGPT suele ir más directo y listo para copiar; Claude suele ser más cauto, hace preguntas y marca lo que falta. Tú eliges según el caso.",
   "cases": [
     {
       "id": "cmp-email",
       "title": "Correo difícil a un cliente molesto",
-      "brief": "Un cliente reclama un retraso en la entrega. Necesitas una respuesta empática, profesional y que no prometa nada que no puedas cumplir. Sin datos personales reales.",
-      "prompt": "Rol: Eres un ejecutivo de atención al cliente con tono empático y profesional.\n\nContexto: Un cliente reclama por un retraso de 3 días en una entrega. Está molesto pero es un cliente valioso de larga data. No podemos ofrecer reembolso, pero sí un descuento del 10% en la próxima compra.\n\nObjetivo: Redacta un correo de respuesta que reconozca la molestia, explique brevemente sin excusas largas, ofrezca el descuento y proponga un siguiente paso concreto.\n\nFormato: Correo de máximo 150 palabras, con asunto sugerido.\n\nRestricciones: No inventes causas del retraso ni políticas nuevas. No prometas fechas exactas que no confirmé. Tono cálido pero directo."
+      "brief": "Cliente industrial Alfa, 3 días de retraso. Puedes ofrecer 10% en la próxima compra, no reembolso. Sin datos reales.",
+      "prompt": "Rol: Eres un ejecutivo de atención al cliente con tono empático y profesional.\n\nContexto: Un cliente reclama por un retraso de 3 días en una entrega. Está molesto pero es un cliente valioso de larga data. No podemos ofrecer reembolso, pero sí un descuento del 10% en la próxima compra.\n\nObjetivo: Redacta un correo de respuesta que reconozca la molestia, explique brevemente sin excusas largas, ofrezca el descuento y proponga un siguiente paso concreto.\n\nFormato: Correo de máximo 150 palabras, con asunto sugerido.\n\nRestricciones: No inventes causas del retraso ni políticas nuevas. No prometas fechas exactas que no confirmé. Tono cálido pero directo.",
+      "samples": {
+        "chatgpt": {
+          "label": "Estilo típico ChatGPT",
+          "read": "Más listo para enviar: asunto, disculpa corta y el 10%. Riesgo: suena a plantilla y casi promete «resolver de inmediato».",
+          "scores": { "clarity": 5, "precision": 4, "structure": 5, "creativity": 3, "utility": 5, "compliance": 4 },
+          "text": "Asunto: Seguimiento a tu entrega — disculpas y un siguiente paso\n\nEstimado equipo de Alfa:\n\nLamentamos el retraso de tres días. Entendemos la molestia: dependían de ese despacho.\n\nEstamos revisando la causa con operaciones; no adelantaré un motivo que aún no está cerrado. Como gesto, aplicamos 10% de descuento en tu próxima compra (no aplica reembolso de este pedido).\n\nSiguiente paso: el lunes te escribe tu ejecutivo de cuenta con el estatus, sin inventar una fecha de llegada.\n\nQuedamos atentos.\nAtentamente,\nAtención a clientes — Planta Norte"
+        },
+        "claude": {
+          "label": "Estilo típico Claude",
+          "read": "Más cauto: pide confirmar el 10% y no firma un lunes. Mejor para no inventar; a veces demasiado largo para un correo.",
+          "scores": { "clarity": 4, "precision": 5, "structure": 4, "creativity": 3, "utility": 4, "compliance": 5 },
+          "text": "Asunto: Respuesta a tu reclamo por retraso (borrador para tu revisión)\n\nHola. Antes de que lo envíes, dos avisos: (1) no conozco la causa real del retraso, así que no la inventé; (2) el 10% en la próxima compra solo debe ir si tu política interna lo permite.\n\nBorrador:\nEstimados, reconocemos el atraso de tres días y la interrupción que eso genera. No corresponde un reembolso de este pedido. Si autorizas el beneficio, podemos ofrecer 10% en la siguiente compra. No prometo una fecha de entrega nueva porque no me la diste.\n\n¿Confirmas el nombre del ejecutivo que hará el seguimiento y si el 10% ya está aprobado? Con eso acorto el texto a 120 palabras."
+        }
+      }
     },
     {
       "id": "cmp-summary",
-      "title": "Resumen de una reunión larga",
-      "brief": "Tienes notas desordenadas de una reunión de una hora. Necesitas un resumen accionable con acuerdos y responsables.",
-      "prompt": "Rol: Eres un asistente de dirección experto en síntesis de reuniones.\n\nContexto: Te pego notas crudas y desordenadas de una reunión de equipo de una hora (yo pegaré el texto a continuación).\n\nObjetivo: Producir un resumen ejecutivo con tres secciones: (1) Decisiones tomadas, (2) Tareas con responsable y fecha si aparece, (3) Temas pendientes sin resolver.\n\nFormato: Viñetas cortas. Si un dato no está en las notas, escribe \"no especificado\" en lugar de inventarlo.\n\nRestricciones: No agregues acuerdos que no estén en el texto. No inventes nombres ni fechas."
+      "title": "Resumen de una reunión de patio",
+      "brief": "Notas crudas de 45 min: camiones, calidad y un acuerdo a medias. El alumno pega notas anónimas o usa el ejemplo.",
+      "prompt": "Rol: Eres un asistente de dirección experto en síntesis de reuniones.\n\nContexto: Reunión de patio Planta Norte, 45 minutos. Notas: camiones hicieron fila 2 h; calidad retuvo un lote por humedad; se habló de un radio extra el jueves (no quedó claro quién paga); ventas pidió priorizar cliente Alfa.\n\nObjetivo: Resumen con (1) Decisiones, (2) Tareas con responsable-cargo y fecha si aparece, (3) Pendientes sin inventar.\n\nFormato: Viñetas. Si falta un dato: «no especificado».\n\nRestricciones: No agregues acuerdos que no estén en las notas. No inventes nombres de personas.",
+      "samples": {
+        "chatgpt": {
+          "label": "Estilo típico ChatGPT",
+          "read": "Tabla clara y accionable. Riesgo: a veces convierte un «se habló» en decisión cerrada.",
+          "scores": { "clarity": 5, "precision": 3, "structure": 5, "creativity": 2, "utility": 5, "compliance": 3 },
+          "text": "1) Decisiones\n- Priorizar despachos del cliente Alfa.\n- Calidad retiene el lote húmedo hasta nuevo muestreo.\n- Se asigna radio extra el jueves (logística).\n\n2) Tareas\n- Patio: reducir fila de camiones — no especificado cómo.\n- Calidad: nuevo muestreo — no especificado cuándo.\n- Logística: radio jueves — responsable no especificado.\n\n3) Pendientes\n- Quién paga el radio.\n- Causa de la fila de 2 h."
+        },
+        "claude": {
+          "label": "Estilo típico Claude",
+          "read": "Separa lo decidido de lo apenas mencionado. Más honesto; menos «listo para el acta» si el jefe quiere certeza falsa.",
+          "scores": { "clarity": 4, "precision": 5, "structure": 4, "creativity": 2, "utility": 4, "compliance": 5 },
+          "text": "1) Decisiones (solo lo que las notas cierran)\n- Calidad: el lote por humedad queda retenido.\n- Ventas pidió prioridad Alfa; las notas no dicen que patio lo haya aceptado como acuerdo formal.\n\n2) Tareas\n- Radio extra el jueves: se habló, no hay responsable ni quién paga → no especificado.\n- Fila de 2 h: problema descrito, sin dueño ni fecha.\n\n3) Pendientes explícitos\n- Confirmar si prioridad Alfa es instrucción o deseo de ventas.\n- Presupuesto del radio.\n- Plan para la fila (no está en las notas: no lo invento)."
+        }
+      }
     },
     {
-      "id": "cmp-explain",
-      "title": "Explicar un concepto a un equipo no técnico",
-      "brief": "Debes explicar qué es una 'API' a un equipo de ventas en lenguaje sencillo, con una analogía.",
-      "prompt": "Rol: Eres un formador que explica tecnología a personas de negocio sin jerga.\n\nContexto: Un equipo de ventas necesita entender qué es una API para hablar con clientes, sin volverse programadores.\n\nObjetivo: Explicar qué es una API, para qué sirve en un negocio, y por qué importa, usando una analogía cotidiana.\n\nFormato: Máximo 200 palabras, una analogía, y una frase de cierre que puedan repetir a un cliente.\n\nRestricciones: Nada de código. Evita términos como 'endpoint' o 'JSON' sin explicarlos."
+      "id": "cmp-excel",
+      "title": "Fórmula Excel y cómo verificarla",
+      "brief": "Cantidad × precio en ejemplo de 6 filas. El número lo comprueba el humano.",
+      "prompt": "Rol: Analista de Excel que explica a un mando no experto.\n\nContexto: Columna A cantidades, B precio unitario, filas 2 a 7 (ejemplo, no datos reales). Quiero total en C y copia hacia abajo.\n\nObjetivo: Fórmula + cómo verifico a mano 3 celdas + un error típico si hay texto mezclado.\n\nFormato: 1) fórmula 2) qué hace 3) tres pasos de comprobación 4) error típico.\n\nRestricciones: No asumas otras hojas ni macros.",
+      "samples": {
+        "chatgpt": {
+          "label": "Estilo típico ChatGPT",
+          "read": "Va al grano: =A2*B2 y listo. Útil en clase. A veces se salta el chequeo de texto en la columna.",
+          "scores": { "clarity": 5, "precision": 4, "structure": 4, "creativity": 2, "utility": 5, "compliance": 4 },
+          "text": "1) En C2: =A2*B2  Luego arrastra hasta C7.\n2) Multiplica cantidad por precio de esa fila.\n3) Comprobación: elige C3, C5 y C7; multiplica A×B con calculadora; deben coincidir al céntimo.\n4) Error típico: si A2 dice «12 und» Excel puede devolver 0 o #VALUE! Limpia a número puro."
+        },
+        "claude": {
+          "label": "Estilo típico Claude",
+          "read": "Insiste en tipos de dato, redondeo y que la IA no vio tu archivo. Más lento de leer; más seguro para no confiar a ciegas.",
+          "scores": { "clarity": 4, "precision": 5, "structure": 5, "creativity": 2, "utility": 4, "compliance": 5 },
+          "text": "1) =A2*B2 en C2 (o =A2*B2 si B es moneda con 2 decimales; no uses separador de miles dentro de la celda).\n2) Producto por fila; no suma el rango todavía.\n3) Verificación humana: (a) 3 filas a mano (b) SUM(C2:C7) vs sumar productos en papel (c) si no cuadra, busca celdas alineadas a la izquierda (texto).\n4) No vi tu libro: si hay hoja «oficial» o tabla, esta fórmula no la conoce. No copies un total de un chat a un reporte de planta sin esa prueba."
+        }
+      }
     },
     {
-      "id": "cmp-ideas",
-      "title": "Lluvia de ideas para una campaña",
-      "brief": "Necesitas 8 ideas de campaña para el lanzamiento de un producto local, con criterio de bajo presupuesto.",
-      "prompt": "Rol: Eres un estratega de marketing creativo y realista con presupuestos ajustados.\n\nContexto: Lanzamos un producto nuevo (una app de gestión para pequeños comercios) con presupuesto limitado y un equipo de 3 personas.\n\nObjetivo: Proponer 8 ideas de campaña de bajo costo, cada una con el canal sugerido y el esfuerzo estimado (bajo/medio/alto).\n\nFormato: Tabla con columnas Idea | Canal | Esfuerzo | Por qué funcionaría.\n\nRestricciones: Nada que requiera presupuesto grande de medios pagados. Prioriza ideas ejecutables en 2 semanas."
+      "id": "cmp-ppt",
+      "title": "Ocho minutos a comité (estructura)",
+      "brief": "Retraso de despacho. Cifras oficiales van entre corchetes. El alumno rellena después.",
+      "prompt": "Rol: Diseñador de narrativa para gerencia.\n\nContexto: 8 minutos para explicar un retraso de despacho a comité. Sin cifras oficiales en el chat.\n\nObjetivo: 6 diapositivas y una línea de lo que dice el expositor en cada una.\n\nFormato: título + máximo 3 viñetas + línea de guion.\n\nRestricciones: Donde vaya un número escribe [CIFRA OFICIAL]. No inventes benchmarking ni leyes.",
+      "samples": {
+        "chatgpt": {
+          "label": "Estilo típico ChatGPT",
+          "read": "Arco clásico de 6 slides, fácil de copiar a PowerPoint. A veces las viñetas son genéricas («mejorar la comunicación»).",
+          "scores": { "clarity": 5, "precision": 3, "structure": 5, "creativity": 4, "utility": 4, "compliance": 4 },
+          "text": "1. El problema en una frase — Viñetas: retraso / impacto en cliente Alfa / hoy no debatimos culpables. Guion: «Venimos a acordar un control, no a narrar anécdotas.»\n2. Qué pasó (hechos) — [CIFRA OFICIAL] horas de fila; lote retenido. Guion: solo hechos de patio.\n3. Qué no sabemos aún — causa raíz no cerrada. Guion: no rellenes el hueco con hipótesis.\n4. Impacto — cliente y patio. Guion: [CIFRA OFICIAL] pedidos tocados.\n5. Plan de 14 días — dueño por cargo. Guion: tres acciones, no diez.\n6. Pedido al comité — una decisión. Guion: sí/no al radio extra y al muestreo."
+        },
+        "claude": {
+          "label": "Estilo típico Claude",
+          "read": "Menos «show» y más riesgos de reputación si presentas cifras del chat. Mejor para el cierre ético; menos brillantes las diapos.",
+          "scores": { "clarity": 4, "precision": 5, "structure": 4, "creativity": 3, "utility": 4, "compliance": 5 },
+          "text": "Estructura de 6 slides (sin inventar números):\n1) Pregunta del comité: ¿volvemos a despachar con control o seguimos apagando incendios?\n2) Hechos que sí están en el encargo (retraso, retención humedad). Todo lo demás: [CIFRA OFICIAL] o «lo trae operaciones».\n3) Lo que un slide NO debe hacer: ranking de plantas ni «el estándar de la industria».\n4) Opciones (máx. 2) con dueño-cargo, no nombres.\n5) Riesgo de esta presentación: que alguien copie un porcentaje del chat. Márcalo en rojo en tu PPT real.\n6) Cierre: una decisión y quién verifica el lunes.\nGuion global: si no tienes el número, di «lo confirmo fuera de esta sala»."
+        }
+      }
     }
   ]
 }

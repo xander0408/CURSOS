@@ -38,7 +38,7 @@ export function renderModule(data, params) {
   if (!full) return `<div class="page-head"><h2>Módulo no encontrado</h2></div>`;
   if (!isModuleUnlocked(data, params.moduleId)) {
     return `<div class="page-head"><h2>Sigue el orden del curso</h2>
-      <p>Este módulo se abre cuando termines las lecciones del anterior (los retos del anterior siguen disponibles). El instructor puede desbloquear todo con su cuenta.</p>
+      <p>Este módulo se abre al terminar las lecciones del anterior. Quiz, comparador y actividades no te encierran en Conocernos. El instructor puede abrir todos los módulos.</p>
       <p><a class="btn btn-primary" href="#/">Ver mi ruta</a></p></div>`;
   }
   const kind = params.kind === "reto" ? "reto" : "leccion";

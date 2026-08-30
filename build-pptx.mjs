@@ -172,6 +172,47 @@ const slides = [
     leftH: "Pedido pobre", left: ["\"Hazme un correo para el cliente\"", "Resultado: generico, sirve de poco."],
     rightH: "Pedido con las 5 piezas", right: ["Rol + contexto + objetivo + formato + limites", "Resultado: util y casi listo para enviar."] },
 
+  { kind: "talk", title: "Tu turno (2 min): dicta las 5 piezas", prompt: "En voz alta, con tu vecino: un correo de retraso SIN datos reales. Dile las 5 piezas.",
+    hint: "Cliente Alfa, Planta Norte, 3 dias. Prohibido montos y nombres de personas." },
+
+  { kind: "section", num: "M", title: "Metodologia A.C.T.I.V.A." },
+
+  { kind: "steps", title: "El orden que usamos en el laboratorio", steps: [
+      "Analizar: cual es el problema de negocio (no el prompt).",
+      "Contextualizar: datos suficientes y permitidos.",
+      "Transformar: convertir eso en una solicitud clara (5 piezas).",
+      "Iterar: pedir ajustes; no te quedes con el primer borrador.",
+      "Verificar: hechos, riesgos, cifras fuera del chat.",
+      "Aplicar: un humano responsable envia o usa el resultado.",
+    ] },
+
+  { kind: "talk", title: "Reto en sala: ordena los 6 pasos", prompt: "Sin mirar el portal: escriban A-C-T-I-V-A en un papel. Luego confirmen en el reto de flechas.",
+    hint: "Si las flechas no mueven, recarga con Ctrl+F5. Hay que pulsar Continuar en cada leccion para abrir el siguiente modulo." },
+
+  { kind: "section", num: "C", title: "Casos de aula (Planta Norte)" },
+
+  { kind: "two", title: "Caso 1 — Queja de cliente industrial",
+    leftH: "Situacion (ficticia)", left: ["Cliente Alfa: retraso de 3 dias.", "Hay 10% en proxima compra; no hay reembolso.", "No conoces la causa raiz todavia."],
+    rightH: "Que hace el alumno", right: ["Copia el prompt del Comparador o del Manual.", "Misma letra en ChatGPT y en Claude.", "Marca en rojo lo que un humano debe autorizar."] },
+
+  { kind: "talk", title: "Practica 8 minutos", prompt: "Mitad de la sala: ChatGPT. Mitad: Claude. Luego 60 segundos: que NO se debe enviar tal cual?",
+    hint: "Fechas inventadas, tono de plantilla, el 10% si no esta aprobado, nombres reales." },
+
+  { kind: "two", title: "Caso 2 — Minuta de patio (45 min)",
+    leftH: "Notas sucias", left: ["Fila de camiones 2 h.", "Lote retenido por humedad.", "Radio extra el jueves: no se sabe quien paga."],
+    rightH: "Criterio", right: ["Decision vs 'se hablo'.", "Responsable = cargo, no persona.", "Si falta dato: «no especificado»."] },
+
+  { kind: "talk", title: "Levanten la mano", prompt: "Quien convirtio un 'se hablo' en un acuerdo cerrado? Eso es el error caro.",
+    hint: "Claude suele marcar el hueco. ChatGPT suele dejar el acta 'bonita'. Ninguno es el jefe de patio." },
+
+  { kind: "two", title: "Caso 3 — Excel de juguete",
+    leftH: "Encargo", left: ["A = cantidad, B = precio, C = A*B.", "6 filas inventadas.", "Comprobar 3 celdas a mano."],
+    rightH: "Participacion", right: ["Un voluntario dicta la formula.", "Otro busca una celda con texto.", "Nadie pega el libro real de la empresa."] },
+
+  { kind: "two", title: "Caso 4 — Ocho minutos a comite",
+    leftH: "6 diapositivas", left: ["Hechos / huecos / pedido al comite.", "[CIFRA OFICIAL] donde va un numero.", "Maximo 3 vinetas por slide."],
+    rightH: "En sala", right: ["Parejas: una arma estructura, otra el guion.", "3 minutos. Luego 1 pareja presenta 60 s.", "El resto caza una cifra inventada."] },
+
   { kind: "section", num: "6", title: "IA en tu dia a dia" },
 
   { kind: "two", title: "Word y Excel",
@@ -203,7 +244,14 @@ const slides = [
 
   { kind: "analogy", title: "ChatGPT vs Claude",
     big: "No hay un ganador universal.",
-    support: "Usaras el mismo pedido en ambos y eliges cual te sirve mas EN CADA CASO. Aprendes a decidir por utilidad, no por marca." },
+    support: "ChatGPT: suele ir mas directo y copiable. Claude: suele ser mas cauto y senala lo que falta. En el Comparador cargas ejemplos distintos o pegas tus respuestas reales." },
+
+  { kind: "two", title: "Que observar (objetivo, no hinchada)",
+    leftH: "ChatGPT, en la practica de oficina", left: ["Asunto + cuerpo listos.", "Listas y tablas rapidas.", "Riesgo: plantilla y promesas de mas."],
+    rightH: "Claude, en la practica de oficina", right: ["Preguntas de aclaracion.", "«No especificado» en vez de inventar.", "Riesgo: texto largo para un correo corto."] },
+
+  { kind: "talk", title: "Votacion en sala", prompt: "Este caso de queja: quien envia el de ChatGPT? Quien el de Claude? Quien mezcla ambos?",
+    hint: "No hay nota. Hay criterio. Guardan la eleccion en el Comparador con un por que de negocio." },
 
   { kind: "section", num: "8", title: "Tu proyecto final" },
 
@@ -215,12 +263,12 @@ const slides = [
       "Genera tu ficha con el tiempo que ahorras.",
     ] },
 
-  { kind: "bullets", title: "Como trabajaremos estos 2 viernes", lead: "16 horas en total:",
+  { kind: "bullets", title: "Como trabajaremos estos 2 viernes", lead: "16 horas: menos teoria suelta, mas casos.",
     bullets: [
-      "Viernes 1: historia, fundamentos, hablar con la IA, prompts y Word + tarea de cargo.",
-      "Viernes 2: Excel, PowerPoint, analisis, productividad y proyecto.",
-      "Cada tema: explicacion + practica + quiz de repaso.",
-      "Siempre con ejemplos de tu entorno laboral.",
+      "Viernes 1: conocernos, cuentas, historia, A.C.T.I.V.A., prompts, Word, misiones marcables.",
+      "Viernes 2: Excel con chequeo, PPT a comite, comparador con ejemplos reales, proyecto.",
+      "Cada bloque: 1 caso Planta Norte + tu cargo (anonimo) + quiz o actividad.",
+      "El cronograma detallado lo maneja solo el instructor; tu sigues Ruta y Actividades.",
     ] },
 
   { kind: "bullets", title: "Reglas del laboratorio", lead: "Para trabajar seguros:",
@@ -231,8 +279,11 @@ const slides = [
       "Pregunta cuando tengas dudas: para eso estamos.",
     ] },
 
-  { kind: "talk", title: "Tu turno (90 segundos)", prompt: "Dile a tu vecino: que NO vas a pegar nunca en ChatGPT o Claude.",
-    hint: "Nómina, contratos, claves, clientes identificables, recetas o precios oficiales no publicados." },
+  { kind: "talk", title: "Cierre del dia (90 segundos)", prompt: "Dile a tu vecino: que NO vas a pegar nunca en ChatGPT o Claude.",
+    hint: "Nomina, contratos, claves, clientes identificables, recetas o precios oficiales no publicados." },
+
+  { kind: "talk", title: "Compromiso (escribir en el chat interno o en papel)", prompt: "Una tarea de tu semana que haras con las 5 piezas el lunes.",
+    hint: "Sin datos internos. Si no se te ocurre, usa el caso Alfa / patio / Excel de juguete." },
 
   { kind: "quote", quote: "Empezamos. La IA no te reemplaza: te potencia." },
 

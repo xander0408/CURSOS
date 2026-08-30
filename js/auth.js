@@ -121,14 +121,8 @@ export function renderLogin(root, data, onSuccess) {
 
 export function gateRedirect() {
   const s = getState();
-  if (s.profile.isInstructor) return null;
   const route = (location.hash || "#/").replace(/^#/, "") || "/";
-  if (route.startsWith("/cronograma") || route.startsWith("/actividades") || route.startsWith("/manual")) {
-    return null;
-  }
-  const allowedIntro = route.startsWith("/perfil") || route.startsWith("/login");
-  const allowedFree = route.startsWith("/cuentas") || allowedIntro;
-  if (!s.profile.introDone && !allowedIntro) return "#/perfil";
-  if (s.profile.introDone && !s.progress.freeTiersAck && !allowedFree) return "#/cuentas";
+  if (s.profile.isInstructor) return null;
+  if (route.startsWith("/cronograma") || route.startsWith("/admin")) return "#/";
   return null;
 }

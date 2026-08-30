@@ -15,8 +15,6 @@ export function isPrivileged() {
 
 export function isModuleUnlocked(data, moduleId) {
   if (isPrivileged()) return true;
-  const s = getState();
-  if (!s.profile.introDone || !s.progress.freeTiersAck) return false;
   const mods = data.course.modules;
   const idx = mods.findIndex((m) => m.id === moduleId);
   if (idx <= 0) return true;

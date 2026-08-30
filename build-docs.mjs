@@ -136,7 +136,7 @@ const manual = [
   { h2: "1. Cómo entrar" },
   { b: "Abre el enlace del instructor e inicia sesión con TU usuario y contraseña (no las compartas en voz alta)." },
   { b: "Úsalo en una ventana normal (no incógnito), para que se guarde tu avance." },
-  { b: "Sigue el orden: Conocernos → Cuentas gratis → Historia de la IA → módulos." },
+  { b: "El orden recomendado es Conocernos → Cuentas → Historia. El menú no te encierra: puedes abrir quiz, módulos y comparador." },
   { h2: "2. Antes de empezar, ten abiertas dos pestañas más" },
   { b: "ChatGPT: chat.openai.com (cuenta gratuita)." },
   { b: "Claude: claude.ai (cuenta gratuita)." },
@@ -144,11 +144,13 @@ const manual = [
   { h2: "3. Qué hay en el menú" },
   { table: { head: ["Sección", "Para qué sirve"], rows: [
     ["Ruta", "Orden del curso y tu siguiente paso."],
-    ["Conocernos", "Quién eres en CISA y tu tarea asignada."],
+    ["Conocernos", "Quién eres y tu caso de práctica (ficticio). No bloquea el resto del menú."],
     ["Cuentas gratis", "Hasta dónde llegan ChatGPT y Claude Free."],
-    ["Módulos", "Historia de la IA + 9 laboratorios con retos."],
-    ["Manual prompts", "Plantillas de 5 piezas para estudiar y copiar."],
-    ["Quiz", "Repaso estilo concurso, contra el reloj."],
+    ["Módulos", "Historia de la IA + laboratorios. El siguiente se abre al terminar las lecciones del anterior."],
+    ["Actividades", "Misiones cortas para no quedarte parado."],
+    ["Manual prompts", "Casos de uso reales para copiar y pegar."],
+    ["Quiz / Retos", "Repaso y ejercicios. Entra aunque no hayas cerrado Conocernos."],
+    ["Comparador", "Mismo prompt; ejemplos típicos distintos o tus pegados reales."],
     ["Prompt Lab", "Construir prompts con el framework y guardarlos."],
     ["Comparador", "Mismo prompt en ChatGPT vs Claude."],
     ["Biblioteca", "Plantillas de prompts reutilizables."],
@@ -268,12 +270,17 @@ writeDocx("Cuentas-gratis.docx", [
 ]);
 
 writeDocx("Manual-de-Prompts.docx", [
-  { title: "Manual de prompts" },
+  { title: "Manual de prompts — casos de uso" },
   { p: "Un prompt es un encargo de trabajo, no un hechizo. Cinco piezas: Rol, Contexto, Objetivo, Formato, Restricciones." },
+  { h2: "Casos para copiar (anonimos)" },
+  { b: "Correo de queja: cliente Alfa, 3 dias, 10% proxima compra, sin reembolso, sin inventar causa." },
+  { b: "Minuta de patio: fila de camiones, lote humedo, radio del jueves sin dueno." },
+  { b: "Excel: =A2*B2 y tres celdas a mano. Si hay texto, Excel falla." },
+  { b: "PPT a comite: 6 slides, [CIFRA OFICIAL], maximo 3 vinetas." },
   { h2: "Como se usa en clase" },
-  { b: "Copia el prompt de tu caso (Conocernos o Proyecto final)." },
-  { b: "Pégalo en ChatGPT y luego el mismo texto en Claude." },
-  { b: "Verifica cifras y normas fuera del chat." },
+  { b: "Copia del laboratorio (Manual o Comparador), pega en ChatGPT y el mismo texto en Claude." },
+  { b: "ChatGPT suele ir mas listo para enviar; Claude suele marcar huecos. Tu eliges por el caso." },
+  { b: "Verifica cifras y normas fuera del chat. Plantillas largas: menu Manual prompts." },
 ]);
 
 const roster = JSON.parse(readFileSync("content/students.json", "utf8"));

@@ -58,7 +58,7 @@ export function renderDashboard(data) {
         <a class="btn btn-primary" href="${step.href}">Continuar</a>
         <a class="btn" href="#/manual">Manual de prompts</a>
         <a class="btn" href="#/actividades">Actividades</a>
-        <a class="btn" href="#/cronograma">Cronograma</a>
+        ${getState().profile.isInstructor ? `<a class="btn" href="#/cronograma">Cronograma</a>` : ""}
       </div>
     </div>
     <div class="path-rail">${pathHtml}</div>

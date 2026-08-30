@@ -41,9 +41,11 @@ const TITLES = {
 let data = null;
 
 function setInstructorUi() {
-  const on = getState().settings.instructorUnlocked || getState().profile.isInstructor;
-  document.body.classList.toggle("instructor-on", on);
-  document.getElementById("nav-admin")?.classList.toggle("is-hidden", !on);
+  const inst = !!getState().profile.isInstructor;
+  const notes = inst || !!getState().settings.instructorUnlocked;
+  document.body.classList.toggle("instructor-on", notes);
+  document.getElementById("nav-admin")?.classList.toggle("is-hidden", !notes);
+  document.getElementById("nav-cronograma")?.classList.toggle("is-hidden", !inst);
 }
 
 function bindShell() {
@@ -199,7 +201,11 @@ function renderInner() {
     root.innerHTML = renderActivities(data);
     bindActivities();
   } else if (route.name === "cronograma") {
-    root.innerHTML = renderCronograma(data);
+    if (!getState().profile.isInstructor) {
+      root.innerHTML = `<div class="page-head"><h2>Solo instructor</h2><p>El cronograma de las 16 horas no se muestra a los participantes. Sigue tu ruta, módulos y actividades.</p><p><a class="btn btn-primary" href="#/">Volver a la ruta</a></p></div>`;
+    } else {
+      root.innerHTML = renderCronograma(data);
+    }
   }
 
   document.getElementById("btn-continue")?.addEventListener("click", (e) => {
