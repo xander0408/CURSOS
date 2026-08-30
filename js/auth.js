@@ -69,7 +69,7 @@ export function renderLogin(root, data, onSuccess) {
     <div class="login-screen">
       <div class="login-card">
         <div class="login-logo">
-          <img src="avatares/magnatic-logo-vertical.svg" alt="MagnaTic" />
+          <img src="avatares/magnatic-perfil-vertical.png" alt="MagnaTic" />
         </div>
         <h1>AI Business Lab</h1>
         <p class="login-sub">Inteligencia Artificial Aplicada al Negocio</p>

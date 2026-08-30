@@ -5,7 +5,7 @@
   padding: 18px;
   box-shadow: var(--shadow);
 }
-.card h3 { margin: 0 0 8px; font-size: 16px; }
+.card h3 { margin: 0 0 8px; font-size: 16px; color: var(--text); }
 .card p { margin: 0; color: var(--text-muted); font-size: 14px; }
 .card.clickable { cursor: pointer; transition: border-color 0.15s, transform 0.15s; }
 .card.clickable:hover { border-color: var(--accent); transform: translateY(-1px); }
@@ -48,7 +48,7 @@
 .btn:hover { border-color: var(--accent); }
 .btn-primary {
   background: var(--accent);
-  color: #06231e;
+  color: var(--on-accent);
   border-color: transparent;
   font-weight: 600;
 }
@@ -95,10 +95,10 @@
   border: 1px solid var(--border);
   font-size: 14px;
 }
-.callout.think { background: var(--accent-2-dim); border-color: #5c4618; }
-.callout.limit { background: var(--danger-dim); border-color: #5c2a2e; }
-.callout.verify { background: var(--ok-dim); border-color: #2a5c34; }
-.callout.privacy { background: var(--info-dim); border-color: #2a4566; }
+.callout.think { background: var(--accent-2-dim); border-color: var(--accent-2); }
+.callout.limit { background: var(--danger-dim); border-color: var(--danger); }
+.callout.verify { background: var(--ok-dim); border-color: var(--ok); }
+.callout.privacy { background: var(--info-dim); border-color: var(--info); }
 .callout strong { display: block; margin-bottom: 4px; }
 
 .lesson-block { margin-bottom: 16px; }
@@ -178,7 +178,8 @@
 
 .prompt-preview {
   display: none;
-  background: #0a101c;
+  background: var(--preview-bg);
+  color: var(--preview-fg);
   border: 1px dashed var(--border-strong);
   border-radius: var(--radius-sm);
   padding: 14px;
@@ -186,6 +187,7 @@
   font-size: 13px;
   white-space: pre-wrap;
   margin-top: 12px;
+  overflow-wrap: anywhere;
 }
 .prompt-preview.show { display: block; }
 
@@ -431,9 +433,13 @@
 .quiz-feedback strong { display: block; font-size: 18px; margin-bottom: 6px; }
 .quiz-feedback p { color: var(--text); }
 
-@media (max-width: 640px) {
+@media (max-width: 960px) {
   .quiz-answers { grid-template-columns: 1fr; }
-  .quiz-question h2 { font-size: 20px; }
+  .quiz-question h2 { font-size: 18px; }
+  .order-list li { flex-wrap: wrap; }
+  .order-list li span { flex: 1 1 100%; }
+  .data-table { display: block; overflow-x: auto; }
+  pre { overflow-x: auto; }
 }
 
 /* ---------- Agentes tutores ---------- */
@@ -648,7 +654,7 @@
 @keyframes prog-sheen { to { transform: translateX(100%); } }
 
 /* Header: marca discreta y mejor jerarquia */
-.header-title { font-weight: 700; font-size: 16px; letter-spacing: -0.01em; }
+.header-title { font-weight: 700; letter-spacing: -0.01em; }
 .header {
   position: sticky;
   top: 0;
@@ -685,12 +691,12 @@
   text-align: center;
 }
 .login-logo img {
-  width: 190px;
-  max-width: 80%;
+  width: 168px;
+  max-width: 72%;
   height: auto;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--logo-plate);
   border-radius: 12px;
-  padding: 12px 14px;
+  padding: 10px 12px;
   margin-bottom: 14px;
 }
 .login-card h1 { margin: 6px 0 2px; font-size: 22px; }
