@@ -1,6 +1,6 @@
-import { getState, update, resetAll, exportState, importState } from "../store.js";
+import { getState, update, exportState, importState } from "../store.js";
 import { moduleProgress } from "./modules.js";
-import { escapeHtml, progressBar, toast, openModal, closeModal } from "../ui.js";
+import { escapeHtml, progressBar, toast } from "../ui.js";
 import { sectionAgent } from "../agents.js";
 import { nextPathStep, assignedTask } from "../journey.js";
 
@@ -117,7 +117,7 @@ export function renderProgress(data) {
         <button class="btn" type="button" id="btn-export">Exportar avance</button>
         <button class="btn" type="button" id="btn-import">Importar avance</button>
         <input type="file" id="import-file" accept="application/json,.json" style="display:none" />
-        <button class="btn btn-danger" type="button" id="btn-reset">Reiniciar progreso</button>
+        ${getState().profile.isInstructor ? `<p class="muted" style="width:100%">Para borrar el avance de un alumno usa Aula / admin (solo esta PC). No hay reset para participantes.</p>` : `<p class="muted" style="width:100%">Si te trabas, pide al instructor que reinicie tu usuario en esta máquina. Tú no puedes borrar el progreso desde aquí.</p>`}
       </div>
     </div>
   `;
@@ -151,16 +151,5 @@ export function bindProgress(data) {
       }
     };
     reader.readAsText(file);
-  });
-  document.getElementById("btn-reset")?.addEventListener("click", () => {
-    openModal(`<h3>¿Reiniciar esta máquina?</h3><p>Se borra el progreso de este usuario en este navegador. No afecta a otros.</p>
-      <div class="btn-row"><button class="btn btn-danger" id="confirm-reset">Sí, reiniciar</button><button class="btn" id="cancel-reset">Cancelar</button></div>`);
-    document.getElementById("confirm-reset").onclick = () => {
-      resetAll();
-      closeModal();
-      location.hash = "#/";
-      location.reload();
-    };
-    document.getElementById("cancel-reset").onclick = closeModal;
   });
 }

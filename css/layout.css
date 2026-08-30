@@ -7,7 +7,7 @@
 
 .sidebar {
   grid-row: 1 / -1;
-  background: linear-gradient(180deg, #0e1730 0%, #0b1220 100%);
+  background: linear-gradient(180deg, var(--sidebar-start) 0%, var(--sidebar-end) 100%);
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
@@ -59,7 +59,7 @@
   display: block;
   margin: 0 auto;
   /* Fondo claro suave para que el morado del logo se lea sobre el sidebar oscuro */
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--logo-plate);
   border-radius: 12px;
   padding: 14px 12px;
   border: 1px solid var(--border);
@@ -202,4 +202,42 @@ body.logged-out .app {
 body.logged-out .main {
   grid-column: 1 / -1;
   padding: 0;
+}
+
+#boot-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: var(--bg);
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+#boot-splash.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#boot-splash img {
+  width: min(220px, 70vw);
+  animation: splash-pulse 1.4s ease-in-out infinite;
+  background: var(--logo-plate);
+  border-radius: 16px;
+  padding: 18px;
+}
+#boot-splash p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+}
+@keyframes splash-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.85; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #boot-splash img { animation: none; }
 }

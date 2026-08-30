@@ -7,12 +7,14 @@
       "role": "Anfitriona del laboratorio",
       "color": "#22D3EE",
       "section": "dashboard",
-      "personality": "Cercana y motivadora. Te orienta sin abrumarte.",
-      "intro": "¡Hola! Soy Nova. Este laboratorio es para Central de Ingenios. Empezamos por conocernos, luego la historia de la IA, y después tu ruta de módulos.",
+      "skill": "Orientar la ruta y el siguiente paso útil",
+      "skillHow": "Mira si ya hiciste Conocernos, cuentas gratis y lecciones. No te encierra: te recomienda.",
+      "personality": "Cercana y motivadora.",
+      "intro": "Soy Nova. Este laboratorio ordena la práctica; ChatGPT y Claude viven en otra pestaña. Tú decides y verificas.",
       "tasks": [
-        "Completa «Conocernos» y acepta los límites de las cuentas gratis.",
-        "Sigue la ruta: Historia de la IA → fundamentos → tu tarea de CISA.",
-        "Recuerda: tú decides y verificas; la IA solo propone."
+        "Mira «Siguiente paso» en la ruta y hazlo de verdad.",
+        "Si refrescas, espera el logo: la sesión debe seguir abierta.",
+        "El proyecto final es el examen del viernes 2, no del viernes 1."
       ]
     },
     {
@@ -22,42 +24,48 @@
       "role": "Tutor de módulos",
       "color": "#10B981",
       "section": "modules",
-      "personality": "Analítico y paciente. Le gusta el contexto y los ejemplos.",
-      "intro": "Soy Atlas. Cada módulo es un laboratorio: lee, piensa el caso y prueba con tu propio trabajo (sin datos sensibles).",
+      "skill": "Abrir el siguiente laboratorio sin saltarte lecciones",
+      "skillHow": "El módulo N se abre cuando terminas las lecciones de N-1. Pulsa Continuar en cada una.",
+      "personality": "Analítico y paciente.",
+      "intro": "Soy Atlas. Cada módulo es un laboratorio: lee, piensa un caso anónimo y prueba.",
       "tasks": [
         "Antes de avanzar, resume en una frase qué aprendiste.",
-        "Piensa una tarea real de tu semana donde aplicarlo.",
-        "Si un concepto no te queda claro, vuelve a la lección anterior."
+        "Piensa una tarea real de tu semana (sin datos internos).",
+        "Si un módulo no abre, falta Continuar en el anterior."
       ]
     },
     {
       "id": "spark",
       "avatar": "avatares/spark.svg",
       "name": "Spark",
-      "role": "Tutora del Prompt Lab",
+      "role": "Tutora de prompts",
       "color": "#EC4899",
       "section": "promptLab",
-      "personality": "Creativa y directa. Odia los prompts vagos.",
-      "intro": "Soy Spark. Un buen prompt no es un truco: son cinco piezas bien pensadas. Rol, contexto, objetivo, formato y restricciones.",
+      "skill": "Armar pedidos con 5 piezas y una restricción de verificación",
+      "skillHow": "Si falta formato o restricciones, el borrador sale genérico o inventa.",
+      "personality": "Creativa y directa.",
+      "intro": "Soy Spark. Un buen prompt no es un truco: rol, contexto, objetivo, formato y restricciones.",
       "tasks": [
-        "Completa las cinco piezas antes de copiar el prompt.",
-        "Agrega siempre una restricción: «si no tienes un dato, pídemelo».",
-        "Guarda en tu biblioteca los prompts que te funcionen."
+        "Completa las cinco piezas antes de copiar.",
+        "Agrega: «si no tienes un dato, pídemelo».",
+        "Guarda en la biblioteca lo que sí te funcionó."
       ]
     },
     {
       "id": "guardian",
       "avatar": "avatares/guardian.svg",
       "name": "Guardian",
-      "role": "Guardián de la verificación",
+      "role": "Guardián de quizzes y hechos",
       "color": "#6366F1",
       "section": "quiz",
-      "personality": "Serio y protector. No deja pasar un dato sin fuente.",
-      "intro": "Soy Guardian. Responde rápido, pero nunca confíes en una cifra o una cita sin verificarla en la vida real.",
+      "skill": "Forzar criterio: rapidez sí, cifra ciega no",
+      "skillHow": "Lee la explicación al fallar. Fuera del quiz, toda cifra de decisión necesita fuente humana.",
+      "personality": "Serio y protector.",
+      "intro": "Soy Guardian. Responde rápido, pero no trates el quiz como la verdad de tu empresa.",
       "tasks": [
-        "Responde por criterio, no por adivinar la clave.",
+        "Juega el quiz del módulo el mismo día de la lección.",
         "Cuando falles, lee la explicación: ahí está el aprendizaje.",
-        "Fuera del quiz: toda cifra que sostenga una decisión necesita fuente humana."
+        "El calentamiento (⚡) se puede repetir en cada receso."
       ]
     },
     {
@@ -67,12 +75,14 @@
       "role": "Árbitro del comparador",
       "color": "#A78BFA",
       "section": "comparator",
-      "personality": "Imparcial y curioso. No cree en ganadores universales.",
-      "intro": "Soy Nexus. Mismo prompt, dos herramientas. No busques cuál es «mejor»: busca cuál te sirve más en ESTE caso.",
+      "skill": "Contrastar dos salidas sin declarar un ganador mundial",
+      "skillHow": "Carga ejemplos típicos o pega las tuyas. Mira precisión vs plantilla.",
+      "personality": "Imparcial.",
+      "intro": "Soy Nexus. Mismo prompt, dos herramientas. Elige por utilidad en ESTE caso.",
       "tasks": [
-        "Usa exactamente el mismo prompt en ChatGPT y en Claude.",
-        "Puntúa cada salida por utilidad, no por marca.",
-        "Justifica tu elección con un criterio de negocio."
+        "Copia el prompt una sola vez.",
+        "Usa «Cargar ambos ejemplos» si aún no abriste los chats.",
+        "Escribe por qué de negocio, no de fandom."
       ]
     },
     {
@@ -82,12 +92,65 @@
       "role": "Líder del proyecto final",
       "color": "#D4A574",
       "section": "project",
-      "personality": "Estratega y exigente. Busca resultados con control humano.",
-      "intro": "Soy Commander. Aquí resuelves un problema real de tu trabajo, de punta a punta, y mides el tiempo que ahorras.",
+      "skill": "Cerrar la ficha el viernes 2 con control humano",
+      "skillHow": "El proyecto es el examen del segundo viernes. Viernes 1 solo prepara el caso anónimo.",
+      "personality": "Estratega.",
+      "intro": "Soy Commander. El viernes 2 cierras un problema de tu cargo, de punta a punta.",
       "tasks": [
-        "Elige un problema que de verdad te quite tiempo.",
-        "Prueba en ChatGPT y Claude, y compara con criterio.",
-        "Cierra la ficha con validación humana y ahorro estimado."
+        "No uses datos internos: Planta Norte / cliente Alfa.",
+        "Prueba el mismo prompt en ChatGPT y Claude.",
+        "La ficha no vale sin verificación humana y ahorro estimado."
+      ]
+    },
+    {
+      "id": "lumen",
+      "avatar": "avatares/nova.svg",
+      "name": "Lumen",
+      "role": "Guía de cuentas y límites",
+      "color": "#F0B429",
+      "section": "cuentas",
+      "skill": "Traducir lo que ves en pantalla, no un rumor de modelo",
+      "skillHow": "Free cambia. Gana el aviso de ChatGPT o Claude ese día. No memorices nombres de modelo.",
+      "personality": "Práctica.",
+      "intro": "Soy Lumen. En Free pegas texto anónimo. Archivos e imágenes tienen tope. Claude se raciona.",
+      "tasks": [
+        "Abre las dos cuentas en pestañas normales.",
+        "Si Claude se queda sin cupo, sigue en ChatGPT.",
+        "Nunca subas contratos, nómina ni clientes reales."
+      ]
+    },
+    {
+      "id": "folio",
+      "avatar": "avatares/spark.svg",
+      "name": "Folio",
+      "role": "Bibliotecaria de prompts",
+      "color": "#79B8FF",
+      "section": "library",
+      "skill": "Guardar lo reutilizable y tirar lo genérico",
+      "skillHow": "Si no lo usarías el lunes, no lo guardes.",
+      "personality": "Ordenada.",
+      "intro": "Soy Folio. La biblioteca es tu caja de herramientas, no un cementerio de copiar-pegar.",
+      "tasks": [
+        "Guarda 2 prompts que sí te sirvieron hoy.",
+        "Ponle un título de cargo, no «prompt 1».",
+        "Copia, pega en el chat, itera, vuelve a guardar."
+      ]
+    },
+    {
+      "id": "pulse",
+      "avatar": "avatares/atlas.svg",
+      "name": "Pulse",
+      "role": "Coach de actividades",
+      "color": "#7EE787",
+      "section": "actividades",
+      "skill": "Mantener el aula ocupada con misiones cortas",
+      "skillHow": "Marca al terminar. El instructor no ve tu laptop: esto es tu checklist.",
+      "personality": "Enérgica.",
+      "intro": "Soy Pulse. Si terminaste una lección, no te quedes parado: hay una misión de 8–15 minutos.",
+      "tasks": [
+        "Viernes 1: misiones de cuenta, anonimizar y quiz historia.",
+        "Viernes 2: Excel a mano, comparador y ficha.",
+        "El proyecto final se cierra el viernes 2."
       ]
     }
   ]

@@ -261,7 +261,7 @@ writeDocx("Cuentas-gratis.docx", [
   { title: "Cuentas gratuitas: hasta donde llegan" },
   { pi: "Orientacion de aula. Si la herramienta muestra otro aviso, gana lo que ves en pantalla. Agosto 2026." },
   { h2: "ChatGPT Free" },
-  { p: "Chats de texto ilimitados en el modelo gratuito por defecto, con salvaguardas antiabuso. Archivos, imagenes y herramientas extra tienen tope. No es un plan empresarial." },
+  { p: "Chats de texto en el modelo gratuito que aparezca ese dia en ChatGPT Free. Archivos e imagenes tienen tope. No es un plan empresarial. Si la pantalla dice otra cosa, gana lo que ves." },
   { h2: "Claude Free" },
   { p: "Cupo de creditos que se renueva cada 5 horas aproximadamente. Textos largos gastan mas. Usa Claude para comparar entregables, no para 80 iteraciones seguidas." },
   { h2: "En clase" },

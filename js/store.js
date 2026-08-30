@@ -317,6 +317,74 @@ export function importState(obj) {
   return state;
 }
 
+export function seedInstructorGuide(data) {
+  if (!state.profile.isInstructor || !data?.course) return;
+  update((s) => {
+    s.profile.introDone = true;
+    s.profile.knowUs = {
+      years: "guía",
+      pain: "Demostrar el laboratorio completo (todos los módulos y quizzes).",
+      aiLevel: "diario",
+      hope: "Cuenta guía al 100%.",
+    };
+    s.progress.freeTiersAck = true;
+    s.settings.instructorUnlocked = true;
+    let chN = 0;
+    for (const m of data.course.modules) {
+      const full = data.modules[m.id];
+      if (!full) continue;
+      if (!s.progress.modules[m.id]) s.progress.modules[m.id] = emptyModule();
+      const st = s.progress.modules[m.id];
+      st.lessonsDone = (full.lessons || []).map((l) => l.id);
+      st.status = "done";
+      st.score = 100;
+      st.completedAt = Date.now();
+      for (const ch of full.challenges || []) {
+        if (!s.progress.challenges[ch.id]) s.progress.challenges[ch.id] = emptyChallenge();
+        const c = s.progress.challenges[ch.id];
+        c.status = "done";
+        c.score = 100;
+        c.attempts = Math.max(1, c.attempts || 0);
+        c.answers = c.answers || { complete: true, notes: "Guía instructor" };
+        chN += 1;
+      }
+    }
+    s.progress.totals.modulesCompleted = data.course.modules.length;
+    s.progress.totals.challengesCompleted = chN;
+    s.progress.totals.xp = Math.max(s.progress.totals.xp || 0, 900);
+    if (!s.progress.quizzes.bestScores) s.progress.quizzes.bestScores = {};
+    for (const q of data.quizzes || []) {
+      s.progress.quizzes.bestScores[q.id] = {
+        score: (q.questions || []).length * 100,
+        correct: (q.questions || []).length,
+        totalQuestions: (q.questions || []).length,
+        at: Date.now(),
+      };
+    }
+    for (const b of data.badges || []) {
+      s.progress.badges[b.id] = { earnedAt: Date.now() };
+    }
+    s.progress.project.ficheReady = true;
+    s.progress.project.step = 11;
+    s.progress.project.fields = {
+      problem: "Retraso de despacho en Planta Norte (caso guía).",
+      today: "Se arma a mano entre correos.",
+      aiPart: "Borrador de correo y de 6 slides.",
+      humanPart: "Cifras oficiales y autorización del 10%.",
+    };
+    s.progress.labs = s.progress.labs || {};
+    s.progress.labs.checks = s.progress.labs.checks || {};
+    for (const it of data.activities?.items || []) {
+      s.progress.labs.checks[it.id] = true;
+    }
+    const tpls = data.library?.templates || [];
+    s.progress.library.savedIds = tpls.slice(0, 4).map((t) => t.id);
+    s.progress.comparator.caseId = "cmp-email";
+    s.progress.comparator.winner = "tie";
+    s.progress.comparator.why = "Guía: queja — Claude más cauto; Excel — ChatGPT más claro. No hay ganador mundial.";
+  });
+}
+
 export function logActivity(kind, detail) {
   update((s) => {
     s.progress.activity = s.progress.activity || [];

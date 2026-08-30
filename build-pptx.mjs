@@ -91,7 +91,7 @@ const slides = [
   { kind: "section", num: "1", title: "Cuentas gratis: hasta donde llegan" },
 
   { kind: "two", title: "ChatGPT Free vs Claude Free (ago 2026)",
-    leftH: "ChatGPT Free", left: ["Texto de chat ilimitado (modelo Luna), con antiabuso.", "Archivos, imagenes y herramientas SI tienen tope.", "Puede haber anuncios. No es plan empresa."],
+    leftH: "ChatGPT Free", left: ["Texto de chat en el modelo gratuito del dia.", "Archivos e imagenes SI tienen tope.", "No es plan empresa. Gana lo que ves en pantalla."],
     rightH: "Claude Free", right: ["Cupo de creditos cada 5 horas aproximadamente.", "Textos largos y modelos grandes gastan mas.", "Usa Claude para COMPARAR, no para 80 iteraciones." ] },
 
   { kind: "bullets", title: "Plan de aula si se acaba el cupo", lead: "Nadie se queda parado.",
@@ -144,6 +144,19 @@ const slides = [
 
   { kind: "quote", quote: "La IA propone. Tu decides y verificas." },
 
+  { kind: "photo", title: "Humano al final", image: "ppt-assets/verificar.png" },
+
+  { kind: "section", num: "G", title: "Agentes (contexto rapido)" },
+
+  { kind: "photo", title: "De que esta hecho un agente", image: "ppt-assets/agentes.png" },
+
+  { kind: "two", title: "Para el alumno (sin volverse ingeniero)",
+    leftH: "Que es", left: ["Un agente = rol + objetivo + reglas + (a veces) herramientas.", "Aqui: tutores del laboratorio (Nova, Atlas, Spark...).", "No sustituyen a ChatGPT ni a Claude."],
+    rightH: "Como se componen", right: ["Skill: en que es bueno (ej. verificar cifras).", "Limite: no datos internos, no firmar, no inventar leyes.", "Humano: siempre aplica y responde."] },
+
+  { kind: "talk", title: "30 segundos", prompt: "Un agente no es magia: es un encargo con limites. Igual que tu prompt de 5 piezas.",
+    hint: "En el portal cada tutor muestra su skill y una recomendacion del momento." },
+
   { kind: "section", num: "4", title: "Como hablar con la IA" },
 
   { kind: "analogy", title: "El secreto no es un truco",
@@ -160,13 +173,7 @@ const slides = [
 
   { kind: "section", num: "5", title: "El framework de 5 piezas" },
 
-  { kind: "steps", title: "Un buen pedido tiene 5 partes", steps: [
-      "ROL: quien debe ser la IA (analista, redactor...).",
-      "CONTEXTO: la situacion, sin datos sensibles.",
-      "OBJETIVO: que debe lograr exactamente.",
-      "FORMATO: como debe verse (correo, tabla, viñetas).",
-      "RESTRICCIONES: que NO debe hacer.",
-    ] },
+  { kind: "photo", title: "Las 5 piezas de un pedido", image: "ppt-assets/cinco-piezas.png" },
 
   { kind: "two", title: "La diferencia se nota",
     leftH: "Pedido pobre", left: ["\"Hazme un correo para el cliente\"", "Resultado: generico, sirve de poco."],
@@ -177,14 +184,7 @@ const slides = [
 
   { kind: "section", num: "M", title: "Metodologia A.C.T.I.V.A." },
 
-  { kind: "steps", title: "El orden que usamos en el laboratorio", steps: [
-      "Analizar: cual es el problema de negocio (no el prompt).",
-      "Contextualizar: datos suficientes y permitidos.",
-      "Transformar: convertir eso en una solicitud clara (5 piezas).",
-      "Iterar: pedir ajustes; no te quedes con el primer borrador.",
-      "Verificar: hechos, riesgos, cifras fuera del chat.",
-      "Aplicar: un humano responsable envia o usa el resultado.",
-    ] },
+  { kind: "photo", title: "A.C.T.I.V.A. en un vistazo", image: "ppt-assets/activa.png" },
 
   { kind: "talk", title: "Reto en sala: ordena los 6 pasos", prompt: "Sin mirar el portal: escriban A-C-T-I-V-A en un papel. Luego confirmen en el reto de flechas.",
     hint: "Si las flechas no mueven, recarga con Ctrl+F5. Hay que pulsar Continuar en cada leccion para abrir el siguiente modulo." },
@@ -244,7 +244,9 @@ const slides = [
 
   { kind: "analogy", title: "ChatGPT vs Claude",
     big: "No hay un ganador universal.",
-    support: "ChatGPT: suele ir mas directo y copiable. Claude: suele ser mas cauto y senala lo que falta. En el Comparador cargas ejemplos distintos o pegas tus respuestas reales." },
+    support: "ChatGPT suele ir mas directo. Claude suele marcar huecos. Tu eliges en cada caso." },
+
+  { kind: "photo", title: "Mismo prompt, distinta utilidad", image: "ppt-assets/comparar.png" },
 
   { kind: "two", title: "Que observar (objetivo, no hinchada)",
     leftH: "ChatGPT, en la practica de oficina", left: ["Asunto + cuerpo listos.", "Listas y tablas rapidas.", "Riesgo: plantilla y promesas de mas."],

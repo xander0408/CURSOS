@@ -528,7 +528,31 @@
   color: var(--text-muted);
   font-size: 13px;
 }
-.agent-tasks li { margin: 3px 0; }
+.agent-skill {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text);
+}
+.agent-skill span {
+  display: inline-block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bg);
+  background: var(--agent, var(--accent));
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin-right: 6px;
+  font-weight: 700;
+}
+.agent-rec {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+  margin: 0 0 10px;
+}
 
 @media (max-width: 640px) {
   .agent-card { flex-direction: column; gap: 12px; }
@@ -668,7 +692,7 @@
 .login-org { margin: 4px 0 18px; color: var(--accent); font-size: 12px; letter-spacing: 0.04em; }
 .login-card .field { text-align: left; }
 .login-btn { width: 100%; margin-top: 8px; padding: 12px; font-size: 15px; }
-.login-msg { min-height: 18px; margin: 10px 0 0; color: var(--danger); font-size: 13px; }
+.login-org:empty { display: none; }
 .login-foot { margin: 14px 0 0; color: var(--text-dim); font-size: 11px; }
 
 .nav-link.is-hidden { display: none !important; }

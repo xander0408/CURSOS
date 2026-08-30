@@ -1,7 +1,8 @@
 import { ensureTrailingSlash } from "./paths.js";
+import { initTheme, toggleTheme, currentTheme } from "./theme.js";
 import { loadAll } from "./content.js";
 import { parseHash, onRoute } from "./router.js";
-import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks } from "./store.js";
+import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks, seedInstructorGuide } from "./store.js";
 import { toast, openModal, closeModal } from "./ui.js";
 import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js";
 import { renderModulesIndex, renderModule, bindModuleView } from "./views/modules.js";
@@ -13,7 +14,7 @@ import { renderComparator, bindComparator } from "./views/comparator.js";
 import { renderLibrary, bindLibrary } from "./views/library.js";
 import { renderProject, bindProject } from "./views/project.js";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js";
-import { hydrateAgents } from "./agents.js";
+import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect } from "./auth.js";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual, renderAdmin, bindAdmin } from "./views/guides.js";
 import { renderActivities, bindActivities } from "./views/activities.js";
@@ -59,6 +60,13 @@ function bindShell() {
     side.classList.remove("open");
     overlay.classList.remove("show");
   };
+  document.getElementById("btn-theme")?.addEventListener("click", () => {
+    toggleTheme();
+    const btn = document.getElementById("btn-theme");
+    if (btn) btn.textContent = currentTheme() === "light" ? "Oscuro" : "Claro";
+  });
+  const themeBtn = document.getElementById("btn-theme");
+  if (themeBtn) themeBtn.textContent = currentTheme() === "light" ? "Oscuro" : "Claro";
   document.getElementById("btn-instructor").onclick = () => {
     if (getState().settings.instructorUnlocked) {
       update((s) => {
@@ -208,6 +216,10 @@ function renderInner() {
     }
   }
 
+  if (!root.querySelector(".agent-card") && !root.querySelector(".quiz-stage") && !root.querySelector(".quiz-play")) {
+    root.insertAdjacentHTML("afterbegin", sectionAgent(data, coachSectionForRoute(route.name)));
+  }
+
   document.getElementById("btn-continue")?.addEventListener("click", (e) => {
     const btn = e.currentTarget;
     const moduleId = btn.dataset.module;
@@ -229,11 +241,19 @@ function renderInner() {
   hydrateAgents(root);
 }
 
+let splashAt = Date.now();
+function hideSplash() {
+  const wait = Math.max(0, 800 - (Date.now() - splashAt));
+  setTimeout(() => document.getElementById("boot-splash")?.classList.add("is-done"), wait);
+}
+
 async function main() {
+  initTheme();
   if (ensureTrailingSlash()) return;
   try {
     data = await loadAll();
   } catch (err) {
+    hideSplash();
     document.getElementById("app-root").innerHTML = `
       <div class="page-head">
         <h2>Abre el laboratorio con un servidor local</h2>
@@ -250,15 +270,19 @@ async function main() {
     document.body.classList.add("logged-out");
     renderLogin(document.getElementById("app-root"), students, () => {
       document.body.classList.remove("logged-out");
+      if (getState().profile.isInstructor) seedInstructorGuide(data);
       startSuite();
     });
+    hideSplash();
     return;
   }
   document.body.classList.remove("logged-out");
   const sess = readSession();
   loadUser(sess.userId);
   writeSession({ userId: sess.userId, at: Date.now() });
+  if (getState().profile.isInstructor) seedInstructorGuide(data);
   startSuite();
+  hideSplash();
 }
 
 let suiteStarted = false;

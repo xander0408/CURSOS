@@ -4,7 +4,7 @@ Orientación de aula. **Las políticas cambian**; si la herramienta muestra otro
 
 ## ChatGPT Free — [chatgpt.com](https://chatgpt.com/)
 
-**Sí:** chats de texto ilimitados en el modelo gratuito por defecto (GPT-5.6 Luna, anuncio de agosto 2026), con salvaguardas antiabuso. Suficiente para redactar, resumir e iterar prompts del curso.
+**Sí:** chats de texto en el modelo gratuito que ChatGPT muestre ese día, con salvaguardas antiabuso. Suficiente para redactar, resumir e iterar prompts del curso. Si la pantalla dice otro nombre de modelo, gana lo que ves — no memorices marcas internas.
 
 **No cuentes con:** archivos grandes, imágenes, voz y otras herramientas como si fueran ilimitadas. El almacenamiento de archivos en Free es menor que en planes de pago. Puede haber anuncios. **No es un entorno empresarial de CISA.**
 
