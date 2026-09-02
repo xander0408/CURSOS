@@ -432,10 +432,10 @@
           "explain": "Anonimiza. Lo confidencial se queda fuera del chat."
         },
         {
-          "q": "El primer paso de A.C.T.I.V.A. es…",
-          "options": ["Aplicar el resultado", "Analizar el problema de negocio", "Verificar en internet", "Iterar el prompt"],
+          "q": "ChatGPT y Claude, en este curso, se usan…",
+          "options": ["En el mismo recuadro del laboratorio", "En otras pestañas; el laboratorio solo ordena la práctica", "Solo el sábado", "Para guardar la nómina"],
           "correct": 1,
-          "explain": "Primero entiendes el problema; después pides."
+          "explain": "El laboratorio es el aula. La IA real está en chatgpt.com y claude.ai."
         },
         {
           "q": "Si la IA te da una cifra o una ley, tú…",
@@ -444,10 +444,10 @@
           "explain": "El modelo no es fuente oficial."
         },
         {
-          "q": "Un buen prompt de oficina incluye…",
-          "options": ["Solo la palabra «ayuda»", "Rol, contexto, objetivo, formato y restricciones", "Todos los Excel de la empresa", "La contraseña del ERP"],
+          "q": "El primer texto que te arma la IA…",
+          "options": ["Ya se puede enviar al cliente", "Es un borrador: tú lo lees y lo corriges", "Lo firma sola la empresa", "Reemplaza a tu jefatura"],
           "correct": 1,
-          "explain": "Las cinco piezas evitan respuestas genéricas o inventadas."
+          "explain": "La IA propone. Tú decides y verificas."
         }
       ]
     }
