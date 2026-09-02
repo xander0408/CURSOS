@@ -211,8 +211,16 @@ function writeDocx(filename, doc) {
     "word/numbering.xml": numberingXml,
   };
   const zip = makeZip(files);
-  writeFileSync(filename, zip);
-  console.log(filename + ": " + zip.length + " bytes");
+  try {
+    writeFileSync(filename, zip);
+    console.log(filename + ": " + zip.length + " bytes");
+  } catch (e) {
+    if (e && e.code === "EBUSY") {
+      console.warn("Archivo abierto, no se pudo escribir: " + filename);
+      return;
+    }
+    throw e;
+  }
 }
 
 // ==================== CONTENIDO DE LOS 4 DOCUMENTOS ====================
@@ -398,6 +406,10 @@ for (const st of roster.students) {
   const fname = "proyectos/" + st.username + "-proyecto-final.docx";
   writeDocx(fname, body);
 }
+writeDocx("Guion-Instructor-Completo.docx", [
+  { pi: "Solo instructor. Estudiar. No proyectar. PPT: F5. 68 diapositivas." },
+  ...mdToBlocks(readFileSync("docs/GUION-INSTRUCTOR-COMPLETO.md", "utf8")),
+]);
 writeDocx("Guia-Facilitacion-Aula.docx", [
   { title: "Guion de aula — ocupacion continua" },
   { pi: "Instructor MagnaTic. Version extensa: docs/GUIA-FACILITACION-AULA.md. Sitio: https://xander0408.github.io/CURSOS/ (barra final)." },

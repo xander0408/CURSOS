@@ -27,7 +27,9 @@ Usuario **`instructor`** / contraseña **`MagnaTic#CISA26`** (ver `CREDENCIALES-
 
 Prerrequisitos detallados: `docs/PRERREQUISITOS.md`.
 
-**Guion minuto a minuto** (qué decir en voz alta y qué hace cada alumno para que nadie se quede parado): `docs/GUIA-FACILITACION-AULA.md` y `Guia-Facilitacion-Aula.docx`. No proyectes el archivo entero.
+**Guion palabra por palabra (PPT slide a slide, quizzes, reloj):** `docs/GUION-INSTRUCTOR-COMPLETO.md` y `Guion-Instructor-Completo.docx`. Estúdialo. No lo proyectes.
+
+**Guion minuto a minuto** (qué hacer cada alumno): `docs/GUIA-FACILITACION-AULA.md` y `Guia-Facilitacion-Aula.docx`.
 
 ---
 
