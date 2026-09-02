@@ -6,7 +6,33 @@ Por eso el laboratorio puede hablar con una **base SQLite en la nube** (Cloudfla
 
 Mientras `content/sync.json` tenga `"apiUrl": ""`, todo sigue como ahora: solo el navegador local.
 
-## Una vez (tú, en la laptop)
+## Si ya tienes el Worker pegado a GitHub
+
+El aula en Pages **no cambia**. El Worker es **otra URL** (`….workers.dev`). En el panel de Cloudflare:
+
+1. Entra a **Workers & Pages** y abre **ese** Worker (no el sitio de GitHub Pages).
+2. En **Settings → Build** (o *Build configuration*), pon **Root directory** = `sync`. Así Cloudflare usa `sync/worker.js` y `sync/wrangler.toml`, no la raíz del repo.
+3. **D1 / Storage:** crea una base (nombre `abl-avances` está bien). En **Bindings** (o Variables and Secrets) añade un binding:
+   - tipo **D1**
+   - nombre de variable: **`DB`** (exacto, mayúsculas)
+   - la base que acabas de crear
+4. **Variables:** `ROSTER_URL` = `https://xander0408.github.io/CURSOS/content/students.json`
+5. En la base D1 → **Console** (o *Execute SQL*), pega y ejecuta:
+
+```sql
+CREATE TABLE IF NOT EXISTS saves (
+  username TEXT PRIMARY KEY,
+  payload TEXT NOT NULL,
+  updated_at INTEGER NOT NULL
+);
+```
+
+6. Copia la URL del Worker (pestaña **Settings → Domains**, algo como `https://abl-avances.TU-CUENTA.workers.dev`), **sin barra al final**.
+7. Pégala en `content/sync.json` como `apiUrl` y súbelo a GitHub. Espera Pages. Cada alumno **vuelve a entrar** una vez con usuario y contraseña.
+
+Si el Worker que conectaste es un “Hello World” en otra carpeta, o el *root* no es `sync`, el deploy no usará nuestro código. El root `sync` es lo que lo arregla.
+
+## Una vez (tú, en la laptop, si prefieres terminal)
 
 1. Cuenta en [Cloudflare](https://dash.cloudflare.com/sign-up) (correo basta).
 2. En la carpeta `sync` de este proyecto, terminal:
