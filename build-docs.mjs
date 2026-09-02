@@ -306,6 +306,56 @@ for (const st of roster.students) {
   const fname = "proyectos/" + st.username + "-proyecto-final.docx";
   writeDocx(fname, body);
 }
+writeDocx("Guia-Facilitacion-Aula.docx", [
+  { title: "Guion de aula — ocupacion continua" },
+  { pi: "Instructor MagnaTic. Version extensa: docs/GUIA-FACILITACION-AULA.md. Sitio: https://xander0408.github.io/CURSOS/ (barra final)." },
+  { h2: "Como se empieza (07:40)" },
+  { p: "Diles: Chrome o Edge normal, no incognito. URL con barra al final. Esperan el logo MagnaTic. Tres pestanas: laboratorio, ChatGPT, Claude. Claves en privado, nunca en el proyector." },
+  { h2: "Que no confundir" },
+  { b: "Ficha-Proyecto-Final.docx = plantilla vacia. Se ofrece viernes 1 al cierre o viernes 2; no es la entrega." },
+  { b: "proyectos/USUARIO-proyecto-final.docx = caso lleno. Se reparte viernes 2 a las 14:20 para copiar al portal." },
+  { b: "Entrega oficial: Proyecto final, 12 pasos, Guardar ficha. ChatGPT y Claude en vivo." },
+  { h2: "Frases fijas" },
+  { b: "La IA propone. Tu decides y verificas." },
+  { b: "Nada de nomina, contratos, clientes con nombre ni cifras oficiales." },
+  { b: "Si un modulo no abre: Continuar en cada leccion del anterior." },
+  { b: "El examen es el viernes 2, 14:20-16:25. El viernes 1 no se cierra la ficha." },
+  { h2: "Viernes 1 — reloj" },
+  { table: { head: ["Hora", "Diles / ellos"], rows: [
+    ["07:40-08:00", "URL, logo, 3 pestanas, login. Reserva: quiz calentamiento."],
+    ["08:00-08:25", "Conocernos 3 min + quiz calentamiento. Reserva: leer Cuentas gratis."],
+    ["08:25-08:50", "Cuentas gratis, entendido, a1-a2."],
+    ["08:50-10:10", "M0 + quiz q0. Descanso 10 min. Reserva: repetir calentamiento."],
+    ["10:20-12:00", "M1 + A.C.T.I.V.A. + q1. M2 + prompt pobre vs bueno (a3)."],
+    ["12:00-13:00", "Almuerzo. Opcional calentamiento en parejas (no examen)."],
+    ["13:00-15:00", "M3, 5 piezas de memoria, biblioteca a6, q3."],
+    ["15:00-16:25", "M4 Word a7. Caso anonimo. NO Guardar ficha. NO repartir proyectos/."],
+    ["16:25-17:00", "Quiz cierre 5 min. Una cosa que no pegaran. Exportar JSON."],
+  ] } },
+  { h2: "Viernes 2 — reloj" },
+  { table: { head: ["Hora", "Diles / ellos"], rows: [
+    ["08:00-08:20", "Sesion o importar JSON. Calentamiento. 3 errores tipicos."],
+    ["08:20-10:00", "M5 Excel: 6 filas inventadas, 3 celdas a mano, q5."],
+    ["10:10-12:00", "M6 PPT + Comparador mismo prompt, a9. Mini-votacion."],
+    ["12:00-13:00", "Almuerzo."],
+    ["13:00-14:20", "M7 caza de error + M8. q7 y q8. A las 14:20 cierra teoria."],
+    ["14:20-16:25", "EXAMEN: su Word de proyectos/ + 12 pasos + Guardar ficha + a10-a12."],
+    ["16:25-17:00", "Quiz qf. 3 exposiciones de 1 min. Insignias. Constancia."],
+  ] } },
+  { h2: "Ritmo del examen (dilo a las 14:20)" },
+  { table: { head: ["Reloj", "Pasos"], rows: [
+    ["14:20-14:40", "1-4 problema, hoy, tiempo, que hace la IA / el humano"],
+    ["14:40-15:10", "5-7 prompt + ChatGPT + Claude de verdad"],
+    ["15:10-15:40", "8-10 comparar, refinar, verificar fuera del chat"],
+    ["15:40-16:10", "11-12 proceso, ahorro, Guardar ficha"],
+    ["16:10-16:25", "Colchon o ensayar el minuto en voz alta"],
+  ] } },
+  { h2: "Quien termina antes" },
+  { b: "Menu Actividades, otro calentamiento, biblioteca, segundo comparador, ayudar al de al lado sin copiarle la ficha." },
+  { h2: "Quien va lento" },
+  { p: "No lo dejes leyendo 40 minutos. Continuar, quiz, y el chat. El texto lo lee en el almuerzo." },
+]);
+
 writeDocx("Credenciales-Instructor.docx", [
   { title: "Credenciales (solo instructor — no proyectar)" },
   { p: "Admin: usuario instructor. Contrasena y PIN estan en CREDENCIALES-INSTRUCTOR.md." },

@@ -13,7 +13,7 @@ Sitio estatico. El progreso se guarda por usuario en el navegador.
 
 ## Documentos Word
 
-Manual del alumno, reglas, prerrequisitos, cuentas gratis, manual de prompts, ficha, constancia, credenciales del instructor y un proyecto Word por alumno en `proyectos/`.
+Manual del alumno, reglas, prerrequisitos, cuentas gratis, manual de prompts, ficha, constancia, credenciales del instructor, guion de aula (`docs/GUIA-FACILITACION-AULA.md`) y un proyecto Word por alumno en `proyectos/`.
 
 Regenerar: `node build-docs.mjs` y `node build-pptx.mjs`.
 
