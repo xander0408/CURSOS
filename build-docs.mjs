@@ -407,7 +407,11 @@ for (const st of roster.students) {
   writeDocx(fname, body);
 }
 writeDocx("Guion-Instructor-Completo.docx", [
-  { pi: "Solo instructor. Estudiar. No proyectar. PPT: F5. 68 diapositivas." },
+  { pi: "Leelo en voz alta. Asi hablo yo en el aula." },
+  ...mdToBlocks(readFileSync("docs/GUION-INSTRUCTOR-COMPLETO.md", "utf8")),
+]);
+writeDocx("Guion-Instructor-Hablar.docx", [
+  { pi: "Leelo en voz alta. Asi hablo yo en el aula." },
   ...mdToBlocks(readFileSync("docs/GUION-INSTRUCTOR-COMPLETO.md", "utf8")),
 ]);
 writeDocx("Guia-Facilitacion-Aula.docx", [
