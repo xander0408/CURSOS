@@ -6,18 +6,15 @@ Por eso el laboratorio puede hablar con una **base SQLite en la nube** (Cloudfla
 
 Mientras `content/sync.json` tenga `"apiUrl": ""`, todo sigue como ahora: solo el navegador local.
 
-## Si ya tienes el Worker pegado a GitHub
+## Si ya estás en el proyecto `cursos` (Workers y Pages)
 
-El aula en Pages **no cambia**. El Worker es **otra URL** (`….workers.dev`). En el panel de Cloudflare:
+Estás en el sitio correcto. El **Directorio raíz `/`** está mal: hay que apuntarlo a `sync`. El aula de GitHub Pages no se toca.
 
-1. Entra a **Workers & Pages** y abre **ese** Worker (no el sitio de GitHub Pages).
-2. En **Settings → Build** (o *Build configuration*), pon **Root directory** = `sync`. Así Cloudflare usa `sync/worker.js` y `sync/wrangler.toml`, no la raíz del repo.
-3. **D1 / Storage:** crea una base (nombre `abl-avances` está bien). En **Bindings** (o Variables and Secrets) añade un binding:
-   - tipo **D1**
-   - nombre de variable: **`DB`** (exacto, mayúsculas)
-   - la base que acabas de crear
-4. **Variables:** `ROSTER_URL` = `https://xander0408.github.io/CURSOS/content/students.json`
-5. En la base D1 → **Console** (o *Execute SQL*), pega y ejecuta:
+### A. Base SQL
+
+1. Menú izquierdo → **Almacenamiento y bases de datos** → **D1**.
+2. **Crear** una base. Nombre: `abl-avances`.
+3. Ábrela → **Consola** (o SQL) y ejecuta:
 
 ```sql
 CREATE TABLE IF NOT EXISTS saves (
@@ -27,10 +24,20 @@ CREATE TABLE IF NOT EXISTS saves (
 );
 ```
 
-6. Copia la URL del Worker (pestaña **Settings → Domains**, algo como `https://abl-avances.TU-CUENTA.workers.dev`), **sin barra al final**.
-7. Pégala en `content/sync.json` como `apiUrl` y súbelo a GitHub. Espera Pages. Cada alumno **vuelve a entrar** una vez con usuario y contraseña.
+4. En esa misma base copia el **ID** (UUID largo).
 
-Si el Worker que conectaste es un “Hello World” en otra carpeta, o el *root* no es `sync`, el deploy no usará nuestro código. El root `sync` es lo que lo arregla.
+### B. Proyecto `cursos`
+
+1. Menú **Cómputo** → **Workers y Pages** → entra a **cursos**.
+2. Pestaña **Vinculaciones** → añadir **D1**. Variable: **`DB`**. Elige la base `abl-avances`.
+3. Pestaña **Configuración** → **Configuración de compilación** → editar:
+   - **Directorio raíz:** `sync` (no `/`)
+   - **Comando de compilación:** vacío (Ninguno)
+   - **Implementar comando:** `npx wrangler deploy`
+4. Guarda. Pestaña **Implementaciones** → **Nueva implementación**.
+5. Pestaña **Dominios**: copia la URL `https://….workers.dev` **sin** barra al final.
+
+Esa URL va en `content/sync.json` (`apiUrl`). El `database_id` de D1 va en `sync/wrangler.toml`. Pásamelos y los dejo publicados.
 
 ## Una vez (tú, en la laptop, si prefieres terminal)
 
