@@ -61,6 +61,7 @@ const empty = () => ({
     labs: {},
     freeTiersAck: false,
     activity: [],
+    updatedAt: 0,
   },
 });
 
@@ -87,6 +88,7 @@ function migrate(saved) {
   p.labs = sp.labs || {};
   p.freeTiersAck = !!sp.freeTiersAck;
   p.activity = Array.isArray(sp.activity) ? sp.activity : [];
+  p.updatedAt = Number(sp.updatedAt || 0);
 
   base.version = SCHEMA_VERSION;
   return base;
@@ -100,8 +102,13 @@ function storageKey() {
   return KEY_PREFIX + userId;
 }
 
+let skipCloudOnce = false;
+
 function persist() {
   try {
+    if (!skipCloudOnce) {
+      state.progress.updatedAt = Date.now();
+    }
     localStorage.setItem(storageKey(), JSON.stringify(state));
     storageOk = true;
   } catch {
@@ -115,6 +122,19 @@ function persist() {
   } catch {
     /* opcional */
   }
+  if (!skipCloudOnce) {
+    import("./sync.js")
+      .then((m) => m.schedulePush())
+      .catch(() => {});
+  }
+  skipCloudOnce = false;
+}
+
+export function replaceState(obj, { skipCloud = false } = {}) {
+  skipCloudOnce = !!skipCloud;
+  state = migrate(obj);
+  persist();
+  return state;
 }
 
 function cookiePath() {

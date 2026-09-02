@@ -1,6 +1,7 @@
 import { getState, update, loadUser, writeSession, clearSession, readSession, logActivity } from "./store.js";
 import { escapeHtml } from "./ui.js";
 import { assetUrl, bindBrandImages } from "./paths.js";
+import { rememberPassword } from "./sync.js";
 
 let studentsData = null;
 
@@ -61,6 +62,10 @@ export function applyLogin(acc) {
 }
 
 export function logout() {
+  const u = getState().profile.username;
+  import("./sync.js")
+    .then((m) => m.forgetPassword(u))
+    .catch(() => {});
   clearSession();
 }
 
@@ -111,6 +116,7 @@ export function renderLogin(root, data, onSuccess) {
       return;
     }
     applyLogin(acc);
+    rememberPassword(acc.username || acc.email, pass);
     onSuccess();
   };
 

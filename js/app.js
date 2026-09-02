@@ -3,6 +3,7 @@ import { initTheme, toggleTheme, currentTheme } from "./theme.js";
 import { loadAll } from "./content.js";
 import { parseHash, onRoute } from "./router.js";
 import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks, seedInstructorGuide } from "./store.js";
+import { setSyncApi, pullIntoLocal, pushNow } from "./sync.js";
 import { toast, openModal, closeModal } from "./ui.js";
 import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js";
 import { renderModulesIndex, renderModule, bindModuleView } from "./views/modules.js";
@@ -270,13 +271,16 @@ async function main() {
     return;
   }
   const students = await loadStudents();
+  setSyncApi(data.sync?.apiUrl || "");
 
   if (!isLoggedIn()) {
     document.body.classList.add("logged-out");
-    renderLogin(document.getElementById("app-root"), students, () => {
+    renderLogin(document.getElementById("app-root"), students, async () => {
       document.body.classList.remove("logged-out");
+      await pullIntoLocal();
       if (getState().profile.isInstructor) seedInstructorGuide(data);
       startSuite();
+      pushNow();
     });
     hideSplash();
     return;
@@ -285,8 +289,10 @@ async function main() {
   const sess = readSession();
   loadUser(sess.userId);
   writeSession({ userId: sess.userId, at: Date.now() });
+  await pullIntoLocal();
   if (getState().profile.isInstructor) seedInstructorGuide(data);
   startSuite();
+  pushNow();
   hideSplash();
 }
 

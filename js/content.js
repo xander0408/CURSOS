@@ -21,6 +21,12 @@ export async function loadAll() {
   const freeAccounts = await getJson("content/free-accounts.json");
   const promptManual = await getJson("content/prompt-manual.json");
   const roster = await getJson("content/students.json");
+  let sync = { apiUrl: "" };
+  try {
+    sync = await getJson("content/sync.json");
+  } catch {
+    sync = { apiUrl: "" };
+  }
   const activities = await getJson("content/activities.json");
   const schedule = await getJson("content/schedule.json");
   const modules = {};
@@ -43,6 +49,7 @@ export async function loadAll() {
     roster,
     activities,
     schedule,
+    sync,
   };
   return cache;
 }

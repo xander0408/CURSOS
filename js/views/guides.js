@@ -1,6 +1,7 @@
 import { getState, update, listLocalStudentSaves, resetLocalUser, logActivity } from "../store.js";
 import { escapeHtml, toast, copyText } from "../ui.js";
 import { assignedTask } from "../journey.js";
+import { fetchAdminSaves, syncEnabled } from "../sync.js";
 
 export function renderPerfil(data) {
   const s = getState();
@@ -184,7 +185,11 @@ export function renderAdmin(data) {
   return `
     <div class="page-head">
       <h2>Panel del instructor</h2>
-      <p>Lista de aula (asignaciones). El avance vive en el <strong>navegador de cada laptop</strong>. Aquí solo ves historial de quien usó <em>esta</em> máquina.</p>
+      <p>Lista de aula. Los avances se copian al servidor del aula cuando está activo (cualquier PC). Abajo: lo de esta máquina y lo del servidor.</p>
+    </div>
+    <div class="card">
+      <h3>Avances en el servidor</h3>
+      <div id="cloud-saves"><p class="muted">Cargando…</p></div>
     </div>
     <div class="card">
       <h3>Tu acceso de administración</h3>
@@ -206,6 +211,37 @@ export function renderAdmin(data) {
 }
 
 export function bindAdmin() {
+  const box = document.getElementById("cloud-saves");
+  if (box) {
+    if (!syncEnabled()) {
+      box.innerHTML = `<p class="muted">El servidor de avances no está configurado todavía (<code>content/sync.json</code>). Mientras tanto el progreso queda en cada laptop. Guía: docs/AVANCES-CENTRALES.md</p>`;
+    } else if (!getState().profile.isInstructor) {
+      box.innerHTML = `<p class="muted">Entra con la cuenta instructor para ver a todos.</p>`;
+    } else {
+      fetchAdminSaves().then((r) => {
+        if (r.error === "sin-clave") {
+          box.innerHTML = `<p class="muted">Vuelve a iniciar sesión como instructor para consultar el servidor.</p>`;
+          return;
+        }
+        if (r.error) {
+          box.innerHTML = `<p class="muted">No se pudo leer el servidor (${escapeHtml(r.error)}). Revisa la URL del Worker.</p>`;
+          return;
+        }
+        if (!r.saves.length) {
+          box.innerHTML = `<p class="muted">Aún no hay copias. En cuanto un alumno trabaje conectado, aparece aquí.</p>`;
+          return;
+        }
+        box.innerHTML = `<table class="data-table"><thead><tr><th>Alumno</th><th>Usuario</th><th>Actualizado</th><th>Módulos</th><th>Ficha</th></tr></thead><tbody>${r.saves
+          .map(
+            (s) =>
+              `<tr><td>${escapeHtml(s.name)}</td><td><code>${escapeHtml(s.username)}</code></td><td>${escapeHtml(
+                s.updatedAt ? new Date(s.updatedAt).toLocaleString("es-HN") : "—"
+              )}</td><td>${s.modules}</td><td>${s.fiche ? "sí" : "no"}</td></tr>`
+          )
+          .join("")}</tbody></table>`;
+      });
+    }
+  }
   document.querySelectorAll("[data-reset-user]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const id = btn.getAttribute("data-reset-user");

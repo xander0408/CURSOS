@@ -27,6 +27,8 @@ Usuario **`instructor`** / contraseña **`MagnaTic#CISA26`** (ver `CREDENCIALES-
 
 Prerrequisitos detallados: `docs/PRERREQUISITOS.md`.
 
+**Avances de todos los alumnos (servidor SQL, no cabe en GitHub Pages):** `docs/AVANCES-CENTRALES.md`.
+
 **Guion palabra por palabra (PPT slide a slide, quizzes, reloj):** `docs/GUION-INSTRUCTOR-COMPLETO.md` y `Guion-Instructor-Completo.docx`. Estúdialo. No lo proyectes.
 
 **Guion minuto a minuto** (qué hacer cada alumno): `docs/GUIA-FACILITACION-AULA.md` y `Guia-Facilitacion-Aula.docx`.

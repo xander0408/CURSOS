@@ -112,7 +112,7 @@ export function renderProgress(data) {
     <div class="grid grid-2">${badges}</div>
     <div class="card" style="margin-top:20px">
       <h3>Tu avance en este navegador</h3>
-      <p>El progreso se guarda por <strong>usuario</strong> en este navegador. Si cambias de equipo, exporta e importa.</p>
+      <p>El progreso se guarda en este navegador y, si el instructor activó el servidor de avances, también en la nube del aula. Si cambias de equipo, entra con el mismo usuario.</p>
       <div class="btn-row">
         <button class="btn" type="button" id="btn-export">Exportar avance</button>
         <button class="btn" type="button" id="btn-import">Importar avance</button>
