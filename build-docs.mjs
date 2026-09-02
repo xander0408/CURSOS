@@ -110,6 +110,94 @@ function makeZip(fileMap) {
   return Buffer.concat([...chunks, ...central, end]);
 }
 
+function mdToBlocks(md) {
+  const parseBold = (s) => {
+    const parts = [];
+    const re = /\*\*(.+?)\*\*/g;
+    let last = 0;
+    let m;
+    let any = false;
+    while ((m = re.exec(s))) {
+      any = true;
+      if (m.index > last) parts.push([s.slice(last, m.index), 0]);
+      parts.push([m[1], 1]);
+      last = m.index + m[0].length;
+    }
+    if (!any) return s;
+    if (last < s.length) parts.push([s.slice(last), 0]);
+    return parts;
+  };
+  const lines = String(md).replace(/\r\n/g, "\n").split("\n");
+  const blocks = [];
+  let i = 0;
+  const flushTable = (start) => {
+    const rows = [];
+    let j = start;
+    while (j < lines.length && /^\s*\|/.test(lines[j])) {
+      const cells = lines[j].split("|").slice(1, -1).map((c) => c.trim());
+      if (!cells.every((c) => /^[-:]+$/.test(c))) rows.push(cells);
+      j++;
+    }
+    if (rows.length >= 2) blocks.push({ table: { head: rows[0], rows: rows.slice(1) } });
+    return j;
+  };
+  while (i < lines.length) {
+    const line = lines[i];
+    if (/^\s*\|/.test(line)) {
+      i = flushTable(i);
+      continue;
+    }
+    if (line.startsWith("# ")) {
+      blocks.push({ title: line.slice(2).trim(), center: true });
+      i++;
+      continue;
+    }
+    if (line.startsWith("## ")) {
+      blocks.push({ spacer: 280 });
+      blocks.push({ h2: line.slice(3).trim() });
+      i++;
+      continue;
+    }
+    if (line.startsWith("### ")) {
+      blocks.push({ h3: line.slice(4).trim() });
+      i++;
+      continue;
+    }
+    if (line.startsWith("---")) {
+      i++;
+      continue;
+    }
+    if (/^\s*$/.test(line)) {
+      i++;
+      continue;
+    }
+    if (/^\s*[-*]\s+/.test(line)) {
+      blocks.push({ b: parseBold(line.replace(/^\s*[-*]\s+/, "")) });
+      i++;
+      continue;
+    }
+    if (/^\s*\d+\.\s+/.test(line)) {
+      blocks.push({ b: parseBold(line.replace(/^\s*\d+\.\s+/, "")) });
+      i++;
+      continue;
+    }
+    const buf = [line.trim()];
+    i++;
+    while (
+      i < lines.length &&
+      lines[i].trim() &&
+      !/^(#|---|\s*[-*]\s+|\s*\|)/.test(lines[i]) &&
+      !/^\s*\d+\.\s+/.test(lines[i])
+    ) {
+      buf.push(lines[i].trim());
+      i++;
+    }
+    const t = buf.join(" ");
+    if (t) blocks.push({ p: parseBold(t) });
+  }
+  return blocks;
+}
+
 function writeDocx(filename, doc) {
   const files = {
     "[Content_Types].xml": `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -237,6 +325,10 @@ const certificado = [
   { center: [["La IA propone. La persona decide y verifica.", 0]], after: 0 },
 ];
 
+writeDocx("Manual-Aprendizaje-IA.docx", [
+  { pi: "Documento para llevarse. En el aula practicamos; aquí queda el oficio." },
+  ...mdToBlocks(readFileSync("docs/MANUAL-APRENDIZAJE-IA.md", "utf8")),
+]);
 writeDocx("Manual-del-Alumno.docx", manual);
 writeDocx("Reglas-del-Laboratorio.docx", reglas);
 writeDocx("Ficha-Proyecto-Final.docx", ficha);

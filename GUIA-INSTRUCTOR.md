@@ -23,6 +23,8 @@ Puntos clave que debes comunicar el primer día:
 ### Modo instructor
 Usuario **`instructor`** / contraseña **`MagnaTic#CISA26`** (ver `CREDENCIALES-INSTRUCTOR.md`). También: botón **"Instructor"** → PIN **`CISA-Admin26`**. Desbloquea notas y todos los módulos.
 
+**Manual de aprendizaje para llevarse** (IA, método, puente con el aula): `docs/MANUAL-APRENDIZAJE-IA.md` y `Manual-Aprendizaje-IA.docx`. Es distinto de la guía corta `Manual-del-Alumno.docx` (cómo usar el portal).
+
 Prerrequisitos detallados: `docs/PRERREQUISITOS.md`.
 
 **Guion minuto a minuto** (qué decir en voz alta y qué hace cada alumno para que nadie se quede parado): `docs/GUIA-FACILITACION-AULA.md` y `Guia-Facilitacion-Aula.docx`. No proyectes el archivo entero.
