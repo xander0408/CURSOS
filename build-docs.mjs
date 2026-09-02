@@ -407,11 +407,11 @@ for (const st of roster.students) {
   writeDocx(fname, body);
 }
 writeDocx("Guion-Instructor-Completo.docx", [
-  { pi: "Leelo en voz alta. Asi hablo yo en el aula." },
+  { pi: "Texto para decir en el aula. Horario y lo que hacen los participantes." },
   ...mdToBlocks(readFileSync("docs/GUION-INSTRUCTOR-COMPLETO.md", "utf8")),
 ]);
 writeDocx("Guion-Instructor-Hablar.docx", [
-  { pi: "Leelo en voz alta. Asi hablo yo en el aula." },
+  { pi: "Texto para decir en el aula. Horario y lo que hacen los participantes." },
   ...mdToBlocks(readFileSync("docs/GUION-INSTRUCTOR-COMPLETO.md", "utf8")),
 ]);
 writeDocx("Guia-Facilitacion-Aula.docx", [

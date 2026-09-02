@@ -1,165 +1,157 @@
-Hola. Yo soy el que está al frente. Tú vas a leer esto en voz alta, como si fueras yo. No hay tablas. No hay “pasos para el instructor”. Solo hablo.
+Buenos días.
 
-Antes de que entre nadie, enciendo el proyector. Abro el archivo que se llama AI Business Lab Presentación. Pulso F5. Se ve la portada con el logo. La dejo así. En mi computadora, no en la de ellos, ya tengo abierto el laboratorio con mi usuario de instructor, ChatGPT y Claude. Los papelitos con la clave de cada persona los tengo en la mano, boca abajo. Los Word del proyecto final no los saco hoy. Esos son el viernes que viene a las dos y veinte.
+Antes de empezar el contenido, necesitamos que todos estén en el mismo lugar. Usen Chrome o Edge, en una ventana normal, no en modo incógnito. Si entran en incógnito, mañana no va a estar su avance.
 
-¿Se oye atrás? Gracias.
+Voy a dictar la dirección del laboratorio. Escríbanla completa, incluida la barra del final: https://xander0408.github.io/CURSOS/
 
-Son las siete cuarenta. Todavía no avanzo la diapositiva. Me paro y digo esto:
+Van a ver el logo de MagnaTic. Esa pestaña no se cierra en todo el día.
 
-Buenos días. Dejen la laptop en el puesto. Usen Chrome o Edge normal. No una ventana de incógnito, porque si no, mañana no va a estar su avance. Voy a dictar la dirección despacio. Escríbanla tal cual. Hache te te pe ese, dos puntos, barra barra, xander cero cuatro cero ocho punto github punto io, barra, CURSOS, barra. La última barra hay que ponerla. Van a ver el logo de MagnaTic. Esa pestaña no se cierra en todo el día.
+Abran una segunda pestaña e inicien sesión en ChatGPT. Abran una tercera e inicien sesión en Claude. El laboratorio no reemplaza a esas herramientas: ahí es donde piden los borradores. Aquí es donde recorremos el método, los módulos y los quizzes.
 
-Ahora una pestaña nueva. chatgpt punto com. Entren.
+Si aún no tienen usuario, yo les entrego las credenciales en privado. No las dicten en voz alta.
 
-Otra pestaña. claude punto ai. Entren.
+Quienes ya estén dentro: menú Quiz, Calentamiento de 2 minutos. Son cuatro preguntas de sentido común. No es examen. No les voy a preguntar metodologías que todavía no vimos. Si terminan, esperen en silencio o repitan el mismo calentamiento. No abran el Reto final. Ese corresponde al cierre del segundo viernes.
 
-Si no tienen usuario, yo paso y les dejo el papel. No lo griten. No se lo fotografíen al de al lado.
+Son las ocho.
 
-Quien ya está adentro, vayan a Quiz y elijan Calentamiento de 2 minutos. Son cuatro preguntas de sentido común. No es examen. No les voy a preguntar A.C.T.I.V.A. ni las cinco piezas, porque eso todavía no lo vimos. Es: qué no pegar, dónde está ChatGPT, qué hacer con una cifra, y que el primer texto es un borrador. El que acaba se queda callado o lo vuelve a jugar. No abran el que dice Reto final o AI Business Master. Ese es el último día a las cuatro y media.
+Bienvenidos al AI Business Lab. Inteligencia artificial aplicada al negocio. Dieciséis horas, en dos viernes, con cuentas gratuitas. El objetivo no es programar. El objetivo es pedir un trabajo con claridad, iterar y verificar antes de usar el resultado.
 
-Son las ocho. Ahora sí hablo con la portada.
+Entren con su usuario. Vayan a Conocernos. Tienen tres minutos. Escriban nombre, cargo y una tarea de su semana que les quite tiempo. Sin nombres de clientes, sin montos reales, sin datos internos. Si necesitan un ejemplo, usen Cliente Alfa y Planta Norte. Guarden.
 
-Bienvenidos al AI Business Lab. Inteligencia artificial aplicada al negocio. Dieciséis horas. Dos viernes. Cuentas gratis. Yo soy de MagnaTic. Esto no es para programar. Esto es para pedir un borrador, mejorarlo y no firmar una mentira bonita. ChatGPT y Claude están en las otras pestañas. Esta pantalla es el mapa. El trabajo lo hacen ustedes.
+Cuando terminen Conocernos, hagan el Calentamiento si todavía no lo hicieron. El examen del curso no es hoy. El examen es el segundo viernes, de dos y veinte a cuatro y veinticinco. Hoy no cierren la ficha del proyecto final.
 
-Entren con su usuario. Vayan a Conocernos. Tres minutos. Nombre, cargo, una tarea que les quite tiempo esta semana. Sin clientes reales, sin montos, sin nombres de terceros. Si necesitan un ejemplo, Cliente Alfa, Planta Norte. Guardan.
+Si más adelante un módulo no abre, falta pulsar Continuar en cada lección del módulo anterior.
 
-Después, otra vez el Calentamiento si no lo hicieron. Cuatro preguntas. Reloj. No es el examen. El examen es el viernes que viene por la tarde. Hoy no cierren ninguna ficha de proyecto.
+En esta pantalla está el mapa de las dos jornadas. El viernes uno cubre historia, fundamentos, conversación, prompts y Word. El viernes dos cubre Excel, PowerPoint, análisis, comparador y el proyecto. El proyecto no se entrega hoy a propósito: el segundo día tienen que usar ChatGPT y Claude en vivo.
 
-Si más tarde un módulo no abre, es porque no pulsan Continuar en cada lección. Anótenlo.
+Hoy, en concreto, ustedes van a dejar las tres pestañas abiertas, completar Conocernos, recorrer Historia con su quiz, trabajar fundamentos, practicar cómo pedir, armar prompts y usar Word con revisión humana. Al final van a exportar el avance si esta computadora no es la de su oficina, y van a dejar anotado un caso anónimo. No guardan la ficha.
 
-Avanzo la diapositiva. Cronograma.
+Son las ocho y veinticinco.
 
-Antes de Turing, el mapa. Hoy es fundamentos, hablar, prompts y Word. El otro viernes es Excel, PowerPoint, comparar, y el proyecto que sí es examen. Si alguien vino a terminar el proyecto hoy, se va a frustrar. Está diseñado así para que el segundo día usen las dos inteligencias de verdad.
+Vayan al menú Cuentas gratis. Lean hasta dónde llega la versión gratuita. No memoricen el nombre del modelo: vale lo que muestre su pantalla hoy. ChatGPT Free sirve para el volumen de práctica. Claude Free sirve para comparar un entregable importante; el cupo se agota. Si Claude indica que no hay créditos, copian el mismo texto a ChatGPT y siguen. Nadie se detiene.
 
-Avanzo. Viernes uno.
+No suban contratos, nómina, claves, listados de clientes ni el Excel real de la planta. Cuando terminen, pulsen entendido. Si ya lo hicieron, escriban en un bloc cinco líneas anónimas del problema de su cargo.
 
-Hoy nos conocemos. Dejan las tres pestañas. Historia de la IA y su quiz. Fundamentos. Cómo hablar. Prompts. Word. Al final exportan el avance y anotan un caso con datos inventados. Los tiempos los marco yo. Ustedes siguen Ruta y Actividades.
+Son las ocho y cincuenta.
 
-Avanzo. Viernes dos. Lo nombro y no me quedo.
+Vamos a Historia de la IA. No es un concurso de fechas. Es para no salir de aquí creyendo que esto nació en 2022. Hubo décadas de trabajo, promesas excesivas e inviernos en los que se cortó la inversión.
 
-El otro viernes, números con la mano, diapositivas sin cifras inventadas, análisis, comparador. De dos veinte a cuatro y veinticinco, proyecto. Constancia al cierre. Quedó dicho.
+Cuando oyen “inteligencia artificial”, cada persona imagina algo distinto: un robot, una película, un Excel mágico o este chat. Todas esas imágenes son válidas como punto de partida. Lo que vamos a hacer es aterrizarlas: de la ciencia ficción a un borrador que ustedes revisan.
 
-Avanzo. Ronda.
+Turing planteó una prueba de comportamiento. En Dartmouth se nombra el campo. ELIZA ya conversaba y ya podía parecer más inteligente de lo que era. El aprendizaje automático saca patrones de muchos ejemplos. Las redes profundas impulsaron visión y voz. Los transformers y los chats masivos nos trajeron estas herramientas. La lección para el negocio es simple: cada ola promete de más; el valor aparece cuando hay un trabajo concreto y un responsable humano.
 
-Ahora, en el formulario o en voz baja: nombre, cargo, una tarea que les quite tiempo. Sin datos internos. Tres minutos. Yo recorro. No hablo.
+Un modelo de lenguaje predice texto. No conoce el procedimiento interno de su área salvo que ustedes se lo cuenten, y aquí no se lo van a contar con datos reales.
 
-Tiempo. Gracias. Eso que escribieron es candidato a proyecto. No lo cierren como ficha hoy.
+Hay inteligencia que entrega un número o una etiqueta, y hay inteligencia generativa que arma un texto. ChatGPT y Claude son de este segundo tipo. No firman. No son el ERP.
 
-Avanzo. Para quién es.
+En el mercado hay muchos nombres. Cambian. En este curso practicamos dos cuentas gratuitas. No hay un ganador universal. Hay un correo, una tabla o una reunión, y ustedes eligen con criterio.
 
-Gerencias que usan correo, Word y Excel. No hay que programar. Cuentas gratis. El laboratorio ordena. La IA está en la otra pestaña. Los casos son inventados. Si alguien pega un dato interno, paramos. No es negociable.
+Repitamos juntos, con claridad: la IA propone; ustedes deciden y verifican.
 
-Son las ocho y veinticinco. Cuentas gratis. En el menú, Cuentas gratis. Lean. No memoricen el nombre del modelo. Gana lo que dice su pantalla hoy. ChatGPT para volumen. Claude para comparar, porque el cupo se acaba. Si Claude dice que no hay créditos, el mismo texto se va a ChatGPT. Nadie se queda parado. Prohibido contratos, nómina, claves, clientes con nombre, el Excel de la planta. Pulsen entendido.
+Ahora, en el laboratorio, entren a Módulos, Historia de la IA. Lean. En cada lección pulsen Continuar. Cuando terminen las lecciones, vayan a Quiz y hagan Historia de la IA. Hay reloj. Es el primer quiz de contenido. El Calentamiento no sustituye a este. Si no llegan al sesenta por ciento, lean la explicación y sigan. El punto es el criterio, no la nota teatral.
 
-Avanzo las diapositivas de ChatGPT contra Claude y del plan B. Digo lo mismo con mis palabras. ChatGPT Free, el modelo que salga hoy, archivos con tope. Claude, créditos cada tantas horas. Textos largos gastan. Si se acaba, mismo prompt en ChatGPT. Anoten Claude pendiente.
+A las nueve cuarenta, diez minutos de receso. Dejen las laptops abiertas. No cierren la sesión.
 
-Son las ocho y cincuenta. Historia.
-
-Esto no es para lucirnos con fechas. Es para que nadie salga diciendo que la inteligencia artificial nació cuando salió ChatGPT. Hubo décadas. Hubo inviernos. Se prometió de más.
-
-Cuando oyen inteligencia artificial, qué ven. Robot, película, Excel mágico, el chat. Todas valen. Díganle al vecino en diez segundos. Ya. Aterrizamos eso: de la película a un borrador que ustedes revisan.
-
-Esta línea de tiempo. Turing, Dartmouth, inviernos, aprendizaje automático, redes, transformers, chats. Cada ola prometió de más. Las que sirvieron resolvieron un trabajo con un humano responsable.
-
-Mil novecientos cincuenta, Turing, el juego de imitación. Cincuenta y seis, Dartmouth, McCarthy le pone el nombre. ELIZA ya conversaba y ya engañaba un poco. Luego se cortó la plata. Desconfíen del folleto. Confíen en verificar.
-
-Aprendizaje automático: muchos ejemplos, un patrón. Fraude, pronóstico. Deep learning: visión, voz. Ustedes no van a entrenar redes. Van a usar un producto. El producto no conoce su procedimiento interno.
-
-Tres capas. Un número o una etiqueta. O un texto nuevo. Generativa no firma. No es el ERP. ChatGPT no asienta un lote en calidad.
-
-Hay muchos logos. Cambian de nombre. Nosotros practicamos dos. ChatGPT gratis y Claude gratis. No hay religión de marcas. Hay este correo.
-
-Juntos, en voz alta. La IA propone. Tú decides y verificas. Otra vez. Gracias. Si se duermen a las cuatro, despiertan con eso.
-
-Ahora el laboratorio. Módulos. Historia de la IA. Lean. Continuar en cada lección. En cuanto terminen, Quiz, Historia de la IA. Reloj. Eso sí es repaso serio. No es el Master. Quien llegue al sesenta espera. Quien no, lee la explicación. El punto es: no nació en dos mil veintidós.
-
-Las diez menos diez. Diez minutos. Café. Laptops abiertas. No cierren sesión.
-
-Quien ya hizo Historia, otra vez el Calentamiento o ayuden al compañero sin tocarle el teclado. A las diez veinte, fundamentos.
+Quienes ya terminaron Historia pueden repetir el Calentamiento o apoyar a un compañero sin usar su teclado. A las diez veinte comenzamos fundamentos.
 
 Son las diez veinte.
 
-La IA generativa predice la siguiente palabra. Como el teclado del teléfono, a lo bestia. No entiende la planta como un colega. Si el contexto es pobre, suena seguro y puede estar mal.
+En el trabajo, la IA generativa predice la siguiente palabra. Es potente y no “entiende” la planta como un colega. Si el contexto es pobre, el texto suena seguro y puede estar equivocado.
 
-Hay una IA que da un número, fraude sí o no. Y hay una que arma un texto. No las mezclen.
+Suele ayudar a redactar borradores, resumir un texto que ustedes le entregan, cambiar el tono y ordenar ideas. No es fuente única de cifras legales, precios oficiales, decisiones de personal ni información confidencial.
 
-Suele ayudar: borradores, resumir un texto que ustedes le dan, cambiar el tono, ordenar ideas. No es fuente única de leyes, precios, despidos, datos de personas, secretos.
+Una alucinación es un contenido que parece profesional y es falso. El sistema no miente con intención; completa un patrón. Por eso toda cifra y toda obligación se verifican fuera del chat.
 
-Alucinación. Inventa con cara de póker. Una ley, una cifra, una cita. No quiere mentir. Completa el patrón. Por eso se verifica.
+Tres hábitos: verificar con una fuente humana o un documento oficial; no pegar lo confidencial; asumir ustedes la responsabilidad del envío.
 
-Tres hábitos. Fuente humana o documento. No pegar confidencial. La responsable son ustedes. No la marca del chat. No MagnaTic.
+En el laboratorio hay tutores. Se llaman Nova, Atlas, Spark, Guardian, Nexus y Commander. No son ChatGPT. Orientan el método. No sustituyen la otra pestaña.
 
-Otra vez. La IA propone. Tú decides y verificas.
+Ahora entren al módulo de Fundamentos. Lean. Van a encontrar un reto para ordenar seis pasos, A.C.T.I.V.A.: analizar, contextualizar, transformar, iterar, verificar y aplicar. Transformar es pedir el borrador. Verificar es su trabajo. Aplicar es usarlo o descartarlo. Completen el reto y envíenlo. Si las flechas no responden, recarguen con Ctrl+F5. Sin Continuar en cada lección, el módulo siguiente no abre.
 
-Los tutores del portal, Nova, Atlas, Spark, Guardian, Nexus, Commander, no son ChatGPT. Son guías. Un agente aquí es un encargo con límites. Igual que un buen pedido. No pierdan diez minutos con el dibujito. Hagan el módulo.
+Cuando terminen, Quiz de Fundamentos. Quien obtenga el cien por ciento explica, en veinte segundos, qué es una alucinación.
 
-Módulo uno. Lean. Hay un reto de flechas, A.C.T.I.V.A. Eso es de este bloque, no del calentamiento de la mañana. Analizar, contextualizar, transformar, iterar, verificar, aplicar. Transformar es el chat. Verificar son ustedes. Aplicar es pegar en Word o tirar a la basura. Si las flechas no se mueven, Control y F cinco. Hay que enviar el reto. Continuar en cada lección.
+A las once y cuarto pasamos a cómo hablar con la IA.
 
-Luego Quiz del módulo uno. El que saque cien se para y dice en veinte segundos qué es una alucinación.
+El primer resultado es un borrador. Se lee. Se pide más corto, más formal o con un ejemplo. Recién entonces se usa.
 
-El secreto no es un truco de tres palabras. Es contexto. Como un empleado nuevo. El primer resultado es un borrador. Más corto. Más formal. Otro ejemplo. Recién entonces se usa.
+Un pedido de una línea produce un texto genérico. Un pedido profesional tiene cinco piezas: rol, contexto, objetivo, formato y restricciones. Si falta el formato, sale un ensayo. Si faltan restricciones, aparecen descuentos y fechas que nadie autorizó.
 
-Las cinco piezas las vamos a recitar hasta que duela. Rol. Contexto. Objetivo. Formato. Restricciones. Si falta formato, sale un ensayo. Si faltan restricciones, inventa descuentos.
+Hagan esto ahora. En ChatGPT escriban primero: “escribe un correo”. Después, en un chat nuevo, copien el caso de queja del Manual de prompts. En un papel anoten tres diferencias. Eso es pedido pobre contra pedido profesional.
 
-Pedido pobre: hazme un correo para el cliente. Pedido bueno: las cinco. En ChatGPT, primero escriban escribe un correo. Después el de queja del Manual. Tres diferencias en un papel.
+Con la persona de al lado, dos minutos: un correo por un retraso de tres días, Cliente Alfa, Planta Norte, sin montos y sin nombres de personas. Díganse las cinco piezas en voz alta.
 
-Con el vecino, dos minutos. Correo de retraso. Alfa. Planta Norte. Tres días. Sin montos. Sin nombres. Digan las cinco. Tiempo. ¿Quién al frente? Si nadie, yo elijo con cariño. No nos reímos de quien se traba. Nos reímos del prompt de una línea.
+Luego, Quiz de Cómo hablar con una IA.
 
-Quiz de cómo hablar con una IA. Si el reloj aprieta, háganlo igual. No lo dejen para nunca.
-
-Las doce. Almuerzo. Una hora. Pueden jugar el Calentamiento en parejas. No es examen. A la una, prompts.
+Son las doce. Una hora de almuerzo. Pueden repetir el Calentamiento en parejas; no cuenta como examen. A la una retomamos.
 
 Son la una.
 
-Corazón del curso. Van a recitar rol, contexto, objetivo, formato, restricciones. Módulo tres. Manual de prompts. Un caso. El mismo texto en las dos pestañas. Biblioteca. Guardan dos prompts. Yo paso y pregunto las cinco. Si fallan, tres minutos al manual. Después el quiz de ingeniería de prompts. Ese no se salta. Es el corazón.
+Este bloque es el centro del curso. Van a poder recitar las cinco piezas sin leerlas. Entren al módulo de ingeniería de prompts. Usen el Manual: copien un caso y péguenlo, el mismo texto, en ChatGPT y en Claude. En Biblioteca guarden dos prompts: uno del manual y uno propio, anónimo.
 
-Dime las cinco. Gracias. Siguiente.
+Yo voy a preguntar, persona por persona, las cinco piezas. Si alguien no las tiene claras, vuelve tres minutos al manual.
+
+Después, Quiz de ingeniería de prompts. Este no se omite.
 
 Son las tres.
 
-Word. Borrador en el chat. Pegan. Rojo en lo que un humano verifica. Tono, cifras, confidencialidad.
+Módulo Word. Generen un borrador en el chat, péguenlo en Word y marquen en rojo lo que una persona debe verificar: tono, cifras, destinatario, confidencialidad.
 
-Últimos veinticinco minutos. El caso de su cargo, anónimo. No entren a Proyecto final para guardar ficha. Eso es el otro viernes de dos veinte a cuatro y veinticinco. La plantilla Word vacía, si la quieren, es para notas. No me la manden hoy. Los Word con su usuario no se los doy hoy.
+En los últimos veinticinco minutos anoten el caso de su cargo, anónimo. No entren a Proyecto final para Guardar ficha. Eso es el viernes dos. La plantilla Word vacía, si la reciben, es para notas. No es la entrega. Los archivos con su usuario se entregan mañana en el bloque de examen, no hoy.
 
-Cliente Alfa. Tres días. Diez por ciento en la próxima, si la política lo permite. No hay reembolso. No conocen la causa. La misma letra en los dos chats. Qué no se envía tal cual. Fechas inventadas. Plantilla. El diez por ciento sin aprobar. Nombres reales.
+Cierre del día. Cinco minutos: terminen el quiz de Word o repitan el Calentamiento. Luego, con quien tienen al lado, en noventa segundos: qué no van a pegar nunca. Nómina, contratos, claves, clientes identificables.
 
-Minuta de patio. Fila de camiones. Lote húmedo. Un radio el jueves sin dueño. No conviertan un se habló en un acuerdo. Claude marca huecos. ChatGPT deja el acta bonita. Ninguno es el jefe de patio.
+En un papel, una tarea del lunes que harán con las cinco piezas, sin datos internos.
 
-Cierre. Cinco minutos. Calentamiento otra vez o terminen Word. Con el vecino, noventa segundos. Qué no van a pegar nunca. Nómina. Contratos. Claves. Clientes identificables.
+Si esta computadora no es la de su oficina, vayan a Progreso y exporten el archivo.
 
-En un papel. Una tarea del lunes con las cinco piezas. Sin datos internos.
+El examen es el segundo viernes. Hoy no se cierra la ficha. Gracias. Hasta entonces.
 
-Progreso. Exportar. Si esta laptop no es la de la oficina.
+Buenos días. Segundo viernes.
 
-El examen es el segundo viernes. No hoy. Gracias. Nos vemos.
+Confirmen que la sesión sigue abierta. Si cambiaron de equipo, Progreso, Importar, y carguen el archivo de ayer. Hagan el Calentamiento. Recuerden tres errores frecuentes: un pedido de una sola línea, usar una cifra sin verificarla, y pegar el libro real de Excel.
 
-Ya es el segundo viernes. Portada otra vez. F5.
+Hoy de mañana, Excel y PowerPoint. A las dos y veinte comienza el examen. No abran todavía el Reto final.
 
-¿Sigue la sesión? Si cambiaron de computadora, Progreso, Importar. Calentamiento. Las mismas cuatro de sentido común. Tres errores de siempre. Pedido de una línea. Creer la cifra. Pegar el Excel real. Hoy Excel, PowerPoint, comparador. A las dos veinte el examen. No abran el Master todavía.
+Son las ocho y veinte.
 
-Seis filas inventadas. Piden la fórmula. Tres celdas a mano. Si el chat pone texto, Excel se rompe. Quiz de Excel. El cien por ciento explica una celda.
+Módulo Excel. Creen seis filas con datos inventados. Pidan la fórmula. Comprueben tres celdas a mano. Si el chat escribe texto donde Excel espera un número, la hoja falla; eso hay que verlo. Nadie pega el archivo real de la empresa.
 
-Seis diapositivas. Descarten dos ideas flojas. Donde va un número, corchete cifra oficial. Comparador. El mismo prompt en los dos. Escriban cuál les sirve en este caso y por qué. Manos. ChatGPT. Claude. Mezcla. No hay ganador mundial. Quiz de PowerPoint.
+Quiz de Excel. Quien obtenga cien por ciento explica una celda al grupo.
 
-Almuerzo.
+Receso breve a las diez.
 
-Cazar el error. Una salida mentirosa. Productividad. Minuta o agenda sin nombres. Quizzes de análisis y de productividad. A las dos veinte cierran teoría.
+Son las diez diez.
 
-Son las dos veinte. Esto sí es el examen. Les doy su Word. El nombre del archivo es su usuario. Proyecto final. Doce pasos. Copian del Word al recuadro. El prompt, ChatGPT, el mismo en Claude. Tiempos, riesgos y validación los ponen ustedes. Al final, Guardar ficha. Si la empresa quiere archivo, Copiar ficha y péguenla en la plantilla vacía. Planta Norte. Alfa. Nada interno.
+Módulo PowerPoint. Pidan una estructura de seis diapositivas. Descarten dos ideas débiles. Donde vaya un número, dejen el espacio marcado; no inventen la cifra oficial.
 
-Hasta dos cuarenta, el problema y cómo lo hacen hoy. Hasta tres diez, el prompt y las dos inteligencias de verdad. Hasta tres cuarenta, comparar y verificar. Hasta cuatro diez, guardar. El que acaba ensaya un minuto en voz alta. Problema. Qué hizo la IA. Qué revisó un humano. Ahorro.
+Luego, Comparador. El mismo prompt en ChatGPT y en Claude. Carguen los ejemplos del laboratorio o péguen los suyos. Escriban cuál les sirve en este caso y por qué. Votamos con la mano: uno, el otro, o una mezcla. No hay ganador mundial.
 
-Son las cuatro y veinticinco. Ahora sí. Quiz. Reto final. AI Business Master. Reloj. Tres voluntarios. Un minuto. Insignias. Exporten. Constancia si la ficha está.
+Quiz de PowerPoint.
 
-La IA no los reemplaza. Los potencia si verifican. Si no verifican, firman basura más rápido. Elijan.
+Son las doce. Almuerzo. A la una, análisis y productividad.
 
-Si alguien no entra. Barra al final. Mayúsculas de la clave. No incógnito.
+Son la una.
 
-Si un módulo no abre. Continuar en la lección de antes.
+Módulo de investigación. Completen un reto de detectar un error o una salida que no se puede usar tal cual.
 
-Si preguntan cuál modelo. El de la pantalla. No lo memoricen.
+Luego, productividad: una minuta o una agenda, con cargos, no con nombres reales.
 
-Si Claude se acabó. Mismo prompt. ChatGPT. Nadie se víctima.
+Quizzes de análisis y de productividad. A las dos y veinte se cierra la teoría.
 
-Si ya hicieron la ficha en casa el jueves. Hoy, si es viernes uno, no la guardan como examen. El viernes dos, con las dos pestañas abiertas.
+Son las dos y veinte. Este bloque es el examen.
 
-Eso es todo lo que yo diría. Tú lo lees hasta que te salga sin mirar. Sobre todo: la URL, el calentamiento sin A.C.T.I.V.A., las cinco piezas a la una, y el examen a las dos veinte del segundo día.
+Cada persona recibe el Word de práctica que corresponde a su usuario. Ábranlo. En el laboratorio, menú Proyecto final. Hay doce pasos. Copian del Word a cada recuadro. El prompt se pega en ChatGPT y, idéntico, en Claude. La comparación, la validación, los tiempos y los riesgos los escriben ustedes. Los datos siguen siendo ficticios.
+
+Al terminar, Guardar ficha. Si la organización pide un archivo, Copiar ficha y péguenla en la plantilla vacía. Eso es respaldo, no reemplaza el guardado en el portal.
+
+Hasta las dos cuarenta: problema, cómo lo hacen hoy, tiempos, qué hace la IA y qué hacen ustedes. Hasta las tres diez: prompt y las dos herramientas. Hasta las tres cuarenta: comparar, refinar y verificar. Hasta las cuatro diez: proceso, ahorro y Guardar ficha. Quienes terminen antes, preparan un minuto en voz alta: problema, qué hizo la IA, qué revisó un humano, ahorro estimado.
+
+Son las cuatro y veinticinco.
+
+Ahora sí, Quiz, Reto final, AI Business Master. Reloj.
+
+Luego tres personas, un minuto cada una.
+
+Revisen insignias en Progreso. Exporten. Si la ficha está guardada, corresponde la constancia.
+
+La inteligencia artificial propone. Ustedes deciden y verifican. Con eso se trabaja el lunes. Gracias.
