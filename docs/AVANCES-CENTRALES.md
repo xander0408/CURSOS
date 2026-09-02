@@ -28,14 +28,15 @@ CREATE TABLE IF NOT EXISTS saves (
 
 ### B. Proyecto `cursos`
 
+No uses la pestaña **Vinculaciones** para D1: este Worker está pegado a GitHub y **esa pestaña no guarda**. La vinculación va en `sync/wrangler.toml` con el ID de la base.
+
 1. Menú **Cómputo** → **Workers y Pages** → entra a **cursos**.
-2. Pestaña **Vinculaciones** → añadir **D1**. Variable: **`DB`**. Elige la base `abl-avances`.
-3. Pestaña **Configuración** → **Configuración de compilación** → editar:
+2. Pestaña **Configuración** → **Configuración de compilación** → editar:
    - **Directorio raíz:** `sync` (no `/`)
    - **Comando de compilación:** vacío (Ninguno)
    - **Implementar comando:** `npx wrangler deploy`
-4. Guarda. Pestaña **Implementaciones** → **Nueva implementación**.
-5. Pestaña **Dominios**: copia la URL `https://….workers.dev` **sin** barra al final.
+3. Guarda. Pestaña **Implementaciones** → **Nueva implementación**.
+4. Pestaña **Dominios**: copia la URL `https://….workers.dev` **sin** barra al final.
 
 Esa URL va en `content/sync.json` (`apiUrl`). El `database_id` de D1 va en `sync/wrangler.toml`. Pásamelos y los dejo publicados.
 
