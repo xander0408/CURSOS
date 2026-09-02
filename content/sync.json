@@ -1,4 +1,4 @@
 {
-  "apiUrl": "",
-  "_help": "Cuando el Worker de avances esté publicado, pega aquí la URL (sin barra al final). Instrucciones: docs/AVANCES-CENTRALES.md"
+  "apiUrl": "https://cursos.alopez-993.workers.dev",
+  "_help": "URL del Worker de avances (sin barra al final). Guía: docs/AVANCES-CENTRALES.md"
 }

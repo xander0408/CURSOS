@@ -8,4 +8,4 @@ ROSTER_URL = "https://xander0408.github.io/CURSOS/content/students.json"
 [[d1_databases]]
 binding = "DB"
 database_name = "abl-avances"
-database_id = "PEGA_AQUI_EL_ID_QUE_TE_DA_WRANGLER"
+database_id = "eb5e1fad-17e2-4dcf-af99-af738ba3d9c5"
