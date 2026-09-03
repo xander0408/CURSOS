@@ -13,7 +13,7 @@
       "Archivos, imágenes, voz y herramientas extra SÍ tienen tope. No cuentes con subir Excel grandes en cada ejercicio.",
       "Almacenamiento de archivos en Free es reducido frente a planes de pago.",
       "Pueden aparecer anuncios según el país.",
-      "No es un plan empresarial: no subas informacion confidencial de tu trabajo."
+      "No es un plan empresarial: no subas información confidencial de tu trabajo."
     ],
     "classTip": "Para el curso: prioriza pegar texto anónimo, no archivos pesados. Si se acaba una herramienta (imagen, análisis de datos), espera el reinicio o usa solo el chat de texto."
   },
@@ -21,7 +21,7 @@
     "url": "https://claude.ai/",
     "plan": "Gratuito (Free)",
     "can": [
-      "Chatear con modelos de Anthropic dentro de un cupo de creditos que se renueva cada 5 horas aproximadamente.",
+      "Chatear con modelos de Anthropic dentro de un cupo de créditos que se renueva cada 5 horas aproximadamente.",
       "Tareas cortas de redacción, análisis y comparación — ideales para el comparador del laboratorio.",
       "Artifacts básicos según lo que Anthropic habilite ese día."
     ],
@@ -36,6 +36,6 @@
     "Crea las dos cuentas ANTES del primer viernes, con un correo que recuerdes.",
     "Entra en ventana normal (no incógnito) para el laboratorio web.",
     "Si Claude se queda sin créditos, continúa en ChatGPT y anota que Claude se probará al reiniciar el cupo.",
-    "Ninguna cuenta gratis conoce tu empresa: tu das el contexto anonimo."
+    "Ninguna cuenta gratis conoce tu empresa: tu das el contexto anónimo."
   ]
 }

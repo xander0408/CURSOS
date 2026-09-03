@@ -30,7 +30,7 @@ export function renderLibrary(data) {
   return `
     <div class="page-head">
       <h2>Biblioteca de prompts</h2>
-      <p>Plantillas listas para copiar y pegar. Cambia solo los datos entre corchetes. No uses informacion real de tu empresa.</p>
+      <p>Plantillas listas para copiar y pegar. Cambia solo los datos entre corchetes. No uses información real de tu empresa.</p>
     </div>
     <h3>Del curso</h3>
     <div class="grid grid-2">${seeds}</div>

@@ -15,7 +15,7 @@
           "explain": "Dartmouth 1956. ChatGPT popularizó el chat mucho después."
         },
         {
-          "q": "Un modelo de lenguaje como ChatGPT o Claude, en la practica de oficina, es…",
+          "q": "Un modelo de lenguaje como ChatGPT o Claude, en la práctica de oficina, es…",
           "options": ["Un empleado experto dentro de un servidor", "Un predictor de texto plausible que no conoce solo los procedimientos internos", "El ERP", "Una fuente legal oficial"],
           "correct": 1,
           "explain": "Predice texto. El contexto de tu trabajo lo aporta la persona, sin datos sensibles."
@@ -34,7 +34,7 @@
         },
         {
           "q": "El uso responsable de un chat de IA en el trabajo empieza por…",
-          "options": ["Pegar contratos y nomina para que entienda", "Anonimizar el caso y verificar cifras fuera del chat", "Creer toda norma que cite el modelo", "Dejar que firme el primer borrador"],
+          "options": ["Pegar contratos y nómina para que entienda", "Anonimizar el caso y verificar cifras fuera del chat", "Creer toda norma que cite el modelo", "Dejar que firme el primer borrador"],
           "correct": 1,
           "explain": "Privacidad + verificación. La historia del hype enseña exactamente eso."
         }
@@ -148,7 +148,7 @@
         },
         {
           "q": "«Si no tienes un dato, no lo inventes: pídemelo». Esto es…",
-          "options": ["Un formato", "Una restricción útil que reduce alucinaciones", "Un rol", "Un objetivo"],
+          "options": ["Un formato", "Una restricción útil que reduce alucinaciónes", "Un rol", "Un objetivo"],
           "correct": 1,
           "explain": "Es la restricción que más reduce datos falsos en la respuesta."
         },
@@ -354,9 +354,9 @@
         },
         {
           "q": "Para una minuta desde notas caóticas, pides tres secciones:",
-          "options": ["Intro, nudo, desenlace", "Decisiones, tareas y pendientes", "Fecha, hora y lugar", "Título, cuerpo y firma"],
+          "options": ["Intro, nudo, desenlace", "Decisiónes, tareas y pendientes", "Fecha, hora y lugar", "Título, cuerpo y firma"],
           "correct": 1,
-          "explain": "Decisiones tomadas, tareas con responsable y temas pendientes, sin inventar acuerdos."
+          "explain": "Decisiónes tomadas, tareas con responsable y temas pendientes, sin inventar acuerdos."
         },
         {
           "q": "En un prompt de seguimiento semanal, ¿qué restricción ayuda?",

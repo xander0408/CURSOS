@@ -1,5 +1,5 @@
 // Genera el documento de ACCESOS por participante (usuario + contraseña).
-// Lee content/students.json. Documento SENSIBLE: no debe subirse a un repo publico.
+// Lee content/students.json. Documento SENSIBLE: no debe subirse a un repo público.
 //  - Accesos-Participantes.docx : tabla maestra (para el instructor)
 //  - Fichas-Acceso-Individuales.docx : una tarjeta por persona (recortable)
 import { writeFileSync, readFileSync } from "fs";

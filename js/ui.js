@@ -24,7 +24,7 @@ export function progressBar(pct) {
 
 export function pillForDifficulty(d) {
   const map = { basico: "ok", intermedio: "warn", avanzado: "hard" };
-  return `<span class="pill ${map[d] || ""}">${d || "basico"}</span>`;
+  return `<span class="pill ${map[d] || ""}">${d === "basico" ? "básico" : d || "básico"}</span>`;
 }
 
 export function html(strings, ...values) {
@@ -57,12 +57,12 @@ export function copyText(text) {
     toast("No hay texto para copiar. Completa el prompt o selecciona una plantilla.");
     return false;
   }
-  const done = () => toast("Copiado. Pegalo en ChatGPT o Claude.");
+  const done = () => toast("Copiado. Pégalo en ChatGPT o Claude.");
   if (navigator.clipboard && window.isSecureContext) {
     return navigator.clipboard.writeText(t).then(done).catch(() => fallbackCopy(t) && done());
   }
   if (fallbackCopy(t)) done();
-  else toast("Selecciona el texto del recuadro y copialo con Ctrl+C.");
+  else toast("Selecciona el texto del recuadro y cópialo con Ctrl+C.");
   return true;
 }
 

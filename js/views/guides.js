@@ -10,12 +10,12 @@ export function renderPerfil(data) {
   return `
     <div class="page-head">
       <h2>Conocernos</h2>
-      <p>Ronda de aula: cargo, una tarea que te quita tiempo (sin datos internos) y tu caso de practica asignado. Los ejemplos del laboratorio son ficticios.</p>
+      <p>Ronda de aula: cargo, una tarea que te quita tiempo (sin datos internos) y tu caso de práctica asignado. Los ejemplos del laboratorio son ficticios.</p>
     </div>
     <div class="card">
       <h3>${escapeHtml(s.profile.displayName || "Participante")}</h3>
       <p class="muted">${escapeHtml(s.profile.role || "")} · ${escapeHtml(s.profile.email || "")}</p>
-      <div class="field"><label>Anos aproximados en tu cargo o en el sector</label>
+      <div class="field"><label>Años aproximados en tu cargo o en el sector</label>
         <input id="ku-years" value="${escapeHtml(k.years || "")}" placeholder="ej. 8" /></div>
       <div class="field"><label>Una tarea de tu semana que te quita tiempo (sin datos sensibles)</label>
         <textarea id="ku-pain" rows="3" placeholder="ej. armar el reporte semanal a partir de varios correos">${escapeHtml(k.pain || "")}</textarea></div>

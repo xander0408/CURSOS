@@ -15,7 +15,7 @@ export function moduleProgress(full) {
   const chDone = challenges.filter((c) => chState[c.id]?.status === "done").length;
 
   // Progreso = (lecciones hechas + retos hechos) / (total de lecciones + total de retos).
-  // Asi, un modulo sin retos depende solo de sus lecciones y no aporta un 50% fantasma.
+  // Así, un módulo sin retos depende solo de sus lecciones y no aporta un 50% fantasma.
   const totalItems = lessons.length + challenges.length;
   const doneItems = lessonsDone + chDone;
   const pct = totalItems ? Math.round((doneItems / totalItems) * 100) : 0;

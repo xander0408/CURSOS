@@ -25,7 +25,7 @@ export function isModuleUnlocked(data, moduleId) {
 export function nextPathStep(data) {
   const s = getState();
   if (!s.profile.introDone) {
-    return { href: "#/perfil", title: "Conocernos", detail: "Quien eres, tu cargo y tu caso de practica." };
+    return { href: "#/perfil", title: "Conocernos", detail: "Quién eres, tu cargo y tu caso de práctica." };
   }
   if (!s.progress.freeTiersAck) {
     return { href: "#/cuentas", title: "Cuentas gratis", detail: "Hasta dónde llegan ChatGPT y Claude sin pagar." };

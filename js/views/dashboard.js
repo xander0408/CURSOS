@@ -41,7 +41,7 @@ export function renderDashboard(data) {
   return `
     <div class="page-head">
       <h2>Ruta del laboratorio</h2>
-      <p>Orden fijo: conocernos, cuentas gratis, historia de la IA, modulos. Los casos de practica son ficticios; no uses datos internos de tu empresa.</p>
+      <p>Orden fijo: conocernos, cuentas gratis, historia de la IA, módulos. Los casos de práctica son ficticios; no uses datos internos de tu empresa.</p>
     </div>
     ${sectionAgent(data, "dashboard")}
     <div class="grid grid-4" style="margin-bottom:20px">

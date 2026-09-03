@@ -1,5 +1,5 @@
 // Genera una presentacion .pptx extensa para alumnos de nivel basico.
-// Con narrativa, analogias y diseno (portada, separadores de seccion, cierres).
+// Con narrativa, analogías y diseño (portada, separadores de sección, cierres).
 // Sin dependencias externas: empaqueta un ZIP "stored" valido para PowerPoint.
 import { writeFileSync, readFileSync } from "fs";
 import { crc32 as zcrc } from "zlib";
@@ -15,12 +15,12 @@ const MUTED = "9AA8C2";
 
 // Tipos de slide:
 //  cover     : portada
-//  section   : separador de seccion (numero grande + titulo)
-//  bullets    : titulo + vinetas
-//  analogy    : titulo + frase de analogia grande + apoyo
-//  two        : titulo + dos columnas (izq/der con encabezado)
+//  section   : separador de sección (número grande + título)
+//  bullets    : título + viñetas
+//  analogy    : título + frase de analogía grande + apoyo
+//  two        : título + dos columnas (izq/der con encabezado)
 //  quote      : frase central grande
-//  steps      : titulo + lista numerada
+//  steps      : título + lista numerada
 //  closing   : cierre
 const slides = [
   { kind: "cover", title: "AI Business Lab", subtitle: "Inteligencia Artificial Aplicada al Negocio",
@@ -29,43 +29,43 @@ const slides = [
   { kind: "section", num: "A", title: "Cronograma del curso" },
 
   { kind: "steps", title: "Viernes 1 (8 horas)", steps: [
-      "Apertura y conocernos (20 min): login, ChatGPT y Claude en otra pestana.",
+      "Apertura y conocernos (20 min): login, ChatGPT y Claude en otra pestaña.",
       "Historia de la IA + retos + quiz (incluye ML, deep learning y pioneros).",
       "Fundamentos, como hablar con la IA, prompts y Word.",
-      "Cierre: exportar avance y caso de practica (datos ficticios).",
+      "Cierre: exportar avance y caso de práctica (datos ficticios).",
     ] },
 
   { kind: "steps", title: "Viernes 2 (8 horas)", steps: [
-      "Excel (validar numeros) y PowerPoint (estructura, no cifras inventadas).",
-      "Analisis, productividad y comparador ChatGPT vs Claude.",
+      "Excel (validar números) y PowerPoint (estructura, no cifras inventadas).",
+      "Análisis, productividad y comparador ChatGPT vs Claude.",
       "Proyecto final: copiar el prompt de tu caso, pegar, verificar, ficha.",
       "Cierre y constancia.",
     ] },
 
   { kind: "talk", title: "Ronda: conocernos (5 min)", prompt: "Nombre, cargo y UNA tarea que te quita tiempo esta semana.",
-    hint: "Sin datos de clientes, montos reales ni nombres de terceros. El instructor conecta con tu caso de practica (ficticio)." },
+    hint: "Sin datos de clientes, montos reales ni nombres de terceros. El instructor conecta con tu caso de práctica (ficticio)." },
 
-  { kind: "bullets", title: "Para quien es este curso", lead: "Gerencias que usan correo, Word y Excel.",
+  { kind: "bullets", title: "Para quién es este curso", lead: "Gerencias que usan correo, Word y Excel.",
     bullets: [
       "No necesitas programar.",
       "Trabajamos con cuentas GRATIS de ChatGPT y Claude.",
-      "El laboratorio web ordena la practica; la IA vive en otra pestana.",
+      "El laboratorio web ordena la práctica; la IA vive en otra pestaña.",
       "Los casos son inventados (Planta Norte). No uses datos internos.",
     ] },
 
   { kind: "section", num: "0", title: "Historia de la IA" },
 
-  { kind: "talk", title: "Antes de fechas: tu imagen", prompt: "Cuando oyes inteligencia artificial, que ves?",
-    hint: "Robot, pelicula, Excel magico, ChatGPT. Todas valen. Luego las aterrizamos." },
+  { kind: "talk", title: "Antes de fechas: tu imagen", prompt: "Cuando oyes inteligencia artificial, qué ves?",
+    hint: "Robot, película, Excel mágico, ChatGPT. Todas valen. Luego las aterrizamos." },
 
-  { kind: "photo", title: "Linea de tiempo (referencia visual)", image: "ppt-assets/timeline.png" },
+  { kind: "photo", title: "Línea de tiempo (referencia visual)", image: "ppt-assets/timeline.png" },
 
-  { kind: "bullets", title: "Nacimiento del campo", lead: "No empezo en 2022.",
+  { kind: "bullets", title: "Nacimiento del campo", lead: "No empezó en 2022.",
     bullets: [
-      "1950 — Alan Turing: el juego de imitacion (comportamiento).",
+      "1950 — Alan Turing: el juego de imitación (comportamiento).",
       "1956 — Dartmouth: John McCarthy nombra inteligencia artificial.",
-      "Tambien: Minsky, Shannon, Newell, Simon, Samuel, Weizenbaum (ELIZA).",
-      "Luego inviernos: se prometio demasiado y se corto inversion.",
+      "También: Minsky, Shannon, Newell, Simon, Samuel, Weizenbaum (ELIZA).",
+      "Luego inviernos: se prometió demasiado y se cortó inversión.",
     ] },
 
   { kind: "photo", title: "Pioneros (referencia de aula)", image: "ppt-assets/pioneros.png" },
@@ -73,16 +73,16 @@ const slides = [
   { kind: "photo", title: "Machine learning vs deep learning", image: "ppt-assets/ml-dl.png" },
 
   { kind: "two", title: "Tres capas, tres usos",
-    leftH: "ML y deep learning", left: ["ML: aprende de ejemplos (fraude, pronostico).", "Deep learning: redes profundas (vision, voz).", "Hinton, LeCun, Bengio; 2012 ImageNet."],
+    leftH: "ML y deep learning", left: ["ML: aprende de ejemplos (fraude, pronóstico).", "Deep learning: redes profundas (visión, voz).", "Hinton, LeCun, Bengio; 2012 ImageNet."],
     rightH: "IA generativa", right: ["2017 transformers (Vaswani y equipo).", "2022 chats masivos (ChatGPT, luego Claude y otros).", "Genera texto; no firma ni es tu ERP."] },
 
   { kind: "photo", title: "Mapa de herramientas actuales", image: "ppt-assets/ias-actuales.png" },
 
-  { kind: "bullets", title: "Que existe hoy (cambia de nombre, no de idea)",
+  { kind: "bullets", title: "Qué existe hoy (cambia de nombre, no de idea)",
     bullets: [
       "Chats: ChatGPT, Claude, Gemini, Copilot, Grok, Perplexity y similares.",
       "Modelos abiertos: Llama, Mistral y variantes que una empresa puede hospedar.",
-      "IA clasica en el negocio: vision de linea, scoring, pronosticos.",
+      "IA clásica en el negocio: visión de línea, scoring, pronósticos.",
       "Este curso practica dos: ChatGPT Free y Claude Free. El resto se nombra para no confundirlos con el laboratorio.",
     ] },
 
@@ -91,63 +91,63 @@ const slides = [
   { kind: "bullets", title: "Principales chatbots (mapa, no ranking)",
     lead: "Todos proponen texto. Ninguno firma tu correo.",
     bullets: [
-      "ChatGPT (OpenAI): el mas usado en oficina; en clase, cuenta Free.",
-      "Claude (Anthropic): util para comparar un entregable; cupo Free limitado.",
+      "ChatGPT (OpenAI): el más usado en oficina; en clase, cuenta Free.",
+      "Claude (Anthropic): útil para comparar un entregable; cupo Free limitado.",
       "Gemini (Google): vive cerca de Gmail y Drive si la empresa lo activa.",
       "Copilot (Microsoft): vive cerca de Word, Excel y Teams si hay licencia.",
-      "Grok, Perplexity y otros: mismos habitos (contexto, iterar, verificar).",
+      "Grok, Perplexity y otros: mismos hábitos (contexto, iterar, verificar).",
     ] },
 
-  { kind: "two", title: "ChatGPT: que hay (brujula, no contrato)",
-    leftH: "Free (este curso)", left: ["Chat de texto con el modelo gratuito del dia (el que veas en pantalla).", "Archivos e imagenes: tope. No es plan empresa.", "Sirve para volumen de practica: correos, estructuras, iterar."],
-    rightH: "Plus / Team / Enterprise", right: ["Plus: mas capacidad y, a veces, un modelo mas capaz. Se paga.", "Team y Enterprise: admin, facturacion y politicas. No las usamos en aula.", "Si tu empresa ya tiene uno, igual: no pegues datos reales aqui."] },
+  { kind: "two", title: "ChatGPT: que hay (brújula, no contrato)",
+    leftH: "Free (este curso)", left: ["Chat de texto con el modelo gratuito del día (el que veas en pantalla).", "Archivos e imágenes: tope. No es plan empresa.", "Sirve para volumen de práctica: correos, estructuras, iterar."],
+    rightH: "Plus / Team / Enterprise", right: ["Plus: más capacidad y, a veces, un modelo más capaz. Se paga.", "Team y Enterprise: admin, facturación y políticas. No las usamos en aula.", "Si tu empresa ya tiene uno, igual: no pegues datos reales aquí."] },
 
-  { kind: "two", title: "Claude: que hay (brujula, no contrato)",
-    leftH: "Free (este curso)", left: ["Cupo de creditos (~cada 5 horas). Textos largos gastan mas.", "Sirve para COMPARAR un entregable, no para 80 vueltas.", "Si se acaba: mismo prompt en ChatGPT y sigues."],
-    rightH: "Pro / Team / Enterprise", right: ["Pro: mas cupo. Se paga. No es requisito del curso.", "Team y Enterprise: uso de empresa. No las usamos en aula.", "Familia de modelos (Haiku / Sonnet / Opus): mas capaz suele gastar mas."] },
+  { kind: "two", title: "Claude: que hay (brújula, no contrato)",
+    leftH: "Free (este curso)", left: ["Cupo de créditos (~cada 5 horas). Textos largos gastan más.", "Sirve para COMPARAR un entregable, no para 80 vueltas.", "Si se acaba: mismo prompt en ChatGPT y sigues."],
+    rightH: "Pro / Team / Enterprise", right: ["Pro: más cupo. Se paga. No es requisito del curso.", "Team y Enterprise: uso de empresa. No las usamos en aula.", "Familia de modelos (Haiku / Sonnet / Opus): más capaz suele gastar más."] },
 
-  { kind: "quote", quote: "La IA propone. Tu decides y verificas." },
+  { kind: "quote", quote: "La IA propone. Tú decides y verificas." },
 
-  { kind: "section", num: "1", title: "Cuentas gratis: hasta donde llegan" },
+  { kind: "section", num: "1", title: "Cuentas gratis: hasta dónde llegan" },
 
   { kind: "two", title: "ChatGPT Free vs Claude Free (ago 2026)",
-    leftH: "ChatGPT Free", left: ["Texto de chat en el modelo gratuito del dia.", "Archivos e imagenes SI tienen tope.", "No es plan empresa. Gana lo que ves en pantalla."],
-    rightH: "Claude Free", right: ["Cupo de creditos cada 5 horas aproximadamente.", "Textos largos y modelos grandes gastan mas.", "Usa Claude para COMPARAR, no para 80 iteraciones." ] },
+    leftH: "ChatGPT Free", left: ["Texto de chat en el modelo gratuito del día.", "Archivos e imágenes SÍ tienen tope.", "No es plan empresa. Gana lo que ves en pantalla."],
+    rightH: "Claude Free", right: ["Cupo de créditos cada 5 horas aproximadamente.", "Textos largos y modelos grandes gastan más.", "Usa Claude para COMPARAR, no para 80 iteraciones." ] },
 
   { kind: "bullets", title: "Plan de aula si se acaba el cupo", lead: "Nadie se queda parado.",
     bullets: [
       "Sigue en ChatGPT Free con el mismo prompt.",
-      "Anota: «Claude pendiente al reiniciar creditos».",
-      "No subas Excel pesados ni imagenes si no hace falta.",
-      "Nunca pegues contratos, nomina, claves o clientes reales.",
+      "Anota: «Claude pendiente al reiniciar créditos».",
+      "No subas Excel pesados ni imágenes si no hace falta.",
+      "Nunca pegues contratos, nómina, claves o clientes reales.",
     ] },
 
-  { kind: "section", num: "2", title: "Que es (y que no es) la IA" },
+  { kind: "section", num: "2", title: "Qué es (y que no es) la IA" },
 
   { kind: "two", title: "Software tradicional vs inteligencia artificial",
-    leftH: "Software tradicional", left: ["Reglas que alguien programo.", "Misma entrada, misma salida (si no hay error).", "Ej.: formula de Excel, ERP, un formulario.", "Si el caso no estaba previsto, se detiene o pide a un humano."],
-    rightH: "Inteligencia artificial", right: ["Aprende patrones de ejemplos o de texto.", "La misma pregunta puede salir con otra redaccion.", "Ej.: ChatGPT, detector de fraude, vision de linea.", "Puede sonar segura e inventar. Por eso se verifica."] },
+    leftH: "Software tradicional", left: ["Reglas que alguien programó.", "Misma entrada, misma salida (si no hay error).", "Ej.: fórmula de Excel, ERP, un formulario.", "Si el caso no estaba previsto, se detiene o pide a un humano."],
+    rightH: "Inteligencia artificial", right: ["Aprende patrones de ejemplos o de texto.", "La misma pregunta puede salir con otra redacción.", "Ej.: ChatGPT, detector de fraude, visión de línea.", "Puede sonar segura e inventar. Por eso se verifica."] },
 
   { kind: "steps", title: "Niveles de inteligencia artificial", steps: [
-      "Estrecha (la de hoy): una familia de tareas. Un chat, un pronostico, una camara. No cubre todo tu cargo.",
+      "Estrecha (la de hoy): una familia de tareas. Un chat, un pronóstico, una cámara. No cubre todo tu cargo.",
       "General (AGI): nivel humano en casi cualquier trabajo intelectual. No es lo que tienes en Free. No lo prometas en un informe.",
-      "Superinteligencia: mas capaz que las personas en casi todo. Es hipotesis, no producto de este aula.",
-      "Aqui usamos IA estrecha generativa: texto. Tu decides y verificas.",
+      "Superinteligencia: más capaz que las personas en casi todo. Es hipótesis, no producto de este aula.",
+      "Aquí usamos IA estrecha generativa: texto. Tú decides y verificas.",
     ] },
 
   { kind: "steps", title: "Cuatro pasos para usar la IA", steps: [
       "Encarga: di la tarea (correo, minuta, estructura de PPT).",
-      "Contextualiza: hechos anonimos, tono y formato. Sin nomina ni contratos reales.",
-      "Itera: el primer texto es borrador. Pide mas corto, mas formal, sin promesas.",
-      "Verifica y aplica: cifras y compromisos los confirma una persona. Luego envias o descartas.",
+      "Contextualiza: hechos anónimos, tono y formato. Sin nómina ni contratos reales.",
+      "Itera: el primer texto es borrador. Pide más corto, más formal, sin promesas.",
+      "Verifica y aplica: cifras y compromisos los confirma una persona. Luego envías o descartas.",
     ] },
 
   { kind: "steps", title: "El loop de la IA (se repite)", steps: [
       "Pides con contexto.",
       "La IA propone un borrador.",
-      "Tu lees y marcas lo dudoso.",
+      "Tú lees y marcas lo dudoso.",
       "Ajustas el pedido (o el texto a mano) y vuelves a pedir, o cierras.",
-      "Verificar no es un extra: es el ultimo giro del loop, siempre.",
+      "Verificar no es un extra: es el último giro del loop, siempre.",
     ] },
 
   { kind: "talk", title: "Puente a A.C.T.I.V.A.", prompt: "Los 4 pasos son el recorte de gerencia. El laboratorio usa seis letras: Analizar, Contextualizar, Transformar, Iterar, Verificar, Aplicar.",
@@ -155,69 +155,69 @@ const slides = [
 
   { kind: "analogy", title: "En palabras simples",
     big: "La IA generativa predice la siguiente palabra.",
-    support: "Como cuando tu telefono te sugiere la proxima palabra al escribir, pero mucho mas potente: puede redactar correos, resumir textos y proponer ideas." },
+    support: "Como cuando tu teléfono te sugiere la próxima palabra al escribir, pero mucho más potente: puede redactar correos, resumir textos y proponer ideas." },
 
   { kind: "two", title: "Dos tipos de IA",
-    leftH: "IA tradicional", left: ["Da una etiqueta o un numero.", "Ej.: detectar fraude, un pronostico.", "Responde: si/no, alto/bajo."],
+    leftH: "IA tradicional", left: ["Da una etiqueta o un número.", "Ej.: detectar fraude, un pronóstico.", "Responde: sí/no, alto/bajo."],
     rightH: "IA generativa", right: ["Crea texto, tablas e ideas nuevas.", "Ej.: ChatGPT y Claude.", "Responde: un borrador, un resumen."] },
 
-  { kind: "bullets", title: "Que puede hacer por ti", lead: "Suele ayudar mucho con:",
+  { kind: "bullets", title: "Qué puede hacer por ti", lead: "Suele ayudar mucho con:",
     bullets: [
       "Redactar borradores de correos e informes.",
-      "Resumir textos largos que tu le das.",
-      "Cambiar el tono: mas formal, mas cercano.",
+      "Resumir textos largos que tú le das.",
+      "Cambiar el tono: más formal, más cercano.",
       "Ordenar ideas y proponer estructuras.",
       "Explicar un concepto en simple.",
     ] },
 
-  { kind: "bullets", title: "Que NO debe hacer sola", lead: "No la uses como fuente unica para:",
+  { kind: "bullets", title: "Qué NO debe hacer sola", lead: "No la uses como fuente única para:",
     bullets: [
       "Cifras legales, precios o datos oficiales.",
-      "Decisiones sensibles (contratar, despedir).",
+      "Decisiónes sensibles (contratar, despedir).",
       "Datos personales de terceros.",
-      "Secretos o informacion confidencial de la empresa.",
+      "Secretos o información confidencial de la empresa.",
     ] },
 
-  { kind: "section", num: "3", title: "Sus limites: alucinaciones" },
+  { kind: "section", num: "3", title: "Sus límites: alucinaciónes" },
 
-  { kind: "analogy", title: "El riesgo numero uno",
+  { kind: "analogy", title: "El riesgo número uno",
     big: "A veces inventa con total seguridad.",
-    support: "Se llama 'alucinacion': la IA puede darte una ley, una cifra o una cita que suena perfecta... y es falsa. Por eso SIEMPRE se verifica." },
+    support: "Se llama 'alucinación': la IA puede darte una ley, una cifra o una cita que suena perfecta... y es falsa. Por eso SIEMPRE se verifica." },
 
-  { kind: "bullets", title: "Como protegerte", lead: "Tres habitos de oro:",
+  { kind: "bullets", title: "Cómo protegerte", lead: "Tres hábitos de oro:",
     bullets: [
       "Verifica cifras y datos con una fuente humana o documento oficial.",
       "No pegues datos confidenciales: anonimiza el caso.",
-      "Tu eres la persona responsable del resultado final.",
+      "Tú eres la persona responsable del resultado final.",
     ] },
 
-  { kind: "quote", quote: "La IA propone. Tu decides y verificas." },
+  { kind: "quote", quote: "La IA propone. Tú decides y verificas." },
 
   { kind: "photo", title: "Humano al final", image: "ppt-assets/verificar.png" },
 
-  { kind: "section", num: "G", title: "Agentes (contexto rapido)" },
+  { kind: "section", num: "G", title: "Agentes (contexto rápido)" },
 
-  { kind: "photo", title: "De que esta hecho un agente", image: "ppt-assets/agentes.png" },
+  { kind: "photo", title: "De que está hecho un agente", image: "ppt-assets/agentes.png" },
 
   { kind: "two", title: "Para el alumno (sin volverse ingeniero)",
-    leftH: "Que es", left: ["Un agente = rol + objetivo + reglas + (a veces) herramientas.", "Aqui: tutores del laboratorio (Nova, Atlas, Spark...).", "No sustituyen a ChatGPT ni a Claude."],
-    rightH: "Como se componen", right: ["Skill: en que es bueno (ej. verificar cifras).", "Limite: no datos internos, no firmar, no inventar leyes.", "Humano: siempre aplica y responde."] },
+    leftH: "Qué es", left: ["Un agente = rol + objetivo + reglas + (a veces) herramientas.", "Aquí: tutores del laboratorio (Nova, Atlas, Spark...).", "No sustituyen a ChatGPT ni a Claude."],
+    rightH: "Cómo se componen", right: ["Skill: en qué es bueno (ej. verificar cifras).", "Límite: no datos internos, no firmar, no inventar leyes.", "Humano: siempre aplica y responde."] },
 
-  { kind: "talk", title: "30 segundos", prompt: "Un agente no es magia: es un encargo con limites. Igual que tu prompt de 5 piezas.",
-    hint: "En el portal cada tutor muestra su skill y una recomendacion del momento." },
+  { kind: "talk", title: "30 segundos", prompt: "Un agente no es magia: es un encargo con límites. Igual que tu prompt de 5 piezas.",
+    hint: "En el portal cada tutor muestra su skill y una recomendación del momento." },
 
-  { kind: "section", num: "4", title: "Como hablar con la IA" },
+  { kind: "section", num: "4", title: "Cómo hablar con la IA" },
 
   { kind: "analogy", title: "El secreto no es un truco",
     big: "Es darle CONTEXTO.",
-    support: "Igual que a un empleado nuevo: si no le cuentas la situacion, el objetivo y el tono, te dara algo generico. Cuanto mejor le explicas, mejor responde." },
+    support: "Igual que a un empleado nuevo: si no le cuentas la situación, el objetivo y el tono, te dará algo genérico. Cuanto mejor le explicas, mejor responde." },
 
-  { kind: "bullets", title: "Una conversacion, no un boton", lead: "El primer resultado es un borrador:",
+  { kind: "bullets", title: "Una conversación, no un botón", lead: "El primer resultado es un borrador:",
     bullets: [
-      "Leelo con ojo critico.",
-      "Pide ajustes: 'mas corto', 'mas formal', 'agrega un ejemplo'.",
+      "Léelo con ojo crítico.",
+      "Pide ajustes: 'más corto', 'más formal', 'agrega un ejemplo'.",
       "Corrige errores y pide otra version.",
-      "Recien entonces, usalo (tras revisarlo).",
+      "Recién entonces, úsalo (tras revisarlo).",
     ] },
 
   { kind: "section", num: "5", title: "El framework de 5 piezas" },
@@ -225,52 +225,52 @@ const slides = [
   { kind: "photo", title: "Las 5 piezas de un pedido", image: "ppt-assets/cinco-piezas.png" },
 
   { kind: "two", title: "La diferencia se nota",
-    leftH: "Pedido pobre", left: ["\"Hazme un correo para el cliente\"", "Resultado: generico, sirve de poco."],
-    rightH: "Pedido con las 5 piezas", right: ["Rol + contexto + objetivo + formato + limites", "Resultado: util y casi listo para enviar."] },
+    leftH: "Pedido pobre", left: ["\"Hazme un correo para el cliente\"", "Resultado: genérico, sirve de poco."],
+    rightH: "Pedido con las 5 piezas", right: ["Rol + contexto + objetivo + formato + limites", "Resultado: útil y casi listo para enviar."] },
 
   { kind: "talk", title: "Tu turno (2 min): dicta las 5 piezas", prompt: "En voz alta, con tu vecino: un correo de retraso SIN datos reales. Dile las 5 piezas.",
-    hint: "Cliente Alfa, Planta Norte, 3 dias. Prohibido montos y nombres de personas." },
+    hint: "Cliente Alfa, Planta Norte, 3 días. Prohibido montos y nombres de personas." },
 
-  { kind: "section", num: "M", title: "Metodologia A.C.T.I.V.A." },
+  { kind: "section", num: "M", title: "Metodología A.C.T.I.V.A." },
 
   { kind: "photo", title: "A.C.T.I.V.A. en un vistazo", image: "ppt-assets/activa.png" },
 
   { kind: "talk", title: "Reto en sala: ordena los 6 pasos", prompt: "Sin mirar el portal: escriban A-C-T-I-V-A en un papel. Luego confirmen en el reto de flechas.",
-    hint: "Si las flechas no mueven, recarga con Ctrl+F5. Hay que pulsar Continuar en cada leccion para abrir el siguiente modulo." },
+    hint: "Si las flechas no mueven, recarga con Ctrl+F5. Hay que pulsar Continuar en cada lección para abrir el siguiente módulo." },
 
   { kind: "section", num: "C", title: "Casos de aula (Planta Norte)" },
 
   { kind: "two", title: "Caso 1 — Queja de cliente industrial",
-    leftH: "Situacion (ficticia)", left: ["Cliente Alfa: retraso de 3 dias.", "Hay 10% en proxima compra; no hay reembolso.", "No conoces la causa raiz todavia."],
-    rightH: "Que hace el alumno", right: ["Copia el prompt del Comparador o del Manual.", "Misma letra en ChatGPT y en Claude.", "Marca en rojo lo que un humano debe autorizar."] },
+    leftH: "Situación (ficticia)", left: ["Cliente Alfa: retraso de 3 días.", "Hay 10% en próxima compra; no hay reembolso.", "No conoces la causa raíz todavía."],
+    rightH: "Qué hace el alumno", right: ["Copia el prompt del Comparador o del Manual.", "Misma letra en ChatGPT y en Claude.", "Marca en rojo lo que un humano debe autorizar."] },
 
-  { kind: "talk", title: "Practica 8 minutos", prompt: "Mitad de la sala: ChatGPT. Mitad: Claude. Luego 60 segundos: que NO se debe enviar tal cual?",
-    hint: "Fechas inventadas, tono de plantilla, el 10% si no esta aprobado, nombres reales." },
+  { kind: "talk", title: "Práctica 8 minutos", prompt: "Mitad de la sala: ChatGPT. Mitad: Claude. Luego 60 segundos: qué NO se debe enviar tal cual?",
+    hint: "Fechas inventadas, tono de plantilla, el 10% si no está aprobado, nombres reales." },
 
   { kind: "two", title: "Caso 2 — Minuta de patio (45 min)",
-    leftH: "Notas sucias", left: ["Fila de camiones 2 h.", "Lote retenido por humedad.", "Radio extra el jueves: no se sabe quien paga."],
-    rightH: "Criterio", right: ["Decision vs 'se hablo'.", "Responsable = cargo, no persona.", "Si falta dato: «no especificado»."] },
+    leftH: "Notas sucias", left: ["Fila de camiones 2 h.", "Lote retenido por humedad.", "Radio extra el jueves: no se sabe quién paga."],
+    rightH: "Criterio", right: ["Decisión vs 'se habló'.", "Responsable = cargo, no persona.", "Si falta dato: «no especificado»."] },
 
-  { kind: "talk", title: "Levanten la mano", prompt: "Quien convirtio un 'se hablo' en un acuerdo cerrado? Eso es el error caro.",
+  { kind: "talk", title: "Levanten la mano", prompt: "Quién convirtió un 'se habló' en un acuerdo cerrado? Eso es el error caro.",
     hint: "Claude suele marcar el hueco. ChatGPT suele dejar el acta 'bonita'. Ninguno es el jefe de patio." },
 
   { kind: "two", title: "Caso 3 — Excel de juguete",
     leftH: "Encargo", left: ["A = cantidad, B = precio, C = A*B.", "6 filas inventadas.", "Comprobar 3 celdas a mano."],
-    rightH: "Participacion", right: ["Un voluntario dicta la formula.", "Otro busca una celda con texto.", "Nadie pega el libro real de la empresa."] },
+    rightH: "Participación", right: ["Un voluntario dicta la fórmula.", "Otro busca una celda con texto.", "Nadie pega el libro real de la empresa."] },
 
-  { kind: "two", title: "Caso 4 — Ocho minutos a comite",
-    leftH: "6 diapositivas", left: ["Hechos / huecos / pedido al comite.", "[CIFRA OFICIAL] donde va un numero.", "Maximo 3 vinetas por slide."],
+  { kind: "two", title: "Caso 4 — Ocho minutos a comité",
+    leftH: "6 diapositivas", left: ["Hechos / huecos / pedido al comité.", "[CIFRA OFICIAL] donde va un número.", "Máximo 3 viñetas por slide."],
     rightH: "En sala", right: ["Parejas: una arma estructura, otra el guion.", "3 minutos. Luego 1 pareja presenta 60 s.", "El resto caza una cifra inventada."] },
 
-  { kind: "section", num: "6", title: "IA en tu dia a dia" },
+  { kind: "section", num: "6", title: "IA en tu día a día" },
 
   { kind: "two", title: "Word y Excel",
-    leftH: "IA + Word", left: ["Borradores de correos e informes.", "Cambiar el tono del texto.", "Tu revisas datos y confidencialidad."],
-    rightH: "IA + Excel", right: ["Explica y crea formulas.", "Detecta errores en formulas.", "SIEMPRE validas el numero."] },
+    leftH: "IA + Word", left: ["Borradores de correos e informes.", "Cambiar el tono del texto.", "Tú revisas datos y confidencialidad."],
+    rightH: "IA + Excel", right: ["Explica y crea fórmulas.", "Detecta errores en fórmulas.", "SIEMPRE validas el número."] },
 
-  { kind: "two", title: "PowerPoint y Analisis",
-    leftH: "IA + PowerPoint", left: ["De ideas sueltas a una estructura.", "Storytelling y guion del expositor.", "Tu pones los datos reales."],
-    rightH: "Analisis e investigacion", right: ["Resume y compara documentos.", "Detecta riesgos y puntos clave.", "Pide fuentes y verificalas."] },
+  { kind: "two", title: "PowerPoint y Análisis",
+    leftH: "IA + PowerPoint", left: ["De ideas sueltas a una estructura.", "Storytelling y guion del expositor.", "Tú pones los datos reales."],
+    rightH: "Análisis e investigación", right: ["Resume y compara documentos.", "Detecta riesgos y puntos clave.", "Pide fuentes y verifícalas."] },
 
   { kind: "bullets", title: "Productividad diaria", lead: "Tareas repetitivas ideales para la IA:",
     bullets: [
@@ -282,9 +282,9 @@ const slides = [
 
   { kind: "section", num: "7", title: "El laboratorio" },
 
-  { kind: "bullets", title: "Tu entorno de practica", lead: "Dentro del laboratorio tienes:",
+  { kind: "bullets", title: "Tu entorno de práctica", lead: "Dentro del laboratorio tienes:",
     bullets: [
-      "Ruta: Conocernos, cuentas gratis, Historia y modulos en orden.",
+      "Ruta: Conocernos, cuentas gratis, Historia y módulos en orden.",
       "Quiz: repaso estilo concurso, contra el reloj.",
       "Prompt Lab: construye y guarda tus prompts.",
       "Comparador: mismo prompt en ChatGPT vs Claude.",
@@ -293,33 +293,33 @@ const slides = [
 
   { kind: "analogy", title: "ChatGPT vs Claude",
     big: "No hay un ganador universal.",
-    support: "ChatGPT suele ir mas directo. Claude suele marcar huecos. Tu eliges en cada caso." },
+    support: "ChatGPT suele ir más directo. Claude suele marcar huecos. Tú eliges en cada caso." },
 
   { kind: "photo", title: "Mismo prompt, distinta utilidad", image: "ppt-assets/comparar.png" },
 
-  { kind: "two", title: "Que observar (objetivo, no hinchada)",
-    leftH: "ChatGPT, en la practica de oficina", left: ["Asunto + cuerpo listos.", "Listas y tablas rapidas.", "Riesgo: plantilla y promesas de mas."],
-    rightH: "Claude, en la practica de oficina", right: ["Preguntas de aclaracion.", "«No especificado» en vez de inventar.", "Riesgo: texto largo para un correo corto."] },
+  { kind: "two", title: "Qué observar (objetivo, no hinchada)",
+    leftH: "ChatGPT, en la práctica de oficina", left: ["Asunto + cuerpo listos.", "Listas y tablas rápidas.", "Riesgo: plantilla y promesas de más."],
+    rightH: "Claude, en la práctica de oficina", right: ["Preguntas de aclaración.", "«No especificado» en vez de inventar.", "Riesgo: texto largo para un correo corto."] },
 
-  { kind: "talk", title: "Votacion en sala", prompt: "Este caso de queja: quien envia el de ChatGPT? Quien el de Claude? Quien mezcla ambos?",
-    hint: "No hay nota. Hay criterio. Guardan la eleccion en el Comparador con un por que de negocio." },
+  { kind: "talk", title: "Votación en sala", prompt: "Este caso de queja: quién envía el de ChatGPT? Quién el de Claude? Quién mezcla ambos?",
+    hint: "No hay nota. Hay criterio. Guardan la elección en el Comparador con un por qué de negocio." },
 
   { kind: "section", num: "8", title: "Tu proyecto final" },
 
-  { kind: "steps", title: "De un problema real a una solucion", steps: [
+  { kind: "steps", title: "De un problema real a una solución", steps: [
       "Elige una tarea de tu trabajo que te quita tiempo.",
       "Diseña el prompt con las 5 piezas.",
-      "Pruebalo en ChatGPT y en Claude.",
+      "Pruébalo en ChatGPT y en Claude.",
       "Compara, refina y VERIFICA el resultado.",
       "Genera tu ficha con el tiempo que ahorras.",
     ] },
 
-  { kind: "bullets", title: "Como trabajaremos estos 2 viernes", lead: "16 horas: menos teoria suelta, mas casos.",
+  { kind: "bullets", title: "Cómo trabajaremos estos 2 viernes", lead: "16 horas: menos teoría suelta, más casos.",
     bullets: [
       "Viernes 1: conocernos, cuentas, historia, A.C.T.I.V.A., prompts, Word, misiones marcables.",
-      "Viernes 2: Excel con chequeo, PPT a comite, comparador con ejemplos reales, proyecto.",
-      "Cada bloque: 1 caso Planta Norte + tu cargo (anonimo) + quiz o actividad.",
-      "El cronograma detallado lo maneja solo el instructor; tu sigues Ruta y Actividades.",
+      "Viernes 2: Excel con chequeo, PPT a comité, comparador con ejemplos reales, proyecto.",
+      "Cada bloque: 1 caso Planta Norte + tu cargo (anónimo) + quiz o actividad.",
+      "El cronograma detallado lo maneja solo el instructor; tú sigues Ruta y Actividades.",
     ] },
 
   { kind: "bullets", title: "Reglas del laboratorio", lead: "Para trabajar seguros:",
@@ -330,10 +330,10 @@ const slides = [
       "Pregunta cuando tengas dudas: para eso estamos.",
     ] },
 
-  { kind: "talk", title: "Cierre del dia (90 segundos)", prompt: "Dile a tu vecino: que NO vas a pegar nunca en ChatGPT o Claude.",
-    hint: "Nomina, contratos, claves, clientes identificables, recetas o precios oficiales no publicados." },
+  { kind: "talk", title: "Cierre del día (90 segundos)", prompt: "Dile a tu vecino: qué NO vas a pegar nunca en ChatGPT o Claude.",
+    hint: "Nómina, contratos, claves, clientes identificables, recetas o precios oficiales no publicados." },
 
-  { kind: "talk", title: "Compromiso (escribir en el chat interno o en papel)", prompt: "Una tarea de tu semana que haras con las 5 piezas el lunes.",
+  { kind: "talk", title: "Compromiso (escribir en el chat interno o en papel)", prompt: "Una tarea de tu semana que harás con las 5 piezas el lunes.",
     hint: "Sin datos internos. Si no se te ocurre, usa el caso Alfa / patio / Excel de juguete." },
 
   { kind: "quote", quote: "Empezamos. La IA no te reemplaza: te potencia." },

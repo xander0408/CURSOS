@@ -2,14 +2,14 @@
 
 Laboratorio de Inteligencia Artificial Aplicada al Negocio (ChatGPT y Claude, cuentas gratis). 16 horas, 2 viernes.
 
-Sitio estatico. El progreso se guarda por usuario en el navegador.
+Sitio estático. El progreso se guarda por usuario en el navegador.
 
 ## Orden
 
-1. Login (usuario y contrasena).
-2. Conocernos y caso de practica (datos ficticios).
+1. Login (usuario y contraseña).
+2. Conocernos y caso de práctica (datos ficticios).
 3. Cuentas gratis.
-4. Historia de la IA y el resto de modulos en secuencia.
+4. Historia de la IA y el resto de módulos en secuencia.
 
 ## Documentos Word
 

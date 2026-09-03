@@ -5,12 +5,12 @@
   "lessons": [
     {
       "id": "l1",
-      "title": "Por que empezamos por la historia",
+      "title": "Por qué empezamos por la historia",
       "activaPhase": 0,
       "blocks": [
-        { "type": "text", "html": "<p>Este laboratorio es para gerencias que van a <strong>dirigir</strong> una herramienta, no a programarla. La historia evita dos errores: creer que la IA nacio en 2022, y creer que es magia o una persona dentro del servidor.</p>" },
-        { "type": "callout", "kind": "think", "title": "En sala", "text": "En 60 segundos: cuando oyes inteligencia artificial, que ves. Robot, pelicula, Excel magico, o un chat." },
-        { "type": "list", "items": ["La IA como campo tiene mas de 70 anos.", "Machine learning y deep learning son capas distintas, no sinonimos.", "Hoy conviven muchos productos: chats, buscadores, copilotos de oficina y modelos abiertos."] }
+        { "type": "text", "html": "<p>Este laboratorio es para gerencias que van a <strong>dirigir</strong> una herramienta, no a programarla. La historia evita dos errores: creer que la IA nació en 2022, y creer que es magia o una persona dentro del servidor.</p>" },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "En 60 segundos: cuando oyes inteligencia artificial, qué ves. Robot, película, Excel mágico, o un chat." },
+        { "type": "list", "items": ["La IA como campo tiene más de 70 años.", "Machine learning y deep learning son capas distintas, no sinónimos.", "Hoy conviven muchos productos: chats, buscadores, copilotos de oficina y modelos abiertos."] }
       ]
     },
     {
@@ -18,8 +18,8 @@
       "title": "Nacimiento del campo y los primeros nombres",
       "activaPhase": 0,
       "blocks": [
-        { "type": "text", "html": "<p><strong>1950 — Alan Turing:</strong> propuso un criterio practico (el juego de imitacion): si una maquina conversa de forma indistinguible, el comportamiento cuenta. No resolvio la filosofia; dejo una pregunta de ingenieria.</p><p><strong>1956 — Dartmouth:</strong> John McCarthy bautizo el campo como inteligencia artificial. En esa reunion tambien estuvieron Marvin Minsky, Claude Shannon, Nathaniel Rochester y otros. La ambicion era enorme. Los resultados, durante decadas, fueron a trompicones.</p><p>Otros hitos tempranos: el Logic Theorist de Newell y Simon; ELIZA (Weizenbaum, 1966) como ilusion de conversacion; Arthur Samuel y el aprendizaje en damas.</p>" },
-        { "type": "callout", "kind": "limit", "title": "Limite", "text": "Pensar en marketing no es comprender. Un modelo de lenguaje predice texto plausible. No tiene cargo, ni firma, ni acceso a tus carpetas internas." }
+        { "type": "text", "html": "<p><strong>1950 — Alan Turing:</strong> propuso un criterio práctico (el juego de imitación): si una máquina conversa de forma indistinguible, el comportamiento cuenta. No resolvió la filosofía; dejó una pregunta de ingeniería.</p><p><strong>1956 — Dartmouth:</strong> John McCarthy bautizó el campo como inteligencia artificial. En esa reunión también estuvieron Marvin Minsky, Claude Shannon, Nathaniel Rochester y otros. La ambición era enorme. Los resultados, durante décadas, fueron a trompicones.</p><p>Otros hitos tempranos: el Logic Theorist de Newell y Simon; ELIZA (Weizenbaum, 1966) como ilusión de conversación; Arthur Samuel y el aprendizaje en damas.</p>" },
+        { "type": "callout", "kind": "limit", "title": "Límite", "text": "Pensar en marketing no es comprender. Un modelo de lenguaje predice texto plausible. No tiene cargo, ni firma, ni acceso a tus carpetas internas." }
       ]
     },
     {
@@ -27,8 +27,8 @@
       "title": "Machine learning: aprender de ejemplos, no de todas las reglas",
       "activaPhase": 1,
       "blocks": [
-        { "type": "text", "html": "<p><strong>Machine learning</strong> (aprendizaje automatico): en lugar de escribir cada regla a mano, el sistema ajusta parametros con muchos ejemplos. Sirve para clasificar (fraude / no fraude), pronosticar un numero o agrupar casos parecidos.</p><p>En los 80 brillaron los <strong>sistemas expertos</strong> (reglas si-entonces). Utiles en nichos; fragiles cuando el mundo cambia. Hubo <strong>inviernos de la IA</strong>: se prometio demasiado y se corto inversion.</p>" },
-        { "type": "list", "items": ["ML tradicional: pocos pasos, datos tabulares, un resultado (etiqueta o numero).", "No genera un correo ni una minuta por si solo.", "La leccion de negocio: una herramienta sin dueno humano es un riesgo."] }
+        { "type": "text", "html": "<p><strong>Machine learning</strong> (aprendizaje automático): en lugar de escribir cada regla a mano, el sistema ajusta parámetros con muchos ejemplos. Sirve para clasificar (fraude / no fraude), pronosticar un número o agrupar casos parecidos.</p><p>En los 80 brillaron los <strong>sistemas expertos</strong> (reglas si-entonces). Útiles en nichos; frágiles cuando el mundo cambia. Hubo <strong>inviernos de la IA</strong>: se prometió demasiado y se cortó inversión.</p>" },
+        { "type": "list", "items": ["ML tradicional: pocos pasos, datos tabulares, un resultado (etiqueta o número).", "No genera un correo ni una minuta por sí solo.", "La lección de negocio: una herramienta sin dueño humano es un riesgo."] }
       ]
     },
     {
@@ -36,27 +36,27 @@
       "title": "Deep learning, transformers y el salto a los chats",
       "activaPhase": 2,
       "blocks": [
-        { "type": "text", "html": "<p><strong>Deep learning</strong> (aprendizaje profundo): redes con muchas capas. Hacia 2012 gano en vision (ImageNet). Nombres asociados: Geoffrey Hinton, Yann LeCun, Yoshua Bengio.</p><p><strong>2017 — Transformers</strong> (Vaswani y equipo, Google): arquitectura que lee contexto largo. Es la base de los chats actuales.</p><p>A finales de <strong>2022</strong> ChatGPT hizo masivo el chat con un modelo de lenguaje. Claude (Anthropic) y luego Gemini, Copilot, Llama, Mistral y otros ocuparon el escritorio de oficina.</p>" },
-        { "type": "callout", "kind": "think", "title": "Analogia de oficina", "text": "No es el experto de tu planta. Es un redactor rapidisimo que ha leido mucho texto publico... y nada de tus procedimientos, a menos que se los cuentes (sin datos sensibles)." }
+        { "type": "text", "html": "<p><strong>Deep learning</strong> (aprendizaje profundo): redes con muchas capas. Hacia 2012 ganó en visión (ImageNet). Nombres asociados: Geoffrey Hinton, Yann LeCun, Yoshua Bengio.</p><p><strong>2017 — Transformers</strong> (Vaswani y equipo, Google): arquitectura que lee contexto largo. Es la base de los chats actuales.</p><p>A finales de <strong>2022</strong> ChatGPT hizo masivo el chat con un modelo de lenguaje. Claude (Anthropic) y luego Gemini, Copilot, Llama, Mistral y otros ocuparon el escritorio de oficina.</p>" },
+        { "type": "callout", "kind": "think", "title": "Analogía de oficina", "text": "No es el experto de tu planta. Es un redactor rapidísimo que ha leído mucho texto público... y nada de tus procedimientos, a menos que se los cuentes (sin datos sensibles)." }
       ]
     },
     {
       "id": "l5",
-      "title": "Que IA hay hoy (mapa para no perderse)",
+      "title": "Qué IA hay hoy (mapa para no perderse)",
       "activaPhase": 5,
       "blocks": [
         { "type": "text", "html": "<p>Conviven varias familias. Este curso usa dos chats de cuenta gratuita: <strong>ChatGPT</strong> y <strong>Claude</strong>. Existen otras, y cambian de nombre todo el tiempo:</p>" },
-        { "type": "list", "items": ["Chats de oficina: ChatGPT (OpenAI), Claude (Anthropic), Gemini (Google), Copilot (Microsoft), Grok y similares.", "Modelos abiertos o descargables: Llama (Meta), Mistral, y variantes que una empresa puede hospedar.", "IA clasica en el negocio: deteccion de fraude, pronosticos, vision en linea de produccion. No es el mismo producto que un chat.", "Copilotos dentro de Word, Excel o el navegador: asisten; no firman."] },
-        { "type": "callout", "kind": "verify", "title": "Regla", "text": "La persona decide y verifica. Ningun chat es fuente oficial de cifras, normas o precios." }
+        { "type": "list", "items": ["Chats de oficina: ChatGPT (OpenAI), Claude (Anthropic), Gemini (Google), Copilot (Microsoft), Grok y similares.", "Modelos abiertos o descargables: Llama (Meta), Mistral, y variantes que una empresa puede hospedar.", "IA clásica en el negocio: detección de fraude, pronósticos, visión en línea de producción. No es el mismo producto que un chat.", "Copilotos dentro de Word, Excel o el navegador: asisten; no firman."] },
+        { "type": "callout", "kind": "verify", "title": "Regla", "text": "La persona decide y verifica. Ningún chat es fuente oficial de cifras, normas o precios." }
       ]
     },
     {
       "id": "l6",
-      "title": "Linea de tiempo (2 minutos)",
+      "title": "Línea de tiempo (2 minutos)",
       "activaPhase": 0,
       "blocks": [
-        { "type": "list", "items": ["1950 — Turing: criterio de comportamiento.", "1956 — Dartmouth: nace el nombre inteligencia artificial (McCarthy y otros).", "1960-80 — Sistemas simbolicos, ELIZA, expertos; luego inviernos.", "1990-2010 — Machine learning en datos tabulares y busqueda.", "2012 — Deep learning competitivo en vision.", "2017 — Transformers.", "2022 en adelante — Chats masivos y copilotos de oficina.", "Hoy — Acelerar borradores; nunca firmar a ciegas."] },
-        { "type": "callout", "kind": "verify", "title": "Practica", "text": "En el reto ordenas esa linea. Si la explicas a un colega en lenguaje simple, cumpliste el objetivo." }
+        { "type": "list", "items": ["1950 — Turing: criterio de comportamiento.", "1956 — Dartmouth: nace el nombre inteligencia artificial (McCarthy y otros).", "1960-80 — Sistemas simbólicos, ELIZA, expertos; luego inviernos.", "1990-2010 — Machine learning en datos tabulares y búsqueda.", "2012 — Deep learning competitivo en visión.", "2017 — Transformers.", "2022 en adelante — Chats masivos y copilotos de oficina.", "Hoy — Acelerar borradores; nunca firmar a ciegas."] },
+        { "type": "callout", "kind": "verify", "title": "Práctica", "text": "En el reto ordenas esa línea. Si la explicas a un colega en lenguaje simple, cumpliste el objetivo." }
       ]
     }
   ],
@@ -65,17 +65,17 @@
       "id": "m0-r1",
       "type": "mcq",
       "difficulty": "basico",
-      "title": "Que es un modelo de lenguaje",
-      "objective": "Bajar el mito a una definicion operativa.",
-      "instructions": "Que describe mejor a ChatGPT o Claude para un gerente.",
+      "title": "Qué es un modelo de lenguaje",
+      "objective": "Bajar el mito a una definición operativa.",
+      "instructions": "Qué describe mejor a ChatGPT o Claude para un gerente.",
       "options": [
         "Una persona experta que vive en un servidor",
-        "Un sistema que predice texto plausible a partir de patrones, sin conocer por si solo los procedimientos internos de tu area",
+        "Un sistema que predice texto plausible a partir de patrones, sin conocer por sí solo los procedimientos internos de tu área",
         "El ERP de la empresa con interfaz de chat",
         "Un buscador que siempre cita fuentes oficiales"
       ],
       "correctIndex": 1,
-      "explanation": "Predice texto. No es un empleado, no es el ERP y no es una fuente oficial. El contexto lo pones tu, sin datos sensibles.",
+      "explanation": "Predice texto. No es un empleado, no es el ERP y no es una fuente oficial. El contexto lo pones tú, sin datos sensibles.",
       "xp": 10,
       "activaPhase": 0
     },
@@ -83,11 +83,11 @@
       "id": "m0-r2",
       "type": "tf",
       "difficulty": "basico",
-      "title": "La IA nacio con ChatGPT",
+      "title": "La IA nació con ChatGPT",
       "objective": "Colocar 2022 en la historia, no al inicio.",
-      "instructions": "Verdadero o falso: la inteligencia artificial como campo de investigacion empezo en 2022 con ChatGPT.",
+      "instructions": "Verdadero o falso: la inteligencia artificial como campo de investigación empezó en 2022 con ChatGPT.",
       "correct": false,
-      "explanation": "El campo se nombra en 1956. ChatGPT popularizo el chat en 2022.",
+      "explanation": "El campo se nombra en 1956. ChatGPT popularizó el chat en 2022.",
       "xp": 10,
       "activaPhase": 0
     },
@@ -95,14 +95,14 @@
       "id": "m0-r3",
       "type": "order",
       "difficulty": "intermedio",
-      "title": "Ordena la linea de tiempo",
-      "objective": "Memoria util, no de examen.",
-      "instructions": "Ordena estos hitos de mas antiguo a mas reciente.",
+      "title": "Ordena la línea de tiempo",
+      "objective": "Memoria útil, no de examen.",
+      "instructions": "Ordena estos hitos de más antiguo a más reciente.",
       "items": [
         "ChatGPT se vuelve masivo (2022)",
         "Dartmouth y el nombre inteligencia artificial (1956)",
-        "Transformers en investigacion de lenguaje (2017)",
-        "Pregunta de Turing sobre maquinas que conversan (1950)"
+        "Transformers en investigación de lenguaje (2017)",
+        "Pregunta de Turing sobre máquinas que conversan (1950)"
       ],
       "correctOrder": [3, 1, 2, 0],
       "explanation": "1950 Turing, 1956 Dartmouth, 2017 transformers, 2022 ChatGPT masivo.",
