@@ -4,7 +4,7 @@ Antes de empezar el contenido, necesitamos que todos estén en el mismo lugar. U
 
 Voy a dictar la dirección del laboratorio. Escríbanla completa, incluida la barra del final: https://xander0408.github.io/CURSOS/
 
-Van a ver el logo de MagnaTic. Esa pestaña no se cierra en todo el día.
+Van a ver el logo de Magnatic. Esa pestaña no se cierra en todo el día.
 
 Abran una segunda pestaña e inicien sesión en ChatGPT. Abran una tercera e inicien sesión en Claude. El laboratorio no reemplaza a esas herramientas: ahí es donde piden los borradores. Aquí es donde recorremos el método, los módulos y los quizzes.
 
@@ -44,7 +44,13 @@ Un modelo de lenguaje predice texto. No conoce el procedimiento interno de su á
 
 Hay inteligencia que entrega un número o una etiqueta, y hay inteligencia generativa que arma un texto. ChatGPT y Claude son de este segundo tipo. No firman. No son el ERP.
 
-En el mercado hay muchos nombres. Cambian. En este curso practicamos dos cuentas gratuitas. No hay un ganador universal. Hay un correo, una tabla o una reunión, y ustedes eligen con criterio.
+El software tradicional sigue reglas que alguien programó: misma entrada, misma salida. La IA trabaja con patrones: puede redactar bien… e inventar. Por eso el humano cierra.
+
+Niveles, en una frase: lo de hoy es inteligencia estrecha, una familia de tareas. No es un colega que cubre todo el cargo. La inteligencia general y la superinteligencia no son el producto de esta cuenta Free. No las prometan en un informe.
+
+Cuatro pasos para usarla: encargan la tarea, contextualizan sin datos reales, iteran el borrador, verifican y aplican. Eso se da en loop: piden, leen, ajustan, vuelven a pedir, y cierran con verificación. En el laboratorio eso se llama A.C.T.I.V.A.; las seis letras son el método completo.
+
+En el mercado hay muchos nombres. Cambian. ChatGPT, Claude, Gemini, Copilot, Grok. En este curso practicamos dos cuentas gratuitas. Plus, Pro y planes de empresa existen; aquí no hacen falta. No hay un ganador universal. Hay un correo, una tabla o una reunión, y ustedes eligen con criterio.
 
 Repitamos juntos, con claridad: la IA propone; ustedes deciden y verifican.
 

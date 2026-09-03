@@ -4,7 +4,7 @@
 import { writeFileSync, readFileSync } from "fs";
 import { crc32 as zcrc } from "zlib";
 
-// Marca MagnaTic
+// Marca Magnatic
 const TEAL = "16C6AD";
 const PURPLE = "610A8B";
 const GOLD = "FFD700";
@@ -24,7 +24,7 @@ const MUTED = "9AA8C2";
 //  closing   : cierre
 const slides = [
   { kind: "cover", title: "AI Business Lab", subtitle: "Inteligencia Artificial Aplicada al Negocio",
-    foot: "16 horas · 2 viernes · cuentas gratuitas", brand: "MagnaTic · Think Evolution" },
+    foot: "16 horas · 2 viernes · cuentas gratuitas", brand: "Magnatic · Think Evolution" },
 
   { kind: "section", num: "A", title: "Cronograma del curso" },
 
@@ -80,11 +80,31 @@ const slides = [
 
   { kind: "bullets", title: "Que existe hoy (cambia de nombre, no de idea)",
     bullets: [
-      "Chats: ChatGPT, Claude, Gemini, Copilot, Grok y similares.",
+      "Chats: ChatGPT, Claude, Gemini, Copilot, Grok, Perplexity y similares.",
       "Modelos abiertos: Llama, Mistral y variantes que una empresa puede hospedar.",
       "IA clasica en el negocio: vision de linea, scoring, pronosticos.",
-      "Este curso practica dos: ChatGPT Free y Claude Free.",
+      "Este curso practica dos: ChatGPT Free y Claude Free. El resto se nombra para no confundirlos con el laboratorio.",
     ] },
+
+  { kind: "section", num: "H", title: "Chatbots y versiones" },
+
+  { kind: "bullets", title: "Principales chatbots (mapa, no ranking)",
+    lead: "Todos proponen texto. Ninguno firma tu correo.",
+    bullets: [
+      "ChatGPT (OpenAI): el mas usado en oficina; en clase, cuenta Free.",
+      "Claude (Anthropic): util para comparar un entregable; cupo Free limitado.",
+      "Gemini (Google): vive cerca de Gmail y Drive si la empresa lo activa.",
+      "Copilot (Microsoft): vive cerca de Word, Excel y Teams si hay licencia.",
+      "Grok, Perplexity y otros: mismos habitos (contexto, iterar, verificar).",
+    ] },
+
+  { kind: "two", title: "ChatGPT: que hay (brujula, no contrato)",
+    leftH: "Free (este curso)", left: ["Chat de texto con el modelo gratuito del dia (el que veas en pantalla).", "Archivos e imagenes: tope. No es plan empresa.", "Sirve para volumen de practica: correos, estructuras, iterar."],
+    rightH: "Plus / Team / Enterprise", right: ["Plus: mas capacidad y, a veces, un modelo mas capaz. Se paga.", "Team y Enterprise: admin, facturacion y politicas. No las usamos en aula.", "Si tu empresa ya tiene uno, igual: no pegues datos reales aqui."] },
+
+  { kind: "two", title: "Claude: que hay (brujula, no contrato)",
+    leftH: "Free (este curso)", left: ["Cupo de creditos (~cada 5 horas). Textos largos gastan mas.", "Sirve para COMPARAR un entregable, no para 80 vueltas.", "Si se acaba: mismo prompt en ChatGPT y sigues."],
+    rightH: "Pro / Team / Enterprise", right: ["Pro: mas cupo. Se paga. No es requisito del curso.", "Team y Enterprise: uso de empresa. No las usamos en aula.", "Familia de modelos (Haiku / Sonnet / Opus): mas capaz suele gastar mas."] },
 
   { kind: "quote", quote: "La IA propone. Tu decides y verificas." },
 
@@ -103,6 +123,35 @@ const slides = [
     ] },
 
   { kind: "section", num: "2", title: "Que es (y que no es) la IA" },
+
+  { kind: "two", title: "Software tradicional vs inteligencia artificial",
+    leftH: "Software tradicional", left: ["Reglas que alguien programo.", "Misma entrada, misma salida (si no hay error).", "Ej.: formula de Excel, ERP, un formulario.", "Si el caso no estaba previsto, se detiene o pide a un humano."],
+    rightH: "Inteligencia artificial", right: ["Aprende patrones de ejemplos o de texto.", "La misma pregunta puede salir con otra redaccion.", "Ej.: ChatGPT, detector de fraude, vision de linea.", "Puede sonar segura e inventar. Por eso se verifica."] },
+
+  { kind: "steps", title: "Niveles de inteligencia artificial", steps: [
+      "Estrecha (la de hoy): una familia de tareas. Un chat, un pronostico, una camara. No cubre todo tu cargo.",
+      "General (AGI): nivel humano en casi cualquier trabajo intelectual. No es lo que tienes en Free. No lo prometas en un informe.",
+      "Superinteligencia: mas capaz que las personas en casi todo. Es hipotesis, no producto de este aula.",
+      "Aqui usamos IA estrecha generativa: texto. Tu decides y verificas.",
+    ] },
+
+  { kind: "steps", title: "Cuatro pasos para usar la IA", steps: [
+      "Encarga: di la tarea (correo, minuta, estructura de PPT).",
+      "Contextualiza: hechos anonimos, tono y formato. Sin nomina ni contratos reales.",
+      "Itera: el primer texto es borrador. Pide mas corto, mas formal, sin promesas.",
+      "Verifica y aplica: cifras y compromisos los confirma una persona. Luego envias o descartas.",
+    ] },
+
+  { kind: "steps", title: "El loop de la IA (se repite)", steps: [
+      "Pides con contexto.",
+      "La IA propone un borrador.",
+      "Tu lees y marcas lo dudoso.",
+      "Ajustas el pedido (o el texto a mano) y vuelves a pedir, o cierras.",
+      "Verificar no es un extra: es el ultimo giro del loop, siempre.",
+    ] },
+
+  { kind: "talk", title: "Puente a A.C.T.I.V.A.", prompt: "Los 4 pasos son el recorte de gerencia. El laboratorio usa seis letras: Analizar, Contextualizar, Transformar, Iterar, Verificar, Aplicar.",
+    hint: "Transformar = pedir el borrador. Verificar y Aplicar = tu criterio y tu firma." },
 
   { kind: "analogy", title: "En palabras simples",
     big: "La IA generativa predice la siguiente palabra.",
@@ -289,7 +338,7 @@ const slides = [
 
   { kind: "quote", quote: "Empezamos. La IA no te reemplaza: te potencia." },
 
-  { kind: "closing", title: "A trabajar", subtitle: "Bienvenidos al AI Business Lab", brand: "MagnaTic · Think Evolution" },
+  { kind: "closing", title: "A trabajar", subtitle: "Bienvenidos al AI Business Lab", brand: "Magnatic · Think Evolution" },
 ];
 
 // ---------- Utilidades XML ----------
@@ -334,10 +383,10 @@ function shapesFor(s) {
   const out = [];
   let id = 2;
   const bar = () => { out.push(sp(id++, "bar", 0, 0, 13.333, 0.22, [{ text: "" }], { fill: TEAL })); };
-  const footer = (t) => out.push(sp(id++, "ft", 0.6, 7.0, 12.1, 0.4, [{ text: t || "AI Business Lab · MagnaTic", sz: 10, color: MUTED }]));
+  const footer = (t) => out.push(sp(id++, "ft", 0.6, 7.0, 12.1, 0.4, [{ text: t || "AI Business Lab · Magnatic", sz: 10, color: MUTED }]));
 
   if (s.kind === "cover" || s.kind === "closing") {
-    out.push(sp(id++, "brandtop", 0, 0.7, 13.333, 0.5, [{ text: s.brand || "MagnaTic · Think Evolution", sz: 14, b: 1, color: TEAL, align: "ctr" }]));
+    out.push(sp(id++, "brandtop", 0, 0.7, 13.333, 0.5, [{ text: s.brand || "Magnatic · Think Evolution", sz: 14, b: 1, color: TEAL, align: "ctr" }]));
     out.push(sp(id++, "title", 0.8, 2.6, 11.7, 1.7, [{ text: s.title, sz: s.kind === "cover" ? 60 : 50, b: 1, color: WHITE, align: "ctr" }]));
     out.push(sp(id++, "sub", 0.8, 4.4, 11.7, 1.2, [{ text: s.subtitle || "", sz: 24, color: TEAL, align: "ctr" }]));
     if (s.foot) out.push(sp(id++, "foot", 0.8, 6.4, 11.7, 0.6, [{ text: s.foot, sz: 14, color: MUTED, align: "ctr" }]));
@@ -424,7 +473,7 @@ const presRels = [
 files["ppt/_rels/presentation.xml.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${presRels}</Relationships>`;
 files["ppt/theme/theme1.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="MagnaTic"><a:themeElements><a:clrScheme name="MagnaTic"><a:dk1><a:srgbClr val="000000"/></a:dk1><a:lt1><a:srgbClr val="FFFFFF"/></a:lt1><a:dk2><a:srgbClr val="0B1220"/></a:dk2><a:lt2><a:srgbClr val="F1F1F1"/></a:lt2><a:accent1><a:srgbClr val="16C6AD"/></a:accent1><a:accent2><a:srgbClr val="610A8B"/></a:accent2><a:accent3><a:srgbClr val="FFD700"/></a:accent3><a:accent4><a:srgbClr val="79B8FF"/></a:accent4><a:accent5><a:srgbClr val="7EE787"/></a:accent5><a:accent6><a:srgbClr val="F07178"/></a:accent6><a:hlink><a:srgbClr val="16C6AD"/></a:hlink><a:folHlink><a:srgbClr val="610A8B"/></a:folHlink></a:clrScheme><a:fontScheme name="Office"><a:majorFont><a:latin typeface="Segoe UI"/><a:ea typeface=""/><a:cs typeface=""/></a:majorFont><a:minorFont><a:latin typeface="Segoe UI"/><a:ea typeface=""/><a:cs typeface=""/></a:minorFont></a:fontScheme><a:fmtScheme name="Office"><a:fillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:fillStyleLst><a:lnStyleLst><a:ln><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln><a:ln><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln><a:ln><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln></a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:bgFillStyleLst></a:fmtScheme></a:themeElements></a:theme>`;
+<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Magnatic"><a:themeElements><a:clrScheme name="Magnatic"><a:dk1><a:srgbClr val="000000"/></a:dk1><a:lt1><a:srgbClr val="FFFFFF"/></a:lt1><a:dk2><a:srgbClr val="0B1220"/></a:dk2><a:lt2><a:srgbClr val="F1F1F1"/></a:lt2><a:accent1><a:srgbClr val="16C6AD"/></a:accent1><a:accent2><a:srgbClr val="610A8B"/></a:accent2><a:accent3><a:srgbClr val="FFD700"/></a:accent3><a:accent4><a:srgbClr val="79B8FF"/></a:accent4><a:accent5><a:srgbClr val="7EE787"/></a:accent5><a:accent6><a:srgbClr val="F07178"/></a:accent6><a:hlink><a:srgbClr val="16C6AD"/></a:hlink><a:folHlink><a:srgbClr val="610A8B"/></a:folHlink></a:clrScheme><a:fontScheme name="Office"><a:majorFont><a:latin typeface="Segoe UI"/><a:ea typeface=""/><a:cs typeface=""/></a:majorFont><a:minorFont><a:latin typeface="Segoe UI"/><a:ea typeface=""/><a:cs typeface=""/></a:minorFont></a:fontScheme><a:fmtScheme name="Office"><a:fillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:fillStyleLst><a:lnStyleLst><a:ln><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln><a:ln><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln><a:ln><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:ln></a:lnStyleLst><a:effectStyleLst><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle><a:effectStyle><a:effectLst/></a:effectStyle></a:effectStyleLst><a:bgFillStyleLst><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill><a:solidFill><a:schemeClr val="phClr"/></a:solidFill></a:bgFillStyleLst></a:fmtScheme></a:themeElements></a:theme>`;
 files["ppt/slideMasters/slideMaster1.xml"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <p:sldMaster xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld><p:bg><p:bgPr><a:solidFill><a:srgbClr val="0B1220"/></a:solidFill><a:effectLst/></p:bgPr></p:bg><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr></p:spTree></p:cSld><p:clrMap bg1="dk1" tx1="lt1" bg2="dk2" tx2="lt2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/><p:sldLayoutIdLst><p:sldLayoutId id="2147483649" r:id="rId1"/></p:sldLayoutIdLst></p:sldMaster>`;
 files["ppt/slideMasters/_rels/slideMaster1.xml.rels"] = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>

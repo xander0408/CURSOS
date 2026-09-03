@@ -134,7 +134,7 @@ cards.push(para(run("Recorta y entrega a cada participante SOLO su ficha.", { i:
 for (const s of data.students) {
   cards.push(para(run("", {}), { after: 80 }));
   cards.push(cardTable([
-    run("AI Business Lab — MagnaTic", { b: 1, color: PURPLE, sz: 22 }),
+    run("AI Business Lab — Magnatic", { b: 1, color: PURPLE, sz: 22 }),
     run(s.name, { b: 1, sz: 24 }),
     run(s.role, { color: "666666" }),
     run("Enlace: " + LINK, {}),

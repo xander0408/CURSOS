@@ -6,9 +6,9 @@
   "instructor": {
     "username": "instructor",
     "email": "instructor@magnatic.com",
-    "name": "Instructor MagnaTic",
+    "name": "Instructor Magnatic",
     "role": "Facilitador del laboratorio",
-    "password": "MagnaTic#CISA26",
+    "password": "Magnatic#CISA26",
     "isInstructor": true
   },
   "students": [

@@ -4,12 +4,12 @@ Sitio estático: estas claves viven en `content/students.json`. Sirven para iden
 
 Entrega cada fila **en privado** (papel o mensaje). No pongas este archivo en la pantalla.
 
-## Administración (MagnaTic)
+## Administración (Magnatic)
 
 | Campo | Valor |
 |---|---|
 | Usuario | `instructor` |
-| Contraseña | `MagnaTic#CISA26` |
+| Contraseña | `Magnatic#CISA26` |
 | PIN de notas de facilitación | `CISA-Admin26` |
 
 En el login elige «Instructor / administración» o escribe `instructor`.

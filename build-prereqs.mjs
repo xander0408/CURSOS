@@ -123,7 +123,7 @@ const LINK = "https://xander0408.github.io/CURSOS/";
 
 const prereqs = [
   { title: "Prerequisitos — Curso de IA Aplicada al Negocio" },
-  { pi: "ChatGPT y Claude · 16 horas (2 viernes) · Presencial · MagnaTic para Central de Ingenios." },
+  { pi: "ChatGPT y Claude · 16 horas (2 viernes) · Presencial · Magnatic para Central de Ingenios." },
   { p: [["Para aprovechar el curso al máximo, cada participante debe tener listo lo siguiente ANTES del primer día. Es sencillo y no requiere conocimientos técnicos.", 0]] },
 
   { h2: "1. Cuentas gratuitas (obligatorio)" },
@@ -189,7 +189,7 @@ const correo = [
   { p: "Cualquier duda con las cuentas o el acceso, escríbannos y con gusto les ayudamos antes del curso." },
   { spacer: 120 },
   { p: "Saludos cordiales," },
-  { p: [["Equipo MagnaTic · Think Evolution", 1]] },
+  { p: [["Equipo Magnatic · Think Evolution", 1]] },
 ];
 
 const cuentas = [

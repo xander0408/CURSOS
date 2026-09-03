@@ -109,7 +109,7 @@ function writeDocx(filename, parts) {
 // ---- Documento general (para enviar al grupo) ----
 const gen = [];
 gen.push(para(run("Prepara tu Proyecto Final", { b: 1, color: TEAL, sz: 40 })));
-gen.push(para(run("AI Business Lab · MagnaTic. Léelo antes del curso: NO hay que resolverlo, solo llegar pensando.", { i: 1, color: "666666" })));
+gen.push(para(run("AI Business Lab · Magnatic. Léelo antes del curso: NO hay que resolverlo, solo llegar pensando.", { i: 1, color: "666666" })));
 gen.push(para(run("¿Qué es?", { b: 1, color: PURPLE, sz: 26 }), { before: 120 }));
 gen.push(para(run("El último ejercicio del curso (Viernes 2) es resolver un caso real de tu área con IA, de punta a punta, y medir el tiempo que ahorras. Cada participante tiene un caso asignado según su cargo, pero puedes proponer otro problema real que te quite tiempo.")));
 gen.push(para(run("Qué traer pensado", { b: 1, color: PURPLE, sz: 26 }), { before: 120 }));

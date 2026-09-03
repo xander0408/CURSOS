@@ -1,6 +1,6 @@
 # Guion de aula — cómo se empieza y qué hace cada alumno minuto a minuto
 
-**Para:** instructor MagnaTic (no proyectar este archivo entero; léelo tú).  
+**Para:** instructor Magnatic (no proyectar este archivo entero; léelo tú).  
 **Curso:** AI Business Lab · 16 h · 2 viernes de 8 h.  
 **Sitio:** `https://xander0408.github.io/CURSOS/` (siempre con **barra al final**).  
 **Idea de diseño:** nadie se queda mirando el techo. Quien termina un bloque tiene **misión de reserva** (abajo, en cada hora).
@@ -25,7 +25,7 @@ Los horarios coinciden con `content/schedule.json`. Si el grupo va lento, recort
 
 > «Dejen la laptop en el escritorio. Abran Chrome o Edge **normal**, no incógnito. Escriban exactamente:  
 > `https://xander0408.github.io/CURSOS/`  
-> con la barra al final. Esperen el logo MagnaTic. No cierren esa pestaña en todo el día.»
+> con la barra al final. Esperen el logo Magnatic. No cierren esa pestaña en todo el día.»
 
 **Cada alumno hace ahora:**
 
@@ -79,7 +79,7 @@ Jornada 08:00–17:00. Almuerzo 12:00–13:00. Pausas cortas donde indica el rel
 
 **Cada alumno:**
 
-1. Login (splash MagnaTic).
+1. Login (splash Magnatic).
 2. `#/perfil` Conocernos — completar y guardar.
 3. Mirar **Ruta** 30 segundos (siguiente paso).
 4. Quiz calentamiento.
@@ -352,4 +352,4 @@ Si falta alguien: el portal igual asigna el caso por `taskId` al hacer login.
 
 ---
 
-*MagnaTic · AI Business Lab. Alinea este guion con el cronograma del portal (solo instructor: menú Cronograma).*
+*Magnatic · AI Business Lab. Alinea este guion con el cronograma del portal (solo instructor: menú Cronograma).*

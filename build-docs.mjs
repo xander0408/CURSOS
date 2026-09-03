@@ -228,7 +228,7 @@ function writeDocx(filename, doc) {
 // 1) Manual / Guia rapida del alumno
 const manual = [
   { title: "Manual del Alumno — AI Business Lab" },
-  { pi: "Guía rápida para usar el laboratorio. MagnaTic · Think Evolution." },
+  { pi: "Guía rápida para usar el laboratorio. Magnatic · Think Evolution." },
   { h2: "1. Cómo entrar" },
   { b: "Abre el enlace del instructor e inicia sesión con TU usuario y contraseña (no las compartas en voz alta)." },
   { b: "Úsalo en una ventana normal (no incógnito), para que se guarde tu avance." },
@@ -271,7 +271,7 @@ const manual = [
 // 2) Hoja de reglas del laboratorio
 const reglas = [
   { title: "Reglas del Laboratorio" },
-  { pi: "Léelas antes de usar ChatGPT o Claude en el curso. MagnaTic." },
+  { pi: "Léelas antes de usar ChatGPT o Claude en el curso. Magnatic." },
   { h2: "Lo que SÍ debes hacer" },
   { b: "Dar contexto suficiente para que la IA entienda tu caso." },
   { b: "Iterar: pedir ajustes en lugar de aceptar el primer borrador." },
@@ -292,7 +292,7 @@ const reglas = [
 // 3) Plantilla de ficha de proyecto (para llenar a mano)
 const ficha = [
   { title: "Ficha del Proyecto Final" },
-  { pi: "Completa esta ficha con tu problema real de trabajo. MagnaTic · AI Business Lab." },
+  { pi: "Completa esta ficha con tu problema real de trabajo. Magnatic · AI Business Lab." },
   { spacer: 120 },
   { line: 1, label: "Nombre del participante:" },
   { line: 1, label: "Fecha:" },
@@ -344,7 +344,7 @@ writeDocx("Constancia-Participacion.docx", certificado);
 
 writeDocx("Prerrequisitos.docx", [
   { title: "Prerrequisitos del curso" },
-  { pi: "AI Business Lab — 16 horas. MagnaTic." },
+  { pi: "AI Business Lab — 16 horas. Magnatic." },
   { h2: "Alumno" },
   { b: "Cuenta gratuita de ChatGPT y de Claude, creadas antes del primer viernes." },
   { b: "Computadora con Chrome, Edge o Firefox. No uses modo incognito." },
@@ -416,9 +416,9 @@ writeDocx("Guion-Instructor-Hablar.docx", [
 ]);
 writeDocx("Guia-Facilitacion-Aula.docx", [
   { title: "Guion de aula — ocupacion continua" },
-  { pi: "Instructor MagnaTic. Version extensa: docs/GUIA-FACILITACION-AULA.md. Sitio: https://xander0408.github.io/CURSOS/ (barra final)." },
+  { pi: "Instructor Magnatic. Version extensa: docs/GUIA-FACILITACION-AULA.md. Sitio: https://xander0408.github.io/CURSOS/ (barra final)." },
   { h2: "Como se empieza (07:40)" },
-  { p: "Diles: Chrome o Edge normal, no incognito. URL con barra al final. Esperan el logo MagnaTic. Tres pestanas: laboratorio, ChatGPT, Claude. Claves en privado, nunca en el proyector." },
+  { p: "Diles: Chrome o Edge normal, no incognito. URL con barra al final. Esperan el logo Magnatic. Tres pestanas: laboratorio, ChatGPT, Claude. Claves en privado, nunca en el proyector." },
   { h2: "Que no confundir" },
   { b: "Ficha-Proyecto-Final.docx = plantilla vacia. Se ofrece viernes 1 al cierre o viernes 2; no es la entrega." },
   { b: "proyectos/USUARIO-proyecto-final.docx = caso lleno. Se reparte viernes 2 a las 14:20 para copiar al portal." },

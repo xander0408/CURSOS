@@ -1,6 +1,6 @@
 # Manual de aprendizaje — Inteligencia Artificial aplicada al negocio
 
-MagnaTic · Think Evolution. Documento para llevarse a casa. No sustituye las 16 horas en aula: las acompaña.
+Magnatic · Think Evolution. Documento para llevarse a casa. No sustituye las 16 horas en aula: las acompaña.
 
 ## Cómo usar este libro
 
@@ -190,7 +190,7 @@ El módulo de productividad del viernes 2 conecta con el correo, la minuta y la 
 
 Para que este libro no flote aparte del aula, este es el mapa. Los horarios exactos los marca el instructor.
 
-**Viernes 1.** Entran al laboratorio (URL con barra final, logo MagnaTic). Conocernos. Cuentas gratis. Historia de la IA y su quiz. Fundamentos, reto A.C.T.I.V.A., cómo hablar con la IA, ingeniería de prompts y las cinco piezas en voz alta, Word con revisión en rojo. **Preparar el caso anónimo. No cerrar la ficha del proyecto.**
+**Viernes 1.** Entran al laboratorio (URL con barra final, logo Magnatic). Conocernos. Cuentas gratis. Historia de la IA y su quiz. Fundamentos, reto A.C.T.I.V.A., cómo hablar con la IA, ingeniería de prompts y las cinco piezas en voz alta, Word con revisión en rojo. **Preparar el caso anónimo. No cerrar la ficha del proyecto.**
 
 **Viernes 2.** Excel con comprobación a mano, PowerPoint, comparador, caza de errores, productividad. **De 14:20 a 16:25, examen:** Proyecto final, doce pasos, Word de práctica de su cargo, ChatGPT y Claude en vivo, **Guardar ficha**. Cierre con quiz integrador y, si aplica, un minuto en voz alta: problema, qué hizo la IA, qué revisó un humano, ahorro.
 
@@ -643,10 +643,10 @@ Si olvidan el resto, con esas tres no hacen daño. El resto de páginas es para 
 
 La IA generativa es una **máquina de borradores**. Las organizaciones que ganan no son las que más pegan en el chat, sino las que **piden con oficio, iteran y verifican**.
 
-MagnaTic diseñó el laboratorio para que practiquen eso en dos viernes. Este manual es el cuaderno que se llevan. Cuando el producto cambie de nombre o de tope, el método sigue: rol, contexto, objetivo, formato, restricciones; analizar, contextualizar, transformar, iterar, verificar, aplicar.
+Magnatic diseñó el laboratorio para que practiquen eso en dos viernes. Este manual es el cuaderno que se llevan. Cuando el producto cambie de nombre o de tope, el método sigue: rol, contexto, objetivo, formato, restricciones; analizar, contextualizar, transformar, iterar, verificar, aplicar.
 
 **La IA propone. Tú decides y verificas.**
 
 ---
 
-MagnaTic · AI Business Lab · Documento de aprendizaje para participantes. Complementa el portal y las sesiones en vivo; no reemplaza las reglas internas de tu empresa.
+Magnatic · AI Business Lab · Documento de aprendizaje para participantes. Complementa el portal y las sesiones en vivo; no reemplaza las reglas internas de tu empresa.
