@@ -80,25 +80,30 @@ const slides = [
 
   { kind: "section", num: "4", title: "ChatGPT y Claude" },
 
-  { kind: "bullets", title: "Mapa de chats (no ranking)",
-    lead: "Todos proponen texto. Ninguno firma tu correo. En clase: dos cuentas Free.",
-    bullets: [
-      "ChatGPT (OpenAI) y Claude (Anthropic): los que practicamos.",
-      "Gemini (Google), Copilot (Microsoft): si la empresa ya los tiene.",
-      "Grok, Perplexity y otros: mismos hábitos (contexto, iterar, verificar).",
+  { kind: "talk", title: "Abran las dos pestañas", prompt: "chatgpt.com y claude.ai. Entran. Yo señalo en el proyector; ustedes marcan la misma pieza en su pantalla.",
+    hint: "Chat de texto. No suban Excel ni Word de la empresa." },
+
+  { kind: "hub", title: "En ChatGPT, estas piezas (señalen)", center: "ChatGPT",
+    nodes: [
+      { title: "Historial", text: "Izquierda: chats viejos. Hoy abren uno NUEVO." },
+      { title: "Modelo", text: "Arriba: Luna, Terra, Sol, 5.2… Gana lo que vean hoy." },
+      { title: "Caja de mensaje", text: "Abajo: aquí pegan el pedido de 5 piezas." },
+      { title: "Clip / archivos", text: "Adjuntos. En aula, mejor pegar texto anónimo." },
+      { title: "Copiar", text: "En la respuesta: copian y se van a Word o Excel." },
     ] },
 
-  { kind: "two", title: "De qué están hechos (idea de oficina)",
-    leftH: "ChatGPT", left: ["Un modelo de lenguaje: predice la siguiente palabra.", "Una ventana de contexto: «recuerda» este chat, no tu empresa.", "Herramientas según plan: archivos, imágenes, a veces búsqueda.", "Tú pones el pedido y la verificación."],
-    rightH: "Claude", right: ["También un modelo de lenguaje (otra empresa: Anthropic).", "Suele ir más cauto y marcar huecos.", "Cupo de créditos en Free; textos largos gastan más.", "Tú pones el pedido y la verificación."] },
+  { kind: "hub", title: "En Claude, estas piezas (señalen)", center: "Claude",
+    nodes: [
+      { title: "Historial", text: "Chats anteriores. Hoy: conversación nueva." },
+      { title: "Modelo / créditos", text: "Haiku, Sonnet u Opus. Free se agota (~5 h)." },
+      { title: "Caja de mensaje", text: "El MISMO texto que pegaron en ChatGPT." },
+      { title: "Artifacts", text: "A veces un panel a la derecha con el entregable." },
+      { title: "Copiar", text: "Copian y pegan en Word o Excel. No firman aquí." },
+    ] },
 
-  { kind: "two", title: "Versiones de ChatGPT (sep 2026)",
-    leftH: "Qué verás en pantalla", left: ["GPT-5.2: familia que mucha gente aún nombra; en API/nube puede seguir.", "GPT-5.6 Luna: típico en Free (rápido, volumen de práctica).", "GPT-5.6 Terra: equilibrio para el día a día.", "GPT-5.6 Sol: más capaz (suele ir en Plus/trabajo pesado)."],
-    rightH: "Cómo usarlo aquí", right: ["No memoricen el número. Gana el nombre de SU pantalla.", "En aula: cuenta Free, texto anónimo.", "Plus/Team/Enterprise existen; no son requisito.", "Archivos e imágenes tienen tope en Free."] },
-
-  { kind: "two", title: "Versiones de Claude (sep 2026)",
-    leftH: "Familia (más capaz gasta más)", left: ["Haiku: rápido, tareas cortas.", "Sonnet: equilibrio; el más habitual en oficina.", "Opus: el más capaz; textos largos y casos difíciles.", "En Free a menudo no eligen Opus a voluntad."],
-    rightH: "Cómo usarlo aquí", right: ["Un prompt bien hecho, una vez, para COMPARAR.", "Si se acaban créditos (~5 h): mismo texto en ChatGPT.", "Pro/Team/Enterprise: más cupo; no hacen falta en el curso.", "Si la pantalla dice otro nombre, gana lo que ves."] },
+  { kind: "two", title: "Versiones (sep 2026): gana su pantalla",
+    leftH: "ChatGPT", left: ["GPT-5.2: nombre que aún se oye.", "GPT-5.6 Luna: Free, volumen.", "Terra: equilibrio. Sol: más capaz (Plus)."],
+    rightH: "Claude", right: ["Haiku: rápido.", "Sonnet: el de oficina.", "Opus: el más capaz; en Free casi no se elige."] },
 
   { kind: "section", num: "5", title: "Cómo pedir" },
 
@@ -112,13 +117,13 @@ const slides = [
 
   { kind: "section", num: "6", title: "Agentes del laboratorio" },
 
-  { kind: "splitpic", title: "De qué está hecho un agente (Nova)", image: "avatares/nova.svg",
-    bullets: [
-      "Rol: anfitriona del laboratorio (no es ChatGPT).",
-      "Objetivo: indicarte el siguiente paso útil.",
-      "Skill: ruta, cuentas, Conocernos.",
-      "Límite: no firma, no ve tus datos internos.",
-      "Humano: tú decides y verificas.",
+  { kind: "hub", title: "De qué está hecho un agente", image: "avatares/nova.svg", center: "Nova",
+    nodes: [
+      { title: "Rol", text: "Anfitriona del laboratorio. No es ChatGPT." },
+      { title: "Objetivo", text: "Indicar el siguiente paso útil." },
+      { title: "Herramientas", text: "Ruta, cuentas, lecciones del portal." },
+      { title: "Reglas", text: "No firma. No ve datos internos." },
+      { title: "Humano verifica", text: "Tú decides. El tutor no envía el correo." },
     ] },
 
   { kind: "two", title: "Nova y los demás tutores",
@@ -127,17 +132,34 @@ const slides = [
 
   { kind: "section", num: "7", title: "Word, Excel y PowerPoint" },
 
-  { kind: "two", title: "Ejemplo Word — correo Cliente Alfa",
-    leftH: "Pides (mismo texto en ambos)", left: ["Rol: atención, tono directo.", "Contexto: 3 días de retraso, 10% en próxima compra (ficticio), sin reembolso.", "Objetivo: asunto + 120 palabras.", "Límite: no inventar causa ni fecha de llegada."],
-    rightH: "Qué haces tú", right: ["ChatGPT: suele dejar asunto listo para pegar.", "Claude: suele marcar si falta la causa.", "Pegas en Word. Quita promesas. Un humano autoriza el 10%."] },
+  { kind: "talk", title: "Ahora: abran Word", prompt: "Documento en blanco. El chat NO es Word: ahí solo nace el borrador.",
+    hint: "Si tienen Copilot dentro de Word, igual: el original del curso es copiar y pegar, para que todos puedan con cuenta Free." },
 
-  { kind: "two", title: "Ejemplo Excel — 6 filas de juguete",
-    leftH: "Pides", left: ["Columnas A cantidad, B precio, C = A*B.", "Seis filas inventadas (no el libro de la planta).", "Explica la fórmula y un chequeo."],
-    rightH: "Qué haces tú", right: ["ChatGPT: fórmula clara para copiar.", "Claude: supuestos («si A no es número…»).", "Compruebas 3 celdas a mano. Si no cuadra, no se usa."] },
+  { kind: "steps", title: "Cómo integrar IA + Word", steps: [
+      "En ChatGPT (y luego Claude) pegan el pedido de 5 piezas del correo Alfa.",
+      "Copian la respuesta (botón copiar o Ctrl+C).",
+      "Pegan en Word. Ahí vive el documento.",
+      "Marcan en rojo lo que un humano debe autorizar (el 10%, fechas).",
+      "Envían desde Word, nunca desde el chat.",
+    ] },
 
-  { kind: "two", title: "Ejemplo PowerPoint — 8 minutos a comité",
-    leftH: "Pides", left: ["6 diapositivas: hechos / huecos / pedido.", "Donde iría un número: [CIFRA OFICIAL].", "Máximo 3 viñetas por slide."],
-    rightH: "Qué haces tú", right: ["ChatGPT: esqueleto rápido.", "Claude: dónde hay un hueco.", "Tú pones las cifras oficiales en PowerPoint. Nadie inventa el KPI."] },
+  { kind: "talk", title: "Ahora: abran Excel", prompt: "Hoja nueva. Escriban A1=cantidad, B1=precio, C1=total. Seis filas inventadas. Nadie abre el libro de la planta.",
+    hint: "Si el chat les da una fórmula, la pegan en C2. Luego comprueban tres celdas a mano." },
+
+  { kind: "steps", title: "Cómo integrar IA + Excel", steps: [
+      "Piden en el chat: fórmula C=A*B y un chequeo si A no es número.",
+      "Copian la fórmula, no un archivo.",
+      "La pegan en Excel. Arrastran si hace falta.",
+      "Tres celdas a mano: calculadora o papel. Si no cuadra, no se usa.",
+      "El chat no «arregla» el libro real de la empresa.",
+    ] },
+
+  { kind: "talk", title: "PowerPoint (misma lógica)", prompt: "Abran PowerPoint en blanco. El chat arma el esqueleto; ustedes ponen [CIFRA OFICIAL].",
+    hint: "6 slides, máximo 3 viñetas. Si inventa un KPI, lo tachan." },
+
+  { kind: "two", title: "Ejemplo de pedido (los tres)",
+    leftH: "Qué pegan en el chat", left: ["Word: correo Alfa, 120 palabras, sin inventar fecha.", "Excel: A cantidad, B precio, C=A*B, 6 filas ficticias.", "PPT: 6 slides, hechos / huecos / pedido al comité."],
+    rightH: "Dónde termina", right: ["El original: Word, Excel o PowerPoint.", "El chat es el taller de borrador.", "Ustedes firman lo que sale del Office."] },
 
   { kind: "section", num: "8", title: "Comparar y el examen" },
 
@@ -242,6 +264,32 @@ function shapesFor(s) {
     out.push(sp(id++, "pc", 0.55, 1.55, 5.1, 5.15, [], { fill: CARD, round: true }));
     out.push(picXml(id++, "rId2", 0.85, 1.85, 4.5, 4.55));
     out.push(sp(id++, "rb", 5.9, 1.7, 6.8, 5.0, (s.bullets || []).map((t) => ({ text: t, sz: 18, color: WHITE, bullet: true, spcAfter: 500 }))));
+    footer();
+    return out.join("");
+  }
+
+  if (s.kind === "hub") {
+    const pos = [
+      [0.5, 1.5, 3.6, 1.65],
+      [9.2, 1.5, 3.6, 1.65],
+      [0.5, 5.15, 3.6, 1.65],
+      [9.2, 5.15, 3.6, 1.65],
+      [4.9, 5.25, 3.55, 1.5],
+    ];
+    out.push(sp(id++, "cc", 5.05, 2.05, 3.2, 3.15, [], { fill: CARD, round: true }));
+    if (s.image) {
+      out.push(picXml(id++, "rId2", 5.35, 2.15, 2.6, 2.35));
+      out.push(sp(id++, "cn", 5.15, 4.5, 3.0, 0.55, [{ text: s.center || "", sz: 16, b: 1, color: TEAL, align: "ctr" }]));
+    } else {
+      out.push(sp(id++, "cn", 5.15, 2.7, 3.0, 1.8, [{ text: s.center || "", sz: 28, b: 1, color: TEAL, align: "ctr" }], { anchor: "ctr" }));
+    }
+    (s.nodes || []).forEach((n, i) => {
+      const p = pos[i];
+      if (!p) return;
+      out.push(sp(id++, "nb" + i, p[0], p[1], p[2], p[3], [], { fill: CARD, round: true }));
+      out.push(sp(id++, "nt" + i, p[0] + 0.18, p[1] + 0.12, p[2] - 0.36, 0.5, [{ text: n.title, sz: 16, b: 1, color: GOLD }]));
+      out.push(sp(id++, "nd" + i, p[0] + 0.18, p[1] + 0.62, p[2] - 0.36, 0.9, [{ text: n.text, sz: 13, color: WHITE }]));
+    });
     footer();
     return out.join("");
   }
