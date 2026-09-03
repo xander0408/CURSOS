@@ -21,7 +21,7 @@ Puntos clave que debes comunicar el primer día:
 - Metodología **A.C.T.I.V.A.** y regla de oro: **la IA propone, la persona decide y verifica.**
 
 ### Modo instructor
-Usuario **`instructor`** / contraseña **`Magnatic#CISA26`** (ver `CREDENCIALES-INSTRUCTOR.md`). También: botón **"Instructor"** → PIN **`CISA-Admin26`**. Desbloquea notas y todos los módulos.
+Usuario **`instructor`** / contraseña **`MagnaTic#CISA26`** (ver `CREDENCIALES-INSTRUCTOR.md`). También: botón **"Instructor"** → PIN **`CISA-Admin26`**. Desbloquea notas y todos los módulos.
 
 **Manual de aprendizaje para llevarse** (IA, método, puente con el aula): `docs/MANUAL-APRENDIZAJE-IA.md` y `Manual-Aprendizaje-IA.docx`. Es distinto de la guía corta `Manual-del-Alumno.docx` (cómo usar el portal).
 

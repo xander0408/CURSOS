@@ -9,7 +9,7 @@ Entrega cada fila **en privado** (papel o mensaje). No pongas este archivo en la
 | Campo | Valor |
 |---|---|
 | Usuario | `instructor` |
-| Contraseña | `Magnatic#CISA26` |
+| Contraseña | `MagnaTic#CISA26` |
 | PIN de notas de facilitación | `CISA-Admin26` |
 
 En el login elige «Instructor / administración» o escribe `instructor`.

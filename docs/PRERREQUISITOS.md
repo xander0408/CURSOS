@@ -45,7 +45,7 @@ Detalle de límites Free: en el laboratorio, menú **Cuentas gratis**, o `docs/C
 - Credenciales impresas o enviadas en privado.
 - Proyector + la PPT `AI-Business-Lab-Presentacion.pptx` (F5, transiciones fade, diapositivas «Tu turno»).
 - Enlace del laboratorio probado en el mismo tipo de red que el aula.
-- PIN de notas: `CISA-Admin26`. Usuario admin: `instructor` / `Magnatic#CISA26`.
+- PIN de notas: `CISA-Admin26`. Usuario admin: `instructor` / `MagnaTic#CISA26`.
 - Guía `GUIA-INSTRUCTOR.md` y este documento.
 - Plan B: si Claude se queda sin créditos, el grupo sigue en ChatGPT Free.
 
