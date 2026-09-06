@@ -4,7 +4,7 @@ Laboratorio de **Inteligencia artificial aplicada al negocio** (ChatGPT y Claude
 
 Sitio: [https://xander0408.github.io/CURSOS/](https://xander0408.github.io/CURSOS/) (barra final). El progreso se guarda por usuario en el navegador.
 
-PPT oficial de aula: `AI-Business-Lab-Central-de-Ingenios.pptx` (94 diapositivas, temario M1–M9). Casos de práctica: **Planta Central, Lote Norte, Cliente Alfa** (ficticios). No pegar zafra, nómina ni clientes reales.
+PPT de aula (la que se proyecta): `AI-Business-Lab-Como-llevar-la-clase.pptx` (21 diapositivas: reloj, usted / ellos). El temario de 94 slides `AI-Business-Lab-Central-de-Ingenios.pptx` es solo apoyo si alguien pregunta un punto.
 
 ## Orden en el portal
 

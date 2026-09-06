@@ -43,7 +43,7 @@ Detalle de límites Free: en el laboratorio, menú **Cuentas gratis**, o `docs/C
 
 - Lista de aula actualizada en `content/students.json`.
 - Credenciales impresas o enviadas en privado.
-- Proyector + la PPT `AI-Business-Lab-Central-de-Ingenios.pptx` (94 diapositivas; F5).
+- Proyector + `AI-Business-Lab-Como-llevar-la-clase.pptx` (21 slides, F5). El de 94 es apoyo.
 - Enlace del laboratorio probado en el mismo tipo de red que el aula.
 - PIN de notas: `CISA-Admin26`. Usuario admin: `instructor` / `MagnaTic#CISA26`.
 - Guía `GUIA-INSTRUCTOR.md` y este documento.

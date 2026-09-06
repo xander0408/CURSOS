@@ -1,10 +1,10 @@
 {
   "title": "Cronograma del instructor y del aula",
   "hours": "Viernes 11 y 25 de septiembre de 2026 · 2 × 8 h",
-  "goal": "Temario CISA M1–M9 alineado a la PPT AI-Business-Lab-Central-de-Ingenios.pptx. Pedir, iterar y verificar. El proyecto final es el examen del viernes 2 (14:20–16:25).",
+  "goal": "Pedir, iterar y verificar. Proyecte el guion de 21 slides. El proyecto final es el examen del viernes 2 (14:20–16:25).",
   "before": [
     "Prueba https://xander0408.github.io/CURSOS/ (con barra final) en el mismo WiFi del aula.",
-    "PPT oficial: AI-Business-Lab-Central-de-Ingenios.pptx (94 diapositivas). No uses el bosquejo generado por script.",
+    "PPT que se proyecta: AI-Business-Lab-Como-llevar-la-clase.pptx (21 diapositivas, reloj). El temario de 94 slides (AI-Business-Lab-Central-de-Ingenios.pptx) es solo apoyo.",
     "Entrega usuario y contraseña individuales. El avance vive en el navegador de cada laptop.",
     "Pide que no usen modo incógnito. Si cambian de PC, que exporten el JSON de Progreso.",
     "Ten ChatGPT y Claude Free abiertos. Casos: Planta Central, Lote Norte, Cliente Alfa. Nada de zafra, contratos ni clientes reales.",

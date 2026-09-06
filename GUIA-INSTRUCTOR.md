@@ -4,7 +4,8 @@
 **Cliente:** Central de Ingenios (CISA), San Pedro Sula — [cisahn.com](http://www.cisahn.com/)
 **Fechas:** viernes 11 y 25 de septiembre de 2026
 **Duración:** 16 horas — 2 viernes de 8 horas cada uno
-**PPT oficial:** `AI-Business-Lab-Central-de-Ingenios.pptx`
+**PPT de aula (proyectar):** `AI-Business-Lab-Como-llevar-la-clase.pptx` (21 slides)
+**Temario de apoyo (no recorrer):** `AI-Business-Lab-Central-de-Ingenios.pptx`
 **Modalidad:** Presencial o remota, con el laboratorio web abierto en el navegador de cada alumno
 **Cupo:** 10 gerencias en esta edición (el lab soporta más si actualizas `content/students.json`)
 
