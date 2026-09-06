@@ -30,7 +30,9 @@ Son las ocho y veinticinco.
 
 Vayan al menú Cuentas gratis. Lean hasta dónde llega la versión gratuita. No memoricen el nombre del modelo: vale lo que muestre su pantalla hoy. ChatGPT Free sirve para el volumen de práctica. Claude Free sirve para comparar un entregable importante; el cupo se agota. Si Claude indica que no hay créditos, copian el mismo texto a ChatGPT y siguen. Nadie se detiene.
 
-No suban contratos, nómina, claves, listados de clientes ni el Excel real de la planta. Cuando terminen, pulsen entendido. Si ya lo hicieron, escriban en un bloc cinco líneas anónimas del problema de su cargo.
+No suban contratos, nómina, claves, listados de clientes ni el Excel real de la planta. Cuando terminen, pulsen Entendido.
+
+Ahora sí, las manos en las tres pestañas. Laboratorio: Cuentas gratis, Entendido. ChatGPT, chat nuevo: «Explica en 5 líneas qué hace un chat de IA, sin jerga». El mismo texto en Claude. Veinte segundos: ¿quién sonó más seguro? Nadie firma. Si Claude no tiene créditos, todos en ChatGPT y siguen.
 
 Son las ocho y cincuenta.
 
@@ -82,7 +84,7 @@ El primer resultado es un borrador. Se lee. Se pide más corto, más formal o co
 
 Un pedido de una línea produce un texto genérico. Un pedido profesional tiene cinco piezas: rol, contexto, objetivo, formato y restricciones. Si falta el formato, sale un ensayo. Si faltan restricciones, aparecen descuentos y fechas que nadie autorizó.
 
-Hagan esto ahora. En ChatGPT escriban primero: “escribe un correo”. Después, en un chat nuevo, copien el caso de queja del Manual de prompts. En un papel anoten tres diferencias. Eso es pedido pobre contra pedido profesional.
+Hagan esto ahora. En ChatGPT escriban primero, solo: «escribe un correo». Léanlo. No lo envíen. Laboratorio, Manual de prompts: copian «Correo: queja» y lo pegan en un chat NUEVO. Treinta segundos: tres cosas que no enviarían del primero. Mitad de la sala ChatGPT, mitad Claude en el pedido profesional (Cliente Alfa ficticio, 120 palabras, sin inventar fecha).
 
 Con la persona de al lado, dos minutos: un correo por un retraso de tres días, Cliente Alfa, Planta Central, sin montos y sin nombres de personas. Díganse las cinco piezas en voz alta.
 
