@@ -444,5 +444,5 @@ function makeZip(fileMap) {
 }
 
 const zip = makeZip(files);
-writeFileSync("AI-Business-Lab-Presentacion.pptx", zip);
-console.log("PPTX generado: " + zip.length + " bytes, " + slides.length + " diapositivas");
+writeFileSync("AI-Business-Lab-bosquejo-generado.pptx", zip);
+console.log("Bosquejo generado (no toca Central-de-Ingenios): " + zip.length + " bytes, " + slides.length + " diapositivas");
