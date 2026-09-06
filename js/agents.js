@@ -26,7 +26,7 @@ function liveTip(data, section) {
     return "Sugerencia: un quiz por bloque (historia, fundamentos, cierre). El de calentamiento se puede repetir en cada receso.";
   }
   if (section === "comparator") {
-    return "Sugerencia: carga ambos ejemplos para ver barras distintas; luego pega TUS respuestas reales del mismo prompt.";
+    return "Elige una de las 4 tareas o «Mi prompt». Copia, pega en los dos chats, vuelve y pega las respuestas: el comparativo se mueve al instante.";
   }
   if (section === "project") {
     return "Esto es el examen del viernes 2. Hoy (si es viernes 1) solo anota el caso anónimo; no cierres la ficha todavía.";

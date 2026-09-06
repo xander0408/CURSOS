@@ -729,6 +729,27 @@
 .cmp-bar-row { display: grid; grid-template-columns: 110px 1fr 24px; gap: 8px; align-items: center; margin: 6px 0; font-size: 12px; }
 .cmp-bar { height: 10px; background: var(--bg-input); border-radius: 99px; overflow: hidden; border: 1px solid var(--border); }
 .cmp-bar i { display: block; height: 100%; background: var(--accent); width: 0; transition: width 0.25s ease; }
+.cmp-live {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0 0;
+}
+.cmp-live-card {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  background: var(--bg-elevated);
+}
+.cmp-live-avg {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 4px 0 6px;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 700px) {
+  .cmp-live { grid-template-columns: 1fr; }
+}
 .data-table th, .data-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--border); }
 .data-table th { color: var(--text-muted); font-weight: 600; }
 

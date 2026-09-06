@@ -1,5 +1,5 @@
 {
-  "intro": "No hay ganador mundial. ChatGPT suele ir más directo y listo para copiar; Claude suele ser más cauto, hace preguntas y marca lo que falta. Tú eliges según el caso.",
+  "intro": "No hay ganador mundial. El mismo prompt en los dos chats; tú pegas las respuestas aquí. ChatGPT suele ir más directo; Claude más cauto. Tú eliges según el caso.",
   "cases": [
     {
       "id": "cmp-email",

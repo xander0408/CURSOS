@@ -1,6 +1,6 @@
 {
   "title": "Actividades para no quedarte parado",
-  "subtitle": "Primero las 4 tareas obligatorias en ChatGPT y Claude (el mismo texto en los dos). Luego el resto de misiones.",
+  "subtitle": "Primero las 4 tareas obligatorias en ChatGPT y Claude (el mismo texto en los dos). Después pega las dos respuestas en Comparador: el comparativo se actualiza al instante. Luego el resto de misiones.",
   "chatTasks": [
     {
       "id": "chat-1",
@@ -38,7 +38,7 @@
       "day": 2,
       "mins": 8,
       "title": "Minuta sucia: mismo texto, dos lecturas",
-      "do": "Pegue el texto de abajo en ChatGPT y en Claude. Luego ábralo también en Comparador del laboratorio (menú Comparador) y elija cuál serviría hoy.",
+      "do": "Pegue el texto de abajo en ChatGPT y en Claude. Luego pulse «Ver comparativo en vivo»: pega las dos respuestas y las barras se actualizan al momento.",
       "look": "¿Quién convirtió un «se habló» en un acuerdo cerrado? Eso no se firma.",
       "prompt": "Rol: asistente de dirección.\nContexto (ficticio, Planta Central): Reunión de patio, 45 minutos. Notas: camiones hicieron fila 2 horas; calidad retuvo un lote por humedad; se habló de un radio extra el jueves (no quedó claro quién paga); ventas pidió priorizar Cliente Alfa.\nObjetivo: extrae (1) decisiones, (2) pendientes. Si falta un dato, escribe «no especificado».\nFormato: viñetas.\nRestricciones: no inventes nombres de personas ni acuerdos que no estén en las notas."
     }
@@ -52,7 +52,7 @@
     { "id": "a6", "day": 1, "mins": 15, "title": "Biblioteca personal", "do": "Guarda 2 prompts en la biblioteca (uno tuyo y uno del manual)." },
     { "id": "a7", "day": 1, "mins": 20, "title": "Word con revisión", "do": "Genera un borrador, pégalo en Word y marca en rojo lo que un humano debe verificar." },
     { "id": "a8", "day": 2, "mins": 12, "title": "Excel de juguete", "do": "Crea 6 filas inventadas y pide la fórmula. Comprueba 3 celdas a mano." },
-    { "id": "a9", "day": 2, "mins": 12, "title": "Comparador", "do": "Usa el mismo prompt en ChatGPT y Claude. Escribe en el comparador cuál te sirve más y por qué." },
+    { "id": "a9", "day": 2, "mins": 12, "title": "Comparador", "do": "Cualquier prompt (tarea o el tuyo) en ChatGPT y Claude. Pega las dos salidas en Comparador y elige cuál te sirve más y por qué." },
     { "id": "a10", "day": 2, "mins": 15, "title": "Seis slides", "do": "Pide estructura de presentación y descarta 2 ideas débiles. Quédate con un hilo claro." },
     { "id": "a11", "day": 2, "mins": 10, "title": "Caza el error", "do": "Completa un reto de detectar error o evaluar salida de IA en el laboratorio." },
     { "id": "a12", "day": 2, "mins": 25, "title": "Ficha de proyecto", "do": "Llena el proyecto final con un problema real de tu cargo, sin datos internos, y marca ficha lista." }

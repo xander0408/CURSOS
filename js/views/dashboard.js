@@ -67,7 +67,10 @@ export function renderDashboard(data) {
         <h3>4 tareas en ChatGPT y Claude</h3>
         <p>Obligatorias. El mismo texto en los dos chats. Menú Actividades: copiar, pegar, marcar.</p>
         <p class="muted">${(data.activities.chatTasks || []).filter((t) => !!(s.progress.labs?.checks || {})[t.id]).length} de ${(data.activities.chatTasks || []).length} hechas.</p>
-        <a class="btn btn-primary" href="#/actividades">Abrir las 4 tareas</a>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#/actividades">Abrir las 4 tareas</a>
+          <a class="btn" href="#/comparador/chat-1">Comparar en vivo</a>
+        </div>
       </div>
       ${
         task

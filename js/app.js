@@ -143,6 +143,10 @@ function render() {
 }
 
 function renderInner() {
+  const routePreview = parseHash();
+  if (routePreview.name !== "comparator") {
+    window.clearInterval(window.__cmpAulaTimer);
+  }
   const bounce = gateRedirect();
   if (bounce) {
     const here = location.hash || "#/";
@@ -188,8 +192,8 @@ function renderInner() {
     root.innerHTML = renderPromptLab(data);
     bindPromptLab(data);
   } else if (route.name === "comparator") {
-    root.innerHTML = renderComparator(data);
-    bindComparator(data);
+    root.innerHTML = renderComparator(data, route.params.caseId);
+    bindComparator(data, route.params.caseId);
   } else if (route.name === "library") {
     root.innerHTML = renderLibrary(data);
     bindLibrary(data);

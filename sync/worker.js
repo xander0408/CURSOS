@@ -88,6 +88,12 @@ export default {
           modules: st.progress?.totals?.modulesCompleted || 0,
           xp: st.progress?.totals?.xp || 0,
           fiche: !!st.progress?.project?.ficheReady,
+          comparator: {
+            caseId: st.progress?.comparator?.caseId || "",
+            winner: st.progress?.comparator?.winner || "",
+            gptChars: String(st.progress?.comparator?.chatgptNotes || "").trim().length,
+            claudeChars: String(st.progress?.comparator?.claudeNotes || "").trim().length,
+          },
         };
       });
       return json({ saves });

@@ -24,6 +24,7 @@ export function renderActivities(data) {
             <button class="btn btn-primary" type="button" data-copy-chat="${escapeHtml(it.id)}">Copiar y pegar en los dos chats</button>
             <a class="btn" href="https://chatgpt.com/" target="_blank" rel="noopener">Abrir ChatGPT</a>
             <a class="btn" href="https://claude.ai/" target="_blank" rel="noopener">Abrir Claude</a>
+            <a class="btn" href="#/comparador/${escapeHtml(it.id)}">Ver comparativo en vivo</a>
           </div>
         </div>
       </div>`;
