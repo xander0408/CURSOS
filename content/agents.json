@@ -11,7 +11,7 @@
       "skill": "Orientar la ruta y el siguiente paso útil",
       "skillHow": "Mira si ya hiciste Conocernos, cuentas gratis y lecciones. No te encierra: te recomienda.",
       "personality": "Cercana y motivadora.",
-      "intro": "¡Hola! Soy Nova. Este laboratorio ordena la práctica. ChatGPT y Claude van en otra pestaña. Tú decides y verificas.",
+      "intro": "Siguiente paso de la ruta. ChatGPT y Claude se usan en otra pestaña.",
       "tasks": [
         "Mira «Siguiente paso» en la ruta y hazlo de verdad.",
         "Si refrescas, espera el logo: la sesión debe seguir abierta.",
@@ -29,7 +29,7 @@
       "skill": "Abrir el siguiente laboratorio sin saltarte lecciones",
       "skillHow": "El módulo N se abre cuando terminas las lecciones de N-1. Pulsa Continuar en cada una.",
       "personality": "Analítico y paciente.",
-      "intro": "Soy Atlas. Cada módulo es un laboratorio: lee, piensa el caso y prueba con tu propio trabajo (sin datos sensibles).",
+      "intro": "Lee la lección, aplica el caso y continúa al siguiente módulo.",
       "tasks": [
         "Antes de avanzar, resume en una frase qué aprendiste.",
         "Piensa una tarea real de tu semana donde aplicarlo.",
@@ -47,7 +47,7 @@
       "skill": "Armar pedidos con 5 piezas y una restricción de verificación",
       "skillHow": "Si falta formato o restricciones, el borrador sale genérico o inventa.",
       "personality": "Creativa y directa. Odia los prompts vagos.",
-      "intro": "Soy Spark. Un buen prompt no es un truco: son cinco piezas bien pensadas. Rol, contexto, objetivo, formato y restricciones.",
+      "intro": "Arma el pedido en cinco partes: rol, contexto, objetivo, formato y restricciones.",
       "tasks": [
         "Completa las cinco piezas antes de copiar el prompt.",
         "Agrega siempre una restricción: «si no tienes un dato, pídemelo».",
@@ -65,7 +65,7 @@
       "skill": "Forzar criterio: rapidez sí, cifra ciega no",
       "skillHow": "Lee la explicación al fallar. Fuera del quiz, toda cifra de decisión necesita fuente humana.",
       "personality": "Serio y protector. No deja pasar un dato sin fuente.",
-      "intro": "Soy Guardian. Responde rápido, pero nunca confíes en una cifra o una cita sin verificarla en la vida real.",
+      "intro": "Responde con criterio. Verifica cifras y citas antes de usarlas.",
       "tasks": [
         "Responde por criterio, no por adivinar la clave.",
         "Cuando falles, lee la explicación: ahí está el aprendizaje.",
@@ -83,7 +83,7 @@
       "skill": "Contrastar dos salidas sin declarar un ganador mundial",
       "skillHow": "Carga ejemplos típicos o pega las tuyas. Mira precisión vs plantilla.",
       "personality": "Imparcial y curioso. No cree en ganadores universales.",
-      "intro": "Soy Nexus. Mismo prompt, dos herramientas. No busques cuál es «mejor»: busca cuál te sirve más en ESTE caso.",
+      "intro": "Compara el mismo pedido en dos herramientas y elige según el caso.",
       "tasks": [
         "Usa exactamente el mismo prompt en ChatGPT y en Claude.",
         "Puntúa cada salida por utilidad, no por marca.",
@@ -101,7 +101,7 @@
       "skill": "Cerrar la ficha el viernes 2 con control humano",
       "skillHow": "El proyecto es el examen del segundo viernes. Viernes 1 solo prepara el caso anónimo.",
       "personality": "Estratega y exigente. Busca resultados con control humano.",
-      "intro": "Soy Commander. Aquí resuelves un problema real de tu trabajo, de punta a punta, y mides el tiempo que ahorras.",
+      "intro": "Documenta un problema de tu área, prueba ambas herramientas y cierra la ficha.",
       "tasks": [
         "Elige un problema que de verdad te quite tiempo.",
         "Prueba en ChatGPT y Claude, y compara con criterio.",

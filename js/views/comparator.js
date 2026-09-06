@@ -238,12 +238,12 @@ export function renderComparator(data, routeCaseId) {
     ? `<button class="btn" type="button" id="load-gpt-ex">Cargar ejemplo típico ChatGPT</button>
        <button class="btn" type="button" id="load-claude-ex">Cargar ejemplo típico Claude</button>
        <button class="btn" type="button" id="load-both-ex">Cargar ambos ejemplos</button>`
-    : `<p class="muted" style="margin:0">En las tareas y en tu prompt: pega aquí lo que te devolvieron los dos chats. No hay ejemplo precargado a propósito.</p>`;
+    : `<p class="muted" style="margin:0">Pega las respuestas de ambas herramientas.</p>`;
 
   return `
     <div class="page-head">
       <h2>Comparador ChatGPT vs Claude</h2>
-      <p>${escapeHtml(data.comparator.intro || "")} Sirve para <strong>cualquier prompt</strong>: las 4 tareas, un caso de tu cargo o texto libre. Pega las dos respuestas y el comparativo se actualiza al instante en este navegador.</p>
+      <p>${escapeHtml(data.comparator.intro || "Mismo pedido en ChatGPT y Claude. Pega ambas respuestas y compara.")}</p>
     </div>
     ${sectionAgent(data, "comparator")}
     <div class="card">

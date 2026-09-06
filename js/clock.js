@@ -120,11 +120,11 @@ export function bindInstructorClock() {
     const label = document.getElementById("clock-label")?.value;
     const r = await pushClock({ minutes, label, action: "start" });
     paintFace(readLocal());
-    toast(r.localOnly && !syncEnabled() ? "Reloj local. Con servidor, lo ven todos los alumnos." : "Reloj en marcha. Los alumnos lo ven arriba.");
+    toast(r.localOnly && !syncEnabled() ? "Temporizador iniciado en este equipo." : "Temporizador iniciado.");
   };
   stop.onclick = async () => {
     await pushClock({ action: "stop", minutes: 1, label: "Actividad" });
     paintFace(readLocal());
-    toast("Reloj detenido.");
+    toast("Temporizador detenido.");
   };
 }

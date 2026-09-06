@@ -111,7 +111,7 @@ function paintBoard(data, saves) {
     </div>
     <div class="card" style="margin-top:16px">
       <h3>Seguimiento en vivo</h3>
-      <p class="muted">Se refresca solo. Verde = actividad reciente. «Sin entrar» aún no tiene copia en el servidor o en esta PC.</p>
+      <p class="muted">Actualización automática. La marca verde indica actividad reciente.</p>
       ${tableHtml(rows)}
     </div>
   `;
@@ -120,7 +120,7 @@ function paintBoard(data, saves) {
 export function renderAdmin(data) {
   const isInst = !!getState().profile.isInstructor;
   if (!isInst) {
-    return `<div class="page-head"><h2>Solo instructor</h2><p>Entra con la cuenta instructor. Los participantes no ven este panel ni las notas de facilitación.</p></div>`;
+    return `<div class="page-head"><h2>Acceso restringido</h2><p>Inicia sesión con una cuenta de instructor.</p></div>`;
   }
   const ins = data.roster?.instructor || {};
   const local = listLocalStudentSaves();
@@ -129,25 +129,25 @@ export function renderAdmin(data) {
       (u) => `<div class="card">
         <h3>${escapeHtml(u.name)} <code>${escapeHtml(u.id)}</code></h3>
         <p class="muted">${escapeHtml(u.role)} · ${u.modules} módulos · ${u.xp} pts</p>
-        <button class="btn btn-danger" type="button" data-reset-user="${escapeHtml(u.id)}">Reiniciar a este alumno en esta PC</button>
+        <button class="btn btn-danger" type="button" data-reset-user="${escapeHtml(u.id)}">Restablecer</button>
       </div>`
     )
-    .join("") || `<p class="muted">Nadie ha iniciado sesión en este navegador todavía (además de ti).</p>`;
+    .join("") || `<p class="muted">Aún no hay sesiones locales.</p>`;
 
   return `
     <div class="page-head">
       <h2>Dashboard del aula</h2>
-      <p>Seguimiento en tiempo real: módulos, 4 tareas, quizzes, comparador, insignias y ficha. El reloj se lanza en la barra verde de arriba (minutos + Iniciar). Los alumnos solo ven la cuenta atrás, no tus controles ni las notas de los módulos.</p>
+      <p>Progreso, tareas, evaluaciones y proyecto. Controla el temporizador desde la barra superior.</p>
     </div>
     <div id="aula-live"><p class="muted">Cargando el aula…</p></div>
     <div class="card" style="margin-top:16px">
       <h3>Acceso</h3>
       <p>Usuario: <code>${escapeHtml(ins.username || "instructor")}</code></p>
-      <p class="muted">La contraseña está en CREDENCIALES-INSTRUCTOR.md (no la proyectes).</p>
+      <p class="muted">Credenciales de administración.</p>
       <p><a class="btn" href="#/cronograma">Cronograma (solo tú)</a></p>
     </div>
     <div class="card" style="margin-top:16px">
-      <h3>Reset en esta PC</h3>
+      <h3>Sesiones en este equipo</h3>
       ${localHtml}
     </div>
   `;
@@ -184,10 +184,10 @@ export function bindAdmin(data) {
     btn.addEventListener("click", () => {
       const id = btn.getAttribute("data-reset-user");
       if (!getState().profile.isInstructor) return;
-      if (!confirm("¿Borrar el progreso de " + id + " en este navegador?")) return;
+      if (!confirm("¿Restablecer el progreso de " + id + "?")) return;
       resetLocalUser(id);
       logActivity("admin", "reset " + id);
-      toast("Progreso local de " + id + " borrado.");
+      toast("Progreso restablecido.");
       window.dispatchEvent(new Event("app:refresh"));
     });
   });

@@ -10,7 +10,7 @@ export function renderPromptLab(data) {
   return `
     <div class="page-head">
       <h2>Prompt Lab</h2>
-      <p>Construye ROL + CONTEXTO + OBJETIVO + FORMATO + RESTRICCIONES. El texto listo para copiar aparece cuando las piezas están pensadas, no antes.</p>
+      <p>Rol, contexto, objetivo, formato y restricciones. Copia el texto cuando esté listo.</p>
     </div>
     ${sectionAgent(data, "promptLab")}
     <div class="card" id="lab-root">

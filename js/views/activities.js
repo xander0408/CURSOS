@@ -49,14 +49,14 @@ export function renderActivities(data) {
   return `
     <div class="page-head">
       <h2>4 tareas en ChatGPT y Claude</h2>
-      <p>Obligatorias. Copie el texto, ábralo en <strong>ChatGPT</strong> y en <strong>Claude</strong> (el mismo). Si Claude no tiene créditos, haga las cuatro en ChatGPT y anótelo. No envíe nada desde el chat.</p>
-      <p><strong>${chatOk} de ${chats.length}</strong> tareas duales hechas.</p>
+      <p>Usa el mismo texto en ChatGPT y en Claude. No envíes el resultado.</p>
+      <p><strong>${chatOk} de ${chats.length}</strong> completadas.</p>
     </div>
     <div class="activity-grid">${chatCards}</div>
     <div class="page-head" style="margin-top:28px">
       <h2>${escapeHtml(pack.title)}</h2>
       <p>${escapeHtml(pack.subtitle)}</p>
-      <p><strong>${ok} de ${n}</strong> misiones extra en este navegador.</p>
+      <p><strong>${ok} de ${n}</strong> actividades complementarias.</p>
     </div>
     <div class="activity-grid">${cards}</div>
   `;

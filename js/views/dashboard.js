@@ -40,8 +40,8 @@ export function renderDashboard(data) {
 
   return `
     <div class="page-head">
-      <h2>Ruta del laboratorio</h2>
-      <p>Orden: Conocernos, cuentas gratis, historia, módulos M1–M9. ${escapeHtml(data.course.practiceNote)}</p>
+      <h2>Inicio</h2>
+      <p>${escapeHtml(data.course.practiceNote)}</p>
     </div>
     ${sectionAgent(data, "dashboard")}
     <div class="grid grid-4" style="margin-bottom:20px">
@@ -120,13 +120,13 @@ export function renderProgress(data) {
     <h3 style="margin-top:28px">Insignias</h3>
     <div class="grid grid-2">${badges}</div>
     <div class="card" style="margin-top:20px">
-      <h3>Tu avance en este navegador</h3>
-      <p>El progreso se guarda en este navegador y, si el instructor activó el servidor de avances, también en la nube del aula. Si cambias de equipo, entra con el mismo usuario.</p>
+      <h3>Avance</h3>
+      <p>Tu progreso se sincroniza con tu cuenta. Si cambias de equipo, usa el mismo usuario.</p>
       <div class="btn-row">
         <button class="btn" type="button" id="btn-export">Exportar avance</button>
         <button class="btn" type="button" id="btn-import">Importar avance</button>
         <input type="file" id="import-file" accept="application/json,.json" style="display:none" />
-        ${getState().profile.isInstructor ? `<p class="muted" style="width:100%">Para borrar el avance de un alumno usa Aula / admin (solo esta PC). No hay reset para participantes.</p>` : `<p class="muted" style="width:100%">Si te trabas, pide al instructor que reinicie tu usuario en esta máquina. Tú no puedes borrar el progreso desde aquí.</p>`}
+        ${getState().profile.isInstructor ? `<p class="muted" style="width:100%">Restablecer participantes: Dashboard aula.</p>` : `<p class="muted" style="width:100%">Si necesitas restablecer tu avance, solicita apoyo a tu instructor.</p>`}
       </div>
     </div>
   `;

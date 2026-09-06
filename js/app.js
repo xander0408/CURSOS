@@ -81,7 +81,7 @@ function bindShell() {
     }
     openModal(`
       <h3>Modo instructor</h3>
-      <p class="muted">PIN local de esta copia del curso. No es una cuenta ni un servidor.</p>
+      <p class="muted">Acceso de instructor en este equipo.</p>
       <div class="field"><label>PIN</label><input id="pin" type="password" /></div>
       <div class="btn-row"><button class="btn btn-primary" type="button" id="pin-ok">Entrar</button></div>
     `);
@@ -93,7 +93,7 @@ function bindShell() {
         });
         setInstructorUi();
         closeModal();
-        toast("Notas de facilitación visibles.");
+        toast("Sesión de instructor activa.");
         window.dispatchEvent(new Event("app:refresh"));
       } else toast("PIN incorrecto.");
     };
@@ -138,7 +138,7 @@ function render() {
   } catch (err) {
     const root = document.getElementById("app-root");
     if (root) {
-      root.innerHTML = `<div class="page-head"><h2>No se pudo pintar esta vista</h2><p>Recarga la página. Si sigue, avisa al instructor.</p><p class="muted">${String(err.message || err)}</p></div>`;
+      root.innerHTML = `<div class="page-head"><h2>No se pudo cargar</h2><p>Recarga la página. Si el problema continúa, contacta a soporte.</p><p class="muted">${String(err.message || err)}</p></div>`;
     }
     console.error(err);
   }
@@ -225,7 +225,7 @@ function renderInner() {
     bindActivities(data);
   } else if (route.name === "cronograma") {
     if (!getState().profile.isInstructor) {
-      root.innerHTML = `<div class="page-head"><h2>Solo instructor</h2><p>El cronograma de las 16 horas no se muestra a los participantes. Sigue tu ruta, módulos y actividades.</p><p><a class="btn btn-primary" href="#/">Volver a la ruta</a></p></div>`;
+      root.innerHTML = `<div class="page-head"><h2>Acceso restringido</h2><p>Esta sección no está disponible con tu cuenta.</p><p><a class="btn btn-primary" href="#/">Volver</a></p></div>`;
     } else {
       root.innerHTML = renderCronograma(data);
     }
@@ -276,10 +276,9 @@ async function main() {
     hideSplash();
     document.getElementById("app-root").innerHTML = `
       <div class="page-head">
-        <h2>Abre el laboratorio con un servidor local</h2>
-        <p>El navegador bloquea los archivos JSON si abres index.html con doble clic. En una terminal, dentro de esta carpeta:</p>
+        <h2>No se pudo cargar la aplicación</h2>
+        <p>Abre el sitio desde la URL del curso o inicia el servidor local.</p>
         <pre class="prompt-preview show">python -m http.server 8080</pre>
-        <p>Usa la URL con barra final: <code>https://xander0408.github.io/CURSOS/</code></p>
         <p class="muted">${String(err.message || err)}</p>
       </div>`;
     return;
@@ -328,7 +327,7 @@ function startSuite() {
   // estricto o almacenamiento bloqueado).
   if (!storageWorks()) {
     setTimeout(
-      () => toast("Aviso: este navegador no guarda tu progreso (¿modo incógnito?)."),
+      () => toast("No se pudo guardar el progreso. Revisa el almacenamiento del navegador."),
       600
     );
   }

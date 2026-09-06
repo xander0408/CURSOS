@@ -69,7 +69,7 @@ function renderLesson(data, full, lessonId) {
     ${progressBar(p.pct)}
     <div class="card" style="margin-top:16px">
       ${renderBlocks(lesson.blocks)}
-      ${notes ? `<div class="callout think"><strong>Nota del instructor</strong>${escapeHtml(notes)}</div>` : ""}
+      ${notes ? `<div class="callout think"><strong>Guía</strong>${escapeHtml(notes)}</div>` : ""}
       <div class="lesson-nav">
         ${prev ? `<a class="btn" href="#/modulo/${full.id}/leccion/${prev.id}">Anterior</a>` : `<span></span>`}
         <button class="btn btn-primary" type="button" id="btn-continue" data-module="${full.id}" data-lesson="${lesson.id}" data-next="${next ? next.id : ""}" data-first-ch="${firstChallenge ? firstChallenge.id : ""}">Continuar</button>
@@ -100,7 +100,7 @@ export function renderChallenge(data, full, challengeId) {
       <p>${escapeHtml(ch.instructions)}</p>
       ${ch.thinkFirst ? `<div class="callout think"><strong>Piensa primero</strong>${escapeHtml(ch.thinkFirst)}</div>` : ""}
       <div id="challenge-body">${challengeBody(ch, saved, submitted)}</div>
-      ${notes && submitted ? `<div class="callout privacy"><strong>Criterios (instructor)</strong>${escapeHtml(notes)}</div>` : ""}
+      ${notes && submitted ? `<div class="callout privacy"><strong>Criterios</strong>${escapeHtml(notes)}</div>` : ""}
       <div class="feedback ${submitted ? "show" : ""} ${saved && saved.score >= 70 ? "ok" : "no"}" id="feedback">
         ${submitted ? feedbackHtml(ch, saved) : ""}
       </div>

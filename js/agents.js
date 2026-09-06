@@ -14,28 +14,28 @@ export function agentForSection(data, section) {
 function liveTip(data, section) {
   const s = getState();
   if (section === "dashboard" && !s.profile.introDone) {
-    return "Recomendación: 3 minutos en Conocernos (una tarea que te quite tiempo, sin datos internos). El menú no se bloquea.";
+    return "Completa el perfil para continuar.";
   }
   if (section === "dashboard" && !s.progress.freeTiersAck) {
-    return "Recomendación: entra a Cuentas gratis y pulsa entendido. ChatGPT Free para volumen; Claude para comparar.";
+    return "Revisa los planes gratuitos antes de los módulos.";
   }
   if (section === "modules" || section === "module") {
-    return "Sugerencia: pulsa Continuar en cada lección. Los retos no cierran el módulo siguiente. El proyecto final es viernes 2.";
+    return "Marca Continuar al terminar cada lección.";
   }
   if (section === "quiz") {
-    return "Sugerencia: un quiz por bloque (historia, fundamentos, cierre). El de calentamiento se puede repetir en cada receso.";
+    return "Un cuestionario por bloque. Puedes repetirlo.";
   }
   if (section === "comparator") {
-    return "Elige una de las 4 tareas o «Mi prompt». Copia, pega en los dos chats, vuelve y pega las respuestas: el comparativo se mueve al instante.";
+    return "Mismo texto en ambas herramientas. Pega las respuestas y compara.";
   }
   if (section === "project") {
-    return "Esto es el examen del viernes 2. Hoy (si es viernes 1) solo anota el caso anónimo; no cierres la ficha todavía.";
+    return "Completa los pasos y guarda la ficha al final.";
   }
   if (section === "cuentas") {
-    return "Si la app muestra otro modelo o un tope, gana lo que ves en pantalla. No memorices nombres de modelo.";
+    return "Usa los límites que ves en pantalla.";
   }
   if (section === "actividades") {
-    return "Las 4 de arriba son obligatorias: mismo texto en ChatGPT y en Claude. Copie, pegue, compare, marque.";
+    return "Las cuatro tareas usan el mismo texto en ChatGPT y en Claude.";
   }
   return "";
 }
@@ -44,7 +44,7 @@ export function agentCard(agent, { variant = "compact", tip = "" } = {}) {
   if (!agent) return "";
   const compact = variant !== "banner";
   const rec = tip
-    ? `<div class="agent-rec"><strong>Ahora</strong> ${escapeHtml(tip)}</div>`
+    ? `<div class="agent-rec">${escapeHtml(tip)}</div>`
     : `<p class="agent-intro">${escapeHtml(agent.intro)}</p>`;
   const extra = compact
     ? ""

@@ -12,7 +12,7 @@ export function frameworkForm(values = {}, { reveal = false } = {}) {
   const assembled = assemblePrompt(v);
   const ready = Object.values(v).every((x) => String(x).trim().length > 8);
   return `
-    <p class="muted">Completa las piezas o pega un prompt listo. El boton Copiar arma el texto y lo deja en el portapapeles.</p>
+    <p class="muted">Completa cada campo. Copiar deja el texto listo para pegar.</p>
     <div class="field"><label>Rol — ¿quién debe ser la IA?</label><textarea name="role" data-fw="role">${esc(v.role)}</textarea></div>
     <div class="field"><label>Contexto — ¿qué situación laboral hay?</label><textarea name="context" data-fw="context">${esc(v.context)}</textarea></div>
     <div class="field"><label>Objetivo — ¿qué debe lograr?</label><textarea name="objective" data-fw="objective">${esc(v.objective)}</textarea></div>
@@ -23,7 +23,6 @@ export function frameworkForm(values = {}, { reveal = false } = {}) {
       <button class="btn btn-primary" type="button" data-action="copy-prompt">Copiar para ChatGPT / Claude</button>
     </div>
     <div class="prompt-preview ${reveal || ready ? "show" : ""}" data-assembled>${esc(assembled)}</div>
-    <p class="muted">Ábrelo en otra pestaña. Esta plataforma no reemplaza a ChatGPT ni a Claude.</p>
   `;
 }
 

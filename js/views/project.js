@@ -52,7 +52,7 @@ export function renderProject(data, step = 0) {
   return `
     <div class="page-head">
       <h2>Proyecto final</h2>
-      <p>Un problema real de tu trabajo. La ficha es tu evidencia de criterio, no un diploma automático.</p>
+      <p>Documenta un problema de tu área y cierra la ficha al terminar.</p>
     </div>
     ${Number(step) === 0 ? sectionAgent(data, "project") : ""}
     <div class="steps">${nav}</div>
@@ -154,7 +154,7 @@ export function bindProject(data, step = 0) {
       });
       completeModule("m9", 100);
       checkBadges(data);
-      toast("Ficha guardada en este navegador.");
+      toast("Ficha guardada.");
       window.dispatchEvent(new Event("app:refresh"));
       return;
     }

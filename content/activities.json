@@ -1,6 +1,6 @@
 {
-  "title": "Actividades para no quedarte parado",
-  "subtitle": "Primero las 4 tareas obligatorias en ChatGPT y Claude (el mismo texto en los dos). Después pega las dos respuestas en Comparador: el comparativo se actualiza al instante. Luego el resto de misiones.",
+  "title": "Actividades",
+  "subtitle": "Completa las cuatro tareas y después el resto del listado.",
   "chatTasks": [
     {
       "id": "chat-1",

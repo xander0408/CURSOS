@@ -55,7 +55,7 @@ export function bindPerfil(data) {
       s.profile.knowUs = { years, pain, aiLevel, hope };
       s.profile.introDone = true;
     });
-    toast("Perfil guardado en este navegador.");
+    toast("Perfil guardado.");
     location.hash = "#/cuentas";
   });
   document.getElementById("copy-task")?.addEventListener("click", () => {
