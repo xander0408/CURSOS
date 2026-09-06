@@ -10,6 +10,10 @@ export function setSyncApi(url) {
   apiUrl = String(url || "").replace(/\/+$/, "");
 }
 
+export function syncApiUrl() {
+  return apiUrl;
+}
+
 export function syncEnabled() {
   return !!apiUrl;
 }
@@ -89,6 +93,34 @@ export async function pullIntoLocal() {
     /* red */
   }
   return false;
+}
+
+export async function fetchClockRemote() {
+  if (!apiUrl) return null;
+  try {
+    const res = await fetch(apiUrl + "/v1/clock", { cache: "no-store" });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
+export async function pushClockRemote(body) {
+  if (!apiUrl) return { ok: false };
+  const c = creds();
+  if (!c) return { ok: false };
+  try {
+    const res = await fetch(apiUrl + "/v1/clock", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...body, username: c.username, password: c.password }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return { ok: res.ok, data };
+  } catch {
+    return { ok: false };
+  }
 }
 
 export async function fetchAdminSaves() {

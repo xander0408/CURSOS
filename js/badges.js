@@ -16,7 +16,6 @@ export function checkBadges(data) {
 
   const mDone = (id) =>
     mods[id]?.status === "done" || lessonsComplete(data.modules[id]);
-  const libCount = (s.progress.library.custom?.length || 0) + (s.progress.library.savedIds?.length || 0);
   const thinkN = allCh.filter(
     (c) =>
       (c.type === "evaluate-ai" || c.type === "detect-error") && ch[c.id]?.status === "done"
@@ -27,14 +26,17 @@ export function checkBadges(data) {
   const allMods = data.course.modules.every((m) => mDone(m.id));
   const fiche = s.progress.project.ficheReady;
 
+  const labSaved = (s.progress.promptLab.savedPrompts || []).length >= 1;
+  const libOwn = (s.progress.library.custom || []).length >= 1;
+
   const rules = {
     explorer: mDone("m0") && mDone("m1"),
-    "prompt-builder": libCount >= 3 || (mDone("m2") && mDone("m3")),
+    "prompt-builder": (mDone("m2") && mDone("m3")) || labSaved || libOwn,
     thinker: thinkN >= 2,
     analyst: mDone("m5"),
     writer: mDone("m4"),
     presenter: mDone("m6"),
-    "fact-checker": factOk >= 1,
+    "fact-checker": factOk >= 1 || mDone("m7"),
     master: allMods && fiche,
   };
 

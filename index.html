@@ -86,8 +86,13 @@
   </div>
   <script>window.__ablBindLogos && window.__ablBindLogos();</script>
   <div class="instructor-bar" id="instructor-bar">
-    Modo instructor activo — las notas de facilitación son visibles en esta máquina.
-    <button class="btn btn-ghost" type="button" id="btn-lock-instructor">Bloquear</button>
+    <span class="instructor-bar-msg">Solo tú ves esta barra. Los alumnos no ven notas de facilitación.</span>
+    <div class="clock-controls" id="clock-controls">
+      <label>Min <input id="clock-min" type="number" min="1" max="180" value="10" /></label>
+      <label>Etiqueta <input id="clock-label" maxlength="40" value="Actividad" /></label>
+      <button class="btn btn-primary" type="button" id="clock-start">Iniciar reloj</button>
+      <button class="btn btn-ghost" type="button" id="clock-stop">Detener</button>
+    </div>
   </div>
   <div class="app">
     <aside class="sidebar" id="sidebar">
@@ -96,7 +101,7 @@
       </div>
       <div class="brand-sub">
         <h1>AI Business Lab</h1>
-        <p id="brand-org">Central de Ingenios (CISA)</p>
+        <p id="brand-org">Magnatic</p>
       </div>
       <a class="nav-link" href="#/" data-route="/">Ruta</a>
       <a class="nav-link" href="#/perfil" data-route="/perfil">Conocernos</a>
@@ -112,11 +117,11 @@
       <a class="nav-link" href="#/biblioteca" data-route="/biblioteca">Biblioteca</a>
       <a class="nav-link" href="#/proyecto" data-route="/proyecto">Proyecto final</a>
       <a class="nav-link" href="#/progreso" data-route="/progreso">Progreso</a>
-      <a class="nav-link is-hidden" href="#/admin" data-route="/admin" id="nav-admin">Aula / admin</a>
+      <a class="nav-link is-hidden" href="#/admin" data-route="/admin" id="nav-admin">Dashboard aula</a>
       <div class="sidebar-foot">
         Laboratorio educativo. Usa ChatGPT o Claude en otra pestaña.
         <div class="btn-row">
-          <button class="btn btn-ghost" type="button" id="btn-instructor" style="font-size:12px;padding:6px 8px;">Instructor</button>
+          <button class="btn btn-ghost is-hidden" type="button" id="btn-instructor" style="font-size:12px;padding:6px 8px;">Instructor</button>
           <button class="btn btn-ghost" type="button" id="btn-logout" style="font-size:12px;padding:6px 8px;">Salir</button>
         </div>
       </div>
@@ -125,10 +130,13 @@
       <button class="menu-btn" type="button" id="menu-btn" aria-label="Abrir menú">☰</button>
       <div class="header-title" id="header-title">Dashboard</div>
       <div class="header-spacer"></div>
-      <div class="muted" id="header-user"></div>
-      <button class="btn btn-ghost" type="button" id="btn-theme" title="Tema claro u oscuro">Tema</button>
-      <div style="width:140px">
-        <div class="progress" title="Progreso general"><span id="header-progress"></span></div>
+      <div class="header-tools">
+        <div class="class-clock" id="class-clock" hidden></div>
+        <div class="header-user-chip" id="header-user"></div>
+        <button class="btn btn-ghost header-theme" type="button" id="btn-theme" title="Tema claro u oscuro">Oscuro</button>
+        <div class="header-progress-wrap">
+          <div class="progress" title="Progreso general"><span id="header-progress"></span></div>
+        </div>
       </div>
     </header>
     <main class="main" id="app-root"></main>

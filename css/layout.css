@@ -134,13 +134,51 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   min-width: 0;
+  padding-right: 12px;
 }
-#header-user {
-  max-width: 140px;
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+.header-user-chip {
+  max-width: 220px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.25;
 }
+.header-theme {
+  flex-shrink: 0;
+  margin: 0;
+  padding: 8px 12px;
+}
+.header-progress-wrap {
+  width: 110px;
+  flex-shrink: 0;
+}
+.class-clock {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--accent-dim);
+  color: var(--accent);
+  white-space: nowrap;
+  max-width: 42vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.class-clock.is-warn { color: #e6b800; }
+.class-clock.is-up { color: #ff6b6b; }
 .header-spacer { flex: 1; }
 .menu-btn {
   display: none;
@@ -180,7 +218,29 @@
   font-size: 13px;
   color: var(--accent-2);
 }
-body.instructor-on .instructor-bar { display: flex; align-items: center; gap: 12px; }
+body.instructor-on .instructor-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.instructor-bar-msg { flex: 1; min-width: 180px; }
+.clock-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.clock-controls label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+.clock-controls input {
+  width: 70px;
+  background: var(--bg-input);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+.clock-controls label:nth-of-type(2) input { width: 120px; }
 
 .overlay {
   display: none;
@@ -212,10 +272,10 @@ body.instructor-on .instructor-bar { display: flex; align-items: center; gap: 12
     padding-right: max(14px, env(safe-area-inset-right));
   }
   .page-head h2 { font-size: 22px; }
-  .header-title { font-size: 14px; max-width: 46vw; }
-  #header-user { display: none; }
+  .header-title { font-size: 14px; max-width: 28vw; }
+  .header-user-chip { max-width: 22vw; font-size: 12px; }
   #btn-theme { font-size: 12px; padding: 8px 10px; min-height: 44px; }
-  .header > div[style] { width: 72px !important; flex-shrink: 0; }
+  .header-progress-wrap { width: 64px; }
   .nav-link { min-height: 44px; }
   .brand-logo img { max-width: 140px; max-height: 110px; }
   .activa { grid-template-columns: repeat(3, 1fr); }

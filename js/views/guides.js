@@ -1,7 +1,6 @@
-import { getState, update, listLocalStudentSaves, resetLocalUser, logActivity } from "../store.js";
+import { getState, update, logActivity } from "../store.js";
 import { escapeHtml, toast, copyText } from "../ui.js";
 import { assignedTask } from "../journey.js";
-import { fetchAdminSaves, syncEnabled } from "../sync.js";
 
 export function renderPerfil(data) {
   const s = getState();
@@ -10,7 +9,7 @@ export function renderPerfil(data) {
   return `
     <div class="page-head">
       <h2>Conocernos</h2>
-      <p>Ronda de aula para el equipo gerencial de ${escapeHtml(data.course.orgShort)}. Cargo, una tarea que te quita tiempo (sin datos internos) y tu caso de práctica. Ejemplos: Planta Central, Lote Norte, Cliente Alfa.</p>
+      <p>Ronda de aula: cargo, una tarea que te quita tiempo (sin datos internos) y tu caso de práctica. Ejemplos: Planta Central, Lote Norte, Cliente Alfa.</p>
     </div>
     <div class="card">
       <h3>${escapeHtml(s.profile.displayName || "Participante")}</h3>
@@ -27,7 +26,7 @@ export function renderPerfil(data) {
           <option value="diario" ${k.aiLevel === "diario" ? "selected" : ""}>Casi todos los días</option>
         </select>
       </div>
-      <div class="field"><label>¿Qué te gustaría lograr al terminar los 2 viernes?</label>
+      <div class="field"><label>¿Qué te gustaría lograr al terminar el laboratorio?</label>
         <textarea id="ku-hope" rows="2">${escapeHtml(k.hope || "")}</textarea></div>
       <button class="btn btn-primary" type="button" id="ku-save">Guardar y continuar</button>
     </div>
@@ -146,111 +145,6 @@ export function bindManual() {
       const text = document.getElementById("tpl-" + id)?.innerText || "";
       copyText(text);
       logActivity("manual", "copió " + id);
-    });
-  });
-}
-
-export function renderAdmin(data) {
-  const isInst = !!getState().profile.isInstructor;
-  const unlocked = !!getState().settings.instructorUnlocked;
-  if (!isInst && !unlocked) {
-    return `<div class="page-head"><h2>Solo instructor</h2><p>Entra con el usuario instructor o desbloquea el PIN de notas.</p></div>`;
-  }
-  const rows = (data.roster?.students || [])
-    .map((s) => {
-      const task = (data.tasks || []).find((t) => t.id === s.taskId);
-      return `<tr><td>${escapeHtml(s.name)}</td><td><code>${escapeHtml(s.username)}</code></td><td>${escapeHtml(s.role)}</td><td>${escapeHtml(task ? task.title : "—")}</td></tr>`;
-    })
-    .join("");
-  const ins = data.roster?.instructor || {};
-  const local = isInst ? listLocalStudentSaves() : [];
-  const localHtml = isInst
-    ? local
-        .map((u) => {
-          const hist = (u.activity || [])
-            .slice(-12)
-            .reverse()
-            .map((a) => `<li>${escapeHtml(new Date(a.at).toLocaleString("es-HN"))} · ${escapeHtml(a.kind)} · ${escapeHtml(a.detail)}</li>`)
-            .join("");
-          return `<div class="card">
-            <h3>${escapeHtml(u.name)} <code>${escapeHtml(u.id)}</code></h3>
-            <p class="muted">${escapeHtml(u.role)} · ${u.modules} módulos · ${u.xp} pts</p>
-            ${hist ? `<ul class="crono-list">${hist}</ul>` : "<p class=\"muted\">Sin actividad registrada en esta PC.</p>"}
-            <button class="btn btn-danger" type="button" data-reset-user="${escapeHtml(u.id)}">Reiniciar a este alumno en esta PC</button>
-          </div>`;
-        })
-        .join("") || `<p class="muted">Nadie ha iniciado sesión en este navegador todavía (además de ti).</p>`
-    : `<p class="muted">El historial y el reinicio de alumnos solo están en la cuenta <strong>instructor</strong>, no en el PIN de notas.</p>`;
-
-  return `
-    <div class="page-head">
-      <h2>Panel del instructor</h2>
-      <p>Lista de aula. Los avances se copian al servidor del aula cuando está activo (cualquier PC). Abajo: lo de esta máquina y lo del servidor.</p>
-    </div>
-    <div class="card">
-      <h3>Avances en el servidor</h3>
-      <div id="cloud-saves"><p class="muted">Cargando…</p></div>
-    </div>
-    <div class="card">
-      <h3>Tu acceso de administración</h3>
-      <p>Usuario: <code>${escapeHtml(ins.username || "instructor")}</code></p>
-      <p class="muted">La contraseña está en CREDENCIALES-INSTRUCTOR.md (no la proyectes).</p>
-    </div>
-    <div class="card" style="overflow:auto">
-      <table class="data-table">
-        <thead><tr><th>Nombre</th><th>Usuario</th><th>Cargo</th><th>Tarea</th></tr></thead>
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-    <div class="card">
-      <h3>Historial y reset (esta PC)</h3>
-      ${localHtml}
-    </div>
-    <p><a class="btn btn-primary" href="#/cronograma">Abrir cronograma de las 16 horas</a></p>
-  `;
-}
-
-export function bindAdmin() {
-  const box = document.getElementById("cloud-saves");
-  if (box) {
-    if (!syncEnabled()) {
-      box.innerHTML = `<p class="muted">El servidor de avances no está configurado todavía (<code>content/sync.json</code>). Mientras tanto el progreso queda en cada laptop. Guía: docs/AVANCES-CENTRALES.md</p>`;
-    } else if (!getState().profile.isInstructor) {
-      box.innerHTML = `<p class="muted">Entra con la cuenta instructor para ver a todos.</p>`;
-    } else {
-      fetchAdminSaves().then((r) => {
-        if (r.error === "sin-clave") {
-          box.innerHTML = `<p class="muted">Vuelve a iniciar sesión como instructor para consultar el servidor.</p>`;
-          return;
-        }
-        if (r.error) {
-          box.innerHTML = `<p class="muted">No se pudo leer el servidor (${escapeHtml(r.error)}). Revisa la URL del Worker.</p>`;
-          return;
-        }
-        if (!r.saves.length) {
-          box.innerHTML = `<p class="muted">Aún no hay copias. En cuanto un alumno trabaje conectado, aparece aquí.</p>`;
-          return;
-        }
-        box.innerHTML = `<table class="data-table"><thead><tr><th>Alumno</th><th>Usuario</th><th>Actualizado</th><th>Módulos</th><th>Ficha</th></tr></thead><tbody>${r.saves
-          .map(
-            (s) =>
-              `<tr><td>${escapeHtml(s.name)}</td><td><code>${escapeHtml(s.username)}</code></td><td>${escapeHtml(
-                s.updatedAt ? new Date(s.updatedAt).toLocaleString("es-HN") : "—"
-              )}</td><td>${s.modules}</td><td>${s.fiche ? "sí" : "no"}</td></tr>`
-          )
-          .join("")}</tbody></table>`;
-      });
-    }
-  }
-  document.querySelectorAll("[data-reset-user]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const id = btn.getAttribute("data-reset-user");
-      if (!getState().profile.isInstructor) return;
-      if (!confirm("¿Borrar el progreso de " + id + " en este navegador?")) return;
-      resetLocalUser(id);
-      logActivity("admin", "reset " + id);
-      toast("Progreso local de " + id + " borrado.");
-      window.dispatchEvent(new Event("app:refresh"));
     });
   });
 }

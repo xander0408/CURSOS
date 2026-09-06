@@ -782,5 +782,27 @@
 }
 .path-step.now { animation: pulse-now 1.6s ease-in-out infinite; }
 @keyframes pulse-now {
-  50% { box-shadow: 0 0 0 4px var(--accent-dim); }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
 }
+.aula-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+}
+.aula-donut {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 10px 14px;
+}
+.aula-donut strong { display: block; font-size: 18px; }
+.aula-donut span { color: var(--text-muted); font-size: 12px; }
+.aula-chart { width: 100%; height: auto; color: var(--text-muted); }
+.aula-table-wrap { overflow: auto; }
+.aula-table tr.is-live td:first-child { box-shadow: inset 3px 0 0 var(--ok); }
+.aula-table tr.is-pending { opacity: 0.7; }

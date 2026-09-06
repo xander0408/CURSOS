@@ -6,7 +6,7 @@ import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
 
 export function renderPromptLab(data) {
-  const draft = getState().progress.promptLab.drafts[0] || {};
+  const draft = getState().progress.promptLab?.drafts?.[0] || {};
   return `
     <div class="page-head">
       <h2>Prompt Lab</h2>
@@ -17,6 +17,8 @@ export function renderPromptLab(data) {
       ${frameworkForm(draft)}
       <div class="btn-row">
         <button class="btn" type="button" id="save-lab">Guardar en biblioteca</button>
+        <a class="btn" href="https://chatgpt.com/" target="_blank" rel="noopener">Probar en ChatGPT</a>
+        <a class="btn" href="https://claude.ai/" target="_blank" rel="noopener">Probar en Claude</a>
       </div>
     </div>
   `;
@@ -28,6 +30,7 @@ export function bindPromptLab(data) {
   const saveDraft = () => {
     const fw = readFramework(root);
     update((s) => {
+      s.progress.promptLab = s.progress.promptLab || { drafts: [], savedPrompts: [] };
       s.progress.promptLab.drafts = [fw];
     });
   };
@@ -59,6 +62,7 @@ export function bindPromptLab(data) {
       return;
     }
     update((s) => {
+      s.progress.library.custom = s.progress.library.custom || [];
       s.progress.library.custom.push({
         id: "c" + Date.now(),
         title: (fw.objective || "Prompt").slice(0, 60),
@@ -66,6 +70,8 @@ export function bindPromptLab(data) {
         framework: fw,
         savedAt: Date.now(),
       });
+      s.progress.promptLab.savedPrompts = s.progress.promptLab.savedPrompts || [];
+      s.progress.promptLab.savedPrompts.push({ at: Date.now(), title: (fw.objective || "Prompt").slice(0, 60) });
     });
     toast("Guardado en tu biblioteca.");
     checkBadges(data);

@@ -9,8 +9,7 @@ export function lessonsComplete(full) {
 }
 
 export function isPrivileged() {
-  const s = getState();
-  return !!(s.profile.isInstructor || s.settings.instructorUnlocked);
+  return !!getState().profile.isInstructor;
 }
 
 export function isModuleUnlocked(data, moduleId) {

@@ -78,7 +78,7 @@ export function renderLogin(root, data, onSuccess) {
         </div>
         <h1>AI Business Lab</h1>
         <p class="login-sub">Inteligencia artificial aplicada al negocio</p>
-        <p class="login-org" id="login-org">${escapeHtml([data.org, data.dates || data.city].filter(Boolean).join(" · "))}</p>
+        <p class="login-org" id="login-org">Magnatic</p>
 
         <div class="field">
           <label>Usuario</label>

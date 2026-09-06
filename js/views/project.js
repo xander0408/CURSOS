@@ -108,26 +108,50 @@ function renderFiche(fields) {
 export function bindProject(data, step = 0) {
   const i = Math.max(0, Math.min(STEPS.length - 1, Number(step) || 0));
   const s = STEPS[i];
-  document.getElementById("proj-next")?.addEventListener("click", () => {
+
+  const collectPatch = () => {
     const patch = {};
     if (s.id === "prompt") {
       const fw = readFramework(document.getElementById("proj-root"));
       patch.framework = fw;
       patch.prompt = assemblePrompt(fw);
-    } else {
-      patch[s.field] = document.getElementById("proj-field")?.value || getState().progress.project.fields[s.field];
+    } else if (document.getElementById("proj-field")) {
+      patch[s.field] = document.getElementById("proj-field").value;
     }
-    if (i === STEPS.length - 1) {
-      patch.savings = document.getElementById("savings")?.value || "";
-      patch.risks = document.getElementById("risks")?.value || "";
-      patch.timeAfter = document.getElementById("proj-field")?.value || patch.timeAfter;
-    }
+    if (document.getElementById("savings")) patch.savings = document.getElementById("savings").value;
+    if (document.getElementById("risks")) patch.risks = document.getElementById("risks").value;
+    return patch;
+  };
+
+  const savePatch = (patch) => {
     update((st) => {
       st.progress.project.fields = { ...st.progress.project.fields, ...patch };
       st.progress.project.step = i;
-      if (i === STEPS.length - 1) st.progress.project.ficheReady = true;
     });
+  };
+
+  document.getElementById("proj-field")?.addEventListener("input", () => savePatch(collectPatch()));
+  document.getElementById("proj-root")?.querySelectorAll("[data-fw]")?.forEach((el) => {
+    el.addEventListener("input", () => savePatch(collectPatch()));
+  });
+  document.getElementById("savings")?.addEventListener("input", () => savePatch(collectPatch()));
+  document.getElementById("risks")?.addEventListener("input", () => savePatch(collectPatch()));
+  document.querySelectorAll(".steps a").forEach((a) => {
+    a.addEventListener("click", () => savePatch(collectPatch()));
+  });
+
+  document.getElementById("proj-next")?.addEventListener("click", () => {
+    const patch = collectPatch();
+    savePatch(patch);
     if (i === STEPS.length - 1) {
+      const fields = { ...getState().progress.project.fields, ...patch };
+      if (!String(fields.problem || "").trim() || !String(fields.timeAfter || "").trim()) {
+        toast("Completa el problema y el tiempo después antes de cerrar la ficha.");
+        return;
+      }
+      update((st) => {
+        st.progress.project.ficheReady = true;
+      });
       completeModule("m9", 100);
       checkBadges(data);
       toast("Ficha guardada en este navegador.");

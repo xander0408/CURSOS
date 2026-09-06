@@ -1,5 +1,6 @@
 import { getState, update, logActivity } from "../store.js";
 import { escapeHtml, toast, copyText } from "../ui.js";
+import { checkBadges } from "../badges.js";
 
 export function renderActivities(data) {
   const pack = data.activities;
@@ -61,7 +62,7 @@ export function renderActivities(data) {
   `;
 }
 
-export function bindActivities() {
+export function bindActivities(data) {
   document.querySelectorAll("[data-act]").forEach((el) => {
     el.addEventListener("change", () => {
       const id = el.getAttribute("data-act");
@@ -72,6 +73,7 @@ export function bindActivities() {
       });
       logActivity("actividad", `${id}: ${el.checked ? "hecha" : "desmarcada"}`);
       toast(el.checked ? "Actividad marcada." : "Actividad desmarcada.");
+      if (data) checkBadges(data);
     });
   });
   document.querySelectorAll("[data-copy-chat]").forEach((btn) => {

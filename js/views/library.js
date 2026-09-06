@@ -17,7 +17,7 @@ export function renderLibrary(data) {
       </div>`
     )
     .join("");
-  const custom = getState().progress.library.custom
+  const custom = (getState().progress.library.custom || [])
     .map(
       (t) => `<div class="card">
         <h3>${escapeHtml(t.title)}</h3>

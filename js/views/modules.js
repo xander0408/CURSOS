@@ -51,7 +51,7 @@ function renderLesson(data, full, lessonId) {
   const idx = Math.max(0, full.lessons.findIndex((l) => l.id === lessonId));
   const lesson = full.lessons[idx];
   const p = moduleProgress(full);
-  const notes = getState().settings.instructorUnlocked
+  const notes = getState().profile.isInstructor
     ? data.instructor.modules?.[full.id]?.lessons?.[lesson.id]
     : null;
   const phase = lesson.activaPhase ?? idx % 6;
@@ -85,7 +85,7 @@ export function renderChallenge(data, full, challengeId) {
   const submitted = saved?.status === "done";
   const idx = full.challenges.findIndex((c) => c.id === ch.id);
   const next = full.challenges[idx + 1];
-  const notes = getState().settings.instructorUnlocked
+  const notes = getState().profile.isInstructor
     ? data.instructor.modules?.[full.id]?.challenges?.[ch.id]
     : null;
 

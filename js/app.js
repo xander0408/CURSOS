@@ -17,9 +17,11 @@ import { renderProject, bindProject } from "./views/project.js";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect } from "./auth.js";
-import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual, renderAdmin, bindAdmin } from "./views/guides.js";
+import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
+import { renderAdmin, bindAdmin } from "./views/aula.js";
 import { renderActivities, bindActivities } from "./views/activities.js";
 import { renderCronograma } from "./views/schedule.js";
+import { startClockLoop, bindInstructorClock } from "./clock.js";
 
 const TITLES = {
   dashboard: "Ruta",
@@ -35,7 +37,7 @@ const TITLES = {
   perfil: "Conocernos",
   cuentas: "Cuentas gratis",
   manual: "Manual de prompts",
-  admin: "Instructor",
+  admin: "Dashboard aula",
   actividades: "Actividades",
   cronograma: "Cronograma",
 };
@@ -44,10 +46,10 @@ let data = null;
 
 function setInstructorUi() {
   const inst = !!getState().profile.isInstructor;
-  const notes = inst || !!getState().settings.instructorUnlocked;
-  document.body.classList.toggle("instructor-on", notes);
-  document.getElementById("nav-admin")?.classList.toggle("is-hidden", !notes);
+  document.body.classList.toggle("instructor-on", inst);
+  document.getElementById("nav-admin")?.classList.toggle("is-hidden", !inst);
   document.getElementById("nav-cronograma")?.classList.toggle("is-hidden", !inst);
+  document.getElementById("btn-instructor")?.classList.toggle("is-hidden", true);
 }
 
 function bindShell() {
@@ -96,12 +98,12 @@ function bindShell() {
       } else toast("PIN incorrecto.");
     };
   };
-  document.getElementById("btn-lock-instructor").onclick = () => {
+  document.getElementById("btn-lock-instructor")?.addEventListener("click", () => {
     update((s) => {
       s.settings.instructorUnlocked = false;
     });
     setInstructorUi();
-  };
+  });
 }
 
 function highlightNav(pathName) {
@@ -147,6 +149,9 @@ function renderInner() {
   if (routePreview.name !== "comparator") {
     window.clearInterval(window.__cmpAulaTimer);
   }
+  if (routePreview.name !== "admin") {
+    window.clearInterval(window.__aulaTimer);
+  }
   const bounce = gateRedirect();
   if (bounce) {
     const here = location.hash || "#/";
@@ -158,13 +163,13 @@ function renderInner() {
   const route = parseHash();
   const root = document.getElementById("app-root");
   document.getElementById("header-title").textContent = TITLES[route.name] || data.course.title;
-  document.getElementById("header-user").textContent = getState().profile.displayName || "";
+  const uname = getState().profile.displayName || getState().profile.username || "";
+  document.getElementById("header-user").textContent = uname;
+  document.getElementById("header-user").title = uname;
   document.getElementById("header-progress").style.width = globalPct(data) + "%";
   const orgEl = document.getElementById("brand-org");
-  if (orgEl && data.course) {
-    orgEl.textContent = `${data.course.orgShort} · ${data.course.sessionDates}`;
-  }
-  document.title = `${data.course.title} — ${data.course.orgShort}`;
+  if (orgEl) orgEl.textContent = "Magnatic";
+  document.title = `${data.course.title} — Magnatic`;
   highlightNav(route.name);
   document.getElementById("sidebar").classList.remove("open");
   document.getElementById("overlay").classList.remove("show");
@@ -214,10 +219,10 @@ function renderInner() {
     bindManual();
   } else if (route.name === "admin") {
     root.innerHTML = renderAdmin(data);
-    bindAdmin();
+    bindAdmin(data);
   } else if (route.name === "actividades") {
     root.innerHTML = renderActivities(data);
-    bindActivities();
+    bindActivities(data);
   } else if (route.name === "cronograma") {
     if (!getState().profile.isInstructor) {
       root.innerHTML = `<div class="page-head"><h2>Solo instructor</h2><p>El cronograma de las 16 horas no se muestra a los participantes. Sigue tu ruta, módulos y actividades.</p><p><a class="btn btn-primary" href="#/">Volver a la ruta</a></p></div>`;
@@ -226,7 +231,7 @@ function renderInner() {
     }
   }
 
-  if (!root.querySelector(".agent-card") && !root.querySelector("#quiz-stage") && !root.querySelector(".quiz-play") && route.name !== "module") {
+  if (!root.querySelector(".agent-card") && !root.querySelector("#quiz-stage") && !root.querySelector(".quiz-play") && route.name !== "module" && route.name !== "admin") {
     root.insertAdjacentHTML("afterbegin", sectionAgent(data, coachSectionForRoute(route.name), { variant: "compact" }));
   }
 
@@ -310,6 +315,8 @@ function startSuite() {
   if (!suiteStarted) {
     bindShell();
     bindLogout();
+    bindInstructorClock();
+    startClockLoop();
     onRoute(render);
     window.addEventListener("app:refresh", render);
     suiteStarted = true;
