@@ -743,7 +743,8 @@
   align-items: start;
   cursor: pointer;
 }
-.activity-card.done { border-color: var(--ok); }
+.activity-card.chat-task { cursor: default; }
+.activity-card.chat-task .btn-row { margin-top: 10px; flex-wrap: wrap; }
 .activity-card input { margin-top: 6px; width: 18px; height: 18px; }
 .crono-list { list-style: none; padding: 0; margin: 0; }
 .crono-list li {

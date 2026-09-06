@@ -35,7 +35,7 @@ function liveTip(data, section) {
     return "Si la app muestra otro modelo o un tope, gana lo que ves en pantalla. No memorices nombres de modelo.";
   }
   if (section === "actividades") {
-    return "Marca misiones al terminarlas. Viernes 1: a1–a7. Viernes 2: a8–a12 y la ficha.";
+    return "Las 4 de arriba son obligatorias: mismo texto en ChatGPT y en Claude. Copie, pegue, compare, marque.";
   }
   return "";
 }

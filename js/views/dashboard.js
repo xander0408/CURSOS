@@ -63,6 +63,12 @@ export function renderDashboard(data) {
     </div>
     <div class="path-rail">${pathHtml}</div>
     <div class="grid grid-2" style="margin-top:16px">
+      <div class="card">
+        <h3>4 tareas en ChatGPT y Claude</h3>
+        <p>Obligatorias. El mismo texto en los dos chats. Menú Actividades: copiar, pegar, marcar.</p>
+        <p class="muted">${(data.activities.chatTasks || []).filter((t) => !!(s.progress.labs?.checks || {})[t.id]).length} de ${(data.activities.chatTasks || []).length} hechas.</p>
+        <a class="btn btn-primary" href="#/actividades">Abrir las 4 tareas</a>
+      </div>
       ${
         task
           ? `<div class="card">
@@ -71,15 +77,15 @@ export function renderDashboard(data) {
         <p>${escapeHtml(task.deliverable)}</p>
         <p class="muted">${escapeHtml(task.when)}</p>
       </div>`
-          : `<div class="card"><h3>Tarea</h3><p>Completa Conocernos para ver tu práctica asignada.</p></div>`
+          : `<div class="card"><h3>Caso de práctica</h3><p>Completa Conocernos para ver tu práctica asignada.</p></div>`
       }
-      <div class="card">
-        <h3>Insignias</h3>
-        <div class="btn-row">${badges}</div>
-        <div class="btn-row" style="margin-top:12px">
-          <a class="btn" href="#/quiz">Quiz de repaso</a>
-          <a class="btn" href="#/actividades">Misiones</a>
-        </div>
+    </div>
+    <div class="card" style="margin-top:16px">
+      <h3>Insignias</h3>
+      <div class="btn-row">${badges}</div>
+      <div class="btn-row" style="margin-top:12px">
+        <a class="btn" href="#/quiz">Quiz de repaso</a>
+        <a class="btn" href="#/actividades">Actividades</a>
       </div>
     </div>
   `;

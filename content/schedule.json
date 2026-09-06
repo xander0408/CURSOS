@@ -14,7 +14,7 @@
     { "t": "08:00–08:25", "what": "Login (splash Magnatic), ruta, Conocernos. Quiz relámpago: calentamiento ⚡ (4 preguntas)." },
     { "t": "08:25–08:50", "what": "Cuentas gratis: qué sí y qué no. No memorices nombres de modelo; gana lo que vean en pantalla." },
     { "t": "08:50–10:10", "what": "M0 Historia. Inmediatamente QUIZ q0 (contra el reloj). Descanso 10 min. Quien termine antes: repetir calentamiento." },
-    { "t": "10:20–12:00", "what": "M1 Fundamentos + reto A.C.T.I.V.A. QUIZ del módulo 1 (si está en la lista). M2 hablar con la IA." },
+    { "t": "10:20–12:00", "what": "M1–M2. Las tareas 1–3 de Actividades (mismo texto en ChatGPT y Claude). QUIZ del módulo 1 si está en la lista." },
     { "t": "12:00–13:00", "what": "Almuerzo. Opcional: quiz calentamiento en parejas (no cuenta como examen)." },
     { "t": "13:00–15:00", "what": "M3 prompts + manual. Mini-quiz oral: las 5 piezas. Biblioteca." },
     { "t": "15:00–16:25", "what": "M4 Word. Preparar el caso anónimo del cargo (NO entregar ficha). Actividades a1–a7." },
@@ -25,7 +25,7 @@
     { "t": "08:20–10:00", "what": "M5 Excel + verificación a mano. QUIZ o actividad a8. Quien acierte 100% explica una celda al grupo." },
     { "t": "10:10–12:00", "what": "M6 PowerPoint. Comparador + ejemplos distintos. Mini-votación. QUIZ si hay uno de estructura." },
     { "t": "12:00–13:00", "what": "Almuerzo." },
-    { "t": "13:00–14:20", "what": "M7 investigación (caza de errores) + M8. QUIZ de verificación / fact-check." },
+    { "t": "13:00–14:20", "what": "M7–M8. Tarea 4 (minuta sucia en los dos chats + Comparador). QUIZ de verificación." },
     { "t": "14:20–16:25", "what": "EXAMEN: M9 + proyecto final + ficha. Actividades a10–a12. No se cierra el viernes 1." },
     { "t": "16:25–17:00", "what": "QUIZ de cierre del curso. Insignias. Solo instructor: historial/reset en ESTA PC." }
   ],
