@@ -10,7 +10,7 @@ Este manual se trabaja **dentro del laboratorio** (menú **Manual prompts**, **C
 4. **Formato** — correo, tabla, viñetas, 1 página…
 5. **Restricciones** — qué no debe inventar; pedir el dato si falta.
 
-## Casos de aula (Planta Norte / cliente Alfa)
+## Casos de aula (Planta Central / Lote Norte / Cliente Alfa)
 
 - Queja con 10% en la próxima compra, sin reembolso y sin inventar la causa.
 - Minuta de patio: separar «se habló» de «se decidió».

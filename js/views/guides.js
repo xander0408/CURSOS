@@ -10,7 +10,7 @@ export function renderPerfil(data) {
   return `
     <div class="page-head">
       <h2>Conocernos</h2>
-      <p>Ronda de aula: cargo, una tarea que te quita tiempo (sin datos internos) y tu caso de práctica asignado. Los ejemplos del laboratorio son ficticios.</p>
+      <p>Ronda de aula para el equipo gerencial de ${escapeHtml(data.course.orgShort)}. Cargo, una tarea que te quita tiempo (sin datos internos) y tu caso de práctica. Ejemplos: Planta Central, Lote Norte, Cliente Alfa.</p>
     </div>
     <div class="card">
       <h3>${escapeHtml(s.profile.displayName || "Participante")}</h3>

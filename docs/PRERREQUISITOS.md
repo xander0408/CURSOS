@@ -1,6 +1,6 @@
 # Prerrequisitos — AI Business Lab (CISA)
 
-Curso de 16 horas (2 viernes) para gerencias de **Central de Ingenios, S.A. de C.V.**  
+Curso de 16 horas (viernes 11 y 25 de septiembre de 2026) para gerencias de **Central de Ingenios, S.A. de C.V.**  
 Web corporativa: [http://www.cisahn.com/](http://www.cisahn.com/)
 
 ## Lo que debe tener cada alumno (antes del viernes 1)
@@ -43,7 +43,7 @@ Detalle de límites Free: en el laboratorio, menú **Cuentas gratis**, o `docs/C
 
 - Lista de aula actualizada en `content/students.json`.
 - Credenciales impresas o enviadas en privado.
-- Proyector + la PPT `AI-Business-Lab-Presentacion.pptx` (F5, transiciones fade, diapositivas «Tu turno»).
+- Proyector + la PPT `AI-Business-Lab-Central-de-Ingenios.pptx` (94 diapositivas; F5).
 - Enlace del laboratorio probado en el mismo tipo de red que el aula.
 - PIN de notas: `CISA-Admin26`. Usuario admin: `instructor` / `MagnaTic#CISA26`.
 - Guía `GUIA-INSTRUCTOR.md` y este documento.

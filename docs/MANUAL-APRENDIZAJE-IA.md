@@ -1,6 +1,6 @@
 # Manual de aprendizaje — Inteligencia Artificial aplicada al negocio
 
-Magnatic · Think Evolution. Documento para llevarse a casa. No sustituye las 16 horas en aula: las acompaña.
+Magnatic · Think Evolution. Documento para llevarse a casa. Complementa las 16 horas en aula con Central de Ingenios (CISA), viernes 11 y 25 de septiembre de 2026.
 
 ## Cómo usar este libro
 
@@ -50,7 +50,7 @@ Por eso:
 
 En el aula usarán cuentas **gratuitas**. Los nombres de modelo y los topes **cambian**. La instrucción del curso es: **gana lo que veas en pantalla ese día**. No memorices un apodo de modelo que alguien escribió en un blog.
 
-Tampoco asumas que el chat «ya conoce» CISA, tus KPIs o el contrato del cliente Alfa. En versión gratuita, **solo ve lo que escribes**. Por eso el curso insiste en **anonimizar**: Planta Norte, Cliente Alfa, [COMPLETAR], nunca nómina ni el PDF real.
+Tampoco asumas que el chat «ya conoce» CISA, tus KPIs o el contrato del cliente Alfa. En versión gratuita, **solo ve lo que escribes**. Por eso el curso insiste en **anonimizar**: Planta Central, Cliente Alfa, [COMPLETAR], nunca nómina ni el PDF real.
 
 ---
 

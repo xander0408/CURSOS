@@ -123,12 +123,12 @@ const LINK = "https://xander0408.github.io/CURSOS/";
 
 const prereqs = [
   { title: "Prerequisitos — Curso de IA Aplicada al Negocio" },
-  { pi: "ChatGPT y Claude · 16 horas (2 viernes) · Presencial · Magnatic para Central de Ingenios." },
+  { pi: "ChatGPT y Claude · 16 horas · Viernes 11 y 25 de septiembre de 2026 · Presencial · Magnatic para Central de Ingenios (CISA)." },
   { p: [["Para aprovechar el curso al máximo, cada participante debe tener listo lo siguiente ANTES del primer día. Es sencillo y no requiere conocimientos técnicos.", 0]] },
 
   { h2: "1. Cuentas gratuitas (obligatorio)" },
   { p: "Crea estas dos cuentas gratuitas. En el documento adjunto \"Guía para crear cuentas\" están los pasos con detalle." },
-  { check: [["Cuenta de ChatGPT — ", 1], ["chat.openai.com (gratuita)", 0]] },
+  { check: [["Cuenta de ChatGPT — ", 1], ["chatgpt.com (gratuita)", 0]] },
   { check: [["Cuenta de Claude — ", 1], ["claude.ai (gratuita)", 0]] },
   { check: "Deja anotado el correo y la contraseña de cada cuenta, en un lugar seguro." },
   { note: "Sugerencia: usa tu correo corporativo o uno personal. No necesitas pagar ni poner tarjeta." },
@@ -179,9 +179,9 @@ const correo = [
   { p: [["Asunto: ", 1], ["Prepárate para tu curso de IA (ChatGPT y Claude) — pasos previos", 0]] },
   { spacer: 120 },
   { p: "Estimado equipo de Central de Ingenios:" },
-  { p: "Nos alegra acompañarlos en el curso de Inteligencia Artificial Aplicada al Negocio (ChatGPT y Claude), de 16 horas, que se realizará los días [FECHAS] en [LUGAR], en horario de [HORA]." },
+  { p: "Nos alegra acompañarlos en el curso de Inteligencia Artificial Aplicada al Negocio (ChatGPT y Claude), de 16 horas, los viernes 11 y 25 de septiembre de 2026, en [LUGAR], en horario de [HORA]." },
   { p: [["Para aprovecharlo al máximo, por favor completen estos pasos ANTES del primer día ", 1], ["(toma unos 15 minutos):", 0]] },
-  { b: "Crear una cuenta gratuita de ChatGPT (chat.openai.com) y una de Claude (claude.ai)." },
+  { b: "Crear una cuenta gratuita de ChatGPT (chatgpt.com) y una de Claude (claude.ai)." },
   { b: "Traer laptop con cargador, navegador Chrome o Edge, y Office (Word, Excel, PowerPoint)." },
   { b: "Entrar una vez al laboratorio del curso con el usuario y contraseña que recibirán por separado." },
   { b: "Pensar en un problema real de su trabajo que quieran resolver o agilizar con IA." },
@@ -197,7 +197,7 @@ const cuentas = [
   { pi: "Paso a paso, sin conocimientos técnicos. Ambas son gratuitas." },
 
   { h2: "Parte A — Crear cuenta de ChatGPT" },
-  { b: "Abre tu navegador y entra a: chat.openai.com" },
+  { b: "Abre tu navegador y entra a: chatgpt.com" },
   { b: "Haz clic en \"Sign up\" (Registrarse)." },
   { b: "Escribe tu correo y una contraseña, o usa \"Continuar con Google/Microsoft\" si prefieres." },
   { b: "Revisa tu correo y confirma la cuenta (haz clic en el enlace que te envían)." },

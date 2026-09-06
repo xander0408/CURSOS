@@ -1,6 +1,6 @@
 {
   "title": "Manual de prompts: casos de uso reales",
-  "subtitle": "Copia, pega en ChatGPT o Claude, y sustituye solo lo que está entre corchetes. Casos de oficina genéricos (planta, cliente, reunión), no datos internos.",
+  "subtitle": "Copia, pega en ChatGPT o Claude, y sustituye solo lo que está entre corchetes. Casos de aula: Planta Central, Lote Norte, Cliente Alfa. No uses datos internos de CISA.",
   "rule": "Un prompt no es un hechizo. Es un encargo de trabajo con cinco piezas: Rol, Contexto, Objetivo, Formato, Restricciones.",
   "pieces": [
     { "name": "Rol", "ask": "¿Quién debe ser la IA para este trabajo?", "example": "Eres un redactor interno de una planta industrial. Escribes en español claro para Honduras." },

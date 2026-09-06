@@ -1,12 +1,13 @@
 {
   "title": "Cronograma del instructor y del aula",
-  "hours": "2 viernes × 8 h",
-  "goal": "Que cada persona salga sabiendo pedir, iterar y verificar; no «creerse el chat». El proyecto final es el examen del viernes 2.",
+  "hours": "Viernes 11 y 25 de septiembre de 2026 · 2 × 8 h",
+  "goal": "Temario CISA M1–M9 alineado a la PPT AI-Business-Lab-Central-de-Ingenios.pptx. Pedir, iterar y verificar. El proyecto final es el examen del viernes 2 (14:20–16:25).",
   "before": [
     "Prueba https://xander0408.github.io/CURSOS/ (con barra final) en el mismo WiFi del aula.",
+    "PPT oficial: AI-Business-Lab-Central-de-Ingenios.pptx (94 diapositivas). No uses el bosquejo generado por script.",
     "Entrega usuario y contraseña individuales. El avance vive en el navegador de cada laptop.",
     "Pide que no usen modo incógnito. Si cambian de PC, que exporten el JSON de Progreso.",
-    "Ten ChatGPT y Claude Free abiertos. Prohibido pegar contratos, nómina o clientes reales.",
+    "Ten ChatGPT y Claude Free abiertos. Casos: Planta Central, Lote Norte, Cliente Alfa. Nada de zafra, contratos ni clientes reales.",
     "Imprime o ten a mano la lista de quizzes: q0 historia, fundamentos, calentamiento, cierre."
   ],
   "friday1": [

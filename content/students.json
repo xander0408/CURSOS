@@ -1,7 +1,9 @@
 {
-  "course": "IA: Claude y ChatGPT — 16 horas",
-  "org": "Curso in-company",
-  "city": "",
+  "course": "AI Business Lab — Inteligencia artificial aplicada al negocio",
+  "org": "Central de Ingenios (CISA)",
+  "city": "San Pedro Sula",
+  "dates": "Viernes 11 y 25 de septiembre de 2026",
+  "orgUrl": "http://www.cisahn.com/",
   "modality": "Presencial",
   "instructor": {
     "username": "instructor",

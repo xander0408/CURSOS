@@ -14,9 +14,9 @@ Quienes ya estén dentro: menú Quiz, Calentamiento de 2 minutos. Son cuatro pre
 
 Son las ocho.
 
-Bienvenidos al AI Business Lab. Inteligencia artificial aplicada al negocio. Dieciséis horas, en dos viernes, con cuentas gratuitas. El objetivo no es programar. El objetivo es pedir un trabajo con claridad, iterar y verificar antes de usar el resultado.
+Bienvenidos al AI Business Lab. Inteligencia artificial aplicada al negocio, para el equipo gerencial de Central de Ingenios. Dieciséis horas, viernes 11 y 25 de septiembre, con cuentas gratuitas. La presentación de aula es AI-Business-Lab-Central-de-Ingenios. El objetivo no es programar. El objetivo es pedir un trabajo con claridad, iterar y verificar antes de usar el resultado.
 
-Entren con su usuario. Vayan a Conocernos. Tienen tres minutos. Escriban nombre, cargo y una tarea de su semana que les quite tiempo. Sin nombres de clientes, sin montos reales, sin datos internos. Si necesitan un ejemplo, usen Cliente Alfa y Planta Norte. Guarden.
+Entren con su usuario. Vayan a Conocernos. Tienen tres minutos. Escriban nombre, cargo y una tarea de su semana que les quite tiempo. Sin nombres de clientes, sin montos reales, sin datos internos. Si necesitan un ejemplo, usen Cliente Alfa y Planta Central. Guarden.
 
 Cuando terminen Conocernos, hagan el Calentamiento si todavía no lo hicieron. El examen del curso no es hoy. El examen es el segundo viernes, de dos y veinte a cuatro y veinticinco. Hoy no cierren la ficha del proyecto final.
 
@@ -84,7 +84,7 @@ Un pedido de una línea produce un texto genérico. Un pedido profesional tiene 
 
 Hagan esto ahora. En ChatGPT escriban primero: “escribe un correo”. Después, en un chat nuevo, copien el caso de queja del Manual de prompts. En un papel anoten tres diferencias. Eso es pedido pobre contra pedido profesional.
 
-Con la persona de al lado, dos minutos: un correo por un retraso de tres días, Cliente Alfa, Planta Norte, sin montos y sin nombres de personas. Díganse las cinco piezas en voz alta.
+Con la persona de al lado, dos minutos: un correo por un retraso de tres días, Cliente Alfa, Planta Central, sin montos y sin nombres de personas. Díganse las cinco piezas en voz alta.
 
 Luego, Quiz de Cómo hablar con una IA.
 

@@ -1,4 +1,4 @@
-# Cuentas gratis: hasta dónde llegan (agosto 2026)
+# Cuentas gratis: hasta dónde llegan (septiembre 2026)
 
 Orientación de aula. **Las políticas cambian**; si la herramienta muestra otro aviso, gana lo que ves en pantalla.
 

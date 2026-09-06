@@ -109,7 +109,7 @@ function writeDocx(filename, doc) {
 
 const doc = [
   { title: "Requerimientos Previos — Confirmación del Cliente" },
-  { pi: "Curso de IA (ChatGPT y Claude), 16 horas. Por favor completa y devuelve este documento al instructor al menos 5 días antes." },
+  { pi: "Central de Ingenios (CISA) · viernes 11 y 25 de septiembre de 2026 · 16 horas. Completa y devuelve este documento al instructor al menos 5 días antes." },
   { p: [["Objetivo: ", 1], ["confirmar la logística y las condiciones de la sala para que la clase se desarrolle sin contratiempos. Los puntos marcados como CRÍTICO deben confirmarse por escrito.", 0]] },
 
   { h2: "Datos de contacto" },
@@ -119,8 +119,8 @@ const doc = [
   { line: 1, label: "Correo del contacto:" },
 
   { h2: "1. Fechas y horario" },
-  { line: 1, label: "Fecha del Día 1:" },
-  { line: 1, label: "Fecha del Día 2:" },
+  { line: 1, label: "Fecha del Día 1 (11 de septiembre de 2026):" },
+  { line: 1, label: "Fecha del Día 2 (25 de septiembre de 2026):" },
   { line: 1, label: "Horario (inicio y fin):" },
   { line: 1, label: "Hora de acceso para montar equipo:" },
 
@@ -141,7 +141,7 @@ const doc = [
   { check: [["Wifi con capacidad para 11 dispositivos ", 1], ["(10 participantes + instructor).", 0]] },
   { line: 1, label: "Nombre de la red (SSID):" },
   { line: 1, label: "Contraseña del wifi:" },
-  { check: [["IT confirma que la red NO bloquea ", 1], ["chat.openai.com ni claude.ai (probar antes del curso).", 0]] },
+  { check: [["IT confirma que la red NO bloquea ", 1], ["chatgpt.com ni claude.ai (probar antes del curso).", 0]] },
   { note: "Si la red corporativa bloquea esos sitios, avísanos con anticipación: el curso los usa de forma central." },
 
   { h2: "5. Participantes" },

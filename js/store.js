@@ -387,7 +387,7 @@ export function seedInstructorGuide(data) {
     s.progress.project.ficheReady = true;
     s.progress.project.step = 11;
     s.progress.project.fields = {
-      problem: "Retraso de despacho en Planta Norte (caso guía).",
+      problem: "Retraso de despacho en Planta Central (caso guía ficticio).",
       today: "Se arma a mano entre correos.",
       aiPart: "Borrador de correo y de 6 slides.",
       humanPart: "Cifras oficiales y autorización del 10%.",

@@ -77,8 +77,8 @@ export function renderLogin(root, data, onSuccess) {
           <img data-brand-logo alt="Magnatic" />
         </div>
         <h1>AI Business Lab</h1>
-        <p class="login-sub">Inteligencia Artificial Aplicada al Negocio</p>
-        <p class="login-org" id="login-org">${data.city ? escapeHtml(data.city) : ""}</p>
+        <p class="login-sub">Inteligencia artificial aplicada al negocio</p>
+        <p class="login-org" id="login-org">${escapeHtml([data.org, data.dates || data.city].filter(Boolean).join(" · "))}</p>
 
         <div class="field">
           <label>Usuario</label>

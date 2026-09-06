@@ -41,7 +41,7 @@ export function renderDashboard(data) {
   return `
     <div class="page-head">
       <h2>Ruta del laboratorio</h2>
-      <p>Orden fijo: conocernos, cuentas gratis, historia de la IA, módulos. Los casos de práctica son ficticios; no uses datos internos de tu empresa.</p>
+      <p>${escapeHtml(data.course.orgShort)} · ${escapeHtml(data.course.sessionDates)}. Orden: Conocernos, cuentas gratis, historia, módulos M1–M9. ${escapeHtml(data.course.practiceNote)}</p>
     </div>
     ${sectionAgent(data, "dashboard")}
     <div class="grid grid-4" style="margin-bottom:20px">

@@ -1,6 +1,6 @@
 {
-  "intro": "Cada participante tiene un caso de práctica alineado a su cargo. Los datos son ficticios (Planta Norte, un fabricante de alimentos). No uses información real de tu empresa.",
-  "company": "Los casos ocurren en una planta industrial genérica. Adapta el método a tu trabajo; no copies datos internos.",
+  "intro": "Cada participante tiene un caso de práctica alineado a su cargo. Los datos son ficticios (Planta Central, Lote Norte, Cliente Alfa). No uses zafra, nómina, contratos ni clientes reales de Central de Ingenios.",
+  "company": "Los casos ocurren en un ingenio de práctica (Planta Central). Adapta el método a tu trabajo; no copies datos internos de CISA.",
   "items": [
     {
       "id": "calidad",
@@ -9,7 +9,7 @@
       "deliverable": "Una página: hallazgo, evidencia ficticia, acción correctiva y qué debe firmar un humano.",
       "when": "Viernes 2 — proyecto final (examen). El viernes 1 solo preparas el caso anónimo.",
       "problem": "El informe de no conformidad me toma demasiado tiempo y el primer borrador suele quedar incompleto.",
-      "pastePrompt": "Rol: Eres un redactor de informes de calidad en una planta de alimentos.\n\nContexto: En la línea 2 se detectó humedad fuera de rango en un lote de producto empacado. No te daré números reales ni nombres de clientes. Usa estos datos de ejemplo: lote L-441, humedad observada 18% frente a un máximo interno de 14%, detectado el 12 de marzo en el turno B. El producto no salió a mercado.\n\nObjetivo: Redactar un borrador de no conformidad listo para que yo lo edite.\n\nFormato: 5 apartados titulados: Hallazgo, Evidencia, Causa probable (hipótesis), Acción inmediata, Verificación humana.\n\nRestricciones: No inventes normas ISO con número. No inventes causas raíz. Si falta un dato, escribe [COMPLETAR]. No menciones empresas reales."
+      "pastePrompt": "Rol: Eres un redactor de informes de calidad en un ingenio de práctica (Planta Central).\n\nContexto: En la línea 2 se detectó humedad fuera de rango en un lote de producto empacado. No te daré números reales ni nombres de clientes. Usa estos datos de ejemplo: lote L-441, humedad observada 18% frente a un máximo interno de 14%, detectado el 12 de marzo en el turno B. El producto no salió a mercado.\n\nObjetivo: Redactar un borrador de no conformidad listo para que yo lo edite.\n\nFormato: 5 apartados titulados: Hallazgo, Evidencia, Causa probable (hipótesis), Acción inmediata, Verificación humana.\n\nRestricciones: No inventes normas ISO con número. No inventes causas raíz. Si falta un dato, escribe [COMPLETAR]. No menciones empresas reales."
     },
     {
       "id": "rrhh",
@@ -45,7 +45,7 @@
       "deliverable": "Asunto + cuerpo de 120 palabras, sin precios reales.",
       "when": "Viernes 2 — proyecto final (examen). El viernes 1 solo preparas el caso anónimo.",
       "problem": "Después de cada visita comercial reescribo el mismo tipo de correo y se me va la tarde.",
-      "pastePrompt": "Rol: Eres un ejecutivo comercial B2B de productos industriales de alimento.\n\nContexto: Visité a un cliente industrial (llámalo Cliente Alfa). Pidió cotización de volumen trimestral. No te daré precios. Acordamos enviar propuesta la próxima semana y una muestra de 2 kg. Tono profesional y cercano, no agresivo.\n\nObjetivo: Correo de seguimiento que confirme el próximo paso.\n\nFormato: Asunto + saludo + dos párrafos + cierre. Máximo 120 palabras.\n\nRestricciones: No inventes descuentos, plazos de crédito ni fechas de entrega. Usa [FECHA] y [PRECIO] donde yo deba completar. No uses nombres de empresas reales."
+      "pastePrompt": "Rol: Eres un ejecutivo comercial B2B de productos del ingenio de práctica Planta Central.\n\nContexto: Visité a un cliente industrial (llámalo Cliente Alfa). Pidió cotización de volumen trimestral. No te daré precios. Acordamos enviar propuesta la próxima semana y una muestra de 2 kg. Tono profesional y cercano, no agresivo.\n\nObjetivo: Correo de seguimiento que confirme el próximo paso.\n\nFormato: Asunto + saludo + dos párrafos + cierre. Máximo 120 palabras.\n\nRestricciones: No inventes descuentos, plazos de crédito ni fechas de entrega. Usa [FECHA] y [PRECIO] donde yo deba completar. No uses nombres de empresas reales."
     },
     {
       "id": "compras",
@@ -72,7 +72,7 @@
       "deliverable": "Minuta de una página: seguridad, paros, calidad, pendientes.",
       "when": "Viernes 2, productividad",
       "problem": "El relevo de turno se cuenta de palabra y se pierde información entre turnos.",
-      "pastePrompt": "Rol: Eres supervisor de producción en una planta de alimentos.\n\nContexto: Turno de 8 horas en línea de empaque. Eventos de ejemplo: paro de 25 minutos por atasco de cinta, un casi-accidente sin lesión (tropiezo en piso húmedo), calidad OK en inspecciones visuales. No inventes lecturas de sensores.\n\nObjetivo: Minuta de relevo lista para que el siguiente turno la complete.\n\nFormato: 6 apartados: Seguridad, Paros, Calidad, Materiales, Pendientes, Firma humana.\n\nRestricciones: Deja [COMPLETAR] en cifras que yo deba poner. No uses nombres de personas. No inventes KPIs."
+      "pastePrompt": "Rol: Eres supervisor de producción en el ingenio de práctica Planta Central.\n\nContexto: Turno de 8 horas en línea de empaque. Eventos de ejemplo: paro de 25 minutos por atasco de cinta, un casi-accidente sin lesión (tropiezo en piso húmedo), calidad OK en inspecciones visuales. No inventes lecturas de sensores.\n\nObjetivo: Minuta de relevo lista para que el siguiente turno la complete.\n\nFormato: 6 apartados: Seguridad, Paros, Calidad, Materiales, Pendientes, Firma humana.\n\nRestricciones: Deja [COMPLETAR] en cifras que yo deba poner. No uses nombres de personas. No inventes KPIs."
     },
     {
       "id": "sistemas",

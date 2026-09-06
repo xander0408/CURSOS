@@ -17,7 +17,7 @@ Los horarios coinciden con `content/schedule.json`. Si el grupo va lento, recort
 2. Imprime o ten en el teléfono la lista de usuarios (archivo `CREDENCIALES-INSTRUCTOR.md` — **nunca en el proyector**).
 3. Ten tres pestañas tuyas: laboratorio (usuario `instructor`), ChatGPT Free, Claude Free.
 4. Carpeta lista: `proyectos/` (10 Word, uno por alumno) y, aparte, `Ficha-Proyecto-Final.docx` (plantilla vacía).
-5. PPT: `AI-Business-Lab-Presentacion.pptx`.
+5. PPT oficial: `AI-Business-Lab-Central-de-Ingenios.pptx`.
 
 ### 07:40–08:00 — llegada (ellos ya ocupados)
 
@@ -60,7 +60,7 @@ Los horarios coinciden con `content/schedule.json`. Si el grupo va lento, recort
 ## 2. Frases que vas a repetir todo el curso
 
 1. «La IA propone. **Tú** decides y verificas.»
-2. «Nada de nómina, contratos, clientes con nombre, claves ni cifras oficiales. Usamos Planta Norte, Cliente Alfa, [COMPLETAR].»
+2. «Nada de nómina, contratos, clientes con nombre, claves ni cifras oficiales. Usamos Planta Central, Cliente Alfa, [COMPLETAR].»
 3. «Si un módulo no abre: pulsa **Continuar** en cada lección del anterior.»
 4. «El progreso vive **en este navegador**. Si cambias de PC: **Progreso → Exportar**.»
 5. «El examen es el **viernes 2** por la tarde. Hoy (viernes 1) solo preparamos el caso. **No** cierren la ficha.»
@@ -99,7 +99,7 @@ Jornada 08:00–17:00. Almuerzo 12:00–13:00. Pausas cortas donde indica el rel
 **Cada alumno:**
 
 - Leer la página y marcar entendido (`a1`: confirmar que las dos pestañas chatean).
-- Escribir en un bloc (o Conocernos) 5 líneas anonimizadas: Alfa, Planta Norte (`a2` si aún no).
+- Escribir en un bloc (o Conocernos) 5 líneas anonimizadas: Alfa, Planta Central (`a2` si aún no).
 
 **Reserva:** pegar en ChatGPT: «Explícame en 4 viñetas qué es una alucinación, sin ejemplos de mi empresa.»
 
@@ -253,7 +253,7 @@ No hay entrega. Si quieren, leen el manual. **Prohibido** pegar datos reales «p
 > Menú **Proyecto final**. Hay 12 pasos. Copian del Word al recuadro. El **prompt** lo pegan en ChatGPT, **el mismo** en Claude, y escriben la comparación.  
 > Tiempos, riesgos y validación **los ponen ustedes**, no el Word.  
 > Al final: **Guardar ficha**. Si CISA pide archivo: **Copiar ficha** y pegar en `Ficha-Proyecto-Final.docx`.  
-> **No** usen datos de la empresa. Planta Norte / Alfa.  
+> **No** usen datos de la empresa. Planta Central / Alfa.  
 > Actividades **a10–a12**. Quien termine a las 15:30: prepara **un minuto** en voz alta: problema → qué hizo la IA → qué revisó un humano → ahorro.»
 
 **Ritmo sugerido (dilo en voz alta a las 14:20):**

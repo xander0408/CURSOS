@@ -153,9 +153,14 @@ function renderInner() {
   }
   const route = parseHash();
   const root = document.getElementById("app-root");
-  document.getElementById("header-title").textContent = TITLES[route.name] || "AI Business Lab";
+  document.getElementById("header-title").textContent = TITLES[route.name] || data.course.title;
   document.getElementById("header-user").textContent = getState().profile.displayName || "";
   document.getElementById("header-progress").style.width = globalPct(data) + "%";
+  const orgEl = document.getElementById("brand-org");
+  if (orgEl && data.course) {
+    orgEl.textContent = `${data.course.orgShort} · ${data.course.sessionDates}`;
+  }
+  document.title = `${data.course.title} — ${data.course.orgShort}`;
   highlightNav(route.name);
   document.getElementById("sidebar").classList.remove("open");
   document.getElementById("overlay").classList.remove("show");

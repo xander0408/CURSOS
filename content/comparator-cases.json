@@ -11,7 +11,7 @@
           "label": "Estilo típico ChatGPT",
           "read": "Más listo para enviar: asunto, disculpa corta y el 10%. Riesgo: suena a plantilla y casi promete «resolver de inmediato».",
           "scores": { "clarity": 5, "precision": 4, "structure": 5, "creativity": 3, "utility": 5, "compliance": 4 },
-          "text": "Asunto: Seguimiento a tu entrega — disculpas y un siguiente paso\n\nEstimado equipo de Alfa:\n\nLamentamos el retraso de tres días. Entendemos la molestia: dependían de ese despacho.\n\nEstamos revisando la causa con operaciones; no adelantaré un motivo que aún no está cerrado. Como gesto, aplicamos 10% de descuento en tu próxima compra (no aplica reembolso de este pedido).\n\nSiguiente paso: el lunes te escribe tu ejecutivo de cuenta con el estatus, sin inventar una fecha de llegada.\n\nQuedamos atentos.\nAtentamente,\nAtención a clientes — Planta Norte"
+          "text": "Asunto: Seguimiento a tu entrega — disculpas y un siguiente paso\n\nEstimado equipo de Alfa:\n\nLamentamos el retraso de tres días. Entendemos la molestia: dependían de ese despacho.\n\nEstamos revisando la causa con operaciones; no adelantaré un motivo que aún no está cerrado. Como gesto, aplicamos 10% de descuento en tu próxima compra (no aplica reembolso de este pedido).\n\nSiguiente paso: el lunes te escribe tu ejecutivo de cuenta con el estatus, sin inventar una fecha de llegada.\n\nQuedamos atentos.\nAtentamente,\nAtención a clientes — Planta Central"
         },
         "claude": {
           "label": "Estilo típico Claude",
@@ -25,7 +25,7 @@
       "id": "cmp-summary",
       "title": "Resumen de una reunión de patio",
       "brief": "Notas crudas de 45 min: camiones, calidad y un acuerdo a medias. El alumno pega notas anónimas o usa el ejemplo.",
-      "prompt": "Rol: Eres un asistente de dirección experto en síntesis de reuniones.\n\nContexto: Reunión de patio Planta Norte, 45 minutos. Notas: camiones hicieron fila 2 h; calidad retuvo un lote por humedad; se habló de un radio extra el jueves (no quedó claro quién paga); ventas pidió priorizar cliente Alfa.\n\nObjetivo: Resumen con (1) Decisiones, (2) Tareas con responsable-cargo y fecha si aparece, (3) Pendientes sin inventar.\n\nFormato: Viñetas. Si falta un dato: «no especificado».\n\nRestricciones: No agregues acuerdos que no estén en las notas. No inventes nombres de personas.",
+      "prompt": "Rol: Eres un asistente de dirección experto en síntesis de reuniones.\n\nContexto: Reunión de patio Planta Central, 45 minutos. Notas: camiones hicieron fila 2 h; calidad retuvo un lote por humedad; se habló de un radio extra el jueves (no quedó claro quién paga); ventas pidió priorizar Cliente Alfa.\n\nObjetivo: Resumen con (1) Decisiones, (2) Tareas con responsable-cargo y fecha si aparece, (3) Pendientes sin inventar.\n\nFormato: Viñetas. Si falta un dato: «no especificado».\n\nRestricciones: No agregues acuerdos que no estén en las notas. No inventes nombres de personas.",
       "samples": {
         "chatgpt": {
           "label": "Estilo típico ChatGPT",

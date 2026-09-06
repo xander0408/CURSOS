@@ -36,7 +36,7 @@ const slides = [
     bullets: [
       "Chrome o Edge, no incógnito. Tres pestañas: laboratorio, ChatGPT, Claude.",
       "Cuentas GRATIS. Si Claude se queda sin créditos, el mismo prompt en ChatGPT.",
-      "CISA (cisahn.com): azúcar, calidad e inocuidad. Casos de aula: Planta Norte y Cliente Alfa. Nada de zafra real, nómina ni contratos.",
+      "CISA (cisahn.com): azúcar, calidad e inocuidad. Casos de aula: Planta Central, Lote Norte y Cliente Alfa. Nada de zafra real, nómina ni contratos.",
       "La IA propone. Ustedes deciden y verifican.",
     ] },
 

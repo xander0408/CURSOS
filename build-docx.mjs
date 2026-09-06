@@ -10,10 +10,11 @@ const PURPLE = "610A8B";
 // Cada bloque: {h1|h2|h3|p|b|note}, o {table:{head:[],rows:[[]]}}
 const doc = [
   { h1: "Guía del Instructor — AI Business Lab" },
-  { p: [["Curso: ", 1], ["Inteligencia Artificial Aplicada al Negocio (basado en ChatGPT y Claude)", 0]] },
-  { p: [["Duración: ", 1], ["16 horas — 2 viernes de 8 horas cada uno", 0]] },
-  { p: [["Modalidad: ", 1], ["Presencial o remota, con el laboratorio web abierto en el navegador de cada alumno", 0]] },
-  { p: [["Cupo sugerido: ", 1], ["hasta 50 alumnos", 0]] },
+  { p: [["Curso: ", 1], ["Inteligencia artificial aplicada al negocio (ChatGPT y Claude) — Central de Ingenios (CISA)", 0]] },
+  { p: [["Fechas: ", 1], ["Viernes 11 y 25 de septiembre de 2026 · 16 horas", 0]] },
+  { p: [["PPT oficial: ", 1], ["AI-Business-Lab-Central-de-Ingenios.pptx", 0]] },
+  { p: [["Modalidad: ", 1], ["Presencial, con el laboratorio web en el navegador de cada alumno", 0]] },
+  { p: [["Cupo: ", 1], ["10 gerencias en esta edición", 0]] },
   { pi: "Esta guía es para el facilitador. El alumno no la necesita." },
 
   { h2: "1. Qué es este laboratorio y cómo funciona" },
@@ -24,13 +25,13 @@ const doc = [
   { b: "La metodología del curso es A.C.T.I.V.A.: Analizar, Contextualizar, Transformar, Iterar, Verificar, Aplicar." },
   { b: "La regla de oro, repetida en todo el curso: la IA propone, la persona decide y verifica." },
   { h3: "Modo instructor" },
-  { p: "En el menú lateral, botón \"Instructor\" → PIN 1234. Desbloquea notas de facilitación dentro de las lecciones y retos. El PIN se puede cambiar editando content/instructor-notes.json." },
+  { p: "En el menú lateral, botón \"Instructor\" → PIN CISA-Admin26. Desbloquea notas de facilitación. Usuario instructor / MagnaTic#CISA26. Ver CREDENCIALES-INSTRUCTOR.md." },
   { note: "Nota de seguridad: si el sitio es público, el PIN es visible en el código. No lo uses para nada sensible; solo protege las notas de facilitación." },
 
   { h2: "2. Requisitos del alumno" },
   { p: "Antes de la primera sesión, cada alumno debe tener:" },
   { h3: "Cuentas (todas gratuitas)" },
-  { b: "Cuenta de ChatGPT (chat.openai.com) — versión gratuita." },
+  { b: "Cuenta de ChatGPT (chatgpt.com) — versión gratuita." },
   { b: "Cuenta de Claude (claude.ai) — versión gratuita." },
   { b: "Un correo electrónico funcional para crear las cuentas." },
   { h3: "Equipo" },
@@ -118,7 +119,7 @@ const doc = [
       ["Mi progreso no se guarda", "Modo incógnito o almacenamiento bloqueado", "Usar ventana normal; el laboratorio avisa con un mensaje"],
       ["Perdí mi avance", "Cambió de navegador/equipo o borró datos", "Progreso local por navegador; usar Exportar/Importar avance"],
       ["El quiz no avanza", "Se acabó el tiempo o no eligió opción", "Es normal: pasa a la explicación y a la siguiente pregunta"],
-      ["No veo las notas del instructor", "Falta desbloquear modo instructor", "Botón Instructor → PIN 1234"],
+      ["No veo las notas del instructor", "Falta desbloquear modo instructor", "Botón Instructor → PIN CISA-Admin26"],
     ],
   }},
 

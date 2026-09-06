@@ -1,8 +1,10 @@
 # Guía del Instructor — AI Business Lab
 
-**Curso:** Inteligencia Artificial Aplicada al Negocio (basado en ChatGPT y Claude)
+**Curso:** Inteligencia artificial aplicada al negocio (ChatGPT y Claude)
 **Cliente:** Central de Ingenios (CISA), San Pedro Sula — [cisahn.com](http://www.cisahn.com/)
+**Fechas:** viernes 11 y 25 de septiembre de 2026
 **Duración:** 16 horas — 2 viernes de 8 horas cada uno
+**PPT oficial:** `AI-Business-Lab-Central-de-Ingenios.pptx`
 **Modalidad:** Presencial o remota, con el laboratorio web abierto en el navegador de cada alumno
 **Cupo:** 10 gerencias en esta edición (el lab soporta más si actualizas `content/students.json`)
 
@@ -82,12 +84,12 @@ Opcional recomendado:
 | 1 | Fundamentos de IA generativa | Qué es, límites, alucinaciones, verificación | Viernes 1 |
 | 2 | Cómo hablar con una IA | Contexto, objetivo, tono, ejemplos, iteración | Viernes 1 |
 | 3 | Ingeniería de prompts | Framework de 5 piezas, prompt maestro, biblioteca | Viernes 1 |
-| 4 | IA + Word | Documentos, tono, revisión humana | Viernes 1 |
-| 5 | IA + Excel | Fórmulas y validación de números | Viernes 2 |
-| 6 | IA + PowerPoint | Estructura, storytelling, guion | Viernes 2 |
-| 7 | Análisis e investigación | Resumir, comparar, verificar fuentes | Viernes 2 |
-| 8 | Productividad diaria | Correos, minutas, decisiones | Viernes 2 |
-| 9 | Proyecto final | Un problema real, de punta a punta | Viernes 2 |
+| 4 | IA aplicada a Microsoft Word | Documentos, tono, revisión humana | Viernes 1 |
+| 5 | IA aplicada a Microsoft Excel | Fórmulas y validación de números | Viernes 2 |
+| 6 | IA aplicada a Microsoft PowerPoint | Estructura, storytelling, guion | Viernes 2 |
+| 7 | Análisis de información e investigación | Resumir, comparar, verificar fuentes | Viernes 2 |
+| 8 | Productividad diaria y casos empresariales | Correos, minutas, decisiones | Viernes 2 |
+| 9 | Proyecto final integrador | Un problema real, de punta a punta | Viernes 2 |
 
 Herramientas transversales (disponibles en el menú en todo momento):
 - **Quiz**: repaso estilo concurso, cronometrado, con puntos por rapidez. Ideal para cerrar cada módulo.
