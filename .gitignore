@@ -6,6 +6,8 @@
 .verify-server.js
 portstate.log
 
+node_modules/
+
 # Dependencias (no se usan, pero por si acaso)
 .wrangler/
 sync/.wrangler/

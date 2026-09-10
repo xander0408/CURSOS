@@ -1,0 +1,26 @@
+{
+  "name": "ai-business-lab",
+  "version": "1.0.0",
+  "description": "Laboratorio de **Inteligencia artificial aplicada al negocio** (ChatGPT y Claude, cuentas gratis) para **Central de Ingenios (CISA)**, San Pedro Sula. **16 horas**: viernes **11 y 25 de septiembre de 2026**.",
+  "main": "serve.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build:ppt": "node build-presentacion.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xander0408/CURSOS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xander0408/CURSOS/issues"
+  },
+  "homepage": "https://github.com/xander0408/CURSOS#readme",
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}
