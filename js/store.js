@@ -245,6 +245,25 @@ export function update(mutator) {
   return state;
 }
 
+export function saveOwnPrompt({ title, text, source }) {
+  const body = String(text || "").trim();
+  if (body.length < 24) {
+    return { error: "Pega un prompt de al menos un par de frases, sin datos reales de la empresa." };
+  }
+  update((s) => {
+    if (!s.progress.library) s.progress.library = { savedIds: [], custom: [] };
+    if (!Array.isArray(s.progress.library.custom)) s.progress.library.custom = [];
+    s.progress.library.custom.push({
+      id: "c" + Date.now(),
+      title: (String(title || "").trim() || "Prompt final").slice(0, 80),
+      text: body.slice(0, 8000),
+      source: String(source || "portal").slice(0, 48),
+      savedAt: Date.now(),
+    });
+  });
+  return { ok: true };
+}
+
 export function resetAll() {
   const keep = {
     displayName: state.profile.displayName,

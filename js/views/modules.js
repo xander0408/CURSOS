@@ -5,6 +5,7 @@ import { frameworkForm, readFramework, rubricHtml, readRubric } from "../prompt-
 import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
 import { isModuleUnlocked } from "../journey.js";
+import { ownPromptBoxHtml, bindOwnPromptUploads } from "./library.js?v=20260911p";
 
 export function moduleProgress(full) {
   const st = readModule(full.id);
@@ -168,6 +169,7 @@ function challengeBody(ch, saved, submitted) {
       ${frameworkForm(ans.framework || {}, { reveal: submitted })}
       <div class="field"><label>Resume qué cambió y por qué (criterio, no copia)</label>
         <textarea id="prompt-why" ${submitted ? "disabled" : ""}>${escapeHtml(ans.why || "")}</textarea></div>
+      ${ownPromptBoxHtml({ prefix: "chown", value: ans.finalPrompt || "", title: ch.title || "" })}
     `;
   }
   if (ch.type === "evaluate-ai") {
@@ -225,6 +227,7 @@ function challengeBody(ch, saved, submitted) {
         <textarea id="case-result">${escapeHtml(ans.result || "")}</textarea></div>
       <div class="field"><label>Revisión humana: ¿qué validaste o corregiste?</label>
         <textarea id="case-review">${escapeHtml(ans.review || "")}</textarea></div>
+      ${ownPromptBoxHtml({ prefix: "chown", value: ans.finalPrompt || assemblePrompt(ans.framework || {}), title: ch.title || "" })}
     `;
   }
   return `<p>Tipo de reto no soportado.</p>`;
@@ -297,6 +300,7 @@ function bindChallenge(data, full, ch) {
   root.querySelectorAll("[data-action='copy-prompt']").forEach((b) => {
     b.addEventListener("click", () => copyText(assemblePrompt(readFramework(root))));
   });
+  bindOwnPromptUploads(root, data);
   root.querySelectorAll("input[data-rubric]").forEach((el) => {
     el.addEventListener("input", () => {
       const span = root.querySelector(`[data-rubric-val="${el.dataset.rubric}-${el.dataset.axis}"]`);
@@ -353,10 +357,11 @@ function collectPayload(ch, root) {
   if (ch.type === "prompt-build") {
     const framework = readFramework(root);
     const why = document.getElementById("prompt-why")?.value || "";
+    const finalPrompt = document.getElementById("chown-text")?.value || "";
     if (Object.values(framework).some((v) => !String(v).trim()) || why.trim().length < 12) {
       return { error: "Completa las cinco piezas del framework y explica el cambio." };
     }
-    return { framework, why, complete: true };
+    return { framework, why, finalPrompt, complete: true };
   }
   if (ch.type === "evaluate-ai") {
     const notes = document.getElementById("eval-notes")?.value || "";
@@ -390,10 +395,11 @@ function collectPayload(ch, root) {
     const framework = readFramework(root);
     const result = document.getElementById("case-result")?.value || "";
     const review = document.getElementById("case-review")?.value || "";
+    const finalPrompt = document.getElementById("chown-text")?.value || "";
     if (Object.values(framework).some((v) => !String(v).trim()) || result.trim().length < 8 || review.trim().length < 8) {
       return { error: "Completa el prompt, el resultado y la revisión humana." };
     }
-    return { framework, result, review, complete: true };
+    return { framework, result, review, finalPrompt, complete: true };
   }
   return { error: "No se pudo leer el reto." };
 }

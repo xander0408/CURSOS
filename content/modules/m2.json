@@ -67,7 +67,8 @@
       "activaPhase": 3,
       "blocks": [
         { "type": "text", "html": "<p>Refinar es señalar con precisión qué cambiar: «el segundo párrafo es muy técnico», «quita la promesa de fecha», «agrega una despedida cordial». Cuanto más concreta la corrección, mejor el ajuste.</p>" },
-        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Corrige sobre lo que ya tienes en lugar de empezar de cero: la conversación conserva el contexto." }
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Corrige sobre lo que ya tienes en lugar de empezar de cero: la conversación conserva el contexto." },
+        { "type": "text", "html": "<p>Cuando el prompt ya te sirva, <strong>súbelo al portal del curso</strong>: en el reto de este módulo o en el menú Biblioteca, el recuadro «Sube tu prompt final al portal del curso». Así queda guardado en tu sesión (sin datos reales de la empresa).</p>" }
       ]
     }
   ],
@@ -108,7 +109,7 @@
       "difficulty": "intermedio",
       "title": "Mejora un pedido pobre",
       "objective": "Transformar una petición vaga en una con contexto y objetivo.",
-      "instructions": "Toma el pedido deficiente de abajo y reconstrúyelo con las cinco piezas del framework. No pegues datos reales.",
+      "instructions": "Toma el pedido deficiente de abajo y reconstrúyelo con las cinco piezas. Luego pulsa «Sube tu prompt final al portal del curso». No pegues datos reales.",
       "weakPrompt": "«Escribe algo para avisar a los clientes que subiremos precios.»",
       "thinkFirst": "¿Quién recibe el mensaje, qué tono evita perder clientes y qué NO debe prometer?",
       "explanation": "Un buen pedido incluye rol, contexto (por qué suben los precios, cuánto), objetivo (informar sin perder confianza), formato (correo breve) y restricciones (no disculparse en exceso, no inventar cifras).",
@@ -146,7 +147,8 @@
         "Construye el prompt con las cinco piezas.",
         "Cópialo y úsalo en ChatGPT o Claude.",
         "Pega o resume el resultado.",
-        "Anota qué revisaste o corregiste antes de enviarlo."
+        "Anota qué revisaste o corregiste antes de enviarlo.",
+        "Sube tu prompt final al portal del curso (recuadro al final del reto)."
       ],
       "explanation": "Lo importante: contexto suficiente sin datos sensibles, tono adecuado al equipo y una revisión humana antes de enviar.",
       "xp": 20,

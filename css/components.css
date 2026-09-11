@@ -372,9 +372,11 @@ body.instructor-on .timer-page .module-clock-instructor { display: flex; }
   font-weight: 700;
 }
 
-.soon {
-  opacity: 0.85;
+.own-prompt-box {
+  margin-top: 16px;
+  border-color: var(--accent);
 }
+.own-prompt-box h3 { margin-top: 0; }
 
 .ficha {
   background: var(--bg-input);

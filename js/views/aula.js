@@ -57,7 +57,7 @@ function winnerLabel(w) {
 function tableHtml(rows) {
   return `<div class="aula-table-wrap"><table class="data-table aula-table">
     <thead><tr>
-      <th>Alumno</th><th>Cargo</th><th>Módulos</th><th>Tareas</th><th>Quiz</th>
+      <th>Alumno</th><th>Cargo</th><th>Módulos</th><th>Tareas</th><th>Prompts</th><th>Quiz</th>
       <th>Insignias</th><th>Proyecto</th><th>Comparador</th><th>Pts</th><th>Último</th>
     </tr></thead>
     <tbody>${rows
@@ -69,6 +69,7 @@ function tableHtml(rows) {
           <td>${escapeHtml(r.role || "—")}</td>
           <td>${r.modules}/10</td>
           <td>${r.chatDone || 0}/${r.chatTotal || 9}</td>
+          <td>${r.ownPrompts || 0}</td>
           <td>${r.quizzes ? `${r.quizAvg}% · ${r.quizzes}` : "—"}</td>
           <td>${r.badges || 0}/8</td>
           <td>${r.fiche ? "Ficha lista" : "Abierto"}</td>

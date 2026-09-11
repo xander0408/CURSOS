@@ -6,12 +6,12 @@ import { getState, update, markLessonDone, completeModule, recountChallenges, lo
 import { setSyncApi, pullIntoLocal, pushNow } from "./sync.js";
 import { toast, openModal, closeModal } from "./ui.js?v=20260910s";
 import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js";
-import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260910s";
+import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260911p";
 import { checkBadges } from "./badges.js";
 import { renderChallengesIndex, bindChallengesIndex } from "./views/challenges.js";
 import { renderPromptLab, bindPromptLab } from "./views/prompt-lab-view.js";
 import { renderComparator, bindComparator } from "./views/comparator.js";
-import { renderLibrary, bindLibrary } from "./views/library.js";
+import { renderLibrary, bindLibrary } from "./views/library.js?v=20260911p";
 import { renderProject, bindProject } from "./views/project.js";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./views/quiz.js?v=20260911q2";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";

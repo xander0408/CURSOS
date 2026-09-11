@@ -16,7 +16,7 @@ export function renderPromptLab(data) {
     <div class="card" id="lab-root">
       ${frameworkForm(draft)}
       <div class="btn-row">
-        <button class="btn" type="button" id="save-lab">Guardar en biblioteca</button>
+        <button class="btn btn-primary" type="button" id="save-lab">Sube tu prompt final al portal del curso</button>
         <a class="btn" href="https://chatgpt.com/" target="_blank" rel="noopener">Probar en ChatGPT</a>
         <a class="btn" href="https://claude.ai/" target="_blank" rel="noopener">Probar en Claude</a>
       </div>
@@ -73,7 +73,7 @@ export function bindPromptLab(data) {
       s.progress.promptLab.savedPrompts = s.progress.promptLab.savedPrompts || [];
       s.progress.promptLab.savedPrompts.push({ at: Date.now(), title: (fw.objective || "Prompt").slice(0, 60) });
     });
-    toast("Guardado en tu biblioteca.");
+    toast("Prompt subido al portal. Lo ves en Biblioteca → Tus prompts.");
     checkBadges(data);
   });
 }

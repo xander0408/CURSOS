@@ -62,6 +62,7 @@ function snapshot(st, username) {
     fiche: !!p.project?.ficheReady,
     chatDone: CHAT_IDS.filter((id) => checks[id]).length,
     chatTotal: CHAT_IDS.length,
+    ownPrompts: (p.library?.custom || []).length,
     badges: Object.keys(badges).length,
     quizzes: qn,
     quizAvg: qavg,
