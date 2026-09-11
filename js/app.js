@@ -21,12 +21,13 @@ import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bin
 import { renderAdmin, bindAdmin } from "./views/aula.js";
 import { renderActivities, bindActivities } from "./views/activities.js";
 import { renderCronograma } from "./views/schedule.js";
-import { startClockLoop, bindInstructorClock, refreshClockFace } from "./clock.js";
+import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage } from "./clock.js";
 
 const TITLES = {
   dashboard: "Ruta",
   modules: "Módulos",
   module: "Módulo",
+  timer: "Timer",
   challenges: "Retos",
   quiz: "Quiz",
   promptLab: "Prompt Lab",
@@ -111,6 +112,7 @@ function highlightNav(pathName) {
     dashboard: "/",
     modules: "/modulos",
     module: "/modulos",
+    timer: "/timer",
     challenges: "/retos",
     quiz: "/quiz",
     promptLab: "/prompt-lab",
@@ -173,6 +175,7 @@ function renderInner() {
   highlightNav(route.name);
   document.getElementById("sidebar").classList.remove("open");
   document.getElementById("overlay").classList.remove("show");
+  document.body.classList.toggle("timer-on", route.name === "timer");
   setInstructorUi();
 
   if (route.name === "dashboard") {
@@ -180,6 +183,8 @@ function renderInner() {
     bindDashboard();
   } else if (route.name === "modules") {
     root.innerHTML = renderModulesIndex(data);
+  } else if (route.name === "timer") {
+    root.innerHTML = renderTimerPage();
     refreshClockFace();
   } else if (route.name === "module") {
     root.innerHTML = renderModule(data, route.params);
@@ -232,7 +237,7 @@ function renderInner() {
     }
   }
 
-  if (!root.querySelector(".agent-card") && !root.querySelector("#quiz-stage") && !root.querySelector(".quiz-play") && route.name !== "module" && route.name !== "admin") {
+  if (!root.querySelector(".agent-card") && !root.querySelector("#quiz-stage") && !root.querySelector(".quiz-play") && route.name !== "module" && route.name !== "admin" && route.name !== "timer") {
     root.insertAdjacentHTML("afterbegin", sectionAgent(data, coachSectionForRoute(route.name), { variant: "compact" }));
   }
 

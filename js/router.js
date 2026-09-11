@@ -4,6 +4,7 @@ export function parseHash() {
   if (parts.length === 0) return { name: "dashboard", params: {} };
   const head = parts[0];
   if (head === "modulos") return { name: "modules", params: {} };
+  if (head === "timer") return { name: "timer", params: {} };
   if (head === "modulo") {
     return {
       name: "module",

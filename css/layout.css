@@ -256,6 +256,7 @@
   .lesson-nav { flex-direction: column; }
   .lesson-nav .btn, .lesson-nav a.btn { width: 100%; }
   .stat .value { font-size: 22px; }
+  body.timer-on .main { padding: 0; overflow: hidden; }
 }
 
 @media (max-width: 640px) {
