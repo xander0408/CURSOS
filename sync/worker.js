@@ -7,7 +7,7 @@ const cors = {
 };
 
 const CLOCK_USER = "__clock";
-const CHAT_IDS = ["chat-1", "chat-2", "chat-3", "chat-4"];
+const CHAT_IDS = ["chat-1", "chat-2", "chat-3", "chat-4", "chat-5", "chat-6", "chat-7", "chat-8", "chat-9"];
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {

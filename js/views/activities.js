@@ -16,7 +16,7 @@ export function renderActivities(data) {
       return `<div class="card activity-card chat-task ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(it.id)}" ${on ? "checked" : ""} />
         <div>
-          <p class="muted">Tarea ${it.n} de 4 · Día ${it.day} · ${it.mins} min · ChatGPT y Claude</p>
+          <p class="muted">Tarea ${it.n} de ${chats.length} · ${escapeHtml(it.focus || "Práctica")} · Día ${it.day} · ${it.mins} min</p>
           <h3>${escapeHtml(it.title)}</h3>
           <p>${escapeHtml(it.do)}</p>
           <p><strong>Qué mirar:</strong> ${escapeHtml(it.look)}</p>
@@ -48,8 +48,8 @@ export function renderActivities(data) {
 
   return `
     <div class="page-head">
-      <h2>4 tareas en ChatGPT y Claude</h2>
-      <p>Usa el mismo texto en ChatGPT y en Claude. No envíes el resultado.</p>
+      <h2>Tareas en ChatGPT y Claude</h2>
+      <p>Nueve prácticas con enfoque distinto. En la mayoría, el mismo texto en los dos chats. No envíes el resultado.</p>
       <p><strong>${chatOk} de ${chats.length}</strong> completadas.</p>
     </div>
     <div class="activity-grid">${chatCards}</div>

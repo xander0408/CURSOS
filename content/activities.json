@@ -1,12 +1,13 @@
 {
   "title": "Actividades",
-  "subtitle": "Completa las cuatro tareas y después el resto del listado.",
+  "subtitle": "Completa las tareas de chat y después el resto del listado.",
   "chatTasks": [
     {
       "id": "chat-1",
       "n": 1,
       "day": 1,
       "mins": 5,
+      "focus": "Comparar",
       "title": "El mismo pedido en los dos chats",
       "do": "Chat nuevo en ChatGPT y chat nuevo en Claude. Pegue el texto de abajo en AMBOS. Lea las dos respuestas. No las envíe a nadie.",
       "look": "¿Cuál fue más corta? ¿Cuál sonó más segura? Anote una frase.",
@@ -17,6 +18,7 @@
       "n": 2,
       "day": 1,
       "mins": 8,
+      "focus": "Prompt pobre vs bueno",
       "title": "Correo Cliente Alfa (pedido profesional)",
       "do": "Primero, en ChatGPT escriba SOLO: escribe un correo. Léalo. Después pegue el texto largo de abajo en ChatGPT y en Claude (chats nuevos). No envíe nada.",
       "look": "30 segundos: tres cosas del primer correo que no enviaría. En el segundo, marque en rojo el 10% y cualquier fecha.",
@@ -27,6 +29,7 @@
       "n": 3,
       "day": 1,
       "mins": 4,
+      "focus": "Alucinación",
       "title": "Trampa: ¿inventa una norma?",
       "do": "Chat NUEVO en ChatGPT y chat NUEVO en Claude. Pegue el mismo texto en los dos. No busque la norma en Google primero.",
       "look": "Si suena segura y la norma no existe, eso es alucinación. Levante la mano si alguno «encontró» el artículo 4.",
@@ -37,10 +40,66 @@
       "n": 4,
       "day": 2,
       "mins": 8,
+      "focus": "Minuta",
       "title": "Minuta sucia: mismo texto, dos lecturas",
       "do": "Pegue el texto de abajo en ChatGPT y en Claude. Luego pulse «Ver comparativo en vivo»: pega las dos respuestas y las barras se actualizan al momento.",
       "look": "¿Quién convirtió un «se habló» en un acuerdo cerrado? Eso no se firma.",
       "prompt": "Rol: asistente de dirección.\nContexto (ficticio, Planta Central): Reunión de patio, 45 minutos. Notas: camiones hicieron fila 2 horas; calidad retuvo un lote por humedad; se habló de un radio extra el jueves (no quedó claro quién paga); ventas pidió priorizar Cliente Alfa.\nObjetivo: extrae (1) decisiones, (2) pendientes. Si falta un dato, escribe «no especificado».\nFormato: viñetas.\nRestricciones: no inventes nombres de personas ni acuerdos que no estén en las notas."
+    },
+    {
+      "id": "chat-5",
+      "n": 5,
+      "day": 1,
+      "mins": 8,
+      "focus": "Privacidad",
+      "title": "Anonimiza antes de pegar",
+      "do": "No pegue el párrafo sucio en el chat. Primero reescríbalo usted (cargos, Cliente Alfa, Planta Central, Lote Norte). Luego pegue SOLO su versión anónima en ChatGPT y en Claude.",
+      "look": "Si la IA devuelve un nombre, una cédula, un correo o un lote «real», usted filtró mal. Vuelva a anonimizar.",
+      "prompt": "Rol: editor de casos de práctica para un laboratorio de IA.\n\nContexto: Este texto YA está anonimizado. Trátalo como caso de Planta Central. No intentes adivinar la empresa real ni a las personas.\n\nTexto: En Lote Norte un supervisor de empaque reportó humedad alta. Cliente Alfa espera despacho. No hay cifras oficiales en este párrafo.\n\nObjetivo: Lista de 6 datos que seguirían siendo peligrosos si alguien los hubiera dejado (nombres, identificadores, montos, normas con número).\n\nFormato: viñetas cortas.\n\nRestricciones: No inventes los datos que «faltan». No pidas el nombre real del ingenio. Si el texto ya es seguro, dilo."
+    },
+    {
+      "id": "chat-6",
+      "n": 6,
+      "day": 1,
+      "mins": 10,
+      "focus": "Iterar",
+      "title": "Tres rondas en el MISMO chat",
+      "do": "Un solo chat en ChatGPT y un solo chat en Claude (no abra chat nuevo). Ronda 1: pegue el texto. Ronda 2: «acorta a 80 palabras y quita adjetivos». Ronda 3: «marca con [VERIFICAR] toda cifra o fecha».",
+      "look": "La primera salida suele ser genérica. La tercera debe ser más usable. Anote qué cambió.",
+      "prompt": "Rol: comunicación interna de planta.\nContexto: Aviso para cartelera de Planta Central. Tema: retraso de camiones en patio (caso ficticio). No hay cifra oficial de minutos ni de costo.\nObjetivo: primer borrador de aviso al personal de patio.\nFormato: título + 3 frases.\nRestricciones: No inventes horarios, multas ni nombres. Si falta un dato, [COMPLETAR]."
+    },
+    {
+      "id": "chat-7",
+      "n": 7,
+      "day": 2,
+      "mins": 8,
+      "focus": "Audiencia",
+      "title": "Mismo hecho, dos tonos",
+      "do": "Pegue el texto en ambos chats. Pida DOS versiones: A) para el relevo de patio (claro y corto). B) para un correo a dirección (hechos, sin drama).",
+      "look": "Si las dos versiones dicen lo mismo con las mismas palabras, la IA no cambió de audiencia. Pida de nuevo: «A más directo; B más sobrio».",
+      "prompt": "Rol: supervisor que debe informar sin alarmar.\nContexto (ficticio): En Lote Norte hubo un paro de cinta de 25 minutos. No hubo heridos. Calidad no retuvo producto. Cliente Alfa no está enterado.\nObjetivo: redacta DOS textos etiquetados A (patio) y B (dirección).\nFormato: A máximo 60 palabras. B máximo 120 palabras, con qué se sabe / qué no se sabe / próximo paso.\nRestricciones: No inventes la causa del paro ni un KPI. No culpes a un turno ni a una persona."
+    },
+    {
+      "id": "chat-8",
+      "n": 8,
+      "day": 2,
+      "mins": 8,
+      "focus": "Cifras",
+      "title": "Cacería de números inventados",
+      "do": "Pegue el texto en ambos chats. En el papel, subraye CADA número, porcentaje o fecha que aparezca. Si usted no se lo dio, es invento.",
+      "look": "Cuente cuántos números salieron que no estaban en el prompt. Ese es el riesgo de firmar a ciegas.",
+      "prompt": "Rol: analista de operaciones.\nContexto: Planta Central quiere un párrafo sobre retrasos de despacho. Yo NO te doy minutos, porcentajes, costos ni fechas. Cliente Alfa es un caso de práctica.\nObjetivo: un párrafo de 5 líneas para discutir en comité.\nFormato: párrafo continuo.\nRestricciones: Prohibido inventar cifras. Si necesitas un número, escribe [CIFRA OFICIAL]. No cites estudios ni «el promedio de la industria»."
+    },
+    {
+      "id": "chat-9",
+      "n": 9,
+      "day": 2,
+      "mins": 10,
+      "focus": "Decisión humana",
+      "title": "La IA no elige al ganador",
+      "do": "Pegue el texto en ambos chats. Si alguno declara un proveedor ganador, márquelo. Usted escribe en el bloc: quién en su cargo firmaría y qué dato falta.",
+      "look": "Un chat útil compara. Un chat peligroso decide por usted. La firma es humana.",
+      "prompt": "Rol: apoyo a compras, no tomador de decisión.\nContexto: Tres proveedores ficticios de cajas: P1 plazo 10 días, P2 plazo 18 días, P3 plazo 7 días y un solo tamaño. No hay precios.\nObjetivo: tabla para que un gerente decida DESPUÉS.\nFormato: columnas Proveedor, Plazo, Riesgo, Pregunta pendiente.\nRestricciones: No elijas ganador. No inventes precios ni puntajes. No escribas «recomiendo a P3». Cierra con la frase: La decisión y la firma son de un humano."
     }
   ],
   "items": [

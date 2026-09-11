@@ -38,7 +38,7 @@ export function allComparatorCases(data) {
     {
       id: "cmp-custom",
       title: "Mi prompt (cualquier texto)",
-      brief: "Pega aquí el mismo prompt que usaste en ChatGPT y en Claude. Sirve para las 4 tareas, un correo de tu cargo o cualquier otro pedido.",
+      brief: "Pega aquí el mismo prompt que usaste en ChatGPT y en Claude. Sirve para las tareas de clase, un correo de tu cargo o cualquier otro pedido.",
       prompt: "",
       look: "Las barras y el resumen se actualizan al escribir o pegar las dos respuestas.",
       group: "Libre",

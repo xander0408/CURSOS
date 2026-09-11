@@ -35,7 +35,7 @@ function liveTip(data, section) {
     return "Usa los límites que ves en pantalla.";
   }
   if (section === "actividades") {
-    return "Las cuatro tareas usan el mismo texto en ChatGPT y en Claude.";
+    return "Hay nueve tareas. Cada una entrena un hábito distinto: comparar, verificar, anonimizar, iterar.";
   }
   return "";
 }

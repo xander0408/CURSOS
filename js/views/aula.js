@@ -57,7 +57,7 @@ function winnerLabel(w) {
 function tableHtml(rows) {
   return `<div class="aula-table-wrap"><table class="data-table aula-table">
     <thead><tr>
-      <th>Alumno</th><th>Cargo</th><th>Módulos</th><th>4 tareas</th><th>Quiz</th>
+      <th>Alumno</th><th>Cargo</th><th>Módulos</th><th>Tareas</th><th>Quiz</th>
       <th>Insignias</th><th>Proyecto</th><th>Comparador</th><th>Pts</th><th>Último</th>
     </tr></thead>
     <tbody>${rows
@@ -68,7 +68,7 @@ function tableHtml(rows) {
           <td><strong>${escapeHtml(r.name)}</strong><br><code>${escapeHtml(r.username)}</code></td>
           <td>${escapeHtml(r.role || "—")}</td>
           <td>${r.modules}/10</td>
-          <td>${r.chatDone || 0}/${r.chatTotal || 4}</td>
+          <td>${r.chatDone || 0}/${r.chatTotal || 9}</td>
           <td>${r.quizzes ? `${r.quizAvg}% · ${r.quizzes}` : "—"}</td>
           <td>${r.badges || 0}/8</td>
           <td>${r.fiche ? "Ficha lista" : "Abierto"}</td>
@@ -88,13 +88,14 @@ function paintBoard(data, saves) {
   const n = rows.length || 1;
   const avgMod = Math.round((rows.reduce((a, r) => a + (r.modules || 0), 0) / n / 10) * 100);
   const ficheN = rows.filter((r) => r.fiche).length;
-  const chatN = rows.filter((r) => (r.chatDone || 0) >= 4).length;
+  const chatNeed = rows[0]?.chatTotal || 9;
+  const chatN = rows.filter((r) => (r.chatDone || 0) >= chatNeed).length;
   const liveN = rows.filter((r) => r.updatedAt && Date.now() - r.updatedAt < 60 * 1000).length;
   box.innerHTML = `
     <div class="aula-kpis">
       ${donut(Math.round((liveN / n) * 100), "activos 1 min")}
       ${donut(avgMod, "módulos del aula")}
-      ${donut(Math.round((chatN / n) * 100), "4 tareas hechas")}
+      ${donut(Math.round((chatN / n) * 100), "tareas de chat hechas")}
       ${donut(Math.round((ficheN / n) * 100), "ficha de proyecto")}
     </div>
     <div class="grid grid-2" style="margin-top:16px">

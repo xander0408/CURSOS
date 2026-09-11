@@ -396,7 +396,7 @@ export function seedInstructorGuide(data) {
     };
     s.progress.labs = s.progress.labs || {};
     s.progress.labs.checks = s.progress.labs.checks || {};
-    for (const it of data.activities?.items || []) {
+    for (const it of [...(data.activities?.chatTasks || []), ...(data.activities?.items || [])]) {
       s.progress.labs.checks[it.id] = true;
     }
     const tpls = data.library?.templates || [];

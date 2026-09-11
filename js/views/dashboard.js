@@ -64,11 +64,11 @@ export function renderDashboard(data) {
     <div class="path-rail">${pathHtml}</div>
     <div class="grid grid-2" style="margin-top:16px">
       <div class="card">
-        <h3>4 tareas en ChatGPT y Claude</h3>
-        <p>Obligatorias. El mismo texto en los dos chats. Menú Actividades: copiar, pegar, marcar.</p>
+        <h3>Tareas en ChatGPT y Claude</h3>
+        <p>Nueve prácticas (privacidad, iterar, audiencia, cifras, decisión humana y las cuatro de arranque). El mismo texto en los dos chats, salvo cuando la tarjeta indique otra cosa.</p>
         <p class="muted">${(data.activities.chatTasks || []).filter((t) => !!(s.progress.labs?.checks || {})[t.id]).length} de ${(data.activities.chatTasks || []).length} hechas.</p>
         <div class="btn-row">
-          <a class="btn btn-primary" href="#/actividades">Abrir las 4 tareas</a>
+          <a class="btn btn-primary" href="#/actividades">Abrir las tareas</a>
           <a class="btn" href="#/comparador/chat-1">Comparar en vivo</a>
         </div>
       </div>

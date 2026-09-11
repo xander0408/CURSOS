@@ -1,4 +1,6 @@
-const CHAT_IDS = ["chat-1", "chat-2", "chat-3", "chat-4"];
+function chatIds() {
+  return ["chat-1", "chat-2", "chat-3", "chat-4", "chat-5", "chat-6", "chat-7", "chat-8", "chat-9"];
+}
 
 export function snapshotFromState(st, username) {
   const p = st?.progress || {};
@@ -26,8 +28,8 @@ export function snapshotFromState(st, username) {
     modules: Number(p.totals?.modulesCompleted || Object.values(mods).filter((m) => m.status === "done").length),
     xp: Number(p.totals?.xp || 0),
     fiche: !!p.project?.ficheReady,
-    chatDone: CHAT_IDS.filter((id) => checks[id]).length,
-    chatTotal: CHAT_IDS.length,
+    chatDone: chatIds().filter((id) => checks[id]).length,
+    chatTotal: chatIds().length,
     badges: Object.keys(badges).length,
     quizzes: qn,
     quizAvg: qavg,
@@ -68,7 +70,7 @@ export function mergeRosterSaves(rosterStudents, saves) {
       xp: 0,
       fiche: false,
       chatDone: 0,
-      chatTotal: 4,
+      chatTotal: 9,
       badges: 0,
       quizzes: 0,
       quizAvg: 0,
