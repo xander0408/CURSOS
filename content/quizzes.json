@@ -6,7 +6,7 @@
       "title": "Historia de la IA",
       "subtitle": "Línea de tiempo y mito vs realidad",
       "icon": "📜",
-      "seconds": 20,
+      "seconds": 22,
       "questions": [
         {
           "q": "El campo llamado «inteligencia artificial» se bautizó principalmente en…",
@@ -46,7 +46,7 @@
       "title": "Fundamentos de IA generativa",
       "subtitle": "Qué es, límites y verificación",
       "icon": "🤖",
-      "seconds": 20,
+      "seconds": 22,
       "questions": [
         {
           "q": "¿Qué hace principalmente una IA generativa como ChatGPT o Claude?",
@@ -92,7 +92,7 @@
       "title": "Cómo hablar con una IA",
       "subtitle": "Contexto, objetivo, tono y ejemplos",
       "icon": "💬",
-      "seconds": 20,
+      "seconds": 22,
       "questions": [
         {
           "q": "«Hazme un correo para el cliente». ¿Cuál es el mayor problema?",
@@ -132,7 +132,7 @@
       "title": "Ingeniería de prompts",
       "subtitle": "Framework, prompt maestro y biblioteca",
       "icon": "🛠️",
-      "seconds": 20,
+      "seconds": 22,
       "questions": [
         {
           "q": "¿Cuáles son las 5 piezas del framework del curso?",
@@ -178,7 +178,7 @@
       "title": "IA + Word",
       "subtitle": "Documentos, tono y revisión humana",
       "icon": "📄",
-      "seconds": 20,
+      "seconds": 22,
       "questions": [
         {
           "q": "El mejor uso de la IA para un informe en Word es…",
@@ -218,7 +218,7 @@
       "title": "IA + Excel",
       "subtitle": "Fórmulas y validación",
       "icon": "📊",
-      "seconds": 20,
+      "seconds": 22,
       "questions": [
         {
           "q": "Si la IA da una fórmula que devuelve un número, ese número…",
@@ -258,7 +258,7 @@
       "title": "IA + PowerPoint",
       "subtitle": "Estructura, relato y guion",
       "icon": "📽️",
-      "seconds": 20,
+      "seconds": 22,
       "questions": [
         {
           "q": "¿Cuál es el mejor primer pedido para una presentación?",
@@ -298,7 +298,7 @@
       "title": "Análisis e investigación",
       "subtitle": "Resumir, comparar y verificar",
       "icon": "🔎",
-      "seconds": 20,
+      "seconds": 22,
       "questions": [
         {
           "q": "Para que un resumen no invente lo que no está, pides…",
@@ -338,7 +338,7 @@
       "title": "Productividad diaria",
       "subtitle": "Correos, minutas y decisiones",
       "icon": "⚡",
-      "seconds": 20,
+      "seconds": 22,
       "questions": [
         {
           "q": "¿Quién prioriza qué tareas son urgentes y compromete fechas?",
@@ -378,7 +378,7 @@
       "title": "Reto final: AI Business Master",
       "subtitle": "Mezcla de todo el laboratorio",
       "icon": "🏆",
-      "seconds": 25,
+      "seconds": 22,
       "questions": [
         {
           "q": "La regla de oro del laboratorio con IA es…",
@@ -423,7 +423,7 @@
       "title": "Calentamiento de 2 minutos",
       "subtitle": "Siempre abierto: privacidad y sentido común",
       "icon": "⚡",
-      "seconds": 15,
+      "seconds": 22,
       "questions": [
         {
           "q": "¿Qué NO debes pegar en ChatGPT o Claude en el trabajo?",

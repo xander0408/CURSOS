@@ -47,7 +47,7 @@ export function renderQuizIndex(data) {
         <div class="quiz-card-top"><span class="quiz-icon">${qz.icon || "❓"}</span>${badge}</div>
         <h3>${escapeHtml(qz.title)}</h3>
         <p>${escapeHtml(qz.subtitle || "")}</p>
-        <p class="muted">${qz.questions.length} preguntas · ${qz.seconds}s por pregunta</p>
+        <p class="muted">${qz.questions.length} preguntas · ${Number(qz.seconds) || 22}s por pregunta</p>
       </a>`;
     })
     .join("");
@@ -97,7 +97,7 @@ export function bindQuizPlay(data, quizId) {
         <p class="muted">${escapeHtml(quiz.subtitle || "")}</p>
         <div class="quiz-hero-meta">
           <span>${quiz.questions.length} preguntas</span>
-          <span>${quiz.seconds}s cada una</span>
+          <span>${Number(quiz.seconds) || 22}s cada una</span>
           <span>Puntos por rapidez + racha</span>
         </div>
         ${best ? `<p class="muted">Tu mejor puntaje: <strong>${best.score} pts</strong></p>` : ""}
@@ -115,7 +115,7 @@ export function bindQuizPlay(data, quizId) {
     const total = quiz.questions.length;
     const question = quiz.questions[session.index];
     const { pairs, correctSlot } = shuffleOptions(question);
-    const msTotal = quiz.seconds * 1000;
+    const msTotal = (Number(quiz.seconds) || 22) * 1000;
     const startAt = Date.now();
     let answered = false;
 
