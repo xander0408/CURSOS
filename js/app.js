@@ -13,7 +13,7 @@ import { renderPromptLab, bindPromptLab } from "./views/prompt-lab-view.js";
 import { renderComparator, bindComparator } from "./views/comparator.js";
 import { renderLibrary, bindLibrary } from "./views/library.js";
 import { renderProject, bindProject } from "./views/project.js";
-import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js";
+import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js?v=20260911q";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";

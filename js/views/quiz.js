@@ -1,6 +1,6 @@
 import { getState, update, logActivity } from "../store.js";
 import { escapeHtml, toast } from "../ui.js";
-import { scoreAnswer, maxScore, rank } from "../quiz-engine.js";
+import { scoreAnswer, maxScore, rank } from "../quiz-engine.js?v=20260911q";
 import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
 import { isModuleUnlocked } from "../journey.js";
@@ -14,13 +14,19 @@ const SHAPES = [
 ];
 
 function shuffleOptions(question) {
-  const pairs = question.options.map((text, orig) => ({ text, orig }));
+  const pairs = (question.options || []).map((text, orig) => ({ text, orig: Number(orig) }));
   for (let i = pairs.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [pairs[i], pairs[j]] = [pairs[j], pairs[i]];
+    const tmp = pairs[i];
+    pairs[i] = pairs[j];
+    pairs[j] = tmp;
   }
-  const correctSlot = pairs.findIndex((p) => p.orig === question.correct);
-  return { pairs, correctSlot };
+  return pairs;
+}
+
+function correctIndex(question) {
+  const n = Number(question.correct);
+  return Number.isInteger(n) ? n : -1;
 }
 
 let timerId = null;
@@ -114,7 +120,8 @@ export function bindQuizPlay(data, quizId) {
     clearTimer();
     const total = quiz.questions.length;
     const question = quiz.questions[session.index];
-    const { pairs, correctSlot } = shuffleOptions(question);
+    const pairs = shuffleOptions(question);
+    const rightOrig = correctIndex(question);
     const msTotal = (Number(quiz.seconds) || 27) * 1000;
     const startAt = Date.now();
     let answered = false;
@@ -131,7 +138,7 @@ export function bindQuizPlay(data, quizId) {
           ${pairs
             .map((p, i) => {
               const s = SHAPES[i % SHAPES.length];
-              return `<button class="quiz-answer ${s.color}" data-i="${i}" type="button" style="background:${s.hex}">
+              return `<button class="quiz-answer ${s.color}" data-orig="${p.orig}" type="button" style="background:${s.hex}">
                 <span class="quiz-glyph">${s.glyph}</span>
                 <span class="quiz-answer-text">${escapeHtml(p.text)}</span>
               </button>`;
@@ -149,35 +156,36 @@ export function bindQuizPlay(data, quizId) {
       if (remaining <= 0 && !answered) {
         answered = true;
         clearTimer();
-        lockAndScore(null, question, 0, msTotal, correctSlot);
+        lockAndScore(null, question, 0, msTotal, rightOrig);
       }
     }, 60);
 
     stage.querySelectorAll(".quiz-answer").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
         if (answered) return;
         answered = true;
         clearTimer();
-        const chosen = Number(btn.dataset.i);
+        const chosenOrig = Number(btn.getAttribute("data-orig"));
         const msRemaining = Math.max(0, msTotal - (Date.now() - startAt));
-        lockAndScore(chosen, question, msRemaining, msTotal, correctSlot);
+        lockAndScore(chosenOrig, question, msRemaining, msTotal, rightOrig);
       });
     });
   }
 
-  function lockAndScore(chosen, question, msRemaining, msTotal, correctSlot) {
-    const correct = chosen === correctSlot;
-    const res = scoreAnswer({ correct, msRemaining, msTotal, streak: session.streak });
+  function lockAndScore(chosenOrig, question, msRemaining, msTotal, rightOrig) {
+    const isRight = chosenOrig !== null && Number(chosenOrig) === Number(rightOrig);
+    const res = scoreAnswer({ correct: isRight, msRemaining, msTotal, streak: session.streak });
     session.score += res.points;
     session.streak = res.streak;
-    if (correct) session.correctCount += 1;
-    session.answers.push({ chosen, correct: correctSlot, wasRight: correct });
+    if (isRight) session.correctCount += 1;
+    session.answers.push({ chosen: chosenOrig, correct: rightOrig, wasRight: isRight });
 
     stage.querySelectorAll(".quiz-answer").forEach((btn) => {
-      const i = Number(btn.dataset.i);
+      const orig = Number(btn.getAttribute("data-orig"));
       btn.disabled = true;
-      if (i === correctSlot) btn.classList.add("is-correct");
-      else if (i === chosen) btn.classList.add("is-wrong");
+      if (orig === Number(rightOrig)) btn.classList.add("is-correct");
+      else if (chosenOrig !== null && orig === Number(chosenOrig)) btn.classList.add("is-wrong");
       else btn.classList.add("is-dim");
     });
 
@@ -185,8 +193,8 @@ export function bindQuizPlay(data, quizId) {
     if (scoreEl) scoreEl.textContent = `${session.score} pts${session.streak > 1 ? ` · 🔥${session.streak}` : ""}`;
 
     const feedback = document.createElement("div");
-    feedback.className = `quiz-feedback ${correct ? "ok" : "no"}`;
-    const head = chosen === null ? "⏱️ Se acabó el tiempo" : correct ? `✅ ¡Correcto! +${res.points} pts` : "❌ Incorrecto";
+    feedback.className = `quiz-feedback ${isRight ? "ok" : "no"}`;
+    const head = chosenOrig === null ? "⏱️ Se acabó el tiempo" : isRight ? `✅ ¡Correcto! +${res.points} pts` : "❌ Incorrecto";
     feedback.innerHTML = `
       <strong>${head}</strong>
       <p>${escapeHtml(question.explain || "")}</p>

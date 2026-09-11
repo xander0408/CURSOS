@@ -7,7 +7,7 @@ export const STREAK_STEP = 100;
 export const STREAK_MAX = 500;
 
 export function scoreAnswer({ correct, msRemaining, msTotal, streak }) {
-  if (!correct) {
+  if (correct !== true) {
     return { points: 0, streak: 0, correct: false };
   }
   const frac = Math.max(0, Math.min(1, msTotal > 0 ? msRemaining / msTotal : 0));

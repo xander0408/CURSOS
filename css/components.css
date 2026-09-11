@@ -517,11 +517,14 @@ body.instructor-on .timer-page .module-clock-instructor { display: flex; }
 .quiz-answer.green { background: #2e7d32 !important; }
 .quiz-answer:disabled { cursor: default; }
 .quiz-answer.is-correct {
-  box-shadow: 0 0 0 3px var(--ok), 0 0 22px rgba(126, 231, 135, 0.5);
+  box-shadow: 0 0 0 4px var(--ok), 0 0 22px rgba(126, 231, 135, 0.5);
+  outline: 3px solid var(--ok);
 }
 .quiz-answer.is-wrong {
-  box-shadow: 0 0 0 3px #fff inset;
-  opacity: 0.9;
+  box-shadow: 0 0 0 4px var(--danger);
+  outline: 3px solid var(--danger);
+  opacity: 0.85;
+  filter: grayscale(0.4);
 }
 .quiz-answer.is-dim { opacity: 0.4; }
 
