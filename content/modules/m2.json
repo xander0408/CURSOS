@@ -68,7 +68,7 @@
       "blocks": [
         { "type": "text", "html": "<p>Refinar es señalar con precisión qué cambiar: «el segundo párrafo es muy técnico», «quita la promesa de fecha», «agrega una despedida cordial». Cuanto más concreta la corrección, mejor el ajuste.</p>" },
         { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Corrige sobre lo que ya tienes en lugar de empezar de cero: la conversación conserva el contexto." },
-        { "type": "text", "html": "<p>Cuando el prompt ya te sirva, <strong>súbelo al portal del curso</strong>: en el reto de este módulo o en el menú Biblioteca, el recuadro «Sube tu prompt final al portal del curso». Así queda guardado en tu sesión (sin datos reales de la empresa).</p>" }
+        { "type": "text", "html": "<p>Cuando el prompt ya te sirva, <strong>guárdalo como tuyo</strong>: menú Biblioteca o Prompt Lab, botón <strong>Guardar mi prompt</strong>. Cada alumno crea y guarda los suyos en su sesión (sin datos reales de la empresa).</p>" }
       ]
     }
   ],

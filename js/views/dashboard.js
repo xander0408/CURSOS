@@ -88,6 +88,8 @@ export function renderDashboard(data) {
       <div class="btn-row">${badges}</div>
       <div class="btn-row" style="margin-top:12px">
         <a class="btn" href="#/quiz">Quiz de repaso</a>
+        <a class="btn" href="#/biblioteca">Mis prompts</a>
+        <a class="btn" href="#/prompt-lab">Crear un prompt</a>
         <a class="btn" href="#/actividades">Actividades</a>
       </div>
     </div>

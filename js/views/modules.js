@@ -5,7 +5,7 @@ import { frameworkForm, readFramework, rubricHtml, readRubric } from "../prompt-
 import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
 import { isModuleUnlocked } from "../journey.js";
-import { ownPromptBoxHtml, bindOwnPromptUploads } from "./library.js?v=20260911p";
+import { ownPromptBoxHtml, bindOwnPromptUploads } from "./library.js?v=20260911p2";
 
 export function moduleProgress(full) {
   const st = readModule(full.id);

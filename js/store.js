@@ -245,23 +245,44 @@ export function update(mutator) {
   return state;
 }
 
-export function saveOwnPrompt({ title, text, source }) {
+export function saveOwnPrompt({ title, text, source, id }) {
   const body = String(text || "").trim();
   if (body.length < 24) {
-    return { error: "Pega un prompt de al menos un par de frases, sin datos reales de la empresa." };
+    return { error: "Escribe tu prompt (al menos un par de frases), sin datos reales de la empresa." };
   }
+  const cleanTitle = (String(title || "").trim() || "Mi prompt").slice(0, 80);
+  let savedId = id || "";
   update((s) => {
     if (!s.progress.library) s.progress.library = { savedIds: [], custom: [] };
     if (!Array.isArray(s.progress.library.custom)) s.progress.library.custom = [];
-    s.progress.library.custom.push({
-      id: "c" + Date.now(),
-      title: (String(title || "").trim() || "Prompt final").slice(0, 80),
-      text: body.slice(0, 8000),
-      source: String(source || "portal").slice(0, 48),
-      savedAt: Date.now(),
-    });
+    const list = s.progress.library.custom;
+    const hit = savedId ? list.find((c) => c.id === savedId) : null;
+    if (hit) {
+      hit.title = cleanTitle;
+      hit.text = body.slice(0, 8000);
+      hit.source = String(source || hit.source || "portal").slice(0, 48);
+      hit.savedAt = Date.now();
+    } else {
+      savedId = "c" + Date.now();
+      list.push({
+        id: savedId,
+        title: cleanTitle,
+        text: body.slice(0, 8000),
+        source: String(source || "portal").slice(0, 48),
+        savedAt: Date.now(),
+      });
+    }
   });
-  return { ok: true };
+  return { ok: true, id: savedId };
+}
+
+export function deleteOwnPrompt(id) {
+  const key = String(id || "");
+  if (!key) return;
+  update((s) => {
+    if (!Array.isArray(s.progress.library?.custom)) return;
+    s.progress.library.custom = s.progress.library.custom.filter((c) => c.id !== key);
+  });
 }
 
 export function resetAll() {
