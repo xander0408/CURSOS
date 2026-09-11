@@ -66,28 +66,32 @@ function fmt(ms) {
 }
 
 function paintFace(clock) {
-  const el = document.getElementById("class-clock");
+  const el = document.getElementById("module-clock");
   if (!el) return;
+  const timeEl = el.querySelector(".module-clock-time");
+  const labelEl = el.querySelector(".module-clock-label");
+  const statusEl = el.querySelector(".module-clock-status");
   const left = remainMs(clock);
   const running = !!clock?.running && left > 0;
+  const ended = !!clock?.running && left === 0;
   el.classList.toggle("is-on", running);
   el.classList.toggle("is-warn", running && left <= 60 * 1000);
-  el.classList.toggle("is-up", !!clock?.running && left === 0);
-  if (!clock?.running) {
-    el.hidden = true;
-    el.textContent = "";
-    el.title = "";
-    return;
-  }
+  el.classList.toggle("is-up", ended);
   el.hidden = false;
-  const label = clock.label ? `${clock.label} · ` : "";
-  if (left === 0) {
-    el.textContent = `${label}Tiempo`;
-    el.title = "Se acabó el tiempo de esta actividad";
+  if (!clock?.running) {
+    if (timeEl) timeEl.textContent = "00:00";
+    if (labelEl) labelEl.textContent = "Reloj del aula";
+    if (statusEl) statusEl.textContent = "Sin actividad en curso. El instructor inicia el tiempo aquí.";
     return;
   }
-  el.textContent = `${label}${fmt(left)}`;
-  el.title = "Tiempo de la actividad en curso";
+  if (labelEl) labelEl.textContent = clock.label || "Actividad";
+  if (ended) {
+    if (timeEl) timeEl.textContent = "00:00";
+    if (statusEl) statusEl.textContent = "Se acabó el tiempo.";
+    return;
+  }
+  if (timeEl) timeEl.textContent = fmt(left);
+  if (statusEl) statusEl.textContent = left <= 60 * 1000 ? "Último minuto." : "Tiempo de la actividad en curso.";
 }
 
 export async function refreshClockFace() {
@@ -112,19 +116,22 @@ export function stopClockLoop() {
 }
 
 export function bindInstructorClock() {
-  const start = document.getElementById("clock-start");
-  const stop = document.getElementById("clock-stop");
-  if (!start) return;
-  start.onclick = async () => {
-    const minutes = document.getElementById("clock-min")?.value;
-    const label = document.getElementById("clock-label")?.value;
-    const r = await pushClock({ minutes, label, action: "start" });
-    paintFace(readLocal());
-    toast(r.localOnly && !syncEnabled() ? "Temporizador iniciado en este equipo." : "Temporizador iniciado.");
-  };
-  stop.onclick = async () => {
-    await pushClock({ action: "stop", minutes: 1, label: "Actividad" });
-    paintFace(readLocal());
-    toast("Temporizador detenido.");
-  };
+  if (window.__ablClockBound) return;
+  window.__ablClockBound = true;
+  document.addEventListener("click", async (e) => {
+    const start = e.target.closest("#clock-start");
+    const stop = e.target.closest("#clock-stop");
+    if (start) {
+      const minutes = document.getElementById("clock-min")?.value;
+      const label = document.getElementById("clock-label")?.value;
+      const r = await pushClock({ minutes, label, action: "start" });
+      paintFace(readLocal());
+      toast(r.localOnly && !syncEnabled() ? "Temporizador iniciado en este equipo." : "Temporizador iniciado.");
+    }
+    if (stop) {
+      await pushClock({ action: "stop", minutes: 1, label: "Actividad" });
+      paintFace(readLocal());
+      toast("Temporizador detenido.");
+    }
+  });
 }

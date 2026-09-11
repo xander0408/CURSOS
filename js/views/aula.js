@@ -137,7 +137,7 @@ export function renderAdmin(data) {
   return `
     <div class="page-head">
       <h2>Dashboard del aula</h2>
-      <p>Progreso, tareas, evaluaciones y proyecto. Controla el temporizador desde la barra superior.</p>
+      <p>Progreso, tareas, evaluaciones y proyecto. El temporizador está en Módulos, como el primer bloque, a tamaño de aula.</p>
     </div>
     <div id="aula-live"><p class="muted">Cargando el aula…</p></div>
     <div class="card" style="margin-top:16px">

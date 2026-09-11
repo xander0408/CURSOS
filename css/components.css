@@ -252,6 +252,50 @@
 }
 
 .module-list { display: flex; flex-direction: column; gap: 10px; }
+.module-clock {
+  text-align: center;
+  padding: 28px 20px 32px;
+}
+.module-clock-kicker {
+  margin: 0 0 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.module-clock-label {
+  margin: 0 0 8px;
+  font-size: clamp(18px, 2.4vw, 28px);
+  font-weight: 700;
+  color: var(--text);
+}
+.module-clock-time {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: clamp(5rem, 18vw, 11rem);
+  line-height: 0.92;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+.module-clock.is-warn .module-clock-time { color: var(--accent-2); }
+.module-clock.is-up .module-clock-time { color: var(--danger); }
+.module-clock-status {
+  margin: 12px 0 0;
+  font-size: 16px;
+  color: var(--text-muted);
+}
+.module-clock-instructor {
+  display: none;
+  justify-content: center;
+  margin-top: 22px;
+}
+body.instructor-on .module-clock-instructor { display: flex; }
+.module-clock .clock-controls input {
+  font-size: 16px;
+  min-height: 44px;
+}
 .module-row {
   display: grid;
   grid-template-columns: 56px 1fr auto;

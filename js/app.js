@@ -21,7 +21,7 @@ import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bin
 import { renderAdmin, bindAdmin } from "./views/aula.js";
 import { renderActivities, bindActivities } from "./views/activities.js";
 import { renderCronograma } from "./views/schedule.js";
-import { startClockLoop, bindInstructorClock } from "./clock.js";
+import { startClockLoop, bindInstructorClock, refreshClockFace } from "./clock.js";
 
 const TITLES = {
   dashboard: "Ruta",
@@ -180,6 +180,7 @@ function renderInner() {
     bindDashboard();
   } else if (route.name === "modules") {
     root.innerHTML = renderModulesIndex(data);
+    refreshClockFace();
   } else if (route.name === "module") {
     root.innerHTML = renderModule(data, route.params);
     bindModuleView(data, route.params);

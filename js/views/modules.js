@@ -426,6 +426,20 @@ export function renderModulesIndex(data) {
       <p>Diez laboratorios en orden. Empieza por Historia de la IA. El instructor puede abrir todos los módulos.</p>
     </div>
     ${sectionAgent(data, "modules")}
-    <div class="module-list">${cards}</div>
+    <div class="module-list">
+      <section class="card module-clock" id="module-clock" aria-live="polite">
+        <p class="module-clock-kicker">Módulo · Reloj</p>
+        <p class="module-clock-label">Reloj del aula</p>
+        <p class="module-clock-time">00:00</p>
+        <p class="module-clock-status">Sin actividad en curso. El instructor inicia el tiempo aquí.</p>
+        <div class="clock-controls module-clock-instructor">
+          <label>Minutos <input id="clock-min" type="number" min="1" max="180" value="10" /></label>
+          <label>Etiqueta <input id="clock-label" maxlength="40" value="Actividad" /></label>
+          <button class="btn btn-primary" type="button" id="clock-start">Iniciar</button>
+          <button class="btn btn-ghost" type="button" id="clock-stop">Detener</button>
+        </div>
+      </section>
+      ${cards}
+    </div>
   `;
 }

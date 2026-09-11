@@ -164,21 +164,6 @@
   width: 110px;
   flex-shrink: 0;
 }
-.class-clock {
-  font-variant-numeric: tabular-nums;
-  font-weight: 700;
-  font-size: 13px;
-  padding: 6px 12px;
-  border-radius: 999px;
-  background: var(--accent-dim);
-  color: var(--accent);
-  white-space: nowrap;
-  max-width: 42vw;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.class-clock.is-warn { color: #e6b800; }
-.class-clock.is-up { color: #ff6b6b; }
 .header-spacer { flex: 1; }
 .menu-btn {
   display: none;
@@ -209,17 +194,6 @@
 .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
-.instructor-bar {
-  display: none;
-  grid-column: 1 / -1;
-  background: var(--accent-2-dim);
-  border-bottom: 1px solid var(--border);
-  padding: 8px 24px;
-  font-size: 13px;
-  color: var(--accent-2);
-}
-body.instructor-on .instructor-bar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.instructor-bar-msg { flex: 1; min-width: 180px; }
 .clock-controls {
   display: flex;
   flex-wrap: wrap;
@@ -300,8 +274,7 @@ body.instructor-on .instructor-bar { display: flex; align-items: center; gap: 12
 
 /* Puerta de acceso: oculta el marco de la app mientras no hay sesion */
 body.logged-out .sidebar,
-body.logged-out .header,
-body.logged-out .instructor-bar { display: none !important; }
+body.logged-out .header { display: none !important; }
 body.logged-out .app {
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
