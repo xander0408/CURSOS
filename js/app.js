@@ -1,7 +1,7 @@
-import { ensureTrailingSlash, bindBrandImages } from "./paths.js?v=20260910t";
+import { ensureTrailingSlash, bindBrandImages } from "./paths.js?v=20260911q2";
 import { initTheme, toggleTheme, currentTheme } from "./theme.js";
 import { loadAll } from "./content.js";
-import { parseHash, onRoute } from "./router.js?v=20260910t";
+import { parseHash, onRoute } from "./router.js?v=20260911q2";
 import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks, seedInstructorGuide } from "./store.js";
 import { setSyncApi, pullIntoLocal, pushNow } from "./sync.js";
 import { toast, openModal, closeModal } from "./ui.js?v=20260910s";
@@ -13,7 +13,7 @@ import { renderPromptLab, bindPromptLab } from "./views/prompt-lab-view.js";
 import { renderComparator, bindComparator } from "./views/comparator.js";
 import { renderLibrary, bindLibrary } from "./views/library.js";
 import { renderProject, bindProject } from "./views/project.js";
-import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js?v=20260911q";
+import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./views/quiz.js?v=20260911q2";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
@@ -214,6 +214,7 @@ function renderInner() {
       bindQuizPlay(data, route.params.quizId);
     } else {
       root.innerHTML = renderQuizIndex(data);
+      bindQuizIndex();
     }
   } else if (route.name === "promptLab") {
     root.innerHTML = renderPromptLab(data);

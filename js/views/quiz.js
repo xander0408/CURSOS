@@ -1,9 +1,8 @@
 import { getState, update, logActivity } from "../store.js";
 import { escapeHtml, toast } from "../ui.js";
-import { scoreAnswer, maxScore, rank } from "../quiz-engine.js?v=20260911q";
+import { scoreAnswer, maxScore, rank } from "../quiz-engine.js";
 import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
-import { isModuleUnlocked } from "../journey.js";
 
 // Estilo Kahoot: colores y formas fijas para hasta 4 opciones.
 const SHAPES = [
@@ -26,7 +25,7 @@ function shuffleOptions(question) {
 
 function correctIndex(question) {
   const n = Number(question.correct);
-  return Number.isInteger(n) ? n : -1;
+  return Number.isFinite(n) && n === Math.floor(n) ? n : -1;
 }
 
 let timerId = null;
@@ -47,9 +46,8 @@ export function renderQuizIndex(data) {
       const total = maxScore(qz);
       const pct = b ? Math.round((b.score / total) * 100) : 0;
       const badge = b ? `<span class="pill ok">Mejor: ${b.score} pts · ${pct}%</span>` : `<span class="pill">Sin jugar</span>`;
-      const open = !qz.moduleId || isModuleUnlocked(data, qz.moduleId);
-      const href = open ? `#/quiz/${qz.id}` : "#/quiz";
-      return `<a class="card clickable quiz-card ${open ? "" : "soon"}" href="${href}" style="text-decoration:none;color:inherit">
+      const href = `#/quiz/${encodeURIComponent(qz.id)}`;
+      return `<a class="card clickable quiz-card" href="${href}" data-quiz="${escapeHtml(qz.id)}" style="text-decoration:none;color:inherit">
         <div class="quiz-card-top"><span class="quiz-icon">${qz.icon || "❓"}</span>${badge}</div>
         <h3>${escapeHtml(qz.title)}</h3>
         <p>${escapeHtml(qz.subtitle || "")}</p>
@@ -67,19 +65,38 @@ export function renderQuizIndex(data) {
   `;
 }
 
+export function bindQuizIndex() {
+  document.querySelectorAll("a.quiz-card[data-quiz]").forEach((a) => {
+    a.addEventListener("click", (e) => {
+      const id = a.getAttribute("data-quiz");
+      if (!id) return;
+      e.preventDefault();
+      location.hash = "#/quiz/" + id;
+    });
+  });
+}
+
 // ---- Juego de un quiz ----
-export function renderQuizPlay(data, quizId) {
-  const quiz = data.quizzes.find((q) => q.id === quizId);
-  if (!quiz) return `<div class="page-head"><h2>Quiz no encontrado</h2><p><a href="#/quiz">Volver</a></p></div>`;
-  if (quiz.moduleId && !isModuleUnlocked(data, quiz.moduleId)) {
-    return `<div class="page-head"><h2>Quiz bloqueado</h2><p>Completa el módulo correspondiente primero.</p><p><a href="#/quiz">Volver</a></p></div>`;
+function findQuiz(data, quizId) {
+  const raw = String(quizId || "");
+  let decoded = raw;
+  try {
+    decoded = decodeURIComponent(raw);
+  } catch {
+    decoded = raw;
   }
+  return (data.quizzes || []).find((q) => q.id === raw || q.id === decoded) || null;
+}
+
+export function renderQuizPlay(data, quizId) {
+  const quiz = findQuiz(data, quizId);
+  if (!quiz) return `<div class="page-head"><h2>Quiz no encontrado</h2><p><a href="#/quiz">Volver</a></p></div>`;
   return `<div id="quiz-stage" class="quiz-stage"></div>`;
 }
 
 // La vista de juego es imperativa (temporizador en vivo), no solo innerHTML.
 export function bindQuizPlay(data, quizId) {
-  const quiz = data.quizzes.find((q) => q.id === quizId);
+  const quiz = findQuiz(data, quizId);
   const stage = document.getElementById("quiz-stage");
   if (!quiz || !stage) return;
 

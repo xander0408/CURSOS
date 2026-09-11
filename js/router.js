@@ -21,7 +21,16 @@ export function parseHash() {
     };
   }
   if (head === "retos") return { name: "challenges", params: { moduleId: parts[1] || "" } };
-  if (head === "quiz") return { name: "quiz", params: { quizId: parts[1] || "" } };
+  if (head === "quiz") {
+    const rawId = parts.slice(1).join("/") || "";
+    let quizId = rawId;
+    try {
+      quizId = decodeURIComponent(rawId);
+    } catch {
+      quizId = rawId;
+    }
+    return { name: "quiz", params: { quizId } };
+  }
   if (head === "prompt-lab") return { name: "promptLab", params: {} };
   if (head === "comparador") return { name: "comparator", params: { caseId: parts[1] || "" } };
   if (head === "biblioteca") return { name: "library", params: {} };
