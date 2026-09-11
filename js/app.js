@@ -20,7 +20,7 @@ import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bin
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260910t";
 import { renderActivities, bindActivities } from "./views/activities.js";
 import { renderCronograma } from "./views/schedule.js";
-import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage } from "./clock.js?v=20260910t";
+import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n";
 
 const TITLES = {
   dashboard: "Ruta",
@@ -186,6 +186,7 @@ function renderInner() {
   document.getElementById("sidebar").classList.remove("open");
   document.getElementById("overlay").classList.remove("show");
   document.body.classList.toggle("timer-on", route.name === "timer");
+  if (route.name !== "timer") stopTimerNova();
   setInstructorUi();
 
   if (route.name === "dashboard") {
@@ -200,6 +201,7 @@ function renderInner() {
     }
     root.innerHTML = renderTimerPage();
     refreshClockFace();
+    bindTimerNova();
   } else if (route.name === "module") {
     root.innerHTML = renderModule(data, route.params);
     bindModuleView(data, route.params);

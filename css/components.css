@@ -275,9 +275,73 @@ body.timer-on .main {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 4px;
   padding: 8px 16px 12px;
   text-align: center;
   container-type: size;
+}
+.timer-nova {
+  margin: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.timer-nova-frame {
+  height: min(58vh, 64cqh, 72vw);
+  width: min(58vh, 64cqh, 72vw);
+  max-height: 100%;
+}
+.timer-nova-frame svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+.timer-nova-name {
+  margin: 0;
+  font-size: clamp(13px, 1.5vw, 18px);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.nova-breathe {
+  transform-origin: 40px 74px;
+  animation: nova-breathe 3.8s ease-in-out infinite;
+}
+@keyframes nova-breathe {
+  0%, 100% { transform: translateY(0) scale(1, 1); }
+  50% { transform: translateY(-5px) scale(1.02, 0.978); }
+}
+.timer-digits {
+  flex: 0 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 960px) {
+  .timer-page {
+    flex-direction: row;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .timer-nova {
+    flex: 0 0 42%;
+    max-width: 46vw;
+  }
+  .timer-nova-frame {
+    height: min(78vh, 86cqh);
+    width: min(78vh, 42vw);
+  }
+  .timer-digits { flex: 1 1 auto; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nova-breathe { animation: none; }
 }
 .timer-page .module-clock-label {
   margin: 0;
@@ -291,7 +355,7 @@ body.timer-on .main {
   margin: 0;
   font-variant-numeric: tabular-nums;
   font-weight: 800;
-  font-size: min(28cqw, 68cqh, 22vw);
+  font-size: min(22cqw, 42cqh, 18vw);
   line-height: 0.86;
   letter-spacing: 0.04em;
   color: var(--accent);

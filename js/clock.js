@@ -1,5 +1,6 @@
 import { syncEnabled, fetchClockRemote, pushClockRemote } from "./sync.js";
 import { toast } from "./ui.js";
+import { assetUrl } from "./paths.js";
 
 const LOCAL_KEY = "aiBusinessLab.classClock";
 let tickTimer = null;
@@ -97,17 +98,91 @@ function paintFace(clock) {
 export function renderTimerPage() {
   return `
     <section class="timer-page" id="module-clock" aria-live="polite">
-      <p class="module-clock-label">Timer</p>
-      <p class="module-clock-time">00:00</p>
-      <p class="module-clock-status">Sin actividad en curso.</p>
-      <div class="clock-controls module-clock-instructor">
-        <label>Minutos <input id="clock-min" type="number" min="1" max="180" value="10" /></label>
-        <label>Etiqueta <input id="clock-label" maxlength="40" value="Actividad" /></label>
-        <button class="btn btn-primary" type="button" id="clock-start">Iniciar</button>
-        <button class="btn btn-ghost" type="button" id="clock-stop">Detener</button>
+      <figure class="timer-nova" aria-label="Nova vigilando el aula">
+        <div class="timer-nova-frame" id="timer-nova"></div>
+        <figcaption class="timer-nova-name">Nova</figcaption>
+      </figure>
+      <div class="timer-digits">
+        <p class="module-clock-label">Timer</p>
+        <p class="module-clock-time">00:00</p>
+        <p class="module-clock-status">Sin actividad en curso.</p>
+        <div class="clock-controls module-clock-instructor">
+          <label>Minutos <input id="clock-min" type="number" min="1" max="180" value="10" /></label>
+          <label>Etiqueta <input id="clock-label" maxlength="40" value="Actividad" /></label>
+          <button class="btn btn-primary" type="button" id="clock-start">Iniciar</button>
+          <button class="btn btn-ghost" type="button" id="clock-stop">Detener</button>
+        </div>
       </div>
     </section>
   `;
+}
+
+let novaRaf = 0;
+let novaMove = null;
+let novaBlinkT = 0;
+
+export function stopTimerNova() {
+  if (novaRaf) cancelAnimationFrame(novaRaf);
+  novaRaf = 0;
+  if (novaMove) {
+    window.removeEventListener("pointermove", novaMove);
+    novaMove = null;
+  }
+}
+
+export async function bindTimerNova() {
+  stopTimerNova();
+  const host = document.getElementById("timer-nova");
+  if (!host) return;
+  try {
+    const res = await fetch(assetUrl("avatares/nova-timer.svg"), { cache: "no-store" });
+    if (!res.ok) return;
+    host.innerHTML = await res.text();
+    if (!host.isConnected) return;
+  } catch {
+    return;
+  }
+  const svg = host.querySelector("svg");
+  if (!svg) return;
+  const pupils = host.querySelectorAll(".nova-pupils");
+  const lids = host.querySelector(".nova-lids");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let targetX = 0;
+  let targetY = 0.28;
+  let curX = 0;
+  let curY = 0.28;
+  let lastPtr = 0;
+  novaMove = (e) => {
+    const r = svg.getBoundingClientRect();
+    const cx = r.left + r.width * 0.5;
+    const cy = r.top + r.height * 0.34;
+    targetX = Math.max(-1, Math.min(1, (e.clientX - cx) / Math.max(80, r.width * 0.55)));
+    targetY = Math.max(-0.7, Math.min(1, (e.clientY - cy) / Math.max(80, r.height * 0.5)));
+    lastPtr = performance.now();
+  };
+  window.addEventListener("pointermove", novaMove, { passive: true });
+  novaBlinkT = 1800 + Math.random() * 2200;
+  const tick = (t) => {
+    if (reduce) {
+      pupils.forEach((p) => p.setAttribute("transform", "translate(0 1.2)"));
+      return;
+    }
+    if (t - lastPtr > 1600) {
+      targetX = Math.sin(t / 2400) * 0.72;
+      targetY = 0.32 + Math.sin(t / 3100) * 0.18;
+    }
+    curX += (targetX - curX) * 0.07;
+    curY += (targetY - curY) * 0.07;
+    const dx = curX * 2.35;
+    const dy = 0.4 + curY * 1.85;
+    pupils.forEach((p) => p.setAttribute("transform", `translate(${dx.toFixed(2)} ${dy.toFixed(2)})`));
+    if (lids) {
+      const cycle = (t + novaBlinkT) % 5200;
+      lids.setAttribute("opacity", cycle > 5020 && cycle < 5120 ? "1" : "0");
+    }
+    novaRaf = requestAnimationFrame(tick);
+  };
+  novaRaf = requestAnimationFrame(tick);
 }
 
 export async function refreshClockFace() {
