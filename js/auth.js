@@ -126,10 +126,17 @@ export function renderLogin(root, data, onSuccess) {
   });
 }
 
+export function canUseClassroomTimer() {
+  return !!getState().profile.isInstructor;
+}
+
 export function gateRedirect() {
   const s = getState();
   const route = (location.hash || "#/").replace(/^#/, "") || "/";
-  if (s.profile.isInstructor) return null;
+  const path = (location.pathname || "").toLowerCase();
+  const isTimer = route === "/timer" || route.startsWith("/timer/") || /(^|\/)timer\/?$/.test(path);
+  if (canUseClassroomTimer()) return null;
   if (route.startsWith("/cronograma") || route.startsWith("/admin")) return "#/";
+  if (isTimer) return "#/modulos";
   return null;
 }

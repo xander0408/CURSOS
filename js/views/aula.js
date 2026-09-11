@@ -2,8 +2,6 @@ import { getState, listLocalStudentSaves, resetLocalUser, logActivity } from "..
 import { escapeHtml, toast } from "../ui.js";
 import { fetchAdminSaves, syncEnabled } from "../sync.js";
 import { mergeRosterSaves, shortName, snapshotFromState } from "../aula-stats.js";
-import { bindInstructorClock } from "../clock.js";
-
 function localSnapshots() {
   const out = [];
   for (const u of listLocalStudentSaves()) {
@@ -144,6 +142,7 @@ export function renderAdmin(data) {
       <h3>Acceso</h3>
       <p>Usuario: <code>${escapeHtml(ins.username || "instructor")}</code></p>
       <p class="muted">Credenciales de administración.</p>
+      <p><a class="btn" href="#/timer">Timer (solo tú)</a></p>
       <p><a class="btn" href="#/cronograma">Cronograma (solo tú)</a></p>
     </div>
     <div class="card" style="margin-top:16px">
@@ -154,7 +153,6 @@ export function renderAdmin(data) {
 }
 
 export function bindAdmin(data) {
-  bindInstructorClock();
   const paint = async () => {
     if (!document.getElementById("aula-live")) return;
     const local = localSnapshots();

@@ -22,11 +22,22 @@
   </style>
   <script>
     (function () {
+      var spa = { timer:1, modulos:1, modulo:1, retos:1, quiz:1, "prompt-lab":1, comparador:1, biblioteca:1, proyecto:1, progreso:1, perfil:1, cuentas:1, manual:1, admin:1, actividades:1, cronograma:1 };
       var segs = (location.pathname || "/").split("/").filter(Boolean);
       var repo = segs[0] || "CURSOS";
-      var base = "/" + repo + "/";
+      var rest = segs.slice(1);
+      if (spa[String(repo).toLowerCase()]) {
+        rest = segs;
+        repo = "";
+      }
+      var extra = rest.filter(function (s) { return s !== "index.html"; }).join("/");
+      var hash = location.hash || "";
+      if (extra && (!hash || hash === "#" || hash === "#/")) {
+        hash = "#/" + extra.replace(/\/+$/, "");
+      }
+      var base = repo ? "/" + repo + "/" : "/";
       window.__abl404Base = base;
-      location.replace(base + (location.search || "") + (location.hash || ""));
+      location.replace(base + (location.search || "") + hash);
     })();
   </script>
 </head>

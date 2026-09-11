@@ -50,8 +50,37 @@ export function bindBrandImages(root = document) {
   });
 }
 
+const SPA_HEADS = new Set([
+  "timer",
+  "modulos",
+  "modulo",
+  "retos",
+  "quiz",
+  "prompt-lab",
+  "comparador",
+  "biblioteca",
+  "proyecto",
+  "progreso",
+  "perfil",
+  "cuentas",
+  "manual",
+  "admin",
+  "actividades",
+  "cronograma",
+]);
+
 export function ensureTrailingSlash() {
   const p = location.pathname || "/";
+  const segs = p.split("/").filter(Boolean).filter((s) => s !== "index.html");
+  const last = String(segs[segs.length - 1] || "").toLowerCase();
+  if (SPA_HEADS.has(last)) {
+    const repo = segs[0] && !SPA_HEADS.has(String(segs[0]).toLowerCase()) ? segs[0] : "";
+    const extra = (repo ? segs.slice(1) : segs).join("/");
+    const base = repo ? `/${repo}/` : "/";
+    const hash = location.hash && location.hash !== "#" && location.hash !== "#/" ? location.hash : `#/${extra.replace(/\/+$/, "")}`;
+    location.replace(base + (location.search || "") + hash);
+    return true;
+  }
   if (p.endsWith("/") || /\.html$/i.test(p)) return false;
   location.replace(p + "/" + (location.search || "") + (location.hash || ""));
   return true;

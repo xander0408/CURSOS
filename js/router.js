@@ -1,8 +1,13 @@
 export function parseHash() {
   const raw = (location.hash || "#/").replace(/^#/, "") || "/";
-  const parts = raw.split("/").filter(Boolean);
+  let parts = raw.split("/").filter(Boolean);
+  if (parts.length === 0) {
+    const segs = (location.pathname || "/").split("/").filter(Boolean);
+    const extra = segs.filter((s) => s !== "CURSOS" && s !== "index.html");
+    if (extra[0]) parts = extra;
+  }
   if (parts.length === 0) return { name: "dashboard", params: {} };
-  const head = parts[0];
+  const head = String(parts[0] || "").toLowerCase();
   if (head === "modulos") return { name: "modules", params: {} };
   if (head === "timer") return { name: "timer", params: {} };
   if (head === "modulo") {

@@ -1,14 +1,13 @@
-import { ensureTrailingSlash, bindBrandImages } from "./paths.js";
+import { ensureTrailingSlash, bindBrandImages } from "./paths.js?v=20260910t";
 import { initTheme, toggleTheme, currentTheme } from "./theme.js";
 import { loadAll } from "./content.js";
-import { parseHash, onRoute } from "./router.js";
+import { parseHash, onRoute } from "./router.js?v=20260910t";
 import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks, seedInstructorGuide } from "./store.js";
 import { setSyncApi, pullIntoLocal, pushNow } from "./sync.js";
 import { toast, openModal, closeModal } from "./ui.js";
 import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js";
-import { renderModulesIndex, renderModule, bindModuleView } from "./views/modules.js";
+import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260910t";
 import { checkBadges } from "./badges.js";
-import { moduleProgress } from "./views/modules.js";
 import { renderChallengesIndex, bindChallengesIndex } from "./views/challenges.js";
 import { renderPromptLab, bindPromptLab } from "./views/prompt-lab-view.js";
 import { renderComparator, bindComparator } from "./views/comparator.js";
@@ -16,12 +15,12 @@ import { renderLibrary, bindLibrary } from "./views/library.js";
 import { renderProject, bindProject } from "./views/project.js";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay } from "./views/quiz.js";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
-import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect } from "./auth.js";
+import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
-import { renderAdmin, bindAdmin } from "./views/aula.js";
+import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260910t";
 import { renderActivities, bindActivities } from "./views/activities.js";
 import { renderCronograma } from "./views/schedule.js";
-import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage } from "./clock.js";
+import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage } from "./clock.js?v=20260910t";
 
 const TITLES = {
   dashboard: "Ruta",
@@ -50,6 +49,7 @@ function setInstructorUi() {
   document.body.classList.toggle("instructor-on", inst);
   document.getElementById("nav-admin")?.classList.toggle("is-hidden", !inst);
   document.getElementById("nav-cronograma")?.classList.toggle("is-hidden", !inst);
+  document.getElementById("nav-timer")?.classList.toggle("is-hidden", !inst);
   document.getElementById("btn-instructor")?.classList.toggle("is-hidden", true);
 }
 
@@ -64,6 +64,16 @@ function bindShell() {
     side.classList.remove("open");
     overlay.classList.remove("show");
   };
+  side.addEventListener("click", (e) => {
+    const a = e.target.closest("a.nav-link");
+    if (!a || !side.contains(a)) return;
+    const route = a.getAttribute("data-route");
+    if (!route) return;
+    e.preventDefault();
+    location.hash = "#" + (route.startsWith("/") ? route : "/" + route);
+    side.classList.remove("open");
+    overlay.classList.remove("show");
+  });
   document.getElementById("btn-theme")?.addEventListener("click", () => {
     toggleTheme();
     const btn = document.getElementById("btn-theme");
@@ -184,6 +194,10 @@ function renderInner() {
   } else if (route.name === "modules") {
     root.innerHTML = renderModulesIndex(data);
   } else if (route.name === "timer") {
+    if (!canUseClassroomTimer()) {
+      location.hash = "#/modulos";
+      return;
+    }
     root.innerHTML = renderTimerPage();
     refreshClockFace();
   } else if (route.name === "module") {

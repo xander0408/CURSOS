@@ -32,6 +32,17 @@
   <script>
     (function () {
       var p = location.pathname || "/";
+      var spa = { timer:1, modulos:1, modulo:1, retos:1, quiz:1, "prompt-lab":1, comparador:1, biblioteca:1, proyecto:1, progreso:1, perfil:1, cuentas:1, manual:1, admin:1, actividades:1, cronograma:1 };
+      var segs = p.split("/").filter(Boolean).filter(function (s) { return s !== "index.html"; });
+      var last = String(segs[segs.length - 1] || "").toLowerCase();
+      if (spa[last]) {
+        var repo = segs[0] && !spa[String(segs[0]).toLowerCase()] ? segs[0] : "";
+        var extra = (repo ? segs.slice(1) : segs).join("/");
+        var base = repo ? "/" + repo + "/" : "/";
+        var hash = location.hash && location.hash !== "#" && location.hash !== "#/" ? location.hash : "#/" + extra.replace(/\/+$/, "");
+        location.replace(base + (location.search || "") + hash);
+        return;
+      }
       if (!/\/$|\.html$/i.test(p)) {
         location.replace(p + "/" + location.search + location.hash);
         return;
@@ -76,6 +87,7 @@
       document.write('<link rel="stylesheet" href="css/tokens.css?v=' + v + '">');
       document.write('<link rel="stylesheet" href="css/layout.css?v=' + v + '">');
       document.write('<link rel="stylesheet" href="css/components.css?v=' + v + '">');
+      document.write('<script type="module" src="js/app.js?v=' + v + '"><\/script>');
     })();
   </script>
   <link rel="icon" id="brand-favicon" type="image/png" href="avatares/magnatic-perfil-vertical.png" />
@@ -98,7 +110,7 @@
       <a class="nav-link" href="#/perfil" data-route="/perfil">Conocernos</a>
       <a class="nav-link" href="#/cuentas" data-route="/cuentas">Cuentas gratis</a>
       <a class="nav-link" href="#/modulos" data-route="/modulos">Módulos</a>
-      <a class="nav-link" href="#/timer" data-route="/timer">Timer</a>
+      <a class="nav-link is-hidden" href="#/timer" data-route="/timer" id="nav-timer">Timer</a>
       <a class="nav-link" href="#/retos" data-route="/retos">Retos</a>
       <a class="nav-link" href="#/quiz" data-route="/quiz">Quiz</a>
       <a class="nav-link" href="#/actividades" data-route="/actividades">4 tareas</a>
@@ -137,6 +149,5 @@
   <div class="modal-back" id="modal-back">
     <div class="modal" id="modal"></div>
   </div>
-  <script type="module" src="js/app.js"></script>
 </body>
 </html>
