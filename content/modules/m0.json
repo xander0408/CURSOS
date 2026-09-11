@@ -9,7 +9,6 @@
       "activaPhase": 0,
       "blocks": [
         { "type": "text", "html": "<p>Este laboratorio es para gerencias que van a <strong>dirigir</strong> una herramienta, no a programarla. La historia evita dos errores: creer que la IA nació en 2022, y creer que es magia o una persona dentro del servidor.</p>" },
-        { "type": "callout", "kind": "think", "title": "En sala", "text": "En 60 segundos: cuando oyes inteligencia artificial, qué ves. Robot, película, Excel mágico, o un chat." },
         { "type": "list", "items": ["La IA como campo tiene más de 70 años.", "Machine learning y deep learning son capas distintas, no sinónimos.", "Hoy conviven muchos productos: chats, buscadores, copilotos de oficina y modelos abiertos."] }
       ]
     },

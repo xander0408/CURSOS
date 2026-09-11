@@ -100,6 +100,18 @@
 .callout.verify { background: var(--ok-dim); border-color: var(--ok); }
 .callout.privacy { background: var(--info-dim); border-color: var(--info); }
 .callout strong { display: block; margin-bottom: 4px; }
+details.sala-cue {
+  margin-top: 12px;
+  padding: 8px 12px;
+}
+details.sala-cue summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  list-style: none;
+}
+details.sala-cue summary::-webkit-details-marker { display: none; }
+details.sala-cue p { margin: 8px 0 0; }
 
 .lesson-block { margin-bottom: 16px; }
 .lesson-block h3 { margin: 0 0 8px; }

@@ -1,5 +1,5 @@
 import { getState, getModule, readModule, markLessonDone, saveChallengeResult, completeModule, recountChallenges, logActivity } from "../store.js";
-import { activaBar, progressBar, pillForDifficulty, renderBlocks, escapeHtml, copyText, toast } from "../ui.js";
+import { activaBar, progressBar, pillForDifficulty, renderBlocks, escapeHtml, copyText, toast, isSalaCallout, salaCueHtml } from "../ui.js?v=20260910s";
 import { evaluate, xpFor, assemblePrompt } from "../challenge-engine.js";
 import { frameworkForm, readFramework, rubricHtml, readRubric } from "../prompt-lab.js";
 import { checkBadges } from "../badges.js";
@@ -51,9 +51,9 @@ function renderLesson(data, full, lessonId) {
   const idx = Math.max(0, full.lessons.findIndex((l) => l.id === lessonId));
   const lesson = full.lessons[idx];
   const p = moduleProgress(full);
-  const notes = getState().profile.isInstructor
-    ? data.instructor.modules?.[full.id]?.lessons?.[lesson.id]
-    : null;
+  const inst = !!getState().profile.isInstructor;
+  const notes = inst ? data.instructor.modules?.[full.id]?.lessons?.[lesson.id] : null;
+  const salaFromBlocks = (lesson.blocks || []).filter(isSalaCallout).map((b) => b.text);
   const phase = lesson.activaPhase ?? idx % 6;
   const prev = full.lessons[idx - 1];
   const next = full.lessons[idx + 1];
@@ -69,7 +69,7 @@ function renderLesson(data, full, lessonId) {
     ${progressBar(p.pct)}
     <div class="card" style="margin-top:16px">
       ${renderBlocks(lesson.blocks)}
-      ${notes ? `<div class="callout think"><strong>Guía</strong>${escapeHtml(notes)}</div>` : ""}
+      ${inst ? salaCueHtml([...salaFromBlocks, notes]) : ""}
       <div class="lesson-nav">
         ${prev ? `<a class="btn" href="#/modulo/${full.id}/leccion/${prev.id}">Anterior</a>` : `<span></span>`}
         <button class="btn btn-primary" type="button" id="btn-continue" data-module="${full.id}" data-lesson="${lesson.id}" data-next="${next ? next.id : ""}" data-first-ch="${firstChallenge ? firstChallenge.id : ""}">Continuar</button>
@@ -100,7 +100,7 @@ export function renderChallenge(data, full, challengeId) {
       <p>${escapeHtml(ch.instructions)}</p>
       ${ch.thinkFirst ? `<div class="callout think"><strong>Piensa primero</strong>${escapeHtml(ch.thinkFirst)}</div>` : ""}
       <div id="challenge-body">${challengeBody(ch, saved, submitted)}</div>
-      ${notes && submitted ? `<div class="callout privacy"><strong>Criterios</strong>${escapeHtml(notes)}</div>` : ""}
+      ${getState().profile.isInstructor ? salaCueHtml([notes]) : ""}
       <div class="feedback ${submitted ? "show" : ""} ${saved && saved.score >= 70 ? "ok" : "no"}" id="feedback">
         ${submitted ? feedbackHtml(ch, saved) : ""}
       </div>

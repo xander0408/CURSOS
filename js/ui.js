@@ -96,6 +96,7 @@ export function renderBlocks(blocks = []) {
     .map((b) => {
       if (b.type === "text") return `<div class="lesson-block">${b.html}</div>`;
       if (b.type === "callout") {
+        if (isSalaCallout(b)) return "";
         return `<div class="callout ${b.kind}"><strong>${escapeHtml(b.title)}</strong>${escapeHtml(b.text)}</div>`;
       }
       if (b.type === "list") {
@@ -104,4 +105,16 @@ export function renderBlocks(blocks = []) {
       return "";
     })
     .join("");
+}
+
+export function isSalaCallout(b) {
+  return b?.type === "callout" && /^en sala$/i.test(String(b.title || ""));
+}
+
+export function salaCueHtml(parts = []) {
+  const texts = parts.map((t) => String(t || "").trim()).filter(Boolean);
+  if (!texts.length) return "";
+  return `<details class="callout think sala-cue"><summary>En sala</summary>${texts
+    .map((t) => `<p>${escapeHtml(t)}</p>`)
+    .join("")}</details>`;
 }
