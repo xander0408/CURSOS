@@ -100,7 +100,6 @@ export function renderTimerPage() {
     <section class="timer-page" id="module-clock" aria-live="polite">
       <figure class="timer-nova" aria-label="Nova vigilando el aula">
         <div class="timer-nova-frame" id="timer-nova"></div>
-        <figcaption class="timer-nova-name">Nova</figcaption>
       </figure>
       <div class="timer-digits">
         <p class="module-clock-label">Timer</p>

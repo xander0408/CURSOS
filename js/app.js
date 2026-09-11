@@ -20,7 +20,7 @@ import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bin
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260910t";
 import { renderActivities, bindActivities } from "./views/activities.js";
 import { renderCronograma } from "./views/schedule.js";
-import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n";
+import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n2";
 
 const TITLES = {
   dashboard: "Ruta",
