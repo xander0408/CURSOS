@@ -146,7 +146,6 @@ export async function bindTimerNova() {
   const pupils = host.querySelectorAll(".nova-pupils");
   const lids = host.querySelector(".nova-lids");
   const mouth = host.querySelector(".nova-mouth-line");
-  const yawn = host.querySelector(".nova-yawn");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let targetX = 0;
   let targetY = 0.28;
@@ -163,7 +162,6 @@ export async function bindTimerNova() {
   };
   window.addEventListener("pointermove", novaMove, { passive: true });
   novaBlinkT = 1800 + Math.random() * 2200;
-  const yawnEvery = 7800;
   const tick = (t) => {
     if (reduce) {
       pupils.forEach((p) => p.setAttribute("transform", "translate(0 1.2)"));
@@ -178,31 +176,13 @@ export async function bindTimerNova() {
     const dx = curX * 2.35;
     const dy = 0.4 + curY * 1.85;
     pupils.forEach((p) => p.setAttribute("transform", `translate(${dx.toFixed(2)} ${dy.toFixed(2)})`));
-
-    const yawnPhase = (t + novaBlinkT) % yawnEvery;
-    const yawning = yawnPhase > yawnEvery - 1600;
-    let yawnAmt = 0;
-    if (yawning) {
-      const u = (yawnPhase - (yawnEvery - 1600)) / 1600;
-      yawnAmt = u < 0.35 ? u / 0.35 : u < 0.62 ? 1 : 1 - (u - 0.62) / 0.38;
-      yawnAmt = Math.max(0, Math.min(1, yawnAmt));
-    }
     if (mouth) {
-      const talk = 40.4 + Math.sin(t / 280) * 1.6 + Math.sin(t / 510) * 0.8;
-      const dip = yawning ? 41 + yawnAmt * 8.5 : talk;
-      mouth.setAttribute("d", `M${34 - yawnAmt * 1.2} 37 Q40 ${dip.toFixed(2)} ${46 + yawnAmt * 1.2} 37`);
-      mouth.setAttribute("opacity", String(0.72 - yawnAmt * 0.55));
-    }
-    if (yawn) {
-      yawn.setAttribute("ry", (0.5 + yawnAmt * 6.2).toFixed(2));
-      yawn.setAttribute("rx", (4.1 + yawnAmt * 2.4).toFixed(2));
-      yawn.setAttribute("cy", (39.2 + yawnAmt * 2.2).toFixed(2));
-      yawn.setAttribute("opacity", (yawnAmt * 0.82).toFixed(2));
+      const dip = 40.4 + Math.sin(t / 280) * 1.4 + Math.sin(t / 510) * 0.7;
+      mouth.setAttribute("d", `M34 37 Q40 ${dip.toFixed(2)} 46 37`);
     }
     if (lids) {
       const blink = (t + novaBlinkT) % 5200;
-      const blinking = blink > 5020 && blink < 5120;
-      lids.setAttribute("opacity", blinking || yawnAmt > 0.35 ? (blinking ? "1" : String(0.25 + yawnAmt * 0.55)) : "0");
+      lids.setAttribute("opacity", blink > 5020 && blink < 5120 ? "1" : "0");
     }
     novaRaf = requestAnimationFrame(tick);
   };
