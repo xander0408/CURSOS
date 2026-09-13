@@ -35,6 +35,10 @@ function accountOf(data, username, password) {
   return st || null;
 }
 
+function asObject(v) {
+  return v && typeof v === "object" && !Array.isArray(v) ? v : {};
+}
+
 function snapshot(st, username) {
   const p = st?.progress || {};
   const mods = p.modules || {};
@@ -47,9 +51,17 @@ function snapshot(st, username) {
     ? Math.round(qList.reduce((a, q) => a + ((q.correct || 0) / Math.max(q.totalQuestions || 1, 1)) * 100, 0) / qn)
     : 0;
   const cmp = p.comparator || {};
+  const ku = asObject(st?.profile?.knowUs);
+  const proj = asObject(p.project);
+  const draft = Array.isArray(p.promptLab?.drafts) ? p.promptLab.drafts[0] : null;
   const moduleMap = {};
   for (const [id, m] of Object.entries(mods)) {
-    moduleMap[id] = { status: m.status || "open", score: Number(m.score || 0) };
+    moduleMap[id] = {
+      status: m.status || "open",
+      score: Number(m.score || 0),
+      lessonsDone: Array.isArray(m.lessonsDone) ? m.lessonsDone.slice() : [],
+      completedAt: m.completedAt || null,
+    };
   }
   return {
     username,
@@ -73,6 +85,51 @@ function snapshot(st, username) {
       claudeChars: String(cmp.claudeNotes || "").trim().length,
     },
     moduleMap,
+    logs: Array.isArray(p.activity) ? p.activity.slice() : [],
+    prompts: (p.library?.custom || []).map((t) => ({
+      id: t.id || "",
+      title: String(t.title || "Prompt"),
+      text: String(t.text || ""),
+      source: String(t.source || ""),
+      savedAt: Number(t.savedAt || 0),
+    })),
+    librarySavedIds: Array.isArray(p.library?.savedIds) ? p.library.savedIds.slice() : [],
+    quizScores: Object.entries(asObject(quizzes)).map(([id, q]) => ({
+      id,
+      score: Number(q?.score || 0),
+      correct: Number(q?.correct || 0),
+      totalQuestions: Number(q?.totalQuestions || 0),
+      at: Number(q?.at || 0),
+    })),
+    challenges: Object.entries(asObject(p.challenges)).map(([id, c]) => ({
+      id,
+      status: c?.status || "open",
+      score: Number(c?.score || 0),
+      attempts: Number(c?.attempts || 0),
+      answers: c?.answers ?? null,
+    })),
+    labChecks: Object.keys(checks).filter((id) => checks[id]),
+    badgesList: Object.keys(asObject(badges)),
+    project: {
+      ficheReady: !!proj.ficheReady,
+      step: Number(proj.step || 0),
+      fields: asObject(proj.fields),
+    },
+    knowUs: {
+      years: String(ku.years || ""),
+      pain: String(ku.pain || ""),
+      aiLevel: String(ku.aiLevel || ""),
+      hope: String(ku.hope || ""),
+    },
+    promptDraft: draft && typeof draft === "object" ? draft : {},
+    comparatorNotes: {
+      caseId: String(cmp.caseId || ""),
+      winner: String(cmp.winner || ""),
+      why: String(cmp.why || ""),
+      chatgptNotes: String(cmp.chatgptNotes || ""),
+      claudeNotes: String(cmp.claudeNotes || ""),
+      customPrompt: String(cmp.customPrompt || ""),
+    },
   };
 }
 

@@ -914,3 +914,30 @@ body.instructor-on .timer-page .module-clock-instructor { display: flex; }
 .aula-table-wrap { overflow: auto; }
 .aula-table tr.is-live td:first-child { box-shadow: inset 3px 0 0 var(--ok); }
 .aula-table tr.is-pending { opacity: 0.7; }
+.aula-recaps { display: grid; gap: 10px; }
+.aula-recap {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 8px 12px;
+  background: var(--bg);
+}
+.aula-recap > summary {
+  cursor: pointer;
+  font-weight: 600;
+  padding: 6px 0;
+}
+.dossier-student { margin-top: 8px; }
+.dossier-block { margin: 12px 0; }
+.dossier-block h4 { margin: 0 0 6px; font-size: 14px; }
+.dossier-pre {
+  white-space: pre-wrap;
+  font-size: 12px;
+  line-height: 1.4;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  overflow-x: auto;
+}
+.dossier-log { padding-left: 18px; }
+.dossier-prompt { margin-bottom: 12px; }

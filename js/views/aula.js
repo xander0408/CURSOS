@@ -1,7 +1,8 @@
 import { getState, listLocalStudentSaves, resetLocalUser, logActivity } from "../store.js";
 import { escapeHtml, toast } from "../ui.js";
 import { fetchAdminSaves, syncEnabled } from "../sync.js";
-import { mergeRosterSaves, shortName, snapshotFromState } from "../aula-stats.js";
+import { mergeRosterSaves, mergeTwoSaves, shortName, snapshotFromState } from "../aula-stats.js?v=20260912d";
+import { recapBoardHtml, printCollectedPdf } from "../aula-dossier.js?v=20260912d";
 function localSnapshots() {
   const out = [];
   for (const u of listLocalStudentSaves()) {
@@ -86,6 +87,7 @@ function paintBoard(data, saves) {
   const box = document.getElementById("aula-live");
   if (!box) return;
   const rows = mergeRosterSaves(data.roster?.students || [], saves);
+  window.__aulaLastRows = rows;
   const n = rows.length || 1;
   const avgMod = Math.round((rows.reduce((a, r) => a + (r.modules || 0), 0) / n / 10) * 100);
   const ficheN = rows.filter((r) => r.fiche).length;
@@ -114,6 +116,11 @@ function paintBoard(data, saves) {
       <p class="muted">Actualización automática. La marca verde indica actividad reciente.</p>
       ${tableHtml(rows)}
     </div>
+    <div class="card" style="margin-top:16px">
+      <h3>Lo recopilado de cada participante</h3>
+      <p class="muted">Logs, prompts, quizzes, tareas, retos, ficha y comparador. No se borra el avance al consultar ni al descargar el PDF.</p>
+      ${recapBoardHtml(rows, data, window.__aulaOpenUsers)}
+    </div>
   `;
 }
 
@@ -139,6 +146,9 @@ export function renderAdmin(data) {
       <h2>Dashboard del aula</h2>
       <p>Progreso, tareas, evaluaciones y proyecto. El temporizador está en el menú: Timer.</p>
     </div>
+    <p class="btn-row">
+      <button class="btn btn-primary" type="button" id="btn-aula-pdf">Descargar PDF de lo recolectado</button>
+    </p>
     <div id="aula-live"><p class="muted">Cargando el aula…</p></div>
     <div class="card" style="margin-top:16px">
       <h3>Acceso</h3>
@@ -155,8 +165,14 @@ export function renderAdmin(data) {
 }
 
 export function bindAdmin(data) {
+  window.__aulaOpenUsers = window.__aulaOpenUsers || new Set();
   const paint = async () => {
     if (!document.getElementById("aula-live")) return;
+    document.querySelectorAll(".aula-recap[data-aula-user]").forEach((el) => {
+      const key = el.getAttribute("data-aula-user");
+      if (el.open) window.__aulaOpenUsers.add(key);
+      else window.__aulaOpenUsers.delete(key);
+    });
     const local = localSnapshots();
     if (!syncEnabled()) {
       paintBoard(data, local);
@@ -172,13 +188,19 @@ export function bindAdmin(data) {
     for (const row of [...local, ...cloud]) {
       const k = String(row.username || "").toLowerCase();
       const prev = by.get(k);
-      if (!prev || (row.updatedAt || 0) >= (prev.updatedAt || 0)) by.set(k, row);
+      by.set(k, prev ? mergeTwoSaves(prev, row) : row);
     }
     paintBoard(data, [...by.values()]);
   };
   paint();
   window.clearInterval(window.__aulaTimer);
   window.__aulaTimer = window.setInterval(paint, 5000);
+
+  document.getElementById("btn-aula-pdf")?.addEventListener("click", () => {
+    const rows = window.__aulaLastRows || mergeRosterSaves(data.roster?.students || [], localSnapshots());
+    const ok = printCollectedPdf(rows, data);
+    toast(ok ? "Elige Guardar como PDF en la ventana de impresión." : "No se pudo abrir la impresión.");
+  });
 
   document.querySelectorAll("[data-reset-user]").forEach((btn) => {
     btn.addEventListener("click", () => {

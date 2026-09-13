@@ -455,8 +455,8 @@ export function logActivity(kind, detail) {
       kind: String(kind || "evento"),
       detail: String(detail || "").slice(0, 240),
     });
-    if (s.progress.activity.length > 100) {
-      s.progress.activity = s.progress.activity.slice(-100);
+    if (s.progress.activity.length > 400) {
+      s.progress.activity = s.progress.activity.slice(-400);
     }
   });
 }

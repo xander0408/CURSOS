@@ -17,7 +17,7 @@ import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
-import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260910t";
+import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260912d";
 import { renderActivities, bindActivities } from "./views/activities.js";
 import { renderCronograma } from "./views/schedule.js";
 import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n4";
