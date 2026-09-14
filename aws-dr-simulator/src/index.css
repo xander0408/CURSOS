@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --color-surface: #0b1220;
+  --color-panel: #111b2e;
+  --color-panel-2: #162338;
+  --color-line: #24344f;
+  --color-accent: #38bdf8;
+  --color-ok: #22c55e;
+  --color-warn: #f59e0b;
+  --color-crit: #ef4444;
+  --color-aws: #f59e0b;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(1200px 600px at 20% -10%, #123056 0%, transparent 50%),
+    radial-gradient(900px 500px at 100% 0%, #1a1530 0%, transparent 45%),
+    #070b14;
+  color: #e8eef7;
+  font-family: var(--font-sans);
+}
+
+.replication-pipe {
+  background-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(56, 189, 248, 0.15) 20%,
+    rgba(56, 189, 248, 0.7) 50%,
+    rgba(56, 189, 248, 0.15) 80%,
+    transparent 100%
+  );
+  background-size: 100% 220%;
+  animation: pipe-flow 1.4s linear infinite;
+}
+
+.replication-pipe.is-paused {
+  animation-play-state: paused;
+  filter: grayscale(0.4);
+}
+
+.replication-pipe.is-alert {
+  background-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(239, 68, 68, 0.2) 20%,
+    rgba(245, 158, 11, 0.7) 50%,
+    rgba(239, 68, 68, 0.2) 80%,
+    transparent 100%
+  );
+}
+
+@keyframes pipe-flow {
+  from {
+    background-position: 0 -80%;
+  }
+  to {
+    background-position: 0 80%;
+  }
+}
+
+.pulse-crit {
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.55);
+  animation: pulse-crit 1.4s ease-out infinite;
+}
+
+@keyframes pulse-crit {
+  70% {
+    box-shadow: 0 0 0 12px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.scroll-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scroll-thin::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 99px;
+}
