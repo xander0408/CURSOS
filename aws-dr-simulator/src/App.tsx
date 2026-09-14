@@ -33,7 +33,7 @@ export default function App() {
             exit={{ opacity: 0 }}
             className="bg-red-600 px-4 py-2 text-center text-sm font-bold tracking-[0.14em] text-white"
           >
-            DISASTER DETECTED — {scenario.failureHeadline.toUpperCase()}
+            DISASTER DETECTED: {scenario.failureHeadline.toUpperCase()}
           </motion.div>
         )}
       </AnimatePresence>
@@ -41,7 +41,7 @@ export default function App() {
       <main className="mx-auto max-w-[1600px] space-y-4 px-4 py-4">
         <div className="flex flex-wrap items-center justify-between gap-2">
           <p className="text-xs text-slate-400">
-            Magnatic Cloud DR Simulator · clock {sim.simClockLabel} · {sim.phaseLabel}
+            Magnatic Cloud DR Simulator | {sim.simClockLabel} | {sim.phaseLabel}
           </p>
           <p className="text-[11px] uppercase tracking-wider text-amber-200/80">
             Simulation only
@@ -67,7 +67,7 @@ export default function App() {
               <h2 className="text-lg font-bold tracking-wide text-emerald-200">
                 DISASTER RECOVERY SUCCESSFUL
               </h2>
-              <p className="mt-1 text-xs text-emerald-100/80">Resultado de la simulación — no es un failover real.</p>
+              <p className="mt-1 text-xs text-emerald-100/80">Resultado de la simulación. No es un failover real.</p>
               <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 <Result label="RPO Achieved" value="5 seconds" />
                 <Result label="Target RPO" value="15 seconds" />
@@ -76,7 +76,7 @@ export default function App() {
                   value={formatRto(sim.rtoAchievedSec ?? 154)}
                 />
                 <Result label="Target RTO" value="5 minutes" />
-                <Result label="Data Loss" value="~5 seconds" />
+                <Result label="Data Loss" value="5 seconds" />
                 <Result label="Application Status" value="ONLINE" />
                 <Result label="Recovery Instance" value="RUNNING" />
                 <Result label="Traffic" value="AWS Recovery Instance" />
@@ -120,7 +120,7 @@ export default function App() {
       <footer className="border-t border-slate-800 px-4 py-6 text-center text-xs text-slate-500">
         <p className="font-medium text-slate-300">AWS Disaster Recovery Simulator</p>
         <p>Educational / Demonstration Tool</p>
-        <p>Simulation only — No AWS resources are being modified.</p>
+        <p>Simulation only. No AWS resources are being modified.</p>
       </footer>
 
       <HowItWorksModal open={sim.howItWorksOpen} onClose={toggleHowItWorks} />

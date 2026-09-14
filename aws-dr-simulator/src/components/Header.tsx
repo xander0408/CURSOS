@@ -13,7 +13,7 @@ export function Header({ api }: HeaderProps) {
       <div className="flex flex-wrap items-center gap-2 border-b border-amber-500/20 bg-amber-500/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-amber-200">
         <ShieldAlert className="h-3.5 w-3.5" />
         <span>Simulation Mode</span>
-        <span className="text-amber-500/60">·</span>
+        <span className="text-amber-500/60">|</span>
         <span>No AWS resources are being modified</span>
       </div>
       <div className="flex flex-wrap items-center justify-between gap-4 px-4 py-3">
@@ -53,7 +53,7 @@ export function Header({ api }: HeaderProps) {
             onClick={startDemo}
             className="inline-flex items-center gap-1.5 rounded-lg border border-violet-400/40 bg-violet-500/15 px-3 py-1.5 text-xs font-semibold text-violet-100 hover:bg-violet-500/25"
           >
-            🎬 Demo Mode
+            Demo Mode
           </button>
           <button
             type="button"

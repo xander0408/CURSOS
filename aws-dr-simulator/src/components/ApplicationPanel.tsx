@@ -25,10 +25,10 @@ export function ApplicationPanel({ sim }: ApplicationPanelProps) {
       </div>
       {sim.state === 'RECOVERY_COMPLETE' && (
         <ul className="space-y-1 text-xs text-emerald-200">
-          <li>✓ Recovery successful</li>
-          <li>✓ Application available</li>
-          <li>✓ Recovery Point restored</li>
-          <li>✓ Traffic redirected</li>
+          <li>Recovery successful</li>
+          <li>Application available</li>
+          <li>Recovery Point restored</li>
+          <li>Traffic redirected</li>
         </ul>
       )}
       {sim.applicationStatus === 'OFFLINE' && (

@@ -43,7 +43,7 @@ export function DRSPanel({ sim }: DRSPanelProps) {
       <MetaRow label="RTO Target" value="5 minutes" />
       {sim.recoveryPointSelected && (
         <p className="mt-3 rounded-lg bg-sky-500/10 px-3 py-2 text-xs text-sky-100">
-          Recovery Point Selected · {sim.recoveryPointTimestamp} · RPO 5 seconds
+          Recovery Point Selected. {sim.recoveryPointTimestamp}. RPO 5 seconds
         </p>
       )}
       <p className="mt-3 text-[11px] text-slate-500">

@@ -19,7 +19,7 @@ export function ReplicationChart({ sim }: ReplicationChartProps) {
     <section className="rounded-2xl border border-slate-700 bg-[#111b2e] p-4">
       <h2 className="mb-1 text-sm font-semibold tracking-wide">Replication Health</h2>
       <p className="mb-3 text-[11px] text-slate-400">
-        Últimos ~60 ticks de la simulación. Latency, throughput y edad del recovery point (valores ilustrativos).
+        Últimos 60 segundos de la simulación. Latency, throughput y edad del recovery point.
       </p>
       <div className="h-56">
         <ResponsiveContainer width="100%" height="100%">
