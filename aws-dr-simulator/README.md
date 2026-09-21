@@ -97,8 +97,12 @@ Controles adicionales:
 aws-dr-simulator/
   src/
     components/
+    components/backup/
     hooks/useDisasterSimulation.ts
+    hooks/useBackupSimulation.ts
     types/simulation.ts
+    types/backup.ts
     data/scenarios.ts
+    data/backup.ts
     App.tsx
 ```
