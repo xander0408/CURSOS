@@ -61,6 +61,7 @@ export function renderLibrary(data) {
   const seeds = data.library.templates
     .map(
       (t) => `<div class="card">
+        ${t.area ? `<p class="muted"><strong>Área:</strong> ${escapeHtml(t.area)}</p>` : ""}
         <h3>${escapeHtml(t.title)}</h3>
         <p class="muted">${escapeHtml(t.useWhen)}</p>
         <p>${escapeHtml(t.hint)}</p>
@@ -69,6 +70,14 @@ export function renderLibrary(data) {
           <button class="btn btn-primary" type="button" data-copy-id="${t.id}">Copiar plantilla</button>
           <button class="btn" type="button" data-clone-id="${t.id}">Guardar una copia mía</button>
         </div>
+      </div>`
+    )
+    .join("");
+  const errors = (data.library.commonErrors || [])
+    .map(
+      (item) => `<div class="card">
+        <h3>${escapeHtml(item.error)}</h3>
+        <p>${escapeHtml(item.avoid)}</p>
       </div>`
     )
     .join("");
@@ -82,7 +91,10 @@ export function renderLibrary(data) {
     <h3 style="margin-top:24px">Tus prompts (${mine.length})</h3>
     <div class="grid grid-2">${custom}</div>
     <h3 style="margin-top:24px">Plantillas del curso</h3>
+    <p class="muted">Incluye prompts avanzados por área de CISA. Todos usan casos ficticios o datos anonimizados y requieren revisión humana.</p>
     <div class="grid grid-2">${seeds}</div>
+    ${errors ? `<h3 style="margin-top:24px">Errores comunes y cómo evitarlos</h3>
+      <div class="grid grid-2">${errors}</div>` : ""}
   `;
 }
 

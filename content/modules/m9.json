@@ -5,22 +5,23 @@
   "lessons": [
     {
       "id": "l1",
-      "title": "Un problema real, de punta a punta",
+      "title": "Proyecto de 45 minutos: siete pasos",
       "activaPhase": 0,
       "blocks": [
-        { "type": "text", "html": "<p>El proyecto final no es un examen: es aplicar todo el laboratorio a <strong>un problema real de tu trabajo</strong>. Vas a recorrer las fases A.C.T.I.V.A. sobre un caso propio y producir una ficha con tu criterio, tu prompt y tu ahorro estimado.</p>" },
-        { "type": "list", "items": ["Elige un problema que de verdad te quite tiempo.", "Recorre los 12 pasos guiados en la sección Proyecto final.", "Al terminar generas una ficha que resume todo."] },
+        { "type": "text", "html": "<p>Aplica el laboratorio a <strong>un problema real de tu trabajo descrito de forma anónima</strong>. Dispones de 45 minutos para producir evidencia de tu criterio, no para copiar el primer resultado de un chat.</p>" },
+        { "type": "list", "items": ["1. Problema.", "2. Prompt R+C+O+F+R.", "3. ChatGPT.", "4. Claude.", "5. Comparar.", "6. Refinar y validar.", "7. Presentar."] },
         { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Cuál es la tarea que, si la aceleraras, te devolvería más horas a la semana? Ese es tu proyecto." }
       ]
     },
     {
       "id": "l2",
-      "title": "La ficha: evidencia de criterio, no un diploma",
+      "title": "Siete criterios y presentación de 3–5 minutos",
       "activaPhase": 5,
       "blocks": [
-        { "type": "text", "html": "<p>La ficha final documenta problema, solución, prompt, resultado, <strong>validación</strong>, tiempos antes y después, ahorro estimado, riesgos y control humano. Demuestra que usaste la IA con cabeza, no que copiaste un truco.</p>" },
+        { "type": "text", "html": "<p>La ficha final documenta problema, solución, prompt, resultados, <strong>validación</strong>, riesgos y control humano. La presentación dura 3–5 minutos y debe demostrar por qué la solución sería útil y segura.</p>" },
+        { "type": "list", "items": ["Problema claro y anónimo.", "Prompt con las cinco piezas.", "Prueba en ambos chats.", "Comparación con criterios.", "Refinamiento visible.", "Verificación humana.", "Presentación clara con riesgos y control humano."] },
         { "type": "callout", "kind": "verify", "title": "Verificar", "text": "El ahorro estimado y los riesgos los pones tú. La IA no mide el valor de tu tiempo ni conoce los riesgos de tu empresa." },
-        { "type": "text", "html": "<p>Abre la sección <strong>Proyecto final</strong> en el menú para completar los 12 pasos y generar tu ficha.</p>" }
+        { "type": "text", "html": "<p>Abre la sección <strong>Proyecto final</strong> en el menú para completar los siete pasos y generar tu ficha.</p>" }
       ]
     }
   ],

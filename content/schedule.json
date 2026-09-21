@@ -1,7 +1,7 @@
 {
   "title": "Cronograma del instructor y del aula",
   "hours": "Viernes 11 y 25 de septiembre de 2026 · 2 × 8 h",
-  "goal": "Pedir, iterar y verificar. Proyecte el guion de 21 slides. El proyecto final es el examen del viernes 2 (14:20–16:25).",
+  "goal": "Pedir, iterar y verificar. El viernes 2 culmina con tres prácticas de 25 minutos y un proyecto final de 45 minutos con presentación de 3–5 minutos.",
   "before": [
     "Prueba https://xander0408.github.io/CURSOS/ (con barra final) en el mismo WiFi del aula.",
     "PPT que se proyecta: AI-Business-Lab-Como-llevar-la-clase.pptx (21 diapositivas, reloj). El temario de 94 slides (AI-Business-Lab-Central-de-Ingenios.pptx) es solo apoyo.",
@@ -21,13 +21,23 @@
     { "t": "16:25–17:00", "what": "QUIZ relámpago de cierre del día (5 min). 1 cosa que no pegarán en el chat. Exportar si hace falta." }
   ],
   "friday2": [
-    { "t": "08:00–08:20", "what": "Sesión persistente + QUIZ calentamiento. Repaso de 3 errores típicos." },
-    { "t": "08:20–10:00", "what": "M5 Excel + verificación a mano. QUIZ o actividad a8. Quien acierte 100% explica una celda al grupo." },
-    { "t": "10:10–12:00", "what": "M6 PowerPoint. Comparador + ejemplos distintos. Mini-votación. QUIZ si hay uno de estructura." },
+    { "t": "08:00–08:30", "what": "Sesión persistente + calentamiento. Tour práctico de ChatGPT y Claude: chats, historial, adjuntos, Proyectos y Artefactos. La pantalla del día manda." },
+    { "t": "08:30–09:15", "what": "M5 Excel: fórmulas, errores y flujo Datos → Lógica → Recomendaciones → Reporte." },
+    { "t": "09:15–09:40", "what": "PRÁCTICA 25 min: Excel + IA en Acción. Descargar CSV ficticio, pedir fórmula, comprobar tres filas y marcar cifras inventadas." },
+    { "t": "09:40–09:55", "what": "Descanso." },
+    { "t": "09:55–10:40", "what": "M6 PowerPoint: documento a diapositivas, storytelling, regla 6×6, notas y visuales." },
+    { "t": "10:40–11:05", "what": "PRÁCTICA 25 min: De Información a Presentación Ejecutiva. Estructura, guion y revisión humana." },
+    { "t": "11:05–11:35", "what": "M7: analizar, extraer, comparar y separar fuente, hecho, interpretación y conclusión." },
+    { "t": "11:35–12:00", "what": "PRÁCTICA 25 min: Detective de Información. Verificación cruzada con dossier ficticio." },
     { "t": "12:00–13:00", "what": "Almuerzo." },
-    { "t": "13:00–14:20", "what": "M7–M8. Tarea 4 (minuta sucia en los dos chats + Comparador). QUIZ de verificación." },
-    { "t": "14:20–16:25", "what": "EXAMEN: M9 + proyecto final + ficha. Actividades a10–a12. No se cierra el viernes 1." },
-    { "t": "16:25–17:00", "what": "QUIZ de cierre del curso. Insignias. Solo instructor: historial/reset en ESTA PC." }
+    { "t": "13:00–13:40", "what": "M8: productividad y casos ficticios por áreas operativas y estratégicas de CISA." },
+    { "t": "13:40–14:00", "what": "Biblioteca: prompts avanzados por área y errores comunes. Elegir o adaptar una plantilla." },
+    { "t": "14:00–14:20", "what": "M9: explicar los 7 pasos, criterios de éxito y reglas de privacidad." },
+    { "t": "14:20–15:05", "what": "PROYECTO FINAL: 45 minutos de trabajo individual. Problema → prompt → ambos chats → comparar → refinar/validar → preparar presentación." },
+    { "t": "15:05–15:15", "what": "Descanso y preparación de presentaciones." },
+    { "t": "15:15–16:05", "what": "Presentaciones: 3–5 minutos por participante. Retroalimentación contra los 7 criterios." },
+    { "t": "16:05–16:30", "what": "Reto final AI Business Master + cierre de aprendizajes." },
+    { "t": "16:30–17:00", "what": "Ficha final, insignias, exportación de progreso y próximos pasos. Instructor revisa Dashboard aula." }
   ],
   "facilitate": [
     "Cada bloque de lección lleva un quiz el mismo día: no lo dejes «para si sobra tiempo».",

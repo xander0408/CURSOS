@@ -4,6 +4,38 @@
   "title": "IA aplicada a Microsoft Excel",
   "lessons": [
     {
+      "id": "l0-chatgpt",
+      "title": "Recorrido breve por la interfaz de ChatGPT",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>Antes de trabajar con Excel, ubica las funciones básicas: <strong>Nuevo chat</strong> inicia una conversación limpia; el <strong>historial</strong> permite volver a conversaciones anteriores; el <strong>selector de modelo</strong>, cuando está disponible, cambia la capacidad o velocidad; <strong>adjuntar</strong> incorpora archivos o imágenes; y el cuadro de <strong>mensaje</strong> es donde das contexto, objetivo y formato esperado.</p>" },
+        { "type": "list", "items": ["Nuevo chat e historial: separa tareas y recupera trabajos previos.", "Selector de modelo: revisa cuál está activo antes de una tarea importante.", "Adjuntar: confirma que el archivo correcto quedó cargado antes de pedir análisis.", "Cuenta y Ajustes: gestiona preferencias, privacidad y opciones disponibles."] },
+        { "type": "callout", "kind": "limit", "title": "La versión Free cambia", "text": "Los nombres, iconos, límites y modelos disponibles pueden cambiar según fecha, región y plan. Si la pantalla del curso no coincide exactamente, busca la función equivalente y consulta la ayuda oficial." },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Haz un recorrido de 3 minutos: abre un chat nuevo, localiza historial, selector, adjuntos y ajustes. No cargues todavía archivos reales." }
+      ]
+    },
+    {
+      "id": "l0-claude",
+      "title": "Recorrido breve por la interfaz de Claude",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>En Claude, una <strong>conversación</strong> concentra el intercambio; <strong>Proyectos</strong>, cuando está disponible, reúne instrucciones y materiales de un trabajo; y <strong>Artefactos</strong> muestra documentos, código u otros resultados en un espacio separado para revisarlos e iterarlos.</p>" },
+        { "type": "list", "items": ["Conversación: trabaja un objetivo por hilo para conservar contexto.", "Proyectos: agrupa referencias e instrucciones reutilizables.", "Artefactos: revisa y mejora entregables sin confundirlos con el chat.", "Adjuntos: comprueba nombre, versión y contenido antes de enviarlos.", "Cuenta y modelo: verifica plan, preferencias y modelo activo."] },
+        { "type": "callout", "kind": "limit", "title": "La versión Free cambia", "text": "Proyectos, Artefactos, modelos y límites pueden variar por plan o actualización. La lógica de trabajo se mantiene: contexto claro, archivo correcto, revisión humana y protección de datos." },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Compara una conversación normal con un Proyecto o Artefacto si la cuenta lo permite. Si no aparece la función, explica el concepto sin forzar una interfaz distinta." }
+      ]
+    },
+    {
+      "id": "l0-organizacion",
+      "title": "Organizar conversaciones y proteger información",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>Organiza los chats por tarea y fecha, usa títulos reconocibles y abre una conversación nueva cuando cambie el objetivo. Antes de pegar datos, aplica <strong>minimización y anonimización</strong>: comparte solo lo necesario y reemplaza nombres, correos, identificadores, clientes, precios sensibles y otros datos confidenciales por etiquetas ficticias.</p>" },
+        { "type": "list", "items": ["Usa «Cliente Alfa», «Planta Central» o «Lote Norte» en ejercicios.", "Elimina metadatos y columnas que no sean indispensables.", "No adjuntes libros con datos personales, contraseñas, secretos comerciales o información regulada.", "Sigue las políticas internas y utiliza únicamente herramientas autorizadas."] },
+        { "type": "callout", "kind": "verify", "title": "En sala", "text": "Antes de una demostración, muestra una copia preparada con datos ficticios. Pide al grupo identificar qué columnas eliminaría o anonimizaría antes de adjuntarla." }
+      ]
+    },
+    {
       "id": "l1",
       "title": "La IA te ayuda con fórmulas, tú validas los números",
       "activaPhase": 2,
@@ -18,7 +50,8 @@
       "activaPhase": 1,
       "blocks": [
         { "type": "text", "html": "<p>El secreto está en el <strong>contexto de los datos</strong>: qué hay en cada columna, en qué fila empiezan, qué formato tienen. Un ejemplo pequeño de 3 filas vale más que mil palabras.</p>" },
-        { "type": "list", "items": ["Nombra las columnas: «A: fecha, B: producto, C: monto».", "Di dónde empiezan los datos (fila 2, por ejemplo).", "Aporta un mini ejemplo con valores inventados."] }
+        { "type": "list", "items": ["Nombra las columnas: «A: fecha, B: producto, C: monto».", "Di dónde empiezan los datos (fila 2, por ejemplo).", "Aporta un mini ejemplo con valores inventados.", "Anonimiza primero: sustituye nombres e identificadores y comparte solo las columnas necesarias."] },
+        { "type": "callout", "kind": "limit", "title": "Datos mínimos", "text": "Para explicar una fórmula casi nunca hace falta adjuntar el libro completo. Una estructura de columnas y 3 a 5 filas ficticias suelen ser suficientes." }
       ]
     },
     {
@@ -44,8 +77,10 @@
       "title": "Detectar y corregir errores de fórmulas",
       "activaPhase": 4,
       "blocks": [
-        { "type": "text", "html": "<p>Si una fórmula da <code>#¡REF!</code>, <code>#¡VALOR!</code> o un resultado raro, pega la fórmula y el error. La IA suele identificar la causa y proponer la corrección.</p>" },
-        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Prueba la fórmula corregida con un caso conocido antes de aplicarla a toda la hoja." }
+        { "type": "text", "html": "<p>Si una fórmula da <code>#¡REF!</code>, <code>#¡VALOR!</code> o un resultado raro, comparte la fórmula, el error exacto, la versión e idioma de Excel y una muestra ficticia. <code>#¡REF!</code> suele indicar una referencia eliminada o inválida; <code>#¡VALOR!</code>, tipos de datos incompatibles, texto inesperado o argumentos incorrectos. La IA puede proponer hipótesis, pero debes localizar la causa.</p>" },
+        { "type": "list", "items": ["Para #¡REF!: revisa hojas, filas, columnas o rangos eliminados y referencias externas.", "Para #¡VALOR!: inspecciona números almacenados como texto, espacios, fechas y argumentos.", "Pide una explicación de la causa y una fórmula corregida, no solo una fórmula nueva.", "Prueba primero en una copia y conserva una versión anterior del archivo."] },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Prueba la fórmula corregida con casos conocidos: uno normal, uno límite y uno vacío. Después confirma que las referencias siguen apuntando a las columnas correctas." },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Provoca un #¡REF! borrando una columna en una copia y un #¡VALOR! mezclando texto con números. El grupo debe diagnosticar antes de pedir ayuda a la IA." }
       ]
     },
     {
@@ -53,8 +88,9 @@
       "title": "De los datos a recomendaciones y reporte ejecutivo",
       "activaPhase": 5,
       "blocks": [
-        { "type": "text", "html": "<p>Puedes pegar un resumen de tus resultados (totales, promedios, tendencias) y pedir <strong>recomendaciones</strong> o un <strong>reporte ejecutivo</strong>. La IA interpreta; tú confirmas que los números y las conclusiones tienen sentido.</p>" },
-        { "type": "list", "items": ["«Con estos totales, dame 3 observaciones y 2 recomendaciones.»", "«Redacta un resumen ejecutivo de estos resultados para dirección.»", "Valida que las conclusiones no contradigan tus datos reales."] }
+        { "type": "text", "html": "<p>Trabaja con un pipeline explícito: <strong>Datos crudos → Lógica → Recomendaciones → Reporte ejecutivo</strong>. Cada etapa tiene una revisión: calidad y anonimización de datos; fórmulas y supuestos; relación entre hallazgos y recomendaciones; y claridad del mensaje final.</p>" },
+        { "type": "list", "items": ["Datos crudos: limpia, anonimiza y documenta origen, período y campos.", "Lógica: calcula indicadores y registra fórmulas, filtros y supuestos.", "Recomendaciones: vincula cada acción con un hallazgo y señala incertidumbre.", "Reporte ejecutivo: resume situación, evidencia, impacto, acciones y siguiente paso.", "Valida que ninguna conclusión contradiga los datos y que toda cifra pueda rastrearse."] },
+        { "type": "callout", "kind": "verify", "title": "En sala", "text": "Entrega una tabla ficticia breve. Cada equipo debe mostrar las cuatro etapas y señalar dónde validó un cálculo y dónde evitó una recomendación no respaldada." }
       ]
     }
   ],

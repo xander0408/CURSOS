@@ -1,0 +1,11 @@
+registro,ubicacion,fecha_turno,producto_ficticio,unidades,costo_unitario_ficticio,horas_retraso,estado
+R-001,Planta Central,2026-09-01,Producto A,120,4.50,0.5,Completado
+R-002,Lote Norte,2026-09-01,Producto B,85,6.20,1.0,Completado
+R-003,Planta Central,2026-09-02,Producto B,95,6.20,0.0,Completado
+R-004,Lote Norte,2026-09-02,Producto A,140,4.50,2.0,En revisión
+R-005,Planta Central,2026-09-03,Producto C,60,8.75,1.5,En revisión
+R-006,Lote Norte,2026-09-03,Producto C,72,8.75,0.5,Completado
+R-007,Planta Central,2026-09-04,Producto A,110,4.50,0.0,Completado
+R-008,Lote Norte,2026-09-04,Producto B,90,6.20,1.0,Pendiente
+R-009,Planta Central,2026-09-05,Producto C,68,8.75,0.5,Completado
+R-010,Lote Norte,2026-09-05,Producto A,130,4.50,1.5,Completado

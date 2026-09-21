@@ -91,6 +91,42 @@
       "when": "Viernes 2, proyecto final",
       "problem": "Hay muchas solicitudes internas repetitivas y quiero un piloto de asistencia con IA sin conectar el ERP.",
       "pastePrompt": "Rol: Eres analista de procesos.\n\nContexto: El área recibe cada semana unas 30 solicitudes internas de acceso a reportes (ejemplo). Hoy se responden copiando correos viejos. Quiero un piloto: la IA arma el primer borrador y un humano aprueba.\n\nObjetivo: Propuesta de piloto de una página.\n\nFormato: Seis frases, una por letra de A.C.T.I.V.A. (Analizar, Contextualizar, Transformar, Iterar, Verificar, Aplicar).\n\nRestricciones: No prometas integrar el ERP. No inventes ahorros en dinero. Incluye un riesgo y quién firma."
+    },
+    {
+      "id": "laboratorio",
+      "title": "Resumen técnico de ensayo ficticio",
+      "forRole": "Laboratorio",
+      "deliverable": "Observaciones, anomalías, datos faltantes y revisión técnica autorizada.",
+      "when": "Viernes 2, casos por área",
+      "problem": "Ordenar observaciones de ensayo consume tiempo, pero la IA no puede emitir un resultado oficial.",
+      "pastePrompt": "Rol: Eres editor técnico de un laboratorio de práctica.\n\nContexto: Muestra ficticia Lote Norte. Solo se reportan observaciones anónimas; ISO/IEC 17025 es contexto y no debes afirmar conformidad.\n\nObjetivo: Ordenar observaciones para revisión del especialista.\n\nFormato: Muestra / método declarado / observaciones / anomalías / faltantes / revisión autorizada.\n\nRestricciones: No calcules incertidumbre, no inventes límites, métodos ni acreditaciones. No emitas un certificado."
+    },
+    {
+      "id": "mercadeo",
+      "title": "Conceptos de campaña para discusión",
+      "forRole": "Comercial y Mercadeo",
+      "deliverable": "Seis conceptos para El Cañal o Prieta, cada uno con riesgo y dato por validar.",
+      "when": "Viernes 2, casos por área",
+      "problem": "La lluvia de ideas se concentra demasiado pronto en una sola campaña.",
+      "pastePrompt": "Rol: Eres facilitador creativo de mercadeo.\n\nContexto: Marca El Cañal o Prieta. No te doy ventas, presupuesto, promociones ni atributos no aprobados.\n\nObjetivo: Proponer seis conceptos distintos para discusión humana.\n\nFormato: Concepto / mensaje / pieza / riesgo / dato por validar.\n\nRestricciones: No inventes beneficios, cifras, precios, promociones ni afirmaciones nutricionales. No elijas una campaña final."
+    },
+    {
+      "id": "rse",
+      "title": "Ficha de iniciativa social",
+      "forRole": "Responsabilidad Social",
+      "deliverable": "Necesidad, objetivo, actividades posibles, indicadores por validar y riesgos.",
+      "when": "Viernes 2, casos por área",
+      "problem": "Una idea social necesita estructura antes de evaluar su viabilidad e impacto.",
+      "pastePrompt": "Rol: Eres asistente de diseño de iniciativas de responsabilidad social.\n\nContexto: Iniciativa ficticia sin nombres de comunidades ni beneficiarios. Recursos y alianzas aún no están confirmados.\n\nObjetivo: Preparar una ficha para evaluación humana.\n\nFormato: Necesidad / objetivo / actividades / indicadores por validar / riesgos / preguntas.\n\nRestricciones: No prometas impacto, donaciones ni alianzas. Marca toda estimación como [SUPUESTO]."
+    },
+    {
+      "id": "finanzas",
+      "title": "Análisis de variaciones ficticias",
+      "forRole": "Finanzas y Administración",
+      "deliverable": "Tabla de variaciones, hipótesis y evidencia requerida.",
+      "when": "Viernes 2, casos por área",
+      "problem": "Explicar variaciones consume tiempo, pero las causas deben demostrarse en los sistemas oficiales.",
+      "pastePrompt": "Rol: Eres asistente de análisis financiero, no contador responsable.\n\nContexto: Trabajarás solo con presupuesto y resultado ficticios que yo proporcionaré.\n\nObjetivo: Calcular variaciones simples y proponer preguntas para el responsable.\n\nFormato: Categoría / presupuesto / resultado / variación / hipótesis / evidencia requerida.\n\nRestricciones: Muestra cálculos, no inventes causas, no emitas dictamen y marca [VALIDAR EN SISTEMA] antes de cada conclusión."
     }
   ]
 }

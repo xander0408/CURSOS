@@ -6,19 +6,19 @@ import { getState, update, markLessonDone, completeModule, recountChallenges, lo
 import { setSyncApi, pullIntoLocal, pushNow } from "./sync.js";
 import { toast, openModal, closeModal } from "./ui.js?v=20260910s";
 import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js";
-import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260911p";
+import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260920v2";
 import { checkBadges } from "./badges.js";
 import { renderChallengesIndex, bindChallengesIndex } from "./views/challenges.js";
 import { renderPromptLab, bindPromptLab } from "./views/prompt-lab-view.js?v=20260911p2";
 import { renderComparator, bindComparator } from "./views/comparator.js";
-import { renderLibrary, bindLibrary } from "./views/library.js?v=20260911p2";
-import { renderProject, bindProject } from "./views/project.js";
+import { renderLibrary, bindLibrary } from "./views/library.js?v=20260920v2";
+import { renderProject, bindProject } from "./views/project.js?v=20260920v2";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./views/quiz.js?v=20260911q2";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260912d";
-import { renderActivities, bindActivities } from "./views/activities.js";
+import { renderActivities, bindActivities } from "./views/activities.js?v=20260920v2";
 import { renderCronograma } from "./views/schedule.js";
 import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n4";
 

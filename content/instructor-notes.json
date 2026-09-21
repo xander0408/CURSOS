@@ -27,6 +27,54 @@
       "challenges": {
         "m3-r3": "El objetivo no es un prompt 'perfecto', sino que expliquen por qué cada pieza mejora el resultado."
       }
+    },
+    "m5": {
+      "lessons": {
+        "l0-chatgpt": "Haga el tour en vivo. No memorice nombres de modelos: la pantalla del día manda. Pregunte dónde se abre chat nuevo, dónde está historial y qué nunca se adjunta.",
+        "l0-claude": "Muestre Proyectos y Artefactos solo si aparecen en la cuenta Free. Explique la función sin prometer que estará disponible en todas las cuentas.",
+        "l0-organizacion": "Pida tres títulos de chat útiles y tres datos que deben anonimizar antes de adjuntar un archivo.",
+        "l6": "Dibuje en pizarra: Datos crudos → Lógica → Recomendaciones → Reporte. Detenga al grupo si saltan de datos a recomendación sin validar la lógica."
+      },
+      "challenges": {
+        "m5-r3": "Toda cifra de la salida simulada debe rastrearse a los datos. Pida que expliquen una celda a mano antes de aceptar la fórmula."
+      }
+    },
+    "m6": {
+      "lessons": {
+        "l1": "Proyecte un párrafo denso y pida primero la estructura, no el diseño. Una idea central por diapositiva.",
+        "l3": "Separe siempre el texto visible del guion del expositor. Haga un ensayo de 45 segundos sin leer la pantalla.",
+        "l7": "La regla 6×6 es una guía contra la saturación, no una ley. El detalle debe ir en las notas y en la voz del expositor."
+      },
+      "challenges": {
+        "m6-r2": "Cronometre 25 minutos. Al revisar, busque hilo narrativo, fuente de cifras y guion separado del texto visible."
+      }
+    },
+    "m7": {
+      "lessons": {
+        "l3": "Repita: dos chats no son dos fuentes. Para verificar, abran una fuente primaria y otra independiente, revisen fecha y contexto.",
+        "l5": "Haga que distingan en voz alta: afirmación, evidencia, interpretación y conclusión.",
+        "l6": "Complete en pizarra la ficha: afirmación → dos fuentes independientes → fuente primaria → fecha → conclusión."
+      },
+      "challenges": {
+        "m7-r1": "No premie solo detectar una cifra sospechosa. Pida explicar dónde y cómo la verificarían."
+      }
+    },
+    "m8": {
+      "lessons": {
+        "l1": "Use la minuta ficticia para mostrar que «se habló» no significa «se aprobó». Responsable y fecha solo aparecen si las notas los contienen.",
+        "l7": "Los casos CISA son marcos de práctica, no afirmaciones de cumplimiento ni datos operativos. Mantenga Planta Central, Lote Norte y Cliente Alfa.",
+        "l10": "En RSE no se inventa impacto; en Gerencia la IA no decide; en Finanzas cada cifra vuelve al cálculo y al sistema oficial."
+      },
+      "challenges": {
+        "m8-r1": "Antes de enviar una minuta, cada participante debe señalar una decisión, un pendiente y un dato que la IA no puede completar."
+      }
+    },
+    "m9": {
+      "lessons": {
+        "l1": "Explique el reloj: 45 minutos para siete pasos. A los 20 minutos todos deben haber probado ambos chats; a los 35 deben estar validando.",
+        "l2": "Cada presentación dura 3–5 minutos. Use los siete criterios: problema, prompt, dos pruebas, comparación, refinamiento, validación y control humano."
+      },
+      "challenges": {}
     }
   }
 }

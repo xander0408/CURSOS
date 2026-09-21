@@ -20,10 +20,10 @@
     { "id": "m2", "number": 2, "title": "Cómo hablar con una IA", "subtitle": "Contexto, objetivo, audiencia, tono, restricciones e iteración", "day": 1 },
     { "id": "m3", "number": 3, "title": "Ingeniería de prompts", "subtitle": "Tipos, prompt maestro, análisis, creatividad y Prompt Lab", "day": 1 },
     { "id": "m4", "number": 4, "title": "IA aplicada a Microsoft Word", "subtitle": "Cartas, informes, políticas, minutas y revisión humana", "day": 1 },
-    { "id": "m5", "number": 5, "title": "IA aplicada a Microsoft Excel", "subtitle": "Fórmulas, errores, reporte ejecutivo y validación a mano", "day": 2 },
+    { "id": "m5", "number": 5, "title": "IA aplicada a Microsoft Excel", "subtitle": "Tour de herramientas, fórmulas, errores, reporte ejecutivo y validación a mano", "day": 2 },
     { "id": "m6", "number": 6, "title": "IA aplicada a Microsoft PowerPoint", "subtitle": "Objetivo, storytelling, notas del expositor y práctica", "day": 2 },
     { "id": "m7", "number": 7, "title": "Análisis de información e investigación", "subtitle": "Extraer, resumir, comparar, riesgos y fuentes vs conclusiones", "day": 2 },
     { "id": "m8", "number": 8, "title": "Productividad diaria y casos empresariales", "subtitle": "Correos, reuniones, minutas, lluvia de ideas y decisiones", "day": 2 },
-    { "id": "m9", "number": 9, "title": "Proyecto final integrador", "subtitle": "Problema del cargo, mismo prompt en ambos chats, validación humana", "day": 2 }
+    { "id": "m9", "number": 9, "title": "Proyecto final integrador", "subtitle": "7 pasos, 7 criterios, 45 minutos y presentación de 3–5 minutos", "day": 2 }
   ]
 }

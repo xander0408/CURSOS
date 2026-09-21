@@ -5,7 +5,13 @@ import { frameworkForm, readFramework, rubricHtml, readRubric } from "../prompt-
 import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
 import { isModuleUnlocked } from "../journey.js";
-import { ownPromptBoxHtml, bindOwnPromptUploads } from "./library.js?v=20260911p2";
+import { ownPromptBoxHtml, bindOwnPromptUploads } from "./library.js?v=20260920v2";
+
+const DAY2_PRACTICES = {
+  m5: { title: "Excel + IA en Acción", mins: 25 },
+  m6: { title: "De Información a Presentación Ejecutiva", mins: 25 },
+  m7: { title: "Detective de Información", mins: 25 },
+};
 
 export function moduleProgress(full) {
   const st = readModule(full.id);
@@ -59,6 +65,7 @@ function renderLesson(data, full, lessonId) {
   const prev = full.lessons[idx - 1];
   const next = full.lessons[idx + 1];
   const firstChallenge = full.challenges[0];
+  const practice = !next ? DAY2_PRACTICES[full.id] : null;
 
   return `
     <div class="page-head">
@@ -70,6 +77,8 @@ function renderLesson(data, full, lessonId) {
     ${progressBar(p.pct)}
     <div class="card" style="margin-top:16px">
       ${renderBlocks(lesson.blocks)}
+      ${practice ? `<div class="callout think"><strong>Práctica de ${practice.mins} minutos</strong>${escapeHtml(practice.title)}. Descarga el material ficticio y sigue el checklist en Tareas.</div>
+        <p><a class="btn btn-primary" href="#/tareas">Abrir práctica y archivos</a></p>` : ""}
       ${inst ? salaCueHtml([...salaFromBlocks, notes]) : ""}
       <div class="lesson-nav">
         ${prev ? `<a class="btn" href="#/modulo/${full.id}/leccion/${prev.id}">Anterior</a>` : `<span></span>`}

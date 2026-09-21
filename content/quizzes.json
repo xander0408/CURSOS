@@ -354,9 +354,9 @@
         },
         {
           "q": "Para una minuta desde notas caóticas, pides tres secciones:",
-          "options": ["Intro, nudo, desenlace", "Decisiónes, tareas y pendientes", "Fecha, hora y lugar", "Título, cuerpo y firma"],
+          "options": ["Intro, nudo, desenlace", "Decisiones, tareas y pendientes", "Fecha, hora y lugar", "Título, cuerpo y firma"],
           "correct": 1,
-          "explain": "Decisiónes tomadas, tareas con responsable y temas pendientes, sin inventar acuerdos."
+          "explain": "Decisiones tomadas, tareas con responsable y temas pendientes, sin inventar acuerdos."
         },
         {
           "q": "En un prompt de seguimiento semanal, ¿qué restricción ayuda?",
@@ -415,6 +415,24 @@
           "options": ["Ocultar que se usó IA siempre", "Revisar sesgos, verificar datos y mantener un responsable humano", "Publicarlo sin leer", "Pedirle que decida por ti"],
           "correct": 1,
           "explain": "Uso responsable: revisar sesgos, verificar y que una persona sea la responsable final."
+        },
+        {
+          "q": "Una verificación cruzada profesional consiste en…",
+          "options": ["Preguntar dos veces al mismo chat", "Contrastar la afirmación con una fuente primaria y otra fuente independiente, revisando fecha y contexto", "Aceptar el primer enlace", "Usar la respuesta más larga"],
+          "correct": 1,
+          "explain": "Dos respuestas de IA no son dos fuentes. Abre fuentes independientes, prioriza la primaria y revisa vigencia y contexto."
+        },
+        {
+          "q": "La regla 6×6 en una presentación se usa como…",
+          "options": ["Ley obligatoria", "Guía para evitar diapositivas saturadas y mover el detalle a las notas", "Forma de inventar seis datos", "Sustituto del guion"],
+          "correct": 1,
+          "explain": "Es una guía visual, no una ley: una idea por slide, poco texto y el detalle en el guion."
+        },
+        {
+          "q": "¿Cuál es el cierre correcto del proyecto final?",
+          "options": ["ChatGPT elige y firma", "Refinar, validar con fuentes o responsables y presentar el control humano", "Publicar ambos borradores", "Ocultar los riesgos"],
+          "correct": 1,
+          "explain": "El valor está en mejorar, verificar y explicar quién conserva la decisión y la responsabilidad."
         }
       ]
     },

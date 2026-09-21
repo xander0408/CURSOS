@@ -1,6 +1,7 @@
 import { getState, update, logActivity } from "../store.js";
 import { escapeHtml, toast, copyText } from "../ui.js";
 import { checkBadges } from "../badges.js";
+import { assetUrl } from "../paths.js";
 
 export function renderActivities(data) {
   const pack = data.activities;
@@ -35,14 +36,35 @@ export function renderActivities(data) {
   const cards = pack.items
     .map((it) => {
       const on = !!done[it.id];
-      return `<label class="card activity-card ${on ? "done" : ""}">
+      const resources = Array.isArray(it.resources)
+        ? `<div class="btn-row">${it.resources
+            .map((resource) => {
+              const path = typeof resource === "string" ? resource : resource?.path;
+              if (!path) return "";
+              const label =
+                typeof resource === "string"
+                  ? resource.split("/").pop() || "Descargar recurso"
+                  : resource.label || "Descargar recurso";
+              return `<a class="btn" href="${escapeHtml(assetUrl(path))}" download>${escapeHtml(label)}</a>`;
+            })
+            .join("")}</div>`
+        : "";
+      const checklist = Array.isArray(it.checklist)
+        ? `<div class="activity-checklist">
+            <strong>Lista de verificación:</strong>
+            <ul>${it.checklist.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+          </div>`
+        : "";
+      return `<div class="card activity-card ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(it.id)}" ${on ? "checked" : ""} />
         <div>
           <p class="muted">Día ${it.day} · ${it.mins} min</p>
           <h3>${escapeHtml(it.title)}</h3>
           <p>${escapeHtml(it.do)}</p>
+          ${resources}
+          ${checklist}
         </div>
-      </label>`;
+      </div>`;
     })
     .join("");
 

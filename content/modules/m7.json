@@ -4,6 +4,16 @@
   "title": "Análisis de información e investigación",
   "lessons": [
     {
+      "id": "l0-metodo",
+      "title": "Del análisis a una conclusión trazable",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Un trabajo sólido separa cinco operaciones: <strong>análisis, extracción, resumen, comparación y conclusión</strong>. La IA puede apoyar cada una, pero no conviene pedirlas todas en una sola instrucción porque se pierde trazabilidad.</p>" },
+        { "type": "list", "items": ["Análisis: identifica estructura, patrones, supuestos y preguntas.", "Extracción: recupera datos concretos sin reinterpretarlos.", "Resumen: reduce el contenido preservando ideas y matices esenciales.", "Comparación: aplica los mismos criterios a todas las opciones.", "Conclusión: responde la pregunta usando evidencia y declara límites."] },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Entrega dos textos ficticios. Cada grupo produce primero una extracción, luego un resumen, una comparación y finalmente una conclusión; debe poder señalar qué evidencia sostiene cada frase final." }
+      ]
+    },
+    {
       "id": "l1",
       "title": "Resumir y extraer lo importante",
       "activaPhase": 2,
@@ -26,8 +36,8 @@
       "title": "Verificar: el paso que separa un profesional",
       "activaPhase": 4,
       "blocks": [
-        { "type": "text", "html": "<p>En investigación, la <strong>alucinación</strong> es el riesgo número uno: citas, cifras, leyes o fechas que suenan reales y no lo son. Ninguna afirmación importante sale sin verificar contra una fuente humana o documento oficial.</p>" },
-        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Regla simple: si vas a apoyar una decisión en un dato, ese dato necesita una fuente que no sea la IA." }
+        { "type": "text", "html": "<p>En investigación, la <strong>alucinación</strong> es un riesgo central: citas, cifras, leyes o fechas que suenan reales y no lo son. Investigar responsablemente implica definir la pregunta, respetar privacidad y derechos de autor, reconocer incertidumbre, evitar sesgos de selección y documentar cómo se obtuvo y verificó cada evidencia.</p>" },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Regla simple: si vas a apoyar una decisión en un dato, ese dato necesita una fuente que no sea la IA. Para asuntos legales, médicos, financieros o de seguridad, consulta además a una persona profesional competente." }
       ]
     },
     {
@@ -47,6 +57,27 @@
         { "type": "text", "html": "<p>Cuando la herramienta tiene <strong>búsqueda web</strong>, puede traer información más actual, pero no la convierte en verdad automática. Pide siempre las <strong>fuentes</strong> y distingue el hecho encontrado de la conclusión de la IA.</p>" },
         { "type": "list", "items": ["«Busca y dame las fuentes con enlace para poder verificar.»", "«Marca qué es dato de la fuente y qué es tu interpretación.»", "Abre las fuentes: a veces no dicen lo que la IA resumió."] },
         { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Una fuente citada no es prueba de que existe. Ábrela y confírmala antes de usarla en una decisión." }
+      ]
+    },
+    {
+      "id": "l6",
+      "title": "Método explícito de verificación cruzada",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p>Para cada dato importante aplica una ficha de cinco pasos: <strong>afirmación → dos fuentes independientes → fuente primaria → fecha → conclusión</strong>. La cantidad de enlaces no sustituye su independencia, calidad ni vigencia.</p>" },
+        { "type": "list", "items": ["1. Afirmación: escríbela de forma verificable, sin mezclar dato e interpretación.", "2. Dos fuentes independientes: busca confirmación en entidades o autores que no se copien entre sí.", "3. Fuente primaria: localiza el informe, norma, base de datos, comunicado o documento original.", "4. Fecha: registra publicación, período de los datos y fecha de consulta.", "5. Conclusión: clasifica como confirmada, parcialmente confirmada, no confirmada o contradicha, y explica por qué."] },
+        { "type": "callout", "kind": "limit", "title": "Independencia real", "text": "Dos noticias que reproducen el mismo comunicado cuentan como una sola cadena de evidencia. Rastrea el origen y busca una segunda fuente genuinamente independiente." },
+        { "type": "callout", "kind": "verify", "title": "En sala", "text": "Asigna una afirmación ficticia. El grupo completa la ficha, identifica la fuente primaria y decide si dos fuentes secundarias son realmente independientes." }
+      ]
+    },
+    {
+      "id": "l7",
+      "title": "Redactar conclusiones responsables",
+      "activaPhase": 5,
+      "blocks": [
+        { "type": "text", "html": "<p>Una conclusión profesional responde la pregunta inicial, distingue hechos de inferencias y no excede la evidencia. Incluye nivel de confianza, limitaciones, discrepancias entre fuentes y qué dato adicional cambiaría la decisión.</p>" },
+        { "type": "list", "items": ["Cita la evidencia concreta que sostiene cada conclusión.", "Si las fuentes discrepan, presenta la discrepancia en vez de ocultarla.", "Evita convertir correlaciones en causas.", "Separa recomendación de hallazgo y declara los criterios utilizados."] },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Pide dos cierres sobre la misma evidencia: uno exagerado y otro calibrado. El grupo subraya afirmaciones que exceden las fuentes y reescribe la conclusión." }
       ]
     }
   ],

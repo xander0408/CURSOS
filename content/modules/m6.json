@@ -4,6 +4,26 @@
   "title": "IA aplicada a Microsoft PowerPoint",
   "lessons": [
     {
+      "id": "l0-cero",
+      "title": "Crear una presentación desde cero",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>Para comenzar desde cero, no pidas «una presentación sobre X» sin más. Define <strong>audiencia, propósito, decisión esperada, duración, tono y evidencia disponible</strong>. Luego solicita primero un esquema y apruébalo antes de desarrollar diapositivas.</p>" },
+        { "type": "list", "items": ["Contexto: qué situación origina la presentación.", "Audiencia: qué sabe, qué le importa y qué objeciones puede tener.", "Objetivo: informar, persuadir, capacitar o conseguir una decisión.", "Restricciones: minutos disponibles, cantidad aproximada de slides y datos que no deben inventarse.", "Salida inicial: título, mensaje central y esquema de una línea por diapositiva."] },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Toma un mismo tema y cambia solo la audiencia: personal operativo y comité directivo. Compara cómo varían el mensaje, el detalle y el llamado a la acción." }
+      ]
+    },
+    {
+      "id": "l0-documento",
+      "title": "Convertir un documento en diapositivas",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p>Al pasar de un documento a slides, la tarea no es copiar párrafos: es <strong>seleccionar, jerarquizar y visualizar</strong>. Pide a la IA que preserve las ideas y cifras del original, distinga citas de interpretaciones y marque cualquier dato ausente.</p>" },
+        { "type": "list", "items": ["Resume primero la tesis, los hallazgos y la acción esperada.", "Asigna una idea principal por diapositiva.", "Incluye la referencia a sección o página de origen para revisar.", "Mueve metodología y detalle de respaldo a anexos.", "No conviertas texto no verificado en una afirmación visual contundente."] },
+        { "type": "callout", "kind": "verify", "title": "En sala", "text": "Usa un documento ficticio de una página. Pide dos versiones: ejecutiva de 5 slides y técnica de 8. El grupo rastrea cada afirmación hasta el texto fuente." }
+      ]
+    },
+    {
       "id": "l1",
       "title": "De información desordenada a estructura",
       "activaPhase": 2,
@@ -17,7 +37,8 @@
       "title": "Storytelling: el hilo que conecta",
       "activaPhase": 3,
       "blocks": [
-        { "type": "text", "html": "<p>Las diapositivas que se recuerdan cuentan una <strong>historia</strong>: problema, tensión, solución, resultado. Pide a la IA que ordene tus puntos según un relato, no como una lista plana.</p>" },
+        { "type": "text", "html": "<p>Las diapositivas que se recuerdan cuentan una <strong>historia</strong>: contexto o problema, tensión o consecuencia, evidencia, propuesta, beneficio y siguiente paso. El arco no debe dramatizar ni ocultar incertidumbre; organiza los hechos para que la audiencia comprenda por qué importa actuar.</p>" },
+        { "type": "list", "items": ["Abre con una situación reconocible para la audiencia.", "Presenta evidencia suficiente para sostener la tensión.", "Introduce la solución después de aclarar el problema.", "Cierra con una decisión o acción concreta."] },
         { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Cuál es la única idea que quieres que tu audiencia recuerde al salir de la sala? Esa debe guiar toda la estructura." }
       ]
     },
@@ -26,8 +47,10 @@
       "title": "El guion del expositor",
       "activaPhase": 5,
       "blocks": [
-        { "type": "text", "html": "<p>Las diapositivas no son el discurso. Pide un <strong>guion del expositor</strong> aparte: qué dirás en cada slide. Así evitas leer la pantalla y suenas natural.</p>" },
-        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Revisa que ninguna cifra o afirmación de las diapositivas sea inventada. Marca dónde debes insertar tus datos reales." }
+        { "type": "text", "html": "<p>Las diapositivas no son el discurso. Usa las <strong>notas del expositor</strong> para ampliar la idea visible: apertura, explicación, evidencia, transición, pregunta al público y tiempo estimado. Así evitas leer la pantalla y mantienes un relato natural.</p>" },
+        { "type": "list", "items": ["Una nota breve de intención: qué debe comprender la audiencia.", "Datos y fuentes que respaldan la diapositiva.", "Frase de transición hacia la siguiente idea.", "Recordatorio de interacción o pausa, sin escribir un libreto rígido."] },
+        { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Revisa que ninguna cifra o afirmación de las diapositivas o notas sea inventada. Marca dónde debes insertar y verificar tus datos reales." },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Ensaya una slide durante 45 segundos usando notas. Después oculta las notas y comprueba si el título y el visual todavía comunican la idea central." }
       ]
     },
     {
@@ -54,8 +77,19 @@
       "title": "Ideas para imágenes, diagramas y recursos",
       "activaPhase": 3,
       "blocks": [
-        { "type": "text", "html": "<p>La IA no diseña tus slides, pero sí sugiere <strong>qué recurso visual</strong> usar en cada punto: un diagrama de flujo, una comparación lado a lado, un icono, una foto conceptual.</p>" },
-        { "type": "list", "items": ["«Sugiere un recurso visual para cada diapositiva.»", "«¿Qué tipo de gráfico comunica mejor esta idea?»", "El diseño final lo armas tú en PowerPoint."] }
+        { "type": "text", "html": "<p>La IA puede sugerir <strong>qué recurso visual</strong> sirve a cada mensaje: diagrama de flujo, comparación lado a lado, cronología, gráfico, icono o foto conceptual. El visual debe explicar, comparar o dirigir la atención; si solo decora, puede distraer.</p>" },
+        { "type": "list", "items": ["«Sugiere un recurso visual para cada diapositiva y explica qué comunica.»", "Usa barras para comparar magnitudes, líneas para evolución y procesos para secuencias.", "No generes un gráfico sin datos verificables ni uses imágenes que impliquen hechos inexistentes.", "Mantén contraste, tipografía legible, texto alternativo y fuentes de imágenes y datos.", "El diseño final y la revisión de licencias se realizan en PowerPoint."] },
+        { "type": "callout", "kind": "verify", "title": "En sala", "text": "Muestra tres recursos posibles para la misma idea. El grupo elige el que mejor responde a la pregunta de la diapositiva y descarta el puramente decorativo." }
+      ]
+    },
+    {
+      "id": "l7",
+      "title": "Regla 6×6: guía, no dogma",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p>La regla <strong>6×6</strong> —aproximadamente seis líneas y seis palabras por línea— ayuda a detectar diapositivas saturadas, pero no es una ley. Una cita, definición o instrucción puede requerir otra extensión; lo importante es una idea dominante, lectura rápida y apoyo al expositor.</p>" },
+        { "type": "list", "items": ["Reduce párrafos a títulos con mensaje y palabras clave.", "Divide una slide cuando contiene dos ideas que compiten.", "Prioriza jerarquía visual, espacio en blanco y legibilidad desde el fondo.", "No recortes tanto que el contenido pierda precisión o contexto."] },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Proyecta una slide saturada. Pide una versión cercana a 6×6 y otra justificada que rompa la regla; compara cuál comunica mejor y por qué." }
       ]
     }
   ],

@@ -941,3 +941,22 @@ body.instructor-on .timer-page .module-clock-instructor { display: flex; }
 }
 .dossier-log { padding-left: 18px; }
 .dossier-prompt { margin-bottom: 12px; }
+.project-criteria {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0 18px;
+}
+.project-criteria .choice {
+  text-align: left;
+  cursor: pointer;
+}
+.activity-checklist {
+  margin-top: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+}
+.activity-checklist ul {
+  margin-bottom: 0;
+}

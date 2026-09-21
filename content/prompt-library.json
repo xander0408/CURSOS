@@ -41,6 +41,96 @@
       "useWhen": "Debes analizar alternativas (proveedores, planes, propuestas) y ver puntos ciegos.",
       "hint": "Aporta los criterios que te importan. Pide que señale qué información falta para decidir.",
       "text": "Rol: Eres un analista crítico y objetivo.\n\nContexto: Estoy evaluando estas opciones: [lista]. Me importan estos criterios: [criterios].\n\nObjetivo: Comparar las opciones según mis criterios y señalar riesgos o información que me falta para decidir.\n\nFormato: Tabla comparativa + una sección \"Qué verificar antes de decidir\".\n\nRestricciones: No inventes datos de las opciones. Si no tienes un dato, pídemelo."
+    },
+    {
+      "id": "tpl-area-produccion-calidad",
+      "area": "Producción y Calidad",
+      "title": "Hallazgo de calidad con control humano",
+      "useWhen": "Necesitas ordenar un hallazgo ficticio de producción o calidad sin afirmar cumplimiento de ISO 9001.",
+      "hint": "Sustituye todo identificador real por Planta Central, Lote Norte y cargos.",
+      "text": "Rol: Eres asistente de calidad para un caso de formación industrial.\n\nContexto: En Planta Central se detectó [hallazgo ficticio] en Lote Norte. La evidencia disponible es [evidencia anonimizada]. No conoces la causa raíz ni puedes afirmar cumplimiento de ISO 9001.\n\nObjetivo: Preparar un borrador para revisión del responsable de Calidad.\n\nFormato: Hallazgo / evidencia / hipótesis por confirmar / contención / datos faltantes / firma humana.\n\nRestricciones: No inventes causas, mediciones, cláusulas ISO ni acciones aprobadas. Marca [VERIFICAR] en cada afirmación que requiera registro oficial."
+    },
+    {
+      "id": "tpl-area-laboratorio",
+      "area": "Laboratorio",
+      "title": "Resumen técnico de ensayo ficticio",
+      "useWhen": "Quieres estructurar observaciones de laboratorio sin convertir la IA en fuente metrológica.",
+      "hint": "No pegues resultados, métodos, equipos, clientes ni certificados reales.",
+      "text": "Rol: Eres editor técnico de un laboratorio de práctica.\n\nContexto: Ensayo ficticio de Lote Norte. Método: [DESCRIPCIÓN PÚBLICA O FICTICIA]. Observaciones anonimizadas: [OBSERVACIONES]. ISO/IEC 17025 se menciona solo como contexto; no evalúes conformidad.\n\nObjetivo: Ordenar las observaciones para que un especialista prepare el informe oficial.\n\nFormato: Muestra ficticia / método declarado / observaciones / anomalías / datos faltantes / revisión autorizada.\n\nRestricciones: No calcules incertidumbre, no inventes límites ni acreditaciones y no emitas resultados oficiales. Usa [REVISIÓN TÉCNICA] donde corresponda."
+    },
+    {
+      "id": "tpl-area-logistica",
+      "area": "Logística y Distribución",
+      "title": "Análisis de despacho sin datos sensibles",
+      "useWhen": "Necesitas ordenar un retraso, rutas o pendientes de despacho con datos de práctica.",
+      "hint": "No incluyas placas, rutas reales, nombres de conductores ni clientes.",
+      "text": "Rol: Eres analista de logística, no tomador de decisiones.\n\nContexto: Caso ficticio: Cliente Alfa espera un despacho de Planta Central. Hechos confirmados: [HECHOS]. Información faltante: [FALTANTES].\n\nObjetivo: Identificar posibles cuellos de botella y preguntas para la reunión operativa.\n\nFormato: Tabla con Hecho, Riesgo, Dato faltante, Responsable que debe validar y Próximo paso sugerido.\n\nRestricciones: No inventes tiempos, costos, rutas ni responsables. No prometas una fecha al cliente. Separa hechos de hipótesis."
+    },
+    {
+      "id": "tpl-area-rrhh",
+      "area": "Recursos Humanos",
+      "title": "Comunicación interna inclusiva",
+      "useWhen": "Debes preparar un borrador de convocatoria, agenda o comunicación de RR. HH.",
+      "hint": "No pegues expedientes, evaluaciones, nómina ni datos personales.",
+      "text": "Rol: Eres redactor de comunicación interna con lenguaje claro e inclusivo.\n\nContexto: Debo comunicar [TEMA] a [AUDIENCIA] usando únicamente información autorizada y anónima.\n\nObjetivo: Crear un borrador que explique propósito, acción esperada y canal de consulta.\n\nFormato: Asunto + mensaje de máximo 180 palabras + checklist de revisión humana.\n\nRestricciones: No infieras desempeño, salud, edad, género ni situación personal. Usa [FECHA], [RESPONSABLE] y [POLÍTICA AUTORIZADA] si faltan datos."
+    },
+    {
+      "id": "tpl-area-comercial",
+      "area": "Comercial y Mercadeo",
+      "title": "Ideas de campaña para El Cañal o Prieta",
+      "useWhen": "Buscas alternativas creativas para las marcas El Cañal o Prieta sin inventar resultados comerciales.",
+      "hint": "Usa solo atributos de marca que hayan sido aprobados públicamente.",
+      "text": "Rol: Eres facilitador creativo de mercadeo.\n\nContexto: Marca [El Cañal / Prieta]. Audiencia: [AUDIENCIA]. Objetivo de comunicación: [OBJETIVO]. Canales permitidos: [CANALES]. No te doy ventas, presupuesto ni participación de mercado.\n\nObjetivo: Proponer 6 conceptos de campaña distintos para discusión del equipo.\n\nFormato: Concepto / mensaje central / pieza sugerida / riesgo de interpretación / dato que falta validar.\n\nRestricciones: No inventes beneficios del producto, cifras, promociones, precios ni afirmaciones nutricionales. No publiques ni elijas una campaña final."
+    },
+    {
+      "id": "tpl-area-rse",
+      "area": "Responsabilidad Social",
+      "title": "Ficha de iniciativa de responsabilidad social",
+      "useWhen": "Necesitas ordenar una idea de impacto social antes de su evaluación.",
+      "hint": "No inventes beneficiarios, impactos ni alianzas.",
+      "text": "Rol: Eres asistente de diseño de iniciativas de responsabilidad social.\n\nContexto: Idea preliminar y ficticia: [IDEA]. Comunidad o grupo descrito de forma general: [GRUPO]. Recursos confirmados: [RECURSOS O NO ESPECIFICADO].\n\nObjetivo: Convertir la idea en una ficha para evaluación humana.\n\nFormato: Necesidad / objetivo / actividades posibles / indicadores por validar / riesgos / preguntas pendientes.\n\nRestricciones: No prometas impacto, donaciones ni alianzas. No uses nombres ni datos personales de beneficiarios. Marca toda estimación como [SUPUESTO]."
+    },
+    {
+      "id": "tpl-area-direccion",
+      "area": "Gerencia y Dirección",
+      "title": "Brief ejecutivo para decidir",
+      "useWhen": "Debes condensar información en una página sin delegar la decisión a la IA.",
+      "hint": "Define de antemano los criterios de decisión del comité.",
+      "text": "Rol: Eres analista de gabinete para un comité directivo.\n\nContexto: Decisión a estudiar: [DECISIÓN]. Hechos confirmados: [HECHOS]. Opciones: [OPCIONES]. Criterios aprobados: [CRITERIOS].\n\nObjetivo: Preparar un brief que permita decidir qué debe investigarse después.\n\nFormato: Situación / opciones / comparación por criterio / riesgos / datos faltantes / preguntas para el comité.\n\nRestricciones: No elijas por el comité, no inventes ROI ni atribuyas opiniones. Toda cifra debe incluir su fuente o [FUENTE PENDIENTE]."
+    },
+    {
+      "id": "tpl-area-finanzas",
+      "area": "Finanzas y Administración",
+      "title": "Variaciones financieras con cifras de práctica",
+      "useWhen": "Quieres explicar variaciones o preparar preguntas sin cargar información financiera real.",
+      "hint": "Trabaja con cifras ficticias o porcentajes anonimizados autorizados.",
+      "text": "Rol: Eres asistente de análisis financiero, no contador responsable.\n\nContexto: Datos ficticios: presupuesto [A], resultado [B], periodo [PERIODO], categorías [LISTA].\n\nObjetivo: Calcular variaciones simples, describir posibles explicaciones como hipótesis y preparar preguntas para el responsable.\n\nFormato: Tabla Categoría / Presupuesto / Resultado / Variación / Hipótesis / Evidencia requerida, más resumen de 5 líneas.\n\nRestricciones: Muestra los cálculos, no inventes causas, no emitas dictamen y no uses datos bancarios, fiscales o contables reales. Marca [VALIDAR EN SISTEMA] antes de cada conclusión."
+    }
+  ],
+  "commonErrors": [
+    {
+      "error": "Pedido sin contexto",
+      "avoid": "Define rol, contexto, objetivo, formato y restricciones antes de ejecutar."
+    },
+    {
+      "error": "Pegar información sensible",
+      "avoid": "Anonimiza nombres, clientes, lotes, cifras, credenciales y documentos antes de abrir el chat."
+    },
+    {
+      "error": "Aceptar el primer borrador",
+      "avoid": "Itera con cambios concretos de audiencia, longitud, tono y criterio."
+    },
+    {
+      "error": "Usar cifras o fuentes inventadas",
+      "avoid": "Exige fuente, ábrela, contrasta con una segunda fuente y marca [VERIFICAR]."
+    },
+    {
+      "error": "Dejar que la IA decida o firme",
+      "avoid": "La IA propone y organiza; una persona autorizada valida, decide y responde."
+    },
+    {
+      "error": "Comparar ChatGPT y Claude con pedidos distintos",
+      "avoid": "Usa el mismo prompt y los mismos datos para comparar de manera justa."
     }
   ]
 }

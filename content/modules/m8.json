@@ -56,6 +56,60 @@
         { "type": "text", "html": "<p>La IA puede ayudarte a <strong>estructurar una decisión</strong>: listar opciones, pros y contras, criterios y riesgos. No decide por ti; ordena el pensamiento para que tú decidas mejor.</p>" },
         { "type": "callout", "kind": "verify", "title": "Verificar", "text": "Revisa que los pros y contras se basen en hechos reales de tu caso, no en supuestos genéricos de la IA." }
       ]
+    },
+    {
+      "id": "l7",
+      "title": "Casos CISA ficticios: reglas de trabajo",
+      "activaPhase": 1,
+      "blocks": [
+        { "type": "text", "html": "<p>Los casos siguientes son <strong>escenarios didácticos totalmente ficticios</strong>. No describen operaciones, resultados, personal, clientes, marcas registradas ni cumplimiento real de CISA. Usa únicamente nombres genéricos como <strong>Planta Central</strong>, <strong>Lote Norte</strong> y <strong>Cliente Alfa</strong>, y cifras inventadas claramente etiquetadas.</p>" },
+        { "type": "list", "items": ["No introduzcas nombres, correos, teléfonos, expedientes, fórmulas, precios ni datos internos reales.", "Marca cada entrada como «dato ficticio para práctica».", "La IA propone borradores; la persona responsable valida criterios, riesgos y decisiones.", "Si un ejercicio se reutiliza fuera del aula, conserva la advertencia de ficción."] },
+        { "type": "callout", "kind": "limit", "title": "ISO no equivale a certificación", "text": "Mencionar ISO 9001 o ISO/IEC 17025 sirve para practicar organización documental y preguntas de revisión. No demuestra, evalúa ni afirma certificación, acreditación o cumplimiento." },
+        { "type": "callout", "kind": "verify", "title": "En sala", "text": "Antes de cada caso, confirma en voz alta: datos ficticios, nombres genéricos y ausencia de información real. Si alguien reconoce un dato real, sustitúyelo antes de continuar." }
+      ]
+    },
+    {
+      "id": "l8",
+      "title": "Producción, Calidad y Laboratorio",
+      "activaPhase": 2,
+      "blocks": [
+        { "type": "text", "html": "<p><strong>Producción y Calidad — referencia educativa a ISO 9001:</strong> con registros ficticios de Planta Central y Lote Norte, la IA puede ordenar incidencias, clasificar causas preliminares, redactar un borrador de acción y preparar preguntas para revisión. El ejercicio practica trazabilidad y mejora, <strong>sin afirmar cumplimiento de ISO 9001</strong>.</p>" },
+        { "type": "text", "html": "<p><strong>Laboratorio — referencia educativa a ISO/IEC 17025:</strong> usa resultados y equipos inventados para resumir una secuencia de ensayo, detectar campos faltantes en un formato o preparar una lista de revisión. La decisión técnica, validez del método, incertidumbre, autorización de resultados y cualquier afirmación de competencia permanecen bajo personal calificado; el ejercicio <strong>no afirma acreditación ni cumplimiento</strong>.</p>" },
+        { "type": "list", "items": ["Producción: convertir notas ficticias de turno en incidencias, acciones propuestas y pendientes.", "Calidad: comparar un procedimiento ficticio con una lista de requisitos proporcionada, sin emitir dictamen.", "Laboratorio: extraer muestra, método, equipo, fecha y resultado de un registro ficticio; marcar «no especificado» cuando falte.", "En todos los casos: conservar el documento fuente y verificar cada salida antes de usarla."] },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Entrega un registro ficticio del Lote Norte con dos campos ausentes. La IA debe marcarlos como «no especificado»; el grupo decide qué preguntas haría, sin inventar respuestas ni concluir cumplimiento." }
+      ]
+    },
+    {
+      "id": "l9",
+      "title": "Logística, RRHH y Comercial/Mercadeo",
+      "activaPhase": 3,
+      "blocks": [
+        { "type": "text", "html": "<p><strong>Logística:</strong> analiza una tabla ficticia de entregas entre Planta Central y Cliente Alfa para identificar demoras, agrupar causas declaradas y proponer preguntas. No inventes rutas, costos ni compromisos.</p><p><strong>RRHH:</strong> prepara agendas de inducción, comunicaciones o matrices de capacitación con roles ficticios y sin datos personales. La IA no selecciona, sanciona, evalúa desempeño ni toma decisiones laborales.</p>" },
+        { "type": "text", "html": "<p><strong>Comercial y Mercadeo:</strong> crea borradores diferenciados para las marcas <strong>El Cañal</strong> y <strong>Prieta</strong> usando únicamente atributos, públicos y lineamientos ficticios entregados en el ejercicio. No atribuyas ventas, participación, preferencias, promesas de producto ni campañas reales.</p>" },
+        { "type": "list", "items": ["Logística: resumen semanal ficticio con entregas, excepción, causa informada y próximo paso sujeto a validación.", "RRHH: plan de capacitación por rol sin nombres ni datos sensibles.", "El Cañal: tres conceptos de mensaje ficticio, cada uno con audiencia y objetivo.", "Prieta: calendario editorial ficticio con canal, tema y llamado a la acción.", "Comercial: preparar preguntas para una reunión con Cliente Alfa, sin perfilar ni inventar antecedentes."] },
+        { "type": "callout", "kind": "verify", "title": "En sala", "text": "Asigna a equipos Logística, RRHH, El Cañal y Prieta. Cada equipo identifica qué salida puede redactar la IA y qué decisión debe quedar en manos humanas." }
+      ]
+    },
+    {
+      "id": "l10",
+      "title": "RSE, Gerencia y Finanzas/Admin",
+      "activaPhase": 4,
+      "blocks": [
+        { "type": "text", "html": "<p><strong>RSE:</strong> organiza ideas ficticias de una jornada comunitaria, sus grupos de interés, riesgos y posibles indicadores; no inventes impacto ni beneficiarios. <strong>Gerencia/Dirección:</strong> convierte un escenario ficticio en un resumen ejecutivo con situación, opciones, riesgos y decisión requerida, manteniendo visibles los supuestos.</p>" },
+        { "type": "text", "html": "<p><strong>Finanzas y Administración:</strong> clasifica transacciones inventadas, explica variaciones ficticias o redacta una lista de revisión. La IA no aprueba pagos, no firma, no sustituye controles ni emite conclusiones contables, fiscales o legales.</p>" },
+        { "type": "list", "items": ["RSE: matriz ficticia de actividad, objetivo, indicador propuesto, fuente y limitación.", "Gerencia/Dirección: nota de decisión sobre una situación simulada en Planta Central con opciones y preguntas pendientes.", "Finanzas/Admin: análisis ficticio de presupuesto versus ejecución, separando cálculo, interpretación y recomendación.", "Toda cifra debe poder rastrearse al conjunto ficticio entregado y revisarse con cálculo independiente."] },
+        { "type": "callout", "kind": "verify", "title": "En sala", "text": "Usa el mismo escenario ficticio para tres áreas. RSE propone indicadores sin afirmar impacto; Gerencia formula una decisión; Finanzas/Admin verifica cifras. Luego comparen límites y responsabilidades." }
+      ]
+    },
+    {
+      "id": "l11",
+      "title": "Mapa rápido de productividad por área",
+      "activaPhase": 5,
+      "blocks": [
+        { "type": "text", "html": "<p>En cualquier área, aplica el mismo ciclo de productividad: <strong>entrada mínima y ficticia → borrador estructurado → revisión experta → aprobación humana → registro de cambios</strong>. El ahorro de tiempo proviene de preparar y organizar, no de omitir controles.</p>" },
+        { "type": "list", "items": ["Define una tarea de bajo riesgo y un resultado observable.", "Proporciona formato, criterios y restricciones.", "Exige que la IA marque datos faltantes y supuestos.", "Verifica contenido, tono, cifras y autorizaciones.", "Guarda solo la versión aprobada en los sistemas autorizados."] },
+        { "type": "callout", "kind": "think", "title": "En sala", "text": "Cada participante elige un caso ficticio de su área y completa el ciclo. Debe señalar exactamente qué revisará una persona antes de aprobar el resultado." }
+      ]
     }
   ],
   "challenges": [

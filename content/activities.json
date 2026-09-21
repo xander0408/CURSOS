@@ -114,6 +114,57 @@
     { "id": "a9", "day": 2, "mins": 12, "title": "Comparador", "do": "Cualquier prompt (tarea o el tuyo) en ChatGPT y Claude. Pega las dos salidas en Comparador y elige cuál te sirve más y por qué." },
     { "id": "a10", "day": 2, "mins": 15, "title": "Seis slides", "do": "Pide estructura de presentación y descarta 2 ideas débiles. Quédate con un hilo claro." },
     { "id": "a11", "day": 2, "mins": 10, "title": "Caza el error", "do": "Completa un reto de detectar error o evaluar salida de IA en el laboratorio." },
-    { "id": "a12", "day": 2, "mins": 25, "title": "Ficha de proyecto", "do": "Llena el proyecto final con un problema real de tu cargo, sin datos internos, y marca ficha lista." }
+    { "id": "a12", "day": 2, "mins": 25, "title": "Ficha de proyecto", "do": "Llena el proyecto final con un problema real de tu cargo, sin datos internos, y marca ficha lista." },
+    {
+      "id": "a13",
+      "day": 2,
+      "mins": 25,
+      "title": "Excel + IA en Acción",
+      "do": "1. Descarga el CSV ficticio y ábrelo en Excel. 2. Revisa encabezados, tipos de datos y filas vacías antes de usar IA. 3. Pide a ChatGPT o Claude fórmulas para calcular el costo total por fila, resumir unidades y comparar Planta Central con Lote Norte; aclara que no debe inventar valores. 4. Copia las fórmulas propuestas en una columna nueva y comprueba manualmente al menos tres resultados. 5. Crea una tabla dinámica o un gráfico sencillo y redacta dos hallazgos, separando lo calculado de cualquier interpretación. Todo el ejercicio usa datos ficticios: no agregues datos reales.",
+      "resources": [
+        { "label": "Descargar datos ficticios (CSV)", "path": "recursos/viernes2/datos-ficticios-excel.csv" },
+        { "label": "Leer guía de recursos", "path": "recursos/viernes2/README.md" }
+      ],
+      "checklist": [
+        "Confirmé que el archivo contiene únicamente datos ficticios.",
+        "Verifiqué manualmente al menos tres cálculos.",
+        "Diferencié resultados calculados de interpretaciones de la IA.",
+        "No compartí información real, personal ni interna."
+      ]
+    },
+    {
+      "id": "a14",
+      "day": 2,
+      "mins": 25,
+      "title": "De Información a Presentación Ejecutiva",
+      "do": "1. Descarga y lee el documento base ficticio. 2. Pide a la IA una estructura de seis diapositivas para dirección: contexto, situación, evidencia, opciones, recomendación condicionada y próximos pasos. 3. Exige que marque [VERIFICAR] donde falte información y que no añada cifras, fechas ni responsables. 4. Compara la respuesta con el documento base, elimina repeticiones y descarta al menos dos ideas débiles. 5. Redacta el contenido final de cada diapositiva con un máximo de cuatro viñetas y agrega notas sobre qué debe validar una persona antes de presentar. No uses nombres ni datos reales.",
+      "resources": [
+        { "label": "Descargar documento base (Markdown)", "path": "recursos/viernes2/documento-base-presentacion.md" },
+        { "label": "Leer guía de recursos", "path": "recursos/viernes2/README.md" }
+      ],
+      "checklist": [
+        "La presentación mantiene el mensaje del documento base.",
+        "Las seis diapositivas siguen un hilo ejecutivo claro.",
+        "Marqué datos faltantes o inciertos con [VERIFICAR].",
+        "Eliminé afirmaciones, cifras o responsables no sustentados."
+      ]
+    },
+    {
+      "id": "a15",
+      "day": 2,
+      "mins": 25,
+      "title": "Detective de Información",
+      "do": "1. Descarga el dossier ficticio y clasifica cada afirmación como respaldada, dudosa o no verificable. 2. Para cada afirmación, identifica la fuente citada, su fecha, autoría, evidencia y posibles conflictos. 3. Pide a la IA que proponga preguntas de verificación, sin permitirle confirmar hechos ni inventar enlaces. 4. Cruza cada afirmación con al menos dos pistas del dossier y registra coincidencias o contradicciones. 5. Escribe un breve dictamen que indique qué podría usarse, qué requiere verificación adicional y qué debe descartarse. No busques ni incorpores información real de ninguna organización.",
+      "resources": [
+        { "label": "Descargar dossier ficticio (Markdown)", "path": "recursos/viernes2/dossier-investigacion-ficticio.md" },
+        { "label": "Leer guía de recursos", "path": "recursos/viernes2/README.md" }
+      ],
+      "checklist": [
+        "Separé afirmaciones de evidencias y opiniones.",
+        "Contrasté cada afirmación con al menos dos pistas.",
+        "Detecté fechas, autorías o fuentes inconsistentes.",
+        "Mi dictamen no presenta como cierto lo que sigue sin verificar."
+      ]
+    }
   ]
 }
