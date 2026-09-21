@@ -40,6 +40,15 @@ La consola tiene una segunda pestaña, **Backup as a Service**, con su propia si
 
 Los precios son ilustrativos y no constituyen una cotización.
 
+## Otras pestañas AWS (todas simulación)
+
+La barra superior de la consola incluye seis servicios. Ninguno llama a AWS.
+
+- **Cloud Migration**: las 7 R (Rehost, Replatform, Repurchase, Refactor, Retire, Retain, Relocate) con portafolio, olas y AWS Migration Hub / MGN / DMS.
+- **Well-Architected**: los 6 pilares (incluido Sustainability), score por workload, findings de riesgo y plan de mejora en el Well-Architected Tool.
+- **Machine Learning e IA**: SageMaker (jobs y endpoints), Amazon Bedrock (modelos fundacionales y RAG) y servicios de IA (Rekognition, Textract, Comprehend, Transcribe, Polly, Translate, Personalize, Forecast).
+- **Seguridad AWS**: Security Hub, GuardDuty, Inspector, WAF, Shield, KMS y controles FSBP. Botón para simular una amenaza y resolver findings.
+
 ## Tecnologías
 
 - React 19
@@ -96,13 +105,9 @@ Controles adicionales:
 ```
 aws-dr-simulator/
   src/
-    components/
-    components/backup/
-    hooks/useDisasterSimulation.ts
-    hooks/useBackupSimulation.ts
-    types/simulation.ts
-    types/backup.ts
-    data/scenarios.ts
-    data/backup.ts
+    components/          DR + backup + migration + WA + ML + security
+    hooks/               una máquina de estados por pestaña
+    types/console.ts     vistas de la consola
+    data/console.ts      metadatos de pestañas
     App.tsx
 ```

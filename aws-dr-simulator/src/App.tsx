@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Archive, ShieldAlert } from 'lucide-react'
+import { Archive, Brain, Landmark, Route, ShieldAlert, ShieldCheck } from 'lucide-react'
 import { useState } from 'react'
 import { ArchitectureDiagram } from './components/ArchitectureDiagram'
 import { AutomationRunbook } from './components/AutomationRunbook'
@@ -9,18 +9,27 @@ import { EventLog } from './components/EventLog'
 import { Header } from './components/Header'
 import { HowItWorksModal } from './components/HowItWorksModal'
 import { MetricsPanel, UsersPanel } from './components/MetricsPanel'
+import { MigrationDashboard } from './components/migration/MigrationDashboard'
+import { MlDashboard } from './components/ml/MlDashboard'
 import { ReplicationChart } from './components/ReplicationChart'
 import { ScenarioSelector } from './components/ScenarioSelector'
+import { SecurityDashboard } from './components/security/SecurityDashboard'
 import { SimulationControls } from './components/SimulationControls'
 import { SimulationProgress } from './components/SimulationProgress'
 import { Timeline } from './components/Timeline'
+import { WellArchitectedDashboard } from './components/wellarchitected/WellArchitectedDashboard'
+import { VIEWS } from './data/console'
 import { useDisasterSimulation } from './hooks/useDisasterSimulation'
-import type { ConsoleView } from './types/backup'
+import type { ConsoleView } from './types/console'
 
-const TABS: Array<{ id: ConsoleView; label: string; description: string; icon: typeof Archive }> = [
-  { id: 'dr', label: 'Disaster Recovery', description: 'AWS Elastic Disaster Recovery', icon: ShieldAlert },
-  { id: 'backup', label: 'Backup as a Service', description: 'AWS Backup, S3, Glacier, VTL', icon: Archive },
-]
+const TAB_ICONS: Record<ConsoleView, typeof Archive> = {
+  dr: ShieldAlert,
+  backup: Archive,
+  migration: Route,
+  wellarchitected: Landmark,
+  ml: Brain,
+  security: ShieldCheck,
+}
 
 function formatRto(seconds: number): string {
   const minutes = Math.floor(seconds / 60)
@@ -40,8 +49,8 @@ export default function App() {
 
       <div className="border-b border-slate-800 bg-[#0b111c] px-4 lg:px-6" role="tablist" aria-label="Services">
         <div className="flex gap-1 overflow-x-auto">
-          {TABS.map((tab) => {
-            const Icon = tab.icon
+          {VIEWS.map((tab) => {
+            const Icon = TAB_ICONS[tab.id]
             const active = tab.id === view
             return (
               <button
@@ -50,16 +59,16 @@ export default function App() {
                 role="tab"
                 aria-selected={active}
                 onClick={() => setView(tab.id)}
-                className={`flex items-center gap-2 border-b-2 px-4 py-2.5 text-left text-xs transition ${
+                className={`flex min-w-[160px] items-center gap-2 border-b-2 px-4 py-2.5 text-left text-xs transition ${
                   active
                     ? 'border-[#ff9900] text-white'
                     : 'border-transparent text-slate-400 hover:text-slate-200'
                 }`}
               >
-                <Icon className={`h-4 w-4 ${active ? 'text-[#ff9900]' : 'text-slate-500'}`} />
+                <Icon className={`h-4 w-4 shrink-0 ${active ? 'text-[#ff9900]' : 'text-slate-500'}`} />
                 <span>
                   <span className="block font-semibold">{tab.label}</span>
-                  <span className="block text-[10px] text-slate-500">{tab.description}</span>
+                  <span className="block text-[10px] text-slate-500">{tab.tagline}</span>
                 </span>
               </button>
             )
@@ -85,6 +94,22 @@ export default function App() {
         {view === 'backup' ? (
           <main className="min-w-0 flex-1 px-4 py-4 lg:px-6">
             <BackupDashboard />
+          </main>
+        ) : view === 'migration' ? (
+          <main className="min-w-0 flex-1 px-4 py-4 lg:px-6">
+            <MigrationDashboard />
+          </main>
+        ) : view === 'wellarchitected' ? (
+          <main className="min-w-0 flex-1 px-4 py-4 lg:px-6">
+            <WellArchitectedDashboard />
+          </main>
+        ) : view === 'ml' ? (
+          <main className="min-w-0 flex-1 px-4 py-4 lg:px-6">
+            <MlDashboard />
+          </main>
+        ) : view === 'security' ? (
+          <main className="min-w-0 flex-1 px-4 py-4 lg:px-6">
+            <SecurityDashboard />
           </main>
         ) : (
         <main className="min-w-0 flex-1 space-y-4 px-4 py-4 lg:px-6">
@@ -186,7 +211,7 @@ export default function App() {
       </div>
 
       <footer className="border-t border-slate-800 px-4 py-6 text-center text-xs text-slate-500">
-        <p className="font-medium text-slate-300">AWS Disaster Recovery and Backup Simulator</p>
+        <p className="font-medium text-slate-300">AWS Cloud Resilience Simulator</p>
         <p>Educational / Demonstration Tool</p>
         <p>Simulation only. No AWS resources are being modified.</p>
       </footer>
@@ -194,7 +219,7 @@ export default function App() {
       <HowItWorksModal open={sim.howItWorksOpen} onClose={toggleHowItWorks} />
 
       <AnimatePresence>
-        {sim.demoComplete && (
+        {sim.demoComplete && view === 'dr' && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

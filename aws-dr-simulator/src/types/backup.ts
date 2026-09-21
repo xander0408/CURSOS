@@ -1,4 +1,4 @@
-export type ConsoleView = 'dr' | 'backup'
+export type { ConsoleView } from './console'
 
 export type StorageClassId =
   | 'STANDARD'
