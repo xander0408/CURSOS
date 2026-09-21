@@ -89,6 +89,8 @@ export interface SimulationModel {
   sequence: SequenceKind
   stepIndex: number
   remainingMs: number
+  stepDurationMs: number
+  totalSteps: number
   primaryStatus: PrimaryStatus
   replicationStatus: ReplicationStatus
   replicationProgress: number

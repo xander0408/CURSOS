@@ -21,6 +21,10 @@ export function SimulationProgress({ sim }: SimulationProgressProps) {
   const current = stageIndex(sim.state)
   const active = sim.sequence !== 'none'
   const failback = sim.state.startsWith('FAILBACK')
+  const stepProgress =
+    sim.stepDurationMs > 0
+      ? Math.min(100, ((sim.stepDurationMs - sim.remainingMs) / sim.stepDurationMs) * 100)
+      : 0
 
   return (
     <section
@@ -34,8 +38,11 @@ export function SimulationProgress({ sim }: SimulationProgressProps) {
           </p>
           <h2 className="mt-1 text-sm font-semibold text-white">{sim.phaseLabel}</h2>
         </div>
-        <span className="font-mono text-xs text-slate-400">
-          {failback ? 'FAILBACK' : active ? 'FAILOVER IN PROGRESS' : 'READY'}
+        <span className="inline-flex items-center gap-2 font-mono text-xs text-slate-400">
+          {active && !sim.paused ? (
+            <span className="h-2 w-2 animate-pulse rounded-full bg-sky-400" aria-hidden="true" />
+          ) : null}
+          {sim.paused ? 'PAUSED' : failback ? 'AUTOMATED FAILBACK' : active ? 'AUTOMATED FAILOVER' : 'READY'}
         </span>
       </div>
       <ol className="grid gap-2 sm:grid-cols-5">
@@ -60,8 +67,16 @@ export function SimulationProgress({ sim }: SimulationProgressProps) {
                   {stage.label}
                 </p>
                 <p className="text-[10px] text-slate-500">
-                  {done ? 'Complete' : selected ? 'Current step' : 'Pending'}
+                  {done ? 'Complete' : selected ? (active ? 'Running automatically' : 'Current step') : 'Pending'}
                 </p>
+                {selected && active && (
+                  <div className="mt-1 h-1 w-full overflow-hidden rounded-full bg-slate-800 sm:w-28">
+                    <div
+                      className="h-full bg-sky-400 transition-[width] duration-150"
+                      style={{ width: `${stepProgress}%` }}
+                    />
+                  </div>
+                )}
               </div>
             </li>
           )

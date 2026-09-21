@@ -165,6 +165,8 @@ export function createInitialModel(scenarioId: ScenarioId = 'server-failure'): S
     sequence: 'none',
     stepIndex: -1,
     remainingMs: 0,
+    stepDurationMs: 0,
+    totalSteps: 0,
     primaryStatus: 'ONLINE',
     replicationStatus: 'SYNCED',
     replicationProgress: 100,
@@ -555,6 +557,8 @@ function applyStep(
     sequence: finished ? 'none' : kind,
     stepIndex: finished ? -1 : index,
     remainingMs: finished ? 0 : step.durationMs,
+    stepDurationMs: step.durationMs,
+    totalSteps: steps.length,
     state: next.state,
   }
 }

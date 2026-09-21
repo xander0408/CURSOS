@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArchitectureDiagram } from './components/ArchitectureDiagram'
+import { AutomationRunbook } from './components/AutomationRunbook'
 import { ConsoleSidebar } from './components/ConsoleSidebar'
 import { EventLog } from './components/EventLog'
 import { Header } from './components/Header'
@@ -73,7 +74,10 @@ export default function App() {
             {!compact && <ScenarioSelector api={api} />}
           </div>
 
-          <ArchitectureDiagram sim={sim} presentationMode={compact} />
+          <div className={`grid gap-4 ${compact ? 'xl:grid-cols-[1fr_360px]' : 'xl:grid-cols-[1fr_380px]'}`}>
+            <ArchitectureDiagram sim={sim} presentationMode={compact} />
+            <AutomationRunbook sim={sim} />
+          </div>
 
           <AnimatePresence>
           {sim.banner === 'recovery-success' && (
