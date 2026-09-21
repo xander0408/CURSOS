@@ -674,9 +674,11 @@ export function useDisasterSimulation() {
   }, [])
 
   const reset = useCallback(() => {
-    setSim((current) =>
-      createInitialModel(current.scenarioId),
-    )
+    setSim((current) => ({
+      ...createInitialModel(current.scenarioId),
+      speed: current.speed,
+      presentationMode: current.presentationMode,
+    }))
   }, [])
 
   const skipToRecovery = useCallback(() => {
@@ -763,7 +765,7 @@ export function useDisasterSimulation() {
     setSim((current) => ({ ...current, demoComplete: false, demoMode: false }))
   }, [])
 
-  const headerStatus = sim.sequence !== 'none' ? 'Running' : sim.paused ? 'Paused' : 'Ready'
+  const headerStatus = sim.paused ? 'Paused' : sim.sequence !== 'none' ? 'Running' : 'Ready'
 
   return {
     sim,

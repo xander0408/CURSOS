@@ -7,6 +7,7 @@ import { MetricsPanel, UsersPanel } from './components/MetricsPanel'
 import { ReplicationChart } from './components/ReplicationChart'
 import { ScenarioSelector } from './components/ScenarioSelector'
 import { SimulationControls } from './components/SimulationControls'
+import { SimulationProgress } from './components/SimulationProgress'
 import { Timeline } from './components/Timeline'
 import { useDisasterSimulation } from './hooks/useDisasterSimulation'
 
@@ -48,6 +49,7 @@ export default function App() {
           </p>
         </div>
 
+        <SimulationProgress sim={sim} />
         <MetricsPanel sim={sim} />
 
         <div className={`grid gap-4 ${compact ? '' : 'lg:grid-cols-[1fr_280px]'}`}>
