@@ -2,6 +2,7 @@ import { Brain, Database, Play, Rocket, RotateCcw, Sparkles, Workflow } from 'lu
 import { AI_SERVICES, BEDROCK_MODELS, RAG_STEPS } from '../../data/ml'
 import { useMlSimulation } from '../../hooks/useMlSimulation'
 import { StatusPill } from '../ui'
+import { ArchitectureBoard } from '../shared/ArchitectureBoard'
 import {
   ActivityFeed,
   MetricGrid,
@@ -37,6 +38,8 @@ export function MlDashboard() {
           </>
         }
       />
+
+      <ArchitectureBoard view="ml" />
 
       <MetricGrid
         cards={[

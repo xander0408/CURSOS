@@ -42,8 +42,11 @@ Los precios son ilustrativos y no constituyen una cotización.
 
 ## Otras pestañas AWS (todas simulación)
 
-La barra superior de la consola incluye seis servicios. Ninguno llama a AWS.
+La barra superior de la consola incluye siete servicios. Ninguno llama a AWS.
 
+Cada pestaña muestra la **arquitectura de referencia** que corresponde (DRS, Storage Gateway, Multi-AZ, 7 R, Well-Architected, Bedrock/SageMaker y seguridad de red).
+
+- **Alta disponibilidad**: WAF, ALB, Auto Scaling Multi-AZ y RDS Standby. Simula fallo de AZ, de instancia o failover de RDS.
 - **Cloud Migration**: las 7 R (Rehost, Replatform, Repurchase, Refactor, Retire, Retain, Relocate) con portafolio, olas y AWS Migration Hub / MGN / DMS.
 - **Well-Architected**: los 6 pilares (incluido Sustainability), score por workload, findings de riesgo y plan de mejora en el Well-Architected Tool.
 - **Machine Learning e IA**: SageMaker (jobs y endpoints), Amazon Bedrock (modelos fundacionales y RAG) y servicios de IA (Rekognition, Textract, Comprehend, Transcribe, Polly, Translate, Personalize, Forecast).

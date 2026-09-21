@@ -2,6 +2,7 @@ import { CheckCircle2, ClipboardList, RotateCcw, Shield, Sparkles } from 'lucide
 import { PILLARS, WORKLOADS, getPillar, type FindingSeverity, type PillarId } from '../../data/wellarchitected'
 import { useWellArchitectedSimulation } from '../../hooks/useWellArchitectedSimulation'
 import { StatusPill } from '../ui'
+import { ArchitectureBoard } from '../shared/ArchitectureBoard'
 import {
   ActivityFeed,
   MetricGrid,
@@ -50,6 +51,8 @@ export function WellArchitectedDashboard() {
           </>
         }
       />
+
+      <ArchitectureBoard view="wellarchitected" />
 
       <MetricGrid
         cards={[

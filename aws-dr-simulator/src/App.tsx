@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { Archive, Brain, Landmark, Route, ShieldAlert, ShieldCheck } from 'lucide-react'
+import { Archive, Brain, Landmark, Route, ShieldAlert, ShieldCheck, Split } from 'lucide-react'
 import { useState } from 'react'
+import { ArchitectureBoard } from './components/shared/ArchitectureBoard'
 import { ArchitectureDiagram } from './components/ArchitectureDiagram'
 import { AutomationRunbook } from './components/AutomationRunbook'
 import { BackupDashboard } from './components/backup/BackupDashboard'
@@ -17,6 +18,7 @@ import { SecurityDashboard } from './components/security/SecurityDashboard'
 import { SimulationControls } from './components/SimulationControls'
 import { SimulationProgress } from './components/SimulationProgress'
 import { Timeline } from './components/Timeline'
+import { HaDashboard } from './components/ha/HaDashboard'
 import { WellArchitectedDashboard } from './components/wellarchitected/WellArchitectedDashboard'
 import { VIEWS } from './data/console'
 import { useDisasterSimulation } from './hooks/useDisasterSimulation'
@@ -25,6 +27,7 @@ import type { ConsoleView } from './types/console'
 const TAB_ICONS: Record<ConsoleView, typeof Archive> = {
   dr: ShieldAlert,
   backup: Archive,
+  ha: Split,
   migration: Route,
   wellarchitected: Landmark,
   ml: Brain,
@@ -95,6 +98,10 @@ export default function App() {
           <main className="min-w-0 flex-1 px-4 py-4 lg:px-6">
             <BackupDashboard />
           </main>
+        ) : view === 'ha' ? (
+          <main className="min-w-0 flex-1 px-4 py-4 lg:px-6">
+            <HaDashboard />
+          </main>
         ) : view === 'migration' ? (
           <main className="min-w-0 flex-1 px-4 py-4 lg:px-6">
             <MigrationDashboard />
@@ -135,6 +142,7 @@ export default function App() {
             </div>
           </div>
 
+          <ArchitectureBoard view="dr" />
           <SimulationProgress sim={sim} />
           <MetricsPanel sim={sim} />
 

@@ -2,6 +2,7 @@ import { Bug, KeyRound, RotateCcw, ShieldAlert, ShieldCheck, Siren } from 'lucid
 import { LAYERS, WAF_RULES, type FindingSeverity } from '../../data/security'
 import { useSecuritySimulation } from '../../hooks/useSecuritySimulation'
 import { StatusPill } from '../ui'
+import { ArchitectureBoard } from '../shared/ArchitectureBoard'
 import {
   ActivityFeed,
   MetricGrid,
@@ -44,6 +45,8 @@ export function SecurityDashboard() {
           </>
         }
       />
+
+      <ArchitectureBoard view="security" />
 
       <MetricGrid
         cards={[

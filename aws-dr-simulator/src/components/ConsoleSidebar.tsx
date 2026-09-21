@@ -18,6 +18,7 @@ import {
   Server,
   Settings,
   ShieldCheck,
+  Split,
   Vault,
 } from 'lucide-react'
 import type { ConsoleView } from '../types/console'
@@ -61,6 +62,14 @@ const GROUPS: NavGroup[] = [
       { label: 'S3 storage classes', icon: HardDrive, view: 'backup' },
       { label: 'S3 versioning', icon: History, view: 'backup' },
       { label: 'Tape Gateway (VTL)', icon: Disc3, view: 'backup' },
+    ],
+  },
+  {
+    title: 'Alta disponibilidad',
+    items: [
+      { label: 'Multi-AZ dashboard', icon: Split, view: 'ha', primary: true },
+      { label: 'Load balancing', icon: Network, view: 'ha' },
+      { label: 'RDS failover', icon: Database, view: 'ha' },
     ],
   },
   {
@@ -123,6 +132,8 @@ function sidebarState(view: ConsoleView, sim: SimulationModel): string {
       return `State: ${sim.state}`
     case 'backup':
       return 'Backup service: active'
+    case 'ha':
+      return 'Multi-AZ: 2 AZs'
     case 'migration':
       return 'Migration Hub: active'
     case 'wellarchitected':

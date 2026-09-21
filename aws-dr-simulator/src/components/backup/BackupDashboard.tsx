@@ -1,6 +1,7 @@
 import { RotateCcw, ShieldCheck } from 'lucide-react'
 import { useBackupSimulation } from '../../hooks/useBackupSimulation'
 import type { ActivityLevel } from '../../types/backup'
+import { ArchitectureBoard } from '../shared/ArchitectureBoard'
 import { AwsBackupPanel } from './AwsBackupPanel'
 import { BackupMetrics } from './BackupMetrics'
 import { StorageClassesPanel } from './StorageClassesPanel'
@@ -45,6 +46,7 @@ export function BackupDashboard() {
       </div>
 
       <BackupMetrics api={api} />
+      <ArchitectureBoard view="backup" />
       <AwsBackupPanel api={api} />
       <StorageClassesPanel api={api} />
       <div className="grid gap-4 xl:grid-cols-[1fr_360px]">

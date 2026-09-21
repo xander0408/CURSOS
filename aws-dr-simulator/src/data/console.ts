@@ -27,6 +27,14 @@ export const VIEWS: ViewMeta[] = [
     envName: 'magnatic-backup-demo',
   },
   {
+    id: 'ha',
+    label: 'Alta disponibilidad',
+    tagline: 'Multi-AZ, ALB, Auto Scaling, RDS',
+    title: 'AWS High Availability Simulator',
+    subtitle: 'Multi-AZ architecture console view',
+    envName: 'magnatic-ha-demo',
+  },
+  {
     id: 'migration',
     label: 'Cloud Migration',
     tagline: '7 R, Migration Hub, MGN, DMS',

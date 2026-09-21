@@ -1,4 +1,4 @@
-export type ConsoleView = 'dr' | 'backup' | 'migration' | 'wellarchitected' | 'ml' | 'security'
+export type ConsoleView = 'dr' | 'backup' | 'ha' | 'migration' | 'wellarchitected' | 'ml' | 'security'
 
 export type FeedLevel = 'INFO' | 'SUCCESS' | 'WARN' | 'CRITICAL'
 

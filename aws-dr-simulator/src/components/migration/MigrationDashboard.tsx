@@ -3,6 +3,7 @@ import { MIGRATION_PHASES, STRATEGIES, TOTAL_WAVES, getStrategy } from '../../da
 import type { AppStatus } from '../../data/migration'
 import { useMigrationSimulation } from '../../hooks/useMigrationSimulation'
 import { StatusPill } from '../ui'
+import { ArchitectureBoard } from '../shared/ArchitectureBoard'
 import {
   ActivityFeed,
   MetricGrid,
@@ -54,6 +55,8 @@ export function MigrationDashboard() {
           </>
         }
       />
+
+      <ArchitectureBoard view="migration" />
 
       <MetricGrid
         cards={[
