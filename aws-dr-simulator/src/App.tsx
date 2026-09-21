@@ -1,6 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { Archive, ShieldAlert } from 'lucide-react'
+import { useState } from 'react'
 import { ArchitectureDiagram } from './components/ArchitectureDiagram'
 import { AutomationRunbook } from './components/AutomationRunbook'
+import { BackupDashboard } from './components/backup/BackupDashboard'
 import { ConsoleSidebar } from './components/ConsoleSidebar'
 import { EventLog } from './components/EventLog'
 import { Header } from './components/Header'
@@ -12,6 +15,12 @@ import { SimulationControls } from './components/SimulationControls'
 import { SimulationProgress } from './components/SimulationProgress'
 import { Timeline } from './components/Timeline'
 import { useDisasterSimulation } from './hooks/useDisasterSimulation'
+import type { ConsoleView } from './types/backup'
+
+const TABS: Array<{ id: ConsoleView; label: string; description: string; icon: typeof Archive }> = [
+  { id: 'dr', label: 'Disaster Recovery', description: 'AWS Elastic Disaster Recovery', icon: ShieldAlert },
+  { id: 'backup', label: 'Backup as a Service', description: 'AWS Backup, S3, Glacier, VTL', icon: Archive },
+]
 
 function formatRto(seconds: number): string {
   const minutes = Math.floor(seconds / 60)
@@ -22,14 +31,44 @@ function formatRto(seconds: number): string {
 export default function App() {
   const api = useDisasterSimulation()
   const { sim, scenario, toggleHowItWorks, runAgain, dismissDemo } = api
-  const compact = sim.presentationMode
+  const [view, setView] = useState<ConsoleView>('dr')
+  const compact = sim.presentationMode && view === 'dr'
 
   return (
     <div className={`min-h-screen bg-[#0f1722] ${compact ? 'text-base' : 'text-sm'}`}>
-      <Header api={api} />
+      <Header api={api} view={view} />
+
+      <div className="border-b border-slate-800 bg-[#0b111c] px-4 lg:px-6" role="tablist" aria-label="Services">
+        <div className="flex gap-1 overflow-x-auto">
+          {TABS.map((tab) => {
+            const Icon = tab.icon
+            const active = tab.id === view
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={active}
+                onClick={() => setView(tab.id)}
+                className={`flex items-center gap-2 border-b-2 px-4 py-2.5 text-left text-xs transition ${
+                  active
+                    ? 'border-[#ff9900] text-white'
+                    : 'border-transparent text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                <Icon className={`h-4 w-4 ${active ? 'text-[#ff9900]' : 'text-slate-500'}`} />
+                <span>
+                  <span className="block font-semibold">{tab.label}</span>
+                  <span className="block text-[10px] text-slate-500">{tab.description}</span>
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      </div>
 
       <AnimatePresence>
-        {sim.banner === 'disaster' && (
+        {view === 'dr' && sim.banner === 'disaster' && (
           <motion.div
             initial={{ y: -16, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -42,7 +81,12 @@ export default function App() {
       </AnimatePresence>
 
       <div className="flex">
-        {!compact && <ConsoleSidebar sim={sim} />}
+        {!compact && <ConsoleSidebar sim={sim} view={view} onNavigate={setView} />}
+        {view === 'backup' ? (
+          <main className="min-w-0 flex-1 px-4 py-4 lg:px-6">
+            <BackupDashboard />
+          </main>
+        ) : (
         <main className="min-w-0 flex-1 space-y-4 px-4 py-4 lg:px-6">
           <div className="flex flex-wrap items-end justify-between gap-3 border-b border-slate-800 pb-4">
             <div>
@@ -138,10 +182,11 @@ export default function App() {
             </div>
           )}
         </main>
+        )}
       </div>
 
       <footer className="border-t border-slate-800 px-4 py-6 text-center text-xs text-slate-500">
-        <p className="font-medium text-slate-300">AWS Disaster Recovery Simulator</p>
+        <p className="font-medium text-slate-300">AWS Disaster Recovery and Backup Simulator</p>
         <p>Educational / Demonstration Tool</p>
         <p>Simulation only. No AWS resources are being modified.</p>
       </footer>

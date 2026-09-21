@@ -28,6 +28,18 @@ USERS
 
 La lógica vive en una máquina de estados (`useDisasterSimulation`) con fases de failover y failback. No hay `setTimeout` dispersos: un único ticker avanza los pasos según la velocidad de simulación.
 
+## Pestaña Backup as a Service
+
+La consola tiene una segunda pestaña, **Backup as a Service**, con su propia simulación local:
+
+- **AWS Backup**: planes (Daily-Production, Weekly-Compliance, Monthly-Archive), vaults con Vault Lock y copia cross-region, jobs de backup, copy y restore con progreso en vivo, y backup on-demand por recurso (EC2, RDS, EFS, EBS, DynamoDB, S3).
+- **Amazon S3, clases de almacenamiento**: Standard, Intelligent-Tiering, Standard-IA, One Zone-IA, Glacier Instant Retrieval, Glacier Flexible Retrieval y Glacier Deep Archive, con tiempo de recuperación, duración mínima, resiliencia y precio ilustrativo por GB.
+- **Lifecycle policy**: regla de 7 años (Standard, 30 días a Standard-IA, 90 a Glacier Instant, 180 a Glacier Flexible, 1 año a Deep Archive, expiración a 7 años), distribución de datos animada y estimación de costo frente a usar solo Standard. Botón para avanzar 30 días simulados.
+- **S3 Versioning**: subir versiones, borrar (crea delete marker), deshacer borrado y restaurar una versión anterior como objeto actual.
+- **Tape Gateway (VTL)**: cintas virtuales LTO en la Virtual Tape Library, expulsión y archivado al Virtual Tape Shelf en Glacier Flexible o Deep Archive, y recuperación de cintas.
+
+Los precios son ilustrativos y no constituyen una cotización.
+
 ## Tecnologías
 
 - React 19
