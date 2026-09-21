@@ -91,7 +91,7 @@ export function renderLibrary(data) {
     <h3 style="margin-top:24px">Tus prompts (${mine.length})</h3>
     <div class="grid grid-2">${custom}</div>
     <h3 style="margin-top:24px">Plantillas del curso</h3>
-    <p class="muted">Incluye prompts avanzados por área de CISA. Todos usan casos ficticios o datos anonimizados y requieren revisión humana.</p>
+    <p class="muted">Incluye prompts avanzados por área de CISA (Viernes 2). Todos usan casos ficticios o datos anonimizados y requieren revisión humana.</p>
     <div class="grid grid-2">${seeds}</div>
     ${errors ? `<h3 style="margin-top:24px">Errores comunes y cómo evitarlos</h3>
       <div class="grid grid-2">${errors}</div>` : ""}

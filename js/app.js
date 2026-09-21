@@ -1,24 +1,25 @@
-import { ensureTrailingSlash, bindBrandImages } from "./paths.js?v=20260911q2";
+import { ensureTrailingSlash, bindBrandImages } from "./paths.js?v=20260920v3";
 import { initTheme, toggleTheme, currentTheme } from "./theme.js";
 import { loadAll } from "./content.js";
-import { parseHash, onRoute } from "./router.js?v=20260911q2";
+import { parseHash, onRoute } from "./router.js?v=20260920v3";
 import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks, seedInstructorGuide } from "./store.js";
 import { setSyncApi, pullIntoLocal, pushNow } from "./sync.js";
 import { toast, openModal, closeModal } from "./ui.js?v=20260910s";
-import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js";
-import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260920v2";
+import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct } from "./views/dashboard.js?v=20260920v3";
+import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260920v3";
 import { checkBadges } from "./badges.js";
 import { renderChallengesIndex, bindChallengesIndex } from "./views/challenges.js";
 import { renderPromptLab, bindPromptLab } from "./views/prompt-lab-view.js?v=20260911p2";
 import { renderComparator, bindComparator } from "./views/comparator.js";
-import { renderLibrary, bindLibrary } from "./views/library.js?v=20260920v2";
+import { renderLibrary, bindLibrary } from "./views/library.js?v=20260920v3";
 import { renderProject, bindProject } from "./views/project.js?v=20260920v2";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./views/quiz.js?v=20260911q2";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260912d";
-import { renderActivities, bindActivities } from "./views/activities.js?v=20260920v2";
+import { renderActivities, bindActivities } from "./views/activities.js?v=20260920v3";
+import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260920v3";
 import { renderCronograma } from "./views/schedule.js";
 import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n4";
 
@@ -39,6 +40,7 @@ const TITLES = {
   manual: "Manual de prompts",
   admin: "Dashboard aula",
   actividades: "Actividades",
+  friday2: "Viernes 2",
   cronograma: "Cronograma",
 };
 
@@ -135,6 +137,7 @@ function highlightNav(pathName) {
     manual: "/manual",
     admin: "/admin",
     actividades: "/actividades",
+    friday2: "/viernes-2",
     cronograma: "/cronograma",
   };
   const active = map[pathName] || "/";
@@ -246,6 +249,9 @@ function renderInner() {
   } else if (route.name === "actividades") {
     root.innerHTML = renderActivities(data);
     bindActivities(data);
+  } else if (route.name === "friday2") {
+    root.innerHTML = renderFriday2(data);
+    bindFriday2(data);
   } else if (route.name === "cronograma") {
     if (!getState().profile.isInstructor) {
       root.innerHTML = `<div class="page-head"><h2>Acceso restringido</h2><p>Esta sección no está disponible con tu cuenta.</p><p><a class="btn btn-primary" href="#/">Volver</a></p></div>`;

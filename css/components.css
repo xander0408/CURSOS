@@ -950,6 +950,10 @@ body.instructor-on .timer-page .module-clock-instructor { display: flex; }
   text-align: left;
   cursor: pointer;
 }
+.friday2-banner {
+  border: 1px solid var(--accent);
+  background: var(--accent-dim);
+}
 .activity-checklist {
   margin-top: 12px;
   padding: 12px;

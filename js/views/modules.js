@@ -77,8 +77,8 @@ function renderLesson(data, full, lessonId) {
     ${progressBar(p.pct)}
     <div class="card" style="margin-top:16px">
       ${renderBlocks(lesson.blocks)}
-      ${practice ? `<div class="callout think"><strong>Práctica de ${practice.mins} minutos</strong>${escapeHtml(practice.title)}. Descarga el material ficticio y sigue el checklist en Tareas.</div>
-        <p><a class="btn btn-primary" href="#/tareas">Abrir práctica y archivos</a></p>` : ""}
+      ${practice ? `<div class="callout think"><strong>Práctica de ${practice.mins} minutos</strong>${escapeHtml(practice.title)}. El archivo de Office está en Viernes 2.</div>
+        <p><a class="btn btn-primary" href="#/viernes-2">Abrir Viernes 2 y descargar</a></p>` : ""}
       ${inst ? salaCueHtml([...salaFromBlocks, notes]) : ""}
       <div class="lesson-nav">
         ${prev ? `<a class="btn" href="#/modulo/${full.id}/leccion/${prev.id}">Anterior</a>` : `<span></span>`}
@@ -414,14 +414,15 @@ function collectPayload(ch, root) {
 }
 
 export function renderModulesIndex(data) {
-  const cards = data.course.modules
-    .map((m) => {
-      const full = data.modules[m.id];
-      const p = moduleProgress(full);
-      const open = isModuleUnlocked(data, m.id);
-      const num = m.number === 0 ? "I" : m.number;
-      const href = open ? `#/modulo/${m.id}/leccion/${full.lessons[0].id}` : "#/modulos";
-      return `<a class="card clickable ${open ? "" : "soon"}" href="${href}" style="text-decoration:none;color:inherit">
+  const makeCards = (list) =>
+    list
+      .map((m) => {
+        const full = data.modules[m.id];
+        const p = moduleProgress(full);
+        const open = isModuleUnlocked(data, m.id);
+        const num = m.number === 0 ? "I" : m.number;
+        const href = open ? `#/modulo/${m.id}/leccion/${full.lessons[0].id}` : "#/modulos";
+        return `<a class="card clickable ${open ? "" : "soon"}" href="${href}" style="text-decoration:none;color:inherit">
         <div class="module-row">
           <div class="module-num">${num}</div>
           <div>
@@ -433,14 +434,20 @@ export function renderModulesIndex(data) {
           <span class="pill ${p.complete ? "ok" : ""}">${!open ? "Bloqueado" : p.complete ? "Completado" : p.pct + "%"}</span>
         </div>
       </a>`;
-    })
-    .join("");
+      })
+      .join("");
+  const d1 = data.course.modules.filter((m) => m.day !== 2);
+  const d2 = data.course.modules.filter((m) => m.day === 2);
   return `
     <div class="page-head">
       <h2>Módulos</h2>
-      <p>Diez laboratorios en orden. Empieza por Historia de la IA. El instructor puede abrir todos los módulos.</p>
+      <p>Viernes 1 (Historia a Word) y Viernes 2 (Excel al proyecto). El material descargable del segundo viernes está en el menú <a href="#/viernes-2">Viernes 2</a>.</p>
     </div>
     ${sectionAgent(data, "modules")}
-    <div class="module-list">${cards}</div>
+    <h3>Viernes 1</h3>
+    <div class="module-list">${makeCards(d1)}</div>
+    <h3 style="margin-top:28px">Viernes 2</h3>
+    <p class="muted">Excel, PowerPoint, investigación, productividad y proyecto. <a href="#/viernes-2">Ir a descargas y prácticas</a>.</p>
+    <div class="module-list">${makeCards(d2)}</div>
   `;
 }

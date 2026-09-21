@@ -1,5 +1,5 @@
 import { getState, update, exportState, importState } from "../store.js";
-import { moduleProgress } from "./modules.js";
+import { moduleProgress } from "./modules.js?v=20260920v3";
 import { escapeHtml, progressBar, toast } from "../ui.js";
 import { sectionAgent } from "../agents.js";
 import { nextPathStep, assignedTask } from "../journey.js";
@@ -44,6 +44,15 @@ export function renderDashboard(data) {
       <p>${escapeHtml(data.course.practiceNote)}</p>
     </div>
     ${sectionAgent(data, "dashboard")}
+    <div class="card friday2-banner" style="margin-bottom:20px">
+      <p class="muted">25 de septiembre · 8 horas</p>
+      <h3>Viernes 2: Excel, PowerPoint e investigación</h3>
+      <p>Todo el material nuevo está junto: descargas en Excel, PowerPoint y Word, prácticas de 25 minutos, módulos 5 a 9 y el proyecto final.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#/viernes-2">Abrir Viernes 2</a>
+        <a class="btn" href="#/proyecto">Proyecto final</a>
+      </div>
+    </div>
     <div class="grid grid-4" style="margin-bottom:20px">
       <div class="card stat"><span class="value">${pct}%</span><span class="label">Progreso general</span></div>
       <div class="card stat"><span class="value">${s.progress.totals.modulesCompleted}</span><span class="label">Módulos</span></div>

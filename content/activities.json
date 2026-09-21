@@ -120,10 +120,9 @@
       "day": 2,
       "mins": 25,
       "title": "Excel + IA en Acción",
-      "do": "1. Descarga el CSV ficticio y ábrelo en Excel. 2. Revisa encabezados, tipos de datos y filas vacías antes de usar IA. 3. Pide a ChatGPT o Claude fórmulas para calcular el costo total por fila, resumir unidades y comparar Planta Central con Lote Norte; aclara que no debe inventar valores. 4. Copia las fórmulas propuestas en una columna nueva y comprueba manualmente al menos tres resultados. 5. Crea una tabla dinámica o un gráfico sencillo y redacta dos hallazgos, separando lo calculado de cualquier interpretación. Todo el ejercicio usa datos ficticios: no agregues datos reales.",
+      "do": "1. En Viernes 2, descargue el archivo Excel (.xlsx) y ábralo en Microsoft Excel. 2. Revise encabezados y la hoja Instrucciones. 3. Pida a ChatGPT o Claude fórmulas para calcular el costo total por fila, resumir unidades y comparar Planta Central con Lote Norte; aclare que no debe inventar valores. 4. Escriba las fórmulas en la columna costo_total_ficticio y compruebe a mano al menos tres resultados. 5. Redacte dos hallazgos, separando lo calculado de cualquier interpretación. No agregue datos reales.",
       "resources": [
-        { "label": "Descargar datos ficticios (CSV)", "path": "recursos/viernes2/datos-ficticios-excel.csv" },
-        { "label": "Leer guía de recursos", "path": "recursos/viernes2/README.md" }
+        { "label": "Descargar Excel (.xlsx)", "path": "recursos/viernes2/datos-practica-excel.xlsx" }
       ],
       "checklist": [
         "Confirmé que el archivo contiene únicamente datos ficticios.",
@@ -137,10 +136,9 @@
       "day": 2,
       "mins": 25,
       "title": "De Información a Presentación Ejecutiva",
-      "do": "1. Descarga y lee el documento base ficticio. 2. Pide a la IA una estructura de seis diapositivas para dirección: contexto, situación, evidencia, opciones, recomendación condicionada y próximos pasos. 3. Exige que marque [VERIFICAR] donde falte información y que no añada cifras, fechas ni responsables. 4. Compara la respuesta con el documento base, elimina repeticiones y descarta al menos dos ideas débiles. 5. Redacta el contenido final de cada diapositiva con un máximo de cuatro viñetas y agrega notas sobre qué debe validar una persona antes de presentar. No uses nombres ni datos reales.",
+      "do": "1. En Viernes 2, descargue el PowerPoint (.pptx) y ábralo en Microsoft PowerPoint. 2. Pida a la IA una estructura ejecutiva de seis diapositivas: contexto, situación, evidencia, opciones, recomendación condicionada y próximos pasos. 3. Exija [VERIFICAR] donde falte información. 4. Compare con el archivo base, elimine repeticiones y descarte al menos dos ideas débiles. 5. Deje máximo cuatro viñetas por diapositiva y notas de lo que un humano debe validar. No use nombres ni datos reales.",
       "resources": [
-        { "label": "Descargar documento base (Markdown)", "path": "recursos/viernes2/documento-base-presentacion.md" },
-        { "label": "Leer guía de recursos", "path": "recursos/viernes2/README.md" }
+        { "label": "Descargar PowerPoint (.pptx)", "path": "recursos/viernes2/documento-base-presentacion.pptx" }
       ],
       "checklist": [
         "La presentación mantiene el mensaje del documento base.",
@@ -154,10 +152,9 @@
       "day": 2,
       "mins": 25,
       "title": "Detective de Información",
-      "do": "1. Descarga el dossier ficticio y clasifica cada afirmación como respaldada, dudosa o no verificable. 2. Para cada afirmación, identifica la fuente citada, su fecha, autoría, evidencia y posibles conflictos. 3. Pide a la IA que proponga preguntas de verificación, sin permitirle confirmar hechos ni inventar enlaces. 4. Cruza cada afirmación con al menos dos pistas del dossier y registra coincidencias o contradicciones. 5. Escribe un breve dictamen que indique qué podría usarse, qué requiere verificación adicional y qué debe descartarse. No busques ni incorpores información real de ninguna organización.",
+      "do": "1. En Viernes 2, descargue el Word (.docx) y ábralo en Microsoft Word. 2. Clasifique cada afirmación como respaldada, dudosa o no verificable. 3. Pida a la IA preguntas de verificación, sin permitirle confirmar hechos ni inventar enlaces. 4. Cruce cada afirmación con al menos dos pistas del dossier. 5. Escriba un dictamen: qué se puede usar, qué falta verificar y qué se descarta. No busque ni incorpore información real de ninguna organización.",
       "resources": [
-        { "label": "Descargar dossier ficticio (Markdown)", "path": "recursos/viernes2/dossier-investigacion-ficticio.md" },
-        { "label": "Leer guía de recursos", "path": "recursos/viernes2/README.md" }
+        { "label": "Descargar Word (.docx)", "path": "recursos/viernes2/dossier-investigacion.docx" }
       ],
       "checklist": [
         "Separé afirmaciones de evidencias y opiniones.",

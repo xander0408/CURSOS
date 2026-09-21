@@ -44,6 +44,7 @@ export function parseHash() {
   if (head === "manual") return { name: "manual", params: {} };
   if (head === "admin") return { name: "admin", params: {} };
   if (head === "actividades") return { name: "actividades", params: {} };
+  if (head === "viernes-2" || head === "viernes2") return { name: "friday2", params: {} };
   if (head === "cronograma") return { name: "cronograma", params: {} };
   return { name: "dashboard", params: {} };
 }

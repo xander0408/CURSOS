@@ -33,29 +33,33 @@ export function renderActivities(data) {
     })
     .join("");
 
-  const cards = pack.items
-    .map((it) => {
-      const on = !!done[it.id];
-      const resources = Array.isArray(it.resources)
-        ? `<div class="btn-row">${it.resources
-            .map((resource) => {
-              const path = typeof resource === "string" ? resource : resource?.path;
-              if (!path) return "";
-              const label =
-                typeof resource === "string"
-                  ? resource.split("/").pop() || "Descargar recurso"
-                  : resource.label || "Descargar recurso";
-              return `<a class="btn" href="${escapeHtml(assetUrl(path))}" download>${escapeHtml(label)}</a>`;
-            })
-            .join("")}</div>`
-        : "";
-      const checklist = Array.isArray(it.checklist)
-        ? `<div class="activity-checklist">
+  const day2Ids = ["a13", "a14", "a15"];
+  const day2 = pack.items.filter((it) => day2Ids.includes(it.id));
+  const rest = pack.items.filter((it) => !day2Ids.includes(it.id));
+
+  function itemCard(it) {
+    const on = !!done[it.id];
+    const resources = Array.isArray(it.resources)
+      ? `<div class="btn-row">${it.resources
+          .map((resource) => {
+            const path = typeof resource === "string" ? resource : resource?.path;
+            if (!path) return "";
+            const label =
+              typeof resource === "string"
+                ? resource.split("/").pop() || "Descargar recurso"
+                : resource.label || "Descargar recurso";
+            const fname = path.split("/").pop() || "recurso";
+            return `<a class="btn btn-primary" href="${escapeHtml(assetUrl(path))}" download="${escapeHtml(fname)}">${escapeHtml(label)}</a>`;
+          })
+          .join("")}</div>`
+      : "";
+    const checklist = Array.isArray(it.checklist)
+      ? `<div class="activity-checklist">
             <strong>Lista de verificación:</strong>
             <ul>${it.checklist.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
           </div>`
-        : "";
-      return `<div class="card activity-card ${on ? "done" : ""}">
+      : "";
+    return `<div class="card activity-card ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(it.id)}" ${on ? "checked" : ""} />
         <div>
           <p class="muted">Día ${it.day} · ${it.mins} min</p>
@@ -65,8 +69,10 @@ export function renderActivities(data) {
           ${checklist}
         </div>
       </div>`;
-    })
-    .join("");
+  }
+
+  const cards = rest.map(itemCard).join("");
+  const day2Cards = day2.map(itemCard).join("");
 
   return `
     <div class="page-head">
@@ -75,6 +81,11 @@ export function renderActivities(data) {
       <p><strong>${chatOk} de ${chats.length}</strong> completadas.</p>
     </div>
     <div class="activity-grid">${chatCards}</div>
+    <div class="page-head" style="margin-top:28px">
+      <h2>Viernes 2 · prácticas con archivos de Office</h2>
+      <p>Excel (.xlsx), PowerPoint (.pptx) y Word (.docx). También están reunidas en el menú <a href="#/viernes-2">Viernes 2</a>.</p>
+    </div>
+    <div class="activity-grid">${day2Cards}</div>
     <div class="page-head" style="margin-top:28px">
       <h2>${escapeHtml(pack.title)}</h2>
       <p>${escapeHtml(pack.subtitle)}</p>

@@ -145,6 +145,7 @@ export function coachSectionForRoute(name) {
     project: "project",
     progress: "dashboard",
     actividades: "actividades",
+    friday2: "actividades",
     cronograma: "dashboard",
     admin: "dashboard",
     manual: "promptLab",
