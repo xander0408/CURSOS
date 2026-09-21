@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { ArchitectureDiagram } from './components/ArchitectureDiagram'
+import { ConsoleSidebar } from './components/ConsoleSidebar'
 import { EventLog } from './components/EventLog'
 import { Header } from './components/Header'
 import { HowItWorksModal } from './components/HowItWorksModal'
@@ -23,7 +24,7 @@ export default function App() {
   const compact = sim.presentationMode
 
   return (
-    <div className={`min-h-screen ${compact ? 'text-base' : 'text-sm'}`}>
+    <div className={`min-h-screen bg-[#0f1722] ${compact ? 'text-base' : 'text-sm'}`}>
       <Header api={api} />
 
       <AnimatePresence>
@@ -39,27 +40,42 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      <main className="mx-auto max-w-[1600px] space-y-4 px-4 py-4">
-        <div className="flex flex-wrap items-center justify-between gap-2">
-          <p className="text-xs text-slate-400">
-            Magnatic Cloud DR Simulator | {sim.simClockLabel} | {sim.phaseLabel}
-          </p>
-          <p className="text-[11px] uppercase tracking-wider text-amber-200/80">
-            Simulation only
-          </p>
-        </div>
+      <div className="flex">
+        {!compact && <ConsoleSidebar sim={sim} />}
+        <main className="min-w-0 flex-1 space-y-4 px-4 py-4 lg:px-6">
+          <div className="flex flex-wrap items-end justify-between gap-3 border-b border-slate-800 pb-4">
+            <div>
+              <p className="text-[11px] font-medium text-slate-500">
+                Disaster Recovery <span className="px-1 text-slate-700">/</span> Protected servers
+              </p>
+              <h2 className="mt-1 text-xl font-semibold tracking-tight text-white">
+                Recovery dashboard
+              </h2>
+              <p className="mt-1 text-xs text-slate-400">
+                {sim.simClockLabel} <span className="px-1 text-slate-600">|</span> {sim.phaseLabel}
+              </p>
+            </div>
+            <div className="flex items-center gap-2 text-[11px]">
+              <span className="rounded-md border border-slate-700 bg-[#111b2b] px-3 py-2 text-slate-400">
+                Environment: <span className="font-mono text-slate-200">local-demo</span>
+              </span>
+              <span className="rounded-md border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-amber-200">
+                Simulation only
+              </span>
+            </div>
+          </div>
 
-        <SimulationProgress sim={sim} />
-        <MetricsPanel sim={sim} />
+          <SimulationProgress sim={sim} />
+          <MetricsPanel sim={sim} />
 
-        <div className={`grid gap-4 ${compact ? '' : 'lg:grid-cols-[1fr_280px]'}`}>
-          <SimulationControls api={api} />
-          {!compact && <ScenarioSelector api={api} />}
-        </div>
+          <div className={`grid gap-4 ${compact ? '' : 'lg:grid-cols-[1fr_280px]'}`}>
+            <SimulationControls api={api} />
+            {!compact && <ScenarioSelector api={api} />}
+          </div>
 
-        <ArchitectureDiagram sim={sim} presentationMode={compact} />
+          <ArchitectureDiagram sim={sim} presentationMode={compact} />
 
-        <AnimatePresence>
+          <AnimatePresence>
           {sim.banner === 'recovery-success' && (
             <motion.section
               initial={{ opacity: 0, y: 12 }}
@@ -85,9 +101,9 @@ export default function App() {
               </div>
             </motion.section>
           )}
-        </AnimatePresence>
+          </AnimatePresence>
 
-        <AnimatePresence>
+          <AnimatePresence>
           {sim.banner === 'failback-success' && (
             <motion.section
               initial={{ opacity: 0, y: 12 }}
@@ -100,24 +116,25 @@ export default function App() {
               </p>
             </motion.section>
           )}
-        </AnimatePresence>
+          </AnimatePresence>
 
-        {compact ? (
-          <UsersPanel sim={sim} />
-        ) : (
-          <div className="grid gap-4 xl:grid-cols-2">
-            <ReplicationChart sim={sim} />
+          {compact ? (
             <UsersPanel sim={sim} />
-          </div>
-        )}
+          ) : (
+            <div className="grid gap-4 xl:grid-cols-2">
+              <ReplicationChart sim={sim} />
+              <UsersPanel sim={sim} />
+            </div>
+          )}
 
-        {!compact && (
-          <div className="grid gap-4 lg:grid-cols-2">
-            <Timeline sim={sim} />
-            <EventLog sim={sim} />
-          </div>
-        )}
-      </main>
+          {!compact && (
+            <div className="grid gap-4 lg:grid-cols-2">
+              <Timeline sim={sim} />
+              <EventLog sim={sim} />
+            </div>
+          )}
+        </main>
+      </div>
 
       <footer className="border-t border-slate-800 px-4 py-6 text-center text-xs text-slate-500">
         <p className="font-medium text-slate-300">AWS Disaster Recovery Simulator</p>
