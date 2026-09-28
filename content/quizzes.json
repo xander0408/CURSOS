@@ -10,31 +10,56 @@
       "questions": [
         {
           "q": "El campo llamado «inteligencia artificial» se bautizó principalmente en…",
-          "options": ["2022 con ChatGPT", "1956 en Dartmouth", "Cuando nació internet", "Con el primer Excel"],
+          "options": [
+            "2022 con ChatGPT",
+            "1956 en Dartmouth",
+            "Cuando nació internet",
+            "Con el primer Excel"
+          ],
           "correct": 1,
           "explain": "Dartmouth 1956. ChatGPT popularizó el chat mucho después."
         },
         {
           "q": "Un modelo de lenguaje como ChatGPT o Claude, en la práctica de oficina, es…",
-          "options": ["Un empleado experto dentro de un servidor", "Un predictor de texto plausible que no conoce solo los procedimientos internos", "El ERP", "Una fuente legal oficial"],
+          "options": [
+            "Un empleado experto dentro de un servidor",
+            "Un predictor de texto plausible que no conoce solo los procedimientos internos",
+            "El ERP",
+            "Una fuente legal oficial"
+          ],
           "correct": 1,
           "explain": "Predice texto. El contexto de tu trabajo lo aporta la persona, sin datos sensibles."
         },
         {
           "q": "¿Qué son los «inviernos de la IA»?",
-          "options": ["Temporadas de zafra", "Épocas en que el hype superó los resultados y se cortó inversión", "Un modelo de Anthropic", "Cursos de 16 horas"],
+          "options": [
+            "Temporadas de zafra",
+            "Épocas en que el hype superó los resultados y se cortó inversión",
+            "Un modelo de Anthropic",
+            "Cursos de 16 horas"
+          ],
           "correct": 1,
           "explain": "Ciclos de promesas excesivas y decepción. Sirve para no comprar magia."
         },
         {
           "q": "Los transformers (2017) importan porque…",
-          "options": ["Reemplazaron a los gerentes", "Son la arquitectura base de los chats actuales de lenguaje", "Son un tipo de azúcar", "Solo sirven para robots de planta"],
+          "options": [
+            "Reemplazaron a los gerentes",
+            "Son la arquitectura base de los chats actuales de lenguaje",
+            "Son un tipo de azúcar",
+            "Solo sirven para robots de planta"
+          ],
           "correct": 1,
           "explain": "Arquitectura de modelos de lenguaje; no sustituyen al criterio humano."
         },
         {
           "q": "El uso responsable de un chat de IA en el trabajo empieza por…",
-          "options": ["Pegar contratos y nómina para que entienda", "Anonimizar el caso y verificar cifras fuera del chat", "Creer toda norma que cite el modelo", "Dejar que firme el primer borrador"],
+          "options": [
+            "Pegar contratos y nómina para que entienda",
+            "Anonimizar el caso y verificar cifras fuera del chat",
+            "Creer toda norma que cite el modelo",
+            "Dejar que firme el primer borrador"
+          ],
           "correct": 1,
           "explain": "Privacidad + verificación. La historia del hype enseña exactamente eso."
         }
@@ -50,37 +75,67 @@
       "questions": [
         {
           "q": "¿Qué hace principalmente una IA generativa como ChatGPT o Claude?",
-          "options": ["Registra hechos oficiales en un sistema contable", "Predice y genera texto probable a partir de patrones", "Se conecta siempre a internet en tiempo real", "Guarda automáticamente los datos de tu empresa"],
+          "options": [
+            "Registra hechos oficiales en un sistema contable",
+            "Predice y genera texto probable a partir de patrones",
+            "Se conecta siempre a internet en tiempo real",
+            "Guarda automáticamente los datos de tu empresa"
+          ],
           "correct": 1,
           "explain": "Genera la continuación más probable de lo que escribiste. No es una fuente oficial ni un sistema de registro."
         },
         {
           "q": "Un sistema que solo marca 'fraude / no fraude' es un ejemplo de…",
-          "options": ["IA generativa", "IA tradicional / predictiva de clasificación", "Un buscador", "Una hoja de cálculo"],
+          "options": [
+            "IA generativa",
+            "IA tradicional / predictiva de clasificación",
+            "Un buscador",
+            "Una hoja de cálculo"
+          ],
           "correct": 1,
           "explain": "Clasificar con una etiqueta es típico de la IA predictiva tradicional, no de la generativa."
         },
         {
           "q": "¿Qué es una 'alucinación' en IA?",
-          "options": ["Un error de conexión", "Contenido que suena plausible pero es falso", "Una función de pago", "Un tipo de virus"],
+          "options": [
+            "Un error de conexión",
+            "Contenido que suena plausible pero es falso",
+            "Una función de pago",
+            "Un tipo de virus"
+          ],
           "correct": 1,
           "explain": "El modelo completa el patrón: puede inventar citas, cifras o leyes que suenan reales."
         },
         {
           "q": "¿Cuál de estos NO deberías pegar en un chat de IA?",
-          "options": ["Un caso descrito de forma anónima", "Una idea general de negocio", "Nóminas y datos personales reales de clientes", "Un texto público de tu web"],
+          "options": [
+            "Un caso descrito de forma anónima",
+            "Una idea general de negocio",
+            "Nóminas y datos personales reales de clientes",
+            "Un texto público de tu web"
+          ],
           "correct": 2,
           "explain": "Datos confidenciales o personales identificables no se pegan. Anonimiza o inventa un caso equivalente."
         },
         {
           "q": "Antes de enviar un texto de IA a un cliente, lo correcto es…",
-          "options": ["Enviarlo tal cual si suena profesional", "Verificar cifras y hechos con una fuente humana", "Confiar porque la IA no se equivoca", "Pedirle a la IA que lo firme"],
+          "options": [
+            "Enviarlo tal cual si suena profesional",
+            "Verificar cifras y hechos con una fuente humana",
+            "Confiar porque la IA no se equivoca",
+            "Pedirle a la IA que lo firme"
+          ],
           "correct": 1,
           "explain": "El estilo seguro no garantiza datos correctos. La verificación humana es obligatoria."
         },
         {
           "q": "¿La IA gratuita 'conoce' los procedimientos internos de tu área?",
-          "options": ["Sí, siempre los sabe", "No, solo ve lo que escribes en la conversación", "Sí, si tienes internet", "Solo los lunes"],
+          "options": [
+            "Sí, siempre los sabe",
+            "No, solo ve lo que escribes en la conversación",
+            "Sí, si tienes internet",
+            "Solo los lunes"
+          ],
           "correct": 1,
           "explain": "El modelo solo trabaja con el contexto que le das; no accede a tu intranet ni a tu memoria institucional."
         }
@@ -96,31 +151,56 @@
       "questions": [
         {
           "q": "«Hazme un correo para el cliente». ¿Cuál es el mayor problema?",
-          "options": ["Es muy largo", "Falta contexto: quién, qué pasó y qué se busca", "Debió usar Claude", "No hay problema"],
+          "options": [
+            "Es muy largo",
+            "Falta contexto: quién, qué pasó y qué se busca",
+            "Debió usar Claude",
+            "No hay problema"
+          ],
           "correct": 1,
           "explain": "Sin situación, objetivo ni tono, el resultado es genérico. Contextualizar es lo que más mejora la salida."
         },
         {
           "q": "El primer borrador que devuelve la IA se debe considerar…",
-          "options": ["El resultado final", "Materia prima para iterar y revisar", "Un error", "Algo intocable"],
+          "options": [
+            "El resultado final",
+            "Materia prima para iterar y revisar",
+            "Un error",
+            "Algo intocable"
+          ],
           "correct": 1,
           "explain": "Iterar (pedir ajustes) y verificar son parte del trabajo, no un extra."
         },
         {
           "q": "¿Para qué sirve darle un EJEMPLO a la IA?",
-          "options": ["Para confundirla", "Para mostrarle el estilo o formato que esperas", "Para que copie datos reales", "No sirve de nada"],
+          "options": [
+            "Para confundirla",
+            "Para mostrarle el estilo o formato que esperas",
+            "Para que copie datos reales",
+            "No sirve de nada"
+          ],
           "correct": 1,
           "explain": "Un ejemplo del resultado deseado guía el tono y la estructura mejor que muchas palabras."
         },
         {
           "q": "El 'tono' de una respuesta responde a la pregunta…",
-          "options": ["¿Para qué?", "¿Cómo debe sonar?", "¿Cuánto cuesta?", "¿Quién paga?"],
+          "options": [
+            "¿Para qué?",
+            "¿Cómo debe sonar?",
+            "¿Cuánto cuesta?",
+            "¿Quién paga?"
+          ],
           "correct": 1,
           "explain": "El objetivo es el 'para qué'; el tono es el 'cómo debe sonar' (formal, cálido, técnico)."
         },
         {
           "q": "¿Cuál es un error común al interactuar con una IA?",
-          "options": ["Dar contexto claro", "Aceptar el primer texto sin leerlo", "Definir el formato", "Pedir alternativas"],
+          "options": [
+            "Dar contexto claro",
+            "Aceptar el primer texto sin leerlo",
+            "Definir el formato",
+            "Pedir alternativas"
+          ],
           "correct": 1,
           "explain": "Aceptar el primer borrador sin revisar es el error más frecuente y el más riesgoso."
         }
@@ -136,37 +216,67 @@
       "questions": [
         {
           "q": "¿Cuáles son las 5 piezas del framework del curso?",
-          "options": ["Rol, Contexto, Objetivo, Formato, Restricciones", "Inicio, Medio, Fin, Título, Firma", "Quién, Qué, Cuándo, Dónde, Por qué", "Datos, Gráficos, Tablas, Texto, Color"],
+          "options": [
+            "Rol, Contexto, Objetivo, Formato, Restricciones",
+            "Inicio, Medio, Fin, Título, Firma",
+            "Quién, Qué, Cuándo, Dónde, Por qué",
+            "Datos, Gráficos, Tablas, Texto, Color"
+          ],
           "correct": 0,
           "explain": "Rol + Contexto + Objetivo + Formato + Restricciones. Si falta una pieza, el resultado se resiente."
         },
         {
           "q": "¿Qué es un 'prompt maestro'?",
-          "options": ["Un prompt secreto de pago", "Una plantilla base reutilizable que adaptas cambiando el contexto", "Un prompt que la IA escribe sola", "Un prompt de una sola palabra"],
+          "options": [
+            "Un prompt secreto de pago",
+            "Una plantilla base reutilizable que adaptas cambiando el contexto",
+            "Un prompt que la IA escribe sola",
+            "Un prompt de una sola palabra"
+          ],
           "correct": 1,
           "explain": "El prompt maestro es una estructura sólida que reutilizas rellenando solo lo que cambia."
         },
         {
           "q": "«Si no tienes un dato, no lo inventes: pídemelo». Esto es…",
-          "options": ["Un formato", "Una restricción útil que reduce alucinaciónes", "Un rol", "Un objetivo"],
+          "options": [
+            "Un formato",
+            "Una restricción útil que reduce alucinaciónes",
+            "Un rol",
+            "Un objetivo"
+          ],
           "correct": 1,
           "explain": "Es la restricción que más reduce datos falsos en la respuesta."
         },
         {
           "q": "«Toma este correo y hazlo más corto y formal» es un prompt de tipo…",
-          "options": ["Generar desde cero", "Transformar", "Analizar", "Explicar"],
+          "options": [
+            "Generar desde cero",
+            "Transformar",
+            "Analizar",
+            "Explicar"
+          ],
           "correct": 1,
           "explain": "Partes de un texto existente y lo reescribes: es transformar."
         },
         {
           "q": "¿Para qué sirve tu biblioteca personal de prompts?",
-          "options": ["Para memorizar trucos", "Para reutilizar estructuras que ya te funcionaron", "Para guardar datos de clientes", "Para reemplazar a ChatGPT"],
+          "options": [
+            "Para memorizar trucos",
+            "Para reutilizar estructuras que ya te funcionaron",
+            "Para guardar datos de clientes",
+            "Para reemplazar a ChatGPT"
+          ],
           "correct": 1,
           "explain": "Guardas la estructura (con huecos para rellenar), no un caso concreto con datos."
         },
         {
           "q": "En un prompt de creatividad, ¿qué conviene pedir?",
-          "options": ["Una sola idea", "Varias alternativas para elegir y combinar", "Que invente cifras", "Que no explique nada"],
+          "options": [
+            "Una sola idea",
+            "Varias alternativas para elegir y combinar",
+            "Que invente cifras",
+            "Que no explique nada"
+          ],
           "correct": 1,
           "explain": "Pedir varias opciones ('dame 5 enfoques') abre el abanico creativo; luego tú eliges."
         }
@@ -182,31 +292,56 @@
       "questions": [
         {
           "q": "El mejor uso de la IA para un informe en Word es…",
-          "options": ["Producir el documento oficial sin que nadie lo lea", "Generar un primer borrador estructurado que tú revisas", "Inventar las cifras que faltan", "Firmarlo por ti"],
+          "options": [
+            "Producir el documento oficial sin que nadie lo lea",
+            "Generar un primer borrador estructurado que tú revisas",
+            "Inventar las cifras que faltan",
+            "Firmarlo por ti"
+          ],
           "correct": 1,
           "explain": "La IA ayuda con el borrador y la estructura; la revisión, los datos y la firma son tuyos."
         },
         {
           "q": "Para adaptar un texto a dirección, ¿qué pides?",
-          "options": ["Que lo haga más largo siempre", "Un cambio de tono (ej. más ejecutivo) y longitud", "Que agregue emojis", "Que lo deje igual"],
+          "options": [
+            "Que lo haga más largo siempre",
+            "Un cambio de tono (ej. más ejecutivo) y longitud",
+            "Que agregue emojis",
+            "Que lo deje igual"
+          ],
           "correct": 1,
           "explain": "El mismo contenido sirve para muchos tonos: formal, ejecutivo, comercial, técnico."
         },
         {
           "q": "¿Qué tres cosas revisas antes de que un documento salga con tu nombre?",
-          "options": ["Color, fuente y márgenes", "Datos correctos, tono adecuado y confidencialidad", "Largo, idioma y firma", "Nada, la IA lo revisa"],
+          "options": [
+            "Color, fuente y márgenes",
+            "Datos correctos, tono adecuado y confidencialidad",
+            "Largo, idioma y firma",
+            "Nada, la IA lo revisa"
+          ],
           "correct": 1,
           "explain": "Precisión de datos, tono apropiado y que no haya información confidencial indebida."
         },
         {
           "q": "Para 'darle contexto', ¿conviene pegar el contrato real del cliente?",
-          "options": ["Sí, mejora el resultado", "No, describe el caso de forma anónima", "Solo si es corto", "Solo los viernes"],
+          "options": [
+            "Sí, mejora el resultado",
+            "No, describe el caso de forma anónima",
+            "Solo si es corto",
+            "Solo los viernes"
+          ],
           "correct": 1,
           "explain": "Nunca es necesario pegar datos confidenciales reales. Anonimiza o inventa equivalentes."
         },
         {
           "q": "Si la IA agrega una cifra a tu informe, tú debes…",
-          "options": ["Usarla porque suena bien", "Verificarla o reemplazarla con tu dato real", "Borrar todo el informe", "Preguntarle si está segura"],
+          "options": [
+            "Usarla porque suena bien",
+            "Verificarla o reemplazarla con tu dato real",
+            "Borrar todo el informe",
+            "Preguntarle si está segura"
+          ],
           "correct": 1,
           "explain": "Toda cifra debe rastrearse a una fuente tuya, no a la IA."
         }
@@ -222,31 +357,56 @@
       "questions": [
         {
           "q": "Si la IA da una fórmula que devuelve un número, ese número…",
-          "options": ["Ya está garantizado como correcto", "Debe validarse con un caso que ya conoces", "Nunca sirve", "Es siempre un promedio"],
+          "options": [
+            "Ya está garantizado como correcto",
+            "Debe validarse con un caso que ya conoces",
+            "Nunca sirve",
+            "Es siempre un promedio"
+          ],
           "correct": 1,
           "explain": "La fórmula puede estar mal armada o basarse en columnas mal descritas. Siempre se valida."
         },
         {
           "q": "«Dame una fórmula para sumar las ventas del mes». ¿Qué falta?",
-          "options": ["Nada", "Describir columnas, dónde están los datos y cómo se identifica el mes", "Hacerla más larga", "Cambiar de IA"],
+          "options": [
+            "Nada",
+            "Describir columnas, dónde están los datos y cómo se identifica el mes",
+            "Hacerla más larga",
+            "Cambiar de IA"
+          ],
           "correct": 1,
           "explain": "Sin saber qué columna tiene el monto y cuál la fecha, la IA adivina."
         },
         {
           "q": "Para calcular un promedio 'por vendedor' necesitas…",
-          "options": ["=PROMEDIO de toda la columna", "Agrupar por vendedor (ej. PROMEDIO.SI o tabla dinámica)", "Sumar todo", "No se puede en Excel"],
+          "options": [
+            "=PROMEDIO de toda la columna",
+            "Agrupar por vendedor (ej. PROMEDIO.SI o tabla dinámica)",
+            "Sumar todo",
+            "No se puede en Excel"
+          ],
           "correct": 1,
           "explain": "Un promedio general no separa por vendedor; requiere agrupamiento."
         },
         {
           "q": "¿Cuál es la mejor forma de validar una fórmula nueva?",
-          "options": ["Confiar y aplicarla a todo", "Probarla en una fila cuyo resultado ya conoces", "Preguntar a un compañero al azar", "No validar nunca"],
+          "options": [
+            "Confiar y aplicarla a todo",
+            "Probarla en una fila cuyo resultado ya conoces",
+            "Preguntar a un compañero al azar",
+            "No validar nunca"
+          ],
           "correct": 1,
           "explain": "Si coincide con un caso conocido, avanzas; si no, corriges antes de confiar en toda la hoja."
         },
         {
           "q": "La IA, al ayudarte con Excel, ¿ve tu hoja real?",
-          "options": ["Sí, siempre", "No, trabaja con lo que le describes", "Solo si es .xlsx", "Solo con internet"],
+          "options": [
+            "Sí, siempre",
+            "No, trabaja con lo que le describes",
+            "Solo si es .xlsx",
+            "Solo con internet"
+          ],
           "correct": 1,
           "explain": "Si describes mal las columnas, la fórmula estará mal. El contexto de los datos es clave."
         }
@@ -262,31 +422,56 @@
       "questions": [
         {
           "q": "¿Cuál es el mejor primer pedido para una presentación?",
-          "options": ["«Hazla bonita con muchos colores»", "«Propón estructura y relato según tema, audiencia y tiempo»", "«Inventa datos de mercado»", "«Escribe todo lo que leeré»"],
+          "options": [
+            "«Hazla bonita con muchos colores»",
+            "«Propón estructura y relato según tema, audiencia y tiempo»",
+            "«Inventa datos de mercado»",
+            "«Escribe todo lo que leeré»"
+          ],
           "correct": 1,
           "explain": "La estructura y el relato van primero; el diseño y los datos reales los pones tú."
         },
         {
           "q": "El 'guion del expositor' es…",
-          "options": ["El texto de las diapositivas", "Lo que dirás en cada slide, aparte de la pantalla", "Un tipo de gráfico", "El título de la presentación"],
+          "options": [
+            "El texto de las diapositivas",
+            "Lo que dirás en cada slide, aparte de la pantalla",
+            "Un tipo de gráfico",
+            "El título de la presentación"
+          ],
           "correct": 1,
           "explain": "Pedir el guion aparte evita leer la pantalla y suena más natural."
         },
         {
           "q": "Un buen arco narrativo para una presentación es…",
-          "options": ["Lista plana de datos", "Problema → tensión → solución → resultado", "Solo conclusiones", "Solo imágenes"],
+          "options": [
+            "Lista plana de datos",
+            "Problema → tensión → solución → resultado",
+            "Solo conclusiones",
+            "Solo imágenes"
+          ],
           "correct": 1,
           "explain": "Ese arco mantiene la atención mejor que una lista sin hilo."
         },
         {
           "q": "Si la IA agrega estadísticas de mercado a tus diapositivas…",
-          "options": ["Úsalas, suenan creíbles", "Verifícalas o reemplázalas con tus datos", "Bórralas siempre", "Ponlas en rojo"],
+          "options": [
+            "Úsalas, suenan creíbles",
+            "Verifícalas o reemplázalas con tus datos",
+            "Bórralas siempre",
+            "Ponlas en rojo"
+          ],
           "correct": 1,
           "explain": "Las cifras inventadas suenan igual de creíbles que las reales."
         },
         {
           "q": "¿Qué dato clave conviene darle a la IA para el esquema?",
-          "options": ["Tu color favorito", "Tema, audiencia y tiempo disponible", "El clima", "La marca de tu laptop"],
+          "options": [
+            "Tu color favorito",
+            "Tema, audiencia y tiempo disponible",
+            "El clima",
+            "La marca de tu laptop"
+          ],
           "correct": 1,
           "explain": "Con tema, público y duración, la IA ajusta la cantidad y el enfoque de las diapositivas."
         }
@@ -302,31 +487,56 @@
       "questions": [
         {
           "q": "Para que un resumen no invente lo que no está, pides…",
-          "options": ["«Rellena con datos típicos»", "«Si un dato no está, escribe: no especificado»", "«Hazlo más largo»", "«Agrega estadísticas»"],
+          "options": [
+            "«Rellena con datos típicos»",
+            "«Si un dato no está, escribe: no especificado»",
+            "«Hazlo más largo»",
+            "«Agrega estadísticas»"
+          ],
           "correct": 1,
           "explain": "Marcar lo ausente en vez de rellenarlo mantiene el resumen fiel al texto."
         },
         {
           "q": "Una cifra exacta con fuente citada que la IA no puede garantizar es…",
-          "options": ["Siempre verdadera", "Una candidata típica a alucinación que hay que verificar", "Un error de formato", "Irrelevante"],
+          "options": [
+            "Siempre verdadera",
+            "Una candidata típica a alucinación que hay que verificar",
+            "Un error de formato",
+            "Irrelevante"
+          ],
           "correct": 1,
           "explain": "Cifras, fuentes y leyes numeradas deben verificarse contra documentos reales."
         },
         {
           "q": "Al comparar opciones, ¿qué le das a la IA?",
-          "options": ["Nada, que decida", "Tus criterios y que señale qué información falta", "Solo el precio", "Datos personales"],
+          "options": [
+            "Nada, que decida",
+            "Tus criterios y que señale qué información falta",
+            "Solo el precio",
+            "Datos personales"
+          ],
           "correct": 1,
           "explain": "Si no das criterios, la IA elige los suyos. Ella ilumina; tú decides."
         },
         {
           "q": "Con búsqueda web disponible, ¿qué debes distinguir?",
-          "options": ["Nada, todo es igual", "Información encontrada vs. conclusiones generadas por la IA", "El color de los enlaces", "El idioma del navegador"],
+          "options": [
+            "Nada, todo es igual",
+            "Información encontrada vs. conclusiones generadas por la IA",
+            "El color de los enlaces",
+            "El idioma del navegador"
+          ],
           "correct": 1,
           "explain": "Separar el hecho encontrado de la interpretación de la IA es clave para investigar bien."
         },
         {
           "q": "¿Cuándo un dato necesita una fuente que no sea la IA?",
-          "options": ["Nunca", "Cuando vas a apoyar una decisión en él", "Solo si es largo", "Solo en Excel"],
+          "options": [
+            "Nunca",
+            "Cuando vas a apoyar una decisión en él",
+            "Solo si es largo",
+            "Solo en Excel"
+          ],
           "correct": 1,
           "explain": "Regla simple: si sostiene una decisión, necesita fuente humana o documento oficial."
         }
@@ -342,31 +552,56 @@
       "questions": [
         {
           "q": "¿Quién prioriza qué tareas son urgentes y compromete fechas?",
-          "options": ["La IA sola", "Tú: es criterio humano", "El calendario", "Nadie"],
+          "options": [
+            "La IA sola",
+            "Tú: es criterio humano",
+            "El calendario",
+            "Nadie"
+          ],
           "correct": 1,
           "explain": "La IA ordena y sugiere, pero priorizar y comprometer fechas es decisión humana."
         },
         {
           "q": "Un buen uso diario de la IA es…",
-          "options": ["Aprobar presupuestos por ti", "Ordenar notas de reunión en una minuta que revisas", "Despedir personal", "Firmar contratos"],
+          "options": [
+            "Aprobar presupuestos por ti",
+            "Ordenar notas de reunión en una minuta que revisas",
+            "Despedir personal",
+            "Firmar contratos"
+          ],
           "correct": 1,
           "explain": "Ordenar notas en una minuta es una tarea repetitiva ideal; las decisiones siguen siendo humanas."
         },
         {
           "q": "Para una minuta desde notas caóticas, pides tres secciones:",
-          "options": ["Intro, nudo, desenlace", "Decisiones, tareas y pendientes", "Fecha, hora y lugar", "Título, cuerpo y firma"],
+          "options": [
+            "Intro, nudo, desenlace",
+            "Decisiones, tareas y pendientes",
+            "Fecha, hora y lugar",
+            "Título, cuerpo y firma"
+          ],
           "correct": 1,
           "explain": "Decisiones tomadas, tareas con responsable y temas pendientes, sin inventar acuerdos."
         },
         {
           "q": "En un prompt de seguimiento semanal, ¿qué restricción ayuda?",
-          "options": ["«Inventa tareas nuevas»", "«No inventes tareas ni responsables»", "«Hazlo en inglés»", "«Ponlo en mayúsculas»"],
+          "options": [
+            "«Inventa tareas nuevas»",
+            "«No inventes tareas ni responsables»",
+            "«Hazlo en inglés»",
+            "«Ponlo en mayúsculas»"
+          ],
           "correct": 1,
           "explain": "Restringir la invención mantiene el seguimiento fiel a lo acordado."
         },
         {
           "q": "Para preparar un correo profesional difícil, lo clave es…",
-          "options": ["Pegar todo el hilo con datos reales", "Describir el caso sin datos sensibles y pedir un borrador que editas", "Enviar el primer borrador", "Pedir el teléfono del cliente"],
+          "options": [
+            "Pegar todo el hilo con datos reales",
+            "Describir el caso sin datos sensibles y pedir un borrador que editas",
+            "Enviar el primer borrador",
+            "Pedir el teléfono del cliente"
+          ],
           "correct": 1,
           "explain": "Contexto sí, datos personales no; y la edición y el envío son tu responsabilidad."
         }
@@ -382,55 +617,100 @@
       "questions": [
         {
           "q": "La regla de oro del laboratorio con IA es…",
-          "options": ["Confiar en el primer resultado", "Verificación y responsable humano antes de usar", "Nunca dar contexto", "Pegar datos confidenciales"],
+          "options": [
+            "Confiar en el primer resultado",
+            "Verificación y responsable humano antes de usar",
+            "Nunca dar contexto",
+            "Pegar datos confidenciales"
+          ],
           "correct": 1,
           "explain": "Persona responsable + verificación: eso separa el uso profesional del amateur."
         },
         {
           "q": "¿Qué NO hace la versión gratuita por sí sola?",
-          "options": ["Generar borradores", "Conocer los datos internos de tu empresa", "Reescribir tono", "Resumir texto que le das"],
+          "options": [
+            "Generar borradores",
+            "Conocer los datos internos de tu empresa",
+            "Reescribir tono",
+            "Resumir texto que le das"
+          ],
           "correct": 1,
           "explain": "Solo trabaja con el contexto que le das en la conversación."
         },
         {
           "q": "El orden de la metodología A.C.T.I.V.A. es…",
-          "options": ["Aplicar, Verificar, Transformar, Iterar, Contextualizar, Analizar", "Analizar, Contextualizar, Transformar, Iterar, Verificar, Aplicar", "Contextualizar, Analizar, Aplicar, Verificar, Transformar, Iterar", "Transformar, Aplicar, Analizar, Contextualizar, Iterar, Verificar"],
+          "options": [
+            "Aplicar, Verificar, Transformar, Iterar, Contextualizar, Analizar",
+            "Analizar, Contextualizar, Transformar, Iterar, Verificar, Aplicar",
+            "Contextualizar, Analizar, Aplicar, Verificar, Transformar, Iterar",
+            "Transformar, Aplicar, Analizar, Contextualizar, Iterar, Verificar"
+          ],
           "correct": 1,
           "explain": "A → C → T → I → V → A. No empieza por copiar un prompt, empieza por analizar."
         },
         {
           "q": "Comparar ChatGPT vs Claude en el lab sirve para…",
-          "options": ["Declarar un ganador universal", "Elegir por utilidad en cada caso concreto", "Descartar uno para siempre", "Copiar datos entre ambos"],
+          "options": [
+            "Declarar un ganador universal",
+            "Elegir por utilidad en cada caso concreto",
+            "Descartar uno para siempre",
+            "Copiar datos entre ambos"
+          ],
           "correct": 1,
           "explain": "No hay ganador global; decides por utilidad según el caso."
         },
         {
           "q": "En el proyecto final, el ahorro estimado y los riesgos los define…",
-          "options": ["La IA", "Tú, con tu criterio de negocio", "El instructor", "El navegador"],
+          "options": [
+            "La IA",
+            "Tú, con tu criterio de negocio",
+            "El instructor",
+            "El navegador"
+          ],
           "correct": 1,
           "explain": "La IA no mide el valor de tu tiempo ni conoce los riesgos de tu empresa."
         },
         {
           "q": "¿Qué es lo más responsable al usar un borrador hecho con IA?",
-          "options": ["Ocultar que se usó IA siempre", "Revisar sesgos, verificar datos y mantener un responsable humano", "Publicarlo sin leer", "Pedirle que decida por ti"],
+          "options": [
+            "Ocultar que se usó IA siempre",
+            "Revisar sesgos, verificar datos y mantener un responsable humano",
+            "Publicarlo sin leer",
+            "Pedirle que decida por ti"
+          ],
           "correct": 1,
           "explain": "Uso responsable: revisar sesgos, verificar y que una persona sea la responsable final."
         },
         {
           "q": "Una verificación cruzada profesional consiste en…",
-          "options": ["Preguntar dos veces al mismo chat", "Contrastar la afirmación con una fuente primaria y otra fuente independiente, revisando fecha y contexto", "Aceptar el primer enlace", "Usar la respuesta más larga"],
+          "options": [
+            "Preguntar dos veces al mismo chat",
+            "Contrastar la afirmación con una fuente primaria y otra fuente independiente, revisando fecha y contexto",
+            "Aceptar el primer enlace",
+            "Usar la respuesta más larga"
+          ],
           "correct": 1,
           "explain": "Dos respuestas de IA no son dos fuentes. Abre fuentes independientes, prioriza la primaria y revisa vigencia y contexto."
         },
         {
           "q": "La regla 6×6 en una presentación se usa como…",
-          "options": ["Ley obligatoria", "Guía para evitar diapositivas saturadas y mover el detalle a las notas", "Forma de inventar seis datos", "Sustituto del guion"],
+          "options": [
+            "Ley obligatoria",
+            "Guía para evitar diapositivas saturadas y mover el detalle a las notas",
+            "Forma de inventar seis datos",
+            "Sustituto del guion"
+          ],
           "correct": 1,
           "explain": "Es una guía visual, no una ley: una idea por slide, poco texto y el detalle en el guion."
         },
         {
           "q": "¿Cuál es el cierre correcto del proyecto final?",
-          "options": ["ChatGPT elige y firma", "Refinar, validar con fuentes o responsables y presentar el control humano", "Publicar ambos borradores", "Ocultar los riesgos"],
+          "options": [
+            "ChatGPT elige y firma",
+            "Refinar, validar con fuentes o responsables y presentar el control humano",
+            "Publicar ambos borradores",
+            "Ocultar los riesgos"
+          ],
           "correct": 1,
           "explain": "El valor está en mejorar, verificar y explicar quién conserva la decisión y la responsabilidad."
         }
@@ -445,27 +725,579 @@
       "questions": [
         {
           "q": "¿Qué NO debes pegar en ChatGPT o Claude en el trabajo?",
-          "options": ["Un caso anónimo de «cliente Alfa»", "Contratos, nómina o datos de clientes reales", "Una pregunta sobre tono de un correo", "Un esquema de diapositivas sin cifras"],
+          "options": [
+            "Un caso anónimo de «cliente Alfa»",
+            "Contratos, nómina o datos de clientes reales",
+            "Una pregunta sobre tono de un correo",
+            "Un esquema de diapositivas sin cifras"
+          ],
           "correct": 1,
           "explain": "Anonimiza. Lo confidencial se queda fuera del chat."
         },
         {
           "q": "ChatGPT y Claude, en este curso, se usan…",
-          "options": ["En el mismo recuadro del laboratorio", "En otras pestañas; el laboratorio solo ordena la práctica", "Solo el sábado", "Para guardar la nómina"],
+          "options": [
+            "En el mismo recuadro del laboratorio",
+            "En otras pestañas; el laboratorio solo ordena la práctica",
+            "Solo el sábado",
+            "Para guardar la nómina"
+          ],
           "correct": 1,
           "explain": "El laboratorio es el aula. La IA real está en chatgpt.com y claude.ai."
         },
         {
           "q": "Si la IA te da una cifra o una ley, tú…",
-          "options": ["La usas de una vez", "La verificas fuera del chat antes de usarla", "Le pides que firme", "La publicas en el grupo"],
+          "options": [
+            "La usas de una vez",
+            "La verificas fuera del chat antes de usarla",
+            "Le pides que firme",
+            "La publicas en el grupo"
+          ],
           "correct": 1,
           "explain": "El modelo no es fuente oficial."
         },
         {
           "q": "El primer texto que te arma la IA…",
-          "options": ["Ya se puede enviar al cliente", "Es un borrador: tú lo lees y lo corriges", "Lo firma sola la empresa", "Reemplaza a tu jefatura"],
+          "options": [
+            "Ya se puede enviar al cliente",
+            "Es un borrador: tú lo lees y lo corriges",
+            "Lo firma sola la empresa",
+            "Reemplaza a tu jefatura"
+          ],
           "correct": 1,
           "explain": "La IA propone. Tú decides y verificas."
+        }
+      ]
+    },
+    {
+      "id": "q-word",
+      "moduleId": "m4",
+      "title": "Word y revisión humana",
+      "subtitle": "Borradores que no se envían solos",
+      "icon": "📝",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "Un borrador de Word hecho con IA se usa cuando…",
+          "options": [
+            "Ya está listo para el cliente",
+            "Tú lo lees, marcas lo dudoso y lo editas",
+            "La IA lo firma",
+            "Lo publicas sin abrir Word"
+          ],
+          "correct": 1,
+          "explain": "La IA propone. El envío es humano."
+        },
+        {
+          "q": "¿Qué conviene marcar en rojo en el documento?",
+          "options": [
+            "Los adjetivos bonitos",
+            "Cifras, fechas, normas y promesas",
+            "El tipo de letra",
+            "El logo"
+          ],
+          "correct": 1,
+          "explain": "Ahí está el riesgo de firmar a ciegas."
+        },
+        {
+          "q": "Si la IA cita una política interna que tú no pegaste…",
+          "options": [
+            "Es oficial",
+            "Trátala como invento hasta verificarla",
+            "Es un formato",
+            "Da igual"
+          ],
+          "correct": 1,
+          "explain": "Sin tu texto fuente, esa cita no existe para el trabajo."
+        },
+        {
+          "q": "Para una minuta en Word, el pedido útil pide…",
+          "options": [
+            "Que invente los acuerdos",
+            "Decisiones, pendientes y «no especificado» si falta",
+            "Solo un poema",
+            "Nombres reales de la nómina"
+          ],
+          "correct": 1,
+          "explain": "Así no convierte un «se habló» en un sí cerrado."
+        },
+        {
+          "q": "Pegar un contrato real en el chat para «mejorarlo» es…",
+          "options": [
+            "Buena práctica",
+            "Un riesgo de confidencialidad",
+            "Obligatorio",
+            "Más rápido y por eso correcto"
+          ],
+          "correct": 1,
+          "explain": "El laboratorio usa casos ficticios. Lo real se queda fuera."
+        },
+        {
+          "q": "La revisión humana en Word significa…",
+          "options": [
+            "Mirar si se ve lindo",
+            "Comprobar hechos y decidir qué se envía",
+            "Contar palabras",
+            "Cambiar el tema"
+          ],
+          "correct": 1,
+          "explain": "Hechos + responsable. No solo formato."
+        }
+      ]
+    },
+    {
+      "id": "q-habitos",
+      "moduleId": "m2",
+      "title": "Hábitos de un buen pedido",
+      "subtitle": "Contexto, tono y restricciones",
+      "icon": "🎯",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "Un pedido pobre suele ser…",
+          "options": [
+            "Largo y con rol",
+            "«Escribe un correo» sin contexto",
+            "Con formato y restricciones",
+            "Con audiencia"
+          ],
+          "correct": 1,
+          "explain": "Sin contexto la IA rellena con clichés."
+        },
+        {
+          "q": "La audiencia cambia…",
+          "options": [
+            "Solo el color",
+            "El tono, la longitud y lo que se omite",
+            "Nada",
+            "El modelo de IA"
+          ],
+          "correct": 1,
+          "explain": "Patio y dirección no reciben el mismo texto."
+        },
+        {
+          "q": "Una restricción útil es…",
+          "options": [
+            "«Sé creativo con las cifras»",
+            "«No inventes fechas ni normas»",
+            "«Usa mi contraseña»",
+            "«Firma tú»"
+          ],
+          "correct": 1,
+          "explain": "Cierra la puerta a la alucinación útil."
+        },
+        {
+          "q": "Iterar en el mismo chat sirve para…",
+          "options": [
+            "Gastar tokens sin leer",
+            "Acortar, marcar [VERIFICAR] y quitar adornos",
+            "Borrar el historial",
+            "Evitar a Claude"
+          ],
+          "correct": 1,
+          "explain": "La tercera ronda suele ser más usable que la primera."
+        },
+        {
+          "q": "Si comparas ChatGPT y Claude, el objetivo es…",
+          "options": [
+            "Elegir un ganador para siempre",
+            "Ver qué te sirve en ESTE caso",
+            "Copiar datos entre ambos",
+            "Publicar el duelo"
+          ],
+          "correct": 1,
+          "explain": "No hay ganador universal."
+        },
+        {
+          "q": "Anonimizar es…",
+          "options": [
+            "Poner el nombre real en mayúsculas",
+            "Cambiar a Cliente Alfa, Planta Central, cargos",
+            "Borrar el prompt",
+            "Usar el correo de la empresa"
+          ],
+          "correct": 1,
+          "explain": "El caso se entiende. La persona real no viaja al chat."
+        }
+      ]
+    },
+    {
+      "id": "q-excel-lab",
+      "moduleId": "m5",
+      "title": "Excel en el laboratorio",
+      "subtitle": "Columnas, prueba y mentiras numéricas",
+      "icon": "🧮",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "Antes de pedir una fórmula debes…",
+          "options": [
+            "Subir el libro de zafra",
+            "Describir columnas y dar 2 o 3 filas de ejemplo ficticias",
+            "Pedir «la mejor fórmula del mundo»",
+            "Copiar la nómina"
+          ],
+          "correct": 1,
+          "explain": "La IA no ve tu hoja. Ve lo que escribes."
+        },
+        {
+          "q": "Un número que la IA puso y tú no diste es…",
+          "options": [
+            "Un KPI oficial",
+            "Un invento hasta que lo calcules tú",
+            "Un promedio de la industria",
+            "Un redondeo inofensivo"
+          ],
+          "correct": 1,
+          "explain": "Cacería de cifras: si no salió de ti, no se firma."
+        },
+        {
+          "q": "Validar tres celdas a mano sirve para…",
+          "options": [
+            "Perder tiempo",
+            "Atrapar una fórmula mal armada antes de copiarla a 200 filas",
+            "Decorar el informe",
+            "Sustituir a Excel"
+          ],
+          "correct": 1,
+          "explain": "Si falla en tres, fallará en todas."
+        },
+        {
+          "q": "PROMEDIO de toda la columna cuando pediste «por planta»…",
+          "options": [
+            "Es lo mismo",
+            "Mezcla Planta Central con Lote Norte y miente",
+            "Es más preciso",
+            "Solo falla en Word"
+          ],
+          "correct": 1,
+          "explain": "Hay que agrupar. El promedio global no responde la pregunta."
+        },
+        {
+          "q": "La columna costo_total_ficticio existe para…",
+          "options": [
+            "Cargar costos reales de CISA",
+            "Practicar sin datos internos",
+            "Pagar proveedores",
+            "Auditar el SAT"
+          ],
+          "correct": 1,
+          "explain": "Es un laboratorio. Los montos son de juguete."
+        },
+        {
+          "q": "Si la IA nombra una columna que no está en tu lista…",
+          "options": [
+            "Confía: adivinó bien",
+            "No uses esa fórmula",
+            "Renombra tu archivo",
+            "Es un truco de Excel 365"
+          ],
+          "correct": 1,
+          "explain": "Está trabajando otro libro, el de su imaginación."
+        }
+      ]
+    },
+    {
+      "id": "q-ppt-lab",
+      "moduleId": "m6",
+      "title": "Presentación ejecutiva",
+      "subtitle": "Hilo, viñetas y lo que no se dice",
+      "icon": "🗂️",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "Un hilo ejecutivo típico es…",
+          "options": [
+            "20 slides de decoración",
+            "Contexto → situación → evidencia → opciones → recomendación condicionada → pasos",
+            "Solo memes",
+            "Solo la portada"
+          ],
+          "correct": 1,
+          "explain": "Eso se puede contar en 6 diapositivas."
+        },
+        {
+          "q": "Máximo de viñetas por slide en este laboratorio…",
+          "options": [
+            "Las que quepan",
+            "Cuatro, y si no caben sobra texto",
+            "Doce",
+            "Una novela"
+          ],
+          "correct": 1,
+          "explain": "Menos texto, más decisión."
+        },
+        {
+          "q": "Una recomendación condicionada significa…",
+          "options": [
+            "Ya está aprobada",
+            "Se propone SI se verifican los datos que faltan",
+            "La IA decide sola",
+            "No se presenta"
+          ],
+          "correct": 1,
+          "explain": "Condicionada = humana y honesta."
+        },
+        {
+          "q": "Las notas del expositor son…",
+          "options": [
+            "El texto de la slide otra vez",
+            "Lo que dirás, aparte de la pantalla",
+            "El pie de página",
+            "El archivo .xlsx"
+          ],
+          "correct": 1,
+          "explain": "Si lees la slide, sobra el expositor."
+        },
+        {
+          "q": "Descartar dos ideas débiles sirve para…",
+          "options": [
+            "Hacerla más larga",
+            "Dejar un solo mensaje que se pueda defender",
+            "Caerle bien a la IA",
+            "Llenar tiempo"
+          ],
+          "correct": 1,
+          "explain": "Más slides no es más claridad."
+        },
+        {
+          "q": "Un [VERIFICAR] en la diapositiva es…",
+          "options": [
+            "Feo y se borra",
+            "Una marca de honestidad: aquí falta un dato tuyo",
+            "Un error de PowerPoint",
+            "Una firma digital"
+          ],
+          "correct": 1,
+          "explain": "Mejor un hueco visible que una cifra inventada."
+        }
+      ]
+    },
+    {
+      "id": "q-detective",
+      "moduleId": "m7",
+      "title": "Detective de información",
+      "subtitle": "Afirmaciones vs pistas",
+      "icon": "🕵️",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "Una afirmación «respaldada» es la que…",
+          "options": [
+            "Suena segura",
+            "Tiene al menos dos pistas en el dossier que la sostienen",
+            "La IA confirma con un enlace",
+            "Está en negrita"
+          ],
+          "correct": 1,
+          "explain": "Dos pistas. No un feeling."
+        },
+        {
+          "q": "«Un estudio interno demostró 18%» sin el estudio en el texto es…",
+          "options": [
+            "Ciencia",
+            "Dudosa o no verificable",
+            "Un KPI cerrado",
+            "Un pie de foto"
+          ],
+          "correct": 1,
+          "explain": "El número llegó sin expediente."
+        },
+        {
+          "q": "Pedirle a la IA que «busque y confirme» el dossier ficticio…",
+          "options": [
+            "Es el método",
+            "Rompe la regla: no debe inventar enlaces ni hechos de empresas reales",
+            "Siempre da la URL buena",
+            "Sustituye a calidad"
+          ],
+          "correct": 1,
+          "explain": "El detective trabaja el texto que tienes, no Google de mentira."
+        },
+        {
+          "q": "El dictamen final lo escribe…",
+          "options": [
+            "ChatGPT",
+            "Tú: qué se usa, qué falta, qué se descarta",
+            "Claude",
+            "El archivo .docx"
+          ],
+          "correct": 1,
+          "explain": "La IA ordena. El dictamen es humano."
+        },
+        {
+          "q": "Una fecha distinta en dos frases del mismo dossier…",
+          "options": [
+            "Se promedia",
+            "Es inconsistencia: se marca y no se presenta como hecho",
+            "Se ignora",
+            "La más reciente gana"
+          ],
+          "correct": 1,
+          "explain": "Inconsistencia = no se vende como cierto."
+        },
+        {
+          "q": "Cruzar con dos pistas significa…",
+          "options": [
+            "Leer el título dos veces",
+            "Buscar dos indicios distintos en el documento antes de creer la frase",
+            "Preguntar a dos IAs y listo",
+            "Mirar el reloj"
+          ],
+          "correct": 1,
+          "explain": "Una sola pista es poco para un hallazgo."
+        }
+      ]
+    },
+    {
+      "id": "q-casos",
+      "moduleId": "m8",
+      "title": "Casos de oficina",
+      "subtitle": "Correo, minuta y decisión",
+      "icon": "📌",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "En un caso por área, los nombres válidos son…",
+          "options": [
+            "Los de la nómina",
+            "Cliente Alfa, Planta Central, Lote Norte y cargos",
+            "Los del ERP",
+            "Los del WhatsApp"
+          ],
+          "correct": 1,
+          "explain": "El laboratorio ya te dio el diccionario seguro."
+        },
+        {
+          "q": "La IA puede armar opciones de decisión. ¿Quién elige?",
+          "options": [
+            "La fila con mejor prosa",
+            "La persona con el cargo y la información oficial",
+            "El chat que «recomendó P3»",
+            "El timer del aula"
+          ],
+          "correct": 1,
+          "explain": "Comparar no es firmar."
+        },
+        {
+          "q": "Una minuta útil separa…",
+          "options": [
+            "Intro y outro",
+            "Decisiones, tareas y pendientes",
+            "Chistes y datos",
+            "ChatGPT y Claude"
+          ],
+          "correct": 1,
+          "explain": "Si mezcla las tres, alguien firmará un pendiente como acuerdo."
+        },
+        {
+          "q": "Un correo difícil se pega al chat…",
+          "options": [
+            "Con el hilo completo y cédulas",
+            "Como caso anónimo, y tú editas antes de enviar",
+            "Y se envía al cliente desde la IA",
+            "En inglés para que suene legal"
+          ],
+          "correct": 1,
+          "explain": "Contexto sí. Identidad real no."
+        },
+        {
+          "q": "Priorizar urgencias del día es…",
+          "options": [
+            "Trabajo de la IA",
+            "Criterio tuyo; ella solo ordena la lista",
+            "Del calendario de Google",
+            "Del quiz"
+          ],
+          "correct": 1,
+          "explain": "Comprometer una fecha es humano."
+        },
+        {
+          "q": "Si un chat declara ganador de tres proveedores sin precios…",
+          "options": [
+            "Lo adoptas",
+            "Lo marcas como error: faltaban datos y no le toca decidir",
+            "Pides que lo firme",
+            "Lo publicas"
+          ],
+          "correct": 1,
+          "explain": "Sin precios no hay ganador serio. Y aun con precios, firmas tú."
+        }
+      ]
+    },
+    {
+      "id": "q-cierre",
+      "moduleId": "",
+      "title": "Cierre Oficina + IA",
+      "subtitle": "Excel, slides, investigación y proyecto",
+      "icon": "🏁",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "En Excel del laboratorio, el primer control es…",
+          "options": [
+            "Creer el total",
+            "Comprobar a mano al menos tres celdas",
+            "Imprimir",
+            "Compartir el libro real"
+          ],
+          "correct": 1,
+          "explain": "Tres celdas. Luego el resto."
+        },
+        {
+          "q": "En la presentación, el dato que no trajiste…",
+          "options": [
+            "Se improvisa con un promedio",
+            "Se marca [VERIFICAR] o se quita",
+            "Se pone en rojo decorativo",
+            "Lo dice la IA en voz alta"
+          ],
+          "correct": 1,
+          "explain": "No se rellena el hueco con teatro."
+        },
+        {
+          "q": "El dossier de investigación se usa para…",
+          "options": [
+            "Googlear la empresa real",
+            "Clasificar frases y dictaminar con pistas del propio archivo",
+            "Llenar el ERP",
+            "Firmar el proyecto"
+          ],
+          "correct": 1,
+          "explain": "El detective no sale del documento de práctica."
+        },
+        {
+          "q": "El proyecto final se presenta en…",
+          "options": [
+            "45 minutos de slides leídas",
+            "3 a 5 minutos: problema, IA, verificación, control humano",
+            "Un PDF de 40 páginas",
+            "Un audio de la IA"
+          ],
+          "correct": 1,
+          "explain": "Corto y con responsable."
+        },
+        {
+          "q": "¿Qué no va en la ficha del proyecto?",
+          "options": [
+            "El problema anónimo",
+            "Nómina, contratos o clientes reales",
+            "El prompt",
+            "Los riesgos"
+          ],
+          "correct": 1,
+          "explain": "La ficha es de aula, no un expediente interno."
+        },
+        {
+          "q": "Después de comparar ChatGPT y Claude en un caso de Office…",
+          "options": [
+            "Eliges religión de marca",
+            "Eliges la salida más útil para ESE encargo y la editas",
+            "Publicas un ranking",
+            "Borras la peor para siempre"
+          ],
+          "correct": 1,
+          "explain": "Utilidad local. Edición humana."
         }
       ]
     }

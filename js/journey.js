@@ -26,7 +26,7 @@ export function isDay2Module(data, moduleId) {
 export function quizzesOfDay(data, day) {
   const day2 = new Set(modulesOfDay(data, 2).map((m) => m.id));
   return (data.quizzes || []).filter((qz) => {
-    if (qz.id === "qf") return Number(day) === 2;
+    if (qz.id === "qf" || qz.id === "q-cierre") return Number(day) === 2;
     if (qz.id === "q-rapido") return Number(day) !== 2;
     if (qz.moduleId && day2.has(qz.moduleId)) return Number(day) === 2;
     return Number(day) !== 2;

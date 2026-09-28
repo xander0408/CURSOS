@@ -35,7 +35,7 @@ function liveTip(data, section) {
     return "Usa los límites que ves en pantalla.";
   }
   if (section === "actividades") {
-    return "Hay nueve tareas. Cada una entrena un hábito distinto: comparar, verificar, anonimizar, iterar.";
+    return "Hay más tareas de las que caben en un día. Cada una entrena un hábito: comparar, verificar, anonimizar, iterar o presentar.";
   }
   return "";
 }

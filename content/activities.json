@@ -100,21 +100,214 @@
       "do": "Pegue el texto en ambos chats. Si alguno declara un proveedor ganador, márquelo. Usted escribe en el bloc: quién en su cargo firmaría y qué dato falta.",
       "look": "Un chat útil compara. Un chat peligroso decide por usted. La firma es humana.",
       "prompt": "Rol: apoyo a compras, no tomador de decisión.\nContexto: Tres proveedores ficticios de cajas: P1 plazo 10 días, P2 plazo 18 días, P3 plazo 7 días y un solo tamaño. No hay precios.\nObjetivo: tabla para que un gerente decida DESPUÉS.\nFormato: columnas Proveedor, Plazo, Riesgo, Pregunta pendiente.\nRestricciones: No elijas ganador. No inventes precios ni puntajes. No escribas «recomiendo a P3». Cierra con la frase: La decisión y la firma son de un humano."
+    },
+    {
+      "id": "chat-10",
+      "n": 10,
+      "day": 1,
+      "mins": 8,
+      "focus": "Tono",
+      "title": "Mismo aviso, dos tonos",
+      "do": "Pegue el texto en ChatGPT y en Claude. Pida versión A (cartelera de patio) y B (correo interno). No envíe nada.",
+      "look": "Si A y B usan las mismas frases, pida de nuevo: A más corto; B más formal.",
+      "prompt": "Rol: comunicación interna de Planta Central.\nContexto (ficticio): Mañana hay inspección de patio. No hay hora oficial ni lista de personas.\nObjetivo: dos textos etiquetados A (cartelera, 40 palabras) y B (correo, 80 palabras).\nFormato: A y B separados.\nRestricciones: No inventes hora, responsable ni multa. Si falta un dato, [COMPLETAR]."
+    },
+    {
+      "id": "chat-11",
+      "n": 11,
+      "day": 1,
+      "mins": 6,
+      "focus": "Asuntos",
+      "title": "Tres asuntos, uno usable",
+      "do": "Pegue el texto en ambos chats. Elija UN asunto que usted firmaría. Descarte los que prometen o suenan a spam.",
+      "look": "Si un asunto menciona descuento, fecha o culpa, no sirve.",
+      "prompt": "Rol: atención a clientes.\nContexto: Cliente Alfa (práctica) preguntó por un despacho. Operaciones aún revisa. No hay fecha nueva.\nObjetivo: 3 asuntos de correo distintos, máximo 8 palabras cada uno.\nFormato: lista numerada.\nRestricciones: No prometas fecha ni compensación. No uses signos de exclamación."
+    },
+    {
+      "id": "chat-12",
+      "n": 12,
+      "day": 1,
+      "mins": 8,
+      "focus": "Jerga",
+      "title": "De jerga a lenguaje de planta",
+      "do": "Pegue el texto en ambos chats. Subraye palabras que un operador de patio no usaría. Quédese con la versión más clara.",
+      "look": "Si aparece «sinergia», «holístico» o «optimizar el mindset», pida otra vez en español simple.",
+      "prompt": "Rol: supervisor que habla claro.\nContexto: Hay que explicar a patio por qué se retuvo un lote (humedad, caso ficticio Lote Norte). No hay cifra oficial.\nObjetivo: un aviso de 5 líneas que entienda alguien que no usa jerga de oficina.\nFormato: título + 5 líneas.\nRestricciones: Prohibido anglicismos innecesarios. No inventes el porcentaje de humedad ni el nombre de un químico."
+    },
+    {
+      "id": "chat-13",
+      "n": 13,
+      "day": 1,
+      "mins": 8,
+      "focus": "Revisión humana",
+      "title": "Marca lo que un humano debe firmar",
+      "do": "Pegue el texto en ambos chats. En el papel, marque cada frase que exigiría firma, cifra o política real.",
+      "look": "Cuente cuántos [VERIFICAR] pidió usted y cuántos puso la IA. Si la IA no marcó nada, está vendiendo certeza falsa.",
+      "prompt": "Rol: revisor de borradores, no autor final.\nContexto: Borrador de política de visitas a Planta Central. Yo no te doy horarios ni nombres de guardias.\nObjetivo: reescribe el borrador y marca con [VERIFICAR] toda regla, horario o sanción.\nTexto base: Las visitas se reciben en horario de oficina. El visitante espera en recepción. Queda prohibido entrar a zona de proceso sin acompañante.\nFormato: el texto + lista de lo marcado.\nRestricciones: No inventes el horario real ni una multa. No firmes la política."
+    },
+    {
+      "id": "chat-14",
+      "n": 14,
+      "day": 2,
+      "mins": 10,
+      "focus": "Excel",
+      "title": "Pide la fórmula sin pegar la hoja",
+      "do": "No suba ningún Excel real. Pegue el texto en ambos chats. Luego compruebe la fórmula con tres filas inventadas en papel o en una hoja vacía.",
+      "look": "Si la IA inventa nombres de columnas que usted no dio, no la use.",
+      "prompt": "Rol: tutor de Excel que no ve mi archivo.\nContexto: Hoja de práctica. Columnas: planta (texto), unidades (número), costo_unitario_ficticio (número). Filas de ejemplo: Planta Central 10 y 2.5; Lote Norte 8 y 3.0.\nObjetivo: fórmula para costo_total_ficticio en la primera fila de datos (asuma que unidades está en B2 y costo en C2).\nFormato: 1) la fórmula 2) el resultado esperado de esas dos filas 3) una advertencia si las columnas cambian.\nRestricciones: No inventes más columnas. No pidas el archivo real. No uses datos de ninguna empresa verdadera."
+    },
+    {
+      "id": "chat-15",
+      "n": 15,
+      "day": 2,
+      "mins": 10,
+      "focus": "PowerPoint",
+      "title": "Seis diapositivas con hilo ejecutivo",
+      "do": "Pegue el texto en ambos chats. Descarte dos ideas débiles de cada propuesta. Quédese con un solo hilo.",
+      "look": "Si una slide promete un KPI o un culpable que usted no dio, fuera.",
+      "prompt": "Rol: diseñador de presentaciones ejecutivas.\nContexto (ficticio): Dirección quiere 6 diapositivas sobre retrasos de patio en Planta Central. No hay cifras oficiales. Cliente Alfa es caso de práctica.\nObjetivo: esquema de 6 slides: contexto, situación, evidencia, opciones, recomendación condicionada, próximos pasos.\nFormato: por slide, título + máximo 4 viñetas.\nRestricciones: Donde falte un dato, [VERIFICAR]. No inventes porcentajes ni responsables con nombre. No elijas una opción como ganadora absoluta."
+    },
+    {
+      "id": "chat-16",
+      "n": 16,
+      "day": 2,
+      "mins": 10,
+      "focus": "Investigación",
+      "title": "Clasifica: respaldado, dudoso, no verificable",
+      "do": "Pegue el texto en ambos chats. Usted decide la etiqueta final de cada frase. La IA solo propone.",
+      "look": "Si la IA «confirma» un hecho que no está en el párrafo, márquelo como alucinación.",
+      "prompt": "Rol: analista que no inventa fuentes.\nContexto: Párrafo de práctica, no es un informe oficial.\nTexto: «En marzo el patio de Planta Central mejoró. Un estudio interno demostró 18% menos fila. El gerente de Lote Norte firmó el plan. Cliente Alfa ya aceptó el nuevo plazo.»\nObjetivo: tabla con columnas Frase, Etiqueta (respaldada / dudosa / no verificable), Por qué, Pregunta para un humano.\nFormato: tabla.\nRestricciones: No busques ni inventes el estudio, la firma ni el plazo. No pongas enlaces."
+    },
+    {
+      "id": "chat-17",
+      "n": 17,
+      "day": 2,
+      "mins": 8,
+      "focus": "Agenda",
+      "title": "Agenda de 30 minutos, sin inventar acuerdos",
+      "do": "Pegue el texto en ambos chats. Tache cualquier punto que ya dé por cerrado un tema que solo «se va a hablar».",
+      "look": "Una agenda propone orden. No finge que ya se decidió.",
+      "prompt": "Rol: asistente de dirección.\nContexto: Reunión de 30 minutos en Planta Central. Temas pedidos: fila de camiones, lote retenido por humedad, prioridad de Cliente Alfa. No hay acuerdos previos por escrito.\nObjetivo: agenda con hora sugerida por bloque y dueño de cada punto (solo cargos, no nombres).\nFormato: lista con minutos.\nRestricciones: No inventes decisiones. No pongas «se aprueba el radio extra». Reserva 5 minutos para pendientes."
+    },
+    {
+      "id": "chat-18",
+      "n": 18,
+      "day": 2,
+      "mins": 8,
+      "focus": "Seguimiento",
+      "title": "Correo de seguimiento sin fechas inventadas",
+      "do": "Pegue el texto en ambos chats. Tache toda fecha, día de la semana o «mañana» que usted no escribió.",
+      "look": "El seguimiento pide un dato. No lo fabrica.",
+      "prompt": "Rol: coordinación de despachos.\nContexto: Cliente Alfa (práctica) preguntó el estado de un pedido. Operaciones no ha cerrado la causa del retraso. Yo no te doy fecha de salida.\nObjetivo: borrador de correo de 100 palabras que pida un dato y ofrezca un próximo contacto sin comprometer día.\nFormato: asunto + cuerpo.\nRestricciones: Prohibido inventar fecha, hora o número de guía. Usa [COMPLETAR] si hace falta un dato interno."
+    },
+    {
+      "id": "chat-19",
+      "n": 19,
+      "day": 2,
+      "mins": 10,
+      "focus": "Riesgos",
+      "title": "Tabla de riesgos de usar IA en tu cargo",
+      "do": "Pegue el texto en ambos chats. Agregue USTED una fila con un riesgo de su área (sin datos reales). Compare las tablas.",
+      "look": "Si la IA pone «la IA nunca se equivoca» o un riesgo vacío, no sirve.",
+      "prompt": "Rol: facilitador de un laboratorio de IA, no auditor legal.\nContexto: Personal de planta practica con ChatGPT y Claude. Casos: Planta Central, Lote Norte, Cliente Alfa.\nObjetivo: tabla de 5 riesgos de pegar o creer salidas de IA en el trabajo, con una mitigación humana por fila.\nFormato: columnas Riesgo, Ejemplo ficticio, Qué hace una persona.\nRestricciones: No cites leyes con número. No inventes un incidente real. No recomiendes una marca de software de la empresa."
+    },
+    {
+      "id": "chat-20",
+      "n": 20,
+      "day": 2,
+      "mins": 8,
+      "focus": "Guion",
+      "title": "Notas del expositor, no texto de la slide",
+      "do": "Pegue el texto en ambos chats. Si el guion copia las viñetas tal cual, pida: «guion hablado, no leas la pantalla».",
+      "look": "Un buen guion suena a persona. Uno malo es la slide en voz alta.",
+      "prompt": "Rol: coach de presentaciones.\nContexto: 4 diapositivas de práctica sobre humedad en Lote Norte. Títulos: Situación, Qué se sabe, Qué falta, Próximo paso. No hay cifras oficiales.\nObjetivo: notas de expositor (20-30 segundos por slide) para decir, no para leer.\nFormato: Slide 1 a 4, cada una con 3 frases habladas.\nRestricciones: No inventes el % de humedad ni un culpable. Incluye una frase de «esto lo confirma calidad»."
     }
   ],
   "items": [
-    { "id": "a1", "day": 1, "mins": 10, "title": "Cuenta gratis lista", "do": "Abre ChatGPT y Claude en pestañas. Confirma que puedes chatear. No subas archivos de la empresa." },
-    { "id": "a2", "day": 1, "mins": 8, "title": "Anonimiza un caso", "do": "Escribe en un bloc 5 líneas de un problema de tu área cambiando nombres por Cliente Alfa, Planta Central, Lote Norte y cargos. Nada de datos reales de CISA." },
-    { "id": "a3", "day": 1, "mins": 12, "title": "Prompt pobre vs bueno", "do": "Pega el mismo tema dos veces: primero «escribe un correo» y luego el template de queja del manual. Anota 3 diferencias." },
-    { "id": "a4", "day": 1, "mins": 10, "title": "Quiz historia", "do": "Juega el quiz de Historia de la IA. Objetivo: al menos 60% de aciertos." },
-    { "id": "a5", "day": 1, "mins": 15, "title": "Ordena A.C.T.I.V.A.", "do": "En el módulo de fundamentos, completa el reto de ordenar los seis pasos con las flechas y envía." },
-    { "id": "a6", "day": 1, "mins": 15, "title": "Biblioteca personal", "do": "Guarda 2 prompts en la biblioteca (uno tuyo y uno del manual)." },
-    { "id": "a7", "day": 1, "mins": 20, "title": "Word con revisión", "do": "Genera un borrador, pégalo en Word y marca en rojo lo que un humano debe verificar." },
-    { "id": "a8", "day": 2, "mins": 12, "title": "Excel de juguete", "do": "Crea 6 filas inventadas y pide la fórmula. Comprueba 3 celdas a mano." },
-    { "id": "a9", "day": 2, "mins": 12, "title": "Comparador", "do": "Cualquier prompt (tarea o el tuyo) en ChatGPT y Claude. Pega las dos salidas en Comparador y elige cuál te sirve más y por qué." },
-    { "id": "a10", "day": 2, "mins": 15, "title": "Seis slides", "do": "Pide estructura de presentación y descarta 2 ideas débiles. Quédate con un hilo claro." },
-    { "id": "a11", "day": 2, "mins": 10, "title": "Caza el error", "do": "Completa un reto de detectar error o evaluar salida de IA en el laboratorio." },
-    { "id": "a12", "day": 2, "mins": 25, "title": "Ficha de proyecto", "do": "Llena el proyecto final con un problema real de tu cargo, sin datos internos, y marca ficha lista." },
+    {
+      "id": "a1",
+      "day": 1,
+      "mins": 10,
+      "title": "Cuenta gratis lista",
+      "do": "Abre ChatGPT y Claude en pestañas. Confirma que puedes chatear. No subas archivos de la empresa."
+    },
+    {
+      "id": "a2",
+      "day": 1,
+      "mins": 8,
+      "title": "Anonimiza un caso",
+      "do": "Escribe en un bloc 5 líneas de un problema de tu área cambiando nombres por Cliente Alfa, Planta Central, Lote Norte y cargos. Nada de datos reales de CISA."
+    },
+    {
+      "id": "a3",
+      "day": 1,
+      "mins": 12,
+      "title": "Prompt pobre vs bueno",
+      "do": "Pega el mismo tema dos veces: primero «escribe un correo» y luego el template de queja del manual. Anota 3 diferencias."
+    },
+    {
+      "id": "a4",
+      "day": 1,
+      "mins": 10,
+      "title": "Quiz historia",
+      "do": "Juega el quiz de Historia de la IA. Objetivo: al menos 60% de aciertos."
+    },
+    {
+      "id": "a5",
+      "day": 1,
+      "mins": 15,
+      "title": "Ordena A.C.T.I.V.A.",
+      "do": "En el módulo de fundamentos, completa el reto de ordenar los seis pasos con las flechas y envía."
+    },
+    {
+      "id": "a6",
+      "day": 1,
+      "mins": 15,
+      "title": "Biblioteca personal",
+      "do": "Guarda 2 prompts en la biblioteca (uno tuyo y uno del manual)."
+    },
+    {
+      "id": "a7",
+      "day": 1,
+      "mins": 20,
+      "title": "Word con revisión",
+      "do": "Genera un borrador, pégalo en Word y marca en rojo lo que un humano debe verificar."
+    },
+    {
+      "id": "a8",
+      "day": 2,
+      "mins": 12,
+      "title": "Excel de juguete",
+      "do": "Crea 6 filas inventadas y pide la fórmula. Comprueba 3 celdas a mano."
+    },
+    {
+      "id": "a9",
+      "day": 2,
+      "mins": 12,
+      "title": "Comparador",
+      "do": "Cualquier prompt (tarea o el tuyo) en ChatGPT y Claude. Pega las dos salidas en Comparador y elige cuál te sirve más y por qué."
+    },
+    {
+      "id": "a10",
+      "day": 2,
+      "mins": 15,
+      "title": "Seis slides",
+      "do": "Pide estructura de presentación y descarta 2 ideas débiles. Quédate con un hilo claro."
+    },
+    {
+      "id": "a11",
+      "day": 2,
+      "mins": 10,
+      "title": "Caza el error",
+      "do": "Completa un reto de detectar error o evaluar salida de IA en el laboratorio."
+    },
+    {
+      "id": "a12",
+      "day": 2,
+      "mins": 25,
+      "title": "Ficha de proyecto",
+      "do": "Llena el proyecto final con un problema real de tu cargo, sin datos internos, y marca ficha lista."
+    },
     {
       "id": "a13",
       "day": 2,
@@ -122,7 +315,10 @@
       "title": "Excel + IA en Acción",
       "do": "1. Descargue el archivo Excel (.xlsx) y ábralo en Microsoft Excel. 2. Revise encabezados y la hoja Instrucciones. 3. Pida a ChatGPT o Claude fórmulas para calcular el costo total por fila, resumir unidades y comparar Planta Central con Lote Norte; aclare que no debe inventar valores. 4. Escriba las fórmulas en la columna costo_total_ficticio y compruebe a mano al menos tres resultados. 5. Redacte dos hallazgos, separando lo calculado de cualquier interpretación. No agregue datos reales.",
       "resources": [
-        { "label": "Descargar Excel (.xlsx)", "path": "recursos/viernes2/datos-practica-excel.xlsx" }
+        {
+          "label": "Descargar Excel (.xlsx)",
+          "path": "recursos/viernes2/datos-practica-excel.xlsx"
+        }
       ],
       "checklist": [
         "Confirmé que el archivo contiene únicamente datos ficticios.",
@@ -138,7 +334,10 @@
       "title": "De Información a Presentación Ejecutiva",
       "do": "1. Descargue el PowerPoint (.pptx) y ábralo en Microsoft PowerPoint. 2. Pida a la IA una estructura ejecutiva de seis diapositivas: contexto, situación, evidencia, opciones, recomendación condicionada y próximos pasos. 3. Exija [VERIFICAR] donde falte información. 4. Compare con el archivo base, elimine repeticiones y descarte al menos dos ideas débiles. 5. Deje máximo cuatro viñetas por diapositiva y notas de lo que un humano debe validar. No use nombres ni datos reales.",
       "resources": [
-        { "label": "Descargar PowerPoint (.pptx)", "path": "recursos/viernes2/documento-base-presentacion.pptx" }
+        {
+          "label": "Descargar PowerPoint (.pptx)",
+          "path": "recursos/viernes2/documento-base-presentacion.pptx"
+        }
       ],
       "checklist": [
         "La presentación mantiene el mensaje del documento base.",
@@ -154,7 +353,10 @@
       "title": "Detective de Información",
       "do": "1. Descargue el Word (.docx) y ábralo en Microsoft Word. 2. Clasifique cada afirmación como respaldada, dudosa o no verificable. 3. Pida a la IA preguntas de verificación, sin permitirle confirmar hechos ni inventar enlaces. 4. Cruce cada afirmación con al menos dos pistas del dossier. 5. Escriba un dictamen: qué se puede usar, qué falta verificar y qué se descarta. No busque ni incorpore información real de ninguna organización.",
       "resources": [
-        { "label": "Descargar Word (.docx)", "path": "recursos/viernes2/dossier-investigacion.docx" }
+        {
+          "label": "Descargar Word (.docx)",
+          "path": "recursos/viernes2/dossier-investigacion.docx"
+        }
       ],
       "checklist": [
         "Separé afirmaciones de evidencias y opiniones.",
@@ -162,6 +364,111 @@
         "Detecté fechas, autorías o fuentes inconsistentes.",
         "Mi dictamen no presenta como cierto lo que sigue sin verificar."
       ]
+    },
+    {
+      "id": "a16",
+      "day": 1,
+      "mins": 8,
+      "title": "Quiz de fundamentos",
+      "do": "Juega el quiz de Fundamentos de IA generativa. Objetivo: al menos 60% de aciertos."
+    },
+    {
+      "id": "a17",
+      "day": 1,
+      "mins": 12,
+      "title": "Cambia la audiencia",
+      "do": "Copia un prompt del manual. Cambia solo la audiencia (patio vs dirección) y pégalo en un chat. Anota qué cambió."
+    },
+    {
+      "id": "a18",
+      "day": 1,
+      "mins": 10,
+      "title": "Cinco [VERIFICAR]",
+      "do": "Pide un aviso interno de 8 líneas sobre visitas a planta (caso ficticio). Marca en rojo al menos cinco datos que un humano debe confirmar."
+    },
+    {
+      "id": "a19",
+      "day": 1,
+      "mins": 10,
+      "title": "A.C.T.I.V.A. en tu voz",
+      "do": "Escribe en un bloc los seis pasos A.C.T.I.V.A. con un ejemplo de tu cargo, sin nombres reales. No lo pegues en el chat."
+    },
+    {
+      "id": "a20",
+      "day": 1,
+      "mins": 8,
+      "title": "Quiz de prompts",
+      "do": "Juega el quiz Cómo hablar con una IA o Ingeniería de prompts. Objetivo: 60% o más."
+    },
+    {
+      "id": "a21",
+      "day": 1,
+      "mins": 15,
+      "title": "Minuta de 6 líneas",
+      "do": "Dicta 6 notas sucias (caso Planta Central) y pide decisiones vs pendientes. Tacha lo que la IA dio por acordado sin estarlo."
+    },
+    {
+      "id": "a22",
+      "day": 2,
+      "mins": 12,
+      "title": "Tres celdas a mano",
+      "do": "Con la fórmula que te dio la IA (tarea de Excel o a13), calcula tres filas inventadas con calculadora. Si no coinciden, no uses la fórmula."
+    },
+    {
+      "id": "a23",
+      "day": 2,
+      "mins": 12,
+      "title": "Descarta dos slides",
+      "do": "Pide dos esquemas de 6 diapositivas. Elimina dos ideas débiles de cada uno y deja un solo hilo ejecutivo."
+    },
+    {
+      "id": "a24",
+      "day": 2,
+      "mins": 12,
+      "title": "Dictamen de 8 líneas",
+      "do": "Toma el párrafo del detective (o a15) y escribe: qué se puede usar, qué falta y qué se descarta. Sin buscar la empresa en internet."
+    },
+    {
+      "id": "a25",
+      "day": 2,
+      "mins": 10,
+      "title": "Seguimiento sin fecha",
+      "do": "Redacta un correo de seguimiento a Cliente Alfa. Prohibido poner día, hora o guía que no te hayan dado."
+    },
+    {
+      "id": "a26",
+      "day": 2,
+      "mins": 12,
+      "title": "Cuatro riesgos de tu cargo",
+      "do": "Lista 4 riesgos de usar IA en tu trabajo y quién los controla. Sin datos internos. Guarda la lista en tus notas."
+    },
+    {
+      "id": "a27",
+      "day": 2,
+      "mins": 10,
+      "title": "Quiz Excel y PowerPoint",
+      "do": "Juega el quiz de IA + Excel y el de IA + PowerPoint. Objetivo: 60% en cada uno."
+    },
+    {
+      "id": "a28",
+      "day": 2,
+      "mins": 10,
+      "title": "Tres preguntas del proyecto",
+      "do": "Escribe 3 preguntas que te harían en la presentación de 3–5 minutos. Respóndelas en voz alta, sin cifras internas."
+    },
+    {
+      "id": "a29",
+      "day": 2,
+      "mins": 8,
+      "title": "Quiz de investigación",
+      "do": "Juega el quiz de Análisis e investigación o Detective de información. Objetivo: 60% o más."
+    },
+    {
+      "id": "a30",
+      "day": 2,
+      "mins": 10,
+      "title": "Notas de expositor",
+      "do": "Para 3 títulos de slide de tu área (ficticios), escribe lo que dirías en 20 segundos. No copies las viñetas."
     }
   ]
 }

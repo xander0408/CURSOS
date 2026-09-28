@@ -157,7 +157,7 @@ function highlightNav(pathName, route) {
   if (pathName === "module" && isDay2Module(data, route?.params?.moduleId)) active = "/oficina/modulos";
   if ((pathName === "quiz" || pathName === "officeQuiz") && route?.params?.quizId) {
     const qz = (data.quizzes || []).find((q) => q.id === route.params.quizId);
-    if (qz && (qz.id === "qf" || isDay2Module(data, qz.moduleId))) active = "/oficina/quiz";
+    if (qz && (qz.id === "qf" || qz.id === "q-cierre" || isDay2Module(data, qz.moduleId))) active = "/oficina/quiz";
   }
   document.querySelectorAll(".nav-link").forEach((a) => {
     const r = a.getAttribute("data-route");
@@ -215,7 +215,7 @@ function renderInner() {
   const onDay2 =
     !!officeNames[route.name] ||
     (route.name === "module" && isDay2Module(data, route.params.moduleId)) ||
-    !!(quiz && (quiz.id === "qf" || isDay2Module(data, quiz.moduleId)));
+    !!(quiz && (quiz.id === "qf" || quiz.id === "q-cierre" || isDay2Module(data, quiz.moduleId)));
   document.getElementById("header-progress").style.width = (onDay2 ? dayPct(data, 2) : globalPct(data)) + "%";
   document.body.classList.toggle("is-friday2", onDay2);
   const orgEl = document.getElementById("brand-org");
