@@ -6,10 +6,11 @@ import { assetUrl } from "../paths.js";
 export function renderActivities(data) {
   const pack = data.activities;
   const done = getState().progress.labs?.checks || {};
-  const chats = pack.chatTasks || [];
+  const chats = (pack.chatTasks || []).filter((t) => t.day !== 2);
   const chatOk = chats.filter((i) => done[i.id]).length;
-  const n = pack.items.length;
-  const ok = pack.items.filter((i) => done[i.id]).length;
+  const extras = (pack.items || []).filter((it) => it.day !== 2);
+  const n = extras.length;
+  const ok = extras.filter((i) => done[i.id]).length;
 
   const chatCards = chats
     .map((it) => {
@@ -33,9 +34,7 @@ export function renderActivities(data) {
     })
     .join("");
 
-  const day2Ids = ["a13", "a14", "a15"];
-  const day2 = pack.items.filter((it) => day2Ids.includes(it.id));
-  const rest = pack.items.filter((it) => !day2Ids.includes(it.id));
+  const rest = extras;
 
   function itemCard(it) {
     const on = !!done[it.id];
@@ -72,26 +71,21 @@ export function renderActivities(data) {
   }
 
   const cards = rest.map(itemCard).join("");
-  const day2Cards = day2.map(itemCard).join("");
 
   return `
     <div class="page-head">
       <h2>Tareas en ChatGPT y Claude</h2>
-      <p>Nueve prácticas con enfoque distinto. En la mayoría, el mismo texto en los dos chats. No envíes el resultado.</p>
+      <p>Prácticas de esta jornada. En la mayoría, el mismo texto en los dos chats. No envíes el resultado.</p>
       <p><strong>${chatOk} de ${chats.length}</strong> completadas.</p>
     </div>
     <div class="activity-grid">${chatCards}</div>
-    <div class="page-head" style="margin-top:28px">
-      <h2>Viernes 2 · prácticas con archivos de Office</h2>
-      <p>Excel (.xlsx), PowerPoint (.pptx) y Word (.docx). También están reunidas en el menú <a href="#/viernes-2">Viernes 2</a>.</p>
-    </div>
-    <div class="activity-grid">${day2Cards}</div>
     <div class="page-head" style="margin-top:28px">
       <h2>${escapeHtml(pack.title)}</h2>
       <p>${escapeHtml(pack.subtitle)}</p>
       <p><strong>${ok} de ${n}</strong> actividades complementarias.</p>
     </div>
     <div class="activity-grid">${cards}</div>
+    <p class="muted" style="margin-top:20px">Las prácticas de Excel, PowerPoint e investigación están en <a href="#/viernes-2">Viernes 2</a>.</p>
   `;
 }
 

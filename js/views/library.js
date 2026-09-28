@@ -59,6 +59,7 @@ export function renderLibrary(data) {
       .join("") || `<p class="muted">Todavía no tienes prompts propios. Escríbelo arriba y pulsa Guardar mi prompt.</p>`;
 
   const seeds = data.library.templates
+    .filter((t) => !t.area)
     .map(
       (t) => `<div class="card">
         ${t.area ? `<p class="muted"><strong>Área:</strong> ${escapeHtml(t.area)}</p>` : ""}
@@ -91,7 +92,7 @@ export function renderLibrary(data) {
     <h3 style="margin-top:24px">Tus prompts (${mine.length})</h3>
     <div class="grid grid-2">${custom}</div>
     <h3 style="margin-top:24px">Plantillas del curso</h3>
-    <p class="muted">Incluye prompts avanzados por área de CISA (Viernes 2). Todos usan casos ficticios o datos anonimizados y requieren revisión humana.</p>
+    <p class="muted">Plantillas de esta jornada. Los prompts por área de CISA están en <a href="#/viernes-2">Viernes 2</a>.</p>
     <div class="grid grid-2">${seeds}</div>
     ${errors ? `<h3 style="margin-top:24px">Errores comunes y cómo evitarlos</h3>
       <div class="grid grid-2">${errors}</div>` : ""}

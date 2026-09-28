@@ -1,14 +1,15 @@
 import { allChallenges } from "../content.js";
 import { getState } from "../store.js";
 import { escapeHtml, pillForDifficulty } from "../ui.js";
-import { isModuleUnlocked } from "../journey.js";
+import { isModuleUnlocked, modulesOfDay, isDay2Module } from "../journey.js";
 
 export function renderChallengesIndex(data, moduleFilter = "") {
   const list = allChallenges(data).filter((c) => {
     if (moduleFilter && c.moduleId !== moduleFilter) return false;
+    if (!moduleFilter && isDay2Module(data, c.moduleId)) return false;
     return isModuleUnlocked(data, c.moduleId);
   });
-  const opts = data.course.modules
+  const opts = modulesOfDay(data, 1)
     .map((m) => `<option value="${m.id}" ${moduleFilter === m.id ? "selected" : ""}>M${m.number} ${escapeHtml(m.title)}</option>`)
     .join("");
   const rows = list
@@ -26,7 +27,7 @@ export function renderChallengesIndex(data, moduleFilter = "") {
   return `
     <div class="page-head">
       <h2>Retos</h2>
-      <p>Envía tu respuesta para ver la explicación. El objetivo es el criterio, no adivinar la clave.</p>
+      <p>Envía tu respuesta para ver la explicación. Los retos de Excel y PowerPoint están en <a href="#/viernes-2">Viernes 2</a>.</p>
     </div>
     <div class="field"><label>Filtrar por módulo</label>
       <select id="ch-filter"><option value="">Todos</option>${opts}</select>

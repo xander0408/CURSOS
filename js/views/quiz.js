@@ -3,6 +3,7 @@ import { escapeHtml, toast } from "../ui.js";
 import { scoreAnswer, maxScore, rank } from "../quiz-engine.js";
 import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
+import { quizzesOfDay } from "../journey.js";
 
 // Estilo Kahoot: colores y formas fijas para hasta 4 opciones.
 const SHAPES = [
@@ -40,7 +41,7 @@ function clearTimer() {
 // ---- Indice de quizzes (pantalla de seleccion) ----
 export function renderQuizIndex(data) {
   const best = getState().progress.quizzes?.bestScores || {};
-  const cards = data.quizzes
+  const cards = quizzesOfDay(data, 1)
     .map((qz) => {
       const b = best[qz.id];
       const total = maxScore(qz);
@@ -58,7 +59,7 @@ export function renderQuizIndex(data) {
   return `
     <div class="page-head">
       <h2>Quiz rápido</h2>
-      <p>Estilo concurso: responde contra el reloj. Cuanto más rápido aciertas, más puntos ganas. Ideal para repasar en clase.</p>
+      <p>Estilo concurso: responde contra el reloj. Los quizzes de Excel, PowerPoint e investigación están en <a href="#/viernes-2">Viernes 2</a>.</p>
     </div>
     ${sectionAgent(data, "quiz")}
     <div class="grid grid-3">${cards}</div>

@@ -1,12 +1,18 @@
 import { getState, update, exportState, importState } from "../store.js";
-import { moduleProgress } from "./modules.js?v=20260920v3";
+import { moduleProgress } from "./modules.js?v=20260927s1";
 import { escapeHtml, progressBar, toast } from "../ui.js";
 import { sectionAgent } from "../agents.js";
-import { nextPathStep, assignedTask } from "../journey.js";
+import { nextPathStep, assignedTask, modulesOfDay } from "../journey.js";
+
+export function dayPct(data, day) {
+  const mods = modulesOfDay(data, day);
+  if (!mods.length) return 0;
+  const pcts = mods.map((m) => moduleProgress(data.modules[m.id]).pct);
+  return Math.round(pcts.reduce((a, b) => a + b, 0) / pcts.length);
+}
 
 export function globalPct(data) {
-  const pcts = data.course.modules.map((m) => moduleProgress(data.modules[m.id]).pct);
-  return Math.round(pcts.reduce((a, b) => a + b, 0) / pcts.length);
+  return dayPct(data, 1);
 }
 
 export function renderDashboard(data) {
@@ -24,7 +30,7 @@ export function renderDashboard(data) {
   const path = [
     { ok: s.profile.introDone, href: "#/perfil", label: "1. Conocernos" },
     { ok: s.progress.freeTiersAck, href: "#/cuentas", label: "2. Cuentas gratis" },
-    ...data.course.modules.map((m, i) => ({
+    ...modulesOfDay(data, 1).map((m, i) => ({
       ok: moduleProgress(data.modules[m.id]).complete,
       href: `#/modulo/${m.id}/leccion/${data.modules[m.id].lessons[0].id}`,
       label: `${i + 3}. ${m.number === 0 ? "Historia" : "M" + m.number + " " + m.title}`,
@@ -44,15 +50,6 @@ export function renderDashboard(data) {
       <p>${escapeHtml(data.course.practiceNote)}</p>
     </div>
     ${sectionAgent(data, "dashboard")}
-    <div class="card friday2-banner" style="margin-bottom:20px">
-      <p class="muted">25 de septiembre · 8 horas</p>
-      <h3>Viernes 2: Excel, PowerPoint e investigación</h3>
-      <p>Todo el material nuevo está junto: descargas en Excel, PowerPoint y Word, prácticas de 25 minutos, módulos 5 a 9 y el proyecto final.</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="#/viernes-2">Abrir Viernes 2</a>
-        <a class="btn" href="#/proyecto">Proyecto final</a>
-      </div>
-    </div>
     <div class="grid grid-4" style="margin-bottom:20px">
       <div class="card stat"><span class="value">${pct}%</span><span class="label">Progreso general</span></div>
       <div class="card stat"><span class="value">${s.progress.totals.modulesCompleted}</span><span class="label">Módulos</span></div>
@@ -74,8 +71,8 @@ export function renderDashboard(data) {
     <div class="grid grid-2" style="margin-top:16px">
       <div class="card">
         <h3>Tareas en ChatGPT y Claude</h3>
-        <p>Nueve prácticas (privacidad, iterar, audiencia, cifras, decisión humana y las cuatro de arranque). El mismo texto en los dos chats, salvo cuando la tarjeta indique otra cosa.</p>
-        <p class="muted">${(data.activities.chatTasks || []).filter((t) => !!(s.progress.labs?.checks || {})[t.id]).length} de ${(data.activities.chatTasks || []).length} hechas.</p>
+        <p>Prácticas de esta jornada: privacidad, iterar, audiencia y las de arranque. El mismo texto en los dos chats, salvo cuando la tarjeta indique otra cosa.</p>
+        <p class="muted">${(data.activities.chatTasks || []).filter((t) => t.day !== 2 && !!(s.progress.labs?.checks || {})[t.id]).length} de ${(data.activities.chatTasks || []).filter((t) => t.day !== 2).length} hechas.</p>
         <div class="btn-row">
           <a class="btn btn-primary" href="#/actividades">Abrir las tareas</a>
           <a class="btn" href="#/comparador/chat-1">Comparar en vivo</a>
@@ -102,6 +99,7 @@ export function renderDashboard(data) {
         <a class="btn" href="#/actividades">Actividades</a>
       </div>
     </div>
+    <p class="muted" style="margin-top:20px">La jornada del 25 de septiembre está en el menú <a href="#/viernes-2">Viernes 2</a>.</p>
   `;
 }
 
@@ -109,7 +107,7 @@ export function bindDashboard() {}
 
 export function renderProgress(data) {
   const s = getState();
-  const rows = data.course.modules
+  const rows = modulesOfDay(data, 1)
     .map((m) => {
       const p = moduleProgress(data.modules[m.id]);
       const label = m.number === 0 ? "Inicio" : `M${m.number}`;
@@ -128,6 +126,11 @@ export function renderProgress(data) {
       <p>La puntuación de cada reto usa el <strong>último intento</strong>. Los puntos no sustituyen el criterio en el trabajo real.</p>
     </div>
     <div class="grid grid-3">${rows}</div>
+    <div class="card" style="margin-top:20px">
+      <h3>Viernes 2</h3>
+      <p>El avance de Excel, PowerPoint, investigación y proyecto está en su propia jornada.</p>
+      <a class="btn btn-primary" href="#/viernes-2">Abrir Viernes 2</a>
+    </div>
     <h3 style="margin-top:28px">Insignias</h3>
     <div class="grid grid-2">${badges}</div>
     <div class="card" style="margin-top:20px">
