@@ -3,13 +3,13 @@ import { getState } from "../store.js";
 import { escapeHtml, pillForDifficulty } from "../ui.js";
 import { isModuleUnlocked, modulesOfDay, isDay2Module } from "../journey.js";
 
-export function renderChallengesIndex(data, moduleFilter = "") {
+export function renderChallengesIndex(data, moduleFilter = "", { day = 1, base = "#/retos" } = {}) {
   const list = allChallenges(data).filter((c) => {
     if (moduleFilter && c.moduleId !== moduleFilter) return false;
-    if (!moduleFilter && isDay2Module(data, c.moduleId)) return false;
+    if (Number(day) === 2 ? !isDay2Module(data, c.moduleId) : isDay2Module(data, c.moduleId)) return false;
     return isModuleUnlocked(data, c.moduleId);
   });
-  const opts = modulesOfDay(data, 1)
+  const opts = modulesOfDay(data, day)
     .map((m) => `<option value="${m.id}" ${moduleFilter === m.id ? "selected" : ""}>M${m.number} ${escapeHtml(m.title)}</option>`)
     .join("");
   const rows = list
@@ -26,19 +26,20 @@ export function renderChallengesIndex(data, moduleFilter = "") {
     .join("");
   return `
     <div class="page-head">
-      <h2>Retos</h2>
-      <p>Envía tu respuesta para ver la explicación. Los retos de Excel y PowerPoint están en <a href="#/viernes-2">Viernes 2</a>.</p>
+      <h2>${Number(day) === 2 ? "Retos · Oficina + IA" : "Retos"}</h2>
+      <p>Envía tu respuesta para ver la explicación. El objetivo es el criterio, no adivinar la clave.</p>
     </div>
     <div class="field"><label>Filtrar por módulo</label>
-      <select id="ch-filter"><option value="">Todos</option>${opts}</select>
+      <select id="ch-filter" data-ch-base="${escapeHtml(base)}"><option value="">Todos</option>${opts}</select>
     </div>
     <div class="grid grid-2">${rows}</div>
   `;
 }
 
-export function bindChallengesIndex() {
+export function bindChallengesIndex({ base = "#/retos" } = {}) {
   document.getElementById("ch-filter")?.addEventListener("change", (e) => {
     const v = e.target.value;
-    location.hash = v ? `#/retos/${v}` : "#/retos";
+    const root = e.target.getAttribute("data-ch-base") || base;
+    location.hash = v ? `${root}/${v}` : root;
   });
 }

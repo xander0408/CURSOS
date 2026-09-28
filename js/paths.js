@@ -68,6 +68,7 @@ const SPA_HEADS = new Set([
   "actividades",
   "viernes-2",
   "viernes2",
+  "oficina",
   "cronograma",
 ]);
 

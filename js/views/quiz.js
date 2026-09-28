@@ -39,15 +39,15 @@ function clearTimer() {
 }
 
 // ---- Indice de quizzes (pantalla de seleccion) ----
-export function renderQuizIndex(data) {
+export function renderQuizIndex(data, { day = 1, base = "#/quiz" } = {}) {
   const best = getState().progress.quizzes?.bestScores || {};
-  const cards = quizzesOfDay(data, 1)
+  const cards = quizzesOfDay(data, day)
     .map((qz) => {
       const b = best[qz.id];
       const total = maxScore(qz);
       const pct = b ? Math.round((b.score / total) * 100) : 0;
       const badge = b ? `<span class="pill ok">Mejor: ${b.score} pts · ${pct}%</span>` : `<span class="pill">Sin jugar</span>`;
-      const href = `#/quiz/${encodeURIComponent(qz.id)}`;
+      const href = `${base}/${encodeURIComponent(qz.id)}`;
       return `<a class="card clickable quiz-card" href="${href}" data-quiz="${escapeHtml(qz.id)}" style="text-decoration:none;color:inherit">
         <div class="quiz-card-top"><span class="quiz-icon">${qz.icon || "❓"}</span>${badge}</div>
         <h3>${escapeHtml(qz.title)}</h3>
@@ -58,21 +58,21 @@ export function renderQuizIndex(data) {
     .join("");
   return `
     <div class="page-head">
-      <h2>Quiz rápido</h2>
-      <p>Estilo concurso: responde contra el reloj. Los quizzes de Excel, PowerPoint e investigación están en <a href="#/viernes-2">Viernes 2</a>.</p>
+      <h2>${Number(day) === 2 ? "Quiz · Oficina + IA" : "Quiz rápido"}</h2>
+      <p>Estilo concurso: responde contra el reloj. Cuanto más rápido aciertas, más puntos ganas.</p>
     </div>
     ${sectionAgent(data, "quiz")}
     <div class="grid grid-3">${cards}</div>
   `;
 }
 
-export function bindQuizIndex() {
+export function bindQuizIndex({ base = "#/quiz" } = {}) {
   document.querySelectorAll("a.quiz-card[data-quiz]").forEach((a) => {
     a.addEventListener("click", (e) => {
       const id = a.getAttribute("data-quiz");
       if (!id) return;
       e.preventDefault();
-      location.hash = "#/quiz/" + id;
+      location.hash = `${base}/${id}`;
     });
   });
 }
@@ -89,14 +89,14 @@ function findQuiz(data, quizId) {
   return (data.quizzes || []).find((q) => q.id === raw || q.id === decoded) || null;
 }
 
-export function renderQuizPlay(data, quizId) {
+export function renderQuizPlay(data, quizId, { back = "#/quiz" } = {}) {
   const quiz = findQuiz(data, quizId);
-  if (!quiz) return `<div class="page-head"><h2>Quiz no encontrado</h2><p><a href="#/quiz">Volver</a></p></div>`;
+  if (!quiz) return `<div class="page-head"><h2>Quiz no encontrado</h2><p><a href="${back}">Volver</a></p></div>`;
   return `<div id="quiz-stage" class="quiz-stage"></div>`;
 }
 
 // La vista de juego es imperativa (temporizador en vivo), no solo innerHTML.
-export function bindQuizPlay(data, quizId) {
+export function bindQuizPlay(data, quizId, { back = "#/quiz" } = {}) {
   const quiz = findQuiz(data, quizId);
   const stage = document.getElementById("quiz-stage");
   if (!quiz || !stage) return;
@@ -127,7 +127,7 @@ export function bindQuizPlay(data, quizId) {
         ${best ? `<p class="muted">Tu mejor puntaje: <strong>${best.score} pts</strong></p>` : ""}
         <div class="btn-row" style="justify-content:center">
           <button class="btn btn-primary" id="quiz-start" type="button">Empezar</button>
-          <a class="btn" href="#/quiz">Volver</a>
+          <a class="btn" href="${back}">Volver</a>
         </div>
       </div>
     `;
@@ -267,7 +267,7 @@ export function bindQuizPlay(data, quizId) {
         </div>
         <div class="btn-row" style="justify-content:center">
           <button class="btn btn-primary" id="quiz-again" type="button">Jugar de nuevo</button>
-          <a class="btn" href="#/quiz">Otros quizzes</a>
+          <a class="btn" href="${back}">Otros quizzes</a>
         </div>
       </div>
     `;

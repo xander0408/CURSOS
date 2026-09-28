@@ -3,12 +3,13 @@ import { escapeHtml, toast, copyText } from "../ui.js";
 import { checkBadges } from "../badges.js";
 import { assetUrl } from "../paths.js";
 
-export function renderActivities(data) {
+export function renderActivities(data, { day = 1 } = {}) {
   const pack = data.activities;
   const done = getState().progress.labs?.checks || {};
-  const chats = (pack.chatTasks || []).filter((t) => t.day !== 2);
+  const wantDay2 = Number(day) === 2;
+  const chats = (pack.chatTasks || []).filter((t) => (wantDay2 ? t.day === 2 : t.day !== 2));
   const chatOk = chats.filter((i) => done[i.id]).length;
-  const extras = (pack.items || []).filter((it) => it.day !== 2);
+  const extras = (pack.items || []).filter((it) => (wantDay2 ? it.day === 2 : it.day !== 2));
   const n = extras.length;
   const ok = extras.filter((i) => done[i.id]).length;
 
@@ -75,7 +76,7 @@ export function renderActivities(data) {
   return `
     <div class="page-head">
       <h2>Tareas en ChatGPT y Claude</h2>
-      <p>Prácticas de esta jornada. En la mayoría, el mismo texto en los dos chats. No envíes el resultado.</p>
+      <p>${wantDay2 ? "Tareas de Oficina + IA. En la mayoría, el mismo texto en los dos chats." : "Prácticas de esta jornada. En la mayoría, el mismo texto en los dos chats."} No envíes el resultado.</p>
       <p><strong>${chatOk} de ${chats.length}</strong> completadas.</p>
     </div>
     <div class="activity-grid">${chatCards}</div>
@@ -85,7 +86,6 @@ export function renderActivities(data) {
       <p><strong>${ok} de ${n}</strong> actividades complementarias.</p>
     </div>
     <div class="activity-grid">${cards}</div>
-    <p class="muted" style="margin-top:20px">Las prácticas de Excel, PowerPoint e investigación están en <a href="#/viernes-2">Viernes 2</a>.</p>
   `;
 }
 

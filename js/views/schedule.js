@@ -23,7 +23,7 @@ export function renderCronograma(data) {
         ${slots(s.friday1)}
       </div>
       <div class="card">
-        <h3>Viernes 2</h3>
+        <h3>Oficina + IA</h3>
         ${slots(s.friday2)}
       </div>
     </div>

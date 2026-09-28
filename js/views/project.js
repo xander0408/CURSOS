@@ -96,7 +96,7 @@ export function renderProject(data, step = 0) {
 
   return `
     <div class="page-head">
-      <p class="muted"><a href="#/viernes-2">← Viernes 2</a></p>
+      <p class="muted"><a href="#/oficina">← Oficina + IA</a></p>
       <h2>Proyecto final</h2>
       <p>45 minutos de trabajo · 7 pasos · presentación de 3–5 minutos. Usa solo información anónima o ficticia.</p>
     </div>

@@ -1,5 +1,5 @@
 import { getState, update, exportState, importState } from "../store.js";
-import { moduleProgress } from "./modules.js?v=20260927s1";
+import { moduleProgress } from "./modules.js?v=20260927s2";
 import { escapeHtml, progressBar, toast } from "../ui.js";
 import { sectionAgent } from "../agents.js";
 import { nextPathStep, assignedTask, modulesOfDay } from "../journey.js";
@@ -99,7 +99,7 @@ export function renderDashboard(data) {
         <a class="btn" href="#/actividades">Actividades</a>
       </div>
     </div>
-    <p class="muted" style="margin-top:20px">La jornada del 25 de septiembre está en el menú <a href="#/viernes-2">Viernes 2</a>.</p>
+    <p class="muted" style="margin-top:20px">Excel, PowerPoint e investigación están en el menú <a href="#/oficina">Oficina + IA</a>.</p>
   `;
 }
 
@@ -127,9 +127,9 @@ export function renderProgress(data) {
     </div>
     <div class="grid grid-3">${rows}</div>
     <div class="card" style="margin-top:20px">
-      <h3>Viernes 2</h3>
+      <h3>Oficina + IA</h3>
       <p>El avance de Excel, PowerPoint, investigación y proyecto está en su propia jornada.</p>
-      <a class="btn btn-primary" href="#/viernes-2">Abrir Viernes 2</a>
+      <a class="btn btn-primary" href="#/oficina">Abrir Oficina + IA</a>
     </div>
     <h3 style="margin-top:28px">Insignias</h3>
     <div class="grid grid-2">${badges}</div>

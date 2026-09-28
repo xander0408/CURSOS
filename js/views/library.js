@@ -41,7 +41,7 @@ export function bindOwnPromptUploads(root, data) {
   });
 }
 
-export function renderLibrary(data) {
+export function renderLibrary(data, { areasOnly = false } = {}) {
   const mine = getState().progress.library.custom || [];
   const custom =
     mine
@@ -59,7 +59,7 @@ export function renderLibrary(data) {
       .join("") || `<p class="muted">Todavía no tienes prompts propios. Escríbelo arriba y pulsa Guardar mi prompt.</p>`;
 
   const seeds = data.library.templates
-    .filter((t) => !t.area)
+    .filter((t) => (areasOnly ? !!t.area : !t.area))
     .map(
       (t) => `<div class="card">
         ${t.area ? `<p class="muted"><strong>Área:</strong> ${escapeHtml(t.area)}</p>` : ""}
@@ -85,14 +85,14 @@ export function renderLibrary(data) {
 
   return `
     <div class="page-head">
-      <h2>Biblioteca de prompts</h2>
-      <p>Primero crea el tuyo y guárdalo. Abajo hay plantillas del curso por si quieres una base.</p>
+      <h2>${areasOnly ? "Prompts · Oficina + IA" : "Biblioteca de prompts"}</h2>
+      <p>${areasOnly ? "Plantillas por área con casos ficticios. Cópialas y adáptalas; no pegues datos reales." : "Primero crea el tuyo y guárdalo. Abajo hay plantillas del curso por si quieres una base."}</p>
     </div>
     ${ownPromptBoxHtml({ prefix: "libown" })}
     <h3 style="margin-top:24px">Tus prompts (${mine.length})</h3>
     <div class="grid grid-2">${custom}</div>
     <h3 style="margin-top:24px">Plantillas del curso</h3>
-    <p class="muted">Plantillas de esta jornada. Los prompts por área de CISA están en <a href="#/viernes-2">Viernes 2</a>.</p>
+    <p class="muted">${areasOnly ? "Usa Cliente Alfa, Planta Central o Lote Norte. La revisión humana es obligatoria." : "Plantillas de esta jornada."}</p>
     <div class="grid grid-2">${seeds}</div>
     ${errors ? `<h3 style="margin-top:24px">Errores comunes y cómo evitarlos</h3>
       <div class="grid grid-2">${errors}</div>` : ""}

@@ -4,7 +4,7 @@ import { evaluate, xpFor, assemblePrompt } from "../challenge-engine.js";
 import { frameworkForm, readFramework, rubricHtml, readRubric } from "../prompt-lab.js";
 import { checkBadges } from "../badges.js";
 import { sectionAgent } from "../agents.js";
-import { isModuleUnlocked, isDay2Module } from "../journey.js";
+import { isModuleUnlocked, isDay2Module, modulesOfDay, OFFICE_HOME, OFFICE_NAME } from "../journey.js";
 import { ownPromptBoxHtml, bindOwnPromptUploads } from "./library.js?v=20260920v2";
 
 const DAY2_PRACTICES = {
@@ -44,10 +44,10 @@ export function renderModule(data, params) {
   const full = data.modules[params.moduleId];
   if (!full) return `<div class="page-head"><h2>Módulo no encontrado</h2></div>`;
   if (!isModuleUnlocked(data, params.moduleId)) {
-    const home = isDay2Module(data, params.moduleId) ? "#/viernes-2" : "#/";
+    const home = isDay2Module(data, params.moduleId) ? OFFICE_HOME : "#/";
     return `<div class="page-head"><h2>Sigue el orden del curso</h2>
       <p>Este módulo se abre al terminar las lecciones del anterior. Quiz, comparador y actividades no te encierran en Conocernos. El instructor puede abrir todos los módulos.</p>
-      <p><a class="btn btn-primary" href="${home}">${isDay2Module(data, params.moduleId) ? "Volver a Viernes 2" : "Ver mi ruta"}</a></p></div>`;
+      <p><a class="btn btn-primary" href="${home}">${isDay2Module(data, params.moduleId) ? `Volver a ${OFFICE_NAME}` : "Ver mi ruta"}</a></p></div>`;
   }
   const kind = params.kind === "reto" ? "reto" : "leccion";
   if (kind === "reto") return renderChallenge(data, full, params.itemId);
@@ -70,7 +70,7 @@ function renderLesson(data, full, lessonId) {
 
   return `
     <div class="page-head">
-      ${isDay2Module(data, full.id) ? `<p class="muted"><a href="#/viernes-2">← Viernes 2</a></p>` : ""}
+      ${isDay2Module(data, full.id) ? `<p class="muted"><a href="${OFFICE_HOME}">← ${OFFICE_NAME}</a></p>` : ""}
       <p class="muted">Módulo ${full.number} · Lección ${idx + 1} de ${full.lessons.length}</p>
       <h2>${escapeHtml(lesson.title)}</h2>
       <p>${escapeHtml(full.title)}</p>
@@ -79,8 +79,8 @@ function renderLesson(data, full, lessonId) {
     ${progressBar(p.pct)}
     <div class="card" style="margin-top:16px">
       ${renderBlocks(lesson.blocks)}
-      ${practice ? `<div class="callout think"><strong>Práctica de ${practice.mins} minutos</strong>${escapeHtml(practice.title)}. El archivo de Office está en Viernes 2.</div>
-        <p><a class="btn btn-primary" href="#/viernes-2">Abrir Viernes 2 y descargar</a></p>` : ""}
+      ${practice ? `<div class="callout think"><strong>Práctica de ${practice.mins} minutos</strong>${escapeHtml(practice.title)}. El archivo de Office está en ${OFFICE_NAME}.</div>
+        <p><a class="btn btn-primary" href="${OFFICE_HOME}">Abrir ${OFFICE_NAME} y descargar</a></p>` : ""}
       ${inst ? salaCueHtml([...salaFromBlocks, notes]) : ""}
       <div class="lesson-nav">
         ${prev ? `<a class="btn" href="#/modulo/${full.id}/leccion/${prev.id}">Anterior</a>` : `<span></span>`}
@@ -103,7 +103,7 @@ export function renderChallenge(data, full, challengeId) {
 
   return `
     <div class="page-head">
-      ${isDay2Module(data, full.id) ? `<p class="muted"><a href="#/viernes-2">← Viernes 2</a></p>` : ""}
+      ${isDay2Module(data, full.id) ? `<p class="muted"><a href="${OFFICE_HOME}">← ${OFFICE_NAME}</a></p>` : ""}
       <p class="muted">Módulo ${full.number} · Reto ${idx + 1} de ${full.challenges.length} · ${pillForDifficulty(ch.difficulty)}</p>
       <h2>${escapeHtml(ch.title)}</h2>
       <p><strong>Objetivo:</strong> ${escapeHtml(ch.objective)}</p>
@@ -121,7 +121,7 @@ export function renderChallenge(data, full, challengeId) {
         ${submitted ? "" : `<button class="btn btn-primary" type="button" id="btn-submit">Enviar</button>`}
         ${submitted ? `<button class="btn" type="button" id="btn-retry">Intentar de nuevo</button>` : ""}
         ${submitted && next ? `<a class="btn btn-primary" href="#/modulo/${full.id}/reto/${next.id}">Siguiente reto</a>` : ""}
-        ${submitted && !next ? `<a class="btn btn-primary" href="${isDay2Module(data, full.id) ? "#/viernes-2" : "#/modulos"}">${isDay2Module(data, full.id) ? "Volver a Viernes 2" : "Volver a módulos"}</a>` : ""}
+        ${submitted && !next ? `<a class="btn btn-primary" href="${isDay2Module(data, full.id) ? "#/oficina/modulos" : "#/modulos"}">${isDay2Module(data, full.id) ? `Volver a ${OFFICE_NAME}` : "Volver a módulos"}</a>` : ""}
       </div>
     </div>
   `;
@@ -416,7 +416,7 @@ function collectPayload(ch, root) {
   return { error: "No se pudo leer el reto." };
 }
 
-export function renderModulesIndex(data) {
+export function renderModulesIndex(data, { day = 1 } = {}) {
   const makeCards = (list) =>
     list
       .map((m) => {
@@ -424,7 +424,7 @@ export function renderModulesIndex(data) {
         const p = moduleProgress(full);
         const open = isModuleUnlocked(data, m.id);
         const num = m.number === 0 ? "I" : m.number;
-        const href = open ? `#/modulo/${m.id}/leccion/${full.lessons[0].id}` : "#/modulos";
+        const href = open ? `#/modulo/${m.id}/leccion/${full.lessons[0].id}` : Number(day) === 2 ? "#/oficina/modulos" : "#/modulos";
         return `<a class="card clickable ${open ? "" : "soon"}" href="${href}" style="text-decoration:none;color:inherit">
         <div class="module-row">
           <div class="module-num">${num}</div>
@@ -439,13 +439,14 @@ export function renderModulesIndex(data) {
       </a>`;
       })
       .join("");
-  const d1 = data.course.modules.filter((m) => m.day !== 2);
+  const list = modulesOfDay(data, day);
+  const office = Number(day) === 2;
   return `
     <div class="page-head">
-      <h2>Módulos</h2>
-      <p>Historia, fundamentos, prompts y Word. Excel, PowerPoint e investigación están en <a href="#/viernes-2">Viernes 2</a>.</p>
+      <h2>${office ? `Módulos · ${OFFICE_NAME}` : "Módulos"}</h2>
+      <p>${office ? "Excel, PowerPoint, investigación, productividad y proyecto." : "Historia, fundamentos, prompts y Word."}</p>
     </div>
     ${sectionAgent(data, "modules")}
-    <div class="module-list">${makeCards(d1)}</div>
+    <div class="module-list">${makeCards(list)}</div>
   `;
 }

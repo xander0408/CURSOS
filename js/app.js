@@ -1,25 +1,25 @@
-import { ensureTrailingSlash, bindBrandImages } from "./paths.js?v=20260920v3";
+import { ensureTrailingSlash, bindBrandImages } from "./paths.js?v=20260927s2";
 import { initTheme, toggleTheme, currentTheme } from "./theme.js";
 import { loadAll } from "./content.js";
-import { parseHash, onRoute } from "./router.js?v=20260920v3";
+import { parseHash, onRoute } from "./router.js?v=20260927s2";
 import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks, seedInstructorGuide } from "./store.js";
 import { setSyncApi, pullIntoLocal, pushNow } from "./sync.js";
 import { toast, openModal, closeModal } from "./ui.js?v=20260910s";
-import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct, dayPct } from "./views/dashboard.js?v=20260927s1";
-import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260927s1";
+import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct, dayPct } from "./views/dashboard.js?v=20260927s2";
+import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260927s2";
 import { checkBadges } from "./badges.js";
-import { renderChallengesIndex, bindChallengesIndex } from "./views/challenges.js?v=20260927s1";
+import { renderChallengesIndex, bindChallengesIndex } from "./views/challenges.js?v=20260927s2";
 import { renderPromptLab, bindPromptLab } from "./views/prompt-lab-view.js?v=20260911p2";
 import { renderComparator, bindComparator } from "./views/comparator.js";
-import { renderLibrary, bindLibrary } from "./views/library.js?v=20260927s1";
-import { renderProject, bindProject } from "./views/project.js?v=20260927s1";
-import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./views/quiz.js?v=20260927s1";
+import { renderLibrary, bindLibrary } from "./views/library.js?v=20260927s2";
+import { renderProject, bindProject } from "./views/project.js?v=20260927s2";
+import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./views/quiz.js?v=20260927s2";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260912d";
-import { renderActivities, bindActivities } from "./views/activities.js?v=20260927s1";
-import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260927s1";
+import { renderActivities, bindActivities } from "./views/activities.js?v=20260927s2";
+import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260927s2";
 import { isDay2Module } from "./journey.js";
 import { renderCronograma } from "./views/schedule.js";
 import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n4";
@@ -41,7 +41,13 @@ const TITLES = {
   manual: "Manual de prompts",
   admin: "Dashboard aula",
   actividades: "Actividades",
-  friday2: "Viernes 2",
+  friday2: "Oficina + IA",
+  officeHome: "Oficina + IA",
+  officeModules: "Módulos · Oficina + IA",
+  officeTasks: "Tareas · Oficina + IA",
+  officeChallenges: "Retos · Oficina + IA",
+  officeQuiz: "Quiz · Oficina + IA",
+  officePrompts: "Prompts · Oficina + IA",
   cronograma: "Cronograma",
 };
 
@@ -138,14 +144,20 @@ function highlightNav(pathName, route) {
     manual: "/manual",
     admin: "/admin",
     actividades: "/actividades",
-    friday2: "/viernes-2",
+    friday2: "/oficina",
+    officeHome: "/oficina",
+    officeModules: "/oficina/modulos",
+    officeTasks: "/oficina/tareas",
+    officeChallenges: "/oficina/retos",
+    officeQuiz: "/oficina/quiz",
+    officePrompts: "/oficina/prompts",
     cronograma: "/cronograma",
   };
   let active = map[pathName] || "/";
-  if (pathName === "module" && isDay2Module(data, route?.params?.moduleId)) active = "/viernes-2";
-  if (pathName === "quiz" && route?.params?.quizId) {
+  if (pathName === "module" && isDay2Module(data, route?.params?.moduleId)) active = "/oficina/modulos";
+  if ((pathName === "quiz" || pathName === "officeQuiz") && route?.params?.quizId) {
     const qz = (data.quizzes || []).find((q) => q.id === route.params.quizId);
-    if (qz && (qz.id === "qf" || isDay2Module(data, qz.moduleId))) active = "/viernes-2";
+    if (qz && (qz.id === "qf" || isDay2Module(data, qz.moduleId))) active = "/oficina/quiz";
   }
   document.querySelectorAll(".nav-link").forEach((a) => {
     const r = a.getAttribute("data-route");
@@ -187,12 +199,21 @@ function renderInner() {
   const uname = getState().profile.displayName || getState().profile.username || "";
   document.getElementById("header-user").textContent = uname;
   document.getElementById("header-user").title = uname;
-  const quiz = route.name === "quiz" && route.params.quizId
+  const quiz = (route.name === "quiz" || route.name === "officeQuiz") && route.params.quizId
     ? (data.quizzes || []).find((q) => q.id === route.params.quizId)
     : null;
+  const officeNames = {
+    friday2: 1,
+    officeHome: 1,
+    officeModules: 1,
+    officeTasks: 1,
+    officeChallenges: 1,
+    officeQuiz: 1,
+    officePrompts: 1,
+    project: 1,
+  };
   const onDay2 =
-    route.name === "friday2" ||
-    route.name === "project" ||
+    !!officeNames[route.name] ||
     (route.name === "module" && isDay2Module(data, route.params.moduleId)) ||
     !!(quiz && (quiz.id === "qf" || isDay2Module(data, quiz.moduleId)));
   document.getElementById("header-progress").style.width = (onDay2 ? dayPct(data, 2) : globalPct(data)) + "%";
@@ -264,9 +285,28 @@ function renderInner() {
   } else if (route.name === "actividades") {
     root.innerHTML = renderActivities(data);
     bindActivities(data);
-  } else if (route.name === "friday2") {
+  } else if (route.name === "friday2" || route.name === "officeHome") {
     root.innerHTML = renderFriday2(data);
-    bindFriday2(data);
+    bindFriday2();
+  } else if (route.name === "officeModules") {
+    root.innerHTML = renderModulesIndex(data, { day: 2 });
+  } else if (route.name === "officeTasks") {
+    root.innerHTML = renderActivities(data, { day: 2 });
+    bindActivities(data);
+  } else if (route.name === "officeChallenges") {
+    root.innerHTML = renderChallengesIndex(data, route.params.moduleId, { day: 2, base: "#/oficina/retos" });
+    bindChallengesIndex({ base: "#/oficina/retos" });
+  } else if (route.name === "officeQuiz") {
+    if (route.params.quizId) {
+      root.innerHTML = renderQuizPlay(data, route.params.quizId, { back: "#/oficina/quiz" });
+      bindQuizPlay(data, route.params.quizId, { back: "#/oficina/quiz" });
+    } else {
+      root.innerHTML = renderQuizIndex(data, { day: 2, base: "#/oficina/quiz" });
+      bindQuizIndex({ base: "#/oficina/quiz" });
+    }
+  } else if (route.name === "officePrompts") {
+    root.innerHTML = renderLibrary(data, { areasOnly: true });
+    bindLibrary(data);
   } else if (route.name === "cronograma") {
     if (!getState().profile.isInstructor) {
       root.innerHTML = `<div class="page-head"><h2>Acceso restringido</h2><p>Esta sección no está disponible con tu cuenta.</p><p><a class="btn btn-primary" href="#/">Volver</a></p></div>`;
@@ -293,7 +333,7 @@ function renderInner() {
     checkBadges(data);
     if (btn.dataset.next) location.hash = `#/modulo/${moduleId}/leccion/${btn.dataset.next}`;
     else if (btn.dataset.firstCh) location.hash = `#/modulo/${moduleId}/reto/${btn.dataset.firstCh}`;
-    else location.hash = isDay2Module(data, moduleId) ? `#/viernes-2` : `#/modulos`;
+    else location.hash = isDay2Module(data, moduleId) ? `#/oficina/modulos` : `#/modulos`;
   });
 
   // Inserta y anima los avatares de los agentes tutores (si la vista tiene).

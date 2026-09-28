@@ -12,6 +12,9 @@ export function isPrivileged() {
   return !!getState().profile.isInstructor;
 }
 
+export const OFFICE_NAME = "Oficina + IA";
+export const OFFICE_HOME = "#/oficina";
+
 export function modulesOfDay(data, day) {
   return (data.course?.modules || []).filter((m) => (Number(day) === 2 ? m.day === 2 : m.day !== 2));
 }
@@ -61,8 +64,8 @@ export function nextPathStep(data) {
   const locked = modulesOfDay(data, 1).find((m) => !lessonsComplete(data.modules[m.id]));
   if (locked) return lockedModuleStep(data, locked);
   return {
-    href: "#/viernes-2",
-    title: "Viernes 2",
+    href: OFFICE_HOME,
+    title: OFFICE_NAME,
     detail: "Excel, PowerPoint, investigación y proyecto están en su propia jornada.",
   };
 }

@@ -44,7 +44,24 @@ export function parseHash() {
   if (head === "manual") return { name: "manual", params: {} };
   if (head === "admin") return { name: "admin", params: {} };
   if (head === "actividades") return { name: "actividades", params: {} };
-  if (head === "viernes-2" || head === "viernes2") return { name: "friday2", params: {} };
+  if (head === "oficina" || head === "viernes-2" || head === "viernes2") {
+    const sub = String(parts[1] || "").toLowerCase();
+    if (sub === "modulos") return { name: "officeModules", params: {} };
+    if (sub === "tareas") return { name: "officeTasks", params: {} };
+    if (sub === "retos") return { name: "officeChallenges", params: { moduleId: parts[2] || "" } };
+    if (sub === "quiz") {
+      const rawId = parts.slice(2).join("/") || "";
+      let quizId = rawId;
+      try {
+        quizId = decodeURIComponent(rawId);
+      } catch {
+        quizId = rawId;
+      }
+      return { name: "officeQuiz", params: { quizId } };
+    }
+    if (sub === "prompts") return { name: "officePrompts", params: {} };
+    return { name: "officeHome", params: {} };
+  }
   if (head === "cronograma") return { name: "cronograma", params: {} };
   return { name: "dashboard", params: {} };
 }
