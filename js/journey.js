@@ -130,11 +130,11 @@ export function nextFriday2Step(data) {
     return {
       href: "#/oficina/tareas",
       title: "Caso de mesa",
-      detail: "Lean la hoja de su mesa. 40 minutos a mano, sin internet. Luego lo mismo con IA. El proyecto es de cada persona, con ese caso.",
+      detail: "Lean la hoja de su mesa. 40 minutos a mano, sin internet. Luego lo mismo con IA. Esto no es el examen.",
     };
   }
   if (!getState().progress.project?.ficheReady) {
-    return { href: "#/proyecto", title: "Proyecto final", detail: "Elige el mismo caso de tu mesa y cierra los 7 pasos." };
+    return { href: "#/proyecto", title: "Proyecto final", detail: "Usa el Word de tu usuario en la carpeta proyectos. No el caso de mesa." };
   }
   return { href: "#/proyecto", title: "Proyecto listo", detail: "Repasa la ficha o un quiz si el instructor lo pide." };
 }

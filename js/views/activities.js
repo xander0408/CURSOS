@@ -2,7 +2,6 @@ import { getState, update, logActivity } from "../store.js";
 import { escapeHtml, toast, copyText } from "../ui.js";
 import { checkBadges } from "../badges.js";
 import { assetUrl } from "../paths.js";
-import { officeCaseById, officeCasePatch } from "../office-cases.js?v=20260930c1";
 
 export function renderActivities(data, { day = 1 } = {}) {
   const pack = data.activities;
@@ -36,7 +35,6 @@ function renderOfficeTasks(data, done) {
   const cases = data.officeCases?.cases || [];
   const officeIds = ["a13", "a14", "a15"];
   const office = (data.activities?.items || []).filter((it) => officeIds.includes(it.id));
-  const chosen = getState().progress.project?.fields?.officeCaseId || "";
   const caseOk = cases.filter((c) => done[c.activityId]).length;
   const officeOk = office.filter((it) => done[it.id]).length;
   const versusItems = new Map((data.activities?.items || []).filter((it) => it.versus).map((it) => [it.id, it]));
@@ -46,15 +44,13 @@ function renderOfficeTasks(data, done) {
       const it = versusItems.get(c.activityId) || { id: c.activityId, versus: true, mins: 40 };
       const on = !!done[c.activityId];
       const times = getState().progress.labs?.versus?.[c.activityId] || {};
-      const mine = chosen === c.id;
       const fname = (c.webFile || c.file || "").split("/").pop() || "caso.docx";
       return `<div class="card activity-card ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(c.activityId)}" ${on ? "checked" : ""} />
         <div>
-          <p class="muted">Caso ${c.n} de 4 · ${escapeHtml(c.area)} · 40 min a mano</p>
-          ${mine ? `<p class="pill ok">Este es tu proyecto final</p>` : ""}
+          <p class="muted">Caso ${c.n} de 4 · ${escapeHtml(c.area)} · ejercicio de mesa · no es el examen</p>
           <h3>${escapeHtml(c.title)}</h3>
-          <p>${escapeHtml(c.brief || c.story || c.problem)}</p>
+          <p>${escapeHtml(c.brief || c.story || "")}</p>
           ${
             Array.isArray(c.deliver)
               ? `<ul>${c.deliver.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ul>
@@ -62,9 +58,7 @@ function renderOfficeTasks(data, done) {
               : ""
           }
           <div class="btn-row">
-            <a class="btn btn-primary" href="${escapeHtml(assetUrl(c.webFile))}" download="${escapeHtml(fname)}">Descargar Word del caso</a>
-            <button class="btn" type="button" data-use-case="${escapeHtml(c.id)}">${mine ? "Ya está en tu ficha" : "Usar en mi proyecto"}</button>
-            <a class="btn" href="#/proyecto">Abrir proyecto</a>
+            <a class="btn btn-primary" href="${escapeHtml(assetUrl(c.webFile))}" download="${escapeHtml(fname)}">Descargar Word de la mesa</a>
           </div>
           <div class="activity-checklist" style="margin-top:14px">
             <strong>Cronómetro de la mesa</strong>
@@ -86,16 +80,16 @@ function renderOfficeTasks(data, done) {
     <div class="page-head">
       <p class="muted"><a href="#/oficina">← Oficina + IA</a></p>
       <h2>Tareas · Oficina + IA</h2>
-      <p>Una hoja por mesa. Lean, trabajen a mano, luego con IA. Al rato cada uno abre su proyecto con el mismo caso.</p>
+      <p>Una hoja por mesa. Lean. 40 minutos a mano. Luego lo mismo con IA. Esto no es el proyecto final.</p>
       <p><strong>${caseOk} de ${cases.length}</strong> casos de mesa · <strong>${officeOk} de ${office.length}</strong> archivos de práctica.</p>
     </div>
     <div class="callout think">
       <strong>Cómo se corre</strong>
-      Una mesa, un caso. 40 minutos con Word, Excel y PowerPoint. Internet apagado. Luego lo mismo con ChatGPT o Claude. Anoten los minutos. Después cada persona llena su proyecto.
+      Una mesa, un caso. 40 minutos con Word, Excel y PowerPoint. Internet apagado. Luego lo mismo con ChatGPT o Claude. Anoten los minutos. El examen de cada persona es otro Word, el de la carpeta proyectos.
     </div>
     <div class="page-head" style="margin-top:28px">
       <h2>Los 4 casos de mesa</h2>
-      <p>Un caso por grupo. Descarga el Word, trabajo a mano, luego con IA, luego el proyecto de cada uno.</p>
+      <p>Un caso por grupo. Descargan el Word. Trabajan a mano. Luego con IA.</p>
     </div>
     <div class="activity-grid">${caseCards}</div>
     <div class="page-head" style="margin-top:28px">
@@ -103,11 +97,6 @@ function renderOfficeTasks(data, done) {
       <p>Excel, PowerPoint y Word de práctica. No son los casos de mesa.</p>
     </div>
     <div class="activity-grid">${office.map((it) => itemCard(it, done)).join("")}</div>
-    <div class="card" style="margin-top:28px">
-      <h3>Proyecto final · 7 pasos</h3>
-      <p>Es individual. Elige el mismo caso de tu mesa: el sistema te carga problema, audiencia y prompt R+C+O+F+R. Presentación de 3 a 5 minutos.</p>
-      <a class="btn btn-primary" href="#/proyecto">Abrir mi proyecto</a>
-    </div>
   `;
 }
 
@@ -200,18 +189,5 @@ export function bindActivities(data) {
     };
     el.addEventListener("input", save);
     el.addEventListener("change", save);
-  });
-  document.querySelectorAll("[data-use-case]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const c = officeCaseById(data, btn.getAttribute("data-use-case"));
-      if (!c) return;
-      update((s) => {
-        s.progress.project = s.progress.project || {};
-        s.progress.project.fields = { ...(s.progress.project.fields || {}), ...officeCasePatch(c) };
-      });
-      logActivity("proyecto", `caso ${c.id}`);
-      toast(`Cargado: Caso ${c.n} · ${c.title}. Abre Proyecto final.`);
-      window.dispatchEvent(new Event("app:refresh"));
-    });
   });
 }

@@ -12,14 +12,14 @@ import { renderChallengesIndex, bindChallengesIndex } from "./views/challenges.j
 import { renderPromptLab, bindPromptLab } from "./views/prompt-lab-view.js?v=20260911p2";
 import { renderComparator, bindComparator } from "./views/comparator.js?v=20260930j1";
 import { renderLibrary, bindLibrary } from "./views/library.js?v=20260927s2";
-import { renderProject, bindProject } from "./views/project.js?v=20260930p2";
+import { renderProject, bindProject } from "./views/project.js?v=20260930p3";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./views/quiz.js?v=20260927s2";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260912d";
-import { renderActivities, bindActivities } from "./views/activities.js?v=20260930v3";
-import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260930v3";
+import { renderActivities, bindActivities } from "./views/activities.js?v=20260930v4";
+import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260930v4";
 import { isDay2Module, jornadaFromRoute, applyJornada, readJornada } from "./journey.js?v=20260930c1";
 import { renderCronograma } from "./views/schedule.js";
 import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n4";

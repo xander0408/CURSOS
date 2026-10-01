@@ -8,9 +8,9 @@
       "title": "Proyecto de 45 minutos: siete pasos",
       "activaPhase": 0,
       "blocks": [
-        { "type": "text", "html": "<p>Tu proyecto es <strong>el mismo caso de tu mesa</strong> (Calidad, Logística, RR. HH. o Gerencia). El grupo ensayó a mano y con IA; la ficha y la presentación de 3–5 minutos son de cada persona. En Proyecto final pulsa tu caso: se cargan problema, audiencia y prompt. Edítalos. Sin datos reales.</p>" },
-        { "type": "list", "items": ["1. Elegir caso y definir el problema.", "2. Prompt R+C+O+F+R.", "3. ChatGPT.", "4. Claude.", "5. Comparar.", "6. Refinar y validar.", "7. Presentar."] },
-        { "type": "callout", "kind": "think", "title": "Piensa", "text": "¿Qué inventó la IA en la Fase B que no firmarías frente a tu jefatura? Eso debe salir en el paso 6." }
+        { "type": "text", "html": "<p>Tu proyecto es <strong>el Word de tu usuario</strong> en la carpeta <code>proyectos</code> (ejemplo: <code>gmejia-proyecto-final.docx</code>). No es el caso de mesa de los 40 minutos. Copia el texto de tu Word, pégalo en ChatGPT y el mismo en Claude. Llena la ficha en Proyecto final.</p>" },
+        { "type": "list", "items": ["1. Leer TU Word.", "2. Armar el prompt (o copiar el del Word).", "3. ChatGPT.", "4. Claude.", "5. Comparar.", "6. Refinar y validar.", "7. Presentar."] },
+        { "type": "callout", "kind": "think", "title": "Piensa", "text": "Los tiempos, los riesgos y lo que verificaste los pones tú. El Word no los inventa." }
       ]
     },
     {

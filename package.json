@@ -9,7 +9,8 @@
   "scripts": {
     "build:ppt": "node build-presentacion.mjs",
     "build:viernes2": "node build-recursos-viernes2.mjs",
-    "build:casos": "node build-casos-oficina.mjs"
+    "build:casos": "node build-casos-oficina.mjs",
+    "build:proyectos": "node build-proyectos.mjs"
   },
   "repository": {
     "type": "git",

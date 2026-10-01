@@ -27,18 +27,18 @@ const FILES = [
 ];
 
 const LINKS = [
-  { href: "#/oficina/tareas", title: "Tareas", detail: "Los 4 Word de mesa, cronómetro A/B y el puente al proyecto." },
+  { href: "#/oficina/tareas", title: "Tareas", detail: "Los 4 Word de mesa. 40 minutos a mano, luego con IA." },
   { href: "#/oficina/modulos", title: "Módulos", detail: "Excel, PowerPoint, investigación y cierre." },
   { href: "#/oficina/retos", title: "Retos", detail: "Envía tu respuesta para ver la explicación." },
   { href: "#/oficina/quiz", title: "Quiz", detail: "Repaso corto contra el reloj." },
   { href: "#/oficina/prompts", title: "Prompts", detail: "Plantillas por área, si las necesitas." },
-  { href: "#/proyecto", title: "Proyecto final", detail: "Elige tu caso. Siete pasos. 3–5 minutos." },
+  { href: "#/proyecto", title: "Proyecto final", detail: "Tu Word de la carpeta proyectos. No es el caso de mesa." },
 ];
 
 const RUTA = [
   { t: "Mañana", d: "Módulos con los tres archivos de Office, si el instructor los abre." },
   { t: "Tarde", d: "Un Word por mesa. 40 min a mano (sin IA ni internet). Luego la misma entrega con IA." },
-  { t: "Cierre", d: "Cada persona elige ese caso en Proyecto final y presenta 3–5 minutos." },
+  { t: "Cierre", d: "A las 14:20 cada uno recibe SU Word de la carpeta proyectos. Eso es el examen. No es el caso de mesa." },
 ];
 
 export function renderFriday2(data) {
@@ -82,9 +82,9 @@ export function renderFriday2(data) {
   return `
     <div class="friday2-page">
       <div class="page-head">
-        <p class="muted">Jornada de 8 horas · un caso por mesa · proyecto individual</p>
+        <p class="muted">Jornada de 8 horas · caso de mesa por la tarde · examen aparte</p>
         <h2>${OFFICE_NAME}</h2>
-        <p>Hoy les toca un caso por mesa. 40 minutos a mano, sin internet. Luego el mismo trabajo con IA. Al rato cada uno hace su proyecto con ese caso.</p>
+        <p>La mesa es un ejercicio. El proyecto final es otro: un Word con tu nombre en la carpeta proyectos.</p>
       </div>
       <div class="grid grid-4" style="margin-bottom:20px">
         <div class="card stat"><span class="value">${pct}%</span><span class="label">Avance de módulos</span></div>
@@ -106,7 +106,7 @@ export function renderFriday2(data) {
         <h3>Cómo corre el viernes</h3>
         <ol>${ruta}</ol>
       </div>
-      <h3>Los 4 Word que entregas en mesa</h3>
+      <h3>Los 4 Word de mesa (no son el examen)</h3>
       <div class="grid grid-2">${caseFiles}</div>
       <h3 style="margin-top:28px">Secciones</h3>
       <div class="grid grid-3">${nav}</div>

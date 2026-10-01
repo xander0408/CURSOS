@@ -7,7 +7,7 @@ import { checkBadges } from "../badges.js";
 import { completeModule } from "../store.js";
 import { assignedTask } from "../journey.js";
 import { sectionAgent } from "../agents.js";
-import { officeCaseById, officeCasePatch } from "../office-cases.js?v=20260930c1";
+import { assetUrl } from "../paths.js";
 
 const STEPS = [
   { id: "problem", title: "1. Definir el problema" },
@@ -49,34 +49,29 @@ export function renderProject(data, step = 0) {
 
   let body = "";
   if (s.id === "problem") {
-    const cases = data.officeCases?.cases || [];
-    const casePicker = cases.length
-      ? `<div class="field"><label>Caso de tu mesa (carga el problema, la audiencia y el prompt)</label>
-          <div class="btn-row" style="flex-wrap:wrap">
-            ${cases
-              .map((c) => {
-                const on = fields.officeCaseId === c.id;
-                return `<button class="btn ${on ? "btn-primary" : ""}" type="button" data-pick-case="${escapeHtml(c.id)}">${on ? "● " : ""}Caso ${c.n} · ${escapeHtml(c.area)}</button>`;
-              })
-              .join("")}
-          </div>
-          ${
-            fields.officeCaseTitle
-              ? `<p class="muted">Ficha de <strong>${escapeHtml(fields.officeCaseTitle)}</strong>. Puedes editar todo. El grupo ensayó; esto es tuyo.</p>`
-              : `<p class="muted">Si tu mesa ya tiene caso, púlsalo. Si el instructor te deja uno propio, escribe abajo sin elegir.</p>`
-          }
-        </div>`
-      : "";
+    const user = getState().profile.username || "";
+    const wordName = user ? `${user}-proyecto-final.docx` : "";
+    const wordHref = wordName ? assetUrl(`proyectos/${wordName}`) : "";
+    const mine = task
+      ? `<div class="callout think">
+          <strong>Este es TU caso</strong>
+          ${escapeHtml(task.title)}. ${escapeHtml(task.forRole || "")}.
+          No es el ejercicio de mesa de los 40 minutos. El instructor te da el Word de la carpeta proyectos (${escapeHtml(wordName || "USUARIO-proyecto-final.docx")}).
+        </div>
+        ${task.story ? `<p>${escapeHtml(task.story)}</p>` : ""}
+        ${task.doThis ? `<p><strong>Qué entregar:</strong> ${escapeHtml(task.doThis)}</p>` : `<p><strong>Qué entregar:</strong> ${escapeHtml(task.deliverable || "")}</p>`}
+        ${task.dont ? `<p><strong>Esto no:</strong> ${escapeHtml(task.dont)}</p>` : ""}
+        ${wordHref ? `<p><a class="btn btn-primary" href="${escapeHtml(wordHref)}" download="${escapeHtml(wordName)}">Descargar mi Word</a></p>` : ""}`
+      : `<div class="callout think"><strong>Tu Word</strong>Cada alumno tiene un archivo en la carpeta proyectos (su usuario). Si no ves el tuyo, pídeselo al instructor.</div>`;
     body = `
-      <div class="callout think"><strong>Nivel profesional</strong>Un solo proceso de tu cargo, no «usar IA en general». Escríbelo como un memo a tu jefatura: situación, impacto en tiempo o calidad, para quién es el resultado. Sin nombres, clientes, contratos, nómina ni cifras internas.</div>
-      ${casePicker}
-      ${textarea("audience", "¿Quién oiría tu presentación de 3–5 minutos? (cargo, no nombre)", fields.audience, 2)}
-      ${textarea("problem", "Problema en 4–6 líneas (situación + por qué importa + para quién)", fields.problem)}
-      ${textarea("currentTask", "¿Cómo se hace hoy y qué parte consume más tiempo?", fields.currentTask)}
-      ${textarea("timeBefore", "Tiempo actual aproximado (tu estimado, no un número de la IA)", fields.timeBefore, 3)}
-      ${task?.pastePrompt ? `<p class="muted">Tu cuenta tiene un caso de práctica asignado. Puedes usarlo como punto de partida.</p>
+      ${mine}
+      ${textarea("audience", "¿Quién oiría tu presentación? (cargo, no nombre)", fields.audience, 2)}
+      ${textarea("problem", "El problema, en tus palabras", fields.problem)}
+      ${textarea("currentTask", "¿Cómo se hace hoy?", fields.currentTask)}
+      ${textarea("timeBefore", "¿Cuánto te toma hoy? (tu estimado)", fields.timeBefore, 3)}
+      ${task?.pastePrompt ? `<p class="muted">Copia esto, pégalo en ChatGPT y el mismo texto en Claude.</p>
         <pre class="prompt-preview show" id="proj-ready-prompt">${escapeHtml(task.pastePrompt)}</pre>
-        <button class="btn" type="button" id="copy-task-prompt">Copiar caso de práctica</button>` : ""}`;
+        <button class="btn" type="button" id="copy-task-prompt">Copiar el texto</button>` : ""}`;
   } else if (s.id === "prompt") {
     body = `${task?.pastePrompt ? `<p class="muted">Revisa el caso asignado y adáptalo. No pegues datos internos.</p>
       <pre class="prompt-preview show" id="proj-ready-prompt">${escapeHtml(task.pastePrompt)}</pre>
@@ -103,7 +98,7 @@ export function renderProject(data, step = 0) {
   } else {
     const checked = fields.successCriteria || {};
     body = `
-      <div class="callout think"><strong>Cierre de gerencia, no de clase</strong>${fields.officeCaseTitle ? ` Caso: ${escapeHtml(fields.officeCaseTitle)}. ` : ""}3–5 minutos. Como máximo 6 ideas: 1) el proceso que duele 2) qué pediste a la IA 3) ChatGPT vs Claude 4) qué cambiaste 5) qué verificó un humano 6) quién decide. Incluye qué inventó la IA en la Fase B que no firmarías.</div>
+      <div class="callout think"><strong>Un minuto al frente</strong>El problema. Qué pediste. Qué salió en ChatGPT y en Claude. Qué revisaste tú. Quién decide.</div>
       <p class="muted">Slides: contexto · situación · evidencia (sin cifras internas) · opciones · control humano. Máximo 4 viñetas por diapositiva.</p>
       ${textarea("solution", "Solución en una frase que firmarías frente a tu jefatura", fields.solution, 4)}
       ${textarea("presentation", "Guion hablado (3–5 minutos). Léelo en voz alta. Si pasas de 5:00, recorta.", fields.presentation, 10)}
@@ -121,7 +116,7 @@ export function renderProject(data, step = 0) {
     <div class="page-head">
       <p class="muted"><a href="#/oficina">← Oficina + IA</a></p>
       <h2>Proyecto final</h2>
-      <p>Elige el caso de tu mesa. 7 pasos · 3–5 minutos al frente. Solo información ficticia (Planta Central, Lote Norte, Cliente Alfa).</p>
+      <p>Usa el Word de tu usuario en la carpeta proyectos. No el caso de mesa. Datos de práctica, nada de la empresa.</p>
     </div>
     ${Number(step) === 0 ? sectionAgent(data, "project") : ""}
     <div class="steps">${nav}</div>
@@ -263,17 +258,5 @@ export function bindProject(data, step = 0) {
     const task = assignedTask(data);
     const box = document.getElementById("proj-ready-prompt");
     copyText(box?.innerText || task?.pastePrompt || "");
-  });
-  document.querySelectorAll("[data-pick-case]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const c = officeCaseById(data, btn.getAttribute("data-pick-case"));
-      if (!c) return;
-      update((st) => {
-        st.progress.project.fields = { ...(st.progress.project.fields || {}), ...officeCasePatch(c) };
-        st.progress.project.step = 0;
-      });
-      toast(`Cargado: Caso ${c.n} · ${c.title}`);
-      window.dispatchEvent(new Event("app:refresh"));
-    });
   });
 }
