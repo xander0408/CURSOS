@@ -1,4 +1,4 @@
-Casos para imprimir y entregar (Oficina + IA)
+Una hoja por mesa. Ábranlas en Word e imprímanlas.
 
 1. Caso-01-Calidad-Lote-retenido.docx
 2. Caso-02-Logistica-Cliente-Alfa.docx
@@ -7,4 +7,4 @@ Casos para imprimir y entregar (Oficina + IA)
 
 INSTRUCTOR-Como-correr-los-casos.docx
 
-Ábralos en Microsoft Word. No use datos reales de CISA.
+Esto es de práctica. Nada de la empresa de verdad.

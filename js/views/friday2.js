@@ -55,7 +55,7 @@ export function renderFriday2(data) {
       (c) => `<div class="card">
       <p class="muted">Caso ${c.n} · ${escapeHtml(c.area)}</p>
       <h3>${escapeHtml(c.title)}</h3>
-      <p>${escapeHtml(c.problem.split(".")[0])}.</p>
+      <p>${escapeHtml(c.brief || c.problem)}</p>
       <a class="btn btn-primary" href="${escapeHtml(assetUrl(c.webFile))}" download="${escapeHtml((c.webFile || "").split("/").pop())}">Descargar Word</a>
     </div>`
     )
@@ -84,7 +84,7 @@ export function renderFriday2(data) {
       <div class="page-head">
         <p class="muted">Jornada de 8 horas · un caso por mesa · proyecto individual</p>
         <h2>${OFFICE_NAME}</h2>
-        <p>El instructor entrega un Word. La mesa trabaja 40 minutos sin IA. Luego con IA. Cada persona cierra su ficha del mismo caso.</p>
+        <p>Hoy les toca un caso por mesa. 40 minutos a mano, sin internet. Luego el mismo trabajo con IA. Al rato cada uno hace su proyecto con ese caso.</p>
       </div>
       <div class="grid grid-4" style="margin-bottom:20px">
         <div class="card stat"><span class="value">${pct}%</span><span class="label">Avance de módulos</span></div>

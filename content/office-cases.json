@@ -1,98 +1,134 @@
 {
-  "title": "Cuatro casos de mesa · Oficina + IA",
-  "rule": "Fase A: 40 minutos. Sin IA, sin internet, sin celular-chat. Solo Word, Excel y PowerPoint. Fase B: la misma entrega con ChatGPT o Claude, cronometrada. El proyecto final es individual, sobre el mismo caso de la mesa.",
+  "title": "Cuatro casos de mesa",
+  "rule": "Primero 40 minutos a mano: Word, Excel y PowerPoint. Internet apagado. Sin ChatGPT ni Claude. Luego el mismo trabajo con IA. Anoten los minutos de las dos vueltas. Al final cada persona hace su proyecto con este mismo caso.",
   "cases": [
     {
       "id": "calidad",
       "n": 1,
       "area": "Calidad",
-      "title": "Lote retenido en Lote Norte",
+      "title": "El lote que no salió",
       "file": "casos-oficina/Caso-01-Calidad-Lote-retenido.docx",
       "webFile": "recursos/viernes2/casos/Caso-01-Calidad-Lote-retenido.docx",
       "activityId": "g-versus-c1",
-      "audience": "Responsable de Calidad (cargo, no nombre)",
-      "problem": "En Lote Norte, línea 2, se observó humedad alta en producto empacado. El lote no salió a mercado. Hoy el primer borrador de no conformidad se arma a mano, tarde y con huecos. Necesito un paquete de práctica (Word + Excel + 4 slides) que un humano de Calidad pueda editar, sin cerrar causa raíz ni citar una ISO con número.",
-      "currentTask": "Se escribe de memoria, se piden cifras que nadie confirmó y se pierde tiempo armando la tabla y las diapositivas.",
-      "timeBefore": "El grupo mide 40 minutos en la Fase A (manual). Luego compara con los minutos de la Fase B (IA).",
+      "brief": "En Lote Norte el producto salió más húmedo de lo normal. El lote no se fue. Tienen que armar un primer aviso, una tablita y 4 diapositivas. Todavía no saben la causa.",
+      "hello": "Hoy ustedes son el equipo de Calidad. Relájense: esto es de práctica. No usen nada de la planta de verdad.",
+      "story": "En Lote Norte, en la línea 2, alguien notó que el producto empacado estaba más húmedo de lo normal. Pararon el lote. No se fue al mercado. Nadie les dio un porcentaje oficial ni un número de caso. Tienen que dejar un primer aviso para que Calidad lo revise mañana.",
+      "deliver": [
+        "Word: una página. Qué vieron, qué evidencia inventaron (márquenla como inventada), qué falta preguntar y quién firmaría.",
+        "Excel: 6 filas de práctica. Planta, lote inventado, humedad inventada, turno.",
+        "PowerPoint: 4 diapositivas. Qué pasó, qué vieron, qué no sabemos, qué hace una persona después."
+      ],
+      "dont": "No pongan un número de ISO. No cierren la causa. No inventen una fecha de cierre. Si no lo saben, escríbanlo: no lo sabemos.",
+      "audience": "La jefa o el jefe de Calidad (el cargo, no un nombre)",
+      "problem": "En Lote Norte el producto empacado salió más húmedo de lo normal. El lote no se fue. Hoy el primer aviso se arma a mano, tarde y con huecos. Quiero un Word de una página, una tablita de 6 filas y 4 diapositivas para que Calidad las edite. Todavía no sabemos la causa.",
+      "currentTask": "Se escribe de memoria. Se piden números que nadie confirmó. La tabla y las diapositivas se arman al final, con prisa.",
+      "timeBefore": "En la mesa medimos 40 minutos a mano. Después medimos cuánto tardamos con IA.",
       "framework": {
-        "role": "Redactor de calidad en un caso de práctica, no auditor certificador.",
-        "context": "Planta Central / Lote Norte. Humedad alta en empacado. El lote no salió. No hay % oficial ni número de NC.",
-        "objective": "Borrador de una página + idea de 6 filas de tabla + esquema de 4 slides para que Calidad edite.",
-        "format": "Hallazgo / Evidencia / Hipótesis por confirmar / Contención / Datos faltantes / Quién firma.",
-        "restrictions": "No inventes ISO con número, causa raíz ni fecha de cierre. Marca [VERIFICAR] cada cifra o cláusula."
+        "role": "Ayúdame como si fueras alguien de Calidad que redacta un primer aviso. No eres el auditor que cierra el caso.",
+        "context": "Lote Norte, línea 2. El producto empacado salió más húmedo. El lote no se fue. No hay porcentaje oficial ni número de caso.",
+        "objective": "Una página de aviso, idea para 6 filas de Excel y esquema de 4 diapositivas. Calidad lo va a editar.",
+        "format": "Qué vimos. Qué evidencia hay (inventada). Qué falta preguntar. Qué se hace mientras tanto. Quién firmaría.",
+        "restrictions": "No pongas ISO con número. No cierres la causa. No inventes fecha de cierre. Si algo no se sabe, dilo."
       },
-      "risks": "Cerrar el caso en el chat. Inventar una norma. Tratar la humedad inventada como dato oficial.",
-      "process": "La IA propone texto y estructura. Calidad verifica evidencia y firma. Nadie pega registros reales.",
-      "presentation": "1) Qué pasó en Lote Norte (sin %). 2) Qué armamos a mano en 40 min. 3) Qué cambió con IA. 4) Qué [VERIFICAR] quedó. 5) Quién firma. 6) Qué nunca se pega al chat."
+      "risks": "Que el chat «cierre» el caso. Que invente una norma. Que trate la humedad inventada como dato oficial.",
+      "process": "La IA propone el texto. Una persona de Calidad revisa y firma. Nadie pega registros reales.",
+      "presentation": "Qué pasó en Lote Norte, sin inventar un %. Qué hicimos a mano en 40 minutos. Qué cambió con IA. Qué quedó por confirmar. Quién firma. Qué no se pega nunca al chat."
     },
     {
       "id": "logistica",
       "n": 2,
       "area": "Logística",
-      "title": "Cliente Alfa pregunta por el despacho",
+      "title": "El cliente llama y no tenemos respuesta",
       "file": "casos-oficina/Caso-02-Logistica-Cliente-Alfa.docx",
       "webFile": "recursos/viernes2/casos/Caso-02-Logistica-Cliente-Alfa.docx",
       "activityId": "g-versus-c2",
-      "audience": "Coordinación de despachos (cargo, no nombre)",
-      "problem": "Cliente Alfa preguntó el estado de un pedido. Hay retraso. Operaciones aún revisa. No hay causa cerrada ni fecha de salida. Necesito un correo que pida un dato sin prometer día, una tabla simple de filas de patio y 4 slides para la reunión de patio.",
-      "currentTask": "Se improvisa el correo, a veces se cuela una fecha, y el Excel se arma al final con prisa.",
-      "timeBefore": "El grupo mide 40 minutos en la Fase A (manual). Luego compara con los minutos de la Fase B (IA).",
+      "brief": "Cliente Alfa pregunta por su pedido. Hay retraso. Patio todavía está revisando. Tienen que escribir un correo que no prometa día, una tabla de camiones y 4 diapositivas.",
+      "hello": "Hoy ustedes coordinan despachos. El cliente está esperando. No inventen una hora de llegada solo para quedar bien.",
+      "story": "Llamó Cliente Alfa (es un nombre de práctica, no un cliente real). Quiere saber dónde va su pedido. Hay retraso. Patio todavía está revisando. Nadie les dio causa, ni guía, ni hora de salida. Tienen que contestar sin prometer lo que no saben.",
+      "deliver": [
+        "Word: un correo corto, máximo 120 palabras. Pidan un dato. No pongan día ni hora de llegada.",
+        "Excel: 8 filas inventadas. Planta, día inventado, cuántos camiones hay en fila.",
+        "PowerPoint: 4 diapositivas. Qué sabemos, qué no, qué hay que preguntar en patio, quién autoriza el envío."
+      ],
+      "dont": "No inventen fecha, hora, placa, ruta ni número de guía. Si falta un dato, pongan: completar.",
+      "audience": "Quien coordina despachos (el cargo, no un nombre)",
+      "problem": "Cliente Alfa preguntó por su pedido. Hay retraso. Patio todavía revisa. No hay causa ni hora de salida. Necesito un correo que no prometa día, una tabla de camiones y 4 diapositivas para la reunión de patio.",
+      "currentTask": "El correo se arma al vuelo. A veces se cuela una fecha. El Excel se deja para el final.",
+      "timeBefore": "En la mesa medimos 40 minutos a mano. Después medimos cuánto tardamos con IA.",
       "framework": {
-        "role": "Coordinación de despachos de práctica, no vocero que promete ETA.",
-        "context": "Cliente Alfa (caso ficticio). Retraso. Causa no cerrada. No hay guía ni hora de salida.",
-        "objective": "Correo de 120 palabras + 8 filas de Excel inventadas + 4 slides para patio.",
-        "format": "Asunto + cuerpo del correo. Tabla planta / día ficticio / camiones en fila. Slides: se sabe / no se sabe / preguntas / control humano.",
-        "restrictions": "Prohibido inventar fecha, hora, placa, ruta o número de guía. Usa [COMPLETAR] si falta un dato interno."
+        "role": "Ayúdame a redactar como si coordinara despachos. No prometas hora de llegada.",
+        "context": "Cliente Alfa (práctica). Hay retraso. La causa no está cerrada. No hay guía ni hora de salida.",
+        "objective": "Correo de 120 palabras, 8 filas de Excel inventadas y 4 diapositivas para patio.",
+        "format": "Asunto y cuerpo del correo. Tabla: planta, día inventado, camiones en fila. Diapositivas: se sabe, no se sabe, preguntas, quién autoriza.",
+        "restrictions": "No inventes fecha, hora, placa, ruta ni número de guía. Si falta un dato, pon: completar."
       },
-      "risks": "Prometer llegada. Inventar la causa. Adjuntar una guía real.",
-      "process": "La IA redacta. Un humano de operaciones confirma el estado en el sistema oficial antes de enviar.",
-      "presentation": "1) Qué preguntó Cliente Alfa. 2) Qué se sabe y qué no. 3) El correo a mano vs con IA. 4) Si se coló un ETA. 5) Preguntas a patio. 6) Quién autoriza el envío."
+      "risks": "Prometer que llega mañana. Inventar la causa. Adjuntar una guía real.",
+      "process": "La IA redacta. Alguien de operaciones mira el sistema de verdad antes de enviar. Aquí no se envía nada real.",
+      "presentation": "Qué preguntó el cliente. Qué sabemos y qué no. El correo a mano contra el correo con IA. Si se nos coló una hora. Qué hay que preguntar en patio. Quién autoriza el envío."
     },
     {
       "id": "rrhh",
       "n": 3,
       "area": "RR. HH.",
-      "title": "Inducción de patio en 40 minutos",
+      "title": "Alguien nuevo llega a patio",
       "file": "casos-oficina/Caso-03-RRHH-Induccion-patio.docx",
       "webFile": "recursos/viernes2/casos/Caso-03-RRHH-Induccion-patio.docx",
       "activityId": "g-versus-c3",
-      "audience": "Facilitación de inducción (cargo, no nombre)",
-      "problem": "Hay que dejar lista una inducción de 40 minutos para un cargo de patio en Planta Central: agenda, lista de asistencia solo con cargos y 4 slides de bienvenida. No hay reglamento interno en este expediente de aula.",
-      "currentTask": "Se copia una agenda vieja, se mezclan temas de desempeño y se improvisa la lista de nombres.",
-      "timeBefore": "El grupo mide 40 minutos en la Fase A (manual). Luego compara con los minutos de la Fase B (IA).",
+      "brief": "Mañana llega alguien nuevo a patio. Tienen 40 minutos de inducción. Hay que dejar agenda, lista de cargos y 4 diapositivas. Sin nombres reales ni sueldos.",
+      "hello": "Hoy ustedes arman la inducción. Piensen en la persona que llega el primer día, no en un reglamento que no tienen a la mano.",
+      "story": "Mañana empieza alguien en patio, en Planta Central. Les pidieron una inducción de 40 minutos. No les pasaron el reglamento interno. No usen nombres de gente de verdad. Solo cargos: Operario 1, Supervisor de patio, y así.",
+      "deliver": [
+        "Word: la agenda de esos 40 minutos (bloques) y un mensaje de bienvenida de unas 80 palabras.",
+        "Excel: 8 filas de asistencia. Solo cargos. Nada de nombres, teléfonos ni cédulas.",
+        "PowerPoint: 4 diapositivas. Bienvenida, seguridad general, a quién preguntar, y el horario (si no lo saben, pongan: horario)."
+      ],
+      "dont": "Nada de sueldo, expediente, salud ni evaluación. No inventen el reglamento. No pongan nombres que parezcan de la nómina.",
+      "audience": "Quien facilita la inducción (el cargo, no un nombre)",
+      "problem": "Mañana llega alguien nuevo a patio. Hay que dejar una inducción de 40 minutos: agenda, lista solo con cargos y 4 diapositivas de bienvenida. No tenemos el reglamento en esta hoja.",
+      "currentTask": "Se copia una agenda vieja. Se mezclan temas de desempeño. La lista se llena con nombres al azar.",
+      "timeBefore": "En la mesa medimos 40 minutos a mano. Después medimos cuánto tardamos con IA.",
       "framework": {
-        "role": "Redactor de inducción, no evaluador de personal.",
-        "context": "Inducción ficticia de patio en Planta Central. Temas: seguridad general, a quién preguntar, [HORARIO].",
-        "objective": "Agenda con bloques + bienvenida de 80 palabras + 8 filas de asistencia (cargos) + 4 slides.",
-        "format": "Tabla de minutos. Mensaje. Excel: Operario 1, Supervisor de patio… Slides: bienvenida, seguridad, consulta, horario.",
-        "restrictions": "Prohibido sueldo, expediente, salud, evaluación o nombres reales. No inventes el reglamento interno."
+        "role": "Ayúdame a armar una inducción de patio. No evalúes a nadie.",
+        "context": "Inducción de práctica en Planta Central. Temas: seguridad general, a quién preguntar, el horario si se sabe.",
+        "objective": "Agenda con bloques, bienvenida de 80 palabras, 8 filas de asistencia solo con cargos y 4 diapositivas.",
+        "format": "Tabla de minutos. Mensaje corto. Excel: Operario 1, Supervisor de patio… Diapositivas: bienvenida, seguridad, a quién preguntar, horario.",
+        "restrictions": "Nada de sueldo, expediente, salud, evaluación ni nombres reales. No inventes el reglamento interno."
       },
-      "risks": "Que la IA «evalúe» o pida datos personales. Usar nombres que parezcan de la nómina.",
-      "process": "La IA ordena la agenda. RR. HH. autoriza el contenido y el horario real fuera del chat.",
-      "presentation": "1) Para quién es la inducción. 2) Qué se hizo a mano. 3) Qué aceleró la IA. 4) Qué se tachó (datos personales). 5) Quién responde dudas. 6) Qué no entra nunca al chat."
+      "risks": "Que la IA quiera «evaluar» o pedir datos personales. Que usemos nombres que parezcan de la empresa.",
+      "process": "La IA ordena la agenda. RR. HH. decide el contenido y el horario de verdad, fuera del chat.",
+      "presentation": "Para quién es la inducción. Qué hicimos a mano. Qué aceleró la IA. Qué tachamos (datos personales). Quién responde dudas. Qué no entra nunca al chat."
     },
     {
       "id": "gerencia",
       "n": 4,
       "area": "Gerencia",
-      "title": "Tres caminos, ninguna firma todavía",
+      "title": "Tres ideas y nadie decide todavía",
       "file": "casos-oficina/Caso-04-Gerencia-Tres-caminos.docx",
       "webFile": "recursos/viernes2/casos/Caso-04-Gerencia-Tres-caminos.docx",
       "activityId": "g-versus-c4",
-      "audience": "Dirección de práctica (cargo, no nombre)",
-      "problem": "Hay fila de camiones en el patio de Planta Central. Dirección quiere ver tres caminos (radio extra, reordenar turnos, no cambiar) sin que nadie elija ganador. Faltan costos y el impacto en personal no está medido.",
-      "currentTask": "Se llega a la reunión con una sola idea ya «recomendada» y sin tabla de vacíos.",
-      "timeBefore": "El grupo mide 40 minutos en la Fase A (manual). Luego compara con los minutos de la Fase B (IA).",
+      "brief": "Hay fila de camiones en el patio. Les piden tres caminos, no un ganador. Faltan costos. Tienen que dejar un memo, una tabla y 4 diapositivas.",
+      "hello": "Hoy ustedes preparan la reunión. No son gerencia. No eligen. Solo dejan claras las tres ideas y lo que falta saber.",
+      "story": "En el patio de Planta Central hay fila de camiones. Les pidieron tres caminos: A) meter más radio, B) reordenar turnos, C) no cambiar y anotarlo. Nadie les dio costos. Nadie midió qué pasa con la gente si mueven turnos. La reunión es para ver opciones, no para firmar.",
+      "deliver": [
+        "Word: un memo de una página. Las tres ideas. En cada una: qué se gana, qué se arriesga, qué dato falta, quién debería decidir.",
+        "Excel: 6 filas. Idea, beneficio, dato que falta.",
+        "PowerPoint: 4 diapositivas. El problema, las tres ideas, lo que no sabemos, quién decide."
+      ],
+      "dont": "No elijan ganador. No inventen un costo ni un «ahorro del 20%». Cierren así: la decisión la toma una persona, no el chat.",
+      "audience": "Dirección (el cargo, no un nombre)",
+      "problem": "Hay fila de camiones en el patio. Pedimos tres caminos: más radio, reordenar turnos, o no cambiar. Faltan costos. El impacto en la gente no está medido. Quiero un memo, una tabla y 4 diapositivas. Sin ganador.",
+      "currentTask": "A la reunión se llega con una sola idea ya «recomendada» y sin anotar lo que falta.",
+      "timeBefore": "En la mesa medimos 40 minutos a mano. Después medimos cuánto tardamos con IA.",
       "framework": {
-        "role": "Analista que prepara un memo, no el gerente que firma.",
-        "context": "Fila de patio. Opciones A radio extra (costo desconocido), B reordenar turnos (impacto no medido), C no cambiar y documentar.",
-        "objective": "Memo de una página + tabla de 6 filas + 4 slides ejecutivas, sin ganador.",
-        "format": "Tres bloques A B C: beneficio declarado, riesgo, dato que falta, quién debería decidir.",
-        "restrictions": "No elijas ganador. No inventes costo ni ahorro de 20%. Cierra: la decisión es humana."
+        "role": "Ayúdame a armar un memo para una reunión. No elijas. No eres quien firma.",
+        "context": "Fila de camiones en patio. A) más radio, costo desconocido. B) reordenar turnos, impacto no medido. C) no cambiar y anotarlo.",
+        "objective": "Memo de una página, tabla de 6 filas y 4 diapositivas. Sin ganador.",
+        "format": "Tres bloques A, B y C: qué se gana, qué se arriesga, qué dato falta, quién debería decidir.",
+        "restrictions": "No elijas ganador. No inventes costo ni ahorro. Cierra: la decisión la toma una persona."
       },
       "risks": "Que el chat declare ganador. Inventar un presupuesto. Esconder el dato que falta.",
-      "process": "La IA ilumina opciones. Dirección decide con información oficial. El laboratorio no aprueba gasto.",
-      "presentation": "1) El problema de patio. 2) Las tres opciones. 3) Qué vacíos quedaron a mano vs con IA. 4) Si alguien «recomendó». 5) Quién decide. 6) Qué cifra no se dice porque no existe."
+      "process": "La IA ordena las tres ideas. Dirección decide con información de la empresa. Este ejercicio no aprueba ningún gasto.",
+      "presentation": "El problema del patio. Las tres ideas. Qué vacíos vimos a mano y con IA. Si alguien «recomendó». Quién decide. Qué cifra no decimos porque no existe."
     }
   ]
 }

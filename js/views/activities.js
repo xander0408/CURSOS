@@ -54,7 +54,13 @@ function renderOfficeTasks(data, done) {
           <p class="muted">Caso ${c.n} de 4 · ${escapeHtml(c.area)} · 40 min a mano</p>
           ${mine ? `<p class="pill ok">Este es tu proyecto final</p>` : ""}
           <h3>${escapeHtml(c.title)}</h3>
-          <p>${escapeHtml(c.problem)}</p>
+          <p>${escapeHtml(c.brief || c.story || c.problem)}</p>
+          ${
+            Array.isArray(c.deliver)
+              ? `<ul>${c.deliver.map((line) => `<li>${escapeHtml(line)}</li>`).join("")}</ul>
+                 <p><strong>Esto no:</strong> ${escapeHtml(c.dont || "")}</p>`
+              : ""
+          }
           <div class="btn-row">
             <a class="btn btn-primary" href="${escapeHtml(assetUrl(c.webFile))}" download="${escapeHtml(fname)}">Descargar Word del caso</a>
             <button class="btn" type="button" data-use-case="${escapeHtml(c.id)}">${mine ? "Ya está en tu ficha" : "Usar en mi proyecto"}</button>
@@ -80,12 +86,12 @@ function renderOfficeTasks(data, done) {
     <div class="page-head">
       <p class="muted"><a href="#/oficina">← Oficina + IA</a></p>
       <h2>Tareas · Oficina + IA</h2>
-      <p>Tres cosas, en este orden: el Word que les das, los tres archivos de Office si los necesitan, y el proyecto individual del mismo caso.</p>
+      <p>Una hoja por mesa. Lean, trabajen a mano, luego con IA. Al rato cada uno abre su proyecto con el mismo caso.</p>
       <p><strong>${caseOk} de ${cases.length}</strong> casos de mesa · <strong>${officeOk} de ${office.length}</strong> archivos de práctica.</p>
     </div>
     <div class="callout think">
       <strong>Cómo se corre</strong>
-      El instructor imprime o comparte un caso por mesa. Fase A: 40 minutos, internet abajo, sin chat. Fase B: la misma entrega con IA, cronometrada. Después cada persona abre Proyecto final y elige ese caso.
+      Una mesa, un caso. 40 minutos con Word, Excel y PowerPoint. Internet apagado. Luego lo mismo con ChatGPT o Claude. Anoten los minutos. Después cada persona llena su proyecto.
     </div>
     <div class="page-head" style="margin-top:28px">
       <h2>Los 4 casos de mesa</h2>

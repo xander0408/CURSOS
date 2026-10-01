@@ -62,31 +62,29 @@ async function writeDocx(dest, title, paragraphs) {
   );
 }
 
-const commonClose = [
-  "# Cómo se corre (las dos fases)",
-  "Fase A — 40 minutos. Reloj en la mesa. Cierren internet (modo avión o Wi-Fi apagado). Prohibido ChatGPT, Claude, Copilot, Gemini y el celular como chat. Solo Word, Excel y PowerPoint en blanco. Piensen ustedes. Inventen solo datos de práctica (Planta Central, Lote Norte, Cliente Alfa). Nada de CISA real.",
-  "Fase B — La misma entrega. Ahora sí pueden usar ChatGPT o Claude. Cronometren de nuevo. Anoten minutos A, minutos B y tres diferencias (velocidad, calidad, huecos, riesgos).",
-  "# Proyecto final (cada persona, no el grupo)",
-  "Después, cada integrante abre Proyecto final en el laboratorio, elige ESTE caso y completa los 7 pasos. La mesa ensayó; la ficha es individual. Presentación de 3 a 5 minutos.",
-];
-
 function caseParas(c) {
   return [
-    `Caso ${c.n} de 4 · ${c.area} · Oficina + IA · Magnatic`,
-    pack.rule,
-    "# Situación",
-    c.problem,
-    "# Cómo se hace hoy",
-    c.currentTask,
-    "# Entrega (idéntica en Fase A y Fase B)",
-    `${c.framework.objective} ${c.framework.format}`,
-    "# Restricciones",
-    c.framework.restrictions,
-    "# Riesgos típicos",
-    c.risks,
-    "# Quién controla",
-    c.process,
-    ...commonClose,
+    `Caso ${c.n} de 4  ·  ${c.area}`,
+    c.hello,
+    "",
+    "# Qué pasó",
+    c.story,
+    "",
+    "# Qué entregan (las dos veces: a mano y con IA)",
+    ...c.deliver,
+    "",
+    "# Esto no",
+    c.dont,
+    "",
+    "# Cómo lo hacemos hoy",
+    "1. Lean esta hoja juntos, dos minutos. Si no entendieron, pregunten ahora.",
+    "2. 40 minutos. Internet apagado. Sin ChatGPT, Claude ni el celular como chat. Solo Word, Excel y PowerPoint en blanco. Un celular puede ser reloj, nada más.",
+    "3. Luego el mismo trabajo CON IA. Anoten: minutos a mano, minutos con IA, y tres diferencias (qué salió más rápido, qué inventó la máquina, qué quedó más honesto a mano).",
+    "",
+    "# Después, cada uno",
+    "Abran Proyecto final en el laboratorio, elijan este caso y llenen su ficha. La mesa ensayó. El proyecto es de cada persona. Tres a cinco minutos al frente.",
+    "",
+    "Esto es de práctica. Planta Central, Lote Norte, Cliente Alfa. Nada de la empresa de verdad.",
   ];
 }
 
@@ -103,29 +101,32 @@ for (const c of pack.cases) {
   names.push(fname);
 }
 
-await writeDocx(join(DEST, "INSTRUCTOR-Como-correr-los-casos.docx"), "Instructor · Cómo correr los 4 casos", [
-  "Imprima un caso por mesa. No mezcle dos casos en la misma mesa.",
-  "# Antes de empezar",
-  "Mesas de 3 o 4. Roles: Reloj, Word, Excel, PowerPoint. Un celular puede ser SOLO cronómetro, no chat.",
-  "Lean juntos la hoja del caso (2 minutos). Pregunte: ¿entendieron la entrega? Luego diga: internet abajo.",
-  "# Fase A (40:00)",
-  "Sin red. Sin IA. Archivos nuevos en blanco. Al minuto 40: «manos arriba, guardan lo que tengan».",
-  "# Fase B (cronometrada, suele ser más corta)",
-  "Mismo paquete Word + Excel + 4 slides. Pueden usar ChatGPT y Claude. Siguen prohibidos datos reales.",
-  "# Cierre de mesa (5 minutos)",
-  "Cada mesa dice en voz alta: minutos A, minutos B, una cosa que la IA inventó, una cosa que a mano quedó más honesta.",
-  "# Proyecto final",
-  "Cada alumno entra a Proyecto final, elige el mismo caso de su mesa y llena la ficha. No hay un PowerPoint colectivo como examen.",
-  "# Archivos",
-  names.map((n, i) => `${i + 1}. ${n}`).join(" · "),
-  "Copias para el aula web: recursos/viernes2/casos/",
-  "Copias en la raíz del repo, junto a las guías PDF, para imprimir.",
+await writeDocx(join(DEST, "INSTRUCTOR-Como-correr-los-casos.docx"), "Cómo corro los 4 casos", [
+  "Una hoja por mesa. No mezcle dos casos en la misma mesa.",
+  "",
+  "# Antes",
+  "Mesas de 3 o 4. Uno mira el reloj, otro Word, otro Excel, otro PowerPoint.",
+  "Dos minutos para leer. Pregunte: ¿qué van a entregar? Si tartamudean, léales la lista. Luego: internet abajo.",
+  "",
+  "# Los 40 minutos",
+  "Archivos nuevos, en blanco. Sin red. Sin chat. Al minuto 40: «guardan lo que tengan».",
+  "",
+  "# Con IA",
+  "Lo mismo: Word, Excel y 4 diapositivas. Ahora sí ChatGPT o Claude. Sigue sin datos reales.",
+  "",
+  "# Cierre, 5 minutos",
+  "Cada mesa dice en voz alta: minutos a mano, minutos con IA, una cosa que la máquina inventó, una cosa que a mano quedó más honesta.",
+  "",
+  "# Proyecto",
+  "Cada alumno abre Proyecto final, elige el caso de su mesa y llena su ficha. No hay un PowerPoint del grupo como examen.",
+  "",
+  names.map((n, i) => `${i + 1}. ${n}`).join("   "),
 ]);
 copyFileSync(join(DEST, "INSTRUCTOR-Como-correr-los-casos.docx"), join(ROOT, "INSTRUCTOR-Como-correr-los-casos.docx"));
 
 writeFileSync(
   join(DEST, "README.txt"),
-  `Casos para imprimir y entregar (Oficina + IA)\n\n${names.map((n, i) => `${i + 1}. ${n}`).join("\n")}\n\nINSTRUCTOR-Como-correr-los-casos.docx\n\nÁbralos en Microsoft Word. No use datos reales de CISA.\n`
+  `Una hoja por mesa. Ábranlas en Word e imprímanlas.\n\n${names.map((n, i) => `${i + 1}. ${n}`).join("\n")}\n\nINSTRUCTOR-Como-correr-los-casos.docx\n\nEsto es de práctica. Nada de la empresa de verdad.\n`
 );
 
 console.log("Listo:", DEST);

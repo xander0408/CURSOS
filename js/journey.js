@@ -130,7 +130,7 @@ export function nextFriday2Step(data) {
     return {
       href: "#/oficina/tareas",
       title: "Caso de mesa",
-      detail: "El instructor entrega un Word. 40 minutos a mano (sin IA ni internet), luego la misma entrega con IA. El proyecto es individual, sobre ese caso.",
+      detail: "Lean la hoja de su mesa. 40 minutos a mano, sin internet. Luego lo mismo con IA. El proyecto es de cada persona, con ese caso.",
     };
   }
   if (!getState().progress.project?.ficheReady) {
