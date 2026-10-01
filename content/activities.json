@@ -764,6 +764,84 @@
         "Elegí por utilidad, no por marca",
         "No pegué datos reales"
       ]
+    },
+    {
+      "id": "g1",
+      "day": 2,
+      "mins": 20,
+      "group": { "size": "3 o 4", "roles": "Reloj, Relator, Escéptico (caza cifras), Facilitador" },
+      "title": "Grupo: cacería de cifras",
+      "do": "Cada quien pega el mismo prompt de «Cacería de números inventados» en un chat. En voz alta, el Escéptico cuenta los números que nadie dio. Gana el grupo si encuentran al menos 8 inventos entre las dos IAs. No se usa ningún archivo de la empresa.",
+      "checklist": [
+        "Somos 3 o 4 y hay un Escéptico",
+        "Contamos números que no estaban en el prompt",
+        "Nadie pegó datos reales"
+      ]
+    },
+    {
+      "id": "g2",
+      "day": 2,
+      "mins": 25,
+      "group": { "size": "3 o 4", "roles": "Expositor (rota), Editor, Abogado del diablo, Reloj" },
+      "title": "Grupo: ataquen la slide",
+      "do": "Un integrante muestra 1 diapositiva (máximo 4 viñetas, caso ficticio). El grupo tiene 4 minutos: ¿se entiende en 5 segundos? ¿Hay un número o un culpable inventado? Roten hasta que pasen 3 personas. El proyecto final sigue siendo individual.",
+      "checklist": [
+        "Rotamos al menos 3 expositores",
+        "Cada slide tiene ≤ 4 viñetas",
+        "Tachamos al menos un [VERIFICAR] por ronda"
+      ]
+    },
+    {
+      "id": "g3",
+      "day": 2,
+      "mins": 25,
+      "group": { "size": "3 o 4", "roles": "Lector, Clasificador, Contrastador, Dictaminador" },
+      "title": "Grupo: detective en mesa",
+      "do": "Un solo dossier .docx para la mesa. Cada rol etiqueta 2 frases: respaldada, dudosa o no verificable. Al final escriben UN dictamen de 6 líneas firmado por todos con cargos, no con datos reales. Cada alumno guarda su propia copia en notas.",
+      "checklist": [
+        "Usamos el Word de práctica, no internet",
+        "Hay un dictamen de 6 líneas",
+        "No buscamos la empresa real"
+      ]
+    },
+    {
+      "id": "g4",
+      "day": 2,
+      "mins": 20,
+      "group": { "size": "3 o 4", "roles": "Quien presenta 90 s, tres preguntadores" },
+      "title": "Grupo: comité de 90 segundos",
+      "do": "Cada persona dice su problema de proyecto (anónimo) en 90 segundos. El grupo hace exactamente 3 preguntas: 1) ¿qué dato oficial falta? 2) ¿quién firmaría? 3) ¿qué no debe pegarse en el chat? Anoten las respuestas: sirven para la ficha individual.",
+      "checklist": [
+        "Todos presentaron 90 segundos",
+        "Hubo 3 preguntas por persona",
+        "El problema no tiene nombres ni montos reales"
+      ]
+    },
+    {
+      "id": "g5",
+      "day": 2,
+      "mins": 30,
+      "group": { "size": "3 o 4", "roles": "Orador, Reloj, Feedback (qué se entendió / qué faltó / un riesgo)" },
+      "title": "Grupo: ensayo del pitch profesional",
+      "do": "Ensayo del cierre de 3–5 minutos (versión corta de 2 minutos). El Reloj corta. Feedback solo en 3 frases: qué se entendió, qué faltó, un riesgo. Dos rondas por persona si alcanza el tiempo. La ficha y la nota las guarda cada uno; no hay un proyecto de grupo.",
+      "checklist": [
+        "Cada uno ensayó al menos una vez",
+        "El reloj se respetó",
+        "Anoté el feedback en mi ficha (paso 7)"
+      ]
+    },
+    {
+      "id": "g6",
+      "day": 2,
+      "mins": 15,
+      "group": { "size": "2 o 3", "roles": "Uno pega ChatGPT, otro Claude, el tercero elige criterio" },
+      "title": "Grupo: comparador en vivo",
+      "do": "Un solo prompt de área (calidad, patio o RR. HH.). Dos chats. En Comparador eligen por utilidad para ESE caso. Escriben 4 líneas: claridad, exactitud, formato, riesgo. Eso no sustituye la comparación individual del proyecto.",
+      "checklist": [
+        "Mismo prompt en los dos chats",
+        "Criterio escrito (no «me gusta más»)",
+        "Sin datos reales"
+      ]
     }
   ]
 }

@@ -33,7 +33,8 @@ export function renderActivities(data, { day = 1 } = {}) {
   const extras = (pack.items || []).filter((it) => (wantDay2 ? it.day === 2 : it.day !== 2));
   const officeIds = ["a13", "a14", "a15"];
   const office = extras.filter((it) => officeIds.includes(it.id));
-  const rest = extras.filter((it) => !officeIds.includes(it.id));
+  const groups = extras.filter((it) => it.group);
+  const rest = extras.filter((it) => !officeIds.includes(it.id) && !it.group);
   const n = extras.length;
   const ok = extras.filter((i) => done[i.id]).length;
 
@@ -82,10 +83,15 @@ export function renderActivities(data, { day = 1 } = {}) {
             <ul>${it.checklist.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
           </div>`
       : "";
+    const group = it.group
+      ? `<p class="pill ok">En grupo · ${escapeHtml(it.group.size)}</p>
+          <p><strong>Roles:</strong> ${escapeHtml(it.group.roles)}</p>`
+      : "";
     return `<div class="card activity-card ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(it.id)}" ${on ? "checked" : ""} />
         <div>
-          <p class="muted">${it.mins} min</p>
+          <p class="muted">${it.group ? "Práctica en grupo" : "Individual"} · ${it.mins} min</p>
+          ${group}
           <h3>${escapeHtml(it.title)}</h3>
           <p>${escapeHtml(it.do)}</p>
           ${resources}
@@ -125,6 +131,15 @@ export function renderActivities(data, { day = 1 } = {}) {
       <p>${wantDay2 ? "Marca cada una al terminar. Son el puente entre el chat y el proyecto." : escapeHtml(pack.subtitle)}</p>
     </div>
     <div class="activity-grid">${(wantDay2 ? rest : extras).map(itemCard).join("")}</div>
+    ${
+      wantDay2 && groups.length
+        ? `<div class="page-head" style="margin-top:28px">
+      <h2>Prácticas en grupo</h2>
+      <p>Mesas de 3 o 4. El proyecto final es de cada persona: el grupo ensaya, ataca slides y caza cifras. No se entrega un trabajo colectivo.</p>
+    </div>
+    <div class="activity-grid">${groups.map(itemCard).join("")}</div>`
+        : ""
+    }
   `;
 }
 

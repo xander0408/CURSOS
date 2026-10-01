@@ -49,10 +49,11 @@ export function renderProject(data, step = 0) {
   let body = "";
   if (s.id === "problem") {
     body = `
-      <p>Elige un problema real de tu cargo, pero descríbelo sin nombres, clientes, contratos, nómina ni cifras internas.</p>
-      ${textarea("problem", "¿Qué problema quieres resolver y por qué importa?", fields.problem)}
+      <div class="callout think"><strong>Nivel profesional</strong>Un solo proceso de tu cargo, no «usar IA en general». Escríbelo como un memo a tu jefatura: situación, impacto en tiempo o calidad, para quién es el resultado. Sin nombres, clientes, contratos, nómina ni cifras internas.</div>
+      ${textarea("audience", "¿Quién oiría tu presentación de 3–5 minutos? (cargo, no nombre)", fields.audience, 2)}
+      ${textarea("problem", "Problema en 4–6 líneas (situación + por qué importa + para quién)", fields.problem)}
       ${textarea("currentTask", "¿Cómo se hace hoy y qué parte consume más tiempo?", fields.currentTask)}
-      ${textarea("timeBefore", "Tiempo actual aproximado", fields.timeBefore, 3)}
+      ${textarea("timeBefore", "Tiempo actual aproximado (tu estimado, no un número de la IA)", fields.timeBefore, 3)}
       ${task?.pastePrompt ? `<p class="muted">Tu cuenta tiene un caso de práctica asignado. Puedes usarlo como punto de partida.</p>
         <pre class="prompt-preview show" id="proj-ready-prompt">${escapeHtml(task.pastePrompt)}</pre>
         <button class="btn" type="button" id="copy-task-prompt">Copiar caso de práctica</button>` : ""}`;
@@ -82,9 +83,11 @@ export function renderProject(data, step = 0) {
   } else {
     const checked = fields.successCriteria || {};
     body = `
-      <div class="callout think"><strong>Presentación final</strong>Explica tu caso en 3–5 minutos: problema, prompt, comparación, mejora, verificación y control humano. El trabajo guiado dispone de 45 minutos.</div>
-      ${textarea("solution", "Solución resumida para presentar", fields.solution, 5)}
-      ${textarea("presentation", "Guion de presentación (3–5 minutos)", fields.presentation, 8)}
+      <div class="callout think"><strong>Cierre de gerencia, no de clase</strong>3–5 minutos. Como máximo 6 ideas: 1) el proceso que duele 2) qué pediste a la IA 3) qué salió en ChatGPT vs Claude 4) qué cambiaste en el prompt 5) qué verificó un humano 6) quién decide y qué no se pega nunca. Ensayo previo en la práctica de grupo «pitch profesional».</div>
+      <p class="muted">Estructura de slides (si usas PowerPoint): contexto · situación · evidencia (sin cifras internas) · opciones · recomendación condicionada · control humano. Máximo 4 viñetas por diapositiva. El resto va en notas de expositor.</p>
+      ${textarea("solution", "Solución en una frase que firmarías frente a tu jefatura", fields.solution, 4)}
+      ${textarea("presentation", "Guion hablado (3–5 minutos). Léelo en voz alta. Si pasas de 5:00, recorta.", fields.presentation, 10)}
+      ${textarea("peerNotes", "Feedback del grupo (qué se entendió, qué faltó, un riesgo). Si aún no ensayaste, déjalo para después de la práctica g5.", fields.peerNotes, 5)}
       <h4>7 criterios de éxito</h4>
       <div class="project-criteria">${SUCCESS_CRITERIA.map(
         (criterion, idx) =>
