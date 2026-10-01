@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build:ppt": "node build-presentacion.mjs",
-    "build:viernes2": "node build-recursos-viernes2.mjs"
+    "build:viernes2": "node build-recursos-viernes2.mjs",
+    "build:casos": "node build-casos-oficina.mjs"
   },
   "repository": {
     "type": "git",

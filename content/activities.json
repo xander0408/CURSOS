@@ -866,6 +866,7 @@
       "versus": true,
       "group": { "size": "3 o 4", "roles": "Reloj, Word, Excel, PowerPoint" },
       "title": "Caso 1 · Calidad: lote retenido",
+      "resources": [{ "path": "recursos/viernes2/casos/Caso-01-Calidad-Lote-retenido.docx", "label": "Word del caso" }],
       "do": "Entrega única (las dos fases). Word: una página de no conformidad ficticia (hallazgo, evidencia inventada por el grupo, qué falta, quién firmaría). Excel: 6 filas que ustedes inventen (planta, lote ficticio, humedad inventada, turno). PowerPoint: 4 diapositivas (contexto, hallazgo, huecos, próximo paso humano). Prohibido inventar una ISO con número. Fase A 40 min sin IA. Fase B: mismo paquete con ChatGPT o Claude; anoten el tiempo.",
       "checklist": [
         "Hay Word + Excel + 4 slides",
@@ -880,6 +881,7 @@
       "versus": true,
       "group": { "size": "3 o 4", "roles": "Reloj, Word, Excel, PowerPoint" },
       "title": "Caso 2 · Logística: Cliente Alfa pregunta",
+      "resources": [{ "path": "recursos/viernes2/casos/Caso-02-Logistica-Cliente-Alfa.docx", "label": "Word del caso" }],
       "do": "Entrega única (las dos fases). Word: correo a Cliente Alfa (máx. 120 palabras) que pida un dato y no prometa día ni hora. Excel: 8 filas inventadas (planta, día ficticio, camiones en fila). PowerPoint: 4 diapositivas (qué se sabe, qué no, preguntas a patio, control humano). Fase A 40 min sin IA ni internet. Fase B con IA y miden el reloj.",
       "checklist": [
         "El correo no tiene ETA inventada",
@@ -894,6 +896,7 @@
       "versus": true,
       "group": { "size": "3 o 4", "roles": "Reloj, Word, Excel, PowerPoint" },
       "title": "Caso 3 · RR. HH.: inducción de patio",
+      "resources": [{ "path": "recursos/viernes2/casos/Caso-03-RRHH-Induccion-patio.docx", "label": "Word del caso" }],
       "do": "Entrega única (las dos fases). Word: agenda de 40 minutos (bloques y un mensaje de bienvenida de 80 palabras). Excel: 8 filas de asistencia ficticia (solo cargos: Operario 1, Supervisor de patio…). PowerPoint: 4 diapositivas (bienvenida, seguridad general, a quién preguntar, [HORARIO]). Prohibido sueldo, expediente o nombres reales. Fase A 40 min sin IA. Fase B con IA y anotan el tiempo.",
       "checklist": [
         "Agenda + lista de cargos + 4 slides",
@@ -908,6 +911,7 @@
       "versus": true,
       "group": { "size": "3 o 4", "roles": "Reloj, Word, Excel, PowerPoint" },
       "title": "Caso 4 · Gerencia: tres caminos, ninguna firma",
+      "resources": [{ "path": "recursos/viernes2/casos/Caso-04-Gerencia-Tres-caminos.docx", "label": "Word del caso" }],
       "do": "Entrega única (las dos fases). Word: memo de una página con opciones A B C (radio extra, reordenar turnos, no cambiar) sin elegir ganador. Excel: tabla de 6 filas (opción, beneficio declarado, dato que falta). PowerPoint: 4 diapositivas ejecutivas (problema, opciones, vacíos, quién decide). Fase A 40 min solo Office. Fase B con IA; midan y escriban 3 diferencias de calidad, no solo de velocidad.",
       "checklist": [
         "El memo no declara ganador",

@@ -124,7 +124,19 @@ export function nextPathStep(data) {
 export function nextFriday2Step(data) {
   const locked = modulesOfDay(data, 2).find((m) => !lessonsComplete(data.modules[m.id]));
   if (locked) return lockedModuleStep(data, locked);
-  return { href: "#/proyecto", title: "Proyecto final", detail: "Cierra tu ficha con un problema real de tu área." };
+  const checks = getState().progress.labs?.checks || {};
+  const caseIds = (data.officeCases?.cases || []).map((c) => c.activityId);
+  if (caseIds.length && !caseIds.some((id) => checks[id])) {
+    return {
+      href: "#/oficina/tareas",
+      title: "Caso de mesa",
+      detail: "El instructor entrega un Word. 40 minutos a mano (sin IA ni internet), luego la misma entrega con IA. El proyecto es individual, sobre ese caso.",
+    };
+  }
+  if (!getState().progress.project?.ficheReady) {
+    return { href: "#/proyecto", title: "Proyecto final", detail: "Elige el mismo caso de tu mesa y cierra los 7 pasos." };
+  }
+  return { href: "#/proyecto", title: "Proyecto listo", detail: "Repasa la ficha o un quiz si el instructor lo pide." };
 }
 
 export function assignedTask(data) {

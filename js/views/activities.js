@@ -2,52 +2,116 @@ import { getState, update, logActivity } from "../store.js";
 import { escapeHtml, toast, copyText } from "../ui.js";
 import { checkBadges } from "../badges.js";
 import { assetUrl } from "../paths.js";
-
-const OFFICE_GROUPS = [
-  { id: "oficina", title: "Oficina del día", match: ["Minuta", "Audiencia", "Cifras", "Decisión humana", "Agenda", "Seguimiento", "Riesgos", "Gerencia"] },
-  { id: "excel", title: "Excel", match: ["Excel"] },
-  { id: "ppt", title: "PowerPoint", match: ["PowerPoint", "Guion"] },
-  { id: "invest", title: "Investigación", match: ["Investigación"] },
-  { id: "areas", title: "Casos por área", match: ["Calidad", "RR. HH.", "Finanzas", "Logística", "RSE", "Laboratorio", "Comercial"] },
-  { id: "cierre", title: "Cierre y proyecto", match: ["Proyecto"] },
-];
-
-function groupChats(chats) {
-  const used = new Set();
-  const blocks = OFFICE_GROUPS.map((g) => {
-    const items = chats.filter((t) => g.match.includes(t.focus));
-    items.forEach((t) => used.add(t.id));
-    return { ...g, items };
-  });
-  const rest = chats.filter((t) => !used.has(t.id));
-  if (rest.length) blocks.push({ id: "mas", title: "Más prácticas", match: [], items: rest });
-  return blocks.filter((b) => b.items.length);
-}
+import { officeCaseById, officeCasePatch } from "../office-cases.js?v=20260930c1";
 
 export function renderActivities(data, { day = 1 } = {}) {
   const pack = data.activities;
   const done = getState().progress.labs?.checks || {};
   const wantDay2 = Number(day) === 2;
-  const chats = (pack.chatTasks || []).filter((t) => (wantDay2 ? t.day === 2 : t.day !== 2));
-  const chatOk = chats.filter((i) => done[i.id]).length;
-  const extras = (pack.items || []).filter((it) => (wantDay2 ? it.day === 2 : it.day !== 2));
-  const officeIds = ["a13", "a14", "a15"];
-  const office = extras.filter((it) => officeIds.includes(it.id));
-  const versus = extras.filter((it) => it.versus);
-  const groups = extras.filter((it) => it.group && !it.versus);
-  const rest = extras.filter((it) => !officeIds.includes(it.id) && !it.group && !it.versus);
-  const n = extras.length;
-  const ok = extras.filter((i) => done[i.id]).length;
 
+  if (wantDay2) return renderOfficeTasks(data, done);
+
+  const chats = (pack.chatTasks || []).filter((t) => t.day !== 2);
+  const extras = (pack.items || []).filter((it) => it.day !== 2);
+  const chatOk = chats.filter((i) => done[i.id]).length;
+  const ok = extras.filter((i) => done[i.id]).length;
   const order = new Map(chats.map((t, i) => [t.id, i + 1]));
 
-  function chatCard(it) {
-    const on = !!done[it.id];
-    const num = order.get(it.id) || it.n;
-    return `<div class="card activity-card chat-task ${on ? "done" : ""}">
+  return `
+    <div class="page-head">
+      <h2>Tareas en ChatGPT y Claude</h2>
+      <p>Prácticas de esta jornada. En la mayoría, el mismo texto en los dos chats. No envíes el resultado.</p>
+      <p><strong>${chatOk} de ${chats.length}</strong> tareas de chat · <strong>${ok} de ${extras.length}</strong> prácticas de lista.</p>
+    </div>
+    <div class="activity-grid">${chats.map((it) => chatCard(it, done, order, chats.length)).join("")}</div>
+    <div class="page-head" style="margin-top:28px">
+      <h2>${escapeHtml(pack.title)}</h2>
+      <p>${escapeHtml(pack.subtitle)}</p>
+    </div>
+    <div class="activity-grid">${extras.map((it) => itemCard(it, done)).join("")}</div>
+  `;
+}
+
+function renderOfficeTasks(data, done) {
+  const cases = data.officeCases?.cases || [];
+  const officeIds = ["a13", "a14", "a15"];
+  const office = (data.activities?.items || []).filter((it) => officeIds.includes(it.id));
+  const chosen = getState().progress.project?.fields?.officeCaseId || "";
+  const caseOk = cases.filter((c) => done[c.activityId]).length;
+  const officeOk = office.filter((it) => done[it.id]).length;
+  const versusItems = new Map((data.activities?.items || []).filter((it) => it.versus).map((it) => [it.id, it]));
+
+  const caseCards = cases
+    .map((c) => {
+      const it = versusItems.get(c.activityId) || { id: c.activityId, versus: true, mins: 40 };
+      const on = !!done[c.activityId];
+      const times = getState().progress.labs?.versus?.[c.activityId] || {};
+      const mine = chosen === c.id;
+      const fname = (c.webFile || c.file || "").split("/").pop() || "caso.docx";
+      return `<div class="card activity-card ${on ? "done" : ""}">
+        <input type="checkbox" data-act="${escapeHtml(c.activityId)}" ${on ? "checked" : ""} />
+        <div>
+          <p class="muted">Caso ${c.n} de 4 · ${escapeHtml(c.area)} · 40 min a mano</p>
+          ${mine ? `<p class="pill ok">Este es tu proyecto final</p>` : ""}
+          <h3>${escapeHtml(c.title)}</h3>
+          <p>${escapeHtml(c.problem)}</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="${escapeHtml(assetUrl(c.webFile))}" download="${escapeHtml(fname)}">Descargar Word del caso</a>
+            <button class="btn" type="button" data-use-case="${escapeHtml(c.id)}">${mine ? "Ya está en tu ficha" : "Usar en mi proyecto"}</button>
+            <a class="btn" href="#/proyecto">Abrir proyecto</a>
+          </div>
+          <div class="activity-checklist" style="margin-top:14px">
+            <strong>Cronómetro de la mesa</strong>
+            <p class="muted">Fase A: 40 minutos. Solo Word, Excel y PowerPoint. Sin IA y sin internet.</p>
+            <div class="field"><label>Minutos reales de la Fase A (manual)</label>
+              <input data-versus="${escapeHtml(it.id)}" data-versus-field="manualMin" type="number" min="0" max="120" value="${escapeHtml(times.manualMin || "")}" placeholder="40" /></div>
+            <p class="muted">Fase B: la misma entrega, ahora sí ChatGPT o Claude. Midan el reloj.</p>
+            <div class="field"><label>Minutos reales de la Fase B (con IA)</label>
+              <input data-versus="${escapeHtml(it.id)}" data-versus-field="aiMin" type="number" min="0" max="120" value="${escapeHtml(times.aiMin || "")}" placeholder="ej. 18" /></div>
+            <div class="field"><label>Tres diferencias (velocidad, calidad, huecos, riesgo)</label>
+              <textarea data-versus="${escapeHtml(it.id)}" data-versus-field="notes" rows="3" placeholder="Con IA salió más rápido, pero inventó una fecha; a mano el Excel quedó más honesto.">${escapeHtml(times.notes || "")}</textarea></div>
+          </div>
+        </div>
+      </div>`;
+    })
+    .join("");
+
+  return `
+    <div class="page-head">
+      <p class="muted"><a href="#/oficina">← Oficina + IA</a></p>
+      <h2>Tareas · Oficina + IA</h2>
+      <p>Tres cosas, en este orden: el Word que les das, los tres archivos de Office si los necesitan, y el proyecto individual del mismo caso.</p>
+      <p><strong>${caseOk} de ${cases.length}</strong> casos de mesa · <strong>${officeOk} de ${office.length}</strong> archivos de práctica.</p>
+    </div>
+    <div class="callout think">
+      <strong>Cómo se corre</strong>
+      El instructor imprime o comparte un caso por mesa. Fase A: 40 minutos, internet abajo, sin chat. Fase B: la misma entrega con IA, cronometrada. Después cada persona abre Proyecto final y elige ese caso.
+    </div>
+    <div class="page-head" style="margin-top:28px">
+      <h2>Los 4 casos de mesa</h2>
+      <p>Un caso por grupo. Descarga el Word, trabajo a mano, luego con IA, luego el proyecto de cada uno.</p>
+    </div>
+    <div class="activity-grid">${caseCards}</div>
+    <div class="page-head" style="margin-top:28px">
+      <h2>Tres archivos de Office (si los pide el módulo)</h2>
+      <p>Excel, PowerPoint y Word de práctica. No son los casos de mesa.</p>
+    </div>
+    <div class="activity-grid">${office.map((it) => itemCard(it, done)).join("")}</div>
+    <div class="card" style="margin-top:28px">
+      <h3>Proyecto final · 7 pasos</h3>
+      <p>Es individual. Elige el mismo caso de tu mesa: el sistema te carga problema, audiencia y prompt R+C+O+F+R. Presentación de 3 a 5 minutos.</p>
+      <a class="btn btn-primary" href="#/proyecto">Abrir mi proyecto</a>
+    </div>
+  `;
+}
+
+function chatCard(it, done, order, total) {
+  const on = !!done[it.id];
+  const num = order.get(it.id) || it.n;
+  return `<div class="card activity-card chat-task ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(it.id)}" ${on ? "checked" : ""} />
         <div>
-          <p class="muted">Tarea ${num} de ${chats.length} · ${escapeHtml(it.focus || "Práctica")} · ${it.mins} min</p>
+          <p class="muted">Tarea ${num} de ${total} · ${escapeHtml(it.focus || "Práctica")} · ${it.mins} min</p>
           <h3>${escapeHtml(it.title)}</h3>
           <p>${escapeHtml(it.do)}</p>
           <p><strong>Qué mirar:</strong> ${escapeHtml(it.look)}</p>
@@ -60,112 +124,40 @@ export function renderActivities(data, { day = 1 } = {}) {
           </div>
         </div>
       </div>`;
-  }
+}
 
-  function itemCard(it) {
-    const on = !!done[it.id];
-    const resources = Array.isArray(it.resources)
-      ? `<div class="btn-row">${it.resources
-          .map((resource) => {
-            const path = typeof resource === "string" ? resource : resource?.path;
-            if (!path) return "";
-            const label =
-              typeof resource === "string"
-                ? resource.split("/").pop() || "Descargar recurso"
-                : resource.label || "Descargar recurso";
-            const fname = path.split("/").pop() || "recurso";
-            return `<a class="btn btn-primary" href="${escapeHtml(assetUrl(path))}" download="${escapeHtml(fname)}">${escapeHtml(label)}</a>`;
-          })
-          .join("")}</div>`
-      : "";
-    const checklist = Array.isArray(it.checklist)
-      ? `<div class="activity-checklist">
+function itemCard(it, done) {
+  const on = !!done[it.id];
+  const resources = Array.isArray(it.resources)
+    ? `<div class="btn-row">${it.resources
+        .map((resource) => {
+          const path = typeof resource === "string" ? resource : resource?.path;
+          if (!path) return "";
+          const label =
+            typeof resource === "string"
+              ? resource.split("/").pop() || "Descargar recurso"
+              : resource.label || "Descargar recurso";
+          const fname = path.split("/").pop() || "recurso";
+          return `<a class="btn btn-primary" href="${escapeHtml(assetUrl(path))}" download="${escapeHtml(fname)}">${escapeHtml(label)}</a>`;
+        })
+        .join("")}</div>`
+    : "";
+  const checklist = Array.isArray(it.checklist)
+    ? `<div class="activity-checklist">
             <strong>Lista de verificación:</strong>
             <ul>${it.checklist.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
           </div>`
-      : "";
-    const group = it.group
-      ? `<p class="pill ok">En grupo · ${escapeHtml(it.group.size)}</p>
-          <p><strong>Roles:</strong> ${escapeHtml(it.group.roles)}</p>`
-      : "";
-    const times = getState().progress.labs?.versus?.[it.id] || {};
-    const versusBox = it.versus && it.id !== "g-versus-regla"
-      ? `<div class="activity-checklist" style="margin-top:14px">
-            <strong>Cronómetro de la mesa</strong>
-            <p class="muted">Fase A: 40 minutos. Solo Word, Excel y PowerPoint. Sin IA y sin internet.</p>
-            <div class="field"><label>Minutos reales de la Fase A (manual)</label>
-              <input data-versus="${escapeHtml(it.id)}" data-versus-field="manualMin" type="number" min="0" max="120" value="${escapeHtml(times.manualMin || "")}" placeholder="40" /></div>
-            <p class="muted">Fase B: la misma entrega, ahora sí pueden usar ChatGPT y Claude. Midan el reloj.</p>
-            <div class="field"><label>Minutos reales de la Fase B (con IA)</label>
-              <input data-versus="${escapeHtml(it.id)}" data-versus-field="aiMin" type="number" min="0" max="120" value="${escapeHtml(times.aiMin || "")}" placeholder="ej. 18" /></div>
-            <div class="field"><label>Tres diferencias que vieron (velocidad, calidad, huecos, riesgo)</label>
-              <textarea data-versus="${escapeHtml(it.id)}" data-versus-field="notes" rows="4" placeholder="Ej. Con IA salió más rápido, pero inventó una fecha; a mano el Excel quedó más simple y honesto.">${escapeHtml(times.notes || "")}</textarea></div>
-          </div>`
-      : "";
-    return `<div class="card activity-card ${on ? "done" : ""}">
+    : "";
+  return `<div class="card activity-card ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(it.id)}" ${on ? "checked" : ""} />
         <div>
-          <p class="muted">${it.versus ? "Manual vs IA" : it.group ? "Práctica en grupo" : "Individual"} · ${it.mins} min</p>
-          ${group}
+          <p class="muted">Práctica con archivo · ${it.mins} min</p>
           <h3>${escapeHtml(it.title)}</h3>
           <p>${escapeHtml(it.do)}</p>
           ${resources}
           ${checklist}
-          ${versusBox}
         </div>
       </div>`;
-  }
-
-  const chatHtml = wantDay2
-    ? groupChats(chats)
-        .map((g) => `<h3 style="margin-top:28px">${escapeHtml(g.title)}</h3><div class="activity-grid">${g.items.map(chatCard).join("")}</div>`)
-        .join("")
-    : `<div class="activity-grid">${chats.map(chatCard).join("")}</div>`;
-
-  return `
-    <div class="page-head">
-      <h2>${wantDay2 ? "Tareas · Oficina + IA" : "Tareas en ChatGPT y Claude"}</h2>
-      <p>${
-        wantDay2
-          ? "Un viernes completo: oficina del día, Excel, PowerPoint, investigación, casos por área y cierre. El mismo texto en los dos chats, salvo que la tarjeta diga otra cosa."
-          : "Prácticas de esta jornada. En la mayoría, el mismo texto en los dos chats."
-      } No envíes el resultado.</p>
-      <p><strong>${chatOk} de ${chats.length}</strong> tareas de chat · <strong>${ok} de ${n}</strong> prácticas de lista.</p>
-    </div>
-    ${chatHtml}
-    ${
-      wantDay2 && office.length
-        ? `<div class="page-head" style="margin-top:28px">
-      <h2>Tres prácticas con archivos de Office</h2>
-      <p>Excel, PowerPoint y Word de práctica. Ábralos en Microsoft Office. No use libros reales.</p>
-    </div>
-    <div class="activity-grid">${office.map(itemCard).join("")}</div>`
-        : ""
-    }
-    <div class="page-head" style="margin-top:28px">
-      <h2>${wantDay2 ? "Más prácticas de esta jornada" : escapeHtml(pack.title)}</h2>
-      <p>${wantDay2 ? "Marca cada una al terminar. Son el puente entre el chat y el proyecto." : escapeHtml(pack.subtitle)}</p>
-    </div>
-    <div class="activity-grid">${(wantDay2 ? rest : extras).map(itemCard).join("")}</div>
-    ${
-      wantDay2 && versus.length
-        ? `<div class="page-head" style="margin-top:28px">
-      <h2>En grupo: 40 minutos a mano, luego con IA</h2>
-      <p>Cuatro casos. El instructor asigna uno por mesa. Primero cierran internet y la IA: solo Word, Excel y PowerPoint. Después repiten la misma entrega con IA y comparan minutos.</p>
-    </div>
-    <div class="activity-grid">${versus.map(itemCard).join("")}</div>`
-        : ""
-    }
-    ${
-      wantDay2 && groups.length
-        ? `<div class="page-head" style="margin-top:28px">
-      <h2>Otras prácticas en grupo</h2>
-      <p>Mesas de 3 o 4. El proyecto final es de cada persona.</p>
-    </div>
-    <div class="activity-grid">${groups.map(itemCard).join("")}</div>`
-        : ""
-    }
-  `;
 }
 
 export function bindActivities(data) {
@@ -202,5 +194,18 @@ export function bindActivities(data) {
     };
     el.addEventListener("input", save);
     el.addEventListener("change", save);
+  });
+  document.querySelectorAll("[data-use-case]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const c = officeCaseById(data, btn.getAttribute("data-use-case"));
+      if (!c) return;
+      update((s) => {
+        s.progress.project = s.progress.project || {};
+        s.progress.project.fields = { ...(s.progress.project.fields || {}), ...officeCasePatch(c) };
+      });
+      logActivity("proyecto", `caso ${c.id}`);
+      toast(`Cargado: Caso ${c.n} · ${c.title}. Abre Proyecto final.`);
+      window.dispatchEvent(new Event("app:refresh"));
+    });
   });
 }

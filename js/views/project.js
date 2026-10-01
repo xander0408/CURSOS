@@ -7,6 +7,7 @@ import { checkBadges } from "../badges.js";
 import { completeModule } from "../store.js";
 import { assignedTask } from "../journey.js";
 import { sectionAgent } from "../agents.js";
+import { officeCaseById, officeCasePatch } from "../office-cases.js?v=20260930c1";
 
 const STEPS = [
   { id: "problem", title: "1. Definir el problema" },
@@ -48,8 +49,27 @@ export function renderProject(data, step = 0) {
 
   let body = "";
   if (s.id === "problem") {
+    const cases = data.officeCases?.cases || [];
+    const casePicker = cases.length
+      ? `<div class="field"><label>Caso de tu mesa (carga el problema, la audiencia y el prompt)</label>
+          <div class="btn-row" style="flex-wrap:wrap">
+            ${cases
+              .map((c) => {
+                const on = fields.officeCaseId === c.id;
+                return `<button class="btn ${on ? "btn-primary" : ""}" type="button" data-pick-case="${escapeHtml(c.id)}">${on ? "● " : ""}Caso ${c.n} · ${escapeHtml(c.area)}</button>`;
+              })
+              .join("")}
+          </div>
+          ${
+            fields.officeCaseTitle
+              ? `<p class="muted">Ficha de <strong>${escapeHtml(fields.officeCaseTitle)}</strong>. Puedes editar todo. El grupo ensayó; esto es tuyo.</p>`
+              : `<p class="muted">Si tu mesa ya tiene caso, púlsalo. Si el instructor te deja uno propio, escribe abajo sin elegir.</p>`
+          }
+        </div>`
+      : "";
     body = `
       <div class="callout think"><strong>Nivel profesional</strong>Un solo proceso de tu cargo, no «usar IA en general». Escríbelo como un memo a tu jefatura: situación, impacto en tiempo o calidad, para quién es el resultado. Sin nombres, clientes, contratos, nómina ni cifras internas.</div>
+      ${casePicker}
       ${textarea("audience", "¿Quién oiría tu presentación de 3–5 minutos? (cargo, no nombre)", fields.audience, 2)}
       ${textarea("problem", "Problema en 4–6 líneas (situación + por qué importa + para quién)", fields.problem)}
       ${textarea("currentTask", "¿Cómo se hace hoy y qué parte consume más tiempo?", fields.currentTask)}
@@ -83,11 +103,11 @@ export function renderProject(data, step = 0) {
   } else {
     const checked = fields.successCriteria || {};
     body = `
-      <div class="callout think"><strong>Cierre de gerencia, no de clase</strong>3–5 minutos. Como máximo 6 ideas: 1) el proceso que duele 2) qué pediste a la IA 3) qué salió en ChatGPT vs Claude 4) qué cambiaste en el prompt 5) qué verificó un humano 6) quién decide y qué no se pega nunca. Ensayo previo en la práctica de grupo «pitch profesional».</div>
-      <p class="muted">Estructura de slides (si usas PowerPoint): contexto · situación · evidencia (sin cifras internas) · opciones · recomendación condicionada · control humano. Máximo 4 viñetas por diapositiva. El resto va en notas de expositor.</p>
+      <div class="callout think"><strong>Cierre de gerencia, no de clase</strong>${fields.officeCaseTitle ? ` Caso: ${escapeHtml(fields.officeCaseTitle)}. ` : ""}3–5 minutos. Como máximo 6 ideas: 1) el proceso que duele 2) qué pediste a la IA 3) ChatGPT vs Claude 4) qué cambiaste 5) qué verificó un humano 6) quién decide. Incluye qué inventó la IA en la Fase B que no firmarías.</div>
+      <p class="muted">Slides: contexto · situación · evidencia (sin cifras internas) · opciones · control humano. Máximo 4 viñetas por diapositiva.</p>
       ${textarea("solution", "Solución en una frase que firmarías frente a tu jefatura", fields.solution, 4)}
       ${textarea("presentation", "Guion hablado (3–5 minutos). Léelo en voz alta. Si pasas de 5:00, recorta.", fields.presentation, 10)}
-      ${textarea("peerNotes", "Feedback del grupo (qué se entendió, qué faltó, un riesgo). Si aún no ensayaste, déjalo para después de la práctica g5.", fields.peerNotes, 5)}
+      ${textarea("peerNotes", "Feedback de la mesa (qué se entendió, qué faltó, un riesgo).", fields.peerNotes, 5)}
       <h4>7 criterios de éxito</h4>
       <div class="project-criteria">${SUCCESS_CRITERIA.map(
         (criterion, idx) =>
@@ -101,7 +121,7 @@ export function renderProject(data, step = 0) {
     <div class="page-head">
       <p class="muted"><a href="#/oficina">← Oficina + IA</a></p>
       <h2>Proyecto final</h2>
-      <p>45 minutos de trabajo · 7 pasos · presentación de 3–5 minutos. Usa solo información anónima o ficticia.</p>
+      <p>Elige el caso de tu mesa. 7 pasos · 3–5 minutos al frente. Solo información ficticia (Planta Central, Lote Norte, Cliente Alfa).</p>
     </div>
     ${Number(step) === 0 ? sectionAgent(data, "project") : ""}
     <div class="steps">${nav}</div>
@@ -243,5 +263,17 @@ export function bindProject(data, step = 0) {
     const task = assignedTask(data);
     const box = document.getElementById("proj-ready-prompt");
     copyText(box?.innerText || task?.pastePrompt || "");
+  });
+  document.querySelectorAll("[data-pick-case]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const c = officeCaseById(data, btn.getAttribute("data-pick-case"));
+      if (!c) return;
+      update((st) => {
+        st.progress.project.fields = { ...(st.progress.project.fields || {}), ...officeCasePatch(c) };
+        st.progress.project.step = 0;
+      });
+      toast(`Cargado: Caso ${c.n} · ${c.title}`);
+      window.dispatchEvent(new Event("app:refresh"));
+    });
   });
 }

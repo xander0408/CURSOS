@@ -28,6 +28,7 @@ export async function loadAll() {
     sync = { apiUrl: "" };
   }
   const activities = await getJson("content/activities.json");
+  const officeCases = await getJson("content/office-cases.json");
   const schedule = await getJson("content/schedule.json");
   const modules = {};
   for (const m of course.modules) {
@@ -48,6 +49,7 @@ export async function loadAll() {
     promptManual,
     roster,
     activities,
+    officeCases,
     schedule,
     sync,
   };
