@@ -842,6 +842,78 @@
         "Criterio escrito (no «me gusta más»)",
         "Sin datos reales"
       ]
+    },
+    {
+      "id": "g-versus-regla",
+      "day": 2,
+      "mins": 5,
+      "versus": true,
+      "group": { "size": "3 o 4", "roles": "Reloj, Relator, Editor Word, Editor Excel, Editor PowerPoint (pueden repetir)" },
+      "title": "Manual vs IA: reglas de la mesa",
+      "do": "El instructor asigna UN caso por mesa (Calidad, Logística, RR. HH. o Gerencia). Lean el caso. Fase A: 40 minutos cronometrados. Fase B: la misma entrega con IA, también cronometrada. Anoten los minutos en la tarjeta del caso.",
+      "checklist": [
+        "Fase A: sin ChatGPT, Claude, Copilot, Gemini ni el celular como chat",
+        "Fase A: sin internet (modo avión o Wi-Fi apagado). Solo Word, Excel y PowerPoint en la laptop",
+        "Fase A: no abran el navegador salvo esta tarjeta del caso (o el instructor imprime el caso)",
+        "Nadie pega datos reales de CISA. Usen Planta Central, Lote Norte y Cliente Alfa",
+        "Al terminar ambas fases, escriban minutos y 3 diferencias"
+      ]
+    },
+    {
+      "id": "g-versus-c1",
+      "day": 2,
+      "mins": 40,
+      "versus": true,
+      "group": { "size": "3 o 4", "roles": "Reloj, Word, Excel, PowerPoint" },
+      "title": "Caso 1 · Calidad: lote retenido",
+      "do": "Entrega única (las dos fases). Word: una página de no conformidad ficticia (hallazgo, evidencia inventada por el grupo, qué falta, quién firmaría). Excel: 6 filas que ustedes inventen (planta, lote ficticio, humedad inventada, turno). PowerPoint: 4 diapositivas (contexto, hallazgo, huecos, próximo paso humano). Prohibido inventar una ISO con número. Fase A 40 min sin IA. Fase B: mismo paquete con ChatGPT o Claude; anoten el tiempo.",
+      "checklist": [
+        "Hay Word + Excel + 4 slides",
+        "Fase A fue sin IA ni internet",
+        "Anotamos minutos de las dos fases"
+      ]
+    },
+    {
+      "id": "g-versus-c2",
+      "day": 2,
+      "mins": 40,
+      "versus": true,
+      "group": { "size": "3 o 4", "roles": "Reloj, Word, Excel, PowerPoint" },
+      "title": "Caso 2 · Logística: Cliente Alfa pregunta",
+      "do": "Entrega única (las dos fases). Word: correo a Cliente Alfa (máx. 120 palabras) que pida un dato y no prometa día ni hora. Excel: 8 filas inventadas (planta, día ficticio, camiones en fila). PowerPoint: 4 diapositivas (qué se sabe, qué no, preguntas a patio, control humano). Fase A 40 min sin IA ni internet. Fase B con IA y miden el reloj.",
+      "checklist": [
+        "El correo no tiene ETA inventada",
+        "Hay tabla y 4 slides",
+        "Comparamos minutos A vs B"
+      ]
+    },
+    {
+      "id": "g-versus-c3",
+      "day": 2,
+      "mins": 40,
+      "versus": true,
+      "group": { "size": "3 o 4", "roles": "Reloj, Word, Excel, PowerPoint" },
+      "title": "Caso 3 · RR. HH.: inducción de patio",
+      "do": "Entrega única (las dos fases). Word: agenda de 40 minutos (bloques y un mensaje de bienvenida de 80 palabras). Excel: 8 filas de asistencia ficticia (solo cargos: Operario 1, Supervisor de patio…). PowerPoint: 4 diapositivas (bienvenida, seguridad general, a quién preguntar, [HORARIO]). Prohibido sueldo, expediente o nombres reales. Fase A 40 min sin IA. Fase B con IA y anotan el tiempo.",
+      "checklist": [
+        "Agenda + lista de cargos + 4 slides",
+        "Fase A sin chat ni internet",
+        "Hay diferencia de minutos escrita"
+      ]
+    },
+    {
+      "id": "g-versus-c4",
+      "day": 2,
+      "mins": 40,
+      "versus": true,
+      "group": { "size": "3 o 4", "roles": "Reloj, Word, Excel, PowerPoint" },
+      "title": "Caso 4 · Gerencia: tres caminos, ninguna firma",
+      "do": "Entrega única (las dos fases). Word: memo de una página con opciones A B C (radio extra, reordenar turnos, no cambiar) sin elegir ganador. Excel: tabla de 6 filas (opción, beneficio declarado, dato que falta). PowerPoint: 4 diapositivas ejecutivas (problema, opciones, vacíos, quién decide). Fase A 40 min solo Office. Fase B con IA; midan y escriban 3 diferencias de calidad, no solo de velocidad.",
+      "checklist": [
+        "El memo no declara ganador",
+        "Hay Excel y 4 slides",
+        "Anotamos tiempo y 3 diferencias"
+      ]
     }
   ]
 }

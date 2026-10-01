@@ -33,8 +33,9 @@ export function renderActivities(data, { day = 1 } = {}) {
   const extras = (pack.items || []).filter((it) => (wantDay2 ? it.day === 2 : it.day !== 2));
   const officeIds = ["a13", "a14", "a15"];
   const office = extras.filter((it) => officeIds.includes(it.id));
-  const groups = extras.filter((it) => it.group);
-  const rest = extras.filter((it) => !officeIds.includes(it.id) && !it.group);
+  const versus = extras.filter((it) => it.versus);
+  const groups = extras.filter((it) => it.group && !it.versus);
+  const rest = extras.filter((it) => !officeIds.includes(it.id) && !it.group && !it.versus);
   const n = extras.length;
   const ok = extras.filter((i) => done[i.id]).length;
 
@@ -87,15 +88,30 @@ export function renderActivities(data, { day = 1 } = {}) {
       ? `<p class="pill ok">En grupo · ${escapeHtml(it.group.size)}</p>
           <p><strong>Roles:</strong> ${escapeHtml(it.group.roles)}</p>`
       : "";
+    const times = getState().progress.labs?.versus?.[it.id] || {};
+    const versusBox = it.versus && it.id !== "g-versus-regla"
+      ? `<div class="activity-checklist" style="margin-top:14px">
+            <strong>Cronómetro de la mesa</strong>
+            <p class="muted">Fase A: 40 minutos. Solo Word, Excel y PowerPoint. Sin IA y sin internet.</p>
+            <div class="field"><label>Minutos reales de la Fase A (manual)</label>
+              <input data-versus="${escapeHtml(it.id)}" data-versus-field="manualMin" type="number" min="0" max="120" value="${escapeHtml(times.manualMin || "")}" placeholder="40" /></div>
+            <p class="muted">Fase B: la misma entrega, ahora sí pueden usar ChatGPT y Claude. Midan el reloj.</p>
+            <div class="field"><label>Minutos reales de la Fase B (con IA)</label>
+              <input data-versus="${escapeHtml(it.id)}" data-versus-field="aiMin" type="number" min="0" max="120" value="${escapeHtml(times.aiMin || "")}" placeholder="ej. 18" /></div>
+            <div class="field"><label>Tres diferencias que vieron (velocidad, calidad, huecos, riesgo)</label>
+              <textarea data-versus="${escapeHtml(it.id)}" data-versus-field="notes" rows="4" placeholder="Ej. Con IA salió más rápido, pero inventó una fecha; a mano el Excel quedó más simple y honesto.">${escapeHtml(times.notes || "")}</textarea></div>
+          </div>`
+      : "";
     return `<div class="card activity-card ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(it.id)}" ${on ? "checked" : ""} />
         <div>
-          <p class="muted">${it.group ? "Práctica en grupo" : "Individual"} · ${it.mins} min</p>
+          <p class="muted">${it.versus ? "Manual vs IA" : it.group ? "Práctica en grupo" : "Individual"} · ${it.mins} min</p>
           ${group}
           <h3>${escapeHtml(it.title)}</h3>
           <p>${escapeHtml(it.do)}</p>
           ${resources}
           ${checklist}
+          ${versusBox}
         </div>
       </div>`;
   }
@@ -132,10 +148,19 @@ export function renderActivities(data, { day = 1 } = {}) {
     </div>
     <div class="activity-grid">${(wantDay2 ? rest : extras).map(itemCard).join("")}</div>
     ${
+      wantDay2 && versus.length
+        ? `<div class="page-head" style="margin-top:28px">
+      <h2>En grupo: 40 minutos a mano, luego con IA</h2>
+      <p>Cuatro casos. El instructor asigna uno por mesa. Primero cierran internet y la IA: solo Word, Excel y PowerPoint. Después repiten la misma entrega con IA y comparan minutos.</p>
+    </div>
+    <div class="activity-grid">${versus.map(itemCard).join("")}</div>`
+        : ""
+    }
+    ${
       wantDay2 && groups.length
         ? `<div class="page-head" style="margin-top:28px">
-      <h2>Prácticas en grupo</h2>
-      <p>Mesas de 3 o 4. El proyecto final es de cada persona: el grupo ensaya, ataca slides y caza cifras. No se entrega un trabajo colectivo.</p>
+      <h2>Otras prácticas en grupo</h2>
+      <p>Mesas de 3 o 4. El proyecto final es de cada persona.</p>
     </div>
     <div class="activity-grid">${groups.map(itemCard).join("")}</div>`
         : ""
@@ -164,5 +189,18 @@ export function bindActivities(data) {
       const id = btn.getAttribute("data-copy-chat");
       copyText(document.getElementById("chat-prompt-" + id)?.innerText || "");
     });
+  });
+  document.querySelectorAll("[data-versus]").forEach((el) => {
+    const save = () => {
+      const id = el.getAttribute("data-versus");
+      const field = el.getAttribute("data-versus-field");
+      update((s) => {
+        s.progress.labs = s.progress.labs || {};
+        s.progress.labs.versus = s.progress.labs.versus || {};
+        s.progress.labs.versus[id] = { ...(s.progress.labs.versus[id] || {}), [field]: el.value };
+      });
+    };
+    el.addEventListener("input", save);
+    el.addEventListener("change", save);
   });
 }

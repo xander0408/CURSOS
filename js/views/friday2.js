@@ -38,7 +38,7 @@ const LINKS = [
 const RUTA = [
   { t: "Mañana", d: "Módulos de Excel y PowerPoint + prácticas con los archivos .xlsx y .pptx." },
   { t: "Mediodía", d: "Investigación con el dossier .docx y tareas de cacería de cifras o fuentes." },
-  { t: "Tarde", d: "Casos por área y prácticas en grupo (cacería de cifras, detective, ensayo de pitch)." },
+  { t: "Tarde", d: "Caso en grupo: 40 min solo Word/Excel/PPT (sin IA ni internet) y luego la misma entrega con IA, midiendo tiempos." },
   { t: "Cierre", d: "Proyecto individual: ficha profesional y presentación de 3–5 minutos." },
 ];
 
