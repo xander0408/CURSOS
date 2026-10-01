@@ -18,7 +18,7 @@ import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260912d";
-import { renderActivities, bindActivities } from "./views/activities.js?v=20260930v4";
+import { renderActivities, bindActivities } from "./views/activities.js?v=20260930v5";
 import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260930v4";
 import { isDay2Module, jornadaFromRoute, applyJornada, readJornada } from "./journey.js?v=20260930c1";
 import { renderCronograma } from "./views/schedule.js";

@@ -37,13 +37,9 @@ function renderOfficeTasks(data, done) {
   const office = (data.activities?.items || []).filter((it) => officeIds.includes(it.id));
   const caseOk = cases.filter((c) => done[c.activityId]).length;
   const officeOk = office.filter((it) => done[it.id]).length;
-  const versusItems = new Map((data.activities?.items || []).filter((it) => it.versus).map((it) => [it.id, it]));
-
   const caseCards = cases
     .map((c) => {
-      const it = versusItems.get(c.activityId) || { id: c.activityId, versus: true, mins: 40 };
       const on = !!done[c.activityId];
-      const times = getState().progress.labs?.versus?.[c.activityId] || {};
       const fname = (c.webFile || c.file || "").split("/").pop() || "caso.docx";
       return `<div class="card activity-card ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(c.activityId)}" ${on ? "checked" : ""} />
@@ -60,17 +56,6 @@ function renderOfficeTasks(data, done) {
           <div class="btn-row">
             <a class="btn btn-primary" href="${escapeHtml(assetUrl(c.webFile))}" download="${escapeHtml(fname)}">Descargar Word de la mesa</a>
           </div>
-          <div class="activity-checklist" style="margin-top:14px">
-            <strong>Cronómetro de la mesa</strong>
-            <p class="muted">Fase A: 40 minutos. Solo Word, Excel y PowerPoint. Sin IA y sin internet.</p>
-            <div class="field"><label>Minutos reales de la Fase A (manual)</label>
-              <input data-versus="${escapeHtml(it.id)}" data-versus-field="manualMin" type="number" min="0" max="120" value="${escapeHtml(times.manualMin || "")}" placeholder="40" /></div>
-            <p class="muted">Fase B: la misma entrega, ahora sí ChatGPT o Claude. Midan el reloj.</p>
-            <div class="field"><label>Minutos reales de la Fase B (con IA)</label>
-              <input data-versus="${escapeHtml(it.id)}" data-versus-field="aiMin" type="number" min="0" max="120" value="${escapeHtml(times.aiMin || "")}" placeholder="ej. 18" /></div>
-            <div class="field"><label>Tres diferencias (velocidad, calidad, huecos, riesgo)</label>
-              <textarea data-versus="${escapeHtml(it.id)}" data-versus-field="notes" rows="3" placeholder="Con IA salió más rápido, pero inventó una fecha; a mano el Excel quedó más honesto.">${escapeHtml(times.notes || "")}</textarea></div>
-          </div>
         </div>
       </div>`;
     })
@@ -85,7 +70,7 @@ function renderOfficeTasks(data, done) {
     </div>
     <div class="callout think">
       <strong>Cómo se corre</strong>
-      Una mesa, un caso. 40 minutos con Word, Excel y PowerPoint. Internet apagado. Luego lo mismo con ChatGPT o Claude. Anoten los minutos. El examen de cada persona es otro Word, el de la carpeta proyectos.
+      Una mesa, un caso. 40 minutos con Word, Excel y PowerPoint. Internet apagado. Luego lo mismo con ChatGPT o Claude. El examen de cada persona es otro Word, el de la carpeta proyectos.
     </div>
     <div class="page-head" style="margin-top:28px">
       <h2>Los 4 casos de mesa</h2>
@@ -176,18 +161,5 @@ export function bindActivities(data) {
       const id = btn.getAttribute("data-copy-chat");
       copyText(document.getElementById("chat-prompt-" + id)?.innerText || "");
     });
-  });
-  document.querySelectorAll("[data-versus]").forEach((el) => {
-    const save = () => {
-      const id = el.getAttribute("data-versus");
-      const field = el.getAttribute("data-versus-field");
-      update((s) => {
-        s.progress.labs = s.progress.labs || {};
-        s.progress.labs.versus = s.progress.labs.versus || {};
-        s.progress.labs.versus[id] = { ...(s.progress.labs.versus[id] || {}), [field]: el.value };
-      });
-    };
-    el.addEventListener("input", save);
-    el.addEventListener("change", save);
   });
 }
