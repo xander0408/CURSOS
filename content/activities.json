@@ -221,6 +221,138 @@
       "do": "Pegue el texto en ambos chats. Si el guion copia las viñetas tal cual, pida: «guion hablado, no leas la pantalla».",
       "look": "Un buen guion suena a persona. Uno malo es la slide en voz alta.",
       "prompt": "Rol: coach de presentaciones.\nContexto: 4 diapositivas de práctica sobre humedad en Lote Norte. Títulos: Situación, Qué se sabe, Qué falta, Próximo paso. No hay cifras oficiales.\nObjetivo: notas de expositor (20-30 segundos por slide) para decir, no para leer.\nFormato: Slide 1 a 4, cada una con 3 frases habladas.\nRestricciones: No inventes el % de humedad ni un culpable. Incluye una frase de «esto lo confirma calidad»."
+    },
+    {
+      "id": "chat-21",
+      "n": 21,
+      "day": 2,
+      "mins": 10,
+      "focus": "Calidad",
+      "title": "Borrador de no conformidad (ficticio)",
+      "do": "Pegue el texto en ChatGPT y en Claude. Tache toda causa raíz, norma ISO con número o acción «ya aprobada» que usted no escribió.",
+      "look": "Un buen borrador deja huecos. Uno peligroso cierra el caso solo.",
+      "prompt": "Rol: redactor de calidad en un caso de práctica, no auditor certificador.\nContexto (ficticio): En Lote Norte, línea 2, se observó humedad alta en producto empacado. El lote no salió a mercado. No te doy el % oficial ni el número de no conformidad.\nObjetivo: borrador de 1 página para que Calidad lo edite.\nFormato: Hallazgo / Evidencia / Hipótesis por confirmar / Contención / Datos faltantes / Quién firma.\nRestricciones: No inventes ISO con número, causa raíz ni fecha de cierre. Marca [VERIFICAR] cada cifra o cláusula."
+    },
+    {
+      "id": "chat-22",
+      "n": 22,
+      "day": 2,
+      "mins": 8,
+      "focus": "RR. HH.",
+      "title": "Agenda de inducción de 40 minutos",
+      "do": "Pegue el texto en ambos chats. Elimine cualquier mención a evaluación, sueldo, expediente o nombre de persona.",
+      "look": "RR. HH. informa y organiza. No selecciona ni sanciona con IA.",
+      "prompt": "Rol: redactor de inducción, no evaluador de personal.\nContexto: Inducción ficticia de 40 minutos para un cargo de patio en Planta Central. Temas permitidos: seguridad general, quién pregunta dudas, horarios de práctica (usa [HORARIO]).\nObjetivo: agenda con bloques y un mensaje de bienvenida de 80 palabras.\nFormato: tabla de minutos + mensaje.\nRestricciones: Prohibido desempeño, salud, edad, cédula o nómina. No inventes el reglamento interno."
+    },
+    {
+      "id": "chat-23",
+      "n": 23,
+      "day": 2,
+      "mins": 10,
+      "focus": "Finanzas",
+      "title": "Explica una variación sin inventar el monto",
+      "do": "Pegue el texto en ambos chats. Subraye cada número. Si no lo escribió usted, es invento.",
+      "look": "Finanzas explica el método. El monto oficial lo pone un humano.",
+      "prompt": "Rol: apoyo a administración, no contador firmante.\nContexto: En un reporte de práctica, la línea «costo de empaque» de Planta Central se ve distinta mes a mes. Yo NO te doy montos, porcentajes ni cuentas contables.\nObjetivo: un párrafo de 6 líneas que liste 4 preguntas que un humano debe responder con el sistema oficial, y 2 errores típicos de pedir cifras a una IA.\nFormato: preguntas numeradas + errores.\nRestricciones: Prohibido inventar L, %, o «el promedio de la industria». No cites NIC/NIIF con número."
+    },
+    {
+      "id": "chat-24",
+      "n": 24,
+      "day": 2,
+      "mins": 8,
+      "focus": "Logística",
+      "title": "Retraso de Cliente Alfa: preguntas, no promesas",
+      "do": "Pegue el texto en ambos chats. Tache fechas de llegada, números de guía y «ya salió el camión» si usted no lo dijo.",
+      "look": "Logística pregunta. No promete al cliente.",
+      "prompt": "Rol: coordinación de despachos de práctica.\nContexto: Cliente Alfa preguntó por un pedido. Hechos que SÍ puedes usar: hay un retraso; operaciones revisa; no hay causa cerrada.\nObjetivo: 6 preguntas para la reunión de patio y un correo de 90 palabras que no comprometa día ni hora.\nFormato: lista + correo.\nRestricciones: No inventes ruta, placa, costo ni ETA. Usa [COMPLETAR] si falta un dato interno."
+    },
+    {
+      "id": "chat-25",
+      "n": 25,
+      "day": 2,
+      "mins": 8,
+      "focus": "RSE",
+      "title": "Aviso de jornada comunitaria (sin inventar alianzas)",
+      "do": "Pegue el texto en ambos chats. Si aparece una ONG, un monto donado o un «ya está aprobado», márquelo.",
+      "look": "RSE informa lo autorizado. No crea convenios en el chat.",
+      "prompt": "Rol: comunicación de RSE para un caso de aula.\nContexto: Planta Central quiere un aviso interno sobre una jornada de limpieza en un parque de práctica (no uses un barrio real). No hay fecha ni aliados confirmados.\nObjetivo: aviso de 120 palabras + 5 datos que un humano debe llenar.\nFormato: aviso + lista [COMPLETAR].\nRestricciones: No inventes patrocinadores, montos ni fotos. No prometas día. Tono respetuoso, sin paternalismo."
+    },
+    {
+      "id": "chat-26",
+      "n": 26,
+      "day": 2,
+      "mins": 10,
+      "focus": "Laboratorio",
+      "title": "Ordena observaciones, no emitas resultado",
+      "do": "Pegue el texto en ambos chats. Si la IA calcula un límite, una incertidumbre o «cumple / no cumple», eso no se usa.",
+      "look": "El laboratorio oficial lo firma un técnico. La IA solo ordena notas.",
+      "prompt": "Rol: editor de notas de laboratorio de práctica, no firmante de ensayo.\nContexto: Observaciones ficticias de Lote Norte: «muestra A más oscura que B»; «el equipo se recalibró (hora no dada)»; «Cliente Alfa espera el informe».\nObjetivo: tabla Observación / Tipo (hecho, duda, dato faltante) / Qué debe revisar un técnico.\nFormato: tabla.\nRestricciones: No inventes métodos, equipos, incertidumbre ni conformidad ISO. No des un resultado numérico."
+    },
+    {
+      "id": "chat-27",
+      "n": 27,
+      "day": 2,
+      "mins": 8,
+      "focus": "Comercial",
+      "title": "Tres ideas de mensaje, una usable",
+      "do": "Pegue el texto en ambos chats. Quédese con UNA idea. Descarte las que inventen precio, sabor «clínico» o un premio.",
+      "look": "Mercadeo propone. Legal y la marca deciden.",
+      "prompt": "Rol: redactor de ideas, no vocero oficial.\nContexto: Marcas de práctica El Cañal y Prieta. Quiero 3 ángulos de un mensaje interno de 40 palabras para un punto de venta ficticio. No hay promoción aprobada.\nObjetivo: 3 opciones etiquetadas A B C + una línea de riesgo de cada una.\nFormato: A/B/C.\nRestricciones: No inventes precios, premios, propiedades de salud ni «el más vendido». No uses empresas reales de Honduras."
+    },
+    {
+      "id": "chat-28",
+      "n": 28,
+      "day": 2,
+      "mins": 10,
+      "focus": "Excel",
+      "title": "Tabla dinámica: pide el plan, no el milagro",
+      "do": "Sin subir un libro real. Pegue el texto en ambos chats. Luego dibuje en papel las filas y columnas que usaría.",
+      "look": "Si la IA inventa campos (SKU real, cliente, factura), no copie ese plan.",
+      "prompt": "Rol: tutor de Excel que no ve mi archivo.\nContexto: Hoja de práctica con columnas planta, semana (1 a 4), unidades, costo_unitario_ficticio. Quiero comparar Planta Central vs Lote Norte por semana.\nObjetivo: 1) qué campos van en filas, columnas y valores 2) qué NO debe ir 3) cómo validar un total con suma manual de 4 celdas.\nFormato: tres apartados.\nRestricciones: No pidas el archivo real. No inventes columnas de cliente, NIT ni precio de zafra."
+    },
+    {
+      "id": "chat-29",
+      "n": 29,
+      "day": 2,
+      "mins": 8,
+      "focus": "PowerPoint",
+      "title": "Mata la slide-novela",
+      "do": "Pegue el texto en ambos chats. Cuente palabras por slide. Si alguna pasa de 40, pida recorte.",
+      "look": "Una slide ejecutiva se lee en 5 segundos. El resto va al guion.",
+      "prompt": "Rol: editor implacable de diapositivas.\nContexto: Slide sucia de práctica (no la uses en un comité real): «En Planta Central el patio tuvo filas, humedad, Cliente Alfa, costos, clima, turnos, radio, calidad, ventas y un plan 2026 con 17 acciones y 3 comités». Tiempo: 4 minutos para 1 slide.\nObjetivo: reescribe a máximo 4 viñetas de 8 palabras + notas de expositor de 25 segundos.\nFormato: viñetas + notas.\nRestricciones: No inventes un KPI. Marca [VERIFICAR] si falta un hecho."
+    },
+    {
+      "id": "chat-30",
+      "n": 30,
+      "day": 2,
+      "mins": 10,
+      "focus": "Investigación",
+      "title": "Caza la fuente inventada",
+      "do": "Pegue el texto en ambos chats. Marque cada «estudio», URL, autor o año que no esté en el párrafo base.",
+      "look": "Si suena a paper y no estaba en el texto, es alucinación.",
+      "prompt": "Rol: revisor escéptico.\nContexto: Párrafo base (único texto permitido): «En el patio de Planta Central hubo fila de camiones. Calidad retuvo un lote por humedad. Cliente Alfa preguntó el estado.»\nObjetivo: 1) reescribe el párrafo sin agregar hechos 2) lista 5 frases típicas que una IA podría inventar (estudio, %, URL) para que yo las detecte en otras salidas.\nFormato: reescritura + lista de trampas.\nRestricciones: No busques ni inventes el estudio. No pongas enlaces."
+    },
+    {
+      "id": "chat-31",
+      "n": 31,
+      "day": 2,
+      "mins": 8,
+      "focus": "Gerencia",
+      "title": "Opciones para dirección, sin elegir",
+      "do": "Pegue el texto en ambos chats. Si alguno escribe «recomiendo la opción 2», márquelo: no le toca.",
+      "look": "Dirección recibe opciones y vacíos. La firma es del cargo.",
+      "prompt": "Rol: analista que prepara un memo, no el gerente.\nContexto: Tres caminos ficticios ante la fila de patio: A contratar radio extra (costo desconocido), B reordenar turnos (impacto en personal no medido), C no cambiar y documentar. No hay números.\nObjetivo: memo de una página: opción / beneficio declarado / riesgo / dato que falta / quién debería decidir.\nFormato: tres bloques A B C.\nRestricciones: No elijas ganador. No inventes costo ni «ahorro de 20%». Cierra: La decisión es humana."
+    },
+    {
+      "id": "chat-32",
+      "n": 32,
+      "day": 2,
+      "mins": 8,
+      "focus": "Proyecto",
+      "title": "Elevator pitch de 60 segundos",
+      "do": "Pegue el texto en ambos chats. Léalo en voz alta. Si no cabe en un minuto o menciona datos internos, recorte.",
+      "look": "Problema, qué hizo la IA, qué verificó usted, quién controla. Nada más.",
+      "prompt": "Rol: coach de presentaciones de 60 segundos.\nContexto: Voy a presentar un proyecto de laboratorio. Mi cargo es [DESCRIBE SIN NOMBRE]. El problema anónimo es [UNA FRASE]. No hay cifras internas.\nObjetivo: guion hablado de 90-110 palabras: problema, qué pedí a la IA, qué revisé, riesgo, control humano.\nFormato: un solo párrafo para leer en voz alta + 3 datos que debo dejar en [COMPLETAR].\nRestricciones: No inventes ahorro en lempiras ni un cliente real. No prometas implementación."
     }
   ],
   "items": [
@@ -469,6 +601,169 @@
       "mins": 10,
       "title": "Notas de expositor",
       "do": "Para 3 títulos de slide de tu área (ficticios), escribe lo que dirías en 20 segundos. No copies las viñetas."
+    },
+    {
+      "id": "a31",
+      "day": 2,
+      "mins": 15,
+      "title": "Calidad: marca los [VERIFICAR]",
+      "do": "Usa la tarea de no conformidad. En Word o en el bloc, deja al menos 6 [VERIFICAR]. No cierres el caso.",
+      "checklist": [
+        "No puse causa raíz inventada",
+        "No cité ISO con número",
+        "Hay un espacio para firma humana"
+      ]
+    },
+    {
+      "id": "a32",
+      "day": 2,
+      "mins": 12,
+      "title": "RR. HH.: agenda limpia",
+      "do": "Imprime o copia la agenda de inducción. Tacha salud, desempeño y datos personales. Si no había, anota «limpia».",
+      "checklist": [
+        "Sin nombres reales",
+        "Sin nómina ni evaluaciones",
+        "Queda claro quién responde dudas (cargo, no persona)"
+      ]
+    },
+    {
+      "id": "a33",
+      "day": 2,
+      "mins": 12,
+      "title": "Finanzas: cuatro preguntas oficiales",
+      "do": "Escribe las 4 preguntas que un humano respondería con el sistema de la empresa (sin pegar pantallas). Guárdalas en tus notas.",
+      "checklist": [
+        "Ninguna pregunta pide pegar el ERP en el chat",
+        "No hay montos inventados",
+        "Queda claro que la IA no cierra el mes"
+      ]
+    },
+    {
+      "id": "a34",
+      "day": 2,
+      "mins": 12,
+      "title": "Logística: correo sin ETA",
+      "do": "Redacta el correo a Cliente Alfa. Un compañero tacha fechas. Si encuentra una, reescribe.",
+      "checklist": [
+        "Sin día ni hora de llegada",
+        "Pide un dato, no lo fabrica",
+        "Tono profesional"
+      ]
+    },
+    {
+      "id": "a35",
+      "day": 2,
+      "mins": 10,
+      "title": "RSE: cinco huecos",
+      "do": "Del aviso comunitario, lista 5 datos que solo un humano autorizado puede llenar.",
+      "checklist": [
+        "Sin ONG inventada",
+        "Sin monto de donación",
+        "Sin fecha falsa"
+      ]
+    },
+    {
+      "id": "a36",
+      "day": 2,
+      "mins": 12,
+      "title": "Laboratorio: cero números oficiales",
+      "do": "Revisa la tabla de observaciones. Si hay un resultado numérico o «cumple», bórralo y escribe [REVISIÓN TÉCNICA].",
+      "checklist": [
+        "No hay incertidumbre inventada",
+        "No hay veredicto de conformidad",
+        "Un técnico debe firmar"
+      ]
+    },
+    {
+      "id": "a37",
+      "day": 2,
+      "mins": 10,
+      "title": "Comercial: una idea, dos descartes",
+      "do": "Elige 1 de 3 mensajes. Anota por qué descartaste las otras (precio, premio o afirmación no autorizada).",
+      "checklist": [
+        "Una sola idea queda",
+        "Sin precio ni premio",
+        "Sin empresa real"
+      ]
+    },
+    {
+      "id": "a38",
+      "day": 2,
+      "mins": 15,
+      "title": "Excel: plan de tabla en papel",
+      "do": "Dibuja filas, columnas y valores para comparar plantas por semana. Valida un total sumando 4 celdas a mano.",
+      "checklist": [
+        "El plan no pide columnas reales de cliente",
+        "Hay un total comprobado a mano",
+        "No subí un libro de la empresa"
+      ]
+    },
+    {
+      "id": "a39",
+      "day": 2,
+      "mins": 12,
+      "title": "PowerPoint: 4 viñetas o menos",
+      "do": "Toma una slide tuya (ficticia) y déjala en 4 viñetas. Pasa el resto a notas de expositor.",
+      "checklist": [
+        "Máximo 4 viñetas",
+        "Hay notas habladas",
+        "Hay al menos un [VERIFICAR] si faltó un dato"
+      ]
+    },
+    {
+      "id": "a40",
+      "day": 2,
+      "mins": 12,
+      "title": "Detective: lista de trampas",
+      "do": "Escribe 5 frases inventadas típicas (estudio, %, URL). Úsalas como lista de chequeo en el dossier o en cualquier salida.",
+      "checklist": [
+        "5 trampas anotadas",
+        "No busqué la empresa en internet",
+        "El dictamen lo escribí yo"
+      ]
+    },
+    {
+      "id": "a41",
+      "day": 2,
+      "mins": 10,
+      "title": "Gerencia: memo sin ganador",
+      "do": "Deja el memo A/B/C con un dato faltante por opción. Prohibido la frase «recomiendo».",
+      "checklist": [
+        "Tres opciones",
+        "Ningún ganador",
+        "Cierre: decisión humana"
+      ]
+    },
+    {
+      "id": "a42",
+      "day": 2,
+      "mins": 15,
+      "title": "Pitch de 60 segundos en voz alta",
+      "do": "Lee el elevator pitch cronometrado. Si pasas de 70 segundos o se cuela un dato interno, recorta y vuelve a leer.",
+      "checklist": [
+        "Cabe en un minuto",
+        "Dije qué verifiqué yo",
+        "Dije quién controla la decisión"
+      ]
+    },
+    {
+      "id": "a43",
+      "day": 2,
+      "mins": 15,
+      "title": "Quiz de cierre Oficina + IA",
+      "do": "Juega el quiz Cierre Oficina + IA y el de números inventados (si aparece). Objetivo: 60% o más en cada uno."
+    },
+    {
+      "id": "a44",
+      "day": 2,
+      "mins": 20,
+      "title": "Comparador: un caso de tu área",
+      "do": "Elige una tarea de chat de tu cargo (calidad, patio, RR. HH., etc.). Pega las dos salidas en Comparador y escribe por qué te sirve más una.",
+      "checklist": [
+        "Usé el mismo prompt en los dos chats",
+        "Elegí por utilidad, no por marca",
+        "No pegué datos reales"
+      ]
     }
   ]
 }

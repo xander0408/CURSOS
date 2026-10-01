@@ -50,7 +50,7 @@ export function jornadaFromRoute(data, route) {
   if (name === "module" && isDay2Module(data, route.params?.moduleId)) return 2;
   if ((name === "quiz" || name === "officeQuiz") && route.params?.quizId) {
     const qz = (data.quizzes || []).find((q) => q.id === route.params.quizId);
-    if (qz && (qz.id === "qf" || qz.id === "q-cierre" || isDay2Module(data, qz.moduleId))) return 2;
+    if (qz && (qz.id === "qf" || qz.id === "q-cierre" || qz.id === "q-pitch" || isDay2Module(data, qz.moduleId))) return 2;
   }
   if (name === "comparator" || name === "progress") return readJornada();
   return 1;
@@ -77,7 +77,7 @@ export function isDay2Module(data, moduleId) {
 export function quizzesOfDay(data, day) {
   const day2 = new Set(modulesOfDay(data, 2).map((m) => m.id));
   return (data.quizzes || []).filter((qz) => {
-    if (qz.id === "qf" || qz.id === "q-cierre") return Number(day) === 2;
+    if (qz.id === "qf" || qz.id === "q-cierre" || qz.id === "q-pitch") return Number(day) === 2;
     if (qz.id === "q-rapido") return Number(day) !== 2;
     if (qz.moduleId && day2.has(qz.moduleId)) return Number(day) === 2;
     return Number(day) !== 2;

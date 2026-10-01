@@ -1300,6 +1300,234 @@
           "explain": "Utilidad local. Edición humana."
         }
       ]
+    },
+    {
+      "id": "q-numeros",
+      "moduleId": "m5",
+      "title": "Números que no pediste",
+      "subtitle": "Cacería de cifras en Office",
+      "icon": "🔢",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "Un porcentaje que la IA escribió y tú no diste…",
+          "options": [
+            "Es el KPI del mes",
+            "Se trata como invento hasta calcularlo tú",
+            "Es un redondeo inofensivo",
+            "Ya lo firmó finanzas"
+          ],
+          "correct": 1,
+          "explain": "Si no salió de ti o del sistema, no se presenta."
+        },
+        {
+          "q": "En un correo de despacho, una fecha de llegada inventada…",
+          "options": [
+            "Ayuda al cliente",
+            "Es una promesa falsa",
+            "Es formato",
+            "Da igual"
+          ],
+          "correct": 1,
+          "explain": "Operaciones no la autorizó."
+        },
+        {
+          "q": "«El promedio de la industria es 18%» sin fuente tuya…",
+          "options": [
+            "Se puede usar",
+            "Se tacha o se marca [VERIFICAR]",
+            "Es más creíble que tu dato",
+            "Va en la slide título"
+          ],
+          "correct": 1,
+          "explain": "Promedios huérfanos son teatro."
+        },
+        {
+          "q": "Tres celdas a mano sirven para…",
+          "options": [
+            "Decorar",
+            "Atrapar la fórmula antes de copiarla a toda la hoja",
+            "Sustituir Excel",
+            "Cerrar el mes"
+          ],
+          "correct": 1,
+          "explain": "Si fallan tres, fallan doscientas."
+        },
+        {
+          "q": "Un ahorro en lempiras en el proyecto, si no lo estimaste tú…",
+          "options": [
+            "Lo pone ChatGPT",
+            "No se dice en la presentación",
+            "Lo firma Claude",
+            "Se pone en rojo decorativo"
+          ],
+          "correct": 1,
+          "explain": "El valor del tiempo lo declara el cargo."
+        },
+        {
+          "q": "La columna de práctica se llama ficticio para…",
+          "options": [
+            "Esconder zafra real",
+            "Recordar que no es el libro de la empresa",
+            "Engañar a auditoría",
+            "Pagar proveedores"
+          ],
+          "correct": 1,
+          "explain": "Laboratorio. No expediente."
+        }
+      ]
+    },
+    {
+      "id": "q-areas",
+      "moduleId": "m8",
+      "title": "Casos por área",
+      "subtitle": "Calidad, patio, personas y dinero",
+      "icon": "🏭",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "En un hallazgo de calidad, la IA no debe…",
+          "options": [
+            "Pedir más evidencia",
+            "Cerrar causa raíz e ISO con número",
+            "Marcar [VERIFICAR]",
+            "Dejar espacio de firma"
+          ],
+          "correct": 1,
+          "explain": "Causa y norma las confirma Calidad."
+        },
+        {
+          "q": "Una agenda de RR. HH. hecha con IA no incluye…",
+          "options": [
+            "Bloques de tiempo",
+            "Evaluación, sueldo o expediente",
+            "Quién responde dudas (cargo)",
+            "Bienvenida breve"
+          ],
+          "correct": 1,
+          "explain": "La IA no gestiona personas."
+        },
+        {
+          "q": "Ante un retraso, el correo a Cliente Alfa…",
+          "options": [
+            "Pone ETA inventada",
+            "Pide un dato y no promete día",
+            "Culpa a un turno con nombre",
+            "Adjunta la guía real"
+          ],
+          "correct": 1,
+          "explain": "Preguntar ≠ prometer."
+        },
+        {
+          "q": "Notas de laboratorio las ordena la IA. El resultado oficial…",
+          "options": [
+            "También lo inventa",
+            "Lo firma un técnico con el método de la planta",
+            "Lo publica el chat",
+            "Da igual"
+          ],
+          "correct": 1,
+          "explain": "17025 y el informe no salen del modelo."
+        },
+        {
+          "q": "Un memo a dirección con tres opciones debe…",
+          "options": [
+            "Declarar ganador",
+            "Mostrar vacíos y dejar la firma al cargo",
+            "Esconder riesgos",
+            "Copiar un presupuesto"
+          ],
+          "correct": 1,
+          "explain": "Iluminar no es decidir."
+        },
+        {
+          "q": "RSE puede pedir un aviso. No puede…",
+          "options": [
+            "Dejar [COMPLETAR] de fecha",
+            "Inventar aliados y montos donados",
+            "Pedir tono respetuoso",
+            "Usar un parque de práctica"
+          ],
+          "correct": 1,
+          "explain": "Sin autorización no hay convenio."
+        }
+      ]
+    },
+    {
+      "id": "q-pitch",
+      "moduleId": "",
+      "title": "Presentación de 3 a 5 minutos",
+      "subtitle": "Qué se dice y qué se calla",
+      "icon": "🎤",
+      "seconds": 27,
+      "questions": [
+        {
+          "q": "En 3–5 minutos debes caber…",
+          "options": [
+            "Toda la ficha leída",
+            "Problema, qué hizo la IA, qué revisaste, control humano",
+            "Veinte slides",
+            "Un video de la IA"
+          ],
+          "correct": 1,
+          "explain": "Corto y con responsable."
+        },
+        {
+          "q": "Si te preguntan el ahorro y no lo estimaste…",
+          "options": [
+            "Inventas un 30%",
+            "Dices que aún no lo cuantificas",
+            "Pides que lo calcule ChatGPT en vivo",
+            "Cambias de tema con un chiste"
+          ],
+          "correct": 1,
+          "explain": "Honestidad > teatro."
+        },
+        {
+          "q": "Un dato interno que se «escapó» en el ensayo…",
+          "options": [
+            "Se deja",
+            "Se borra y se reemplaza por caso ficticio",
+            "Se pone en voz baja",
+            "Se justifica"
+          ],
+          "correct": 1,
+          "explain": "El aula no es el expediente."
+        },
+        {
+          "q": "Las notas del expositor sirven para…",
+          "options": [
+            "Leer la slide",
+            "Hablar; la slide solo ancla",
+            "Llenar tiempo",
+            "Esconder cifras"
+          ],
+          "correct": 1,
+          "explain": "Si lees, sobra el expositor."
+        },
+        {
+          "q": "Al comparar dos chats en el proyecto…",
+          "options": [
+            "Gana la marca que te gusta",
+            "Ganas tú: eliges la salida más útil y la editas",
+            "Se publican las dos",
+            "Se descarta una para siempre"
+          ],
+          "correct": 1,
+          "explain": "Utilidad de ese caso."
+        },
+        {
+          "q": "El cierre correcto es…",
+          "options": [
+            "La IA implementa sola",
+            "Una persona verifica y conserva la decisión",
+            "Se ocultan los riesgos",
+            "Se firma el chat"
+          ],
+          "correct": 1,
+          "explain": "Control humano visible."
+        }
+      ]
     }
   ]
 }

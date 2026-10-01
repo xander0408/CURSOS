@@ -105,6 +105,22 @@
       "useWhen": "Quieres explicar variaciones o preparar preguntas sin cargar información financiera real.",
       "hint": "Trabaja con cifras ficticias o porcentajes anonimizados autorizados.",
       "text": "Rol: Eres asistente de análisis financiero, no contador responsable.\n\nContexto: Datos ficticios: presupuesto [A], resultado [B], periodo [PERIODO], categorías [LISTA].\n\nObjetivo: Calcular variaciones simples, describir posibles explicaciones como hipótesis y preparar preguntas para el responsable.\n\nFormato: Tabla Categoría / Presupuesto / Resultado / Variación / Hipótesis / Evidencia requerida, más resumen de 5 líneas.\n\nRestricciones: Muestra los cálculos, no inventes causas, no emitas dictamen y no uses datos bancarios, fiscales o contables reales. Marca [VALIDAR EN SISTEMA] antes de cada conclusión."
+    },
+    {
+      "id": "tpl-area-excel-validar",
+      "area": "Producción y Calidad",
+      "title": "Pedir fórmula y plan de prueba",
+      "useWhen": "Vas a usar Excel con IA y necesitas que te recuerde cómo validar.",
+      "hint": "Describe columnas ficticias. Nunca subas el libro real.",
+      "text": "Rol: tutor de Excel que no ve mi archivo.\n\nContexto: Columnas de práctica: [lista]. Ejemplo de 2 filas ficticias: [ejemplos]. Quiero calcular [objetivo].\n\nObjetivo: fórmula + cómo probarla en 3 celdas + qué rompería la fórmula si cambio de columna.\n\nFormato: 1) fórmula 2) prueba 3) riesgos.\n\nRestricciones: No inventes columnas. No pidas zafra, nómina ni clientes reales."
+    },
+    {
+      "id": "tpl-area-pitch",
+      "area": "Gerencia y Dirección",
+      "title": "Guion de 90 segundos para el cierre",
+      "useWhen": "Vas a presentar el proyecto del laboratorio.",
+      "hint": "Sustituye el problema por el de tu cargo, anónimo.",
+      "text": "Rol: coach de presentaciones breves.\n\nContexto: Cargo: [sin nombre]. Problema anónimo: [una frase]. Usé ChatGPT y Claude. No hay cifras internas.\n\nObjetivo: guion de 90 segundos: problema, pedido a la IA, verificación, riesgo, quién decide.\n\nFormato: párrafo hablado + 3 [COMPLETAR].\n\nRestricciones: No inventes ahorro ni implementación. No menciones empresas reales."
     }
   ],
   "commonErrors": [

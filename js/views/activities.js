@@ -3,6 +3,27 @@ import { escapeHtml, toast, copyText } from "../ui.js";
 import { checkBadges } from "../badges.js";
 import { assetUrl } from "../paths.js";
 
+const OFFICE_GROUPS = [
+  { id: "oficina", title: "Oficina del día", match: ["Minuta", "Audiencia", "Cifras", "Decisión humana", "Agenda", "Seguimiento", "Riesgos", "Gerencia"] },
+  { id: "excel", title: "Excel", match: ["Excel"] },
+  { id: "ppt", title: "PowerPoint", match: ["PowerPoint", "Guion"] },
+  { id: "invest", title: "Investigación", match: ["Investigación"] },
+  { id: "areas", title: "Casos por área", match: ["Calidad", "RR. HH.", "Finanzas", "Logística", "RSE", "Laboratorio", "Comercial"] },
+  { id: "cierre", title: "Cierre y proyecto", match: ["Proyecto"] },
+];
+
+function groupChats(chats) {
+  const used = new Set();
+  const blocks = OFFICE_GROUPS.map((g) => {
+    const items = chats.filter((t) => g.match.includes(t.focus));
+    items.forEach((t) => used.add(t.id));
+    return { ...g, items };
+  });
+  const rest = chats.filter((t) => !used.has(t.id));
+  if (rest.length) blocks.push({ id: "mas", title: "Más prácticas", match: [], items: rest });
+  return blocks.filter((b) => b.items.length);
+}
+
 export function renderActivities(data, { day = 1 } = {}) {
   const pack = data.activities;
   const done = getState().progress.labs?.checks || {};
@@ -10,16 +31,21 @@ export function renderActivities(data, { day = 1 } = {}) {
   const chats = (pack.chatTasks || []).filter((t) => (wantDay2 ? t.day === 2 : t.day !== 2));
   const chatOk = chats.filter((i) => done[i.id]).length;
   const extras = (pack.items || []).filter((it) => (wantDay2 ? it.day === 2 : it.day !== 2));
+  const officeIds = ["a13", "a14", "a15"];
+  const office = extras.filter((it) => officeIds.includes(it.id));
+  const rest = extras.filter((it) => !officeIds.includes(it.id));
   const n = extras.length;
   const ok = extras.filter((i) => done[i.id]).length;
 
-  const chatCards = chats
-    .map((it) => {
-      const on = !!done[it.id];
-      return `<div class="card activity-card chat-task ${on ? "done" : ""}">
+  const order = new Map(chats.map((t, i) => [t.id, i + 1]));
+
+  function chatCard(it) {
+    const on = !!done[it.id];
+    const num = order.get(it.id) || it.n;
+    return `<div class="card activity-card chat-task ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(it.id)}" ${on ? "checked" : ""} />
         <div>
-          <p class="muted">Tarea ${it.n} de ${chats.length} · ${escapeHtml(it.focus || "Práctica")} · Día ${it.day} · ${it.mins} min</p>
+          <p class="muted">Tarea ${num} de ${chats.length} · ${escapeHtml(it.focus || "Práctica")} · ${it.mins} min</p>
           <h3>${escapeHtml(it.title)}</h3>
           <p>${escapeHtml(it.do)}</p>
           <p><strong>Qué mirar:</strong> ${escapeHtml(it.look)}</p>
@@ -32,10 +58,7 @@ export function renderActivities(data, { day = 1 } = {}) {
           </div>
         </div>
       </div>`;
-    })
-    .join("");
-
-  const rest = extras;
+  }
 
   function itemCard(it) {
     const on = !!done[it.id];
@@ -62,7 +85,7 @@ export function renderActivities(data, { day = 1 } = {}) {
     return `<div class="card activity-card ${on ? "done" : ""}">
         <input type="checkbox" data-act="${escapeHtml(it.id)}" ${on ? "checked" : ""} />
         <div>
-          <p class="muted">Día ${it.day} · ${it.mins} min</p>
+          <p class="muted">${it.mins} min</p>
           <h3>${escapeHtml(it.title)}</h3>
           <p>${escapeHtml(it.do)}</p>
           ${resources}
@@ -71,21 +94,37 @@ export function renderActivities(data, { day = 1 } = {}) {
       </div>`;
   }
 
-  const cards = rest.map(itemCard).join("");
+  const chatHtml = wantDay2
+    ? groupChats(chats)
+        .map((g) => `<h3 style="margin-top:28px">${escapeHtml(g.title)}</h3><div class="activity-grid">${g.items.map(chatCard).join("")}</div>`)
+        .join("")
+    : `<div class="activity-grid">${chats.map(chatCard).join("")}</div>`;
 
   return `
     <div class="page-head">
-      <h2>Tareas en ChatGPT y Claude</h2>
-      <p>${wantDay2 ? "Tareas de Oficina + IA. En la mayoría, el mismo texto en los dos chats." : "Prácticas de esta jornada. En la mayoría, el mismo texto en los dos chats."} No envíes el resultado.</p>
-      <p><strong>${chatOk} de ${chats.length}</strong> completadas.</p>
+      <h2>${wantDay2 ? "Tareas · Oficina + IA" : "Tareas en ChatGPT y Claude"}</h2>
+      <p>${
+        wantDay2
+          ? "Un viernes completo: oficina del día, Excel, PowerPoint, investigación, casos por área y cierre. El mismo texto en los dos chats, salvo que la tarjeta diga otra cosa."
+          : "Prácticas de esta jornada. En la mayoría, el mismo texto en los dos chats."
+      } No envíes el resultado.</p>
+      <p><strong>${chatOk} de ${chats.length}</strong> tareas de chat · <strong>${ok} de ${n}</strong> prácticas de lista.</p>
     </div>
-    <div class="activity-grid">${chatCards}</div>
+    ${chatHtml}
+    ${
+      wantDay2 && office.length
+        ? `<div class="page-head" style="margin-top:28px">
+      <h2>Tres prácticas con archivos de Office</h2>
+      <p>Excel, PowerPoint y Word de práctica. Ábralos en Microsoft Office. No use libros reales.</p>
+    </div>
+    <div class="activity-grid">${office.map(itemCard).join("")}</div>`
+        : ""
+    }
     <div class="page-head" style="margin-top:28px">
-      <h2>${escapeHtml(pack.title)}</h2>
-      <p>${escapeHtml(pack.subtitle)}</p>
-      <p><strong>${ok} de ${n}</strong> actividades complementarias.</p>
+      <h2>${wantDay2 ? "Más prácticas de esta jornada" : escapeHtml(pack.title)}</h2>
+      <p>${wantDay2 ? "Marca cada una al terminar. Son el puente entre el chat y el proyecto." : escapeHtml(pack.subtitle)}</p>
     </div>
-    <div class="activity-grid">${cards}</div>
+    <div class="activity-grid">${(wantDay2 ? rest : extras).map(itemCard).join("")}</div>
   `;
 }
 

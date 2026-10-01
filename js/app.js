@@ -18,8 +18,8 @@ import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260912d";
-import { renderActivities, bindActivities } from "./views/activities.js?v=20260927s2";
-import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260930j1";
+import { renderActivities, bindActivities } from "./views/activities.js?v=20260930j2";
+import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260930j2";
 import { isDay2Module, jornadaFromRoute, applyJornada, readJornada } from "./journey.js";
 import { renderCronograma } from "./views/schedule.js";
 import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n4";
@@ -157,7 +157,7 @@ function highlightNav(pathName, route) {
   if (pathName === "module" && isDay2Module(data, route?.params?.moduleId)) active = "/oficina/modulos";
   if ((pathName === "quiz" || pathName === "officeQuiz") && route?.params?.quizId) {
     const qz = (data.quizzes || []).find((q) => q.id === route.params.quizId);
-    if (qz && (qz.id === "qf" || qz.id === "q-cierre" || isDay2Module(data, qz.moduleId))) active = "/oficina/quiz";
+    if (qz && (qz.id === "qf" || qz.id === "q-cierre" || qz.id === "q-pitch" || isDay2Module(data, qz.moduleId))) active = "/oficina/quiz";
   }
   document.querySelectorAll(".nav-link").forEach((a) => {
     const r = a.getAttribute("data-route");
@@ -215,7 +215,7 @@ function renderInner() {
   const onDay2 =
     !!officeNames[route.name] ||
     (route.name === "module" && isDay2Module(data, route.params.moduleId)) ||
-    !!(quiz && (quiz.id === "qf" || quiz.id === "q-cierre" || isDay2Module(data, quiz.moduleId)));
+    !!(quiz && (quiz.id === "qf" || quiz.id === "q-cierre" || quiz.id === "q-pitch" || isDay2Module(data, quiz.moduleId)));
   applyJornada(jornadaFromRoute(data, route));
   const jornada = readJornada();
   document.getElementById("header-progress").style.width = (jornada === 2 || onDay2 ? dayPct(data, 2) : globalPct(data)) + "%";
