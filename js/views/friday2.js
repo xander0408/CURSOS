@@ -3,7 +3,7 @@ import { escapeHtml } from "../ui.js";
 import { assetUrl } from "../paths.js";
 import { nextFriday2Step, modulesOfDay, OFFICE_NAME } from "../journey.js";
 import { moduleProgress } from "./modules.js?v=20260927s2";
-import { dayPct } from "./dashboard.js?v=20260927s2";
+import { dayPct } from "./dashboard.js?v=20260930j1";
 
 const FILES = [
   {
@@ -64,7 +64,7 @@ export function renderFriday2(data) {
       <div class="page-head">
         <p class="muted">Jornada propia · Excel, PowerPoint, investigación y cierre</p>
         <h2>${OFFICE_NAME}</h2>
-        <p>Esta jornada tiene su propio menú: módulos, tareas, retos, quiz, prompts y proyecto. No se mezcla con la ruta del primer día.</p>
+        <p>Módulos, tareas, retos, quiz, prompts y proyecto de esta jornada. El otro viernes está en la pestaña de arriba, no en este menú.</p>
       </div>
       <div class="grid grid-4" style="margin-bottom:20px">
         <div class="card stat"><span class="value">${pct}%</span><span class="label">Avance de esta jornada</span></div>

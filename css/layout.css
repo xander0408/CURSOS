@@ -106,14 +106,37 @@
   color: var(--accent);
   font-weight: 600;
 }
-.nav-sep {
-  margin: 14px 8px 6px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-dim);
+.jornada-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin: 4px 0 12px;
+}
+.jornada-tab {
+  display: block;
+  text-align: center;
+  padding: 8px 6px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+.jornada-tab:hover {
+  text-decoration: none;
+  color: var(--text);
+  background: var(--accent-dim);
+}
+.jornada-tab.is-on {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--bg);
+}
+body.jornada-2 .nav-d1,
+body.jornada-1 .nav-d2 {
+  display: none;
 }
 .nav-link.nav-day2 {
   background: var(--accent-dim);

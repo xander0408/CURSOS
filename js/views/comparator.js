@@ -25,7 +25,10 @@ export function emptyCmpRun() {
 }
 
 export function allComparatorCases(data) {
-  const tasks = (data.activities?.chatTasks || []).map((t) => ({
+  const jornada = Number(document.body.classList.contains("jornada-2") ? 2 : 1);
+  const tasks = (data.activities?.chatTasks || [])
+    .filter((t) => (jornada === 2 ? t.day === 2 : t.day !== 2))
+    .map((t) => ({
     id: t.id,
     title: `Tarea ${t.n}: ${t.title}`,
     brief: t.do,

@@ -14,6 +14,57 @@ export function isPrivileged() {
 
 export const OFFICE_NAME = "Oficina + IA";
 export const OFFICE_HOME = "#/oficina";
+const JORNADA_KEY = "aiBusinessLab.jornada";
+
+export function readJornada() {
+  try {
+    return Number(localStorage.getItem(JORNADA_KEY)) === 2 ? 2 : 1;
+  } catch {
+    return 1;
+  }
+}
+
+export function writeJornada(day) {
+  try {
+    localStorage.setItem(JORNADA_KEY, String(Number(day) === 2 ? 2 : 1));
+  } catch {
+    /* el avance de los alumnos no depende de esta clave */
+  }
+}
+
+export function jornadaFromRoute(data, route) {
+  const name = route?.name || "";
+  if (name === "admin" || name === "cronograma" || name === "timer") return readJornada();
+  if (
+    name === "friday2" ||
+    name === "officeHome" ||
+    name === "officeModules" ||
+    name === "officeTasks" ||
+    name === "officeChallenges" ||
+    name === "officeQuiz" ||
+    name === "officePrompts" ||
+    name === "project"
+  ) {
+    return 2;
+  }
+  if (name === "module" && isDay2Module(data, route.params?.moduleId)) return 2;
+  if ((name === "quiz" || name === "officeQuiz") && route.params?.quizId) {
+    const qz = (data.quizzes || []).find((q) => q.id === route.params.quizId);
+    if (qz && (qz.id === "qf" || qz.id === "q-cierre" || isDay2Module(data, qz.moduleId))) return 2;
+  }
+  if (name === "comparator" || name === "progress") return readJornada();
+  return 1;
+}
+
+export function applyJornada(day) {
+  const d = Number(day) === 2 ? 2 : 1;
+  writeJornada(d);
+  document.body.classList.toggle("jornada-1", d === 1);
+  document.body.classList.toggle("jornada-2", d === 2);
+  document.querySelectorAll("[data-jornada]").forEach((el) => {
+    el.classList.toggle("is-on", Number(el.getAttribute("data-jornada")) === d);
+  });
+}
 
 export function modulesOfDay(data, day) {
   return (data.course?.modules || []).filter((m) => (Number(day) === 2 ? m.day === 2 : m.day !== 2));
@@ -64,9 +115,9 @@ export function nextPathStep(data) {
   const locked = modulesOfDay(data, 1).find((m) => !lessonsComplete(data.modules[m.id]));
   if (locked) return lockedModuleStep(data, locked);
   return {
-    href: OFFICE_HOME,
-    title: OFFICE_NAME,
-    detail: "Excel, PowerPoint, investigación y proyecto están en su propia jornada.",
+    href: "#/progreso",
+    title: "Ruta de este viernes lista",
+    detail: "Ya puedes repasar quiz y tareas de esta pestaña. El otro viernes está en su pestaña, arriba del menú.",
   };
 }
 

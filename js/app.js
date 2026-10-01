@@ -5,12 +5,12 @@ import { parseHash, onRoute } from "./router.js?v=20260927s2";
 import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks, seedInstructorGuide } from "./store.js";
 import { setSyncApi, pullIntoLocal, pushNow } from "./sync.js";
 import { toast, openModal, closeModal } from "./ui.js?v=20260910s";
-import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct, dayPct } from "./views/dashboard.js?v=20260927s2";
+import { renderDashboard, bindDashboard, renderProgress, bindProgress, globalPct, dayPct } from "./views/dashboard.js?v=20260930j1";
 import { renderModulesIndex, renderModule, bindModuleView, moduleProgress } from "./views/modules.js?v=20260927s2";
 import { checkBadges } from "./badges.js";
 import { renderChallengesIndex, bindChallengesIndex } from "./views/challenges.js?v=20260927s2";
 import { renderPromptLab, bindPromptLab } from "./views/prompt-lab-view.js?v=20260911p2";
-import { renderComparator, bindComparator } from "./views/comparator.js";
+import { renderComparator, bindComparator } from "./views/comparator.js?v=20260930j1";
 import { renderLibrary, bindLibrary } from "./views/library.js?v=20260927s2";
 import { renderProject, bindProject } from "./views/project.js?v=20260927s2";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./views/quiz.js?v=20260927s2";
@@ -19,8 +19,8 @@ import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClas
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260912d";
 import { renderActivities, bindActivities } from "./views/activities.js?v=20260927s2";
-import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260927s2";
-import { isDay2Module } from "./journey.js";
+import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260930j1";
+import { isDay2Module, jornadaFromRoute, applyJornada, readJornada } from "./journey.js";
 import { renderCronograma } from "./views/schedule.js";
 import { startClockLoop, bindInstructorClock, refreshClockFace, renderTimerPage, bindTimerNova, stopTimerNova } from "./clock.js?v=20260910n4";
 
@@ -216,8 +216,10 @@ function renderInner() {
     !!officeNames[route.name] ||
     (route.name === "module" && isDay2Module(data, route.params.moduleId)) ||
     !!(quiz && (quiz.id === "qf" || quiz.id === "q-cierre" || isDay2Module(data, quiz.moduleId)));
-  document.getElementById("header-progress").style.width = (onDay2 ? dayPct(data, 2) : globalPct(data)) + "%";
-  document.body.classList.toggle("is-friday2", onDay2);
+  applyJornada(jornadaFromRoute(data, route));
+  const jornada = readJornada();
+  document.getElementById("header-progress").style.width = (jornada === 2 || onDay2 ? dayPct(data, 2) : globalPct(data)) + "%";
+  document.body.classList.toggle("is-friday2", jornada === 2);
   const orgEl = document.getElementById("brand-org");
   if (orgEl) orgEl.textContent = "Magnatic";
   document.title = `${data.course.title} — Magnatic`;
@@ -268,7 +270,7 @@ function renderInner() {
     root.innerHTML = renderProject(data, route.params.step);
     bindProject(data, route.params.step);
   } else if (route.name === "progress") {
-    root.innerHTML = renderProgress(data);
+    root.innerHTML = renderProgress(data, { day: readJornada() });
     bindProgress(data);
   } else if (route.name === "perfil") {
     root.innerHTML = renderPerfil(data);

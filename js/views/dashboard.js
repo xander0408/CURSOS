@@ -99,15 +99,14 @@ export function renderDashboard(data) {
         <a class="btn" href="#/actividades">Actividades</a>
       </div>
     </div>
-    <p class="muted" style="margin-top:20px">Excel, PowerPoint e investigación están en el menú <a href="#/oficina">Oficina + IA</a>.</p>
   `;
 }
 
 export function bindDashboard() {}
 
-export function renderProgress(data) {
+export function renderProgress(data, { day = 1 } = {}) {
   const s = getState();
-  const rows = modulesOfDay(data, 1)
+  const rows = modulesOfDay(data, day)
     .map((m) => {
       const p = moduleProgress(data.modules[m.id]);
       const label = m.number === 0 ? "Inicio" : `M${m.number}`;
@@ -126,11 +125,6 @@ export function renderProgress(data) {
       <p>La puntuación de cada reto usa el <strong>último intento</strong>. Los puntos no sustituyen el criterio en el trabajo real.</p>
     </div>
     <div class="grid grid-3">${rows}</div>
-    <div class="card" style="margin-top:20px">
-      <h3>Oficina + IA</h3>
-      <p>El avance de Excel, PowerPoint, investigación y proyecto está en su propia jornada.</p>
-      <a class="btn btn-primary" href="#/oficina">Abrir Oficina + IA</a>
-    </div>
     <h3 style="margin-top:28px">Insignias</h3>
     <div class="grid grid-2">${badges}</div>
     <div class="card" style="margin-top:20px">
