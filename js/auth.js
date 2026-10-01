@@ -81,8 +81,14 @@ export function renderLogin(root, data, onSuccess) {
         <p class="login-org" id="login-org">Magnatic</p>
 
         <div class="field">
-          <label>Usuario</label>
-          <input id="login-user" autocomplete="username" placeholder="Tu usuario (ej. gmejia)" />
+          <label>Tu nombre</label>
+          <select id="login-user">
+            <option value="">Elige tu nombre</option>
+            ${(data.students || [])
+              .map((s) => `<option value="${escapeHtml(s.username)}">${escapeHtml(s.name)}</option>`)
+              .join("")}
+            ${data.instructor ? `<option value="${escapeHtml(data.instructor.username)}">Instructor</option>` : ""}
+          </select>
         </div>
         <div class="field">
           <label>Contraseña</label>
@@ -101,9 +107,9 @@ export function renderLogin(root, data, onSuccess) {
 
   const go = () => {
     const user = userInput.value.trim();
-    const pass = document.getElementById("login-pass").value;
+    const pass = document.getElementById("login-pass").value.trim();
     if (!user) {
-      msg.textContent = "Escribe o elige tu usuario.";
+      msg.textContent = "Elige tu nombre.";
       return;
     }
     if (!pass) {

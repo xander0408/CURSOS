@@ -15,7 +15,7 @@ import { renderLibrary, bindLibrary } from "./views/library.js?v=20260927s2";
 import { renderProject, bindProject } from "./views/project.js?v=20260930p3";
 import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./views/quiz.js?v=20260927s2";
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
-import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260910t";
+import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260930l1";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
 import { renderAdmin, bindAdmin } from "./views/aula.js?v=20260912d";
 import { renderActivities, bindActivities } from "./views/activities.js?v=20260930v5";
