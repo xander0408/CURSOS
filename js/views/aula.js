@@ -3,6 +3,7 @@ import { escapeHtml, toast } from "../ui.js";
 import { fetchAdminSaves, syncEnabled } from "../sync.js";
 import { mergeRosterSaves, mergeTwoSaves, shortName, snapshotFromState } from "../aula-stats.js?v=20260912d";
 import { recapBoardHtml, printCollectedPdf } from "../aula-dossier.js?v=20260912d";
+import { assetUrl } from "../paths.js";
 function localSnapshots() {
   const out = [];
   for (const u of listLocalStudentSaves()) {
@@ -147,7 +148,8 @@ export function renderAdmin(data) {
       <p>Progreso, tareas, evaluaciones y proyecto. El temporizador está en el menú: Timer.</p>
     </div>
     <p class="btn-row">
-      <button class="btn btn-primary" type="button" id="btn-aula-pdf">Descargar PDF de lo recolectado</button>
+      <a class="btn btn-primary" href="${escapeHtml(assetUrl("recursos/instructor/Rubrica-Evaluacion-Participantes-CISA.xlsx"))}" download="Rubrica-Evaluacion-Participantes-CISA.xlsx">Descargar rúbrica Excel</a>
+      <button class="btn" type="button" id="btn-aula-pdf">Descargar PDF de lo recolectado</button>
     </p>
     <div id="aula-live"><p class="muted">Cargando el aula…</p></div>
     <div class="card" style="margin-top:16px">

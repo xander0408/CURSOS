@@ -3,7 +3,7 @@
  * node build-rubrica-cisa.mjs
  */
 import JSZip from "jszip";
-import { writeFileSync, readFileSync } from "fs";
+import { writeFileSync, readFileSync, mkdirSync, copyFileSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -16,7 +16,7 @@ const SCORES = {
   gmejia: 96,
   gcerrato: 94,
   kescalante: 97,
-  dzaldivar: 95,
+  dzaldivar: 75,
   abaide: 93,
   orodriguez: 98,
   mlopez: 92,
@@ -54,10 +54,79 @@ function xmlEsc(s) {
     .replace(/"/g, "&quot;");
 }
 
+function colLetter(n) {
+  let s = "";
+  let x = n;
+  while (x > 0) {
+    const m = (x - 1) % 26;
+    s = String.fromCharCode(65 + m) + s;
+    x = Math.floor((x - 1) / 26);
+  }
+  return s;
+}
+
 async function saveZip(files, dest) {
   const zip = new JSZip();
   for (const [name, body] of Object.entries(files)) zip.file(name, body);
   writeFileSync(dest, await zip.generateAsync({ type: "nodebuffer", compression: "DEFLATE" }));
+}
+
+function sheetXml(matrix) {
+  const rows = matrix
+    .map((row, i) => {
+      const cells = row
+        .map((val, j) => {
+          const ref = `${colLetter(j + 1)}${i + 1}`;
+          if (typeof val === "number") return `<c r="${ref}"><v>${val}</v></c>`;
+          return `<c r="${ref}" t="inlineStr"><is><t>${xmlEsc(val)}</t></is></c>`;
+        })
+        .join("");
+      return `<row r="${i + 1}">${cells}</row>`;
+    })
+    .join("");
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">
+  <sheetData>${rows}</sheetData>
+</worksheet>`;
+}
+
+async function writeXlsx(dest, sheets) {
+  const sheetFiles = {};
+  const rels = [];
+  const bookSheets = [];
+  sheets.forEach((sh, i) => {
+    const id = i + 1;
+    sheetFiles[`xl/worksheets/sheet${id}.xml`] = sheetXml(sh.rows);
+    rels.push(
+      `<Relationship Id="rId${id}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${id}.xml"/>`
+    );
+    bookSheets.push(`<sheet name="${xmlEsc(sh.name)}" sheetId="${id}" r:id="rId${id}"/>`);
+  });
+  await saveZip(
+    {
+      "[Content_Types].xml": `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>
+  ${sheets.map((_, i) => `<Override PartName="/xl/worksheets/sheet${i + 1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join("")}
+</Types>`,
+      "_rels/.rels": `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/>
+</Relationships>`,
+      "xl/workbook.xml": `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">
+  <sheets>${bookSheets.join("")}</sheets>
+</workbook>`,
+      "xl/_rels/workbook.xml.rels": `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  ${rels.join("")}
+</Relationships>`,
+      ...sheetFiles,
+    },
+    dest
+  );
 }
 
 async function writeDocx(dest, title, paragraphs) {
@@ -208,58 +277,67 @@ function snapshotFor(st) {
   };
 }
 
-const saves = roster.students.map(snapshotFor);
+function partsOf(username, score) {
+  if (username === "dzaldivar") return { part: 10, mods: 16, proj: 30, human: 19 };
+  return { part: pctOf(score, 20), mods: pctOf(score, 25), proj: pctOf(score, 35), human: pctOf(score, 20) };
+}
 
-const rows = saves.map((s) => {
-  const st = roster.students.find((x) => x.username === s.username);
+const people = roster.students.map((st) => {
   const t = taskById[st.taskId] || {};
-  const score = SCORES[s.username];
-  return `${s.name}  ·  ${s.role}  ·  ${score}%  ·  Aprobado  ·  Proyecto: ${t.title || "—"}`;
+  const score = SCORES[st.username] || 90;
+  const p = partsOf(st.username, score);
+  const danilo = st.username === "dzaldivar";
+  return {
+    ...st,
+    score,
+    ...p,
+    project: t.title || "—",
+    result: danilo ? "Observado" : "Aprobado",
+    note: danilo
+      ? "Casi no asistió el segundo viernes (25 de septiembre). Baja en participación y en módulos de oficina."
+      : "Cursó las dos jornadas. Proyecto de su cargo cerrado.",
+  };
 });
 
-const avg = Math.round(Object.values(SCORES).reduce((a, b) => a + b, 0) / Object.values(SCORES).length);
+const avg = Math.round(people.reduce((a, p) => a + p.score, 0) / people.length);
 
-await writeDocx(join(ROOT, "Rubrica-Evaluacion-Participantes-CISA.docx"), "Rúbrica de evaluación · AI Business Lab", [
-  "Para: Central de Ingenios (CISA), San Pedro Sula",
-  "De: Magnatic · Instructor del laboratorio",
-  "Curso: Inteligencia artificial aplicada al negocio · 16 horas · 11 y 25 de septiembre de 2026",
-  "Fecha de esta nota: 5 de octubre de 2026",
-  "",
-  "Diez personas del equipo gerencial. Dos viernes. ChatGPT y Claude (cuentas gratis), Word, Excel y PowerPoint. Casos de práctica (Planta Central, Lote Norte, Cliente Alfa). Nada de datos reales de la empresa.",
-  "",
-  "# Cómo se calificó",
-  "1. Participación y uso del laboratorio (20%). Entró, hizo las prácticas, comparó los dos chats.",
-  "2. Módulos y prácticas de oficina (25%). Historia, prompts, Word, Excel, PowerPoint, investigación y productividad.",
-  "3. Proyecto final de su cargo (35%). Ficha lista: problema, prompt, ChatGPT, Claude, comparación, validación humana y cómo lo contaría en 3 a 5 minutos.",
-  "4. Criterio y control humano (20%). No pegar nómina ni contratos. La IA propone; la persona revisa y firma.",
-  "",
-  "Nota mínima para aprobar: 80%. Esta promoción quedó entre 91% y 98%.",
-  `Promedio del grupo: ${avg}%.`,
-  "",
-  "# Resultado por persona",
-  ...rows,
-  "",
-  "# Desglose (sobre 100)",
-  ...saves.map((s) => {
-    const score = SCORES[s.username];
-    const a = pctOf(score, 20);
-    const b = pctOf(score, 25);
-    const c = pctOf(score, 35);
-    const d = pctOf(score, 20);
-    return `${s.name}: participación ${a}/20  ·  módulos ${b}/25  ·  proyecto ${c}/35  ·  control humano ${d}/20  ·  total ${score}`;
-  }),
-  "",
-  "# Proyecto de cada uno",
-  ...roster.students.map((st) => {
-    const t = taskById[st.taskId] || {};
-    return `${st.name} (${st.role}): ${t.title}. ${t.doThis || t.deliverable}. Ficha cerrada.`;
-  }),
-  "",
-  "# Lectura para jefatura",
-  "El grupo puede armar un primer borrador con IA y sabe que el dato oficial y la firma son de ellos. Nadie salió a usar un chat con información interna. El laboratorio no sustituye el criterio del cargo.",
-  "",
-  "Quedo atento si CISA necesita esta nota en otro formato.",
-  "Magnatic",
+const notas = [
+  ["Nombre", "Cargo", "Usuario", "Participación /20", "Módulos /25", "Proyecto /35", "Control humano /20", "Nota %", "Resultado", "Proyecto", "Observación"],
+  ...people.map((p) => [
+    p.name,
+    p.role,
+    p.username,
+    p.part,
+    p.mods,
+    p.proj,
+    p.human,
+    p.score,
+    p.result,
+    p.project,
+    p.note,
+  ]),
+  [],
+  ["Promedio del grupo", "", "", "", "", "", "", avg, "", "", ""],
+];
+
+const criterios = [
+  ["Criterio", "Peso", "Qué se miró"],
+  ["Participación y uso del laboratorio", 20, "Asistencia a los dos viernes. Prácticas y comparación de los dos chats."],
+  ["Módulos y prácticas de oficina", 25, "Historia, prompts, Word, Excel, PowerPoint, investigación y productividad."],
+  ["Proyecto final de su cargo", 35, "Problema, prompt, ChatGPT, Claude, comparación y revisión humana."],
+  ["Criterio y control humano", 20, "No pegar datos reales. La IA propone; la persona revisa y firma."],
+  [],
+  ["Nota mínima para aprobar", 80, "Hernán Danilo Zaldívar Nolasco: 75. Casi no entró el 2.º viernes."],
+  ["Curso", "16 h", "11 y 25 de septiembre de 2026. San Pedro Sula. Magnatic para CISA."],
+];
+
+const destWeb = join(ROOT, "recursos", "instructor", "Rubrica-Evaluacion-Participantes-CISA.xlsx");
+const destRoot = join(ROOT, "Rubrica-Evaluacion-Participantes-CISA.xlsx");
+mkdirSync(join(ROOT, "recursos", "instructor"), { recursive: true });
+await writeXlsx(destWeb, [
+  { name: "Notas", rows: notas },
+  { name: "Criterios", rows: criterios },
 ]);
+copyFileSync(destWeb, destRoot);
 
-console.log("Rúbrica y aula-seed listos. Promedio", avg);
+console.log("Excel listo. Promedio", avg, "· Danilo 75");
