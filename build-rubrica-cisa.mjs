@@ -277,29 +277,9 @@ function snapshotFor(st) {
   };
 }
 
-function partsOf(username, score) {
-  if (username === "dzaldivar") return { part: 10, mods: 16, proj: 30, human: 19 };
-  return { part: pctOf(score, 20), mods: pctOf(score, 25), proj: pctOf(score, 35), human: pctOf(score, 20) };
-}
-
-const people = roster.students.map((st) => {
-  const t = taskById[st.taskId] || {};
-  const score = SCORES[st.username] || 90;
-  const p = partsOf(st.username, score);
-  const danilo = st.username === "dzaldivar";
-  return {
-    ...st,
-    score,
-    ...p,
-    project: t.title || "—",
-    result: danilo ? "Observado" : "Aprobado",
-    note: danilo
-      ? "Casi no asistió el segundo viernes (25 de septiembre). Baja en participación y en módulos de oficina."
-      : "Cursó las dos jornadas. Proyecto de su cargo cerrado.",
-  };
-});
-
-const avg = Math.round(people.reduce((a, p) => a + p.score, 0) / people.length);
+const ev = JSON.parse(readFileSync(join(ROOT, "content", "evaluacion-cisa.json"), "utf8"));
+const people = ev.people;
+const avg = ev.average;
 
 const notas = [
   ["Nombre", "Cargo", "Usuario", "Participación /20", "Módulos /25", "Proyecto /35", "Control humano /20", "Nota %", "Resultado", "Proyecto", "Observación"],
@@ -322,13 +302,10 @@ const notas = [
 
 const criterios = [
   ["Criterio", "Peso", "Qué se miró"],
-  ["Participación y uso del laboratorio", 20, "Asistencia a los dos viernes. Prácticas y comparación de los dos chats."],
-  ["Módulos y prácticas de oficina", 25, "Historia, prompts, Word, Excel, PowerPoint, investigación y productividad."],
-  ["Proyecto final de su cargo", 35, "Problema, prompt, ChatGPT, Claude, comparación y revisión humana."],
-  ["Criterio y control humano", 20, "No pegar datos reales. La IA propone; la persona revisa y firma."],
+  ...ev.weights.map((w) => [w.name, w.max, w.name.includes("Participación") ? "Asistencia a los dos viernes. Prácticas y los dos chats." : w.name.includes("Módulos") ? "Historia, prompts, Word, Excel, PowerPoint, investigación y productividad." : w.name.includes("Proyecto") ? "Problema, prompt, ChatGPT, Claude, comparación y revisión humana." : "No pegar datos reales. La IA propone; la persona revisa y firma."]),
   [],
-  ["Nota mínima para aprobar", 80, "Hernán Danilo Zaldívar Nolasco: 75. Casi no entró el 2.º viernes."],
-  ["Curso", "16 h", "11 y 25 de septiembre de 2026. San Pedro Sula. Magnatic para CISA."],
+  ["Nota mínima para aprobar", ev.passMark, "Danilo Zaldívar: 75. Casi no entró el viernes 2 de octubre."],
+  ["Curso", "16 h", ev.dates + ". San Pedro Sula. Magnatic para CISA."],
 ];
 
 const destWeb = join(ROOT, "recursos", "instructor", "Rubrica-Evaluacion-Participantes-CISA.xlsx");

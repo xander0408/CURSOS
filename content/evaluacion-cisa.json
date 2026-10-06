@@ -1,0 +1,30 @@
+{
+  "title": "Rúbrica de evaluación · AI Business Lab",
+  "org": "Central de Ingenios (CISA)",
+  "city": "San Pedro Sula",
+  "hours": 16,
+  "friday1": "Viernes 11 de septiembre de 2026",
+  "friday2": "Viernes 2 de octubre de 2026",
+  "dates": "Viernes 11 de septiembre y viernes 2 de octubre de 2026",
+  "issued": "5 de octubre de 2026",
+  "passMark": 80,
+  "average": 93,
+  "weights": [
+    { "name": "Participación y uso del laboratorio", "max": 20 },
+    { "name": "Módulos y prácticas de oficina", "max": 25 },
+    { "name": "Proyecto final de su cargo", "max": 35 },
+    { "name": "Criterio y control humano", "max": 20 }
+  ],
+  "people": [
+    { "username": "orodriguez", "name": "Oscar Eduin Rodríguez Orellana", "role": "Gerente de Compras, Operaciones y Logística", "part": 20, "mods": 24, "proj": 34, "human": 20, "score": 98, "result": "Aprobado", "project": "Tres proveedores, ningún ganador", "note": "Cursó las dos jornadas. Proyecto de su cargo cerrado." },
+    { "username": "kescalante", "name": "Kellyn Nazaria Escalante Andino", "role": "Sub-Gerente Regional", "part": 19, "mods": 24, "proj": 34, "human": 20, "score": 97, "result": "Aprobado", "project": "El resumen de la semana", "note": "Cursó las dos jornadas. Proyecto de su cargo cerrado." },
+    { "username": "gmejia", "name": "Gladys del Socorro Mejía Chacón", "role": "Gerente de Control de Calidad", "part": 19, "mods": 24, "proj": 34, "human": 19, "score": 96, "result": "Aprobado", "project": "El aviso del lote que no salió", "note": "Cursó las dos jornadas. Proyecto de su cargo cerrado." },
+    { "username": "mvega", "name": "Marlon Mauricio Vega Rodríguez", "role": "Gerente de Sistemas de Información", "part": 19, "mods": 24, "proj": 34, "human": 19, "score": 96, "result": "Aprobado", "project": "El correo se cayó 18 minutos", "note": "Cursó las dos jornadas. Proyecto de su cargo cerrado." },
+    { "username": "gcerrato", "name": "Rita Gisele Cerrato Varela", "role": "Gerente de Recursos Humanos", "part": 19, "mods": 23, "proj": 33, "human": 19, "score": 94, "result": "Aprobado", "project": "El aviso de una vacante interna", "note": "Cursó las dos jornadas. Proyecto de su cargo cerrado." },
+    { "username": "hdore", "name": "Héctor Adolfo Dore Serrano", "role": "Jefe de Desarrollo Digital y Automatización", "part": 19, "mods": 23, "proj": 33, "human": 19, "score": 94, "result": "Aprobado", "project": "Un piloto, sin conectar el sistema", "note": "Cursó las dos jornadas. Proyecto de su cargo cerrado." },
+    { "username": "abaide", "name": "Allan Fernando Baide Simon", "role": "Gerente de Ventas", "part": 19, "mods": 23, "proj": 32, "human": 19, "score": 93, "result": "Aprobado", "project": "El correo después de la visita", "note": "Cursó las dos jornadas. Proyecto de su cargo cerrado." },
+    { "username": "mlopez", "name": "Miguel Antonio López Briones", "role": "Gerente de Auditoría", "part": 18, "mods": 23, "proj": 32, "human": 19, "score": 92, "result": "Aprobado", "project": "Qué se arriesga si usan un chat", "note": "Cursó las dos jornadas. Proyecto de su cargo cerrado." },
+    { "username": "gparedes", "name": "Gerardo Enrique Paredes Lontero", "role": "Gerente de Producción", "part": 18, "mods": 23, "proj": 32, "human": 18, "score": 91, "result": "Aprobado", "project": "El papel del relevo de turno", "note": "Cursó las dos jornadas. Proyecto de su cargo cerrado." },
+    { "username": "dzaldivar", "name": "Hernán Danilo Zaldívar Nolasco", "role": "Gerente General", "part": 10, "mods": 16, "proj": 30, "human": 19, "score": 75, "result": "Observado", "project": "Una página para decidir", "note": "Casi no asistió el segundo viernes (2 de octubre de 2026). Baja en participación y en módulos de oficina." }
+  ]
+}

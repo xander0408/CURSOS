@@ -30,6 +30,12 @@ export async function loadAll() {
   const activities = await getJson("content/activities.json");
   const officeCases = await getJson("content/office-cases.json");
   const schedule = await getJson("content/schedule.json");
+  let evaluacion = null;
+  try {
+    evaluacion = await getJson("content/evaluacion-cisa.json");
+  } catch {
+    evaluacion = null;
+  }
   const modules = {};
   for (const m of course.modules) {
     modules[m.id] = await getJson(`content/modules/${m.id}.json`);
@@ -50,6 +56,7 @@ export async function loadAll() {
     roster,
     activities,
     officeCases,
+    evaluacion,
     schedule,
     sync,
   };

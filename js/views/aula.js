@@ -56,6 +56,36 @@ function winnerLabel(w) {
   return "—";
 }
 
+function evalTableHtml(ev) {
+  if (!ev?.people?.length) return "";
+  const body = ev.people
+    .map(
+      (p) => `<tr>
+        <td><strong>${escapeHtml(p.name)}</strong><br><code>${escapeHtml(p.username)}</code></td>
+        <td>${escapeHtml(p.role)}</td>
+        <td>${p.part}/20</td>
+        <td>${p.mods}/25</td>
+        <td>${p.proj}/35</td>
+        <td>${p.human}/20</td>
+        <td><strong>${p.score}%</strong></td>
+        <td>${escapeHtml(p.result)}</td>
+        <td>${escapeHtml(p.project)}</td>
+        <td>${escapeHtml(p.note)}</td>
+      </tr>`
+    )
+    .join("");
+  return `<div class="card" style="margin-bottom:16px">
+    <h3>Rúbrica del grupo</h3>
+    <p class="muted">Primer viernes: ${escapeHtml(ev.friday1)}. Segundo viernes: ${escapeHtml(ev.friday2)}. Promedio ${ev.average}%. Mínimo para aprobar: ${ev.passMark}%.</p>
+    <div class="aula-table-wrap"><table class="data-table aula-table">
+      <thead><tr>
+        <th>Alumno</th><th>Cargo</th><th>Part.</th><th>Módulos</th><th>Proyecto</th><th>Control</th><th>Nota</th><th>Resultado</th><th>Caso</th><th>Observación</th>
+      </tr></thead>
+      <tbody>${body}</tbody>
+    </table></div>
+  </div>`;
+}
+
 function tableHtml(rows) {
   return `<div class="aula-table-wrap"><table class="data-table aula-table">
     <thead><tr>
@@ -145,12 +175,13 @@ export function renderAdmin(data) {
   return `
     <div class="page-head">
       <h2>Dashboard del aula</h2>
-      <p>Progreso, tareas, evaluaciones y proyecto. El temporizador está en el menú: Timer.</p>
+      <p>Cierre CISA · ${escapeHtml(data.evaluacion?.dates || "Viernes 11 de septiembre y viernes 2 de octubre de 2026")}.</p>
     </div>
     <p class="btn-row">
       <a class="btn btn-primary" href="${escapeHtml(assetUrl("recursos/instructor/Rubrica-Evaluacion-Participantes-CISA.xlsx"))}" download="Rubrica-Evaluacion-Participantes-CISA.xlsx">Descargar rúbrica Excel</a>
       <button class="btn" type="button" id="btn-aula-pdf">Descargar PDF de lo recolectado</button>
     </p>
+    ${evalTableHtml(data.evaluacion)}
     <div id="aula-live"><p class="muted">Cargando el aula…</p></div>
     <div class="card" style="margin-top:16px">
       <h3>Acceso</h3>

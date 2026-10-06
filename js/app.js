@@ -1,6 +1,6 @@
 import { ensureTrailingSlash, bindBrandImages } from "./paths.js?v=20260927s2";
 import { initTheme, toggleTheme, currentTheme } from "./theme.js";
-import { loadAll } from "./content.js?v=20260930c1";
+import { loadAll } from "./content.js?v=20261005e1";
 import { parseHash, onRoute } from "./router.js?v=20260927s2";
 import { getState, update, markLessonDone, completeModule, recountChallenges, loadUser, readSession, writeSession, logActivity, storageWorks, seedInstructorGuide } from "./store.js";
 import { setSyncApi, pullIntoLocal, pushNow } from "./sync.js";
@@ -17,7 +17,7 @@ import { renderQuizIndex, renderQuizPlay, bindQuizPlay, bindQuizIndex } from "./
 import { hydrateAgents, sectionAgent, coachSectionForRoute } from "./agents.js";
 import { loadStudents, isLoggedIn, renderLogin, logout, gateRedirect, canUseClassroomTimer } from "./auth.js?v=20260930l1";
 import { renderPerfil, bindPerfil, renderCuentas, bindCuentas, renderManual, bindManual } from "./views/guides.js";
-import { renderAdmin, bindAdmin } from "./views/aula.js?v=20261005x1";
+import { renderAdmin, bindAdmin } from "./views/aula.js?v=20261005e1";
 import { renderActivities, bindActivities } from "./views/activities.js?v=20260930v5";
 import { renderFriday2, bindFriday2 } from "./views/friday2.js?v=20260930v4";
 import { isDay2Module, jornadaFromRoute, applyJornada, readJornada } from "./journey.js?v=20260930c1";
