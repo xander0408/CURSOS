@@ -315,6 +315,11 @@ await writeXlsx(destWeb, [
   { name: "Notas", rows: notas },
   { name: "Criterios", rows: criterios },
 ]);
-copyFileSync(destWeb, destRoot);
+try {
+  copyFileSync(destWeb, destRoot);
+} catch (e) {
+  if (e && e.code === "EBUSY") console.warn("Excel de la raíz está abierto. Quedó la copia en recursos/instructor/.");
+  else throw e;
+}
 
 console.log("Excel listo. Promedio", avg, "· Danilo 75");
